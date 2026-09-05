@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import TemplateCard from '../../components/TemplateCard.astro';
+import { NICHE_TITLES, getBreadcrumbSchema } from '../../lib/seo';
+import { getQualifyingNiches } from '../../lib/template';
+import type { TemplateManifest } from '../../lib/template';
+import { CANVAS, SAFE_PX } from '../../lib/spec';
+
+export async function getStaticPaths() {
+  const qualifying = getQualifyingNiches();
+  return qualifying.map(({ niche, templates }) => ({
+    params: { niche },
+    props: { niche, templates },
+  }));
+}
+
+interface Props {
+  niche: string;
+  templates: TemplateManifest[];
+}
+
+const { niche, templates } = Astro.props;
+const qualifyingNiches = getQualifyingNiches();
+
+const nicheMeta = NICHE_TITLES[niche] || {
+  name: niche.charAt(0).toUpperCase() + niche.slice(1),
+  title: `${niche.charAt(0).toUpperCase() + niche.slice(1)} YouTube Banner Templates`,
+  desc: `Free ${niche} channel banner templates. Tested against real mobile safe area crops with instant browser editing.`,
+};
+
+const NICHE_CONTENT: Record<string, { heroTitle: string; heroDesc: string; designNotes: string }> = {
+  gaming: {
+    heroTitle: 'Gaming YouTube Banner Templates',
+    heroDesc: 'Built for competitive esports rosters, retro speedrunners, and variety streamers. Each layout keeps your gamer tag, streaming schedule, and sponsor logos centered inside the mobile safe area, so your channel branding never gets cropped on mobile devices. Edit colors, swap gradients, or drop in your character art with zero sign-up.',
+    designNotes: 'High-energy gaming banners frequently suffer from clipping when creator tags or team logos are pushed toward the corners. These gaming templates utilize centered cyber grids, retro arcade framing, and tactical HUD aesthetics engineered to remain crisp on 4K TVs while preserving core channel identity on mobile screens.',
+  },
+  tech: {
+    heroTitle: 'Tech YouTube Banner Templates',
+    heroDesc: 'Engineered for software developers, hardware reviewers, and tech educators. Clean terminal prompts, monospace accents, and disciplined visual hierarchies that present your publishing cadence and technical focus clearly across desktop and smartphone viewports.',
+    designNotes: 'Developer and technology channels require structured precision. Our tech templates feature dark terminal themes, clean gridlines, and balanced typography calibrated to stay sharp on high-DPI desktop screens while remaining legible on smaller phone screens.',
+  },
+  podcast: {
+    heroTitle: 'Podcast YouTube Banner Templates',
+    heroDesc: 'Crafted for video podcasters, interview series, and roundtable shows. High-contrast typography emphasizes your show title, co-host names, and episode release cadence in the central safe zone, ensuring your banner looks authoritative whether viewed on a 4K TV or mobile app.',
+    designNotes: 'Video podcasts need immediate brand recognition and clear release schedules. These studio-tested layouts provide balanced focal points for show names, episode frequency, and audio network syndication badges without risking crop cutoff on narrower screens.',
+  },
+  vlog: {
+    heroTitle: 'Vlog & Lifestyle Channel Art Templates',
+    heroDesc: 'Designed for travel vloggers, daily creators, and lifestyle documentarians. Cinematic framing and editorial typography create an inviting first impression for new subscribers while keeping channel names and upload schedules centered inside the safe viewing area.',
+    designNotes: 'Personal vlogging channels connect through mood and aesthetic tone. Our vlog templates feature golden-hour palettes, magazine-style editorial typography, and spacious layouts designed to complement creator photography without compromising text visibility.',
+  },
+  music: {
+    heroTitle: 'Music & Producer YouTube Banner Templates',
+    heroDesc: 'Curated for independent beatmakers, lo-fi stream hosts, synthwave artists, and acoustic musicians. Atmospheric color palettes and distinct musical typography establish your sound identity while keeping your artist moniker and release dates safe on every screen.',
+    designNotes: 'Music channels often feature album art or abstract background visuals. These layouts ensure artist names, release announcements, and streaming handles remain completely visible across television, desktop, tablet, and mobile views.',
+  },
+  fitness: {
+    heroTitle: 'Fitness & Athlete YouTube Banner Templates',
+    heroDesc: 'High-impact banner art for personal trainers, bodybuilding coaches, yoga instructors, and calisthenics athletes. Heavyweight display typography and high-contrast accents communicate intensity and structure while protecting your channel identity from edge cropping.',
+    designNotes: 'Fitness channels demand energy and motivation. These bold channel art templates use aggressive typography and disciplined horizontal centering, ensuring workout times, program links, and coach names remain centered and legible.',
+  },
+  education: {
+    heroTitle: 'Education & Tutorial YouTube Banner Templates',
+    heroDesc: 'Authoritative channel art for professors, coding bootcamps, science communicators, and educational tutorials. Structured editorial layouts and academic framing establish credibility with students and lifelong learners across all viewing devices.',
+    designNotes: 'Educational content relies on trust and authority. These scholarly templates feature double-rule borders, clear subject headers, and structured lecture schedules that frame your academic curriculum cleanly on desktop, tablet, and mobile.',
+  },
+  lifestyle: {
+    heroTitle: 'Lifestyle & Minimalist YouTube Banner Templates',
+    heroDesc: 'Understated, elegant channel banners for mindfulness coaches, botanical creators, interior stylists, and minimalist creators. Balanced serif and modern sans-serif typefaces framed to preserve negative space and protect safe-area boundaries.',
+    designNotes: 'Minimalist channel branding succeeds through restraint and precise alignment. These lifestyle templates utilize organic tones, botanical themes, and balanced typography that retain their elegance regardless of how YouTube trims the display.',
+  },
+};
+
+const content = NICHE_CONTENT[niche] || {
+  heroTitle: `${nicheMeta.name} YouTube Banner Templates`,
+  heroDesc: nicheMeta.desc,
+  designNotes: `Curated ${nicheMeta.name} layouts engineered to keep primary channel branding within the mobile safe zone.`,
+};
+
+const breadcrumbs = getBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Templates', url: '/templates' },
+  { name: nicheMeta.name, url: `/templates/${niche}` },
+]);
+
+const firstTemplateId = templates[0]?.id || 'gaming-neon';
+---
+
+<BaseLayout
+  title={nicheMeta.title}
+  description={nicheMeta.desc}
+  path={`/templates/${niche}`}
+  jsonLd={[breadcrumbs]}
+>
+  <Header currentPath={`/templates/${niche}`} />
+
+  <main id="main-content" class="flex-1">
+    <!-- Hero Section -->
+    <section class="border-b border-line-200 bg-surface-0 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-50 border border-line-200 text-xs font-medium text-ink-600 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Category: {nicheMeta.name}
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink-950 tracking-tight leading-[1.12]">
+            {content.heroTitle}
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-ink-600 measure-prose leading-relaxed">
+            {content.heroDesc}
+          </p>
+
+          <!-- Niche Switcher Navigation Strip -->
+          <div class="mt-8 flex flex-wrap items-center gap-2" aria-label="Niche Switcher">
+            <a
+              href="/templates"
+              class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-surface-50 text-ink-600 hover:text-ink-950 hover:bg-surface-100 border border-line-200 transition-colors"
+            >
+              &larr; All Templates
+            </a>
+            {qualifyingNiches.map((item) => {
+              const isActive = item.niche === niche;
+              const meta = NICHE_TITLES[item.niche] || { name: item.niche };
+              return (
+                <a
+                  href={`/templates/${item.niche}`}
+                  class:list={[
+                    'inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium transition-colors',
+                    isActive
+                      ? 'bg-ink-950 text-surface-0'
+                      : 'bg-surface-50 text-ink-600 hover:text-ink-950 hover:bg-surface-100 border border-line-200',
+                  ]}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {meta.name}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Niche Templates Grid -->
+    <section class="py-12 sm:py-16 bg-surface-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              Verified {nicheMeta.name} Designs
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-1">
+              Select a design to open the Banner Maker with preset typography and safe boundaries.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-ink-500 hidden sm:inline-block">
+            {templates.length} distinct designs
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {templates.map((template, idx) => (
+            <TemplateCard
+              template={template}
+              loading={idx < 3 ? 'eager' : 'lazy'}
+              fetchpriority={idx < 3 ? 'high' : 'auto'}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Niche Guidance & Technical Specs -->
+    <section class="border-t border-line-200 bg-surface-0 py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              Design Considerations for {nicheMeta.name} Banners
+            </h2>
+            <div class="space-y-3 text-sm text-ink-600 leading-relaxed measure-prose">
+              <p>
+                {content.designNotes}
+              </p>
+              <p>
+                Every design in this collection is rendered onto the master {CANVAS.width} × {CANVAS.height} px canvas. All editable typography (channel name, tagline, and schedule) is strictly constrained inside the mobile safe area ({SAFE_PX.full.width} × {SAFE_PX.full.height} px).
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              Crop Reliability Across Devices
+            </h2>
+            <div class="space-y-3 text-sm text-ink-600 leading-relaxed measure-prose">
+              <p>
+                Because YouTube alters the visible area depending on whether viewers access your channel from smart TVs, desktop monitors, tablets, or phones, using verified templates eliminates trial-and-error cropping.
+              </p>
+              <p>
+                Learn more about safe area mathematics in our <a href="/guides/youtube-banner-safe-area" class="text-accent hover:underline font-medium">Safe Area Guide</a> or check exact dimensions in the <a href="/guides/youtube-banner-size" class="text-accent hover:underline font-medium">Banner Sizing Guide</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contextual CTAs to Maker and Resizer -->
+        <div class="mt-16 pt-12 border-t border-line-200 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-lg border border-line-200 bg-surface-50 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="text-base font-semibold text-ink-950 tracking-tight">
+                Customize a {nicheMeta.name} Banner
+              </h3>
+              <p class="text-xs sm:text-sm text-ink-600 mt-1 leading-relaxed">
+                Open a template in the Banner Maker to update channel names, pick complementary fonts, and export a clean banner ready for upload.
+              </p>
+            </div>
+            <div>
+              <a
+                href={`/tools/youtube-banner-maker?template=${firstTemplateId}`}
+                class="inline-flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-md bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs sm:text-sm font-medium transition-colors"
+              >
+                Open in Banner Maker &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-lg border border-line-200 bg-surface-50 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="text-base font-semibold text-ink-950 tracking-tight">
+                Already Have Artwork to Test?
+              </h3>
+              <p class="text-xs sm:text-sm text-ink-600 mt-1 leading-relaxed">
+                If you already have channel art or custom photography, use the Banner Resizer to check your subject alignment across all four device cutoffs.
+              </p>
+            </div>
+            <div>
+              <a
+                href="/tools/youtube-banner-resizer"
+                class="inline-flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-md bg-surface-0 text-ink-950 hover:bg-surface-100 border border-line-200 text-xs sm:text-sm font-medium transition-colors"
+              >
+                Open Banner Resizer &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

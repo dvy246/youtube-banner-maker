@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import TemplateCard from '../../components/TemplateCard.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, NICHE_TITLES } from '../../lib/seo';
+import { listTemplates, getQualifyingNiches } from '../../lib/template';
+import { CANVAS, SAFE_PX } from '../../lib/spec';
+
+const seo = STATIC_PAGES_SEO['/templates'];
+const templates = listTemplates();
+const qualifyingNiches = getQualifyingNiches();
+
+const breadcrumbs = getBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Templates', url: '/templates' },
+]);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path="/templates"
+  jsonLd={[breadcrumbs]}
+>
+  <Header currentPath="/templates" />
+
+  <main id="main-content" class="flex-1">
+    <!-- Hero Section -->
+    <section class="border-b border-line-200 bg-surface-0 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-50 border border-line-200 text-xs font-medium text-ink-600 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Verified Safe-Area Geometry
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink-950 tracking-tight leading-[1.12]">
+            Free YouTube Banner Templates Built for Mobile Safe Areas
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-ink-600 measure-prose leading-relaxed">
+            Every template in this catalog is mathematically pre-centered and tested across TV, desktop, tablet, and mobile displays. No cut-off channel names, no displaced typography, and zero watermark.
+          </p>
+
+          <!-- Category filter navigation (REQ-021: static category links, zero search input) -->
+          <div class="mt-8 flex flex-wrap items-center gap-2" aria-label="Template Categories">
+            <a
+              href="/templates"
+              class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-ink-950 text-surface-0"
+              aria-current="page"
+            >
+              All Templates ({templates.length})
+            </a>
+            {qualifyingNiches.map(({ niche }) => {
+              const info = NICHE_TITLES[niche] || { name: niche.charAt(0).toUpperCase() + niche.slice(1) };
+              return (
+                <a
+                  href={`/templates/${niche}`}
+                  class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-surface-50 text-ink-600 hover:text-ink-950 hover:bg-surface-100 border border-line-200 transition-colors"
+                >
+                  {info.name}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Template Gallery Grid -->
+    <section class="py-12 sm:py-16 bg-surface-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              All Channel Art Templates
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-1">
+              Select any design to customize title, tagline, colors, and background in the Banner Maker.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-ink-500 hidden sm:inline-block">
+            {templates.length} templates available
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {templates.map((template, idx) => (
+            <TemplateCard
+              template={template}
+              loading={idx < 3 ? 'eager' : 'lazy'}
+              fetchpriority={idx < 3 ? 'high' : 'auto'}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Explanatory & Technical SEO Section -->
+    <section class="border-t border-line-200 bg-surface-0 py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              Why Pre-Tested YouTube Banner Templates Matter
+            </h2>
+            <div class="space-y-3 text-sm text-ink-600 leading-relaxed measure-prose">
+              <p>
+                Most creators design YouTube channel art on standard graphic software while viewing a wide desktop screen. When the uploaded {CANVAS.width} × {CANVAS.height} px artwork is served to mobile users, YouTube crops off everything outside the central viewing rectangle.
+              </p>
+              <p>
+                This responsive crop frequently slices off channel titles, social media handles, and host names. Our templates are constructed using normalized frame fractions that mathematically lock all critical text layers inside the safe area ({SAFE_PX.full.width} × {SAFE_PX.full.height} px).
+              </p>
+              <p>
+                Each template has verified safe area boundaries. When you open a template in the Maker tool, your text remains constrained to safe zones so you can export clean artwork without unexpected edge cuts.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              How YouTube Crops Channel Art Across Displays
+            </h2>
+            <div class="space-y-3 text-sm text-ink-600 leading-relaxed measure-prose">
+              <p>
+                YouTube serves channel art across four major display modes from a single source image:
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-ink-600">
+                <li><strong class="text-ink-950">TV Displays:</strong> Displays the full 16:9 canvas at {CANVAS.width} × {CANVAS.height} px.</li>
+                <li><strong class="text-ink-950">Desktop Viewports:</strong> Crops the top and bottom margins to render a wide horizontal banner.</li>
+                <li><strong class="text-ink-950">Tablet Displays:</strong> Crops outer horizontal margins while retaining vertical context.</li>
+                <li><strong class="text-ink-950">Mobile Screens:</strong> Restricts visible content to the central safe zone.</li>
+              </ul>
+              <p class="pt-2">
+                For detailed dimensions and device crop breakdowns, read our in-depth <a href="/guides/youtube-banner-size" class="text-accent hover:underline font-medium">YouTube Banner Size Guide</a> or review the mathematical derivation in the <a href="/guides/youtube-banner-safe-area" class="text-accent hover:underline font-medium">Safe Area Dimensions Guide</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

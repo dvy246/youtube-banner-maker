@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getOrganizationSchema } from '../lib/seo';
+
+const path = '/terms';
+const seo = STATIC_PAGES_SEO[path];
+
+const jsonLd = [
+  getOrganizationSchema(),
+  getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Terms of Service', url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Hero / Header -->
+      <header class="space-y-4 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href="/" class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">Terms of Service</span>
+        </nav>
+        <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+          Legal Agreement
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+          Terms of Service
+        </h1>
+        <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+          Terms and conditions governing the use of YouTubeBannerMaker. Free for personal, educational, and commercial channel branding.
+        </p>
+        <div class="flex items-center gap-4 text-xs font-mono text-ink-500 pt-2">
+          <span>Effective Date: September 2026</span>
+          <span>·</span>
+          <span>Last Updated: September 5, 2026</span>
+        </div>
+      </header>
+
+      <!-- Section 1: Acceptance of Terms -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            01 · Overview
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Acceptance of Terms
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          By accessing or using YouTubeBannerMaker (&ldquo;the Service&rdquo;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service or its browser utilities.
+        </p>
+      </section>
+
+      <!-- Section 2: 100% Creator Ownership -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            02 · Intellectual Property
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            100% Creator Artwork Ownership
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          We believe creators must retain total ownership over their visual identity.
+        </p>
+        <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-3 text-xs text-ink-800 measure-prose">
+          <p>
+            <strong>Full Copyright Retention:</strong> You retain complete, unrestricted copyright and intellectual property rights in and to all images, logos, photos, graphics, typography, and exported banners that you import, design, or render using YouTubeBannerMaker.
+          </p>
+          <p>
+            <strong>Zero Site Claim:</strong> YouTubeBannerMaker claims zero copyright, ownership, licensing rights, or commercial entitlement over your artwork.
+          </p>
+          <p>
+            <strong>No Watermarks or Branding:</strong> We will never place watermarks, branding stamps, or promotional overlays onto your exported banner files.
+          </p>
+          <p>
+            <strong>Zero Server Archiving:</strong> Because our processing runs entirely within your device's browser memory, we do not copy, store, or archive your files on our servers.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: Free Usage Rights -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            03 · License to Use
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Free Personal &amp; Commercial Use
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          YouTubeBannerMaker provides its browser utilities free of charge:
+        </p>
+        <ul class="space-y-2 text-xs text-ink-800 list-disc pl-5 measure-prose">
+          <li>
+            <strong>Commercial Channels:</strong> You may freely use exported banners for monetized YouTube channels, commercial brands, business pages, podcasts, and corporate media.
+          </li>
+          <li>
+            <strong>Personal &amp; Educational Channels:</strong> Free for hobbyists, educators, gamers, non-profit institutions, and personal creators.
+          </li>
+          <li>
+            <strong>No Hidden Fees or Attribution:</strong> There are no subscription fees, royalty demands, or mandatory attribution requirements for using exported artwork.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section 4: User Responsibilities -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            04 · Acceptable Use
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            User Responsibilities &amp; Acceptable Use
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          By using this service, you agree to the following responsibilities:
+        </p>
+        <ul class="space-y-2 text-xs text-ink-800 list-disc pl-5 measure-prose">
+          <li>
+            <strong>Asset Rights:</strong> You represent and warrant that you own or have obtained all necessary licenses, permissions, and rights to any source images, graphics, trademarks, or custom fonts you upload into the tool.
+          </li>
+          <li>
+            <strong>Lawful Content:</strong> You agree not to use the Service to generate or modify content that is illegal, defamatory, infringing upon third-party intellectual property, obscene, or promoting violence or hate speech.
+          </li>
+          <li>
+            <strong>Service Integrity:</strong> You agree not to attempt to disrupt, exploit, overload, or reverse-engineer the website infrastructure or abuse its operational limits.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section 5: Disclaimer of Warranties -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            05 · Warranties
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Disclaimer of Warranties
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          The Service and all associated crop simulations, guides, templates, and utilities are provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis, without warranties of any kind, whether express, statutory, or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.
+        </p>
+        <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+          While our safe-area guidelines and crop overlays are based on empirical testing of YouTube CDN delivery and official documentation, YouTube is a third-party service owned and operated by Google LLC. YouTube may adjust its user interface, viewport crops, or mobile applications at any time. We make no representations regarding third-party platform modifications or behavior.
+        </p>
+      </section>
+
+      <!-- Section 6: Limitation of Liability -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            06 · Liability
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Limitation of Liability
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          To the maximum extent permitted by applicable law, YouTubeBannerMaker, its creators, maintainers, and contributors shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, goodwill, or channel reach, arising out of or related to your use of or inability to use the Service.
+        </p>
+      </section>
+
+      <!-- Section 7: Trademark Notice & Non-Affiliation -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            07 · Trademark Disclosures
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Mandatory Non-Affiliation Notice
+          </h2>
+        </div>
+        <div class="p-5 rounded-lg border border-line-200 bg-surface-50 text-xs text-ink-800 space-y-2 measure-prose">
+          <p>
+            <strong>YouTube Trademark Notice:</strong> YouTube is a registered trademark of Google LLC.
+          </p>
+          <p>
+            YouTubeBannerMaker is an independent, community-focused browser utility and is not affiliated with, endorsed by, sponsored by, or associated with YouTube, Google LLC, Alphabet Inc., or any of their subsidiaries or affiliates.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 8: Governing Law & Contact -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            08 · Contact
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Legal Inquiries &amp; Contact
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          If you have questions regarding these Terms of Service or wish to contact our legal team, please reach out via email:
+        </p>
+        <div class="p-4 rounded-lg bg-surface-50 border border-line-200 text-xs text-ink-800 space-y-1">
+          <div>
+            <strong>Legal Contact:</strong>{' '}
+            <a href="mailto:legal@youtubebannermaker.com" class="text-accent underline font-mono">
+              legal@youtubebannermaker.com
+            </a>
+          </div>
+          <div>
+            <strong>Support Contact:</strong>{' '}
+            <a href="mailto:support@youtubebannermaker.com" class="text-accent underline font-mono">
+              support@youtubebannermaker.com
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

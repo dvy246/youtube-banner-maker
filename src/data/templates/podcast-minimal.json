@@ -1,0 +1,62 @@
+{
+  "id": "podcast-minimal",
+  "niche": "podcast",
+  "name": "Muted Signal",
+  "description": "Left-aligned editorial layout for intellectual long-form dialogues.",
+  "preview": "/previews/podcast-minimal.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#1F2124"
+    },
+    "layers": [
+      {
+        "id": "rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.26,
+        "y": 0.38,
+        "w": 0.08,
+        "h": 0.003,
+        "color": "#E3E5E8",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "DEEP PERSPECTIVES",
+        "font": "playfair-700",
+        "size": 46,
+        "color": "#F7F8F9",
+        "align": "left",
+        "x": 0.26,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Ideas Shaping Tomorrow · Hosted by Alex Rivera",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#E3E5E8",
+        "align": "left",
+        "x": 0.26,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "rule"
+  ],
+  "safeAreaValidated": true
+}

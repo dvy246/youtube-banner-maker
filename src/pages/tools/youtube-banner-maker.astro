@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ToolShell from '../../components/ToolShell.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import DeviceCropTable from '../../components/DeviceCropTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import {
+  STATIC_PAGES_SEO,
+  getSoftwareAppSchema,
+  getBreadcrumbSchema,
+} from '../../lib/seo';
+import { CANVAS, SAFE, SAFE_PX } from '../../lib/spec';
+
+const path = '/tools/youtube-banner-maker';
+const seo = STATIC_PAGES_SEO[path];
+
+const safePctW = (SAFE.w * 100).toFixed(1);
+const safePctH = (SAFE.h * 100).toFixed(1);
+
+const niches = [
+  { id: 'gaming', name: 'Gaming', desc: 'High-energy cyberpunk, retro synthwave, and tactical e-sports channel art.' },
+  { id: 'tech', name: 'Tech & Code', desc: 'Minimal terminal interfaces, clean engineering aesthetics, and hardware themes.' },
+  { id: 'podcast', name: 'Podcast & Talk', desc: 'High-contrast studio layouts with authoritative centered safe-area typography.' },
+  { id: 'vlog', name: 'Vlog & Creator', desc: 'Warm cinematic tones, golden hour editorial framing, and personal brand titles.' },
+  { id: 'music', name: 'Music & Beats', desc: 'Atmospheric lo-fi landscapes, acoustic textures, and producer branding.' },
+  { id: 'fitness', name: 'Fitness & Health', desc: 'Bold athletic typography and high-contrast coaching layouts.' },
+  { id: 'education', name: 'Education & Study', desc: 'Structured academic layouts, chalkboard notes, and tutorial channel headers.' },
+  { id: 'lifestyle', name: 'Lifestyle & Design', desc: 'Earthy botanical minimalism, monochrome typography, and serene spaces.' },
+];
+
+const jsonLd = [
+  getSoftwareAppSchema(
+    'YouTube Banner Generator',
+    seo.desc,
+    path
+  ),
+  getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'YouTube Banner Maker', url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <!-- Primary Tool Island Mounting Shell (Create Door: mode="make") -->
+    <ToolShell
+      mode="make"
+      title="YouTube Banner Generator"
+      intro="Pick a pre-tested template or start fresh. Customize your channel name, colors, and background while previewing live device safe areas. Export a verified 2560 × 1440 banner with zero sign-up or watermarks."
+    />
+
+    <!-- Comprehensive Below-the-Fold Technical & Educational Content -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-line-200 space-y-16">
+      <!-- Section 1: Geometry-Safe Design vs Blank Canvas Fatigue -->
+      <div class="space-y-4 max-w-3xl">
+        <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+          Safe by Construction
+        </span>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+          Geometry-Safe Design vs Blank Canvas Fatigue
+        </h2>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Most design tools force creators to start from an intimidating, empty 16:9 canvas without any indication of where YouTube's aggressive viewport crops will cut. Hours later, after uploading to YouTube Studio, creators discover their title is sliced in half on mobile phones or obscured behind avatar badges.
+        </p>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Our banner generator flips this paradigm. Every curated template starts with composition boundaries constrained to YouTube's universal safe area. When you customize channel names, update color palettes, or switch backdrops, all essential branding remains centered and visible on smartphones, tablets, laptops, and smart TVs alike.
+        </p>
+      </div>
+
+      <!-- Section 2: Safe Area Mathematics & Typography Constraints -->
+      <div class="space-y-4 max-w-3xl">
+        <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+          Safe Area Mechanics
+        </span>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+          Why Typography Must Sit Inside the Mobile Safe Area
+        </h2>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Across the entire {CANVAS.width} × {CANVAS.height} px canvas required by Google, mobile devices display only the central {SAFE_PX.full.width} × {SAFE_PX.full.height} px rectangle. In relative screen coordinates, this safe zone represents exactly {safePctW}% of the canvas width and {safePctH}% of the canvas height.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
+            <span class="text-[11px] font-mono text-accent uppercase tracking-wider font-semibold">
+              The {safePctW}% × {safePctH}% Rule
+            </span>
+            <h3 class="text-sm font-semibold text-ink-950">
+              Universal Viewport Guarantee
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Every device profile—from a 5-inch smartphone to a 32-inch 4K desktop monitor—renders this centered rectangle. Text placed inside it is never cut off.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
+            <span class="text-[11px] font-mono text-accent uppercase tracking-wider font-semibold">
+              Real-Time Boundary Feedback
+            </span>
+            <h3 class="text-sm font-semibold text-ink-950">
+              Automatic Cutoff Warnings
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              If you drag a constrained text element outside the safe boundary, our live validator flags it immediately with directional guidance to pull it back into view.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Device Crops Breakdown -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Viewport Reference
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            YouTube Per-Device Crop Boundaries
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            YouTube extracts different viewports from a single {CANVAS.width} × {CANVAS.height} px upload. Use this reference to verify what viewers see across hardware platforms.
+          </p>
+        </div>
+        <DeviceCropTable />
+      </div>
+
+      <!-- Section 4: Specifications Reference -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Official Standards
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            YouTube Channel Art Specifications
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            Official Google standards for YouTube banner dimensions, minimum resolution, file size limits, and supported raster formats.
+          </p>
+        </div>
+        <SpecTable />
+      </div>
+
+      <!-- Section 5: Curated Category Link Grid -->
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div class="space-y-1 max-w-2xl">
+            <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+              Template Directory
+            </span>
+            <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+              Browse Safe Templates by Channel Niche
+            </h2>
+            <p class="text-sm text-ink-600">
+              Explore 24 hand-crafted templates across 8 YouTube creator niches. Every template is verified against official safe area dimensions.
+            </p>
+          </div>
+          <a
+            href="/templates"
+            class="min-h-[44px] px-4 py-2 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-xs font-semibold text-ink-950 inline-flex items-center gap-1.5 shrink-0 self-start sm:self-auto focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <span>All Templates (24)</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {
+            niches.map((niche) => (
+              <a
+                href={`/templates/${niche.id}`}
+                class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-accent hover:shadow-sm transition-all group block space-y-1.5 focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <div class="flex items-center justify-between">
+                  <h3 class="text-sm font-semibold text-ink-950 group-hover:text-accent transition-colors">
+                    {niche.name}
+                  </h3>
+                  <span class="text-xs text-ink-400 group-hover:text-accent transition-colors" aria-hidden="true">
+                    →
+                  </span>
+                </div>
+                <p class="text-xs text-ink-600 line-clamp-2 leading-relaxed">
+                  {niche.desc}
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Section 6: Frequently Asked Questions -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Common Questions
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            Answers to frequent questions about designing channel art, safe areas, template customization, and YouTube Studio uploads.
+          </p>
+        </div>
+        <FaqAccordion />
+      </div>
+
+      <!-- Section 7: Contextual Diagnostic Interlinking -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-surface-50 border border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="space-y-1.5 max-w-xl">
+          <h3 class="text-base font-semibold text-ink-950">
+            Have an existing banner to test?
+          </h3>
+          <p class="text-xs text-ink-600 leading-relaxed">
+            Run your existing channel art through our free Safe Area Checker to detect mobile clipping and formatting errors before re-uploading.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a
+            href="/tools/youtube-banner-checker"
+            class="min-h-[44px] px-4 py-2.5 rounded-lg bg-accent text-surface-0 text-xs font-semibold hover:bg-accent/90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent inline-flex items-center shadow-xs"
+          >
+            Open Safe Area Checker →
+          </a>
+          <a
+            href="/guides/youtube-banner-safe-area"
+            class="min-h-[44px] px-4 py-2.5 rounded-lg bg-surface-0 border border-line-200 text-xs font-semibold text-ink-950 hover:bg-surface-50 focus-visible:ring-2 focus-visible:ring-accent inline-flex items-center"
+          >
+            Safe Area Guide
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

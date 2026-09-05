@@ -1,0 +1,28 @@
+# robots.txt for YouTubeBannerMaker.com
+User-agent: *
+Allow: /
+
+# Explicit AI Search & Answer Engine Access (AEO / GEO)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap Index
+Sitemap: https://youtubebannermaker.com/sitemap.xml

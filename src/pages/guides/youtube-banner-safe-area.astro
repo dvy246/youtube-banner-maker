@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import DeviceCropTable from '../../components/DeviceCropTable.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getTechArticleSchema } from '../../lib/seo';
+import { CANVAS, SAFE_PX, DEVICES } from '../../lib/spec';
+
+const path = '/guides/youtube-banner-safe-area';
+const seo = STATIC_PAGES_SEO[path];
+
+const jsonLd = [
+  getTechArticleSchema({
+    title: seo.title,
+    description: seo.desc,
+    path,
+    datePublished: '2026-01-15',
+    dateModified: '2026-03-01',
+  }),
+  getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'YouTube Banner Safe Area Guide', url: path },
+  ]),
+];
+
+// Ratio calculations for mathematical proof (REQ-004)
+const minWFrac = (SAFE_PX.min.width / 2048).toFixed(4);
+const minHFrac = (SAFE_PX.min.height / 1152).toFixed(4);
+const fullWFrac = (SAFE_PX.full.width / CANVAS.width).toFixed(4);
+const fullHFrac = (SAFE_PX.full.height / CANVAS.height).toFixed(4);
+
+// Coordinates for responsive SVG diagram
+const desktopY = Math.round(DEVICES.desktop.y * CANVAS.height);
+const desktopH = Math.round(DEVICES.desktop.h * CANVAS.height);
+const tabletX = Math.round(DEVICES.tablet.x * CANVAS.width);
+const tabletW = Math.round(DEVICES.tablet.w * CANVAS.width);
+const safeX = Math.round((CANVAS.width - SAFE_PX.full.width) / 2);
+const safeY = Math.round((CANVAS.height - SAFE_PX.full.height) / 2);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Hero / Header -->
+      <header class="space-y-6 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href="/" class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">Safe Area Guide</span>
+        </nav>
+
+        <div class="space-y-3">
+          <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+            Channel Art Safe-Zone Geometry & Mathematical Proof
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+            YouTube Banner Safe Area: Dimensions, Ratios & Device Geometry
+          </h1>
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+            A mathematical and visual breakdown of YouTube's channel banner safe area, proving why both official dimension sets describe the identical centered viewport.
+          </p>
+        </div>
+
+        <!-- E-E-A-T Author & Citation Byline -->
+        <div class="flex flex-wrap items-center gap-3 text-xs text-ink-600 border-t border-line-200 pt-4">
+          <span>By <strong>Channel Branding Operations Team</strong></span>
+          <span>·</span>
+          <span>Verified against <a href="https://support.google.com/youtube/answer/2972003" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent font-medium">YouTube Help Center: Manage Channel Branding</a></span>
+          <span>·</span>
+          <span>March 2026 Revision</span>
+        </div>
+
+        <!-- Direct Answer Card -->
+        <div class="p-6 rounded-xl border border-accent/20 bg-surface-50 space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-mono uppercase tracking-wider font-bold text-accent">
+              Core Definition
+            </span>
+            <p class="text-base sm:text-lg text-ink-950 font-medium leading-snug">
+              The YouTube banner safe area is the central <strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} pixel</strong> zone ({SAFE_PX.min.width} × {SAFE_PX.min.height} px at minimum upload size) designed to display on every screen without being cropped.
+            </p>
+          </div>
+          <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+            Whether a viewer visits your channel on a smartphone, tablet, laptop, or smart television, content located inside this centered rectangle remains visible. Everything outside this zone is subject to viewport-dependent device cropping.
+          </p>
+        </div>
+      </header>
+
+      <!-- Section 1: What is the Safe Area? -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            01 · Foundational Concept
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            What is the YouTube Banner Safe Area?
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          When you upload an image to YouTube Studio, the platform expects a full 16:9 canvas measuring {CANVAS.width} × {CANVAS.height} pixels. However, smart TVs are the only hardware category that display the entire 16:9 canvas.
+        </p>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          On desktop computers and mobile devices, YouTube crops away the peripheral areas of your canvas to fit responsive screen aspect ratios. The <strong>safe area</strong> is the geometric intersection of all supported viewports. It is the central anchor of the banner where text, logos, taglines, and focal portraits must reside to avoid accidental clipping.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
+            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Mobile Viewport</span>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Smartphones show only the safe area window. Outer margins are completely hidden.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
+            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Desktop Viewport</span>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Desktop browsers show a wide horizontal ribbon. Top and bottom margins are cropped away.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
+            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">TV Viewport</span>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Smart TVs display the entire 16:9 image across the full screen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Mathematical Proof (REQ-004) -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            02 · Mathematical Proof
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Reconciling the Two Safe Area Figures (REQ-004)
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Across the internet, creator guides commonly cite two different sets of numbers for the YouTube banner safe area:
+        </p>
+        <ul class="space-y-1 text-sm text-ink-800 list-disc pl-5 measure-prose font-medium">
+          <li><strong>{SAFE_PX.min.width} × {SAFE_PX.min.height} pixels</strong></li>
+          <li><strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} pixels</strong></li>
+        </ul>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Many creators assume these numbers represent two different rules or contradictory standards. In reality, they describe the <strong>exact same centered viewing rectangle</strong> (60.3% width × 29.3% height) evaluated against different canvas resolutions.
+        </p>
+
+        <!-- Worked Math Proof Box -->
+        <div class="p-6 rounded-xl border border-line-200 bg-surface-50 space-y-6">
+          <h3 class="text-sm font-semibold text-ink-950">The Worked Arithmetic</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Min Canvas Arithmetic -->
+            <div class="p-5 rounded-lg bg-surface-0 border border-line-200 space-y-3">
+              <div class="flex items-center justify-between border-b border-line-100 pb-2">
+                <span class="text-xs font-bold text-ink-950">Minimum Upload Canvas</span>
+                <span class="font-mono text-xs font-semibold text-ink-600">2048 × 1152 px</span>
+              </div>
+              <div class="space-y-2 text-xs font-mono">
+                <div class="flex justify-between py-1 border-b border-line-100">
+                  <span class="text-ink-500">Horizontal Share:</span>
+                  <span class="font-bold text-ink-950">{SAFE_PX.min.width} ÷ 2048 = {minWFrac} (60.30%)</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span class="text-ink-500">Vertical Share:</span>
+                  <span class="font-bold text-ink-950">{SAFE_PX.min.height} ÷ 1152 = {minHFrac} (29.34%)</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-ink-500 leading-normal pt-1">
+                At YouTube Studio's minimum upload floor (2048 × 1152 px), the safe zone measures {SAFE_PX.min.width} × {SAFE_PX.min.height} px.
+              </p>
+            </div>
+
+            <!-- Full Canvas Arithmetic -->
+            <div class="p-5 rounded-lg bg-surface-0 border border-line-200 space-y-3">
+              <div class="flex items-center justify-between border-b border-line-100 pb-2">
+                <span class="text-xs font-bold text-ink-950">Recommended Canvas</span>
+                <span class="font-mono text-xs font-semibold text-accent">{CANVAS.width} × {CANVAS.height} px</span>
+              </div>
+              <div class="space-y-2 text-xs font-mono">
+                <div class="flex justify-between py-1 border-b border-line-100">
+                  <span class="text-ink-500">Horizontal Share:</span>
+                  <span class="font-bold text-ink-950">{SAFE_PX.full.width} ÷ {CANVAS.width} = {fullWFrac} (60.39%)</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span class="text-ink-500">Vertical Share:</span>
+                  <span class="font-bold text-ink-950">{SAFE_PX.full.height} ÷ {CANVAS.height} = {fullHFrac} (29.38%)</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-ink-500 leading-normal pt-1">
+                At the official recommended canvas size ({CANVAS.width} × {CANVAS.height} px), the safe zone measures {SAFE_PX.full.width} × {SAFE_PX.full.height} px.
+              </p>
+            </div>
+          </div>
+
+          <div class="text-xs text-ink-600 leading-relaxed space-y-2 measure-prose">
+            <p>
+              Notice that the horizontal fraction difference is <strong>0.09%</strong> (60.30% vs 60.39%) and the vertical fraction difference is <strong>0.04%</strong> (29.34% vs 29.38%).
+            </p>
+            <p>
+              This negligible difference occurs solely because pixel coordinates must be rounded to the nearest integer. The two numbers are not competing rules; they are the same physical viewport rectangle rendered at different canvas pixel densities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Visual Diagram -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            03 · Visual Reference Diagram
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Interactive Cross-Device Crop Map
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          The diagram below illustrates how each device viewport is mapped onto the standard {CANVAS.width} × {CANVAS.height} pixel canvas. Notice how desktop and tablet viewports overlap, with the mobile safe area positioned at the dead center.
+        </p>
+
+        <!-- Accessible Responsive SVG Diagram -->
+        <div class="w-full rounded-2xl overflow-hidden border border-line-200 bg-surface-50 shadow-sm p-2 sm:p-4">
+          <div class="w-full aspect-[16/9] rounded-xl overflow-hidden shadow-inner bg-ink-950">
+            <svg
+              role="img"
+              aria-labelledby="diagram-title diagram-desc"
+              viewBox={`0 0 ${CANVAS.width} ${CANVAS.height}`}
+              class="w-full h-full block select-none"
+            >
+              <title id="diagram-title">YouTube Banner Safe Area and Device Crop Diagram</title>
+              <desc id="diagram-desc">
+                Proportional visual map of the 2560 by 1440 YouTube canvas showing television, desktop ribbon, tablet pillar, and central mobile safe area.
+              </desc>
+
+              <!-- TV Frame Background -->
+              <rect x="0" y="0" width={CANVAS.width} height={CANVAS.height} fill="#0C0D0E" />
+
+              <!-- Tablet Crop Ribbon -->
+              <rect
+                x={tabletX}
+                y={desktopY}
+                width={tabletW}
+                height={desktopH}
+                fill="#181A1D"
+                stroke="#2B2F36"
+                stroke-width="3"
+                stroke-dasharray="16 16"
+              />
+
+              <!-- Desktop Ribbon -->
+              <rect
+                x="0"
+                y={desktopY}
+                width={CANVAS.width}
+                height={desktopH}
+                fill="#1F2228"
+                stroke="#373C45"
+                stroke-width="4"
+              />
+
+              <!-- Center Mobile Safe Area Box -->
+              <rect
+                x={safeX}
+                y={safeY}
+                width={SAFE_PX.full.width}
+                height={SAFE_PX.full.height}
+                fill="#2340B8"
+                fill-opacity="0.22"
+                stroke="#8AA4FF"
+                stroke-width="6"
+                stroke-dasharray="20 12"
+                rx="12"
+              />
+
+              <!-- Diagonal Corner Guides -->
+              <line x1="0" y1="0" x2={safeX} y2={safeY} stroke="#373C45" stroke-width="2" stroke-dasharray="8 8" opacity="0.4" />
+              <line x1={CANVAS.width} y1="0" x2={safeX + SAFE_PX.full.width} y2={safeY} stroke="#373C45" stroke-width="2" stroke-dasharray="8 8" opacity="0.4" />
+              <line x1="0" y1={CANVAS.height} x2={safeX} y2={safeY + SAFE_PX.full.height} stroke="#373C45" stroke-width="2" stroke-dasharray="8 8" opacity="0.4" />
+              <line x1={CANVAS.width} y1={CANVAS.height} x2={safeX + SAFE_PX.full.width} y2={safeY + SAFE_PX.full.height} stroke="#373C45" stroke-width="2" stroke-dasharray="8 8" opacity="0.4" />
+
+              <!-- TV Canvas Labels -->
+              <text x="64" y="96" fill="#6B7076" font-family="Switzer, system-ui, sans-serif" font-size="36" font-weight="600">
+                TV VIEWPORT · {CANVAS.width} × {CANVAS.height} PX
+              </text>
+              <text x="64" y="144" fill="#4A4E54" font-family="Switzer, system-ui, sans-serif" font-size="24">
+                Full 16:9 canvas displayed on Smart TVs
+              </text>
+
+              <!-- Tablet Labels -->
+              <text x={tabletX + 32} y={desktopY - 20} fill="#8E95A0" font-family="Switzer, system-ui, sans-serif" font-size="28" font-weight="600">
+                TABLET CROP · {tabletW} × {desktopH} PX
+              </text>
+
+              <!-- Desktop Ribbon Labels -->
+              <text x="64" y={desktopY + 64} fill="#EFF1F3" font-family="Switzer, system-ui, sans-serif" font-size="34" font-weight="700">
+                DESKTOP RIBBON
+              </text>
+              <text x="64" y={desktopY + 110} fill="#8AA4FF" font-family="monospace" font-size="26">
+                {CANVAS.width} × {desktopH} px
+              </text>
+              <text x="64" y={desktopY + 154} fill="#6B7076" font-family="Switzer, system-ui, sans-serif" font-size="22">
+                Horizontal band visible on desktop browsers
+              </text>
+
+              <!-- Mobile Safe Area Central Information -->
+              <g transform={`translate(${CANVAS.width / 2}, ${safeY + 140})`}>
+                <text text-anchor="middle" fill="#FFFFFF" font-family="Switzer, system-ui, sans-serif" font-size="46" font-weight="800" letter-spacing="-0.5">
+                  MOBILE SAFE AREA
+                </text>
+                <text y="64" text-anchor="middle" fill="#8AA4FF" font-family="monospace" font-size="36" font-weight="700">
+                  {SAFE_PX.full.width} × {SAFE_PX.full.height} PX
+                </text>
+                <text y="124" text-anchor="middle" fill="#EFF1F3" font-family="Switzer, system-ui, sans-serif" font-size="26" font-weight="500">
+                  Visible on every device without exception
+                </text>
+                <text y="168" text-anchor="middle" fill="#8E95A0" font-family="Switzer, system-ui, sans-serif" font-size="22">
+                  Place all typography, channel titles, taglines, and focal subjects here
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Diagram Legend -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 text-xs font-mono">
+            <div class="flex items-center gap-2 p-2 rounded bg-surface-0 border border-line-200">
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#0C0D0E] border border-line-200 shrink-0"></span>
+              <span class="text-ink-800">TV (100% Canvas)</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded bg-surface-0 border border-line-200">
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#1F2228] border border-line-200 shrink-0"></span>
+              <span class="text-ink-800">Desktop ({desktopH}px high)</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded bg-surface-0 border border-line-200">
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#181A1D] border border-line-200 shrink-0"></span>
+              <span class="text-ink-800">Tablet ({tabletW}px wide)</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded bg-surface-0 border border-accent/40">
+              <span class="w-3.5 h-3.5 rounded-sm bg-[#2340B8] shrink-0"></span>
+              <span class="text-accent font-semibold">Safe Area (Center)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Device Crop Table -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            04 · Quantitative Breakdown
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Per-Device Crop Dimensions Table
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          The table below quantifies the visible pixel dimensions and display proportions for each device category based on the standard {CANVAS.width} × {CANVAS.height} pixel canvas.
+        </p>
+
+        <DeviceCropTable />
+      </section>
+
+      <!-- Section 5: Design Rules -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            05 · Practical Guidelines
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Design Rules: How to Compose Channel Art Safe-by-Construction
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          To prevent banner crop headaches and eliminate repetitive upload cycles, follow these five core principles when designing your channel art:
+        </p>
+
+        <div class="space-y-4">
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-xs font-bold flex items-center justify-center">1</span>
+              Keep Core Branding Exclusively Inside the Safe Zone
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+              Your channel name, publication schedule, tagline, sponsor logos, and portrait face must sit completely within the {SAFE_PX.full.width} × {SAFE_PX.full.height} pixel boundary. If any typography extends outside this box, it will be clipped on mobile phones.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-xs font-bold flex items-center justify-center">2</span>
+              Span Background Textures Across the Entire 16:9 Canvas
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+              Never export just the safe-area rectangle on a transparent or white background. Always extend your background scenery, 3D artwork, geometric patterns, and gradients to the full {CANVAS.width} × {CANVAS.height} bounds. This ensures your banner looks immersive on television screens.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-xs font-bold flex items-center justify-center">3</span>
+              Add a 20-Pixel Internal Buffer Margin
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+              Avoid pushing letters right up against the safe zone perimeter. Modern smartphones feature rounded screen corners, punch-hole cameras, and notch cutouts that can obscure elements placed directly on the border edge. Maintain at least 20 to 30 pixels of internal padding.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-xs font-bold flex items-center justify-center">4</span>
+              Clear the Desktop Channel Links Area
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+              On desktop screens, YouTube renders channel social links and website badges in the lower-right corner of the banner ribbon. Keep the bottom-right corner of your banner free of secondary logos or fine text to prevent messy visual overlaps.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-xs font-bold flex items-center justify-center">5</span>
+              Verify in sRGB Color Profile
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+              Export in sRGB. YouTube's server-side transcoding strips color management profiles, which causes Display P3 and Adobe RGB artwork to appear muted or shifted in tone. Working in standard sRGB provides consistent color rendition across platforms.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Contextual CTA Card -->
+      <section class="rounded-lg bg-ink-950 text-surface-0 p-6 sm:p-10 border border-ink-800 space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent-light">
+            Free Verification Tools · No Sign-Up · Zero Upload Storage
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-surface-0">
+            Check Your Banner's Safe Area Crop in Seconds
+          </h2>
+          <p class="text-sm text-line-200 leading-relaxed measure-prose">
+            Verify whether your channel name, logo, or artwork gets cut off on mobile devices before you upload to YouTube Studio.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a
+            href="/tools/youtube-banner-checker"
+            class="h-11 px-6 rounded-md bg-surface-0 text-ink-950 font-semibold text-sm inline-flex items-center justify-center hover:bg-surface-50 transition-colors"
+          >
+            Check Safe Area Crops (Check Door)
+          </a>
+          <a
+            href="/tools/youtube-banner-resizer"
+            class="h-11 px-6 rounded-md bg-ink-800 text-surface-0 font-semibold text-sm inline-flex items-center justify-center hover:bg-ink-800/80 border border-line-200/20 transition-colors"
+          >
+            Resize & Reposition Artwork (Fix Door)
+          </a>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-line-200/80 pt-2 border-t border-line-200/10">
+          <span class="inline-flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+            100% Client-Side HTML5 Canvas Execution
+          </span>
+          <span>·</span>
+          <span>No watermarks</span>
+          <span>·</span>
+          <span>Instant results</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

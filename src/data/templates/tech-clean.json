@@ -1,0 +1,49 @@
+{
+  "id": "tech-clean",
+  "niche": "tech",
+  "name": "Silicon Pure",
+  "description": "Clean consumer tech review layout with expansive centered typography.",
+  "preview": "/previews/tech-clean.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#16181B"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "TECH HORIZON",
+        "font": "sora-700",
+        "size": 54,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Hardware Reviews · AI Tools · Future Gear",
+        "font": "inter-500",
+        "size": 20,
+        "color": "#6B7076",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

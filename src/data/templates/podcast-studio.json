@@ -1,0 +1,49 @@
+{
+  "id": "podcast-studio",
+  "niche": "podcast",
+  "name": "Broadcast Room",
+  "description": "Deep audio booth aesthetic with crisp centered typography.",
+  "preview": "/previews/podcast-studio.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#0C0D0E"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE CONVERSATION",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Unfiltered Discussions · New Episodes Every Tuesday",
+        "font": "inter-500",
+        "size": 20,
+        "color": "#EFF1F3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

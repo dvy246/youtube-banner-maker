@@ -1,0 +1,64 @@
+{
+  "id": "gaming-neon",
+  "niche": "gaming",
+  "name": "Neon Cyber",
+  "description": "High-energy dark cyberpunk theme with vibrant violet and indigo accents.",
+  "preview": "/previews/gaming-neon.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#0f051d",
+      "to": "#2c0b5e",
+      "angle": 135
+    },
+    "layers": [
+      {
+        "id": "accent-bar",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.44,
+        "y": 0.38,
+        "w": 0.12,
+        "h": 0.006,
+        "color": "#8AA4FF",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "CYBER NEXUS",
+        "font": "sora-700",
+        "size": 56,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Daily Competitive Streams · 7PM EST",
+        "font": "inter-500",
+        "size": 20,
+        "color": "#8AA4FF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "accent-bar"
+  ],
+  "safeAreaValidated": true
+}

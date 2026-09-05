@@ -1,0 +1,509 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SpecTable from '../components/SpecTable.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import { STATIC_PAGES_SEO, getWebSiteSchema, getOrganizationSchema } from '../lib/seo';
+import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES } from '../lib/spec';
+
+const path = '/';
+const seo = STATIC_PAGES_SEO[path];
+
+const jsonLd = [
+  getWebSiteSchema(),
+  getOrganizationSchema(),
+];
+
+const desktopHeight = Math.round(DEVICES.desktop.h * CANVAS.height);
+const desktopY = Math.round(DEVICES.desktop.y * CANVAS.height);
+const tabletWidth = Math.round(DEVICES.tablet.w * CANVAS.width);
+const tabletX = Math.round(DEVICES.tablet.x * CANVAS.width);
+const mobileX = Math.round(SAFE.x * CANVAS.width);
+const mobileY = Math.round(SAFE.y * CANVAS.height);
+const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <!-- Block 1: Header -->
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1 space-y-16 sm:space-y-24 py-12 sm:py-16">
+    
+    <!-- Block 2: Hero Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-surface-50 border border-line-200 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        Zero-Crop Channel Art Engine
+      </div>
+      
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink-950 max-w-4xl leading-[1.08]">
+        Free YouTube Banner Maker That Gets Every Device Crop Right
+      </h1>
+
+      <p class="mt-6 text-base sm:text-lg text-ink-600 measure-prose leading-relaxed">
+        Resize existing artwork or create from scratch. Preview exact cuts across TV, desktop, tablet, and mobile displays before uploading to YouTube Studio—with 100% in-browser processing, no watermarks, and no sign-up.
+      </p>
+
+      <!-- Primary CTAs: Fix Door (primary) and Check Door (secondary) -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md">
+        <a
+          href="/tools/youtube-banner-resizer"
+          class="w-full sm:w-auto h-11 px-6 rounded-md bg-ink-950 text-surface-0 font-medium text-sm hover:bg-ink-800 transition-colors inline-flex items-center justify-center gap-2 min-h-[44px]"
+        >
+          <span>Fix Existing Banner</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href="/tools/youtube-banner-checker"
+          class="w-full sm:w-auto h-11 px-6 rounded-md bg-surface-0 text-ink-950 border border-line-200 font-medium text-sm hover:bg-surface-50 transition-colors inline-flex items-center justify-center min-h-[44px]"
+        >
+          <span>Check Safe Area</span>
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-3xl">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-ink-600 bg-surface-50 border border-line-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+          <span>100% Client-Side Privacy</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-ink-600 bg-surface-50 border border-line-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+          <span>No Sign-Up or Accounts</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-ink-600 bg-surface-50 border border-line-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+          <span>No Watermark</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-ink-600 bg-surface-50 border border-line-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+          <span>Instant {CANVAS.width}×{CANVAS.height} Export</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Block 3: Three-Door Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center space-y-2 max-w-2xl mx-auto">
+        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+          Three Dedicated Workflows
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          Choose Your Channel Art Door
+        </h2>
+        <p class="text-sm text-ink-600 measure-prose mx-auto leading-relaxed">
+          Whether you have finished artwork that needs resizing, want to check an existing banner for mobile cutoff, or need a fresh mobile-tested design.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Door 1: Fix (The Wedge - visually first and first in DOM per PLAN.md §2) -->
+        <div class="relative p-6 sm:p-8 rounded-xl border-2 border-ink-950 bg-surface-0 flex flex-col justify-between space-y-6 shadow-xs">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-ink-950 text-surface-0">
+                Door 01 · Fix (Recommended)
+              </span>
+              <span class="text-xs font-mono text-ink-500">The Wedge</span>
+            </div>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              Banner Resizer
+            </h3>
+            <p class="text-sm font-medium text-ink-800 leading-relaxed">
+              Resize, reposition, and preview your existing artwork across all 4 devices.
+            </p>
+            <ul class="space-y-2 text-xs text-ink-600 list-disc pl-4">
+              <li>Aspect-preserving cover-fit scaling to {CANVAS.width}×{CANVAS.height} px</li>
+              <li>Pan and nudge focal subjects without transparent margins</li>
+              <li>Interactive preview across smart TVs, desktop, tablet, and mobile</li>
+            </ul>
+          </div>
+          <div>
+            <a
+              href="/tools/youtube-banner-resizer"
+              class="w-full h-10 px-5 rounded-md bg-ink-950 text-surface-0 font-medium text-xs hover:bg-ink-800 transition-colors inline-flex items-center justify-center gap-2 min-h-[44px]"
+            >
+              <span>Launch Resizer (Fix Door)</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Door 2: Check -->
+        <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:border-line-200/80 transition-colors flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-surface-50 text-ink-700 border border-line-200">
+                Door 02 · Check
+              </span>
+              <span class="text-xs font-mono text-ink-500">Diagnostic</span>
+            </div>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              Safe Area Checker
+            </h3>
+            <p class="text-sm font-medium text-ink-800 leading-relaxed">
+              Instant diagnostic safe-area crop verification with actionable plain-language verdicts.
+            </p>
+            <ul class="space-y-2 text-xs text-ink-600 list-disc pl-4">
+              <li>Immediate per-device verdict on text and logo positioning</li>
+              <li>Clear warnings if graphics collide with mobile crop boundaries</li>
+              <li>One-click handoff into the resizer to adjust your layout</li>
+            </ul>
+          </div>
+          <div>
+            <a
+              href="/tools/youtube-banner-checker"
+              class="w-full h-10 px-5 rounded-md bg-surface-0 text-ink-950 border border-line-200 font-medium text-xs hover:bg-surface-50 transition-colors inline-flex items-center justify-center min-h-[44px]"
+            >
+              <span>Test Safe Area (Check Door)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Door 3: Create -->
+        <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:border-line-200/80 transition-colors flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-surface-50 text-ink-700 border border-line-200">
+                Door 03 · Create
+              </span>
+              <span class="text-xs font-mono text-ink-500">Generator</span>
+            </div>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              Banner Generator
+            </h3>
+            <p class="text-sm font-medium text-ink-800 leading-relaxed">
+              Start from curated, geometry-safe templates engineered to fit mobile screens.
+            </p>
+            <ul class="space-y-2 text-xs text-ink-600 list-disc pl-4">
+              <li>Category-specific layouts for gaming, tech, podcasting, and vlogs</li>
+              <li>Typography and logos pre-aligned inside the safe center frame</li>
+              <li>Customizable colors, text layers, and background art</li>
+            </ul>
+          </div>
+          <div class="space-y-2">
+            <a
+              href="/tools/youtube-banner-maker"
+              class="w-full h-10 px-5 rounded-md bg-surface-0 text-ink-950 border border-line-200 font-medium text-xs hover:bg-surface-50 transition-colors inline-flex items-center justify-center min-h-[44px]"
+            >
+              <span>Design Banner (Create Door)</span>
+            </a>
+            <div class="text-center">
+              <a href="/templates" class="text-[11px] text-ink-500 hover:text-ink-950 underline transition-colors">
+                Or explore curated template gallery →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Block 4: "What YouTube Actually Does to Your Banner" Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 border-t border-line-200 pt-16">
+      <div class="space-y-3 max-w-3xl">
+        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+          Empirical Crop Geometry
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          What YouTube Actually Does to Your Banner
+        </h2>
+        <p class="text-sm text-ink-600 measure-prose leading-relaxed">
+          YouTube does not scale your channel art down evenly. Instead, it uploads a single 16:9 canvas ({CANVAS.width} × {CANVAS.height} px) and carves out different viewports depending on the viewer's device.
+        </p>
+      </div>
+
+      <!-- Static Responsive SVG Diagram (Illustrating all 4 device crops) -->
+      <div class="space-y-6">
+        <div class="w-full overflow-hidden rounded-xl border border-line-200 bg-surface-50 p-2 sm:p-4">
+          <svg
+            viewBox={`0 0 ${CANVAS.width} ${CANVAS.height}`}
+            class="w-full h-auto rounded-lg shadow-xs bg-surface-0"
+            role="img"
+            aria-label="Diagram showing YouTube banner crop zones across TV, desktop, tablet, and mobile safe area"
+          >
+            <!-- TV Background: Entire 2560x1440 16:9 Canvas -->
+            <rect
+              x="0"
+              y="0"
+              width={CANVAS.width}
+              height={CANVAS.height}
+              fill="#F7F8F9"
+              stroke="#E3E5E8"
+              stroke-width="6"
+            />
+            <text
+              x="60"
+              y="100"
+              font-family="system-ui, -apple-system, sans-serif"
+              font-size="38"
+              font-weight="700"
+              fill="#6B7076"
+            >
+              1. TV Screen Viewport ({CANVAS.width} × {CANVAS.height} px · Full 16:9 Canvas)
+            </text>
+
+            <!-- Desktop Ribbon (Full width, narrow horizontal band) -->
+            <rect
+              x="0"
+              y={desktopY}
+              width={CANVAS.width}
+              height={desktopHeight}
+              fill="#EFF1F3"
+              stroke="#4A4E54"
+              stroke-width="4"
+              stroke-dasharray="10 10"
+            />
+            <text
+              x="60"
+              y={desktopY + 60}
+              font-family="system-ui, -apple-system, sans-serif"
+              font-size="34"
+              font-weight="700"
+              fill="#1F2124"
+            >
+              2. Desktop Viewport ({CANVAS.width} × {desktopHeight} px · Top &amp; Bottom Cropped)
+            </text>
+
+            <!-- Tablet Viewport (Narrower width, ribbon height) -->
+            <rect
+              x={tabletX}
+              y={desktopY}
+              width={tabletWidth}
+              height={desktopHeight}
+              fill="none"
+              stroke="#6B7076"
+              stroke-width="4"
+              stroke-dasharray="8 8"
+            />
+            <text
+              x={tabletX + 40}
+              y={desktopY - 20}
+              font-family="system-ui, -apple-system, sans-serif"
+              font-size="30"
+              font-weight="600"
+              fill="#4A4E54"
+            >
+              3. Tablet Viewport ({tabletWidth} × {desktopHeight} px · Scaled Ribbon)
+            </text>
+
+            <!-- Mobile Safe Area (Universal intersection) -->
+            <rect
+              x={mobileX}
+              y={mobileY}
+              width={SAFE_PX.full.width}
+              height={SAFE_PX.full.height}
+              fill="#2340B8"
+              fill-opacity="0.10"
+              stroke="#2340B8"
+              stroke-width="8"
+              rx="12"
+            />
+            
+            <!-- Crosshairs -->
+            <line
+              x1={CANVAS.width / 2 - 50}
+              y1={CANVAS.height / 2}
+              x2={CANVAS.width / 2 + 50}
+              y2={CANVAS.height / 2}
+              stroke="#2340B8"
+              stroke-width="4"
+              opacity="0.6"
+            />
+            <line
+              x1={CANVAS.width / 2}
+              y1={CANVAS.height / 2 - 50}
+              x2={CANVAS.width / 2}
+              y2={CANVAS.height / 2 + 50}
+              stroke="#2340B8"
+              stroke-width="4"
+              opacity="0.6"
+            />
+
+            <!-- Mobile Safe Area Text -->
+            <text
+              x={CANVAS.width / 2}
+              y={CANVAS.height / 2 - 25}
+              font-family="system-ui, -apple-system, sans-serif"
+              font-size="46"
+              font-weight="800"
+              fill="#2340B8"
+              text-anchor="middle"
+            >
+              4. Mobile Safe Area ({SAFE_PX.full.width} × {SAFE_PX.full.height} px)
+            </text>
+            <text
+              x={CANVAS.width / 2}
+              y={CANVAS.height / 2 + 35}
+              font-family="system-ui, -apple-system, sans-serif"
+              font-size="28"
+              font-weight="600"
+              fill="#1F2124"
+              text-anchor="middle"
+            >
+              Visible on every device without exception · Keep text, logos &amp; faces here
+            </text>
+          </svg>
+        </div>
+
+        <!-- Legend breakdown -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-1">
+            <span class="text-xs font-mono font-semibold text-ink-500 uppercase">TV Display</span>
+            <p class="text-xs font-mono font-bold text-ink-950">{CANVAS.width} × {CANVAS.height} px</p>
+            <p class="text-[11px] text-ink-600 leading-normal">
+              Full 16:9 canvas displayed exclusively on smart TVs and video game consoles.
+            </p>
+          </div>
+          <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-1">
+            <span class="text-xs font-mono font-semibold text-ink-800 uppercase">Desktop Ribbon</span>
+            <p class="text-xs font-mono font-bold text-ink-950">{CANVAS.width} × {desktopHeight} px</p>
+            <p class="text-[11px] text-ink-600 leading-normal">
+              Wide horizontal strip. The top ~35% and bottom ~35% are cropped off by browser layouts.
+            </p>
+          </div>
+          <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-1">
+            <span class="text-xs font-mono font-semibold text-ink-600 uppercase">Tablet Crop</span>
+            <p class="text-xs font-mono font-bold text-ink-950">{tabletWidth} × {desktopHeight} px</p>
+            <p class="text-[11px] text-ink-600 leading-normal">
+              Horizontal ribbon crop centered on the safe zone. Sides are clipped compared to desktop.
+            </p>
+          </div>
+          <div class="p-4 rounded-lg border border-accent/30 bg-accent/5 space-y-1">
+            <span class="text-xs font-mono font-semibold text-accent uppercase">Mobile Safe Area</span>
+            <p class="text-xs font-mono font-bold text-accent">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</p>
+            <p class="text-[11px] text-ink-600 leading-normal">
+              Center intersection. Fully visible across all smartphones, tablets, computers, and TVs.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Honest Re-encode Explanation Callout -->
+      <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-50 space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-ink-950">
+            Why YouTube Re-Compresses Every Banner Upload
+          </h3>
+        </div>
+        <p class="text-sm text-ink-800 leading-relaxed measure-prose">
+          YouTube automatically compresses every uploaded banner to approximately {desktopKb} KB on desktop viewports, and even smaller packages for mobile screens. This automatic re-compression cannot be avoided or bypassed by any export setting or file format.
+        </p>
+        <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+          Because YouTube's compression pipeline optimizes for worldwide bandwidth rather than graphical fidelity, aggressive re-encoding can soften delicate gradients and fine text. Our tools provide an approximate preview of this re-encode step so you can test contrast and readability before uploading to your live channel.
+        </p>
+      </div>
+    </section>
+
+    <!-- Block 5: Key Specifications Strip -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 border-t border-line-200 pt-16">
+      <div class="space-y-2 max-w-2xl">
+        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+          Reference Specifications
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          Official YouTube Banner Dimensions & Limits
+        </h2>
+        <p class="text-sm text-ink-600 measure-prose leading-relaxed">
+          The verified parameters enforced by YouTube Studio upload validation and responsive CDN delivery.
+        </p>
+      </div>
+
+      <SpecTable />
+    </section>
+
+    <!-- Block 6: Educational Guides Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 border-t border-line-200 pt-16">
+      <div class="space-y-2 max-w-2xl">
+        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+          Engineering &amp; Sizing Documentation
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          Complete Channel Art Guides
+        </h2>
+        <p class="text-sm text-ink-600 measure-prose leading-relaxed">
+          Deep-dive technical guides explaining the mathematics of YouTube banner cropping and responsive safe areas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Guide 1: YouTube Banner Size -->
+        <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:border-line-200/80 transition-colors flex flex-col justify-between space-y-6">
+          <div class="space-y-3">
+            <span class="text-xs font-mono uppercase tracking-wider text-accent font-semibold">
+              Dimension Standards · Guide
+            </span>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              Complete YouTube Banner Size &amp; Dimension Guide
+            </h3>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              Comprehensive reference covering recommended dimensions ({CANVAS.width} × {CANVAS.height} px), minimum sizes, maximum upload limits, and the exact viewport fractions served to each viewing device.
+            </p>
+          </div>
+          <div>
+            <a
+              href="/guides/youtube-banner-size"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 hover:text-accent transition-colors min-h-[44px]"
+            >
+              <span>Read Banner Size Guide</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Guide 2: Safe Area Math -->
+        <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:border-line-200/80 transition-colors flex flex-col justify-between space-y-6">
+          <div class="space-y-3">
+            <span class="text-xs font-mono uppercase tracking-wider text-accent font-semibold">
+              Crop Reconciliation · Guide
+            </span>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              Safe Area Math &amp; Crop Reconciliation Guide
+            </h3>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              The arithmetic reconciling YouTube's two official safe-area numbers. Proves why {SAFE_PX.min.width}×{SAFE_PX.min.height} at minimum upload matches {SAFE_PX.full.width}×{SAFE_PX.full.height} at full upload as the exact same centered window.
+            </p>
+          </div>
+          <div>
+            <a
+              href="/guides/youtube-banner-safe-area"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 hover:text-accent transition-colors min-h-[44px]"
+            >
+              <span>Read Safe Area Guide</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Block 7: Frequently Asked Questions Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 border-t border-line-200 pt-16">
+      <div class="space-y-2 max-w-2xl">
+        <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+          Questions &amp; Answers
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-sm text-ink-600 measure-prose leading-relaxed">
+          Everything you need to know about YouTube banner dimensions, mobile safe areas, and avoiding cutoff surprises.
+        </p>
+      </div>
+
+      <div class="max-w-3xl">
+        <FaqAccordion />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Block 8: Footer -->
+  <Footer />
+</BaseLayout>

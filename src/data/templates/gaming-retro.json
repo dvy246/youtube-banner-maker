@@ -1,0 +1,64 @@
+{
+  "id": "gaming-retro",
+  "niche": "gaming",
+  "name": "Retro Arcade",
+  "description": "Nostalgic 80s arcade styling with bold contrasts and punchy typography.",
+  "preview": "/previews/gaming-retro.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#1a002c",
+      "to": "#4d004d",
+      "angle": 90
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "PIXEL CHRONICLES",
+        "font": "bebas-400",
+        "size": 64,
+        "color": "#FFE600",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.44,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Speedruns · Reviews · Longplays",
+        "font": "inter-500",
+        "size": 20,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "footer-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.38,
+        "y": 0.59,
+        "w": 0.24,
+        "h": 0.003,
+        "color": "#FFE600",
+        "opacity": 0.5
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "footer-rule"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,141 @@
+---
+---
+
+<section id="panel-photo" class="p-4 rounded-xl border border-line-200 bg-surface-0 space-y-4">
+  <div class="flex items-center justify-between border-b border-line-100 pb-2.5">
+    <div>
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
+        Reposition & Scaling
+      </h3>
+      <p class="text-[11px] text-ink-500">
+        Drag directly on canvas or use controls below. Clamped to prevent transparent edges.
+      </p>
+    </div>
+    <button
+      type="button"
+      id="pan-reset"
+      class="text-xs font-medium text-ink-600 hover:text-ink-950 px-3 py-2 min-h-[44px] min-w-[44px] rounded inline-flex items-center justify-center hover:bg-surface-50 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+      title="Reset position and zoom"
+    >
+      Reset
+    </button>
+  </div>
+
+  <!-- Zoom Control (REQ-007 No-upscale clamp) -->
+  <div class="space-y-1.5">
+    <div class="flex items-center justify-between text-xs">
+      <label for="zoom-slider" class="font-medium text-ink-800 flex items-center gap-1.5">
+        <span>Zoom Level</span>
+        <span id="zoom-clamp-badge" class="text-[10px] font-mono text-ink-500 bg-surface-50 px-1.5 py-0.5 rounded">
+          1.00×
+        </span>
+      </label>
+      <span id="zoom-warning" class="text-[10px] text-warning hidden font-medium">
+        Max resolution limit reached
+      </span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        id="zoom-out-btn"
+        class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 font-bold text-base cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label="Zoom out"
+      >
+        −
+      </button>
+
+      <input
+        type="range"
+        id="zoom-slider"
+        min="1"
+        max="3"
+        step="0.01"
+        value="1"
+        class="flex-1 h-3 bg-surface-50 rounded-lg appearance-none cursor-pointer accent-ink-950"
+        aria-label="Zoom scale"
+      />
+
+      <button
+        type="button"
+        id="zoom-in-btn"
+        class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 font-bold text-base cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label="Zoom in"
+      >
+        +
+      </button>
+    </div>
+    <p class="text-[10px] text-ink-500">
+      Upscaling beyond 1:1 original pixel density is prohibited to prevent blurry exports.
+    </p>
+  </div>
+
+  <!-- Pan Nudge Arrows (REQ-E2 Keyboard & accessibility fallback) -->
+  <div class="space-y-1.5 pt-1">
+    <span class="text-xs font-medium text-ink-800 block">Fine-tune Position</span>
+    <div class="grid grid-cols-3 gap-1.5 max-w-[160px] mx-auto text-center">
+      <div></div>
+      <button
+        type="button"
+        id="pan-up"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label="Pan Up"
+      >
+        ▲
+      </button>
+      <div></div>
+
+      <button
+        type="button"
+        id="pan-left"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label="Pan Left"
+      >
+        ◀
+      </button>
+      <button
+        type="button"
+        id="pan-center"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-500 text-xs font-mono cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label="Center"
+        title="Center image"
+      >
+        ●
+      </button>
+      <button
+        type="button"
+        id="pan-right"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label="Pan Right"
+      >
+        ▶
+      </button>
+
+      <div></div>
+      <button
+        type="button"
+        id="pan-down"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        aria-label="Pan Down"
+      >
+        ▼
+      </button>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Background Extension Toggle (REQ-009) -->
+  <div class="pt-2 border-t border-line-100 flex items-start gap-2.5">
+    <input
+      type="checkbox"
+      id="extend-toggle"
+      class="mt-0.5 rounded border-line-200 text-accent focus:ring-accent accent-accent cursor-pointer"
+    />
+    <label for="extend-toggle" class="text-xs text-ink-800 cursor-pointer select-none space-y-0.5">
+      <span class="font-medium block">Edge Bleed Extension</span>
+      <span class="text-ink-500 text-[11px] block">
+        Fills outer TV margins with a soft ambient bleed if your image doesn't cover 16:9 natively. Defaults off.
+      </span>
+    </label>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+{
+  "id": "vlog-cinema",
+  "niche": "vlog",
+  "name": "Widescreen 2.39",
+  "description": "Letterbox cinematic typography with upper/lower framing rules.",
+  "preview": "/previews/vlog-cinema.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#090C10",
+      "to": "#1B2028",
+      "angle": 180
+    },
+    "layers": [
+      {
+        "id": "top-bar",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.38,
+        "w": 0.36,
+        "h": 0.002,
+        "color": "#8AA4FF",
+        "opacity": 0.6
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "FRAME & LIGHT",
+        "font": "bebas-400",
+        "size": 64,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Cinematic Documentaries & Visual Craft",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#8AA4FF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "top-bar"
+  ],
+  "safeAreaValidated": true
+}

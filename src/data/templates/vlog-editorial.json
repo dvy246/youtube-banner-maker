@@ -1,0 +1,49 @@
+{
+  "id": "vlog-editorial",
+  "niche": "vlog",
+  "name": "Nordic Journal",
+  "description": "Understated Scandinavian minimalism with left alignment.",
+  "preview": "/previews/vlog-editorial.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#17191C"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SOREN STUDIO",
+        "font": "sora-700",
+        "size": 46,
+        "color": "#F7F8F9",
+        "align": "left",
+        "x": 0.27,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Slow Living · Design Systems · Tokyo to Copenhagen",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#E3E5E8",
+        "align": "left",
+        "x": 0.27,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

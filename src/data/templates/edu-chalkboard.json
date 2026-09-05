@@ -1,0 +1,49 @@
+{
+  "id": "edu-chalkboard",
+  "niche": "education",
+  "name": "First Principles",
+  "description": "Mathematics and STEM chalkboard dark centered layout.",
+  "preview": "/previews/edu-chalkboard.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#111714"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "PHYSICS & PROOF",
+        "font": "playfair-700",
+        "size": 52,
+        "color": "#F7F8F9",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Rigorous Math & Theoretical Science Made Clear",
+        "font": "inter-500",
+        "size": 19,
+        "color": "#E3E5E8",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

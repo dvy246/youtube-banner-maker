@@ -1,0 +1,64 @@
+{
+  "id": "edu-academic",
+  "niche": "education",
+  "name": "Open Syllabus",
+  "description": "Scholarly university aesthetic with double framing rules.",
+  "preview": "/previews/edu-academic.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#131417",
+      "to": "#1F232B",
+      "angle": 135
+    },
+    "layers": [
+      {
+        "id": "top-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.38,
+        "w": 0.3,
+        "h": 0.002,
+        "color": "#6B7076",
+        "opacity": 0.6
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE OPEN COLLOQUIUM",
+        "font": "space-grotesk-700",
+        "size": 46,
+        "color": "#EFF1F3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Classic Literature · Political Thought · Seminars",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#6B7076",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "top-rule"
+  ],
+  "safeAreaValidated": true
+}

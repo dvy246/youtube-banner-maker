@@ -1,0 +1,62 @@
+---
+import { CANVAS, DEVICES, SAFE, SAFE_PX } from '../lib/spec';
+
+const rows = [
+  {
+    device: 'Television / Full Frame',
+    dims: `${CANVAS.width} × ${CANVAS.height} px`,
+    aspect: '16:9',
+    visibleFrac: '100% × 100%',
+    notes: 'The entire uploaded image is shown only on smart TVs and gaming consoles.',
+  },
+  {
+    device: 'Desktop',
+    dims: `${Math.round(DEVICES.desktop.w * CANVAS.width)} × ${Math.round(DEVICES.desktop.h * CANVAS.height)} px`,
+    aspect: '6.04:1',
+    visibleFrac: `100% × ${(DEVICES.desktop.h * 100).toFixed(1)}%`,
+    notes: 'Wide horizontal band. Top and bottom margins (~35% each) are cropped out.',
+  },
+  {
+    device: 'Tablet',
+    dims: `${Math.round(DEVICES.tablet.w * CANVAS.width)} × ${Math.round(DEVICES.tablet.h * CANVAS.height)} px`,
+    aspect: '1.29:1',
+    visibleFrac: `${(DEVICES.tablet.w * 100).toFixed(1)}% × 100%`,
+    notes: 'Vertical center pillar. Left and right margins are cropped out.',
+  },
+  {
+    device: 'Mobile (Safe Area)',
+    dims: `${SAFE_PX.full.width} × ${SAFE_PX.full.height} px`,
+    aspect: '3.65:1',
+    visibleFrac: `${(SAFE.w * 100).toFixed(1)}% × ${(SAFE.h * 100).toFixed(1)}%`,
+    notes: 'Visible on every device without exception. Keep text, logos, and focal subjects here.',
+  },
+];
+---
+
+<div class="overflow-x-auto rounded-xl border border-line-200 bg-surface-0">
+  <table class="w-full text-left text-xs text-ink-800 border-collapse">
+    <caption class="sr-only">YouTube Per-Device Crop Dimensions and Visible Areas</caption>
+    <thead class="bg-surface-50 border-b border-line-200 text-ink-950 font-semibold uppercase tracking-wider text-[11px]">
+      <tr>
+        <th scope="col" class="py-3 px-4">Device Viewport</th>
+        <th scope="col" class="py-3 px-4">Visible Dimensions</th>
+        <th scope="col" class="py-3 px-4">Aspect Ratio</th>
+        <th scope="col" class="py-3 px-4">Frame Share</th>
+        <th scope="col" class="py-3 px-4">Display Behavior</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-line-100 font-normal">
+      {
+        rows.map((row) => (
+          <tr>
+            <th scope="row" class="py-3 px-4 font-medium text-ink-950">{row.device}</th>
+            <td class="py-3 px-4 font-mono font-medium text-ink-950">{row.dims}</td>
+            <td class="py-3 px-4 font-mono text-ink-600">{row.aspect}</td>
+            <td class="py-3 px-4 font-mono text-ink-600">{row.visibleFrac}</td>
+            <td class="py-3 px-4 text-ink-600">{row.notes}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,49 @@
+{
+  "id": "fitness-flow",
+  "niche": "fitness",
+  "name": "Zen Movement",
+  "description": "Calm slate and sage left-aligned aesthetic with natural balance.",
+  "preview": "/previews/fitness-flow.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#131917"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "FLOW STATE YOGA",
+        "font": "sora-700",
+        "size": 46,
+        "color": "#EFF1F3",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Daily Breathwork · Mobility Routines · Stillness",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#0F7A52",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,49 @@
+{
+  "id": "life-minimalist",
+  "niche": "lifestyle",
+  "name": "Quiet Living",
+  "description": "Deep charcoal centered palette for slow intentional living.",
+  "preview": "/previews/life-minimalist.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#141517"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SIMPLICITY & INTENT",
+        "font": "playfair-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Capsule Wardrobes · Mindful Habits · Slow Design",
+        "font": "inter-500",
+        "size": 19,
+        "color": "#EFF1F3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

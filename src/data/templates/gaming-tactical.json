@@ -1,0 +1,62 @@
+{
+  "id": "gaming-tactical",
+  "niche": "gaming",
+  "name": "Tactical Elite",
+  "description": "Minimal utilitarian military grid aesthetic for FPS and strategy creators.",
+  "preview": "/previews/gaming-tactical.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#131517"
+    },
+    "layers": [
+      {
+        "id": "vert-indicator",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.26,
+        "y": 0.42,
+        "w": 0.005,
+        "h": 0.16,
+        "color": "#4A4E54",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "VANGUARD OPS",
+        "font": "space-grotesk-700",
+        "size": 48,
+        "color": "#F7F8F9",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Tactical Breakdowns & Esports Analysis",
+        "font": "inter-500",
+        "size": 19,
+        "color": "#6B7076",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "vert-indicator"
+  ],
+  "safeAreaValidated": true
+}

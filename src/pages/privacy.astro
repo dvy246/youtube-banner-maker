@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getOrganizationSchema } from '../lib/seo';
+
+const path = '/privacy';
+const seo = STATIC_PAGES_SEO[path];
+
+const jsonLd = [
+  getOrganizationSchema(),
+  getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Privacy Policy', url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Hero / Header -->
+      <header class="space-y-4 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href="/" class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">Privacy Policy</span>
+        </nav>
+        <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+          Data Protection & Privacy
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+          Privacy Policy
+        </h1>
+        <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+          Our core privacy standard: Zero image bytes are ever transmitted over the network. All rendering occurs in your browser's local memory.
+        </p>
+        <div class="flex items-center gap-4 text-xs font-mono text-ink-500 pt-2">
+          <span>Effective Date: September 2026</span>
+          <span>·</span>
+          <span>Last Updated: September 5, 2026</span>
+        </div>
+      </header>
+
+      <!-- Section 1: 100% Client-Side Privacy -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            01 · Core Architecture
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            100% Client-Side Processing (Zero Network Transmission)
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          When you upload, reposition, crop, design, or export channel artwork on YouTubeBannerMaker, your images never leave your computer or mobile device.
+        </p>
+        <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-3 measure-prose text-xs text-ink-800">
+          <p>
+            <strong>How your files are handled:</strong> All image decoding, canvas operations, template rendering, and file encoding are executed strictly in client-side RAM using standard browser HTML5 Canvas (<code class="font-mono bg-surface-0 border border-line-200 px-1 py-0.5 rounded">CanvasRenderingContext2D</code>) and File APIs.
+          </p>
+          <p>
+            <strong>No remote server processing:</strong> We do not operate an image processing server. We do not transmit, copy, cache, analyze, or archive your source images, logos, graphics, or exported banners to any cloud storage bucket, remote database, or third-party machine learning model.
+          </p>
+          <p>
+            <strong>No account creation:</strong> We do not require accounts, logins, passwords, or personal profiles. You do not need to share your name or email address to use our utilities.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2: Browser Storage & SessionStorage -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            02 · Client-Side State
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Browser Storage &amp; SessionStorage
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          To provide a seamless workflow across our tool doors (for example, allowing you to design a template in the Maker and immediately test its crops in the Safe Area Checker), we use the browser's temporary <code class="font-mono text-xs bg-surface-50 border border-line-200 px-1 py-0.5 rounded">sessionStorage</code> API.
+        </p>
+        <ul class="space-y-2 text-xs text-ink-800 list-disc pl-5 measure-prose">
+          <li>
+            <strong>Device-Only Scope:</strong> Data stored in <code class="font-mono">sessionStorage</code> remains entirely on your personal device and is accessible only by your active browser tab.
+          </li>
+          <li>
+            <strong>Session Lifetime:</strong> All temporary scene parameters (such as zoom scale, crop offsets, and chosen font pairings) are automatically discarded when you close the browser tab or window.
+          </li>
+          <li>
+            <strong>No Persistent Profiling:</strong> We do not use local storage to store unique user identifiers, device fingerprints, or cross-site tracking profiles.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section 3: Third-Party Advertising & Cookies -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            03 · Advertising &amp; Cookies
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Third-Party Advertising &amp; Google AdSense
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          To maintain YouTubeBannerMaker as a completely free utility without charging subscriptions, requiring sign-ups, or imposing watermarks, we display advertisements provided by third-party advertising vendors, including Google AdSense.
+        </p>
+        <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-4 text-xs text-ink-800 measure-prose">
+          <div>
+            <h3 class="font-semibold text-sm text-ink-950 mb-1">Google AdSense Cookie Disclosures</h3>
+            <p class="text-ink-600 leading-relaxed">
+              Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website or other websites on the Internet. Google's use of advertising cookies enables it and its partners to serve ads to users based on their visits to our site and/or other sites across the web.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm text-ink-950 mb-1">How to Opt Out of Personalized Advertising</h3>
+            <p class="text-ink-600 leading-relaxed">
+              Users may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-accent underline font-medium">Google Ads Settings</a>. Alternatively, you can opt out of third-party vendor use of cookies for personalized advertising by visiting the <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" class="text-accent underline font-medium">Network Advertising Initiative (NAI) opt-out page</a> or the <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-accent underline font-medium">Digital Advertising Alliance (DAA) Choices tool</a>.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm text-ink-950 mb-1">Non-Personalized Ads &amp; Consent</h3>
+            <p class="text-ink-600 leading-relaxed">
+              In regions requiring explicit consent for advertising cookies (including the European Economic Area, the UK, and Switzerland), we respect your consent choices. If non-personalized ads are selected, cookies or mobile identifiers may still be utilized strictly for non-profiling purposes such as frequency capping, fraud mitigation, and aggregate performance reporting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Web Server Logs -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            04 · Technical Telemetry
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Server Access Logs &amp; Operational Data
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          When you request static HTML, CSS, or font assets from our hosting infrastructure, our web servers record standard HTTP request logs. These logs typically include:
+        </p>
+        <ul class="space-y-1.5 text-xs text-ink-800 list-disc pl-5 measure-prose">
+          <li>Internet Protocol (IP) address</li>
+          <li>Browser type and version (User Agent)</li>
+          <li>Referring URL and requested page route</li>
+          <li>Date, time, and HTTP status code</li>
+        </ul>
+        <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+          Server access logs are retained strictly for network security, abuse monitoring, and DDoS prevention. Because user images are never uploaded to our servers, these logs contain zero image assets or design contents.
+        </p>
+      </section>
+
+      <!-- Section 5: GDPR & European Privacy Rights -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            05 · International Rights
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            European &amp; International Data Rights (GDPR / UK GDPR)
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          If you are a resident of the European Economic Area (EEA), the United Kingdom, or Switzerland, you have specific data protection rights under the General Data Protection Regulation (GDPR), including the right to access, rectify, or request erasure of personal data, and the right to object to processing.
+        </p>
+        <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+          Because YouTubeBannerMaker operates client-side and requires no user registration, we do not collect or maintain identifiable personal accounts. For questions or requests concerning your data protection rights, please contact our Data Privacy Officer at <a href="mailto:privacy@youtubebannermaker.com" class="text-accent underline font-mono">privacy@youtubebannermaker.com</a>.
+        </p>
+      </section>
+
+      <!-- Section 6: California Privacy Rights (CCPA / CPRA) -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            06 · California Disclosures
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            California Privacy Rights (CCPA / CPRA)
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA), California residents are entitled to disclosures regarding personal information:
+        </p>
+        <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-2 text-xs text-ink-800 measure-prose">
+          <p>
+            <strong>No Sale of Personal Information:</strong> YouTubeBannerMaker does not sell your personal information or image content.
+          </p>
+          <p>
+            <strong>No Sensitive Data Collection:</strong> We do not collect financial information, government identifiers, or precise geolocation data.
+          </p>
+          <p>
+            <strong>Right to Know and Delete:</strong> California residents have the right to request information about data collection practices and request deletion of personal information where applicable.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 7: Contact Information -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            07 · Contact
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Privacy Inquiries &amp; Contact
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          If you have questions, comments, or concerns regarding this Privacy Policy or our client-side data architecture, please contact us by email:
+        </p>
+        <div class="p-4 rounded-lg bg-surface-50 border border-line-200 text-xs text-ink-800 space-y-1">
+          <div>
+            <strong>Email:</strong>{' '}
+            <a href="mailto:privacy@youtubebannermaker.com" class="text-accent underline font-mono">
+              privacy@youtubebannermaker.com
+            </a>
+          </div>
+          <div>
+            <strong>Mailing Inquiries:</strong> Attn: Data Privacy Officer, YouTubeBannerMaker.com
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

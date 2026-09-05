@@ -1,0 +1,64 @@
+{
+  "id": "music-synthwave",
+  "niche": "music",
+  "name": "Outrun Wave",
+  "description": "Electric magenta and cyan horizon gradient for synth and retro wave.",
+  "preview": "/previews/music-synthwave.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#23002B",
+      "to": "#500940",
+      "angle": 90
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "RETRO SYNTHETIC",
+        "font": "bebas-400",
+        "size": 64,
+        "color": "#00F0FF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.43,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "80s Electronic · Darksynth · Synthwave Mixes",
+        "font": "inter-500",
+        "size": 20,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "accent-grid",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.6,
+        "w": 0.16,
+        "h": 0.003,
+        "color": "#00F0FF",
+        "opacity": 0.8
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "accent-grid"
+  ],
+  "safeAreaValidated": true
+}

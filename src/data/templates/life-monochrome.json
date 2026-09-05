@@ -1,0 +1,62 @@
+{
+  "id": "life-monochrome",
+  "niche": "lifestyle",
+  "name": "Architectural Slate",
+  "description": "Brutalist slate monochrome theme with frame accent.",
+  "preview": "/previews/life-monochrome.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#1B1C1E"
+    },
+    "layers": [
+      {
+        "id": "frame",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.38,
+        "y": 0.38,
+        "w": 0.24,
+        "h": 0.003,
+        "color": "#4A4E54",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ATELIER MONO",
+        "font": "bebas-400",
+        "size": 64,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Architecture · Coffee Cultures · Industrial Design",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#6B7076",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "frame"
+  ],
+  "safeAreaValidated": true
+}

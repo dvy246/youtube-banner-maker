@@ -1,0 +1,76 @@
+---
+import type { TemplateManifest } from '../lib/template';
+
+interface Props {
+  template: TemplateManifest;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'auto' | 'high' | 'low';
+}
+
+const { template, loading = 'lazy', fetchpriority = 'auto' } = Astro.props;
+
+const formatField = (field: string) => {
+  if (field === 'title') return 'Title';
+  if (field === 'tagline') return 'Tagline';
+  if (field === 'background.photo') return 'Photo';
+  if (field === 'background.gradient') return 'Gradient';
+  if (field === 'background.solid') return 'Color';
+  if (field.startsWith('background.')) {
+    const sub = field.replace('background.', '');
+    return sub.charAt(0).toUpperCase() + sub.slice(1);
+  }
+  return field.charAt(0).toUpperCase() + field.slice(1);
+};
+---
+
+<article class="group flex flex-col bg-surface-0 rounded-lg border border-line-200 overflow-hidden hover:border-ink-800/40 transition-colors">
+  <div class="relative w-full aspect-[16/9] bg-surface-50 border-b border-line-200 overflow-hidden">
+    <img
+      src={template.preview}
+      alt={`${template.name} YouTube Banner Template`}
+      width="640"
+      height="360"
+      loading={loading}
+      fetchpriority={fetchpriority}
+      decoding="async"
+      class="w-full aspect-[16/9] object-cover rounded-t-lg bg-surface-50 border-b border-line-200"
+    />
+  </div>
+
+  <div class="p-5 flex flex-col flex-1 gap-3">
+    <div class="flex items-center justify-between gap-2">
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-surface-50 text-ink-600 border border-line-200">
+        {template.niche}
+      </span>
+    </div>
+
+    <div>
+      <h3 class="text-base sm:text-lg font-semibold text-ink-950 tracking-tight">
+        {template.name}
+      </h3>
+      {template.description && (
+        <p class="text-xs sm:text-sm text-ink-600 leading-relaxed mt-1 line-clamp-2">
+          {template.description}
+        </p>
+      )}
+    </div>
+
+    <div class="flex items-center flex-wrap gap-1.5 pt-1">
+      <span class="text-[11px] font-medium text-ink-500">Editable:</span>
+      {template.editable.map((field) => (
+        <span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-medium bg-surface-50 text-ink-600 border border-line-100">
+          {formatField(field)}
+        </span>
+      ))}
+    </div>
+
+    <div class="mt-auto pt-3">
+      <a
+        href={`/tools/youtube-banner-maker?template=${template.id}`}
+        class="inline-flex items-center justify-center w-full min-h-[44px] px-4 py-2.5 rounded-md bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs sm:text-sm font-medium transition-colors"
+      >
+        Use Template &rarr;
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ToolShell from '../../components/ToolShell.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import DeviceCropTable from '../../components/DeviceCropTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import {
+  STATIC_PAGES_SEO,
+  getSoftwareAppSchema,
+  getBreadcrumbSchema,
+} from '../../lib/seo';
+import { CANVAS } from '../../lib/spec';
+
+const path = '/tools/youtube-banner-checker';
+const seo = STATIC_PAGES_SEO[path];
+
+const jsonLd = [
+  getSoftwareAppSchema(
+    'YouTube Banner Safe Area Checker',
+    seo.desc,
+    path
+  ),
+  getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'YouTube Banner Checker', url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <!-- Primary Tool Island Mounting Shell -->
+    <ToolShell
+      mode="check"
+      title="YouTube Banner Safe Area Checker"
+      intro="Drop your channel art below to immediately verify if your logo, text, or focal subject gets cut off on mobile, desktop, or tablet. Get plain-language diagnostics and one-click fixes."
+      showControls={false}
+      showExport={false}
+    />
+
+    <!-- Comprehensive Explanatory Content & Supporting Specs -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-line-200 space-y-16">
+      <!-- Section 1: How the Diagnostic Works -->
+      <div class="space-y-4 max-w-3xl">
+        <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+          Diagnostic System
+        </span>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+          How Our YouTube Banner Safe Area Checker Works
+        </h2>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Before uploading your channel art to YouTube Studio, our automated diagnostic inspects your image across all four official viewport profiles to identify clipping, compression risks, and formatting errors in real time.
+        </p>
+        <ul class="space-y-2 text-xs text-ink-800 list-disc pl-5 measure-prose">
+          <li>
+            <strong>Safe Area Boundary Detection:</strong> Evaluates whether logos, titles, and focal artwork stay securely within the centered mobile safe viewport, calculating exact boundaries against YouTube's {CANVAS.width} × {CANVAS.height} px canvas.
+          </li>
+          <li>
+            <strong>Resolution & Aspect Ratio Check:</strong> Assesses source dimensions against YouTube's 2048 × 1152 px minimum threshold to flag potential blurriness on smart TV and 4K displays.
+          </li>
+          <li>
+            <strong>File Weight Verification:</strong> Checks file size against Google's strict 6 MB ceiling before you attempt to upload to YouTube Studio.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 2: 3 Most Common YouTube Crop Pitfalls -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Common Pitfalls
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            The 3 Most Common YouTube Banner Crop Mistakes
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            Most creators only discover channel art crop errors after publishing. Here are the three issues our automated checker catches instantly:
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
+            <div class="w-8 h-8 rounded-lg bg-danger/10 text-danger flex items-center justify-center font-bold text-sm">
+              1
+            </div>
+            <h3 class="text-sm font-semibold text-ink-950">
+              Mobile Safe Area Cutoff
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Mobile screens display only the central safe rectangle. Placing logos, social handles, or text outside this middle zone results in immediate clipping on phones and mobile apps.
+            </p>
+          </div>
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
+            <div class="w-8 h-8 rounded-lg bg-warning/10 text-warning flex items-center justify-center font-bold text-sm">
+              2
+            </div>
+            <h3 class="text-sm font-semibold text-ink-950">
+              Desktop Horizontal Compression
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Desktop browsers show a wide horizontal banner, trimming roughly 35% from both top and bottom edges. Graphics or headlines positioned along vertical borders get cropped out on laptops.
+            </p>
+          </div>
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center font-bold text-sm">
+              3
+            </div>
+            <h3 class="text-sm font-semibold text-ink-950">
+              Low Resolution Blurriness
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Smart TVs display the complete {CANVAS.width} × {CANVAS.height} px artwork. Uploading graphics under 2048 × 1152 px forces YouTube to upscale your image, causing visible artifacting on large screens.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Device Crops Breakdown -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Viewport Reference
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            YouTube Per-Device Crop Boundaries
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            YouTube extracts different viewports from a single {CANVAS.width} × {CANVAS.height} px upload. Use this reference to understand what viewers see on each screen.
+          </p>
+        </div>
+        <DeviceCropTable />
+      </div>
+
+      <!-- Section 4: Official Specifications -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Official Standards
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            YouTube Channel Art Specifications
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            Standard Google guidelines for channel banner dimensions, file weights, and supported formats.
+          </p>
+        </div>
+        <SpecTable />
+      </div>
+
+      <!-- Section 5: Frequently Asked Questions -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Troubleshooting & Guidance
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            Common questions regarding safe area testing, device cutoffs, and YouTube banner diagnostics.
+          </p>
+        </div>
+        <FaqAccordion />
+      </div>
+
+      <!-- Section 6: Contextual Interlinking Hub (SEO §3.4) -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-surface-50 border border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="space-y-1.5 max-w-xl">
+          <h3 class="text-base font-semibold text-ink-950">
+            Found issues in your safe area test?
+          </h3>
+          <p class="text-xs text-ink-600 leading-relaxed">
+            Open our YouTube Banner Resizer to adjust positioning, crop boundaries, and export a verified file ready for YouTube Studio.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a
+            href="/tools/youtube-banner-resizer"
+            class="h-10 px-4 rounded-md bg-accent text-surface-0 text-xs font-medium hover:bg-accent/90 inline-flex items-center"
+          >
+            Open Resizer Editor →
+          </a>
+          <a
+            href="/guides/youtube-banner-size"
+            class="h-10 px-4 rounded-md bg-surface-0 border border-line-200 text-xs font-medium text-ink-950 hover:bg-surface-50 inline-flex items-center"
+          >
+            Read Size Guide
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

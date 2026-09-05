@@ -1,0 +1,64 @@
+{
+  "id": "fitness-raw",
+  "niche": "fitness",
+  "name": "Peak Endurance",
+  "description": "High-intensity athletic aesthetic with bold orange banner badge.",
+  "preview": "/previews/fitness-raw.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#1A0C08",
+      "to": "#2E140C",
+      "angle": 135
+    },
+    "layers": [
+      {
+        "id": "badge",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.44,
+        "y": 0.38,
+        "w": 0.12,
+        "h": 0.005,
+        "color": "#FF7A00",
+        "opacity": 1
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ENDURANCE LAB",
+        "font": "bebas-400",
+        "size": 64,
+        "color": "#FF7A00",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Marathon Preparation · Triathlon · VO2 Max Testing",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "badge"
+  ],
+  "safeAreaValidated": true
+}

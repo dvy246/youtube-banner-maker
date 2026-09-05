@@ -1,0 +1,51 @@
+{
+  "id": "music-lofi",
+  "niche": "music",
+  "name": "Midnight Lofi",
+  "description": "Deep purple twilight palette with centered cozy styling.",
+  "preview": "/previews/music-lofi.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#150A21",
+      "to": "#2B1745",
+      "angle": 120
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "CHILL BEATS ONLY",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Lofi Hip Hop · Study & Sleep Sessions 24/7",
+        "font": "inter-500",
+        "size": 19,
+        "color": "#EFF1F3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,68 @@
+---
+import { CANVAS, MAX_UPLOAD_BYTES } from '../lib/spec';
+
+const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
+---
+
+<section id="panel-export" class="p-4 rounded-lg border border-line-200 bg-surface-0 space-y-4">
+  <div class="flex items-center justify-between border-b border-line-100 pb-2.5">
+    <div>
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
+        Export Artwork
+      </h3>
+      <p class="text-[11px] text-ink-500">
+        Engineered for instant upload to YouTube Studio.
+      </p>
+    </div>
+    <span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded-sm bg-surface-50 text-ink-600 border border-line-200">
+      sRGB 2D
+    </span>
+  </div>
+
+  <div class="space-y-3">
+    <!-- Format Selection -->
+    <div class="space-y-1">
+      <label for="export-format" class="block text-xs font-medium text-ink-800">
+        Output Format
+      </label>
+      <div class="relative">
+        <select
+          id="export-format"
+          class="w-full h-11 min-h-[44px] px-3 pr-8 rounded-md bg-surface-0 border border-line-200 text-ink-950 text-xs font-medium appearance-none focus:outline-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        >
+          <option value="png" selected>PNG (Full fidelity, recommended)</option>
+          <option value="jpeg">JPEG (Compressed, under {maxUploadMb} MB budget)</option>
+          <option value="webp">WebP (Modern web format)</option>
+        </select>
+        <div class="absolute right-3 top-3.5 pointer-events-none text-ink-500 text-xs">
+          ▼
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Action Button (Rare Accent: <=10% surface) -->
+    <button
+      type="button"
+      id="export-button"
+      class="w-full h-11 min-h-[44px] px-5 rounded-md bg-accent text-surface-0 text-[13px] font-semibold hover:bg-accent-hover active:bg-accent transition-colors cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      </svg>
+      <span id="export-button-text">Download Banner</span>
+    </button>
+
+    <!-- Export Output Specifications & Meta (REQ-026 separate labels) -->
+    <div class="p-3 rounded-md bg-surface-50 border border-line-100 space-y-1">
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-ink-500">Dimensions:</span>
+        <span class="font-mono font-medium text-ink-950">{CANVAS.width} × {CANVAS.height} px</span>
+      </div>
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-ink-500">Output Size:</span>
+        <span id="export-meta" class="font-mono font-medium text-ink-950">Pending generation</span>
+      </div>
+      <p id="export-note" class="text-[11px] text-ink-600 hidden pt-1 border-t border-line-100"></p>
+    </div>
+  </div>
+</section>

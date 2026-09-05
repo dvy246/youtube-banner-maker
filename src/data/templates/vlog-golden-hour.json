@@ -1,0 +1,51 @@
+{
+  "id": "vlog-golden-hour",
+  "niche": "vlog",
+  "name": "Warm Sunset",
+  "description": "Gentle dusk tones for personal travel diaries and authentic storytelling.",
+  "preview": "/previews/vlog-golden-hour.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#2A1310",
+      "to": "#180B1C",
+      "angle": 135
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "LIFE IN MOTION",
+        "font": "playfair-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Travel Stories & Visual Essays · Sundays",
+        "font": "inter-500",
+        "size": 19,
+        "color": "#EFF1F3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

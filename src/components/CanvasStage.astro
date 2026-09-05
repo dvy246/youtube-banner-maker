@@ -1,0 +1,226 @@
+---
+import { CANVAS, DEVICES, SAFE, SAFE_PX, MAX_UPLOAD_BYTES } from '../lib/spec';
+
+const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
+
+const previewDevices = [
+  {
+    key: 'mobile',
+    label: 'Mobile Safe Area',
+    dims: `${SAFE_PX.full.width} × ${SAFE_PX.full.height}`,
+    aspect: '3.65:1',
+  },
+  {
+    key: 'desktop',
+    label: 'Desktop Banner',
+    dims: `${Math.round(DEVICES.desktop.w * CANVAS.width)} × ${Math.round(DEVICES.desktop.h * CANVAS.height)}`,
+    aspect: '6.04:1',
+  },
+  {
+    key: 'tablet',
+    label: 'Tablet Display',
+    dims: `${Math.round(DEVICES.tablet.w * CANVAS.width)} × ${Math.round(DEVICES.tablet.h * CANVAS.height)}`,
+    aspect: '1.29:1',
+  },
+  {
+    key: 'tv',
+    label: 'TV Full Frame',
+    dims: `${CANVAS.width} × ${CANVAS.height}`,
+    aspect: '16:9',
+  },
+];
+
+const safeLeftPct = (SAFE.x * 100).toFixed(2);
+const safeTopPct = (SAFE.y * 100).toFixed(2);
+const safeWidthPct = (SAFE.w * 100).toFixed(2);
+const safeHeightPct = (SAFE.h * 100).toFixed(2);
+
+const desktopTopPct = (DEVICES.desktop.y * 100).toFixed(2);
+const desktopBottomPct = ((DEVICES.desktop.y + DEVICES.desktop.h) * 100).toFixed(2);
+const desktopHeightPct = (DEVICES.desktop.h * 100).toFixed(2);
+
+const tabletLeftPct = (DEVICES.tablet.x * 100).toFixed(2);
+const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
+---
+
+<div class="space-y-4">
+  <!-- Main Editor Stage -->
+  <div
+    id="editor"
+    class="relative w-full aspect-video bg-surface-50 rounded-xl border border-line-200 overflow-hidden shadow-xs flex items-center justify-center select-none"
+  >
+    <!-- Editor Canvas with touch-action: none for reliable mobile gestures -->
+    <canvas
+      id="editor-canvas"
+      role="img"
+      aria-label="YouTube banner preview stage. Empty. Drop an image to begin."
+      tabindex="0"
+      style="touch-action: none;"
+      class="w-full h-full object-contain cursor-grab active:cursor-grabbing focus:outline-hidden"
+    ></canvas>
+
+    <!-- Overlay Guides (Safe area & crop bounds) derived dynamically from spec.ts -->
+    <div
+      id="crop-guides-overlay"
+      class="absolute inset-0 pointer-events-none transition-opacity duration-150"
+      aria-hidden="true"
+    >
+      <!-- Safe zone rectangle overlay (Mobile) -->
+      <div
+        id="safe-zone-box"
+        class="absolute border border-dashed border-accent/70 bg-accent/5 rounded-xs transition-all"
+        style={`left: ${safeLeftPct}%; top: ${safeTopPct}%; width: ${safeWidthPct}%; height: ${safeHeightPct}%;`}
+      >
+        <span class="absolute -top-5 left-1 text-[10px] font-mono font-medium text-accent bg-surface-0/90 px-1 py-0.5 rounded shadow-2xs">
+          Mobile Safe Area ({SAFE_PX.full.width}×{SAFE_PX.full.height})
+        </span>
+      </div>
+
+      <!-- Desktop slice horizontal band guides -->
+      <div
+        id="desktop-guide-band"
+        class="absolute left-0 right-0 border-y border-dashed border-ink-500/30 transition-colors pointer-events-none"
+        style={`top: ${desktopTopPct}%; height: ${desktopHeightPct}%;`}
+      ></div>
+      <div
+        id="desktop-guide-top"
+        class="absolute left-0 right-0 border-b border-dashed border-ink-500/40 pointer-events-none"
+        style={`top: ${desktopTopPct}%;`}
+      ></div>
+      <div
+        id="desktop-guide-bottom"
+        class="absolute left-0 right-0 border-t border-dashed border-ink-500/40 pointer-events-none"
+        style={`top: ${desktopBottomPct}%;`}
+      ></div>
+
+      <!-- Tablet vertical pillar guides -->
+      <div
+        id="tablet-guide-box"
+        class="absolute top-0 bottom-0 border-x border-dashed border-ink-500/30 transition-colors pointer-events-none"
+        style={`left: ${tabletLeftPct}%; width: ${tabletWidthPct}%;`}
+      ></div>
+
+      <!-- TV outer frame guide -->
+      <div
+        id="tv-guide-box"
+        class="absolute inset-0 border border-ink-500/20 transition-colors pointer-events-none"
+      ></div>
+    </div>
+
+    <!-- Dropzone Overlay (Visible when no image is loaded) -->
+    <div
+      id="dropzone"
+      class="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 bg-surface-0/95 text-center transition-all duration-200"
+    >
+      <input
+        type="file"
+        id="upload-input"
+        accept="image/png, image/jpeg, image/webp, image/*"
+        class="sr-only"
+        aria-label="Upload YouTube banner image file"
+      />
+
+      <div class="w-14 h-14 mb-4 rounded-xl bg-surface-50 border border-line-200 flex items-center justify-center text-ink-600 shadow-2xs group-hover:scale-105 transition-transform">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      </div>
+
+      <h3 class="text-base font-semibold text-ink-950 mb-1">
+        Drop your banner image here
+      </h3>
+      <p class="text-xs text-ink-600 max-w-sm mb-4">
+        Supports PNG, JPEG, or WebP up to {maxUploadMb} MB. Reposition with aspect preservation, test mobile safe crops, and download a verified {CANVAS.width} × {CANVAS.height} file.
+      </p>
+
+      <button
+        type="button"
+        id="browse-btn"
+        class="h-10 px-5 rounded-md bg-ink-950 text-surface-0 text-[13px] font-medium hover:bg-ink-800 transition-colors shadow-xs cursor-pointer inline-flex items-center gap-2"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        <span>Browse Image</span>
+      </button>
+
+      <p class="text-[11px] text-ink-500 mt-4 flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-success" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        Images processed locally. Zero bytes sent to any server.
+      </p>
+    </div>
+
+    <!-- Drag overlay indicator -->
+    <div
+      id="drag-active-overlay"
+      class="absolute inset-0 z-30 pointer-events-none border-2 border-accent bg-accent/10 flex items-center justify-center opacity-0 transition-opacity"
+    >
+      <span class="px-4 py-2 bg-surface-0 font-medium text-xs text-accent rounded-md shadow-md border border-line-200">
+        Drop file to replace image
+      </span>
+    </div>
+  </div>
+
+  <!-- Re-upload notice (D-10 oversized session restore fallback) -->
+  <div
+    id="restore-notice"
+    class="hidden p-3 rounded-lg bg-surface-50 border border-warning/40 text-xs text-ink-800"
+    role="alert"
+  >
+    <div class="flex items-start gap-2.5">
+      <svg class="w-4 h-4 text-warning shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      </svg>
+      <div class="flex-1 space-y-1">
+        <p class="font-medium text-ink-950">Image re-upload needed</p>
+        <p class="text-ink-600">
+          Your layout and settings were preserved from your last session. Because your source file was over 3 MB, it could not be held in temporary browser memory. Please re-select your file.
+        </p>
+      </div>
+      <button
+        type="button"
+        id="reupload-btn"
+        class="shrink-0 px-3 py-1.5 rounded bg-surface-0 border border-line-200 text-xs font-medium text-ink-950 hover:bg-surface-50 cursor-pointer"
+      >
+        Re-upload
+      </button>
+    </div>
+  </div>
+
+  <!-- Synchronized Per-Device Previews Strip (REQ-002) -->
+  <div class="space-y-2 pt-2">
+    <div class="flex items-center justify-between">
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
+        Simultaneous Device Cuts (Single Canvas Render)
+      </h4>
+      <span class="text-[11px] text-ink-500 font-mono">Live Sub-rectangles</span>
+    </div>
+
+    <div id="preview-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      {
+        previewDevices.map((d) => (
+          <div class="bg-surface-50 p-2.5 rounded-lg border border-line-200 space-y-1.5">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="font-medium text-ink-950">{d.label}</span>
+              <span class="font-mono text-ink-500">{d.aspect}</span>
+            </div>
+            <div class="relative w-full aspect-video bg-surface-0 rounded border border-line-100 overflow-hidden flex items-center justify-center">
+              <canvas
+                data-preview={d.key}
+                width="320"
+                height="180"
+                class="w-full h-full object-contain"
+                aria-label={`Preview for ${d.label}`}
+              ></canvas>
+            </div>
+            <p class="text-[10px] font-mono text-ink-500 text-center">
+              {d.dims}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

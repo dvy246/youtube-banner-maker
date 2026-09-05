@@ -1,0 +1,49 @@
+{
+  "id": "tech-terminal",
+  "niche": "tech",
+  "name": "Dev Console",
+  "description": "Developer monospaced left-aligned terminal prompt styling.",
+  "preview": "/previews/tech-terminal.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#0A0D12"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "> STACKOVERFLOW",
+        "font": "space-grotesk-700",
+        "size": 46,
+        "color": "#0F7A52",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Full-Stack Engineering · Architecture · DevOps",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#EFF1F3",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

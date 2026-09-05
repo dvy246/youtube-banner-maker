@@ -1,0 +1,64 @@
+{
+  "id": "tech-hardware",
+  "niche": "tech",
+  "name": "Rig Benchmark",
+  "description": "Industrial tech layout with horizontal accent bar and bold weights.",
+  "preview": "/previews/tech-hardware.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#0C0D0E",
+      "to": "#1A2130",
+      "angle": 110
+    },
+    "layers": [
+      {
+        "id": "line",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.38,
+        "w": 0.28,
+        "h": 0.004,
+        "color": "#2340B8",
+        "opacity": 1
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "HARDWARE BENCH",
+        "font": "space-grotesk-700",
+        "size": 50,
+        "color": "#F7F8F9",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Custom PC Builds · Overclocking · Thermal Tests",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#8AA4FF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "line"
+  ],
+  "safeAreaValidated": true
+}

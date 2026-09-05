@@ -1,0 +1,140 @@
+---
+import { TEMPLATES } from '../data/templates';
+
+const niches = [
+  { id: 'all', label: 'All' },
+  { id: 'gaming', label: 'Gaming' },
+  { id: 'tech', label: 'Tech' },
+  { id: 'podcast', label: 'Podcast' },
+  { id: 'vlog', label: 'Vlog' },
+  { id: 'music', label: 'Music' },
+  { id: 'fitness', label: 'Fitness' },
+  { id: 'education', label: 'Education' },
+  { id: 'lifestyle', label: 'Lifestyle' },
+];
+---
+
+<div
+  id="template-picker-modal"
+  class="hidden fixed inset-0 z-50 overflow-y-auto bg-ink-950/80 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="template-picker-title"
+>
+  <div
+    class="relative bg-surface-0 border border-line-200 rounded-2xl max-w-5xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"
+  >
+    <!-- Modal Header -->
+    <div class="px-6 py-5 border-b border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-surface-50">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider bg-accent/10 text-accent border border-accent/20">
+            24 Verified Layouts
+          </span>
+          <span class="text-xs text-ink-500 font-medium">Safe by Construction</span>
+        </div>
+        <h2 id="template-picker-title" class="text-lg sm:text-xl font-bold tracking-tight text-ink-950 mt-1">
+          Choose a YouTube Banner Template
+        </h2>
+        <p class="text-xs text-ink-600 mt-0.5">
+          Every layout is pre-aligned to YouTube's centered mobile safe area. Select a layout or start blank.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-2.5 self-end sm:self-center shrink-0">
+        <button
+          type="button"
+          id="start-blank-btn"
+          class="min-h-[44px] px-4 py-2 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-900 text-xs font-semibold inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
+        >
+          <span>Start Blank</span>
+          <span aria-hidden="true">□</span>
+        </button>
+
+        <button
+          type="button"
+          id="close-template-modal-btn"
+          class="min-h-[44px] min-w-[44px] p-2.5 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-600 hover:text-ink-950 flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors"
+          aria-label="Close template picker"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Filter Pills (REQ-021: Strict absence of free-text search input) -->
+    <div class="px-6 py-3 border-b border-line-100 bg-surface-0 overflow-x-auto flex items-center gap-2 scrollbar-none">
+      {
+        niches.map((n, idx) => (
+          <button
+            type="button"
+            class={`filter-niche-btn min-h-[44px] px-4 py-2 rounded-full text-xs font-medium cursor-pointer transition-all whitespace-nowrap focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-accent shrink-0 ${
+              idx === 0
+                ? 'bg-ink-950 text-surface-0 shadow-xs active-pill'
+                : 'bg-surface-50 hover:bg-surface-100 text-ink-700 border border-line-200'
+            }`}
+            data-filter-niche={n.id}
+          >
+            {n.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Template Card Grid (Scrollable) -->
+    <div
+      id="template-picker-grid"
+      class="overflow-y-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 bg-surface-50/50 flex-1"
+    >
+      {
+        TEMPLATES.map((tmpl) => (
+          <div
+            class="template-picker-card p-3.5 rounded-xl border border-line-200 bg-surface-0 hover:border-accent/50 hover:shadow-md transition-all flex flex-col justify-between group"
+            data-template-card
+            data-niche={tmpl.niche.toLowerCase()}
+          >
+            <div class="space-y-3">
+              <div class="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-100 border border-line-100">
+                <img
+                  src={tmpl.preview}
+                  alt={`Preview of ${tmpl.name} YouTube banner template`}
+                  class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-200"
+                  loading="lazy"
+                  width="320"
+                  height="180"
+                />
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-sm font-semibold text-ink-950 truncate">
+                    {tmpl.name}
+                  </h3>
+                  <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-surface-100 text-ink-600 border border-line-200 shrink-0">
+                    {tmpl.niche}
+                  </span>
+                </div>
+                {tmpl.description && (
+                  <p class="text-xs text-ink-600 line-clamp-2 leading-relaxed">
+                    {tmpl.description}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="select-template-btn w-full mt-4 min-h-[44px] px-4 py-2.5 rounded-lg bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs font-semibold inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
+              data-template-id={tmpl.id}
+            >
+              <span>Use Template</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

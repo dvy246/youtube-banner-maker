@@ -1,0 +1,33 @@
+# YouTubeBannerMaker.com
+
+> YouTubeBannerMaker is a free, privacy-first, 100% client-side micro-SaaS utility engineered for YouTube channel art. It provides instant banner resizing, automated safe-area crop verification, and mobile-safe template generation with zero server uploads, zero watermarks, and no user registration required.
+
+## Core YouTube Channel Art Specifications
+
+- **Recommended Canvas Resolution:** 2560 × 1440 pixels (16:9 aspect ratio).
+- **Minimum Upload Dimensions:** 2048 × 1152 pixels (16:9 aspect ratio).
+- **Mobile Safe Area:** 1546 × 423 pixels (centered horizontally and vertically on the 2560 × 1440 canvas).
+  - All critical branding, channel titles, logos, social handles, and faces must stay strictly inside this zone to guarantee visibility across 100% of devices.
+- **Desktop Crop:** 2560 × 423 pixels (centered vertically; displays extra width on the sides compared to mobile).
+- **Tablet Crop:** 1855 × 423 pixels (centered horizontally and vertically; a horizontal ribbon crop wider than mobile but narrower than desktop).
+- **TV Display:** Full 2560 × 1440 pixels (unaltered full-bleed background).
+- **Maximum File Size:** 6 MB (6,291,456 bytes) enforced by YouTube Studio.
+- **Supported File Formats:** PNG, JPEG, WebP (sRGB / Rec. 709 color profile).
+
+## Tools & Interactive Utilities
+
+- **YouTube Banner Resizer (`/tools/youtube-banner-resizer`):** Crops, scales, and fits any image to exact 2560 × 1440 specifications with live mobile safe area guidelines and zero external data transmission.
+- **YouTube Banner Checker (`/tools/youtube-banner-checker`):** Diagnostic verification utility. Inspects banner graphics against mobile, tablet, desktop, and TV crop viewports with automated text/logo overflow detection.
+- **YouTube Banner Maker (`/tools/youtube-banner-maker`):** In-browser template customizer. Allows creators to edit safe-area-constrained text layers, color palettes, and gradients, exporting clean 2560 × 1440 channel art.
+- **Template Library (`/templates`):** Directory of pre-tested, device-verified channel banner layouts across Gaming, Tech, Podcast, Vlog, Music, Fitness, Education, and Lifestyle niches.
+
+## Official Documentation & Sizing Guides
+
+- **YouTube Banner Size Guide (`/guides/youtube-banner-size`):** Exhaustive technical reference covering 2560 × 1440 specs, minimum resolution requirements, aspect ratio math, file compression, and device crops.
+- **YouTube Banner Safe Area Guide (`/guides/youtube-banner-safe-area`):** Deep architectural breakdown of YouTube's safe area coordinates, explaining why desktop (2560×423), tablet (1855×423), and mobile (1546×423) share the identical 423 px vertical core.
+
+## Privacy & Security Guarantees
+
+- **Zero Server Uploads:** All image decoding, resampling, scaling, and canvas rendering execute entirely in the user's browser using HTML5 Canvas and Web APIs.
+- **No Watermarks:** Exported banners are 100% clean and unencumbered.
+- **No Registration Required:** Full utility access with zero authentication or account creation.

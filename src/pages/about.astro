@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getOrganizationSchema, getWebSiteSchema } from '../lib/seo';
+import { CANVAS, SAFE_PX } from '../lib/spec';
+
+const path = '/about';
+const seo = STATIC_PAGES_SEO[path];
+
+const jsonLd = [
+  getWebSiteSchema(),
+  getOrganizationSchema(),
+  getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'About & Methodology', url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Hero / Header -->
+      <header class="space-y-4 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href="/" class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">About</span>
+        </nav>
+        <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+          Architecture & Methodology
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+          About YouTubeBannerMaker
+        </h1>
+        <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+          A browser-first channel art utility engineered to eliminate banner crop surprises and compression artifacts using client-side HTML5 Canvas execution.
+        </p>
+      </header>
+
+      <!-- Mission Section -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            01 · The Problem & Mission
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Why We Built YouTubeBannerMaker
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Every day, thousands of YouTube creators design channel banners only to face a frustrating surprise: after uploading to YouTube Studio, their channel name is cut off on mobile devices, their social links collide with critical typography, or their artwork appears blurry due to aggressive CDN compression.
+        </p>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Existing online graphic design suites have grown increasingly bloated. Most require mandatory account registrations, trap creators behind recurring paywalls, enforce watermark branding on exported files, or send personal photos to remote cloud servers for server-side processing.
+        </p>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          We built YouTubeBannerMaker as an independent, focused utility with four non-negotiable principles:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950">Zero Sign-Up Gateways</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              No account creation, no password storage, and no marketing emails. You open the tool, work on your banner, and export immediately.
+            </p>
+          </div>
+          <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950">Zero Watermarks</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Your channel branding belongs entirely to you. We never overlay logos, stamps, or promotional text on your exported assets.
+            </p>
+          </div>
+          <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950">100% Client-Side Privacy</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Your images remain strictly inside your device's memory. No image bytes are ever transmitted over the network to any server.
+            </p>
+          </div>
+          <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-sm font-semibold text-ink-950">Empirically Verified Geometry</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Crops and safe-zone boundaries are derived from live YouTube CDN analysis rather than outdated rule-of-thumb estimates.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Architecture Section -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            02 · Browser Architecture
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            How Client-Side Canvas Execution Works
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Unlike traditional software that relies on cloud APIs to resize and encode images, YouTubeBannerMaker runs entirely within your browser's local sandbox:
+        </p>
+        <ul class="space-y-3 text-sm text-ink-800 list-disc pl-5 measure-prose">
+          <li>
+            <strong>Local Memory Decoding:</strong> When you drag or select an image file, the browser decodes it directly into local memory via standard browser APIs (<code class="text-xs bg-surface-50 border border-line-200 px-1 py-0.5 rounded font-mono">createImageBitmap</code> and <code class="text-xs bg-surface-50 border border-line-200 px-1 py-0.5 rounded font-mono">FileReader</code>).
+          </li>
+          <li>
+            <strong>Mathematical Cover-Fit Scaling:</strong> The canvas coordinates are mapped to YouTube's standard {CANVAS.width} × {CANVAS.height} px dimensions. Our cover-fit engine scales your artwork proportionally to prevent distortion or accidental letterboxing.
+          </li>
+          <li>
+            <strong>Bounded Offset Clamping:</strong> When repositioning your focal subject, coordinate clamps ensure you cannot slide the artwork past the boundary edge, preventing accidental transparent borders on export.
+          </li>
+          <li>
+            <strong>Hardware-Accelerated Export:</strong> Output files are generated locally into PNG or JPEG binary blobs using native HTML5 Canvas encoding, downloaded directly to your local file system.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Empirical Research Methodology -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            03 · Scientific Research
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            The <code class="font-mono text-accent">fcrop64</code> Survey & Safe Area Math
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Many creator tools publish conflicting recommendations regarding YouTube safe areas. To determine the ground truth, our engineering team conducted empirical research by examining live banner delivery on YouTube's content delivery network (<code class="text-xs bg-surface-50 border border-line-200 px-1 py-0.5 rounded font-mono">yt3.googleusercontent.com</code>) across prominent creator channels (including Veritasium, MKBHD, Kurzgesagt, TED, and NASA).
+        </p>
+        <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-4">
+          <h3 class="text-sm font-semibold text-ink-950">Understanding the 64-Bit Crop Token</h3>
+          <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+            YouTube does not crop channel art arbitrarily. For desktop and responsive displays, YouTube's CDN relies on a 64-bit parameter formatted as <code class="font-mono text-ink-800">fcrop64=1,x1y1x2y2</code>. These coordinates represent four unsigned 16-bit integers denoting normalized crop bounds.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
+            <div class="p-3 bg-surface-0 border border-line-200 rounded">
+              <span class="text-ink-500 font-mono block">Recommended Canvas</span>
+              <span class="font-mono text-sm font-semibold text-ink-950">{CANVAS.width} × {CANVAS.height} px</span>
+              <span class="text-[11px] text-ink-500 block mt-0.5">Full 16:9 canvas displayed on TV displays</span>
+            </div>
+            <div class="p-3 bg-surface-0 border border-line-200 rounded">
+              <span class="text-ink-500 font-mono block">Mobile Safe Area</span>
+              <span class="font-mono text-sm font-semibold text-ink-950">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</span>
+              <span class="text-[11px] text-ink-500 block mt-0.5">Visible zone preserved across all smartphone screens</span>
+            </div>
+          </div>
+          <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+            On smaller channel uploads meeting YouTube's minimum requirement of 2048 × 1152 px, this centered safe zone measures exactly {SAFE_PX.min.width} × {SAFE_PX.min.height} px. Keeping key graphics, channel typography, and faces within this centered envelope ensures they remain visible regardless of the viewer's device.
+          </p>
+        </div>
+      </section>
+
+      <!-- Transparency & Non-affiliation Section -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            04 · Legal Disclaimers
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Transparency & Non-Affiliation
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          YouTubeBannerMaker is an independent, community-driven web utility created to assist video creators and graphic designers.
+        </p>
+        <div class="p-4 rounded-lg bg-surface-50 border border-line-200 text-xs text-ink-600 space-y-2 measure-prose">
+          <p>
+            <strong>Trademark Notice:</strong> YouTube is a registered trademark of Google LLC. This utility is independently developed and maintained. YouTubeBannerMaker is not endorsed by, sponsored by, directly affiliated with, or in any way officially connected with YouTube, Google LLC, Alphabet Inc., or any of their subsidiaries or affiliates.
+          </p>
+          <p>
+            The official YouTube website is available at <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="text-accent underline">youtube.com</a>. Official creator guidelines for channel branding can be found in the <a href="https://support.google.com/youtube/answer/2972003" target="_blank" rel="noopener noreferrer" class="text-accent underline">YouTube Help Center: Manage your channel branding</a>.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

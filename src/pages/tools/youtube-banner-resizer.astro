@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ToolShell from '../../components/ToolShell.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import DeviceCropTable from '../../components/DeviceCropTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import {
+  STATIC_PAGES_SEO,
+  getSoftwareAppSchema,
+  getBreadcrumbSchema,
+} from '../../lib/seo';
+import { CANVAS } from '../../lib/spec';
+
+const path = '/tools/youtube-banner-resizer';
+const seo = STATIC_PAGES_SEO[path];
+
+const jsonLd = [
+  getSoftwareAppSchema(
+    seo.title,
+    seo.desc,
+    path
+  ),
+  getBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'YouTube Banner Resizer', url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <!-- Primary Tool Island Mounting Shell -->
+    <ToolShell
+      mode="fix"
+      title="YouTube Banner Resizer"
+      intro="Fit any existing photo or artwork to YouTube's exact 2560 × 1440 canvas. Reposition your focal subject safely inside the mobile safe area, test per-device crops live, and export a verified file with zero sign-up or watermarks."
+    />
+
+    <!-- Comprehensive Explanatory Content & Supporting Specs -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-line-200 space-y-16">
+      <!-- Section 1: How the Resizing Engine Operates -->
+      <div class="space-y-4 max-w-3xl">
+        <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+          Algorithm & Mechanics
+        </span>
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+          How Our Aspect-Preserving Cover Fit Works
+        </h2>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Most online image resizers either force-stretch your image to 16:9 — warping facial proportions and distorting typography — or place thick black bars along the sides (letterboxing). Our engine uses mathematical cover-fit scaling:
+        </p>
+        <ul class="space-y-2 text-xs text-ink-800 list-disc pl-5 measure-prose">
+          <li>
+            <strong>Proportional Coverage:</strong> We scale the source image by the maximum ratio between canvas dimensions ({CANVAS.width} × {CANVAS.height} px) and your image's native dimensions, ensuring every pixel of the YouTube canvas is filled.
+          </li>
+          <li>
+            <strong>Clamped Offsets:</strong> When you drag or nudge your image to position a face or logo within the mobile safe zone, our boundary clamps prevent you from dragging past the frame edge, eliminating accidental transparent margins.
+          </li>
+          <li>
+            <strong>1:1 Resolution Ceiling:</strong> Zooming is strictly capped to prevent upscaling beyond your source image's true optical resolution, preventing blurry exports.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 2: Device Crops Breakdown -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Cross-Platform Verification
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            YouTube Per-Device Crop Boundaries
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            YouTube does not scale down your banner uniformly on smaller screens. Instead, it extracts distinct rectangular cuts from your single uploaded {CANVAS.width} × {CANVAS.height} px image.
+          </p>
+        </div>
+        <DeviceCropTable />
+      </div>
+
+      <!-- Section 3: Official Specifications -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Official Standards
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            YouTube Channel Art Specifications
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            Adhering strictly to Google's published channel art guidelines prevents upload rejection and unexpected post-upload cropping.
+          </p>
+        </div>
+        <SpecTable />
+      </div>
+
+      <!-- Section 4: Frequently Asked Questions -->
+      <div class="space-y-5">
+        <div class="space-y-1 max-w-3xl">
+          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
+            Troubleshooting & Guidance
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-sm text-ink-600 measure-prose">
+            Everything you need to know about YouTube channel banner sizing, safe areas, and image compression.
+          </p>
+        </div>
+        <FaqAccordion />
+      </div>
+
+      <!-- Section 5: Contextual Interlinking Hub (SEO §3.4) -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-surface-50 border border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="space-y-1.5 max-w-xl">
+          <h3 class="text-base font-semibold text-ink-950">
+            Want to test an existing banner before modifying it?
+          </h3>
+          <p class="text-xs text-ink-600 leading-relaxed">
+            Use our Safe Area Checker to run automated diagnostic tests across mobile, desktop, and tablet crops without entering the editor.
+          </p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <a
+            href="/tools/youtube-banner-checker"
+            class="h-10 px-4 rounded-md bg-surface-0 border border-line-200 text-xs font-medium text-ink-950 hover:bg-surface-50 inline-flex items-center"
+          >
+            Open Checker →
+          </a>
+          <a
+            href="/guides/youtube-banner-size"
+            class="h-10 px-4 rounded-md bg-ink-950 text-surface-0 text-xs font-medium hover:bg-ink-800 inline-flex items-center"
+          >
+            Read Size Guide
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

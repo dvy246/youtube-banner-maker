@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  
+      <defs>
+        <linearGradient id="bg-music-synthwave" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#23002B" />
+          <stop offset="100%" stop-color="#500940" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg-music-synthwave)" />
+    
+  <!-- Safe area indicator border (subtle) -->
+  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
+  <text x="50%" y="43.0%" text-anchor="middle" dominant-baseline="middle" fill="#00F0FF" font-family="Switzer, sans-serif" font-size="32" font-weight="700">RETRO SYNTHETIC</text>
+<text x="50%" y="55.0%" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-family="Switzer, sans-serif" font-size="15" font-weight="500">80s Electronic · Darksynth · Synthwave Mixes</text>
+<rect x="268.8" y="216.0" width="102.4" height="1.1" fill="#00F0FF" opacity="0.8" />
+
+</svg>

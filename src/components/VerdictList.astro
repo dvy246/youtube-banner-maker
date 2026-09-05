@@ -1,0 +1,62 @@
+---
+---
+
+<section class="p-4 rounded-xl border border-line-200 bg-surface-0 space-y-3">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
+        Live Diagnostics
+      </h3>
+      <span
+        id="verdict-count"
+        class="text-[10px] font-mono font-medium px-1.5 py-0.5 rounded-full bg-surface-50 text-ink-600 border border-line-200"
+      >
+        Awaiting image
+      </span>
+    </div>
+    <span class="text-[11px] text-ink-500">Auto-evaluates safe area</span>
+  </div>
+
+  <!-- Live Output Region (aria-live="polite") -->
+  <div
+    id="verdicts"
+    role="status"
+    aria-live="polite"
+    class="space-y-2 min-h-[60px]"
+  >
+    <!-- Default All-Clear State (§D.4) -->
+    <div
+      id="verdict-all-clear"
+      class="hidden p-3 rounded-lg bg-surface-50 border border-line-100 flex items-start gap-2.5 text-xs text-ink-800"
+    >
+      <svg class="w-4 h-4 text-success shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+      </svg>
+      <div>
+        <p class="font-medium text-ink-950">
+          Nothing is cut off on TV, desktop, tablet, or mobile.
+        </p>
+        <p class="text-ink-600 text-[11px] mt-0.5">
+          All elements and subject framing reside securely within YouTube's mobile safe boundaries.
+        </p>
+      </div>
+    </div>
+
+    <!-- Empty State (Awaiting user upload) -->
+    <div
+      id="verdict-empty"
+      class="p-3 rounded-lg bg-surface-50 border border-line-100 flex items-start gap-2.5 text-xs text-ink-800"
+    >
+      <span class="text-ink-500 font-bold">ℹ</span>
+      <div>
+        <p class="font-medium text-ink-950">Awaiting banner image</p>
+        <p class="text-ink-600 text-[11px] mt-0.5">
+          Drop or browse an image to inspect crops and run real-time cutoff diagnostics.
+        </p>
+      </div>
+    </div>
+
+    <!-- Dynamic container for JS island to append verdicts into -->
+    <div id="verdicts-container" class="space-y-2"></div>
+  </div>
+</section>

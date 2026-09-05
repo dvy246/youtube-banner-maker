@@ -1,0 +1,62 @@
+{
+  "id": "edu-modern",
+  "niche": "education",
+  "name": "Clarity Explainers",
+  "description": "Left-aligned crisp editorial style with subtle divider.",
+  "preview": "/previews/edu-modern.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#15171B"
+    },
+    "layers": [
+      {
+        "id": "divider",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.26,
+        "y": 0.38,
+        "w": 0.06,
+        "h": 0.003,
+        "color": "#8AA4FF",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "VISUAL ECONOMICS",
+        "font": "sora-700",
+        "size": 46,
+        "color": "#FFFFFF",
+        "align": "left",
+        "x": 0.26,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Animated Data Stories & Global Market Breakdown",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#8AA4FF",
+        "align": "left",
+        "x": 0.26,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "divider"
+  ],
+  "safeAreaValidated": true
+}

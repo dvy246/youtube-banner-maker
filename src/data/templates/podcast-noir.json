@@ -1,0 +1,51 @@
+{
+  "id": "podcast-noir",
+  "niche": "podcast",
+  "name": "Late Night Noir",
+  "description": "Stacked tall typography suited for true crime and mystery storytelling shows.",
+  "preview": "/previews/podcast-noir.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "from": "#090A0B",
+      "to": "#15171A",
+      "angle": 180
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SHADOW ARCHIVES",
+        "font": "bebas-400",
+        "size": 66,
+        "color": "#E3E5E8",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.43,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Investigative Deep Dives · Weekly Releases",
+        "font": "space-grotesk-700",
+        "size": 16,
+        "color": "#6B7076",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.56,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

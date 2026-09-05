@@ -1,0 +1,49 @@
+{
+  "id": "music-acoustic",
+  "niche": "music",
+  "name": "Acoustic Loft",
+  "description": "Earthy organic tones and left-aligned serif display for indie artists.",
+  "preview": "/previews/music-acoustic.svg",
+  "scene": {
+    "background": {
+      "type": "solid",
+      "color": "#1B1816"
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "WOOD & STRINGS",
+        "font": "playfair-700",
+        "size": 48,
+        "color": "#F7F8F9",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Original Songs · Fingerstyle Guitar · Live Studio Sessions",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#E3E5E8",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

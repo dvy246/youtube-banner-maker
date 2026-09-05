@@ -1,0 +1,29 @@
+{
+  "name": "youtubebannermaker",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "node scripts/generate-sitemap.mjs && astro check && astro build && node scripts/generate-sitemap.mjs",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "generate-sitemap": "node scripts/generate-sitemap.mjs",
+    "verify-spec": "node scripts/verify-spec.mjs",
+    "validate-templates": "node scripts/validate-templates.mjs",
+    "check-copy": "node scripts/check-copy.mjs",
+    "check-budgets": "node scripts/check-budgets.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.1",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^26.4.1",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
+  }
+}
