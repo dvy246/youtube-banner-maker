@@ -69,11 +69,11 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
     <div class="p-3 rounded-md bg-surface-50 border border-line-100 space-y-1">
       <div class="flex items-center justify-between text-xs">
         <span class="text-ink-500">Dimensions:</span>
-        <span class="font-mono font-medium text-ink-950">{CANVAS.width} × {CANVAS.height} px</span>
+        <span class="font-mono font-medium text-ink-950 tabular-nums">{CANVAS.width} × {CANVAS.height} px</span>
       </div>
       <div class="flex items-center justify-between text-xs">
         <span class="text-ink-500">Output Size:</span>
-        <span id="export-meta" class="font-mono font-medium text-ink-950">Pending generation</span>
+        <span id="export-meta" class="font-mono font-medium text-ink-950 tabular-nums">Pending generation</span>
       </div>
       <p id="export-note" class="text-[11px] text-ink-600 hidden pt-1 border-t border-line-100"></p>
     </div>

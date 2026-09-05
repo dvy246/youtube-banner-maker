@@ -27,21 +27,18 @@ const {
 ---
 
 <div id="tool-root" data-mode={mode} class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
-  <!-- Header Title & Intro -->
-  <div class="space-y-2 border-b border-line-200 pb-5">
-    <div class="flex items-center gap-2">
-      <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium font-mono uppercase tracking-wider bg-surface-50 text-ink-600 border border-line-200">
-        Door: {mode.toUpperCase()}
-      </span>
-      <span class="text-xs text-ink-500 font-medium">100% Client-Side Engine</span>
-    </div>
-    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+  <!-- Compact Tool Toolbar -->
+  <div class="flex flex-wrap items-center gap-3 border-b border-line-200 pb-4">
+    <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-600 border border-line-200 flex-shrink-0">
+      Door: {mode.toUpperCase()}
+    </span>
+    <h1 class="text-base font-bold tracking-tight text-ink-950 flex-1 min-w-0 truncate">
       {title}
     </h1>
-    <p class="text-sm text-ink-600 measure-prose leading-relaxed">
-      {intro}
-    </p>
+    <span class="text-[11px] font-mono text-ink-500 flex-shrink-0 hidden sm:block">Client-side · zero uploads</span>
   </div>
+  <!-- Visually-hidden full intro for SEO / screen readers -->
+  <p class="sr-only">{intro}</p>
 
   <!-- <noscript> Accessibility & SEO Fallback (REQ-030) -->
   <noscript>

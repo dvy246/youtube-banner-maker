@@ -1,0 +1,641 @@
+---
+/**
+ * HeroCropSimulator — "Live Crop Intelligence" Product Demonstration for the Homepage.
+ *
+ * Implements the user's architectural vision:
+ * - Shows a real, high-craft channel art composition (not an empty dropzone).
+ * - Smoothly demonstrates the 4 crop modes: Mobile -> Desktop -> Tablet -> TV.
+ * - Restrained, hardware-accelerated animation animating only logic: crop boundary,
+ *   safe-area boundary, device viewport, and dimension labels.
+ * - Interactive: Clicking tabs locks the view to any device crop.
+ * - Hover pause + click to launch the interactive resizer tool.
+ * - ZERO client JS scripts — satisfies Gate 3 & AGENTS.md.
+ */
+import { CANVAS, DEVICES, SAFE_PX } from '../lib/spec';
+
+const desktopHeight = Math.round(DEVICES.desktop.h * CANVAS.height);
+const tabletWidth = Math.round(DEVICES.tablet.w * CANVAS.width);
+
+const tabs = [
+  {
+    id: 'mobile',
+    label: 'Mobile',
+    dim: `${SAFE_PX.full.width} × ${SAFE_PX.full.height}`,
+    badge: 'Mobile Safe Area',
+    color: 'var(--color-accent)',
+  },
+  {
+    id: 'desktop',
+    label: 'Desktop',
+    dim: `${CANVAS.width} × ${desktopHeight}`,
+    badge: 'Desktop Viewport',
+    color: '#059669',
+  },
+  {
+    id: 'tablet',
+    label: 'Tablet',
+    dim: `${tabletWidth} × ${desktopHeight}`,
+    badge: 'Tablet Viewport',
+    color: '#D97706',
+  },
+  {
+    id: 'tv',
+    label: 'TV',
+    dim: `${CANVAS.width} × ${CANVAS.height}`,
+    badge: 'TV Full Canvas',
+    color: '#7C3AED',
+  },
+] as const;
+---
+
+<div class="hero-sim-root" id="hero-sim">
+  <!-- Radio inputs for CSS tab switching -->
+  {tabs.map((t) => (
+    <input
+      type="radio"
+      name="hero-crop-tab"
+      id={`hcs-tab-${t.id}`}
+      value={t.id}
+      class="sr-only"
+    />
+  ))}
+
+  <!-- Preview Stage (2560 × 1440 ratio) -->
+  <div class="sim-stage" id="hcs-stage">
+    <a
+      href="/tools/youtube-banner-resizer"
+      class="sim-dropzone"
+      aria-label="Launch YouTube Banner Resizer with this preview"
+      title="Click to test in the interactive resizer"
+    >
+      <!-- 1. Rich Sample Banner Canvas (16:9 Artwork) -->
+      <div class="sim-banner-art">
+        <!-- Radial atmospheric glow -->
+        <div class="art-ambient-glow" aria-hidden="true"></div>
+        <div class="art-grid-lines" aria-hidden="true"></div>
+
+        <!-- TV Bleed Details (Top/Bottom) -->
+        <div class="art-tv-header" aria-hidden="true">
+          <span class="font-mono text-[9px] text-white/30 tracking-widest uppercase">4K HDR · 120 FPS STREAM</span>
+          <span class="font-mono text-[9px] text-white/30 tracking-widest uppercase">OFFICIAL CHANNEL</span>
+        </div>
+
+        <!-- Desktop Peripheral Details (Left/Right bleed) -->
+        <div class="art-desktop-left" aria-hidden="true">
+          <span class="text-[10px] font-mono text-white/50 tracking-wider">CREATIVE STUDIO</span>
+        </div>
+        <div class="art-desktop-right" aria-hidden="true">
+          <span class="text-[10px] font-mono text-white/50 tracking-wider">NEW VIDEOS WEEKLY</span>
+        </div>
+
+        <!-- 2. Centered Mobile Safe Area Content -->
+        <div class="art-safe-core">
+          <!-- Avatar + Creator Face Silhouette -->
+          <div class="safe-avatar-wrap">
+            <div class="safe-avatar">
+              <svg class="w-6 h-6 text-white/80" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.6-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <!-- Verification badge -->
+            <span class="safe-verified-badge" title="Verified Creator">✓</span>
+          </div>
+
+          <!-- Channel Typography -->
+          <div class="safe-typography">
+            <h3 class="safe-channel-title">ALEX RIVERA</h3>
+            <p class="safe-channel-sub">TECH · DESIGN · CINEMATIC</p>
+          </div>
+
+          <!-- Registration Corner Brackets -->
+          <span class="reg-bracket reg-tl font-mono">+</span>
+          <span class="reg-bracket reg-tr font-mono">+</span>
+          <span class="reg-bracket reg-bl font-mono">+</span>
+          <span class="reg-bracket reg-br font-mono">+</span>
+        </div>
+      </div>
+
+      <!-- 3. Dynamic Crop Overlay Mask -->
+      <div class="sim-viewport-mask" aria-hidden="true"></div>
+
+      <!-- 4. Dynamic Crop Wireframe Boundary -->
+      <div class="sim-crop-wireframe" aria-hidden="true"></div>
+
+      <!-- 5. Active Crop Readout Pill -->
+      <div class="sim-status-pill" aria-hidden="true">
+        <span class="status-pulse-dot"></span>
+        <span class="status-device-text">MOBILE SAFE AREA</span>
+        <span class="status-dim-text tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height}</span>
+      </div>
+
+      <!-- 6. Interactive Hover Tooltip Overlay -->
+      <div class="sim-launch-hint">
+        <span>Test in Interactive Resizer</span>
+        <span class="ml-1">→</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Device Switcher Tabs -->
+  <div class="sim-tabs" role="tablist" aria-label="Device crop preview modes">
+    {tabs.map((t) => (
+      <label
+        class={`sim-tab sim-tab-${t.id}`}
+        for={`hcs-tab-${t.id}`}
+        role="tab"
+      >
+        <div class="flex items-center gap-1.5">
+          <span class="tab-indicator-dot"></span>
+          <span class="sim-tab-label">{t.label}</span>
+        </div>
+        <span class="sim-tab-dim tabular-nums">{t.dim}</span>
+      </label>
+    ))}
+  </div>
+</div>
+
+<style>
+  .hero-sim-root {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
+    container-type: inline-size;
+  }
+
+  /* ── Stage (2560 × 1440 / 16:9) ── */
+  .sim-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2560 / 1440;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #080A0E;
+    border: 1px solid var(--color-line-200);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25);
+  }
+
+  .sim-dropzone {
+    position: absolute;
+    inset: 0;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* ── 1. Realistic Sample Banner Artwork ── */
+  .sim-banner-art {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 90% 70% at 50% 50%, #151A24 0%, #0B0E14 70%, #06080B 100%);
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .art-ambient-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 40% at 50% 50%, color-mix(in srgb, var(--color-accent) 25%, transparent) 0%, transparent 80%);
+    mix-blend-mode: screen;
+    transition: background 0.3s ease;
+  }
+
+  .art-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 8% 14.22%;
+  }
+
+  .art-tv-header {
+    position: absolute;
+    top: 8%;
+    left: 6%;
+    right: 6%;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.6;
+  }
+
+  .art-desktop-left {
+    position: absolute;
+    top: 50%;
+    left: 4%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+
+  .art-desktop-right {
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+
+  /* Centered Mobile Safe Area content inside canvas */
+  .art-safe-core {
+    position: absolute;
+    top: 35.3125%;
+    bottom: 35.3125%;
+    left: 19.8047%;
+    right: 19.8047%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 0 1rem;
+    z-index: 2;
+  }
+
+  .safe-avatar-wrap {
+    position: relative;
+    shrink: 0;
+  }
+
+  .safe-avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #1E293B, #0F172A);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .safe-verified-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background: var(--color-accent);
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #0B0E14;
+    transition: background-color 0.2s ease;
+  }
+
+  .safe-typography {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .safe-channel-title {
+    font-family: var(--font-display, var(--font-sans));
+    font-size: 1.125rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    line-height: 1.1;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .safe-channel-sub {
+    font-size: 0.625rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .reg-bracket {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.75rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .reg-tl { top: 0; left: 0; }
+  .reg-tr { top: 0; right: 0; }
+  .reg-bl { bottom: 0; left: 0; }
+  .reg-br { bottom: 0; right: 0; }
+
+  /* ── 3. Dynamic Crop Viewport Mask (Darkens outer non-visible zones) ── */
+  .sim-viewport-mask {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    transition: backdrop-filter 0.3s ease, background 0.3s ease;
+    animation: live-crop-mask 16s infinite ease-in-out;
+  }
+
+  /* ── 4. Dynamic Crop Wireframe Boundary ── */
+  .sim-crop-wireframe {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    box-shadow: inset 0 0 0 2px var(--color-accent);
+    animation: live-crop-boundary 16s infinite ease-in-out;
+  }
+
+  /* ── 5. Status Pill Readout ── */
+  .sim-status-pill {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 9999px;
+    background: rgba(11, 15, 25, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 5;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .status-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--color-accent);
+    animation: status-dot-pulse 2s infinite ease-in-out;
+  }
+
+  .status-device-text {
+    font-size: 0.625rem;
+    font-mono: true;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .status-dim-text {
+    font-size: 0.5625rem;
+    font-family: var(--font-mono);
+    color: rgba(255, 255, 255, 0.55);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 0.4rem;
+  }
+
+  /* ── 6. Hover Tooltip ── */
+  .sim-launch-hint {
+    position: absolute;
+    bottom: 0.625rem;
+    right: 0.625rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    background: var(--color-surface-0);
+    color: var(--color-ink-950);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 6;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+  }
+
+  .sim-dropzone:hover .sim-launch-hint {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sim-dropzone:hover .sim-viewport-mask,
+  .sim-dropzone:hover .sim-crop-wireframe {
+    animation-play-state: paused;
+  }
+
+  /* ── Tabs Below Preview ── */
+  .sim-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.375rem;
+    padding: 0.25rem;
+    background: var(--color-surface-100);
+    border: 1px solid var(--color-line-200);
+    border-radius: var(--radius-md);
+  }
+
+  .sim-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.125rem;
+    padding: 0.4rem 0.25rem;
+    border-radius: 6px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.15s ease;
+    min-height: 44px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sim-tab:hover {
+    background: var(--color-surface-0);
+  }
+
+  .tab-indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--color-line-200);
+    transition: background 0.15s ease;
+  }
+
+  .sim-tab-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-ink-600);
+    line-height: 1;
+  }
+
+  .sim-tab-dim {
+    font-size: 0.5625rem;
+    font-family: var(--font-mono);
+    color: var(--color-ink-500);
+    line-height: 1;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Autonomous 16s Smooth Crop Cycle Animation (4s per crop mode)
+     Restrained, cinematic, hardware-accelerated.
+  ═══════════════════════════════════════════════════════════ */
+  @keyframes live-crop-mask {
+    /* 0% - 22%: Mobile Safe Area */
+    0%, 22% {
+      background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(5, 7, 10, 0.75) 90%);
+      box-shadow: inset 0 0 0 9999px rgba(5, 7, 10, 0.55);
+      clip-path: polygon(0% 0%, 0% 100%, 19.8% 100%, 19.8% 35.3%, 80.2% 35.3%, 80.2% 64.7%, 19.8% 64.7%, 19.8% 100%, 100% 100%, 100% 0%);
+    }
+
+    /* 25% - 47%: Desktop Viewport */
+    25%, 47% {
+      background: rgba(5, 7, 10, 0.65);
+      box-shadow: none;
+      clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 35.3%, 100% 35.3%, 100% 64.7%, 0% 64.7%, 0% 100%, 100% 100%, 100% 0%);
+    }
+
+    /* 50% - 72%: Tablet Viewport */
+    50%, 72% {
+      background: rgba(5, 7, 10, 0.65);
+      box-shadow: none;
+      clip-path: polygon(0% 0%, 0% 100%, 13.8% 100%, 13.8% 35.3%, 86.2% 35.3%, 86.2% 64.7%, 13.8% 64.7%, 13.8% 100%, 100% 100%, 100% 0%);
+    }
+
+    /* 75% - 97%: TV Full Canvas (2560 × 1440) */
+    75%, 97% {
+      background: transparent;
+      box-shadow: none;
+      clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
+    }
+
+    100% {
+      background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(5, 7, 10, 0.75) 90%);
+      clip-path: polygon(0% 0%, 0% 100%, 19.8% 100%, 19.8% 35.3%, 80.2% 35.3%, 80.2% 64.7%, 19.8% 64.7%, 19.8% 100%, 100% 100%, 100% 0%);
+    }
+  }
+
+  @keyframes live-crop-boundary {
+    /* Mobile */
+    0%, 22% {
+      clip-path: inset(35.3125% 19.8047% 35.3125% 19.8047% round 4px);
+      box-shadow: inset 0 0 0 2px var(--color-accent);
+    }
+    /* Desktop */
+    25%, 47% {
+      clip-path: inset(35.3125% 0% 35.3125% 0% round 4px);
+      box-shadow: inset 0 0 0 2px #059669;
+    }
+    /* Tablet */
+    50%, 72% {
+      clip-path: inset(35.3125% 13.7695% 35.3125% 13.7695% round 4px);
+      box-shadow: inset 0 0 0 2px #D97706;
+    }
+    /* TV */
+    75%, 97% {
+      clip-path: inset(0% 0% 0% 0% round 4px);
+      box-shadow: inset 0 0 0 2px #7C3AED;
+    }
+    100% {
+      clip-path: inset(35.3125% 19.8047% 35.3125% 19.8047% round 4px);
+      box-shadow: inset 0 0 0 2px var(--color-accent);
+    }
+  }
+
+  @keyframes status-dot-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Manual Interactive Override via :has(#hcs-tab-ID:checked)
+     Stops loop and locks immediately to the selected device
+  ═══════════════════════════════════════════════════════════ */
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-viewport-mask,
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-crop-wireframe,
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-viewport-mask,
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-crop-wireframe,
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-viewport-mask,
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-crop-wireframe,
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-viewport-mask,
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-crop-wireframe {
+    animation: none !important;
+  }
+
+  /* Mobile Selected */
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile {
+    background: var(--color-surface-0);
+    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+  }
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .tab-indicator-dot {
+    background: var(--color-accent);
+  }
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-label {
+    color: var(--color-ink-950);
+  }
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-crop-wireframe {
+    clip-path: inset(35.3125% 19.8047% 35.3125% 19.8047% round 4px);
+    box-shadow: inset 0 0 0 2px var(--color-accent);
+  }
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-viewport-mask {
+    clip-path: polygon(0% 0%, 0% 100%, 19.8% 100%, 19.8% 35.3%, 80.2% 35.3%, 80.2% 64.7%, 19.8% 64.7%, 19.8% 100%, 100% 100%, 100% 0%);
+    background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(5, 7, 10, 0.75) 90%);
+  }
+
+  /* Desktop Selected */
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop {
+    background: var(--color-surface-0);
+    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+  }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .tab-indicator-dot {
+    background: #059669;
+  }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-label {
+    color: var(--color-ink-950);
+  }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-crop-wireframe {
+    clip-path: inset(35.3125% 0% 35.3125% 0% round 4px);
+    box-shadow: inset 0 0 0 2px #059669;
+  }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-viewport-mask {
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 35.3%, 100% 35.3%, 100% 64.7%, 0% 64.7%, 0% 100%, 100% 100%, 100% 0%);
+    background: rgba(5, 7, 10, 0.75);
+  }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .status-pulse-dot { background: #059669; }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .status-device-text { content: 'DESKTOP VIEWPORT'; }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .status-dim-text { content: '2560 × 424'; }
+
+  /* Tablet Selected */
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet {
+    background: var(--color-surface-0);
+    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+  }
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .tab-indicator-dot {
+    background: #D97706;
+  }
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-label {
+    color: var(--color-ink-950);
+  }
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-crop-wireframe {
+    clip-path: inset(35.3125% 13.7695% 35.3125% 13.7695% round 4px);
+    box-shadow: inset 0 0 0 2px #D97706;
+  }
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-viewport-mask {
+    clip-path: polygon(0% 0%, 0% 100%, 13.8% 100%, 13.8% 35.3%, 86.2% 35.3%, 86.2% 64.7%, 13.8% 64.7%, 13.8% 100%, 100% 100%, 100% 0%);
+    background: rgba(5, 7, 10, 0.75);
+  }
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .status-pulse-dot { background: #D97706; }
+
+  /* TV Selected */
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv {
+    background: var(--color-surface-0);
+    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+  }
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .tab-indicator-dot {
+    background: #7C3AED;
+  }
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-label {
+    color: var(--color-ink-950);
+  }
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-crop-wireframe {
+    clip-path: inset(0% 0% 0% 0% round 4px);
+    box-shadow: inset 0 0 0 2px #7C3AED;
+  }
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-viewport-mask {
+    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
+    background: transparent;
+  }
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .status-pulse-dot { background: #7C3AED; }
+</style>

@@ -1,0 +1,66 @@
+---
+/**
+ * ThemeToggle — Accessible dark / light mode slider for the site header.
+ *
+ * Engineering & Design:
+ * - Pure-CSS activation via body:has(#theme-toggle:checked) — zero script required on static pages.
+ * - Tactile, luxury hardware-switch aesthetic: inset track with Sun & Moon icons and smooth sliding thumb.
+ * - Full keyboard accessibility (Space / Enter toggles checkbox, Tab navigates).
+ */
+---
+
+<label
+  for="theme-toggle"
+  class="relative inline-flex items-center h-8 w-16 p-1 rounded-full bg-surface-100 hover:bg-line-200/80 border border-line-200 cursor-pointer select-none transition-colors duration-200 focus-within:ring-2 focus-within:ring-accent"
+  title="Toggle dark and light mode"
+  aria-label="Toggle dark and light mode"
+>
+  <input
+    type="checkbox"
+    id="theme-toggle"
+    class="sr-only"
+    aria-label="Toggle dark and light mode"
+  />
+
+  <!-- Track Icons: Sun on left, Moon on right -->
+  <div class="absolute inset-0 flex items-center justify-between px-2 text-ink-500 pointer-events-none" aria-hidden="true">
+    <!-- Sun icon -->
+    <svg class="w-3.5 h-3.5 text-amber-500 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="4" />
+      <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41" />
+    </svg>
+    <!-- Moon icon -->
+    <svg class="w-3.5 h-3.5 text-ink-400 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+    </svg>
+  </div>
+
+  <!-- Sliding thumb -->
+  <span
+    class="theme-toggle-thumb relative z-10 w-6 h-6 rounded-full bg-surface-0 shadow-sm border border-line-200/60 pointer-events-none transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center text-ink-800"
+    aria-hidden="true"
+  >
+    <!-- Mini active icon inside thumb: Sun when light, Moon when dark -->
+    <svg class="thumb-sun w-3 h-3 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+    </svg>
+    <svg class="thumb-moon w-3 h-3 text-accent hidden" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+    </svg>
+  </span>
+</label>
+
+<style>
+  /* Sliding animation when checkbox is checked */
+  :global(body):has(#theme-toggle:checked) .theme-toggle-thumb {
+    transform: translateX(2rem);
+  }
+
+  :global(body):has(#theme-toggle:checked) .thumb-sun {
+    display: none;
+  }
+
+  :global(body):has(#theme-toggle:checked) .thumb-moon {
+    display: block;
+  }
+</style>

@@ -35,11 +35,13 @@
 body {
   font-family: var(--font-sans);
   background-color: var(--color-surface-0);
+  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, rgba(35, 64, 184, 0.04), transparent 70%);
   color: var(--color-ink-950);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -70,68 +72,197 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 68ch;
 }
 
+/* DESIGN.md Dual-Layer Elevation Tokens */
+.shadow-raised {
+  box-shadow: 0 1px 2px rgba(12, 13, 14, 0.06), 0 2px 8px rgba(12, 13, 14, 0.06);
+}
+
+.shadow-overlay {
+  box-shadow: 0 4px 8px rgba(12, 13, 14, 0.06), 0 12px 24px rgba(12, 13, 14, 0.10);
+}
+
+.shadow-dialog {
+  box-shadow: 0 8px 16px rgba(12, 13, 14, 0.08), 0 24px 48px rgba(12, 13, 14, 0.14);
+}
+
+/* Tabular figures for numerical coordinates */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
 /* Smooth theme transition */
 html {
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
 
-/* Curated Color Palettes */
-[data-palette="emerald"] {
-  --color-accent: #059669;
-  --color-accent-hover: #047857;
-  --color-accent-light: #6EE7B7;
-}
-
-[data-palette="violet"] {
-  --color-accent: #7C3AED;
-  --color-accent-hover: #6D28D9;
-  --color-accent-light: #C4B5FD;
-}
-
-[data-palette="crimson"] {
-  --color-accent: #E11D48;
-  --color-accent-hover: #BE123C;
-  --color-accent-light: #FDA4AF;
-}
-
-[data-palette="amber"] {
-  --color-accent: #D97706;
-  --color-accent-hover: #B45309;
-  --color-accent-light: #FCD34D;
-}
-
-[data-palette="cyan"] {
-  --color-accent: #0891B2;
-  --color-accent-hover: #0E7490;
-  --color-accent-light: #67E8F9;
-}
-
-[data-palette="obsidian"] {
+/* Dark Theme Mode (Base dark surfaces and ink - does NOT override custom palettes) */
+body:has(#theme-toggle:checked),
+html[data-theme="dark"],
+html.dark {
   color-scheme: dark;
-  --color-surface-0: #0B0F19;
-  --color-surface-50: #121826;
-  --color-line-200: #1F293D;
-  --color-line-100: #162032;
+  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, rgba(59, 130, 246, 0.08), transparent 70%);
+  --color-surface-0: #0B0D10;
+  --color-surface-50: #13161B;
+  --color-surface-100: #1B1F26;
+  --color-line-200: #242A34;
+  --color-line-100: #1B1F26;
   --color-ink-950: #F8FAFC;
   --color-ink-800: #E2E8F0;
   --color-ink-600: #94A3B8;
   --color-ink-500: #64748B;
+}
+
+/* Fallback default blue accent in dark mode ONLY when no custom palette is active */
+html:not([data-palette]) body:not([data-palette]):has(#theme-toggle:checked),
+html[data-theme="dark"]:not([data-palette]) body:not([data-palette]),
+html.dark:not([data-palette]) body:not([data-palette]) {
   --color-accent: #3B82F6;
   --color-accent-hover: #2563EB;
   --color-accent-light: #93C5FD;
 }
 
-[data-palette="sand"] {
-  --color-surface-0: #FAF8F5;
-  --color-surface-50: #F2EFE9;
-  --color-line-200: #E3DED4;
-  --color-line-100: #ECE7DD;
-  --color-ink-950: #1A1815;
-  --color-ink-800: #2C2824;
-  --color-ink-600: #5C554D;
-  --color-ink-500: #7A7268;
-  --color-accent: #C2410C;
-  --color-accent-hover: #9A3412;
-  --color-accent-light: #FDBA74;
+/* Curated Color Palettes (Applied directly to html, body, and root in BOTH Light and Dark mode) */
+:root[data-palette="cobalt"],
+html[data-palette="cobalt"],
+body[data-palette="cobalt"],
+html[data-palette="cobalt"] body,
+[data-palette="cobalt"] {
+  --color-accent: #2340B8 !important;
+  --color-accent-hover: #1D3499 !important;
+  --color-accent-light: #93C5FD !important;
 }
+
+:root[data-palette="emerald"],
+html[data-palette="emerald"],
+body[data-palette="emerald"],
+html[data-palette="emerald"] body,
+[data-palette="emerald"] {
+  --color-accent: #059669 !important;
+  --color-accent-hover: #047857 !important;
+  --color-accent-light: #6EE7B7 !important;
+}
+
+:root[data-palette="violet"],
+html[data-palette="violet"],
+body[data-palette="violet"],
+html[data-palette="violet"] body,
+[data-palette="violet"] {
+  --color-accent: #7C3AED !important;
+  --color-accent-hover: #6D28D9 !important;
+  --color-accent-light: #C4B5FD !important;
+}
+
+:root[data-palette="crimson"],
+html[data-palette="crimson"],
+body[data-palette="crimson"],
+html[data-palette="crimson"] body,
+[data-palette="crimson"] {
+  --color-accent: #E11D48 !important;
+  --color-accent-hover: #BE123C !important;
+  --color-accent-light: #FDA4AF !important;
+}
+
+:root[data-palette="amber"],
+html[data-palette="amber"],
+body[data-palette="amber"],
+html[data-palette="amber"] body,
+[data-palette="amber"] {
+  --color-accent: #D97706 !important;
+  --color-accent-hover: #B45309 !important;
+  --color-accent-light: #FCD34D !important;
+}
+
+:root[data-palette="cyan"],
+html[data-palette="cyan"],
+body[data-palette="cyan"],
+html[data-palette="cyan"] body,
+[data-palette="cyan"] {
+  --color-accent: #0891B2 !important;
+  --color-accent-hover: #0E7490 !important;
+  --color-accent-light: #67E8F9 !important;
+}
+
+:root[data-palette="obsidian"],
+html[data-palette="obsidian"],
+body[data-palette="obsidian"],
+html[data-palette="obsidian"] body,
+[data-palette="obsidian"] {
+  color-scheme: dark;
+  --color-surface-0: #0B0F19 !important;
+  --color-surface-50: #121826 !important;
+  --color-line-200: #1F293D !important;
+  --color-line-100: #162032 !important;
+  --color-ink-950: #F8FAFC !important;
+  --color-ink-800: #E2E8F0 !important;
+  --color-ink-600: #94A3B8 !important;
+  --color-ink-500: #64748B !important;
+  --color-accent: #3B82F6 !important;
+  --color-accent-hover: #2563EB !important;
+  --color-accent-light: #93C5FD !important;
+}
+
+:root[data-palette="sand"],
+html[data-palette="sand"],
+body[data-palette="sand"],
+html[data-palette="sand"] body,
+[data-palette="sand"] {
+  --color-surface-0: #FAF8F5 !important;
+  --color-surface-50: #F2EFE9 !important;
+  --color-line-200: #E3DED4 !important;
+  --color-line-100: #ECE7DD !important;
+  --color-ink-950: #1A1815 !important;
+  --color-ink-800: #2C2824 !important;
+  --color-ink-600: #5C554D !important;
+  --color-ink-500: #7A7268 !important;
+  --color-accent: #C2410C !important;
+  --color-accent-hover: #9A3412 !important;
+  --color-accent-light: #FDBA74 !important;
+}
+
+/* Header active dot color matching palette */
+[data-palette="cobalt"] .palette-active-dot,
+body:has(#palette-cobalt:checked) .palette-active-dot { background-color: #2340B8 !important; }
+[data-palette="emerald"] .palette-active-dot,
+body:has(#palette-emerald:checked) .palette-active-dot { background-color: #059669 !important; }
+[data-palette="violet"] .palette-active-dot,
+body:has(#palette-violet:checked) .palette-active-dot { background-color: #7C3AED !important; }
+[data-palette="crimson"] .palette-active-dot,
+body:has(#palette-crimson:checked) .palette-active-dot { background-color: #E11D48 !important; }
+[data-palette="amber"] .palette-active-dot,
+body:has(#palette-amber:checked) .palette-active-dot { background-color: #D97706 !important; }
+[data-palette="cyan"] .palette-active-dot,
+body:has(#palette-cyan:checked) .palette-active-dot { background-color: #0891B2 !important; }
+[data-palette="obsidian"] .palette-active-dot,
+body:has(#palette-obsidian:checked) .palette-active-dot { background-color: #3B82F6 !important; }
+[data-palette="sand"] .palette-active-dot,
+body:has(#palette-sand:checked) .palette-active-dot { background-color: #C2410C !important; }
+
+/* Header checkmark matching palette */
+[data-palette="cobalt"] [data-check="cobalt"],
+body:has(#palette-cobalt:checked) [data-check="cobalt"],
+[data-palette="emerald"] [data-check="emerald"],
+body:has(#palette-emerald:checked) [data-check="emerald"],
+[data-palette="violet"] [data-check="violet"],
+body:has(#palette-violet:checked) [data-check="violet"],
+[data-palette="crimson"] [data-check="crimson"],
+body:has(#palette-crimson:checked) [data-check="crimson"],
+[data-palette="amber"] [data-check="amber"],
+body:has(#palette-amber:checked) [data-check="amber"],
+[data-palette="cyan"] [data-check="cyan"],
+body:has(#palette-cyan:checked) [data-check="cyan"],
+[data-palette="obsidian"] [data-check="obsidian"],
+body:has(#palette-obsidian:checked) [data-check="obsidian"],
+[data-palette="sand"] [data-check="sand"],
+body:has(#palette-sand:checked) [data-check="sand"] {
+  opacity: 1 !important;
+}
+
+/* Summary reset for details dropdown */
+details.palette-dropdown summary {
+  list-style: none;
+}
+details.palette-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
 
