@@ -161,6 +161,16 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
         Drop file to replace image
       </span>
     </div>
+
+    <!-- Floating Toast Feedback (aria-live) -->
+    <div
+      id="tool-toast"
+      role="status"
+      aria-live="polite"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 px-3.5 py-1.5 rounded-full bg-ink-950/90 text-surface-0 text-xs font-medium shadow-lg backdrop-blur-xs flex items-center gap-2 transition-all duration-200 opacity-0 translate-y-2 pointer-events-none"
+    >
+      <span id="tool-toast-text">Action completed</span>
+    </div>
   </div>
 
   <!-- Re-upload notice (D-10 oversized session restore fallback) -->
@@ -221,6 +231,68 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
           </div>
         ))
       }
+    </div>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div
+    id="shortcuts-modal"
+    class="hidden fixed inset-0 z-50 bg-ink-950/50 backdrop-blur-xs flex items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="shortcuts-title"
+  >
+    <div class="bg-surface-0 rounded-xl border border-line-200 shadow-2xl max-w-md w-full p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-line-100 pb-3">
+        <h3 id="shortcuts-title" class="text-sm font-semibold text-ink-950 flex items-center gap-2">
+          <span>⌨️ Keyboard Shortcuts</span>
+        </h3>
+        <button
+          type="button"
+          id="close-shortcuts-modal-btn"
+          class="text-ink-400 hover:text-ink-950 text-base font-bold px-2 py-1 rounded cursor-pointer"
+          aria-label="Close shortcuts modal"
+        >
+          ✕
+        </button>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Paste Image</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">Ctrl/Cmd + V</kbd>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Pan Artwork</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">Arrow Keys</kbd>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Fast Pan (40px)</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">Shift + Arrows</kbd>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Zoom In / Out</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">+ / -</kbd>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Center Artwork</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">0</kbd>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Device Crops</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">1 – 4</kbd>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Undo Action</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">Ctrl/Cmd + Z</kbd>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
+          <span class="text-ink-600">Redo Action</span>
+          <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-900 shadow-2xs">Ctrl/Cmd + Y</kbd>
+        </div>
+      </div>
+      <p class="text-[11px] text-ink-500 text-center pt-2 border-t border-line-100">
+        Pro-tip: Double-click canvas to instantly center your artwork.
+      </p>
     </div>
   </div>
 </div>

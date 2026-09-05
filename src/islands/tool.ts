@@ -6,6 +6,8 @@
 
 import {
   CANVAS,
+  DEVICES,
+  SAFE_PX,
   MAX_UPLOAD_BYTES,
   type DeviceKey,
 } from '../lib/spec';
@@ -22,6 +24,7 @@ import {
 import {
   renderPreview,
   renderDeviceCrop,
+  renderExport,
   clampZoom,
   clampOffset,
   type ImageMap,
@@ -107,6 +110,20 @@ class ToolIsland {
   private browseBtn!: HTMLButtonElement;
   private reuploadBtn!: HTMLButtonElement;
   private dragOverlayEl!: HTMLElement;
+
+  // Undo / Redo & Shortcuts & Clipboard & Toast
+  private undoStack: Scene[] = [];
+  private redoStack: Scene[] = [];
+  private readonly MAX_UNDO = 40;
+  private btnUndoEl: HTMLButtonElement | null = null;
+  private btnRedoEl: HTMLButtonElement | null = null;
+  private btnShortcutsEl: HTMLButtonElement | null = null;
+  private shortcutsModalEl: HTMLElement | null = null;
+  private closeShortcutsModalBtn: HTMLButtonElement | null = null;
+  private toolToastEl: HTMLElement | null = null;
+  private toolToastTextEl: HTMLElement | null = null;
+  private toastTimer: number | null = null;
+  private copyClipboardBtn: HTMLButtonElement | null = null;
 
   // Tabs & Previews
   private deviceTabsContainer!: HTMLElement;
@@ -295,6 +312,16 @@ class ToolIsland {
     this.bgPhotoUploadBtn = document.getElementById('bg-photo-upload') as HTMLButtonElement | null;
     this.bgPhotoFileInput = document.getElementById('bg-photo-file-input') as HTMLInputElement | null;
     this.makePhotoRepositionWrap = document.getElementById('make-photo-reposition-wrap');
+
+    // Action toolbar, toast & clipboard
+    this.btnUndoEl = document.getElementById('btn-undo') as HTMLButtonElement | null;
+    this.btnRedoEl = document.getElementById('btn-redo') as HTMLButtonElement | null;
+    this.btnShortcutsEl = document.getElementById('btn-shortcuts') as HTMLButtonElement | null;
+    this.shortcutsModalEl = document.getElementById('shortcuts-modal');
+    this.closeShortcutsModalBtn = document.getElementById('close-shortcuts-modal-btn') as HTMLButtonElement | null;
+    this.toolToastEl = document.getElementById('tool-toast');
+    this.toolToastTextEl = document.getElementById('tool-toast-text');
+    this.copyClipboardBtn = document.getElementById('copy-clipboard-button') as HTMLButtonElement | null;
   }
 
   /**
@@ -524,6 +551,7 @@ class ToolIsland {
     if (this.canvasEl) {
       this.canvasEl.addEventListener('pointerdown', (e) => {
         if (this.phase !== 'READY' || this.mode === 'check') return;
+        this.pushUndo(this.scene);
 
         // In make mode, check if clicked inside any editable text layer
         if (this.mode === 'make') {
@@ -717,6 +745,9 @@ class ToolIsland {
 
     // 3. Zoom Controls (REQ-E3)
     if (this.zoomSlider) {
+      this.zoomSlider.addEventListener('pointerdown', () => {
+        this.pushUndo(this.scene);
+      });
       this.zoomSlider.addEventListener('input', (e) => {
         const val = parseFloat((e.target as HTMLInputElement).value);
         this.setZoom(val);
@@ -827,6 +858,141 @@ class ToolIsland {
       this.exportButton.addEventListener('click', () => this.handleExportAction());
     }
 
+    // 9. Action Toolbar (Undo, Redo, Shortcuts)
+    this.btnUndoEl?.addEventListener('click', () => this.undo());
+    this.btnRedoEl?.addEventListener('click', () => this.redo());
+    this.btnShortcutsEl?.addEventListener('click', () => this.toggleShortcutsModal());
+    this.closeShortcutsModalBtn?.addEventListener('click', () => this.toggleShortcutsModal());
+    this.shortcutsModalEl?.addEventListener('click', (e) => {
+      if (e.target === this.shortcutsModalEl) {
+        this.shortcutsModalEl?.classList.add('hidden');
+      }
+    });
+
+    // 10. Copy Image to Clipboard
+    if (this.copyClipboardBtn) {
+      this.copyClipboardBtn.addEventListener('click', () => this.copyToClipboard());
+    }
+
+    // 11. Canvas Double-click to center & reset zoom
+    if (this.canvasEl) {
+      this.canvasEl.addEventListener('dblclick', () => {
+        if (this.phase !== 'READY' || this.scene.background.type !== 'image' || this.mode === 'check') return;
+        this.pushUndo(this.scene);
+        this.applyChange({
+          background: {
+            ...this.scene.background,
+            offsetX: 0,
+            offsetY: 0,
+            zoom: 1,
+          },
+        });
+        this.showToast('Centered artwork');
+      });
+    }
+
+    // 12. Global Drag & Drop safety (prevent browser navigating away if dropped outside)
+    ['dragover', 'drop'].forEach((eventName) => {
+      window.addEventListener(eventName, (e) => {
+        e.preventDefault();
+      });
+    });
+
+    // 13. Global Clipboard Paste (Cmd+V / Ctrl+V)
+    window.addEventListener('paste', (e: ClipboardEvent) => {
+      const target = e.target as HTMLElement;
+      const isInput = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA');
+      if (isInput) return;
+
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (item.type.startsWith('image/')) {
+          const file = item.getAsFile();
+          if (file) {
+            e.preventDefault();
+            this.handleFileUpload(file);
+            this.showToast('Loaded image from clipboard');
+            break;
+          }
+        }
+      }
+    });
+
+    // 14. Global Keyboard Shortcuts (Viewports 1-4, 0, Undo/Redo, ?, Esc)
+    window.addEventListener('keydown', (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      const isInput = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT');
+
+      if (e.key === 'Escape') {
+        if (this.templatePickerModalEl && !this.templatePickerModalEl.classList.contains('hidden')) {
+          this.templatePickerModalEl.classList.add('hidden');
+        }
+        if (this.shortcutsModalEl && !this.shortcutsModalEl.classList.contains('hidden')) {
+          this.shortcutsModalEl.classList.add('hidden');
+        }
+      }
+
+      if (isInput) return;
+
+      if (e.key === '?' && !e.metaKey && !e.ctrlKey) {
+        e.preventDefault();
+        this.toggleShortcutsModal();
+        return;
+      }
+
+      // Device tab shortcuts 1, 2, 3, 4
+      if (!e.metaKey && !e.ctrlKey && !e.altKey) {
+        if (e.key === '1') {
+          e.preventDefault();
+          this.selectDevice('mobile');
+          this.showToast(`Mobile Safe Area (${SAFE_PX.full.width} × ${SAFE_PX.full.height})`);
+        } else if (e.key === '2') {
+          e.preventDefault();
+          this.selectDevice('desktop');
+          this.showToast(`Desktop Viewport (${Math.round(DEVICES.desktop.w * CANVAS.width)} × ${Math.round(DEVICES.desktop.h * CANVAS.height)})`);
+        } else if (e.key === '3') {
+          e.preventDefault();
+          this.selectDevice('tablet');
+          this.showToast(`Tablet Viewport (${Math.round(DEVICES.tablet.w * CANVAS.width)} × ${Math.round(DEVICES.tablet.h * CANVAS.height)})`);
+        } else if (e.key === '4') {
+          e.preventDefault();
+          this.selectDevice('tv');
+          this.showToast(`TV Full Frame (${CANVAS.width} × ${CANVAS.height})`);
+        } else if (e.key === '0') {
+          if (this.phase === 'READY' && this.scene.background.type === 'image' && this.mode !== 'check') {
+            e.preventDefault();
+            this.pushUndo(this.scene);
+            this.applyChange({
+              background: {
+                ...this.scene.background,
+                offsetX: 0,
+                offsetY: 0,
+                zoom: 1,
+              },
+            });
+            this.showToast('Reset zoom & centered');
+          }
+        }
+      }
+
+      // Undo / Redo
+      if ((e.metaKey || e.ctrlKey) && !e.altKey) {
+        if (e.key === 'z' || e.key === 'Z') {
+          e.preventDefault();
+          if (e.shiftKey) {
+            this.redo();
+          } else {
+            this.undo();
+          }
+        } else if (e.key === 'y' || e.key === 'Y') {
+          e.preventDefault();
+          this.redo();
+        }
+      }
+    });
+
     // Window resize handler for canvas display scale
     window.addEventListener('resize', () => {
       if (this.phase === 'READY') {
@@ -864,14 +1030,7 @@ class ToolIsland {
       }
     });
 
-    // 4. Escape key to close modal
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.templatePickerModalEl && !this.templatePickerModalEl.classList.contains('hidden')) {
-        this.templatePickerModalEl.classList.add('hidden');
-      }
-    });
-
-    // 5. Start blank canvas (REQ-015)
+    // 4. Start blank canvas (REQ-015)
     this.startBlankBtn?.addEventListener('click', () => {
       this.loadBlank();
       this.templatePickerModalEl?.classList.add('hidden');
@@ -1818,12 +1977,14 @@ class ToolIsland {
 
   private adjustZoom(delta: number): void {
     if (this.scene.background.type !== 'image') return;
+    this.pushUndo(this.scene);
     const current = this.scene.background.zoom;
     this.setZoom(current + delta);
   }
 
   private nudge(dx: number, dy: number): void {
     if (this.scene.background.type !== 'image') return;
+    this.pushUndo(this.scene);
     this.applyChange({
       background: {
         ...this.scene.background,
@@ -1835,6 +1996,7 @@ class ToolIsland {
 
   private centerPosition(): void {
     if (this.scene.background.type !== 'image') return;
+    this.pushUndo(this.scene);
     this.applyChange({
       background: {
         ...this.scene.background,
@@ -1842,10 +2004,12 @@ class ToolIsland {
         offsetY: 0,
       },
     });
+    this.showToast('Position centered');
   }
 
   private resetReposition(): void {
     if (this.scene.background.type !== 'image') return;
+    this.pushUndo(this.scene);
     this.applyChange({
       background: {
         ...this.scene.background,
@@ -1856,6 +2020,102 @@ class ToolIsland {
       },
     });
     if (this.extendToggle) this.extendToggle.checked = false;
+    this.showToast('Position & zoom reset');
+  }
+
+  private pushUndo(prevScene: Scene): void {
+    this.undoStack.push(cloneScene(prevScene));
+    if (this.undoStack.length > this.MAX_UNDO) {
+      this.undoStack.shift();
+    }
+    this.redoStack = [];
+    this.updateUndoRedoButtons();
+  }
+
+  private undo(): void {
+    if (this.undoStack.length === 0) return;
+    const prev = this.undoStack.pop();
+    if (!prev) return;
+    this.redoStack.push(cloneScene(this.scene));
+    this.scene = prev;
+    this.updateUndoRedoButtons();
+    this.scheduleFrame();
+    this.validate();
+    this.persist();
+    this.showToast('Undone');
+  }
+
+  private redo(): void {
+    if (this.redoStack.length === 0) return;
+    const next = this.redoStack.pop();
+    if (!next) return;
+    this.undoStack.push(cloneScene(this.scene));
+    this.scene = next;
+    this.updateUndoRedoButtons();
+    this.scheduleFrame();
+    this.validate();
+    this.persist();
+    this.showToast('Redone');
+  }
+
+  private updateUndoRedoButtons(): void {
+    if (this.btnUndoEl) {
+      this.btnUndoEl.disabled = this.undoStack.length === 0;
+    }
+    if (this.btnRedoEl) {
+      this.btnRedoEl.disabled = this.redoStack.length === 0;
+    }
+  }
+
+  private showToast(msg: string, durationMs = 2500): void {
+    if (!this.toolToastEl || !this.toolToastTextEl) return;
+    this.toolToastTextEl.textContent = msg;
+    this.toolToastEl.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+    this.toolToastEl.classList.add('opacity-100', 'translate-y-0');
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+    this.toastTimer = window.setTimeout(() => {
+      this.toolToastEl?.classList.remove('opacity-100', 'translate-y-0');
+      this.toolToastEl?.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+    }, durationMs);
+  }
+
+  private toggleShortcutsModal(): void {
+    if (!this.shortcutsModalEl) return;
+    this.shortcutsModalEl.classList.toggle('hidden');
+  }
+
+  private async copyToClipboard(): Promise<void> {
+    if (this.phase !== 'READY') return;
+    try {
+      this.showToast('Generating clipboard image...');
+      const canvas = renderExport(this.scene, this.images);
+      canvas.toBlob(async (blob) => {
+        if (!blob) {
+          this.showToast('Failed to generate image blob');
+          return;
+        }
+        try {
+          if (navigator.clipboard && typeof navigator.clipboard.write === 'function') {
+            await navigator.clipboard.write([
+              new ClipboardItem({ 'image/png': blob }),
+            ]);
+            this.showToast(`Copied ${CANVAS.width} × ${CANVAS.height} PNG to clipboard!`);
+            trackEvent('export_success', {
+              format: 'png',
+              durationMs: 0,
+            });
+          } else {
+            this.showToast('Clipboard API unavailable; click Download');
+          }
+        } catch (err) {
+          console.warn('Clipboard write error:', err);
+          this.showToast('Clipboard access denied; click Download');
+        }
+      }, 'image/png');
+    } catch (err) {
+      console.error('Clipboard copy error:', err);
+      this.showToast('Failed to copy to clipboard');
+    }
   }
 
   private updateZoomControlsRange(): void {

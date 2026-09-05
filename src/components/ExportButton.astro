@@ -52,6 +52,19 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
       <span id="export-button-text">Download Banner</span>
     </button>
 
+    <!-- Copy Image to Clipboard Button -->
+    <button
+      type="button"
+      id="copy-clipboard-button"
+      class="w-full h-11 min-h-[44px] px-5 rounded-md bg-surface-0 border border-line-200 text-ink-950 text-[13px] font-semibold hover:bg-surface-50 active:bg-surface-100 transition-colors cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent"
+      title="Copy 2560×1440 image directly to clipboard"
+    >
+      <svg class="w-4 h-4 text-ink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+      </svg>
+      <span id="copy-clipboard-text">Copy to Clipboard</span>
+    </button>
+
     <!-- Export Output Specifications & Meta (REQ-026 separate labels) -->
     <div class="p-3 rounded-md bg-surface-50 border border-line-100 space-y-1">
       <div class="flex items-center justify-between text-xs">
