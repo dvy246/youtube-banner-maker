@@ -23,6 +23,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = getCanonicalUrl(path);
+const isToolPage = path.startsWith('/tools');
 ---
 
 <!doctype html>
@@ -30,6 +31,20 @@ const canonicalUrl = getCanonicalUrl(path);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {
+      isToolPage && (
+        <script is:inline>
+          (function () {
+            try {
+              var p = localStorage.getItem('ytbm-palette');
+              if (p && p !== 'cobalt') {
+                document.documentElement.setAttribute('data-palette', p);
+              }
+            } catch (e) {}
+          })();
+        </script>
+      )
+    }
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />

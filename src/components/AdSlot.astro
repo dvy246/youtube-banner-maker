@@ -1,0 +1,38 @@
+---
+interface Props {
+  slotId?: string;
+  format?: 'horizontal' | 'rectangle' | 'leaderboard';
+  class?: string;
+}
+
+const {
+  slotId = 'default',
+  format = 'horizontal',
+  class: className = '',
+} = Astro.props;
+
+const formatStyles = {
+  horizontal: 'min-h-[100px] max-w-4xl mx-auto',
+  rectangle: 'min-h-[250px] max-w-sm mx-auto',
+  leaderboard: 'min-h-[90px] max-w-5xl mx-auto',
+};
+---
+
+<aside
+  class:list={[
+    'w-full my-8 p-4 rounded-xl border border-line-200 bg-surface-50/50 flex flex-col items-center justify-center text-center select-none',
+    formatStyles[format],
+    className,
+  ]}
+  aria-label="Advertisement"
+  data-ad-slot={slotId}
+>
+  <span class="text-[10px] font-mono uppercase tracking-widest text-ink-500 mb-2">
+    Advertisement
+  </span>
+  <div class="w-full flex-1 flex items-center justify-center border border-dashed border-line-200 rounded-lg bg-surface-0/60 p-4">
+    <p class="text-xs text-ink-500 font-mono">
+      Reserved Ad Container · Zero CLS Budget Maintained
+    </p>
+  </div>
+</aside>

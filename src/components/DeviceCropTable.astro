@@ -50,9 +50,9 @@ const rows = [
         rows.map((row) => (
           <tr>
             <th scope="row" class="py-3 px-4 font-medium text-ink-950">{row.device}</th>
-            <td class="py-3 px-4 font-mono font-medium text-ink-950">{row.dims}</td>
-            <td class="py-3 px-4 font-mono text-ink-600">{row.aspect}</td>
-            <td class="py-3 px-4 font-mono text-ink-600">{row.visibleFrac}</td>
+            <td class="py-3 px-4 font-mono font-medium text-ink-950 tabular-nums">{row.dims}</td>
+            <td class="py-3 px-4 font-mono text-ink-600 tabular-nums">{row.aspect}</td>
+            <td class="py-3 px-4 font-mono text-ink-600 tabular-nums">{row.visibleFrac}</td>
             <td class="py-3 px-4 text-ink-600">{row.notes}</td>
           </tr>
         ))

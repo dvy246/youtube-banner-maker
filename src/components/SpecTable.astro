@@ -17,42 +17,42 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
     <tbody class="divide-y divide-line-100 font-normal">
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Recommended Size</th>
-        <td class="py-3 px-4 font-mono font-medium text-ink-950">{CANVAS.width} × {CANVAS.height} px</td>
+        <td class="py-3 px-4 font-mono font-medium text-ink-950 tabular-nums">{CANVAS.width} × {CANVAS.height} px</td>
         <td class="py-3 px-4 text-ink-600">Standard 16:9 canvas displayed completely on TV displays</td>
       </tr>
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Minimum Size</th>
-        <td class="py-3 px-4 font-mono text-ink-800">2048 × 1152 px</td>
+        <td class="py-3 px-4 font-mono text-ink-800 tabular-nums">2048 × 1152 px</td>
         <td class="py-3 px-4 text-ink-600">Lowest upload dimensions accepted by YouTube Studio</td>
       </tr>
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Safe Area (Full Canvas)</th>
-        <td class="py-3 px-4 font-mono font-medium text-accent">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</td>
+        <td class="py-3 px-4 font-mono font-medium text-accent tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</td>
         <td class="py-3 px-4 text-ink-600">Ensures no cutoff on any smartphone or mobile viewport</td>
       </tr>
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Safe Area (Min Canvas)</th>
-        <td class="py-3 px-4 font-mono text-ink-800">{SAFE_PX.min.width} × {SAFE_PX.min.height} px</td>
+        <td class="py-3 px-4 font-mono text-ink-800 tabular-nums">{SAFE_PX.min.width} × {SAFE_PX.min.height} px</td>
         <td class="py-3 px-4 text-ink-600">Proportional safe area at the 2048 × 1152 minimum upload size</td>
       </tr>
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Safe Area Fraction</th>
-        <td class="py-3 px-4 font-mono text-ink-800">{(SAFE.w * 100).toFixed(1)}% × {(SAFE.h * 100).toFixed(1)}%</td>
+        <td class="py-3 px-4 font-mono text-ink-800 tabular-nums">{(SAFE.w * 100).toFixed(1)}% × {(SAFE.h * 100).toFixed(1)}%</td>
         <td class="py-3 px-4 text-ink-600">Unified center frame proportion across all canvas resolutions</td>
       </tr>
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Maximum File Size</th>
-        <td class="py-3 px-4 font-mono text-ink-800">{maxUploadMb} MB</td>
+        <td class="py-3 px-4 font-mono text-ink-800 tabular-nums">{maxUploadMb} MB</td>
         <td class="py-3 px-4 text-ink-600">Hard limit enforced by YouTube Studio upload validation</td>
       </tr>
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Color Space</th>
-        <td class="py-3 px-4 font-mono text-ink-800">sRGB</td>
+        <td class="py-3 px-4 font-mono text-ink-800 tabular-nums">sRGB</td>
         <td class="py-3 px-4 text-ink-600">Standard web color profile to prevent post-upload hue shifting</td>
       </tr>
       <tr>
         <th scope="row" class="py-3 px-4 font-medium text-ink-950">Accepted Formats</th>
-        <td class="py-3 px-4 font-mono text-ink-800">PNG, JPG, WebP, GIF</td>
+        <td class="py-3 px-4 font-mono text-ink-800 tabular-nums">PNG, JPG, WebP, GIF</td>
         <td class="py-3 px-4 text-ink-600">Static image uploads only; animated GIFs are not supported</td>
       </tr>
     </tbody>

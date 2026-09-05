@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import SpecTable from '../../components/SpecTable.astro';
 import DeviceCropTable from '../../components/DeviceCropTable.astro';
-import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema } from '../../lib/seo';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema, getHowToSchema } from '../../lib/seo';
 import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES, MAX_UPLOAD_BYTES } from '../../lib/spec';
 
 const path = '/guides/youtube-banner-size';
@@ -17,6 +17,14 @@ const faqs = [
   {
     question: 'What is the correct YouTube banner size?',
     answer: `The official recommended YouTube banner size is ${CANVAS.width} × ${CANVAS.height} pixels with a 16:9 aspect ratio. The minimum supported size is 2048 × 1152 pixels, and the maximum file upload size is ${maxUploadMb} MB.`,
+  },
+  {
+    question: 'Can I upload a 1024x576 YouTube banner?',
+    answer: 'No. While 1024×576 maintains the identical 16:9 aspect ratio, YouTube Studio strictly enforces a minimum upload dimension of 2048×1152 pixels. Uploading a 1024×576 image will trigger an immediate error: "Image is too small". Use our free YouTube Banner Resizer to upscale and fit your artwork to the verified 2560×1440 standard.',
+  },
+  {
+    question: 'What is the 2048 x 1152 YouTube banner requirement?',
+    answer: '2048 × 1152 pixels is the absolute minimum upload size accepted by YouTube Studio. While YouTube allows this minimum, 2560 × 1440 pixels is strongly recommended to preserve sharpness across 4K displays and smart TVs without upscaling blur.',
   },
   {
     question: 'What is the mobile safe area for YouTube banners?',
@@ -55,6 +63,33 @@ const jsonLd = [
     path,
     datePublished: '2026-01-15',
     dateModified: '2026-03-01',
+  }),
+  getHowToSchema({
+    name: 'How to Make a YouTube Banner with Correct Dimensions',
+    description: 'Step-by-step guide to creating, resizing, and positioning a YouTube channel banner that displays correctly across mobile, desktop, tablet, and TV screens.',
+    path,
+    steps: [
+      {
+        name: `Set Canvas Dimensions to ${CANVAS.width} × ${CANVAS.height} px`,
+        text: `Create a 16:9 aspect ratio canvas at ${CANVAS.width} × ${CANVAS.height} pixels matching YouTube's maximum television display specification.`,
+      },
+      {
+        name: `Position Critical Branding Inside the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px Safe Area`,
+        text: `Keep channel names, logos, social handles, and faces centered within the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe zone to maintain visibility across all smartphone screens.`,
+      },
+      {
+        name: 'Extend Background Artwork to Full Bleed',
+        text: 'Fill the outer TV and desktop areas with background graphics or ambient bleed so widescreen monitors display complete artwork without letterboxing.',
+      },
+      {
+        name: 'Export Under 6 MB in sRGB Color Profile',
+        text: 'Export as PNG or high-quality JPEG in standard sRGB, keeping file size strictly below YouTube\'s 6 MB upload cap.',
+      },
+      {
+        name: 'Upload to YouTube Studio',
+        text: 'Go to YouTube Studio > Customization > Branding, upload the banner file, and inspect the per-device preview before publishing.',
+      },
+    ],
   }),
   getBreadcrumbSchema([
     { name: 'Home', url: '/' },
@@ -309,6 +344,19 @@ const jsonLd = [
               Read our dedicated Safe Area Guide with worked proofs and visual diagrams →
             </a>
           </div>
+        </div>
+
+        <!-- 1024x576 vs 2048x1152 Analysis -->
+        <div class="p-5 rounded-xl border border-line-200 bg-surface-50/50 space-y-3 mt-4">
+          <h3 class="text-sm font-semibold text-ink-950">
+            Why 1024×576 Banners Get Rejected (The 16:9 Aspect Misconception)
+          </h3>
+          <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+            A common search term among new creators is <strong>"1024x576 youtube banner"</strong>. Mathematically, 1024 ÷ 576 equals 1.777&hellip; (an exact 16:9 widescreen ratio). However, attempting to upload a 1024×576 pixel banner directly to YouTube Studio will fail immediately with the error: <em>"Image is too small. It must be at least 2048 x 1152 pixels."</em>
+          </p>
+          <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+            YouTube enforces <strong>2048 × 1152 px as its absolute floor</strong> so that banners have sufficient pixel data when rendered across larger tablet and laptop viewports. If you have artwork created at 1024×576 px, do not attempt to force-upload it. Open our free <a href="/tools/youtube-banner-resizer" class="text-accent underline font-semibold">YouTube Banner Resizer</a> to upscale and mathematically center your focal points onto the full 2560 × 1440 canvas before uploading.
+          </p>
         </div>
       </section>
 

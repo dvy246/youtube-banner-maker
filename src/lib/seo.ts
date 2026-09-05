@@ -241,8 +241,8 @@ export function getTechArticleSchema(options: {
 }
 
 /**
- * SoftwareApplication schema for tool routes
- * Decision D-4: SoftwareApplication only. NEVER Product. NEVER AggregateRating.
+ * SoftwareApplication & WebApplication schema for tool routes
+ * Multi-typed to denote client-side browser utilities with 0 server dependency.
  */
 export function getSoftwareAppSchema(name: string, description: string, path: string) {
   return {
@@ -259,6 +259,30 @@ export function getSoftwareAppSchema(name: string, description: string, path: st
       price: '0',
       priceCurrency: 'USD',
     },
+  };
+}
+
+/**
+ * HowTo schema for step-by-step sizing, creation, and safe area guides
+ */
+export function getHowToSchema(options: {
+  name: string;
+  description: string;
+  path: string;
+  steps: { name: string; text: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: options.name,
+    description: options.description,
+    url: `${SITE_URL}${options.path}`,
+    step: options.steps.map((s, idx) => ({
+      '@type': 'HowToStep',
+      position: idx + 1,
+      name: s.name,
+      text: s.text,
+    })),
   };
 }
 

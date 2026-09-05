@@ -1,0 +1,219 @@
+---
+export interface PaletteOption {
+  id: string;
+  name: string;
+  accentColor: string;
+  description: string;
+  isDark?: boolean;
+}
+
+const palettes: PaletteOption[] = [
+  { id: 'cobalt', name: 'Cobalt', accentColor: '#2340B8', description: 'Classic Deep Blue' },
+  { id: 'emerald', name: 'Emerald', accentColor: '#059669', description: 'Studio Green' },
+  { id: 'violet', name: 'Violet', accentColor: '#7C3AED', description: 'Electric Violet' },
+  { id: 'crimson', name: 'Crimson', accentColor: '#E11D48', description: 'YouTube Ruby' },
+  { id: 'amber', name: 'Amber', accentColor: '#D97706', description: 'Warm Bronze' },
+  { id: 'cyan', name: 'Cyan', accentColor: '#0891B2', description: 'Cyber Cyan' },
+  { id: 'obsidian', name: 'Obsidian', accentColor: '#3B82F6', description: 'Dark Mode', isDark: true },
+  { id: 'sand', name: 'Sand', accentColor: '#C2410C', description: 'Editorial Paper' },
+];
+---
+
+<div class="relative inline-block text-left" id="palette-picker-container">
+  <button
+    type="button"
+    id="palette-btn"
+    class="min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 hover:border-ink-500 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center gap-2 text-xs font-medium transition-colors focus-visible:outline-accent"
+    aria-label="Select color palette"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <svg class="w-3.5 h-3.5 text-ink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4 5 5 0 014-4h4a4 4 0 014 4 5 5 0 01-4 4H7z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 019 9 4.5 4.5 0 01-4.5 4.5h-1a2.5 2.5 0 00-2.5 2.5 1 1 0 01-2 0 4.5 4.5 0 014.5-4.5h1A2.5 2.5 0 0019 12a7 7 0 10-14 0c0 1.05.21 2.05.6 2.96" />
+    </svg>
+    <span id="palette-active-dot" class="w-2.5 h-2.5 rounded-full bg-accent border border-black/10 shrink-0 transition-colors"></span>
+    <span class="hidden sm:inline text-ink-800" id="palette-label">Palette</span>
+    <svg class="w-3 h-3 text-ink-400 transition-transform duration-150" id="palette-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div
+    id="palette-menu"
+    class="hidden absolute right-0 mt-1.5 w-56 rounded-lg bg-surface-0 border border-line-200 shadow-lg p-1.5 z-50 focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="palette-btn"
+    tabindex="-1"
+  >
+    <div class="px-2.5 py-1.5 border-b border-line-100 mb-1">
+      <p class="text-[11px] font-semibold tracking-wider uppercase text-ink-400">Color Palette</p>
+    </div>
+    <div class="space-y-0.5" role="none">
+      {
+        palettes.map((p) => (
+          <button
+            type="button"
+            class="palette-item w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium text-ink-800 hover:bg-surface-50 transition-colors text-left group"
+            role="menuitem"
+            data-palette-id={p.id}
+            data-palette-color={p.accentColor}
+            data-palette-name={p.name}
+          >
+            <div class="flex items-center gap-2.5">
+              <span
+                class="w-3.5 h-3.5 rounded-full shrink-0 border border-black/15 shadow-2xs"
+                style={`background-color: ${p.accentColor}`}
+              />
+              <div>
+                <div class="font-medium text-ink-950 group-hover:text-ink-950 flex items-center gap-1">
+                  <span>{p.name}</span>
+                  {p.isDark && <span class="text-[9px] px-1 py-0.2 rounded bg-ink-950 text-surface-0">Dark</span>}
+                </div>
+                <div class="text-[10px] text-ink-500">{p.description}</div>
+              </div>
+            </div>
+            <svg
+              class="palette-check w-3.5 h-3.5 text-accent opacity-0 transition-opacity"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  function initPalettePicker() {
+    var container = document.getElementById('palette-picker-container');
+    var btn = document.getElementById('palette-btn');
+    var menu = document.getElementById('palette-menu');
+    var chevron = document.getElementById('palette-chevron');
+    var activeDot = document.getElementById('palette-active-dot');
+    var label = document.getElementById('palette-label');
+    if (!container || !btn || !menu) return;
+
+    var items = menu.querySelectorAll('.palette-item');
+
+    function getCurrentPalette() {
+      return document.documentElement.getAttribute('data-palette') || 'cobalt';
+    }
+
+    function updateUI(paletteId) {
+      items.forEach(function (item) {
+        var id = item.getAttribute('data-palette-id');
+        var check = item.querySelector('.palette-check');
+        var isSelected = id === paletteId;
+        if (check) {
+          check.classList.toggle('opacity-100', isSelected);
+          check.classList.toggle('opacity-0', !isSelected);
+        }
+        item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        if (isSelected) {
+          var color = item.getAttribute('data-palette-color');
+          var name = item.getAttribute('data-palette-name');
+          if (activeDot && color) activeDot.style.backgroundColor = color;
+          if (label && name) label.textContent = name;
+        }
+      });
+    }
+
+    function applyPalette(paletteId) {
+      if (paletteId === 'cobalt') {
+        document.documentElement.removeAttribute('data-palette');
+      } else {
+        document.documentElement.setAttribute('data-palette', paletteId);
+      }
+      try {
+        localStorage.setItem('ytbm-palette', paletteId);
+      } catch (e) {}
+
+      updateUI(paletteId);
+      window.dispatchEvent(new CustomEvent('ytbm-palette-change', { detail: { palette: paletteId } }));
+    }
+
+    function openMenu() {
+      menu.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      if (chevron) chevron.classList.add('rotate-180');
+      var current = getCurrentPalette();
+      var currentItem = Array.from(items).find(function (it) {
+        return it.getAttribute('data-palette-id') === current;
+      });
+      if (currentItem) currentItem.focus();
+    }
+
+    function closeMenu() {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      if (chevron) chevron.classList.remove('rotate-180');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var id = item.getAttribute('data-palette-id');
+        if (id) applyPalette(id);
+        closeMenu();
+        btn.focus();
+      });
+    });
+
+    // Keyboard navigation
+    container.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+        btn.focus();
+      } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        if (menu.classList.contains('hidden')) {
+          openMenu();
+          return;
+        }
+        e.preventDefault();
+        var itemsArr = Array.from(items);
+        var currentIndex = itemsArr.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') {
+          var next = (currentIndex + 1) % itemsArr.length;
+          itemsArr[next].focus();
+        } else {
+          var prev = (currentIndex - 1 + itemsArr.length) % itemsArr.length;
+          itemsArr[prev].focus();
+        }
+      }
+    });
+
+    // Close on click outside
+    document.addEventListener('click', function (e) {
+      if (!container.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Initial UI state
+    updateUI(getCurrentPalette());
+  }
+
+  // Run on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPalettePicker);
+  } else {
+    initPalettePicker();
+  }
+</script>

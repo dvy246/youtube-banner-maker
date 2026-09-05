@@ -97,13 +97,30 @@ ${xmlEntries.join('\n')}
 </urlset>
 `;
 
+const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${SITE_URL}/sitemap.xml</loc>
+    <lastmod>${TODAY}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${SITE_URL}/sitemap-0.xml</loc>
+    <lastmod>${TODAY}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+
 const publicPath = path.resolve('public/sitemap.xml');
 fs.writeFileSync(publicPath, sitemapXml, 'utf-8');
-console.log(`Generated public/sitemap.xml with ${filteredRoutes.length} indexable routes.`);
+fs.writeFileSync(path.resolve('public/sitemap-0.xml'), sitemapXml, 'utf-8');
+fs.writeFileSync(path.resolve('public/sitemap-index.xml'), sitemapIndexXml, 'utf-8');
+console.log(`Generated public/sitemap.xml, sitemap-0.xml, and sitemap-index.xml with ${filteredRoutes.length} indexable routes.`);
 
-// Also write to dist/sitemap.xml if dist exists
+// Also write to dist/ if dist exists
 const distDir = path.resolve('dist');
 if (fs.existsSync(distDir)) {
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf-8');
-  console.log(`Synced to dist/sitemap.xml.`);
+  fs.writeFileSync(path.join(distDir, 'sitemap-0.xml'), sitemapXml, 'utf-8');
+  fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), sitemapIndexXml, 'utf-8');
+  console.log(`Synced sitemaps to dist/.`);
 }

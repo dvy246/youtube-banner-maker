@@ -102,9 +102,9 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         <!-- Door 1: Fix (The Wedge - visually first and first in DOM per PLAN.md §2) -->
-        <div class="relative p-6 sm:p-8 rounded-xl border-2 border-ink-950 bg-surface-0 flex flex-col justify-between space-y-6 shadow-xs">
+        <div class="relative p-6 sm:p-8 rounded-xl border border-ink-950 bg-surface-0 flex flex-col justify-between space-y-6">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-ink-950 text-surface-0">
@@ -113,24 +113,23 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               <span class="text-xs font-mono text-ink-500">The Wedge</span>
             </div>
             <h3 class="text-xl font-bold tracking-tight text-ink-950">
-              Banner Resizer
+              Banner Resizer & Refitter
             </h3>
             <p class="text-sm font-medium text-ink-800 leading-relaxed">
-              Resize, reposition, and preview your existing artwork across all 4 devices.
+              Upload any existing image and fit it to YouTube's exact dimensions with live per-device preview.
             </p>
             <ul class="space-y-2 text-xs text-ink-600 list-disc pl-4">
-              <li>Aspect-preserving cover-fit scaling to {CANVAS.width}×{CANVAS.height} px</li>
-              <li>Pan and nudge focal subjects without transparent margins</li>
-              <li>Interactive preview across smart TVs, desktop, tablet, and mobile</li>
+              <li>Reposition focal subjects safely inside the mobile safe area</li>
+              <li>Toggle instant YouTube CDN re-encode compression preview</li>
+              <li>Inspect mobile, desktop, tablet, and TV crops in real time</li>
             </ul>
           </div>
           <div>
             <a
               href="/tools/youtube-banner-resizer"
-              class="w-full h-10 px-5 rounded-md bg-ink-950 text-surface-0 font-medium text-xs hover:bg-ink-800 transition-colors inline-flex items-center justify-center gap-2 min-h-[44px]"
+              class="w-full h-10 px-5 rounded-md bg-ink-950 text-surface-0 font-medium text-xs hover:bg-ink-900 transition-colors inline-flex items-center justify-center min-h-[44px]"
             >
-              <span>Launch Resizer (Fix Door)</span>
-              <span aria-hidden="true">→</span>
+              <span>Fit Existing Artwork (Fix Door)</span>
             </a>
           </div>
         </div>
@@ -139,7 +138,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
         <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:border-line-200/80 transition-colors flex flex-col justify-between space-y-6">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-surface-50 text-ink-700 border border-line-200">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-surface-50 text-ink-600 border border-line-200">
                 Door 02 · Check
               </span>
               <span class="text-xs font-mono text-ink-500">Diagnostic</span>
@@ -170,7 +169,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
         <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:border-line-200/80 transition-colors flex flex-col justify-between space-y-6">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-surface-50 text-ink-700 border border-line-200">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wider bg-surface-50 text-ink-600 border border-line-200">
                 Door 03 · Create
               </span>
               <span class="text-xs font-mono text-ink-500">Generator</span>
