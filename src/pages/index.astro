@@ -658,27 +658,69 @@ const featuredTemplates = [
          Block 5.5: Deep Dive: YouTube Banner Size & Channel Art Engineering
          Comprehensive 600+ word on-page SEO guide
     ═══════════════════════════════════════════════════════════ -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200">
-      <div class="space-y-4 max-w-3xl mb-12">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-          Comprehensive Sizing &amp; Design Manual
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-line-200">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+        <!-- Pinned Left Rail: Section Title & Chapter Navigation Roadmap -->
+        <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+              Comprehensive Sizing &amp; Design Manual
+            </div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-ink-950 leading-[1.15]">
+              The Definitive Guide to YouTube Banner Size, Safe Areas &amp; Channel Art
+            </h2>
+            <p class="text-sm sm:text-base text-ink-600 leading-relaxed font-normal">
+              Everything you need to know about official dimensions, multi-device viewport cropping, aspect ratio math, and crafting high-converting channel banners that never get cut off.
+            </p>
+          </div>
+
+          <!-- Interactive Chapter Table of Contents / Index -->
+          <div class="hidden lg:block p-4 rounded-xl border border-line-200 bg-surface-50/70 space-y-3 shadow-2xs">
+            <p class="text-[11px] font-mono font-semibold uppercase tracking-wider text-ink-500">
+              Chapter Index (5 Sections)
+            </p>
+            <div class="space-y-2 text-xs font-medium">
+              <a href="#guide-chapter-1" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0 border border-line-200/80 shadow-2xs text-ink-950 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">1</span>
+                <span>Ch 01 · Dimensions &amp; Upload Limits</span>
+              </a>
+              <a href="#guide-chapter-2" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">2</span>
+                <span>Ch 02 · The Mobile Safe Area</span>
+              </a>
+              <a href="#guide-chapter-3" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">3</span>
+                <span>Ch 03 · Ideas, Aesthetics &amp; Backgrounds</span>
+              </a>
+              <a href="#guide-chapter-4" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">4</span>
+                <span>Ch 04 · Zero-Upload Privacy Engine</span>
+              </a>
+              <a href="#guide-chapter-5" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">5</span>
+                <span>Ch 05 · YouTube Studio Clarifications</span>
+              </a>
+            </div>
+          </div>
         </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
-          The Definitive Guide to YouTube Banner Size, Safe Areas &amp; Channel Art
-        </h2>
-        <p class="text-base sm:text-lg text-ink-600 leading-relaxed font-normal">
-          Everything you need to know about official dimensions, multi-device viewport cropping, aspect ratio math, and crafting high-converting channel banners that never get cut off.
-        </p>
-      </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <!-- Right Rail: Stacking Locked Chapter Cards -->
+        <div class="lg:col-span-8 space-y-8 relative">
 
-        <!-- Column 1: Core Sizing & Safe Area Diagnostics -->
-        <div class="space-y-8">
-          <!-- Article Card 1 -->
-          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
-            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+          <!-- Chapter 01 (Sticky Locked Card 1) -->
+          <article id="guide-chapter-1" class="sticky top-20 sm:top-24 z-10 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md space-y-4 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+              <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0">
+                Chapter 01 · Dimensions &amp; Specs
+              </span>
+              <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-accent"></span>
+                {CANVAS.width} × {CANVAS.height} px
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
               What Size Is a YouTube Banner? Dimensions &amp; Upload Specifications
             </h3>
             <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
@@ -717,9 +759,17 @@ const featuredTemplates = [
             </div>
           </article>
 
-          <!-- Article Card 2 -->
-          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
-            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+          <!-- Chapter 02 (Sticky Locked Card 2) -->
+          <article id="guide-chapter-2" class="sticky top-24 sm:top-28 z-20 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md space-y-4 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+              <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                Chapter 02 · Safe Area
+              </span>
+              <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                {SAFE_PX.full.width} × {SAFE_PX.full.height} px
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
               The Mobile Safe Area: Why Your YouTube Banner Gets Cut Off
             </h3>
             <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
@@ -734,13 +784,18 @@ const featuredTemplates = [
               </p>
             </div>
           </article>
-        </div>
 
-        <!-- Column 2: Design Aesthetics & Channel Art Creator Workflows -->
-        <div class="space-y-8">
-          <!-- Article Card 3 -->
-          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
-            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+          <!-- Chapter 03 (Sticky Locked Card 3) -->
+          <article id="guide-chapter-3" class="sticky top-28 sm:top-32 z-30 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md space-y-4 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+              <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                Chapter 03 · Design &amp; Aesthetics
+              </span>
+              <span class="text-xs font-mono text-ink-500">
+                Visual Hierarchy
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
               How to Make a YouTube Banner: Ideas, Aesthetics &amp; Backgrounds
             </h3>
             <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
@@ -772,9 +827,17 @@ const featuredTemplates = [
             </div>
           </article>
 
-          <!-- Article Card 4 -->
-          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
-            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+          <!-- Chapter 04 (Sticky Locked Card 4) -->
+          <article id="guide-chapter-4" class="sticky top-32 sm:top-36 z-40 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md space-y-4 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+              <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                Chapter 04 · Architecture
+              </span>
+              <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                100% Client-Side
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
               Client-Side YouTube Banner Maker: Zero Server Uploads &amp; Complete Privacy
             </h3>
             <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
@@ -787,9 +850,17 @@ const featuredTemplates = [
             </div>
           </article>
 
-          <!-- Article Card 5 -->
-          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
-            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+          <!-- Chapter 05 (Sticky Locked Card 5) -->
+          <article id="guide-chapter-5" class="sticky top-36 sm:top-40 z-50 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md space-y-4 transition-all duration-300">
+            <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+              <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                Chapter 05 · YouTube Studio
+              </span>
+              <span class="text-xs font-mono text-ink-500">
+                Publishing Guide
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
               Channel Branding Clarifications &amp; Common Queries
             </h3>
             <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
