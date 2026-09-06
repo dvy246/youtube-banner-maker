@@ -1,0 +1,79 @@
+{
+  "id": "white-minimal",
+  "niche": "tech",
+  "name": "White Studio",
+  "description": "Ultra-clean high-key white studio presentation engineered for hardware reviews and coding channels.",
+  "preview": "/previews/white-minimal.svg",
+  "designSystem": {
+    "palette": {
+      "primary": "#0A0D14",
+      "secondary": "#4B5563",
+      "surface": "#FFFFFF",
+      "accent": "#2340B8"
+    },
+    "typography": {
+      "titleFont": "sora-700",
+      "taglineFont": "inter-500"
+    }
+  },
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#FFFFFF",
+        "#F9FAFB",
+        "#F3F4F6"
+      ]
+    },
+    "layers": [
+      {
+        "id": "tech-accent-bar",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.47,
+        "y": 0.41,
+        "w": 0.06,
+        "h": 0.005,
+        "color": "#2340B8",
+        "opacity": 1
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "STUDIO TECH",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#0A0D14",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "HARDWARE BENCHMARKS & WORKFLOW ENGINEERING",
+        "font": "inter-500",
+        "size": 16,
+        "color": "#4B5563",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "tech-accent-bar"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,79 @@
+{
+  "id": "fitness-boxing",
+  "niche": "fitness",
+  "name": "Championship Ring",
+  "description": "Championship gold and matte black velvet for boxing coaches, Muay Thai, and combat sports.",
+  "preview": "/previews/fitness-boxing.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#0A0A0A",
+        "#1C1C1C",
+        "#0A0A0A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "rope-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.4,
+        "w": 0.36,
+        "h": 0.003,
+        "color": "#EAB308",
+        "opacity": 0.8
+      },
+      {
+        "id": "rope-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.58,
+        "w": 0.36,
+        "h": 0.003,
+        "color": "#EAB308",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "FIGHT LAB",
+        "font": "sora-700",
+        "size": 54,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "BOXING FOOTWORK · COMBAT CONDITIONING · SPARRING",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#FDE047",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "rope-top",
+    "rope-bot"
+  ],
+  "safeAreaValidated": true
+}

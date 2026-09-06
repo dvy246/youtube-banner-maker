@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  
+      <defs>
+        <linearGradient id="bg-vlog-analog" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="undefined" />
+          <stop offset="100%" stop-color="undefined" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg-vlog-analog)" />
+    
+  <!-- Safe area indicator border (subtle) -->
+  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
+  <rect x="211.2" y="140.4" width="217.6" height="1.1" fill="#F43F5E" opacity="0.7" />
+<rect x="211.2" y="212.4" width="217.6" height="1.1" fill="#F43F5E" opacity="0.7" />
+<text x="50%" y="47.0%" text-anchor="middle" dominant-baseline="middle" fill="#FFF1F2" font-family="Switzer, sans-serif" font-size="32" font-weight="700">ANALOG MEMORIES</text>
+<text x="50%" y="55.0%" text-anchor="middle" dominant-baseline="middle" fill="#FECDD3" font-family="Switzer, sans-serif" font-size="15" font-weight="500">Weekly 35mm Photo Diaried &amp; Slow Travel Reflections</text>
+
+</svg>

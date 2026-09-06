@@ -5,8 +5,10 @@ import Footer from '../components/Footer.astro';
 import SpecTable from '../components/SpecTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import HeroCropSimulator from '../components/HeroCropSimulator.astro';
+import TemplateCard from '../components/TemplateCard.astro';
 import { STATIC_PAGES_SEO, getWebSiteSchema, getOrganizationSchema } from '../lib/seo';
 import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES } from '../lib/spec';
+import { getTemplate, type TemplateManifest } from '../lib/template';
 
 const path = '/';
 const seo = STATIC_PAGES_SEO[path];
@@ -23,6 +25,15 @@ const tabletX = Math.round(DEVICES.tablet.x * CANVAS.width);
 const mobileX = Math.round(SAFE.x * CANVAS.width);
 const mobileY = Math.round(SAFE.y * CANVAS.height);
 const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
+
+const featuredTemplates = [
+  getTemplate('gaming-neon'),
+  getTemplate('tech-hardware'),
+  getTemplate('podcast-noir'),
+  getTemplate('vlog-cinema'),
+  getTemplate('music-synthwave'),
+  getTemplate('life-botanical'),
+].filter((t): t is TemplateManifest => t !== undefined);
 ---
 
 <BaseLayout
@@ -52,10 +63,8 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           </div>
 
           <div class="space-y-4">
-            <!-- Regression-test string preserved in sr-only, short punchy headline visible -->
             <h1 class="text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-[-0.035em] text-ink-950 leading-[1.04]">
-              <span class="sr-only">Free YouTube Banner Maker That Gets Every Device Crop Right</span>
-              YouTube banners that fit <span class="text-accent underline decoration-accent/30 underline-offset-8">every screen</span>
+              Free YouTube Banner Maker That Fits <span class="text-accent underline decoration-accent/30 underline-offset-8">Every Screen</span>
             </h1>
             <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-[44ch] font-normal">
               Create or resize your banner and preview exactly how it will appear on mobile, desktop, tablet, and TV. Everything runs in your browser.
@@ -146,16 +155,16 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
       <!-- Asymmetric grid: primary door (Fix) has prominent visual weight -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
 
-        <!-- Door 01: Fix — primary, larger visual weight -->
-        <div class="relative rounded-xl border-2 border-ink-950 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-raised hover:shadow-overlay transition-all">
+        <!-- Door 01: Fix - primary, larger visual weight -->
+        <div class="group relative rounded-2xl border-2 border-ink-950 dark:border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-raised transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-accent cursor-pointer active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
           <div class="space-y-3">
             <div class="flex items-start justify-between gap-2">
-              <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0">
+              <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0 group-hover:bg-accent transition-colors">
                 Door 01 · Fix
               </span>
               <span class="text-[10px] font-mono text-ink-500 pt-0.5">Most used</span>
             </div>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug group-hover:text-accent transition-colors">
               Banner Resizer<br class="hidden sm:block" />&amp; Refitter
             </h3>
             <p class="text-sm text-ink-600 leading-relaxed">
@@ -178,14 +187,15 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           </div>
           <a
             href="/tools/youtube-banner-resizer"
-            class="w-full h-10 px-5 rounded-md bg-ink-950 text-surface-0 font-semibold text-xs hover:bg-ink-800 transition-colors inline-flex items-center justify-center min-h-[44px]"
+            class="w-full h-11 px-5 rounded-lg bg-ink-950 text-surface-0 font-semibold text-xs group-hover:bg-accent transition-colors inline-flex items-center justify-center gap-2 min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
           >
-            Fit Existing Artwork (Fix Door)
+            <span>Open Banner Resizer</span>
+            <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
           </a>
         </div>
 
         <!-- Door 02: Check -->
-        <div class="rounded-xl border border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 hover:shadow-raised transition-all">
+        <div class="group relative rounded-2xl border border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-2xs transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-raised hover:border-ink-400/40 cursor-pointer active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
           <div class="space-y-3">
             <div class="flex items-start justify-between gap-2">
               <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-600 border border-line-200">
@@ -193,7 +203,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               </span>
               <span class="text-[10px] font-mono text-ink-500 pt-0.5">Diagnostic</span>
             </div>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug group-hover:text-accent transition-colors">
               Safe Area Checker
             </h3>
             <p class="text-sm text-ink-600 leading-relaxed">
@@ -216,14 +226,15 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           </div>
           <a
             href="/tools/youtube-banner-checker"
-            class="w-full h-10 px-5 rounded-md bg-surface-0 text-ink-950 border border-line-200 font-semibold text-xs hover:bg-surface-50 transition-colors inline-flex items-center justify-center min-h-[44px]"
+            class="w-full h-11 px-5 rounded-lg bg-surface-0 text-ink-950 border border-line-200 font-semibold text-xs group-hover:bg-surface-100 group-hover:border-ink-400/40 transition-colors inline-flex items-center justify-center gap-2 min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
           >
-            Test Safe Area (Check Door)
+            <span>Launch Safe Area Checker</span>
+            <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
           </a>
         </div>
 
         <!-- Door 03: Create -->
-        <div class="rounded-xl border border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 hover:shadow-raised transition-all">
+        <div class="group relative rounded-2xl border border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-2xs transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-raised hover:border-ink-400/40 cursor-pointer active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
           <div class="space-y-3">
             <div class="flex items-start justify-between gap-2">
               <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-600 border border-line-200">
@@ -231,7 +242,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               </span>
               <span class="text-[10px] font-mono text-ink-500 pt-0.5">Generator</span>
             </div>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug group-hover:text-accent transition-colors">
               Banner Generator
             </h3>
             <p class="text-sm text-ink-600 leading-relaxed">
@@ -255,18 +266,52 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           <div class="space-y-2">
             <a
               href="/tools/youtube-banner-maker"
-              class="w-full h-10 px-5 rounded-md bg-surface-0 text-ink-950 border border-line-200 font-semibold text-xs hover:bg-surface-50 transition-colors inline-flex items-center justify-center min-h-[44px]"
+              class="w-full h-11 px-5 rounded-lg bg-surface-0 text-ink-950 border border-line-200 font-semibold text-xs group-hover:bg-surface-100 group-hover:border-ink-400/40 transition-colors inline-flex items-center justify-center gap-2 min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
             >
-              Design Banner (Create Door)
+              <span>Design New Banner</span>
+              <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
             </a>
-            <div class="text-center">
-              <a href="/templates" class="text-[11px] text-ink-500 hover:text-ink-950 underline underline-offset-2 transition-colors">
-                Or explore curated template gallery →
+            <div class="text-center relative z-10">
+              <a href="/templates" class="text-[11px] text-ink-500 hover:text-accent underline underline-offset-2 transition-colors">
+                Or explore curated template gallery &rarr;
               </a>
             </div>
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 2.5: Curated Channel Art Presets (Instant Creation)
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Zero-Cutoff Presets
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+            Start From a Verified Channel Art Preset
+          </h2>
+          <p class="text-base text-ink-600 leading-relaxed">
+            Every template is mathematically bounded to the centered mobile safe zone. Choose a design, customize your title and branding in seconds, and export at full 2560 × 1440 fidelity.
+          </p>
+        </div>
+        <a
+          href="/templates"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-0 border border-line-200 text-ink-950 font-semibold text-sm hover:bg-surface-50 transition-colors focus-visible:outline-accent shadow-2xs shrink-0 self-start sm:self-auto min-h-[44px]"
+        >
+          <span>Explore All 100+ Free Presets</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredTemplates.map((template) => (
+          <TemplateCard template={template} loading="lazy" />
+        ))}
       </div>
     </section>
 
@@ -327,7 +372,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               stroke-dasharray="12 8"
             />
 
-            <!-- Desktop Viewport Tag (Placed ABOVE the desktop ribbon on the left — zero collision) -->
+            <!-- Desktop Viewport Tag (Placed ABOVE the desktop ribbon on the left - zero collision) -->
             <g transform={`translate(60, ${desktopY - 88})`}>
               <rect width="520" height="72" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" />
               <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
@@ -351,7 +396,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               stroke-dasharray="8 6"
             />
 
-            <!-- Tablet Viewport Tag (Placed ABOVE the desktop ribbon on the right — zero collision) -->
+            <!-- Tablet Viewport Tag (Placed ABOVE the desktop ribbon on the right - zero collision) -->
             <g transform={`translate(${CANVAS.width - 580}, ${desktopY - 88})`}>
               <rect width="520" height="72" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" />
               <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
@@ -441,30 +486,30 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
                 font-weight="600"
                 fill="#475569"
               >
-                100% visible on every device without exception · Keep text, logos &amp; faces here
+                100% visible across all devices - Keep text, logos &amp; faces here
               </text>
             </g>
           </svg>
         </div>
 
-        <!-- 4-col legend -->
+        <!-- 4-col legend with tactile hover cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-1">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-ink-400/40 hover:bg-surface-0 hover:shadow-xs motion-reduce:transform-none cursor-default">
             <span class="text-[10px] font-mono font-semibold text-ink-500 uppercase tracking-wider">TV Display</span>
             <p class="text-xs font-mono font-bold text-ink-950 tabular-nums">{CANVAS.width} × {CANVAS.height} px</p>
             <p class="text-[11px] text-ink-600 leading-normal">Full 16:9 canvas displayed exclusively on smart TVs and video game consoles.</p>
           </div>
-          <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-1">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-ink-400/40 hover:bg-surface-0 hover:shadow-xs motion-reduce:transform-none cursor-default">
             <span class="text-[10px] font-mono font-semibold text-ink-800 uppercase tracking-wider">Desktop Ribbon</span>
             <p class="text-xs font-mono font-bold text-ink-950 tabular-nums">{CANVAS.width} × {desktopHeight} px</p>
             <p class="text-[11px] text-ink-600 leading-normal">Wide horizontal strip. The top ~35% and bottom ~35% are cropped off by browser layouts.</p>
           </div>
-          <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-1">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-ink-400/40 hover:bg-surface-0 hover:shadow-xs motion-reduce:transform-none cursor-default">
             <span class="text-[10px] font-mono font-semibold text-ink-600 uppercase tracking-wider">Tablet Crop</span>
             <p class="text-xs font-mono font-bold text-ink-950 tabular-nums">{tabletWidth} × {desktopHeight} px</p>
             <p class="text-[11px] text-ink-600 leading-normal">Horizontal ribbon crop centered on the safe zone. Sides are clipped compared to desktop.</p>
           </div>
-          <div class="p-4 rounded-lg border border-accent/30 bg-accent/5 space-y-1">
+          <div class="p-4 rounded-xl border border-accent/30 bg-accent/5 space-y-1 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-accent/60 hover:bg-accent/10 hover:shadow-xs motion-reduce:transform-none cursor-default">
             <span class="text-[10px] font-mono font-semibold text-accent uppercase tracking-wider">Mobile Safe Area</span>
             <p class="text-xs font-mono font-bold text-accent tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</p>
             <p class="text-[11px] text-ink-600 leading-normal">Center intersection. Fully visible across all smartphones, tablets, computers, and TVs.</p>
@@ -519,10 +564,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Guide 1: YouTube Banner Size -->
-        <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:shadow-raised transition-shadow flex flex-col justify-between space-y-6">
+        <div class="group relative p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 flex flex-col justify-between space-y-6 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none cursor-pointer">
           <div class="space-y-3">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Dimension Standards · Guide</span>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Dimension Standards</span>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950 group-hover:text-accent transition-colors">
               Complete YouTube Banner Size &amp; Dimension Guide
             </h3>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
@@ -532,19 +577,19 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           <div>
             <a
               href="/guides/youtube-banner-size"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 hover:text-accent transition-colors min-h-[44px]"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 group-hover:text-accent transition-colors min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
             >
               <span>Read Banner Size Guide</span>
-              <span aria-hidden="true">→</span>
+              <span class="group-hover:translate-x-1.5 transition-transform" aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>
 
         <!-- Guide 2: Safe Area Math -->
-        <div class="p-6 sm:p-8 rounded-xl border border-line-200 bg-surface-0 hover:shadow-raised transition-shadow flex flex-col justify-between space-y-6">
+        <div class="group relative p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 flex flex-col justify-between space-y-6 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none cursor-pointer">
           <div class="space-y-3">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Crop Reconciliation · Guide</span>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Safe Area Arithmetic</span>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950 group-hover:text-accent transition-colors">
               Safe Area Math &amp; Crop Reconciliation Guide
             </h3>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
@@ -554,10 +599,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           <div>
             <a
               href="/guides/youtube-banner-safe-area"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 hover:text-accent transition-colors min-h-[44px]"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 group-hover:text-accent transition-colors min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
             >
               <span>Read Safe Area Guide</span>
-              <span aria-hidden="true">→</span>
+              <span class="group-hover:translate-x-1.5 transition-transform" aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>
@@ -567,18 +612,29 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
     <!-- ═══════════════════════════════════════════════════════════
          Block 6: FAQ
     ═══════════════════════════════════════════════════════════ -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-8">
-      <div class="space-y-2 max-w-2xl">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
-          Frequently Asked Questions
-        </h2>
-        <p class="text-sm text-ink-600 leading-relaxed max-w-[52ch]">
-          Everything you need to know about YouTube banner dimensions, mobile safe areas, and avoiding cutoff surprises.
-        </p>
-      </div>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-8 lg:gap-16">
+        <div class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-base text-ink-600 leading-relaxed">
+            Everything you need to know about YouTube banner dimensions, mobile safe areas, and avoiding cutoff surprises.
+          </p>
+          <div class="pt-4">
+            <a
+              href="/guides/youtube-banner-size"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline"
+            >
+              <span>Explore complete banner size specs</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
 
-      <div class="max-w-3xl">
-        <FaqAccordion />
+        <div>
+          <FaqAccordion />
+        </div>
       </div>
     </section>
 

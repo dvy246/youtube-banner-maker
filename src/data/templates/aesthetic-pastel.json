@@ -1,0 +1,79 @@
+{
+  "id": "aesthetic-pastel",
+  "niche": "lifestyle",
+  "name": "Aesthetic Pastel",
+  "description": "Soft ethereal warm cream and lavender palette crafted for cozy lifestyle vlogs and study beats.",
+  "preview": "/previews/aesthetic-pastel.svg",
+  "designSystem": {
+    "palette": {
+      "primary": "#1F1D2B",
+      "secondary": "#5E5873",
+      "surface": "#F6F4F9",
+      "accent": "#9381FF"
+    },
+    "typography": {
+      "titleFont": "sora-700",
+      "taglineFont": "inter-500"
+    }
+  },
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#FAF8FF",
+        "#F2ECFE",
+        "#EAE2FC"
+      ]
+    },
+    "layers": [
+      {
+        "id": "card-backplate",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.41,
+        "w": 0.36,
+        "h": 0.19,
+        "color": "#FFFFFF",
+        "opacity": 0.95
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "COZY CORNER",
+        "font": "sora-700",
+        "size": 46,
+        "color": "#1F1D2B",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "SLOW LIVING • DESK SETUPS • STUDY VLOGS",
+        "font": "inter-500",
+        "size": 16,
+        "color": "#5E5873",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "card-backplate"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,67 @@
+{
+  "id": "food-roastery",
+  "niche": "food",
+  "name": "Coffee Roastery",
+  "description": "Dark coffee bean roast and burlap tan for specialty coffee roasters.",
+  "preview": "/previews/food-roastery.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#120A06",
+        "#21130D",
+        "#120A06"
+      ]
+    },
+    "layers": [
+      {
+        "id": "roast-pill",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.43,
+        "y": 0.39,
+        "w": 0.14,
+        "h": 0.005,
+        "color": "#D97706",
+        "opacity": 0.85
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ORIGIN ROAST",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFBEB",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Single Origin Green Coffee Cupping & Drum Roasting Logs",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FDE68A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "roast-pill"
+  ],
+  "safeAreaValidated": true
+}

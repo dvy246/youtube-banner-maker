@@ -4,6 +4,7 @@ import { CANVAS, DEVICES, SAFE, SAFE_PX } from '../lib/spec';
 const rows = [
   {
     device: 'Television / Full Frame',
+    isSafe: false,
     dims: `${CANVAS.width} × ${CANVAS.height} px`,
     aspect: '16:9',
     visibleFrac: '100% × 100%',
@@ -11,6 +12,7 @@ const rows = [
   },
   {
     device: 'Desktop',
+    isSafe: false,
     dims: `${Math.round(DEVICES.desktop.w * CANVAS.width)} × ${Math.round(DEVICES.desktop.h * CANVAS.height)} px`,
     aspect: '6.04:1',
     visibleFrac: `100% × ${(DEVICES.desktop.h * 100).toFixed(1)}%`,
@@ -18,6 +20,7 @@ const rows = [
   },
   {
     device: 'Tablet',
+    isSafe: false,
     dims: `${Math.round(DEVICES.tablet.w * CANVAS.width)} × ${Math.round(DEVICES.tablet.h * CANVAS.height)} px`,
     aspect: '1.29:1',
     visibleFrac: `${(DEVICES.tablet.w * 100).toFixed(1)}% × 100%`,
@@ -25,6 +28,7 @@ const rows = [
   },
   {
     device: 'Mobile (Safe Area)',
+    isSafe: true,
     dims: `${SAFE_PX.full.width} × ${SAFE_PX.full.height} px`,
     aspect: '3.65:1',
     visibleFrac: `${(SAFE.w * 100).toFixed(1)}% × ${(SAFE.h * 100).toFixed(1)}%`,
@@ -33,27 +37,44 @@ const rows = [
 ];
 ---
 
-<div class="overflow-x-auto rounded-xl border border-line-200 bg-surface-0">
-  <table class="w-full text-left text-xs text-ink-800 border-collapse">
+<div class="overflow-x-auto rounded-2xl border border-line-200 bg-surface-0 shadow-2xs">
+  <table class="w-full text-left text-sm text-ink-800 border-collapse min-w-[640px]">
     <caption class="sr-only">YouTube Per-Device Crop Dimensions and Visible Areas</caption>
-    <thead class="bg-surface-50 border-b border-line-200 text-ink-950 font-semibold uppercase tracking-wider text-[11px]">
+    <thead class="bg-surface-50/80 border-b border-line-200 text-ink-950 font-semibold uppercase tracking-wider text-[11px]">
       <tr>
-        <th scope="col" class="py-3 px-4">Device Viewport</th>
-        <th scope="col" class="py-3 px-4">Visible Dimensions</th>
-        <th scope="col" class="py-3 px-4">Aspect Ratio</th>
-        <th scope="col" class="py-3 px-4">Frame Share</th>
-        <th scope="col" class="py-3 px-4">Display Behavior</th>
+        <th scope="col" class="py-3.5 px-5">Device Viewport</th>
+        <th scope="col" class="py-3.5 px-5">Visible Dimensions</th>
+        <th scope="col" class="py-3.5 px-5">Aspect Ratio</th>
+        <th scope="col" class="py-3.5 px-5">Frame Share</th>
+        <th scope="col" class="py-3.5 px-5">Display Behavior</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-line-100 font-normal">
       {
         rows.map((row) => (
-          <tr>
-            <th scope="row" class="py-3 px-4 font-medium text-ink-950">{row.device}</th>
-            <td class="py-3 px-4 font-mono font-medium text-ink-950 tabular-nums">{row.dims}</td>
-            <td class="py-3 px-4 font-mono text-ink-600 tabular-nums">{row.aspect}</td>
-            <td class="py-3 px-4 font-mono text-ink-600 tabular-nums">{row.visibleFrac}</td>
-            <td class="py-3 px-4 text-ink-600">{row.notes}</td>
+          <tr class="hover:bg-surface-50/50 transition-colors">
+            <th scope="row" class="py-4 px-5 font-medium text-ink-950">
+              {row.isSafe ? (
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-accent/10 text-accent border border-accent/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                  {row.device}
+                </span>
+              ) : (
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-ink-950 bg-surface-100 border border-line-200">
+                  {row.device}
+                </span>
+              )}
+            </th>
+            <td class="py-4 px-5 font-mono font-semibold tabular-nums text-xs sm:text-sm">
+              {row.isSafe ? (
+                <span class="text-accent">{row.dims}</span>
+              ) : (
+                <span class="text-ink-950">{row.dims}</span>
+              )}
+            </td>
+            <td class="py-4 px-5 font-mono text-ink-600 tabular-nums text-xs sm:text-sm">{row.aspect}</td>
+            <td class="py-4 px-5 font-mono text-ink-600 tabular-nums text-xs sm:text-sm">{row.visibleFrac}</td>
+            <td class="py-4 px-5 text-xs sm:text-sm text-ink-600 leading-relaxed max-w-xs">{row.notes}</td>
           </tr>
         ))
       }

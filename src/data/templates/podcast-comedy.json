@@ -1,0 +1,79 @@
+{
+  "id": "podcast-comedy",
+  "niche": "podcast",
+  "name": "Comedy Spotlight",
+  "description": "Vibrant sunburst yellow and dark plum for stand-up comics and improv podcasts.",
+  "preview": "/previews/podcast-comedy.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1C0B1B",
+        "#341432",
+        "#1C0B1B"
+      ]
+    },
+    "layers": [
+      {
+        "id": "spot-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.3,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.006,
+        "color": "#FACC15",
+        "opacity": 0.9
+      },
+      {
+        "id": "spot-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.65,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.006,
+        "color": "#FACC15",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ROOM LAUGHTER",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "WEEKLY COMEDY ROUNDTABLE · LIVE EPISODES FRIDAYS",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#FDE047",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "spot-l",
+    "spot-r"
+  ],
+  "safeAreaValidated": true
+}

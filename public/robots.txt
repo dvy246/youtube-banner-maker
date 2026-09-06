@@ -18,11 +18,15 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ClaudeBot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# Sitemap Index
+# Sitemap Directives
 Sitemap: https://youtubebannermaker.com/sitemap.xml
+Sitemap: https://youtubebannermaker.com/sitemap-index.xml

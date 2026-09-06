@@ -12,6 +12,7 @@ const CORE_ROUTES = [
   { path: '/tools/youtube-banner-maker', changefreq: 'weekly', priority: '0.9' },
   { path: '/guides/youtube-banner-size', changefreq: 'weekly', priority: '0.8' },
   { path: '/guides/youtube-banner-safe-area', changefreq: 'weekly', priority: '0.8' },
+  { path: '/guides/youtube-banner-1024-x-576', changefreq: 'weekly', priority: '0.8' },
   { path: '/templates', changefreq: 'weekly', priority: '0.8' },
   { path: '/about', changefreq: 'monthly', priority: '0.5' },
   { path: '/contact', changefreq: 'monthly', priority: '0.5' },
@@ -77,8 +78,8 @@ const allRoutes = [...CORE_ROUTES, ...nicheRoutes];
 // Hard rule: /404 is strictly excluded from sitemap.xml
 const filteredRoutes = allRoutes.filter((r) => r.path !== '/404' && !r.path.includes('404'));
 
-if (filteredRoutes.length !== 19) {
-  console.warn(`WARNING: Expected 19 routes in sitemap, found ${filteredRoutes.length}`);
+if (filteredRoutes.length !== 22) {
+  console.warn(`WARNING: Expected 22 routes in sitemap, found ${filteredRoutes.length}`);
 }
 
 const xmlEntries = filteredRoutes.map((r) => {
@@ -86,8 +87,6 @@ const xmlEntries = filteredRoutes.map((r) => {
   return `  <url>
     <loc>${loc}</loc>
     <lastmod>${TODAY}</lastmod>
-    <changefreq>${r.changefreq}</changefreq>
-    <priority>${r.priority}</priority>
   </url>`;
 });
 
@@ -101,10 +100,6 @@ const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${SITE_URL}/sitemap.xml</loc>
-    <lastmod>${TODAY}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>${SITE_URL}/sitemap-0.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
 </sitemapindex>

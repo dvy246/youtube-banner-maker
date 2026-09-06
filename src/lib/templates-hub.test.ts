@@ -18,13 +18,13 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
   const indexHtmlPath = path.join(distTemplatesDir, 'index.html');
 
   describe('1. Template Manifests & Validation (M-13, M-14)', () => {
-    it('loads all 24 templates across 8 distinct niches', () => {
-      expect(TEMPLATES.length).toBe(24);
+    it('loads 100+ templates across 10 distinct niches', () => {
+      expect(TEMPLATES.length).toBeGreaterThanOrEqual(100);
       const templates = listTemplates();
-      expect(templates.length).toBe(24);
+      expect(templates.length).toBeGreaterThanOrEqual(100);
 
       const niches = new Set(templates.map((t) => t.niche.toLowerCase()));
-      expect(niches.size).toBe(8);
+      expect(niches.size).toBe(10);
       expect(niches).toContain('gaming');
       expect(niches).toContain('tech');
       expect(niches).toContain('podcast');
@@ -33,6 +33,8 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
       expect(niches).toContain('fitness');
       expect(niches).toContain('education');
       expect(niches).toContain('lifestyle');
+      expect(niches).toContain('food');
+      expect(niches).toContain('business');
     });
 
     it('validates each template against strict schema and safe-area rules', () => {
@@ -67,12 +69,12 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
   });
 
   describe('2. Hard Build Gate & Structural Uniqueness (REQ-017)', () => {
-    it('identifies all 8 niches as qualifying with >= 3 distinct templates', () => {
+    it('identifies all 10 niches as qualifying with >= 3 distinct templates', () => {
       const qualifying = getQualifyingNiches(TEMPLATES, 3);
-      expect(qualifying.length).toBe(8);
+      expect(qualifying.length).toBe(10);
 
       const paths = getNicheStaticPaths(TEMPLATES, 3);
-      expect(paths.length).toBe(8);
+      expect(paths.length).toBe(10);
       const paramsNiches = paths.map((p) => p.params.niche);
       expect(paramsNiches).toContain('gaming');
       expect(paramsNiches).toContain('tech');
@@ -82,6 +84,8 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
       expect(paramsNiches).toContain('fitness');
       expect(paramsNiches).toContain('education');
       expect(paramsNiches).toContain('lifestyle');
+      expect(paramsNiches).toContain('food');
+      expect(paramsNiches).toContain('business');
     });
 
     it('filters out any hypothetical niche with fewer than 3 templates (REQ-017)', () => {
@@ -165,7 +169,7 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
 
     it('M-15: verifies dist/templates/index.html has zero client JS scripts', () => {
       const html = fs.readFileSync(indexHtmlPath, 'utf-8');
-      const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])[^>]*>/gi);
+      const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
       expect(clientScripts).toBeNull();
     });
 
@@ -182,7 +186,7 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
       expect(html).toContain('Free YouTube Banner Templates Built for Mobile Safe Areas');
       expect(html).toContain('measure-prose');
 
-      // All 24 templates rendered
+      // All templates rendered
       for (const tmpl of TEMPLATES) {
         expect(html).toContain(tmpl.name);
       }
@@ -194,7 +198,7 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
   });
 
   describe('4. Niche Template Pages Built HTML Verification (/templates/[niche])', () => {
-    const niches = ['gaming', 'tech', 'podcast', 'vlog', 'music', 'fitness', 'education', 'lifestyle'];
+    const niches = ['gaming', 'tech', 'podcast', 'vlog', 'music', 'fitness', 'education', 'lifestyle', 'food', 'business'];
 
     for (const niche of niches) {
       it(`verifies /templates/${niche} built HTML: zero client JS, canonical, schema, and CTAs`, () => {
@@ -203,8 +207,8 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
 
         const html = fs.readFileSync(nichePagePath, 'utf-8');
 
-        // M-15: Zero client scripts
-        const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])[^>]*>/gi);
+        // M-15: Zero client scripts (theme-boot allowed)
+        const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
         expect(clientScripts).toBeNull();
 
         // SEO metadata
@@ -218,9 +222,9 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
         expect(html).toContain('"@type":"BreadcrumbList"');
         expect(html).toContain(meta.name);
 
-        // Niche templates rendered (3 templates per niche)
+        // Niche templates rendered
         const nicheTemplates = TEMPLATES.filter((t) => t.niche === niche);
-        expect(nicheTemplates.length).toBe(3);
+        expect(nicheTemplates.length).toBeGreaterThanOrEqual(10);
         for (const tmpl of nicheTemplates) {
           expect(html).toContain(tmpl.name);
           expect(html).toContain(`/tools/youtube-banner-maker?template=${tmpl.id}`);

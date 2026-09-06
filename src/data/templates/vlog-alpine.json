@@ -1,0 +1,79 @@
+{
+  "id": "vlog-alpine",
+  "niche": "vlog",
+  "name": "Alpine Summit",
+  "description": "Glacial white and slate mountain blue for outdoor expeditions and hiking channels.",
+  "preview": "/previews/vlog-alpine.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0A131F",
+        "#17273C",
+        "#0A131F"
+      ]
+    },
+    "layers": [
+      {
+        "id": "peak-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.34,
+        "y": 0.57,
+        "w": 0.08,
+        "h": 0.004,
+        "color": "#38BDF8",
+        "opacity": 0.7
+      },
+      {
+        "id": "peak-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.58,
+        "y": 0.57,
+        "w": 0.08,
+        "h": 0.004,
+        "color": "#38BDF8",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SUMMIT RIDGE",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "SOLO ALPINE TREKKING & ULTRA RUNNING EXPEDITIONS",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#BAE6FD",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "peak-l",
+    "peak-r"
+  ],
+  "safeAreaValidated": true
+}

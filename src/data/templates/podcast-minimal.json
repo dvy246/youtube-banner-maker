@@ -38,7 +38,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Ideas Shaping Tomorrow · Hosted by Alex Rivera",
+        "text": "Ideas Shaping Tomorrow \u00b7 Hosted by Alex Rivera",
         "font": "inter-500",
         "size": 18,
         "color": "#E3E5E8",
@@ -46,6 +46,39 @@
         "x": 0.26,
         "y": 0.54,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "col-guide-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.22,
+        "y": 0.1,
+        "w": 0.002,
+        "h": 0.8,
+        "color": "#E3E5E8",
+        "opacity": 0.05
+      },
+      {
+        "id": "col-guide-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.78,
+        "y": 0.1,
+        "w": 0.002,
+        "h": 0.8,
+        "color": "#E3E5E8",
+        "opacity": 0.05
+      },
+      {
+        "id": "margin-rt",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.7,
+        "y": 0.15,
+        "w": 0.08,
+        "h": 0.002,
+        "color": "#E3E5E8",
+        "opacity": 0.1
       }
     ]
   },
@@ -56,7 +89,10 @@
     "background.gradient"
   ],
   "protected": [
-    "rule"
+    "rule",
+    "col-guide-l",
+    "col-guide-r",
+    "margin-rt"
   ],
   "safeAreaValidated": true
 }

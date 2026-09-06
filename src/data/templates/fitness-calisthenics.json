@@ -1,0 +1,79 @@
+{
+  "id": "fitness-calisthenics",
+  "niche": "fitness",
+  "name": "Street Calisthenics",
+  "description": "Industrial steel and safety yellow for bodyweight mastery, muscle-ups, and street workouts.",
+  "preview": "/previews/fitness-calisthenics.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0C0D0E",
+        "#181A1D",
+        "#0C0D0E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "bar-grip-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.47,
+        "w": 0.05,
+        "h": 0.008,
+        "color": "#EAB308",
+        "opacity": 0.9
+      },
+      {
+        "id": "bar-grip-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.67,
+        "y": 0.47,
+        "w": 0.05,
+        "h": 0.008,
+        "color": "#EAB308",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "BAR ATHLETE",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "CALISTHENICS PROGRESSIONS · MUSCLE-UPS · PLANCHE",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#FEF08A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "bar-grip-l",
+    "bar-grip-r"
+  ],
+  "safeAreaValidated": true
+}

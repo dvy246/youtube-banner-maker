@@ -1,0 +1,91 @@
+{
+  "id": "meme-cookie",
+  "niche": "gaming",
+  "name": "Cookie Trope",
+  "description": "Viral creator trope template optimized for YouTube channel subscriptions with cookie meme callout.",
+  "preview": "/previews/meme-cookie.svg",
+  "designSystem": {
+    "palette": {
+      "primary": "#FFFFFF",
+      "secondary": "#FED7AA",
+      "surface": "#1A0F0A",
+      "accent": "#F59E0B"
+    },
+    "typography": {
+      "titleFont": "sora-700",
+      "taglineFont": "inter-500"
+    }
+  },
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1F130B",
+        "#2E190E",
+        "#451E09"
+      ]
+    },
+    "layers": [
+      {
+        "id": "glow-accent",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.39,
+        "w": 0.3,
+        "h": 0.005,
+        "color": "#F59E0B",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "COOKIE ARCADE",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "DAILY GAMING CLIPS & CHAOTIC HIGHLIGHTS",
+        "font": "inter-500",
+        "size": 17,
+        "color": "#FED7AA",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.53,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "badge-cookie",
+        "type": "badge",
+        "variant": "subscribe-cookie",
+        "text": "SUBSCRIBE FOR A COOKIE",
+        "colorScheme": "youtube-red",
+        "scale": 1,
+        "x": 0.5,
+        "y": 0.6,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "glow-accent",
+    "badge-cookie"
+  ],
+  "safeAreaValidated": true
+}

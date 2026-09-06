@@ -48,31 +48,58 @@ export function validateSingleTemplate(tmpl) {
 
     for (const layer of tmpl.scene.layers) {
       if (layer.safeAreaConstrained) {
-        const charWidthPx = (layer.size || 50) * 0.58;
-        const totalWidthPx = Math.max(1, (layer.text || '').length) * charWidthPx;
-        const totalHeightPx = (layer.size || 50) * 1.1;
+        let minX, maxX, minY, maxY;
 
-        const widthFrac = totalWidthPx / CANVAS.width;
-        const heightFrac = totalHeightPx / CANVAS.height;
-
-        const posX = layer.x ?? 0.5;
-        const posY = layer.y ?? 0.5;
-        const align = layer.align || 'center';
-
-        let minX, maxX;
-        if (align === 'center') {
-          minX = posX - widthFrac / 2;
-          maxX = posX + widthFrac / 2;
-        } else if (align === 'left') {
-          minX = posX;
-          maxX = posX + widthFrac;
+        if (layer.type === 'frame' || layer.role === 'frame' || layer.role === 'avatar') {
+          const posX = layer.x ?? 0.35;
+          const posY = layer.y ?? 0.5;
+          const halfW = (layer.w ?? 0.11) / 2;
+          const halfH = (layer.h ?? 0.195) / 2;
+          minX = posX - halfW;
+          maxX = posX + halfW;
+          minY = posY - halfH;
+          maxY = posY + halfH;
+        } else if (layer.type === 'shape') {
+          minX = layer.x ?? 0.5;
+          maxX = minX + (layer.w ?? 0.1);
+          minY = layer.y ?? 0.5;
+          maxY = minY + (layer.h ?? 0.05);
+        } else if (layer.type === 'badge') {
+          const posX = layer.x ?? 0.5;
+          const posY = layer.y ?? 0.65;
+          const scale = layer.scale ?? 1.0;
+          const halfW = (0.12 * scale) / 2;
+          const halfH = (0.04 * scale) / 2;
+          minX = posX - halfW;
+          maxX = posX + halfW;
+          minY = posY - halfH;
+          maxY = posY + halfH;
         } else {
-          minX = posX - widthFrac;
-          maxX = posX;
-        }
+          const charWidthPx = (layer.size || 50) * 0.58;
+          const totalWidthPx = Math.max(1, (layer.text || '').length) * charWidthPx;
+          const totalHeightPx = (layer.size || 50) * 1.1;
 
-        const minY = posY - heightFrac / 2;
-        const maxY = posY + heightFrac / 2;
+          const widthFrac = totalWidthPx / CANVAS.width;
+          const heightFrac = totalHeightPx / CANVAS.height;
+
+          const posX = layer.x ?? 0.5;
+          const posY = layer.y ?? 0.5;
+          const align = layer.align || 'center';
+
+          if (align === 'center') {
+            minX = posX - widthFrac / 2;
+            maxX = posX + widthFrac / 2;
+          } else if (align === 'left') {
+            minX = posX;
+            maxX = posX + widthFrac;
+          } else {
+            minX = posX - widthFrac;
+            maxX = posX;
+          }
+
+          minY = posY - heightFrac / 2;
+          maxY = posY + heightFrac / 2;
+        }
 
         if (minX < safeLeft || maxX > safeRight || minY < safeTop || maxY > safeBottom) {
           errors.push(

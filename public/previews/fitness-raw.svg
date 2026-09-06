@@ -10,8 +10,12 @@
     
   <!-- Safe area indicator border (subtle) -->
   <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
-  <rect x="281.6" y="136.8" width="76.8" height="1.8" fill="#FF7A00" opacity="1" />
-<text x="50%" y="46.0%" text-anchor="middle" dominant-baseline="middle" fill="#FF7A00" font-family="Switzer, sans-serif" font-size="32" font-weight="700">ENDURANCE LAB</text>
-<text x="50%" y="55.0%" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-family="Switzer, sans-serif" font-size="15" font-weight="500">Marathon Preparation · Triathlon · VO2 Max Testing</text>
+  <rect x="230.4" y="144.0" width="51.2" height="1.8" fill="#FF7A00" opacity="1" />
+<circle cx="160.0" cy="180.0" r="28.8" fill="#333333" stroke="#FF7A00" stroke-width="3" />
+<text x="50%" y="47.0%" text-anchor="middle" dominant-baseline="middle" fill="#FF7A00" font-family="Switzer, sans-serif" font-size="32" font-weight="700">ENDURANCE LAB</text>
+<text x="50%" y="56.0%" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-family="Switzer, sans-serif" font-size="15" font-weight="500">Marathon Prep · Triathlon · VO2 Testing</text>
+<rect x="544.0" y="72.0" width="38.4" height="2.2" fill="#FF7A00" opacity="0.5" />
+<rect x="544.0" y="82.8" width="19.2" height="2.2" fill="#FF7A00" opacity="0.5" />
+<rect x="320.0" y="306.0" width="384.0" height="1.1" fill="#FFFFFF" opacity="0.1" />
 
 </svg>

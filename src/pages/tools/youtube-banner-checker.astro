@@ -11,7 +11,7 @@ import {
   getSoftwareAppSchema,
   getBreadcrumbSchema,
 } from '../../lib/seo';
-import { CANVAS } from '../../lib/spec';
+import { CANVAS, SAFE_PX } from '../../lib/spec';
 
 const path = '/tools/youtube-banner-checker';
 const seo = STATIC_PAGES_SEO[path];
@@ -48,91 +48,192 @@ const jsonLd = [
     />
 
     <!-- Comprehensive Explanatory Content & Supporting Specs -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-line-200 space-y-16">
+    <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 border-t border-line-200 space-y-20 lg:space-y-28">
       <!-- Section 1: How the Diagnostic Works -->
-      <div class="space-y-4 max-w-3xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-          Diagnostic System
-        </span>
-        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-          How Our YouTube Banner Safe Area Checker Works
-        </h2>
-        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-          Before uploading your channel art to YouTube Studio, our automated diagnostic inspects your image across all four official viewport profiles to identify clipping, compression risks, and formatting errors in real time.
-        </p>
-        <ul class="space-y-2 text-xs text-ink-800 list-disc pl-5 measure-prose">
-          <li>
-            <strong>Safe Area Boundary Detection:</strong> Evaluates whether logos, titles, and focal artwork stay securely within the centered mobile safe viewport, calculating exact boundaries against YouTube's {CANVAS.width} × {CANVAS.height} px canvas.
-          </li>
-          <li>
-            <strong>Resolution & Aspect Ratio Check:</strong> Assesses source dimensions against YouTube's 2048 × 1152 px minimum threshold to flag potential blurriness on smart TV and 4K displays.
-          </li>
-          <li>
-            <strong>File Weight Verification:</strong> Checks file size against Google's strict 6 MB ceiling before you attempt to upload to YouTube Studio.
-          </li>
-        </ul>
+      <div class="space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Automated Diagnostics</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+            How Our YouTube Banner Safe Area Checker Works
+          </h2>
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
+            Before uploading your channel art to YouTube Studio, our automated diagnostic inspects your image across all four official viewport profiles to identify clipping, compression risks, and formatting errors in real time.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1: Safe Area Detection -->
+          <div class="group p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="22" y1="12" x2="18" y2="12"></line>
+                  <line x1="6" y1="12" x2="2" y2="12"></line>
+                  <line x1="12" y1="6" x2="12" y2="2"></line>
+                  <line x1="12" y1="22" x2="12" y2="18"></line>
+                </svg>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">Boundary Detection</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">{SAFE_PX.full.width} × {SAFE_PX.full.height}</span>
+                </div>
+                <p class="text-sm text-ink-600 leading-relaxed">
+                  Evaluates whether logos, titles, and focal artwork stay securely within the centered mobile safe viewport, calculating exact boundaries against YouTube's {CANVAS.width} × {CANVAS.height} px canvas.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
+              Real-time boundary collision audit
+            </div>
+          </div>
+
+          <!-- Card 2: Resolution & Ratio -->
+          <div class="group p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">Resolution & Ratio</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">2048 × 1152 Floor</span>
+                </div>
+                <p class="text-sm text-ink-600 leading-relaxed">
+                  Assesses source dimensions against YouTube's 2048 × 1152 px minimum threshold to flag potential pixelation risks on smart TV and 4K displays.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
+              Optical density verification
+            </div>
+          </div>
+
+          <!-- Card 3: File Weight -->
+          <div class="group p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">File Weight</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">6 MB Ceiling</span>
+                </div>
+                <p class="text-sm text-ink-600 leading-relaxed">
+                  Checks file size against Google's strict 6 MB ceiling before you attempt to upload to YouTube Studio, preventing upload failures.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
+              Verified against Studio upload limits
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Section 2: 3 Most Common YouTube Crop Pitfalls -->
-      <div class="space-y-5">
-        <div class="space-y-1 max-w-3xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-            Common Pitfalls
-          </span>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+      <div class="border-t border-line-200 pt-16 sm:pt-20 space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Common Pitfalls</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             The 3 Most Common YouTube Banner Crop Mistakes
           </h2>
-          <p class="text-sm text-ink-600 measure-prose">
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
             Most creators only discover channel art crop errors after publishing. Here are the three issues our automated checker catches instantly:
           </p>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
-            <div class="w-8 h-8 rounded-lg bg-danger/10 text-danger flex items-center justify-center font-bold text-sm">
-              1
+          <div class="p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 space-y-4 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-bold bg-danger/10 text-danger border border-danger/20">
+                  01 / High Risk
+                </span>
+                <span class="text-xs font-mono text-ink-400">Mobile Devices</span>
+              </div>
+              <h3 class="text-lg font-semibold text-ink-950">
+                Mobile Safe Area Cutoff
+              </h3>
+              <p class="text-sm text-ink-600 leading-relaxed">
+                Mobile screens display only the central safe rectangle. Placing logos, social handles, or text outside this middle zone results in immediate clipping on phones and mobile apps.
+              </p>
             </div>
-            <h3 class="text-sm font-semibold text-ink-950">
-              Mobile Safe Area Cutoff
-            </h3>
-            <p class="text-xs text-ink-600 leading-relaxed">
-              Mobile screens display only the central safe rectangle. Placing logos, social handles, or text outside this middle zone results in immediate clipping on phones and mobile apps.
-            </p>
+            <div class="pt-3 border-t border-line-100 text-xs font-mono text-danger">
+              Affects ~70% of viewers
+            </div>
           </div>
-          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
-            <div class="w-8 h-8 rounded-lg bg-warning/10 text-warning flex items-center justify-center font-bold text-sm">
-              2
+
+          <div class="p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 space-y-4 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-bold bg-warning/10 text-warning border border-warning/20">
+                  02 / Frequent Trap
+                </span>
+                <span class="text-xs font-mono text-ink-400">Desktop Web</span>
+              </div>
+              <h3 class="text-lg font-semibold text-ink-950">
+                Desktop Horizontal Compression
+              </h3>
+              <p class="text-sm text-ink-600 leading-relaxed">
+                Desktop browsers show a wide horizontal banner, trimming roughly 35% from both top and bottom edges. Graphics or headlines positioned along vertical borders get cropped out on laptops.
+              </p>
             </div>
-            <h3 class="text-sm font-semibold text-ink-950">
-              Desktop Horizontal Compression
-            </h3>
-            <p class="text-xs text-ink-600 leading-relaxed">
-              Desktop browsers show a wide horizontal banner, trimming roughly 35% from both top and bottom edges. Graphics or headlines positioned along vertical borders get cropped out on laptops.
-            </p>
+            <div class="pt-3 border-t border-line-100 text-xs font-mono text-warning">
+              Vertical margins discarded
+            </div>
           </div>
-          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
-            <div class="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center font-bold text-sm">
-              3
+
+          <div class="p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 space-y-4 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-bold bg-accent/10 text-accent border border-accent/20">
+                  03 / Display Degradation
+                </span>
+                <span class="text-xs font-mono text-ink-400">Smart TV / 4K</span>
+              </div>
+              <h3 class="text-lg font-semibold text-ink-950">
+                Low Resolution Blurriness
+              </h3>
+              <p class="text-sm text-ink-600 leading-relaxed">
+                Smart TVs display the complete {CANVAS.width} × {CANVAS.height} px artwork. Uploading graphics under 2048 × 1152 px forces YouTube to upscale your image, causing visible artifacting on large screens.
+              </p>
             </div>
-            <h3 class="text-sm font-semibold text-ink-950">
-              Low Resolution Blurriness
-            </h3>
-            <p class="text-xs text-ink-600 leading-relaxed">
-              Smart TVs display the complete {CANVAS.width} × {CANVAS.height} px artwork. Uploading graphics under 2048 × 1152 px forces YouTube to upscale your image, causing visible artifacting on large screens.
-            </p>
+            <div class="pt-3 border-t border-line-100 text-xs font-mono text-accent">
+              Full 16:9 canvas required
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Section 3: Device Crops Breakdown -->
-      <div class="space-y-5">
-        <div class="space-y-1 max-w-3xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-            Viewport Reference
-          </span>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+      <div class="border-t border-line-200 pt-16 sm:pt-20 space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Multi-Screen Specs</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             YouTube Per-Device Crop Boundaries
           </h2>
-          <p class="text-sm text-ink-600 measure-prose">
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
             YouTube extracts different viewports from a single {CANVAS.width} × {CANVAS.height} px upload. Use this reference to understand what viewers see on each screen.
           </p>
         </div>
@@ -140,15 +241,16 @@ const jsonLd = [
       </div>
 
       <!-- Section 4: Official Specifications -->
-      <div class="space-y-5">
-        <div class="space-y-1 max-w-3xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-            Official Standards
-          </span>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+      <div class="border-t border-line-200 pt-16 sm:pt-20 space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Technical Standard</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             YouTube Channel Art Specifications
           </h2>
-          <p class="text-sm text-ink-600 measure-prose">
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
             Standard Google guidelines for channel banner dimensions, file weights, and supported formats.
           </p>
         </div>
@@ -156,15 +258,16 @@ const jsonLd = [
       </div>
 
       <!-- Section 5: Frequently Asked Questions -->
-      <div class="space-y-5">
-        <div class="space-y-1 max-w-3xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-            Troubleshooting & Guidance
-          </span>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+      <div class="border-t border-line-200 pt-16 sm:pt-20 space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Knowledge Base</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             Frequently Asked Questions
           </h2>
-          <p class="text-sm text-ink-600 measure-prose">
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
             Common questions regarding safe area testing, device cutoffs, and YouTube banner diagnostics.
           </p>
         </div>
@@ -172,28 +275,34 @@ const jsonLd = [
       </div>
 
       <!-- Section 6: Contextual Interlinking Hub (SEO §3.4) -->
-      <div class="p-6 sm:p-8 rounded-2xl bg-surface-50 border border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div class="space-y-1.5 max-w-xl">
-          <h3 class="text-base font-semibold text-ink-950">
-            Found issues in your safe area test?
-          </h3>
-          <p class="text-xs text-ink-600 leading-relaxed">
-            Open our YouTube Banner Resizer to adjust positioning, crop boundaries, and export a verified file ready for YouTube Studio.
-          </p>
-        </div>
-        <div class="flex items-center gap-3 shrink-0">
-          <a
-            href="/tools/youtube-banner-resizer"
-            class="h-10 px-4 rounded-md bg-accent text-surface-0 text-xs font-medium hover:bg-accent/90 inline-flex items-center"
-          >
-            Open Resizer Editor →
-          </a>
-          <a
-            href="/guides/youtube-banner-size"
-            class="h-10 px-4 rounded-md bg-surface-0 border border-line-200 text-xs font-medium text-ink-950 hover:bg-surface-50 inline-flex items-center"
-          >
-            Read Size Guide
-          </a>
+      <div class="border-t border-line-200 pt-16 sm:pt-20">
+        <div class="p-8 sm:p-10 rounded-2xl bg-surface-50 border border-line-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-2xs">
+          <div class="space-y-2 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-xs font-mono font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20">
+              Immediate Fix Action
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+              Found issues in your safe area test?
+            </h3>
+            <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+              Open our YouTube Banner Resizer to adjust positioning, crop boundaries, and export a verified file ready for YouTube Studio.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 shrink-0">
+            <a
+              href="/tools/youtube-banner-resizer"
+              class="h-11 px-6 rounded-xl bg-accent text-surface-0 text-sm font-semibold hover:bg-accent/90 transition-all shadow-xs inline-flex items-center gap-2"
+            >
+              <span>Open Resizer Editor</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a
+              href="/guides/youtube-banner-size"
+              class="h-11 px-6 rounded-xl bg-surface-0 border border-line-200 text-sm font-semibold text-ink-950 hover:bg-surface-100 hover:border-ink-300 transition-all shadow-2xs inline-flex items-center"
+            >
+              Read Size Guide
+            </a>
+          </div>
         </div>
       </div>
     </section>

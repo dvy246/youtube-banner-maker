@@ -1,0 +1,79 @@
+{
+  "id": "anime-cyber",
+  "niche": "gaming",
+  "name": "Anime Cyber",
+  "description": "Electric cyberpunk anime aesthetic with neon cyan and hot magenta accents for vtuber and anime gaming.",
+  "preview": "/previews/anime-cyber.svg",
+  "designSystem": {
+    "palette": {
+      "primary": "#FFFFFF",
+      "secondary": "#A5F3FC",
+      "surface": "#0C061A",
+      "accent": "#F43F5E"
+    },
+    "typography": {
+      "titleFont": "sora-700",
+      "taglineFont": "inter-500"
+    }
+  },
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#0C061A",
+        "#1D0B38",
+        "#2E0E57"
+      ]
+    },
+    "layers": [
+      {
+        "id": "cyber-bar-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.4,
+        "w": 0.36,
+        "h": 0.005,
+        "color": "#06B6D4",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "NEO TOKYO 2099",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "VTUBER STREAMS • JRPG SPEEDRUNS • RETRO SYNTH",
+        "font": "inter-500",
+        "size": 16,
+        "color": "#A5F3FC",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "cyber-bar-top"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,91 @@
+{
+  "id": "tech-neural",
+  "niche": "tech",
+  "name": "AI Neural Matrix",
+  "description": "Deep indigo and radiant violet neural network aesthetics for AI engineers and machine learning.",
+  "preview": "/previews/tech-neural.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 120,
+      "stops": [
+        "#0A071B",
+        "#1E1245",
+        "#0A071B"
+      ]
+    },
+    "layers": [
+      {
+        "id": "node-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.3,
+        "y": 0.45,
+        "w": 0.015,
+        "h": 0.015,
+        "color": "#A855F7",
+        "opacity": 0.85
+      },
+      {
+        "id": "node-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.68,
+        "y": 0.45,
+        "w": 0.015,
+        "h": 0.015,
+        "color": "#A855F7",
+        "opacity": 0.85
+      },
+      {
+        "id": "neural-line",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.455,
+        "w": 0.35,
+        "h": 0.002,
+        "color": "#A855F7",
+        "opacity": 0.5
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "NEURAL LABS",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "LLM ARCHITECTURES · PYTORCH · AGENTIC SYSTEMS",
+        "font": "inter-500",
+        "size": 16,
+        "color": "#D8B4FE",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "node-l",
+    "node-r",
+    "neural-line"
+  ],
+  "safeAreaValidated": true
+}

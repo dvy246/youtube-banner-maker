@@ -1,0 +1,79 @@
+{
+  "id": "black-stealth",
+  "niche": "gaming",
+  "name": "Stealth Noir",
+  "description": "Deep carbon stealth theme with subtle graphite dividers designed for tactical esports and dark setups.",
+  "preview": "/previews/black-stealth.svg",
+  "designSystem": {
+    "palette": {
+      "primary": "#F9FAFB",
+      "secondary": "#9CA3AF",
+      "surface": "#0B0D12",
+      "accent": "#38BDF8"
+    },
+    "typography": {
+      "titleFont": "sora-700",
+      "taglineFont": "inter-500"
+    }
+  },
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#08090C",
+        "#0F1117",
+        "#161922"
+      ]
+    },
+    "layers": [
+      {
+        "id": "stealth-frame-left",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.46,
+        "w": 0.004,
+        "h": 0.08,
+        "color": "#38BDF8",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "STEALTH OPS",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#F9FAFB",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "TACTICAL SHOOTERS • RANKED CLIMB • GUIDES",
+        "font": "inter-500",
+        "size": 17,
+        "color": "#9CA3AF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "stealth-frame-left"
+  ],
+  "safeAreaValidated": true
+}

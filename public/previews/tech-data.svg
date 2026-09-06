@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  
+      <defs>
+        <linearGradient id="bg-tech-data" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="undefined" />
+          <stop offset="100%" stop-color="undefined" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg-tech-data)" />
+    
+  <!-- Safe area indicator border (subtle) -->
+  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
+  <rect x="224.0" y="147.6" width="192.0" height="1.4" fill="#14B8A6" opacity="0.8" />
+<rect x="316.8" y="142.2" width="6.4" height="3.6" fill="#14B8A6" opacity="0.9" />
+<text x="50%" y="48.0%" text-anchor="middle" dominant-baseline="middle" fill="#F0FDFA" font-family="Switzer, sans-serif" font-size="32" font-weight="700">DATA PULSE</text>
+<text x="50%" y="55.0%" text-anchor="middle" dominant-baseline="middle" fill="#5EEAD4" font-family="Switzer, sans-serif" font-size="15" font-weight="500">BIG DATA PIPELINES · PYTHON ANALYTICS · MACHINE LEARNING</text>
+
+</svg>

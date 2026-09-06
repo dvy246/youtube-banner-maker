@@ -1,0 +1,79 @@
+{
+  "id": "vlog-urban",
+  "niche": "vlog",
+  "name": "Urban Architecture",
+  "description": "Brutalist concrete grey and safety orange for architectural city walks and street design.",
+  "preview": "/previews/vlog-urban.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#121316",
+        "#22252B",
+        "#121316"
+      ]
+    },
+    "layers": [
+      {
+        "id": "grid-mark-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.47,
+        "w": 0.04,
+        "h": 0.004,
+        "color": "#F97316",
+        "opacity": 0.9
+      },
+      {
+        "id": "grid-mark-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.68,
+        "y": 0.47,
+        "w": 0.04,
+        "h": 0.004,
+        "color": "#F97316",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "METROPOLIS",
+        "font": "sora-700",
+        "size": 54,
+        "color": "#F8FAFC",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Urban Design · Architecture Walkthroughs & City Life",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FDBA74",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "grid-mark-l",
+    "grid-mark-r"
+  ],
+  "safeAreaValidated": true
+}

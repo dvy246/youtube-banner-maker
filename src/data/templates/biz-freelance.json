@@ -1,0 +1,67 @@
+{
+  "id": "biz-freelance",
+  "niche": "business",
+  "name": "Solo Craft Studio",
+  "description": "Craft khaki and deep ink for top-tier freelancers, copywriters, and solo consultants.",
+  "preview": "/previews/biz-freelance.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#12100E",
+        "#211C18",
+        "#12100E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "solo-pill",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.44,
+        "y": 0.39,
+        "w": 0.12,
+        "h": 0.005,
+        "color": "#D97706",
+        "opacity": 0.85
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "INDEPENDENT PRO",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#FDFBF7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Value-Based Pricing, Client Retainers & 6-Figure Solo Consulting",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FDE68A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "solo-pill"
+  ],
+  "safeAreaValidated": true
+}

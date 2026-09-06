@@ -1,0 +1,79 @@
+{
+  "id": "vlog-analog",
+  "niche": "vlog",
+  "name": "35mm Analog",
+  "description": "Nostalgic Kodachrome warm border notches and film typography for vintage diaries.",
+  "preview": "/previews/vlog-analog.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#1C1412",
+        "#2E1E1B",
+        "#1C1412"
+      ]
+    },
+    "layers": [
+      {
+        "id": "tape-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.33,
+        "y": 0.39,
+        "w": 0.34,
+        "h": 0.003,
+        "color": "#F43F5E",
+        "opacity": 0.7
+      },
+      {
+        "id": "tape-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.33,
+        "y": 0.59,
+        "w": 0.34,
+        "h": 0.003,
+        "color": "#F43F5E",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ANALOG MEMORIES",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#FFF1F2",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Weekly 35mm Photo Diaried & Slow Travel Reflections",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FECDD3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "tape-top",
+    "tape-bot"
+  ],
+  "safeAreaValidated": true
+}

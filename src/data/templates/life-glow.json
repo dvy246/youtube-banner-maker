@@ -1,0 +1,67 @@
+{
+  "id": "life-glow",
+  "niche": "lifestyle",
+  "name": "Glow Skincare",
+  "description": "Rose quartz and warm bone minimalism for skincare routines and cosmetic chemists.",
+  "preview": "/previews/life-glow.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#190E11",
+        "#2C191E",
+        "#190E11"
+      ]
+    },
+    "layers": [
+      {
+        "id": "glow-pill",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.43,
+        "y": 0.39,
+        "w": 0.14,
+        "h": 0.005,
+        "color": "#FB7185",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SKIN CLARITY",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFF1F2",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Ingredient Deep Dives · Barrier Repair & Clean Routine",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FECDD3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "glow-pill"
+  ],
+  "safeAreaValidated": true
+}

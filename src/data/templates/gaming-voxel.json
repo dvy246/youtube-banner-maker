@@ -1,0 +1,91 @@
+{
+  "id": "gaming-voxel",
+  "niche": "gaming",
+  "name": "Voxel Craft",
+  "description": "Playful pixelated earth and sky blocks for sandbox builders, survival, and voxel games.",
+  "preview": "/previews/gaming-voxel.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#141E30",
+        "#243B55",
+        "#141E30"
+      ]
+    },
+    "layers": [
+      {
+        "id": "voxel-block-1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.31,
+        "y": 0.42,
+        "w": 0.02,
+        "h": 0.02,
+        "color": "#F59E0B",
+        "opacity": 0.8
+      },
+      {
+        "id": "voxel-block-2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.67,
+        "y": 0.54,
+        "w": 0.02,
+        "h": 0.02,
+        "color": "#38BDF8",
+        "opacity": 0.8
+      },
+      {
+        "id": "voxel-underline",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.38,
+        "y": 0.52,
+        "w": 0.24,
+        "h": 0.005,
+        "color": "#F59E0B",
+        "opacity": 0.6
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "BLOCK REALMS",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "MASSIVE BUILDS · REDSTONE TECH · SURVIVAL SMPS",
+        "font": "inter-500",
+        "size": 16,
+        "color": "#FCD34D",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "voxel-block-1",
+    "voxel-block-2",
+    "voxel-underline"
+  ],
+  "safeAreaValidated": true
+}

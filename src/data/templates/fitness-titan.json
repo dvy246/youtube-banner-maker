@@ -1,0 +1,67 @@
+{
+  "id": "fitness-titan",
+  "niche": "fitness",
+  "name": "Titan Physique",
+  "description": "Crimson red and gunmetal steel for hypertrophy science and classic physique bodybuilding.",
+  "preview": "/previews/fitness-titan.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#0F0808",
+        "#1F1010",
+        "#0F0808"
+      ]
+    },
+    "layers": [
+      {
+        "id": "titan-line",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.34,
+        "y": 0.41,
+        "w": 0.32,
+        "h": 0.004,
+        "color": "#DC2626",
+        "opacity": 0.85
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "TITAN HYPERTROPHY",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Evidence-Based Hypertrophy & Classic Bodybuilding Splits",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FCA5A5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "titan-line"
+  ],
+  "safeAreaValidated": true
+}

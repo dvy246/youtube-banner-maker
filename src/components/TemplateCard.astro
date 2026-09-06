@@ -23,7 +23,7 @@ const formatField = (field: string) => {
 };
 ---
 
-<article class="group flex flex-col bg-surface-0 rounded-lg border border-line-200 overflow-hidden hover:shadow-raised hover:border-line-200 transition-all">
+<article class="group relative flex flex-col bg-surface-0 rounded-2xl border border-line-200 overflow-hidden cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
   <div class="relative w-full aspect-[16/9] bg-surface-50 border-b border-line-200 overflow-hidden">
     <img
       src={template.preview}
@@ -33,43 +33,52 @@ const formatField = (field: string) => {
       loading={loading}
       fetchpriority={fetchpriority}
       decoding="async"
-      class="w-full aspect-[16/9] object-cover rounded-t-lg bg-surface-50 border-b border-line-200"
+      class="w-full aspect-[16/9] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
     />
   </div>
 
-  <div class="p-5 flex flex-col flex-1 gap-3">
+  <div class="p-5 sm:p-6 flex flex-col flex-1 gap-3.5">
     <div class="flex items-center justify-between gap-2">
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-surface-50 text-ink-600 border border-line-200">
+      <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold tracking-wider uppercase bg-surface-50 text-ink-700 border border-line-200">
         {template.niche}
       </span>
+      <span class="text-xs font-mono text-ink-400">Safe-area verified</span>
     </div>
 
     <div>
-      <h3 class="text-base sm:text-lg font-semibold text-ink-950 tracking-tight">
+      <h3 class="text-lg sm:text-xl font-bold text-ink-950 tracking-tight group-hover:text-accent transition-colors">
         {template.name}
       </h3>
       {template.description && (
-        <p class="text-xs sm:text-sm text-ink-600 leading-relaxed mt-1 line-clamp-2">
+        <p class="text-sm text-ink-600 leading-relaxed mt-1.5 line-clamp-2">
           {template.description}
         </p>
       )}
     </div>
 
     <div class="flex items-center flex-wrap gap-1.5 pt-1">
-      <span class="text-[11px] font-medium text-ink-500">Editable:</span>
+      <span class="text-xs font-mono text-ink-500">Editable:</span>
       {template.editable.map((field) => (
-        <span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-medium bg-surface-50 text-ink-600 border border-line-100">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-50 text-ink-600 border border-line-200">
           {formatField(field)}
         </span>
       ))}
     </div>
 
-    <div class="mt-auto pt-3">
+    <div class="mt-auto pt-4 grid grid-cols-2 gap-2">
       <a
         href={`/tools/youtube-banner-maker?template=${template.id}`}
-        class="inline-flex items-center justify-center w-full min-h-[44px] px-4 py-2.5 rounded-md bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs sm:text-sm font-medium transition-colors"
+        class="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2.5 rounded-xl bg-ink-950 text-surface-0 hover:bg-accent text-xs font-semibold transition-colors focus-visible:outline-accent shadow-2xs"
       >
-        Use Template &rarr;
+        <span>Customize</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a
+        href={`/tools/youtube-banner-maker?template=${template.id}&download=1`}
+        class="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 text-xs font-semibold transition-colors focus-visible:outline-accent"
+        title="Direct free download at official 2560×1440"
+      >
+        <span>Free PNG ↓</span>
       </a>
     </div>
   </div>

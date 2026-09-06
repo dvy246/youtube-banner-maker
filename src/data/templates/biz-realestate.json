@@ -1,0 +1,79 @@
+{
+  "id": "biz-realestate",
+  "niche": "business",
+  "name": "Luxury Real Estate",
+  "description": "Penthouse platinum and midnight navy for elite realtors and luxury property tours.",
+  "preview": "/previews/biz-realestate.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#0A0F1A",
+        "#131C30",
+        "#0A0F1A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "penthouse-bar-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.006,
+        "color": "#60A5FA",
+        "opacity": 0.9
+      },
+      {
+        "id": "penthouse-bar-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.67,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.006,
+        "color": "#60A5FA",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "BEVERLY ESTATES",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "ARCHITECTURAL MANSIONS · LUXURY TOURS · MARKET REPORTS",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#93C5FD",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "penthouse-bar-l",
+    "penthouse-bar-r"
+  ],
+  "safeAreaValidated": true
+}

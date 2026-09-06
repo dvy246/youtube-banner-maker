@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import SpecTable from '../../components/SpecTable.astro';
 import DeviceCropTable from '../../components/DeviceCropTable.astro';
-import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema, getHowToSchema } from '../../lib/seo';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema } from '../../lib/seo';
 import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES, MAX_UPLOAD_BYTES } from '../../lib/spec';
 
 const path = '/guides/youtube-banner-size';
@@ -63,33 +63,6 @@ const jsonLd = [
     path,
     datePublished: '2026-01-15',
     dateModified: '2026-03-01',
-  }),
-  getHowToSchema({
-    name: 'How to Make a YouTube Banner with Correct Dimensions',
-    description: 'Step-by-step guide to creating, resizing, and positioning a YouTube channel banner that displays correctly across mobile, desktop, tablet, and TV screens.',
-    path,
-    steps: [
-      {
-        name: `Set Canvas Dimensions to ${CANVAS.width} × ${CANVAS.height} px`,
-        text: `Create a 16:9 aspect ratio canvas at ${CANVAS.width} × ${CANVAS.height} pixels matching YouTube's maximum television display specification.`,
-      },
-      {
-        name: `Position Critical Branding Inside the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px Safe Area`,
-        text: `Keep channel names, logos, social handles, and faces centered within the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe zone to maintain visibility across all smartphone screens.`,
-      },
-      {
-        name: 'Extend Background Artwork to Full Bleed',
-        text: 'Fill the outer TV and desktop areas with background graphics or ambient bleed so widescreen monitors display complete artwork without letterboxing.',
-      },
-      {
-        name: 'Export Under 6 MB in sRGB Color Profile',
-        text: 'Export as PNG or high-quality JPEG in standard sRGB, keeping file size strictly below YouTube\'s 6 MB upload cap.',
-      },
-      {
-        name: 'Upload to YouTube Studio',
-        text: 'Go to YouTube Studio > Customization > Branding, upload the banner file, and inspect the per-device preview before publishing.',
-      },
-    ],
   }),
   getBreadcrumbSchema([
     { name: 'Home', url: '/' },
@@ -406,29 +379,23 @@ const jsonLd = [
           </h2>
         </div>
 
-        <div class="space-y-3" itemscope itemtype="https://schema.org/FAQPage">
+        <div class="space-y-3">
           {
             faqs.map((faq, index) => (
               <details
                 class="group rounded-xl border border-line-200 bg-surface-0 open:border-line-200 transition-colors"
                 id={`faq-${index}`}
-                itemscope
-                itemprop="mainEntity"
-                itemtype="https://schema.org/Question"
               >
                 <summary class="flex items-center justify-between p-4 min-h-[44px] text-xs font-semibold text-ink-950 cursor-pointer select-none list-none group-hover:text-accent transition-colors">
-                  <span itemprop="name">{faq.question}</span>
+                  <span>{faq.question}</span>
                   <span class="ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-line-200 text-ink-600 group-open:rotate-180 transition-transform text-xs" aria-hidden="true">
                     ▾
                   </span>
                 </summary>
                 <div
                   class="px-4 pb-4 text-xs text-ink-600 leading-relaxed measure-prose border-t border-line-100 pt-3"
-                  itemscope
-                  itemprop="acceptedAnswer"
-                  itemtype="https://schema.org/Answer"
                 >
-                  <div itemprop="text">
+                  <div>
                     {faq.answer}
                   </div>
                 </div>

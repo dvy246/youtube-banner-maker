@@ -1,0 +1,79 @@
+{
+  "id": "edu-history",
+  "niche": "education",
+  "name": "History Uncovered",
+  "description": "Ancient bronze and museum stone for world history documentaries and archaeological studies.",
+  "preview": "/previews/edu-history.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#13100B",
+        "#241E15",
+        "#13100B"
+      ]
+    },
+    "layers": [
+      {
+        "id": "timeline-notch-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.3,
+        "y": 0.46,
+        "w": 0.04,
+        "h": 0.004,
+        "color": "#D97706",
+        "opacity": 0.7
+      },
+      {
+        "id": "timeline-notch-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.66,
+        "y": 0.46,
+        "w": 0.04,
+        "h": 0.004,
+        "color": "#D97706",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "CHRONO ARCHIVE",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FEF3C7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Declassified History · Forgotten Battles & Ancient Empires",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FDE68A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "timeline-notch-l",
+    "timeline-notch-r"
+  ],
+  "safeAreaValidated": true
+}

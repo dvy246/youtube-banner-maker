@@ -6,10 +6,15 @@
   "preview": "/previews/gaming-neon.svg",
   "scene": {
     "background": {
-      "type": "gradient",
-      "from": "#0f051d",
-      "to": "#2c0b5e",
-      "angle": 135
+      "type": "image",
+      "src": "/backgrounds/gaming-neon.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
       {
@@ -22,6 +27,39 @@
         "h": 0.006,
         "color": "#8AA4FF",
         "opacity": 0.9
+      },
+      {
+        "id": "neon-top-right",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.75,
+        "y": 0.25,
+        "w": 0.15,
+        "h": 0.005,
+        "color": "#8AA4FF",
+        "opacity": 0.6
+      },
+      {
+        "id": "neon-bottom-left",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1,
+        "y": 0.75,
+        "w": 0.15,
+        "h": 0.005,
+        "color": "#8AA4FF",
+        "opacity": 0.6
+      },
+      {
+        "id": "neon-vert",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.898,
+        "y": 0.255,
+        "w": 0.003,
+        "h": 0.08,
+        "color": "#8AA4FF",
+        "opacity": 0.6
       },
       {
         "id": "title",
@@ -40,7 +78,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Daily Competitive Streams · 7PM EST",
+        "text": "Daily Competitive Streams \u00b7 7PM EST",
         "font": "inter-500",
         "size": 20,
         "color": "#8AA4FF",
@@ -58,7 +96,10 @@
     "background.gradient"
   ],
   "protected": [
-    "accent-bar"
+    "accent-bar",
+    "neon-top-right",
+    "neon-bottom-left",
+    "neon-vert"
   ],
   "safeAreaValidated": true
 }

@@ -1,0 +1,79 @@
+{
+  "id": "music-cybersynth",
+  "niche": "music",
+  "name": "Cyber Synthwave",
+  "description": "Sunset coral and outrun violet for retro electronic artists and 80s dreamwave.",
+  "preview": "/previews/music-cybersynth.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1C0728",
+        "#380E4F",
+        "#1C0728"
+      ]
+    },
+    "layers": [
+      {
+        "id": "synth-rule-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.33,
+        "y": 0.41,
+        "w": 0.34,
+        "h": 0.004,
+        "color": "#FB7185",
+        "opacity": 0.8
+      },
+      {
+        "id": "synth-rule-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.33,
+        "y": 0.58,
+        "w": 0.34,
+        "h": 0.004,
+        "color": "#FB7185",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "NEON DREAMWAVE",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "VINTAGE ANALOG SYNTHS · RETROWAVE · CYBERPUNK BEATS",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#FDA4AF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "synth-rule-top",
+    "synth-rule-bot"
+  ],
+  "safeAreaValidated": true
+}

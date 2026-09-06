@@ -27,29 +27,23 @@ const faqs = [
 ];
 ---
 
-<div class="space-y-3" itemscope itemtype="https://schema.org/FAQPage">
+<div class="space-y-4">
   {
     faqs.map((faq, index) => (
       <details
-        class="group rounded-xl border border-line-200 bg-surface-0 open:border-line-200 transition-colors"
+        class="group rounded-2xl border border-line-200 bg-surface-0 shadow-2xs hover:border-ink-400/30 transition-all duration-200 open:border-line-200 open:shadow-xs"
         id={`faq-${index}`}
-        itemscope
-        itemprop="mainEntity"
-        itemtype="https://schema.org/Question"
       >
-        <summary class="flex items-center justify-between p-4 min-h-[44px] text-xs font-semibold text-ink-950 cursor-pointer select-none list-none group-hover:text-accent transition-colors">
-          <span itemprop="name">{faq.question}</span>
-          <span class="ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-line-200 text-ink-600 group-open:rotate-180 transition-transform text-xs" aria-hidden="true">
-            ▾
+        <summary class="flex items-center justify-between p-5 sm:p-6 min-h-[56px] text-base sm:text-lg font-semibold text-ink-950 cursor-pointer select-none list-none group-hover:text-accent transition-colors">
+          <span class="pr-4">{faq.question}</span>
+          <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-line-200 bg-surface-50 text-ink-600 group-open:rotate-180 group-open:bg-accent/10 group-open:text-accent group-open:border-accent/20 transition-all text-xs" aria-hidden="true">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.5 4.5L6 8L9.5 4.5" />
+            </svg>
           </span>
         </summary>
-        <div
-          class="px-4 pb-4 text-xs text-ink-600 leading-relaxed measure-prose border-t border-line-100 pt-3"
-          itemscope
-          itemprop="acceptedAnswer"
-          itemtype="https://schema.org/Answer"
-        >
-          <div itemprop="text">
+        <div class="px-5 sm:px-6 pb-6 text-sm sm:text-base text-ink-600 leading-relaxed border-t border-line-100 pt-4">
+          <div class="max-w-3xl">
             {faq.answer}
           </div>
         </div>

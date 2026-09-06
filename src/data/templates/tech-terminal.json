@@ -11,6 +11,39 @@
     },
     "layers": [
       {
+        "id": "cursor-blink",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.75,
+        "y": 0.46,
+        "w": 0.012,
+        "h": 0.04,
+        "color": "#0F7A52",
+        "opacity": 0.8
+      },
+      {
+        "id": "term-header",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 0.02,
+        "color": "#0F7A52",
+        "opacity": 0.3
+      },
+      {
+        "id": "status-bar",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.0,
+        "y": 0.96,
+        "w": 1.0,
+        "h": 0.04,
+        "color": "#0F7A52",
+        "opacity": 0.15
+      },
+      {
         "id": "title",
         "role": "title",
         "type": "text",
@@ -27,7 +60,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Full-Stack Engineering · Architecture · DevOps",
+        "text": "Full-Stack Engineering \u00b7 Architecture \u00b7 DevOps",
         "font": "inter-500",
         "size": 18,
         "color": "#EFF1F3",
@@ -44,6 +77,10 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "cursor-blink",
+    "term-header",
+    "status-bar"
+  ],
   "safeAreaValidated": true
 }

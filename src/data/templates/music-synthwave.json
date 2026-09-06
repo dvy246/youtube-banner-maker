@@ -48,6 +48,39 @@
         "h": 0.003,
         "color": "#00F0FF",
         "opacity": 0.8
+      },
+      {
+        "id": "sundisc",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.5,
+        "y": 0.4,
+        "w": 0.3,
+        "h": 0.53,
+        "color": "#FF00AA",
+        "opacity": 0.15
+      },
+      {
+        "id": "gridline1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.15,
+        "y": 0.3,
+        "w": 0.002,
+        "h": 0.4,
+        "color": "#00F0FF",
+        "opacity": 0.15
+      },
+      {
+        "id": "gridline2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.85,
+        "y": 0.7,
+        "w": 0.002,
+        "h": 0.4,
+        "color": "#00F0FF",
+        "opacity": 0.15
       }
     ]
   },
@@ -58,7 +91,10 @@
     "background.gradient"
   ],
   "protected": [
-    "accent-grid"
+    "accent-grid",
+    "sundisc",
+    "gridline1",
+    "gridline2"
   ],
   "safeAreaValidated": true
 }

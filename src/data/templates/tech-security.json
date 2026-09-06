@@ -1,0 +1,79 @@
+{
+  "id": "tech-security",
+  "niche": "tech",
+  "name": "Cyber Defense",
+  "description": "Matrix emerald and void black for penetration testers, ethical hackers, and security research.",
+  "preview": "/previews/tech-security.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#050D0A",
+        "#0D1F17",
+        "#050D0A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "fw-bracket-1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.42,
+        "w": 0.004,
+        "h": 0.12,
+        "color": "#10B981",
+        "opacity": 0.8
+      },
+      {
+        "id": "fw-bracket-2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.71,
+        "y": 0.42,
+        "w": 0.004,
+        "h": 0.12,
+        "color": "#10B981",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SEC_PROTOCOL",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#E6FBF2",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "DEFENSIVE SECURITY · ZERO TRUST · REVERSE ENGINEERING",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#6EE7B7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "fw-bracket-1",
+    "fw-bracket-2"
+  ],
+  "safeAreaValidated": true
+}

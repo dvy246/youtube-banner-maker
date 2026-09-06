@@ -1,0 +1,79 @@
+{
+  "id": "life-grooming",
+  "niche": "lifestyle",
+  "name": "The Groomed Man",
+  "description": "Vintage barber blue and tan leather for men’s grooming, haircuts, and tailoring.",
+  "preview": "/previews/life-grooming.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#0A1016",
+        "#14202C",
+        "#0A1016"
+      ]
+    },
+    "layers": [
+      {
+        "id": "barber-rule-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.34,
+        "y": 0.41,
+        "w": 0.32,
+        "h": 0.003,
+        "color": "#38BDF8",
+        "opacity": 0.8
+      },
+      {
+        "id": "barber-rule-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.34,
+        "y": 0.57,
+        "w": 0.32,
+        "h": 0.003,
+        "color": "#38BDF8",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE GROOMED GENT",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#F0F9FF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Classic Barbering, Beard Maintenance & Bespoke Tailoring",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#BAE6FD",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "barber-rule-top",
+    "barber-rule-bot"
+  ],
+  "safeAreaValidated": true
+}

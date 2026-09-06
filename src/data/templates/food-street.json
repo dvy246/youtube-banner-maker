@@ -1,0 +1,79 @@
+{
+  "id": "food-street",
+  "niche": "food",
+  "name": "Street Food Journey",
+  "description": "Spicy chili red and wok black for street food vloggers and night market exploration.",
+  "preview": "/previews/food-street.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1C0707",
+        "#340F0F",
+        "#1C0707"
+      ]
+    },
+    "layers": [
+      {
+        "id": "wok-line-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.47,
+        "w": 0.05,
+        "h": 0.006,
+        "color": "#EF4444",
+        "opacity": 0.9
+      },
+      {
+        "id": "wok-line-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.67,
+        "y": 0.47,
+        "w": 0.05,
+        "h": 0.006,
+        "color": "#EF4444",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "STREET BITES",
+        "font": "sora-700",
+        "size": 54,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "NIGHT MARKETS · LOCAL STALLS · SECRET EATS WORLDWIDE",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#FCA5A5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "wok-line-l",
+    "wok-line-r"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,79 @@
+{
+  "id": "podcast-roundtable",
+  "niche": "podcast",
+  "name": "Indie Roundtable",
+  "description": "Warm copper and midnight navy for creative collectives and panel podcasts.",
+  "preview": "/previews/podcast-roundtable.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#090D14",
+        "#131B2A",
+        "#090D14"
+      ]
+    },
+    "layers": [
+      {
+        "id": "rt-bar-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.46,
+        "w": 0.05,
+        "h": 0.005,
+        "color": "#EA580C",
+        "opacity": 0.8
+      },
+      {
+        "id": "rt-bar-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.67,
+        "y": 0.46,
+        "w": 0.05,
+        "h": 0.005,
+        "color": "#EA580C",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE ROUNDTABLE",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "4 CREATORS · NO SCRIPT · RAW INDUSTRY TAKES",
+        "font": "inter-600",
+        "size": 16,
+        "color": "#FDBA74",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "rt-bar-l",
+    "rt-bar-r"
+  ],
+  "safeAreaValidated": true
+}

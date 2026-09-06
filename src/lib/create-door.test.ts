@@ -143,7 +143,7 @@ describe('Stage 6: Create Door Engine & Gate 6 Verification (/tools/youtube-bann
   });
 
   describe('Gate 6.3: Protected composition elements immutability', () => {
-    it('strictly isolates protected elements from editable layer keys across all 24 templates', () => {
+    it('strictly isolates protected elements from editable layer keys across all templates', () => {
       for (const tmpl of TEMPLATES) {
         expect(tmpl.editable).toBeInstanceOf(Array);
         expect(tmpl.protected).toBeInstanceOf(Array);
@@ -179,7 +179,7 @@ describe('Stage 6: Create Door Engine & Gate 6 Verification (/tools/youtube-bann
   describe('Gate 6.4: Template manifest loading and conversion', () => {
     it('converts every template to a valid, renderable Scene object with <= 8 layers', () => {
       const allTemplates = listTemplates();
-      expect(allTemplates.length).toBe(24);
+      expect(allTemplates.length).toBeGreaterThanOrEqual(100);
 
       for (const tmpl of allTemplates) {
         const scene = templateToScene(tmpl);

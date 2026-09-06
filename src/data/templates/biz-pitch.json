@@ -1,0 +1,79 @@
+{
+  "id": "biz-pitch",
+  "niche": "business",
+  "name": "Pitch Deck Ready",
+  "description": "Venture blue and clean white for founders raising capital and pitching angels.",
+  "preview": "/previews/biz-pitch.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#070F1E",
+        "#102140",
+        "#070F1E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "pitch-bracket-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.43,
+        "w": 0.004,
+        "h": 0.1,
+        "color": "#2563EB",
+        "opacity": 0.8
+      },
+      {
+        "id": "pitch-bracket-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.71,
+        "y": 0.43,
+        "w": 0.004,
+        "h": 0.1,
+        "color": "#2563EB",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE PITCH LAB",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "HOW TO RAISE SEED CAPITAL · DECK REVIEWS & FOUNDER ADVICE",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#93C5FD",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "pitch-bracket-l",
+    "pitch-bracket-r"
+  ],
+  "safeAreaValidated": true
+}

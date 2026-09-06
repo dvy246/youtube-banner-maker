@@ -13,7 +13,6 @@
       {
         "id": "title",
         "role": "title",
-        "type": "text",
         "text": "PHYSICS & PROOF",
         "font": "playfair-700",
         "size": 52,
@@ -21,12 +20,12 @@
         "align": "center",
         "x": 0.5,
         "y": 0.46,
+        "type": "text",
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
-        "type": "text",
         "text": "Rigorous Math & Theoretical Science Made Clear",
         "font": "inter-500",
         "size": 19,
@@ -34,7 +33,41 @@
         "align": "center",
         "x": 0.5,
         "y": 0.55,
+        "type": "text",
         "safeAreaConstrained": true
+      },
+      {
+        "id": "grid-v",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.15,
+        "y": 0,
+        "w": 0.001,
+        "h": 1,
+        "color": "#FFFFFF",
+        "opacity": 0.06
+      },
+      {
+        "id": "grid-h",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.75,
+        "w": 1,
+        "h": 0.002,
+        "color": "#FFFFFF",
+        "opacity": 0.04
+      },
+      {
+        "id": "marker",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.85,
+        "y": 0.25,
+        "w": 0.02,
+        "h": 0.004,
+        "color": "#FFFFFF",
+        "opacity": 0.12
       }
     ]
   },
@@ -44,6 +77,10 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "grid-v",
+    "grid-h",
+    "marker"
+  ],
   "safeAreaValidated": true
 }

@@ -6,10 +6,15 @@
   "preview": "/previews/music-lofi.svg",
   "scene": {
     "background": {
-      "type": "gradient",
-      "from": "#150A21",
-      "to": "#2B1745",
-      "angle": 120
+      "type": "image",
+      "src": "/backgrounds/music-lofi.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
       {
@@ -37,6 +42,39 @@
         "x": 0.5,
         "y": 0.55,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "glow1",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.15,
+        "y": 0.25,
+        "w": 0.3,
+        "h": 0.53,
+        "color": "#8855FF",
+        "opacity": 0.08
+      },
+      {
+        "id": "glow2",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.85,
+        "y": 0.8,
+        "w": 0.4,
+        "h": 0.71,
+        "color": "#5522AA",
+        "opacity": 0.12
+      },
+      {
+        "id": "band1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.5,
+        "y": 0.65,
+        "w": 0.4,
+        "h": 0.002,
+        "color": "#FFFFFF",
+        "opacity": 0.05
       }
     ]
   },
@@ -46,6 +84,10 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "glow1",
+    "glow2",
+    "band1"
+  ],
   "safeAreaValidated": true
 }

@@ -6,8 +6,15 @@
   "preview": "/previews/podcast-studio.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#0C0D0E"
+      "type": "image",
+      "src": "/backgrounds/podcast-studio.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
       {
@@ -27,7 +34,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Unfiltered Discussions · New Episodes Every Tuesday",
+        "text": "Unfiltered Discussions \u00b7 New Episodes Every Tuesday",
         "font": "inter-500",
         "size": 20,
         "color": "#EFF1F3",
@@ -35,6 +42,50 @@
         "x": 0.5,
         "y": 0.55,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "h-rule-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.2,
+        "y": 0.35,
+        "w": 0.6,
+        "h": 0.002,
+        "color": "#FFFFFF",
+        "opacity": 0.1
+      },
+      {
+        "id": "h-rule-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.2,
+        "y": 0.65,
+        "w": 0.6,
+        "h": 0.002,
+        "color": "#FFFFFF",
+        "opacity": 0.1
+      },
+      {
+        "id": "v-mark-lt",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.2,
+        "y": 0.35,
+        "w": 0.003,
+        "h": 0.05,
+        "color": "#FFFFFF",
+        "opacity": 0.15
+      },
+      {
+        "id": "v-mark-rb",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.797,
+        "y": 0.602,
+        "w": 0.003,
+        "h": 0.05,
+        "color": "#FFFFFF",
+        "opacity": 0.15
       }
     ]
   },
@@ -44,6 +95,11 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "h-rule-top",
+    "h-rule-bot",
+    "v-mark-lt",
+    "v-mark-rb"
+  ],
   "safeAreaValidated": true
 }

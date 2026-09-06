@@ -1,0 +1,79 @@
+{
+  "id": "edu-code",
+  "niche": "education",
+  "name": "Algorithm Academy",
+  "description": "Clean terminal cyan and dark navy for coding interviews and computer science curricula.",
+  "preview": "/previews/edu-code.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#060F1A",
+        "#0D1E33",
+        "#060F1A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "bracket-open",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.42,
+        "w": 0.004,
+        "h": 0.12,
+        "color": "#38BDF8",
+        "opacity": 0.8
+      },
+      {
+        "id": "bracket-close",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.71,
+        "y": 0.42,
+        "w": 0.004,
+        "h": 0.12,
+        "color": "#38BDF8",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "CODE PRINCIPLES",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Data Structures & System Design for Senior Engineers",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#7DD3FC",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "bracket-open",
+    "bracket-close"
+  ],
+  "safeAreaValidated": true
+}

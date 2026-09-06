@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  
+      <defs>
+        <linearGradient id="bg-anime-cyber" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="undefined" />
+          <stop offset="100%" stop-color="undefined" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg-anime-cyber)" />
+    
+  <!-- Safe area indicator border (subtle) -->
+  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
+  <rect x="204.8" y="144.0" width="230.4" height="1.8" fill="#06B6D4" opacity="0.9" />
+<text x="50%" y="47.0%" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-family="Switzer, sans-serif" font-size="32" font-weight="700">NEO TOKYO 2099</text>
+<text x="50%" y="54.0%" text-anchor="middle" dominant-baseline="middle" fill="#A5F3FC" font-family="Switzer, sans-serif" font-size="15" font-weight="500">VTUBER STREAMS • JRPG SPEEDRUNS • RETRO SYNTH</text>
+
+</svg>

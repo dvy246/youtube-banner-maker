@@ -1,9 +1,9 @@
 ---
 /**
- * ThemeToggle — Accessible dark / light mode slider for the site header.
+ * ThemeToggle - Accessible dark / light mode slider for the site header.
  *
  * Engineering & Design:
- * - Pure-CSS activation via body:has(#theme-toggle:checked) — zero script required on static pages.
+ * - Pure-CSS activation via body:has(#theme-toggle:checked) - zero script required on static pages.
  * - Tactile, luxury hardware-switch aesthetic: inset track with Sun & Moon icons and smooth sliding thumb.
  * - Full keyboard accessibility (Space / Enter toggles checkbox, Tab navigates).
  */
@@ -18,8 +18,9 @@
   <input
     type="checkbox"
     id="theme-toggle"
-    class="sr-only"
+    class="sr-only cursor-pointer"
     aria-label="Toggle dark and light mode"
+    onchange="try{var d=this.checked;document.documentElement.classList.toggle('dark',d);document.documentElement.setAttribute('data-theme',d?'dark':'light');localStorage.setItem('ytbm-theme',d?'dark':'light');window.dispatchEvent(new CustomEvent('ytbm-theme-change',{detail:{theme:d?'dark':'light'}}));}catch(e){}"
   />
 
   <!-- Track Icons: Sun on left, Moon on right -->
@@ -51,16 +52,22 @@
 </label>
 
 <style>
-  /* Sliding animation when checkbox is checked */
-  :global(body):has(#theme-toggle:checked) .theme-toggle-thumb {
+  /* Sliding animation when checkbox is checked or data-theme is dark */
+  :global(body):has(#theme-toggle:checked) .theme-toggle-thumb,
+  :global(html[data-theme="dark"]) .theme-toggle-thumb,
+  :global(html.dark) .theme-toggle-thumb {
     transform: translateX(2rem);
   }
 
-  :global(body):has(#theme-toggle:checked) .thumb-sun {
+  :global(body):has(#theme-toggle:checked) .thumb-sun,
+  :global(html[data-theme="dark"]) .thumb-sun,
+  :global(html.dark) .thumb-sun {
     display: none;
   }
 
-  :global(body):has(#theme-toggle:checked) .thumb-moon {
+  :global(body):has(#theme-toggle:checked) .thumb-moon,
+  :global(html[data-theme="dark"]) .thumb-moon,
+  :global(html.dark) .thumb-moon {
     display: block;
   }
 </style>

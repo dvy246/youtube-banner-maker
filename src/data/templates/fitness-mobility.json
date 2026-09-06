@@ -1,0 +1,67 @@
+{
+  "id": "fitness-mobility",
+  "niche": "fitness",
+  "name": "Mobility & Recovery",
+  "description": "Seafoam teal and soft graphite for physical therapists and active recovery specialists.",
+  "preview": "/previews/fitness-mobility.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#071412",
+        "#102421",
+        "#071412"
+      ]
+    },
+    "layers": [
+      {
+        "id": "spine-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.38,
+        "y": 0.58,
+        "w": 0.24,
+        "h": 0.002,
+        "color": "#14B8A6",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "JOINT & SPINE LAB",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#F0FDFA",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Physical Therapy Drills · Posture Correction & Longevity",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#5EEAD4",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "spine-rule"
+  ],
+  "safeAreaValidated": true
+}

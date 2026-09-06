@@ -6,10 +6,43 @@
   "preview": "/previews/edu-modern.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#15171B"
+      "type": "image",
+      "src": "/backgrounds/edu-modern.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "text": "VISUAL ECONOMICS",
+        "font": "sora-700",
+        "size": 46,
+        "color": "#FFFFFF",
+        "align": "left",
+        "x": 0.26,
+        "y": 0.46,
+        "type": "text",
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "text": "Animated Data Stories & Global Market Breakdown",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#8AA4FF",
+        "align": "left",
+        "x": 0.26,
+        "y": 0.54,
+        "type": "text",
+        "safeAreaConstrained": true
+      },
       {
         "id": "divider",
         "type": "shape",
@@ -22,30 +55,37 @@
         "opacity": 0.8
       },
       {
-        "id": "title",
-        "role": "title",
-        "type": "text",
-        "text": "VISUAL ECONOMICS",
-        "font": "sora-700",
-        "size": 46,
-        "color": "#FFFFFF",
-        "align": "left",
-        "x": 0.26,
-        "y": 0.46,
-        "safeAreaConstrained": true
+        "id": "bar1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.8,
+        "y": 0.6,
+        "w": 0.04,
+        "h": 0.25,
+        "color": "#8AA4FF",
+        "opacity": 0.15
       },
       {
-        "id": "tagline",
-        "role": "tagline",
-        "type": "text",
-        "text": "Animated Data Stories & Global Market Breakdown",
-        "font": "inter-500",
-        "size": 18,
+        "id": "bar2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.86,
+        "y": 0.4,
+        "w": 0.04,
+        "h": 0.45,
         "color": "#8AA4FF",
-        "align": "left",
-        "x": 0.26,
-        "y": 0.54,
-        "safeAreaConstrained": true
+        "opacity": 0.25
+      },
+      {
+        "id": "accent-dot",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.1,
+        "y": 0.15,
+        "w": 0.015,
+        "h": 0.015,
+        "color": "#8AA4FF",
+        "opacity": 0.4
       }
     ]
   },
@@ -56,7 +96,10 @@
     "background.gradient"
   ],
   "protected": [
-    "divider"
+    "divider",
+    "bar1",
+    "bar2",
+    "accent-dot"
   ],
   "safeAreaValidated": true
 }

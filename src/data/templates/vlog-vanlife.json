@@ -1,0 +1,67 @@
+{
+  "id": "vlog-vanlife",
+  "niche": "vlog",
+  "name": "Van Life Horizon",
+  "description": "Pine green and campfire ochre for off-grid road trips and mobile living enthusiasts.",
+  "preview": "/previews/vlog-vanlife.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#0B140E",
+        "#17261C",
+        "#0B140E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "van-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.41,
+        "w": 0.28,
+        "h": 0.004,
+        "color": "#EAB308",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ROAD UNBOUND",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#F7FEE7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Full-Time Van Life · Off-Grid Solar & Camping Guides",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FEF08A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "van-rule"
+  ],
+  "safeAreaValidated": true
+}

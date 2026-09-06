@@ -1,0 +1,79 @@
+{
+  "id": "fitness-kettlebell",
+  "niche": "fitness",
+  "name": "Kettlebell Core",
+  "description": "Matte cast iron and rust orange for kettlebell conditioning and functional mobility.",
+  "preview": "/previews/fitness-kettlebell.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#14100D",
+        "#241C16",
+        "#14100D"
+      ]
+    },
+    "layers": [
+      {
+        "id": "kb-arc-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.3,
+        "y": 0.46,
+        "w": 0.04,
+        "h": 0.005,
+        "color": "#EA580C",
+        "opacity": 0.8
+      },
+      {
+        "id": "kb-arc-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.66,
+        "y": 0.46,
+        "w": 0.04,
+        "h": 0.005,
+        "color": "#EA580C",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "IRON CORE CLUB",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFF7ED",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "HARDSTYLE KETTLEBELL FLOWS & HIP POWER CONDITIONING",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#FDBA74",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "kb-arc-l",
+    "kb-arc-r"
+  ],
+  "safeAreaValidated": true
+}

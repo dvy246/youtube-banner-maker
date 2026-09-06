@@ -1,0 +1,67 @@
+{
+  "id": "edu-literary",
+  "niche": "education",
+  "name": "The Book Club",
+  "description": "Deep forest green and ivory cream for book clubs, literary analysis, and writing craft.",
+  "preview": "/previews/edu-literary.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#0A140E",
+        "#14261C",
+        "#0A140E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "bookmark-tab",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.46,
+        "y": 0.38,
+        "w": 0.08,
+        "h": 0.005,
+        "color": "#86EFAC",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE CHAPTER HOUSE",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#F2FBF5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Deep Literary Analysis · Classic Novels & Modern Fiction",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#BBF7D0",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "bookmark-tab"
+  ],
+  "safeAreaValidated": true
+}

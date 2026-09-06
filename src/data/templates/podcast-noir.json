@@ -2,7 +2,7 @@
   "id": "podcast-noir",
   "niche": "podcast",
   "name": "Late Night Noir",
-  "description": "Stacked tall typography suited for true crime and mystery storytelling shows.",
+  "description": "Stacked tall typography with host avatar slot and vertical divider.",
   "preview": "/previews/podcast-noir.svg",
   "scene": {
     "background": {
@@ -13,39 +13,102 @@
     },
     "layers": [
       {
+        "id": "divider",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.33,
+        "y": 0.43,
+        "w": 0.002,
+        "h": 0.14,
+        "color": "#E3E5E8",
+        "opacity": 0.4
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.25,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 3,
+        "borderColor": "#E3E5E8",
+        "safeAreaConstrained": true
+      },
+      {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "SHADOW ARCHIVES",
         "font": "bebas-400",
-        "size": 66,
+        "size": 58,
         "color": "#E3E5E8",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.43,
+        "align": "left",
+        "x": 0.36,
+        "y": 0.46,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Investigative Deep Dives · Weekly Releases",
+        "text": "Investigative Deep Dives \u00b7 Weekly Releases",
         "font": "space-grotesk-700",
-        "size": 16,
-        "color": "#6B7076",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.56,
+        "size": 15,
+        "color": "#9CA3AF",
+        "align": "left",
+        "x": 0.36,
+        "y": 0.55,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "dramatic-h1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1,
+        "y": 0.4,
+        "w": 0.8,
+        "h": 0.002,
+        "color": "#E3E5E8",
+        "opacity": 0.08
+      },
+      {
+        "id": "dramatic-h2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1,
+        "y": 0.6,
+        "w": 0.8,
+        "h": 0.002,
+        "color": "#E3E5E8",
+        "opacity": 0.08
+      },
+      {
+        "id": "corner-bl",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.05,
+        "y": 0.05,
+        "w": 0.02,
+        "h": 0.03,
+        "color": "#E3E5E8",
+        "opacity": 0.05
       }
     ]
   },
   "editable": [
+    "avatar",
     "title",
     "tagline",
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "divider",
+    "dramatic-h1",
+    "dramatic-h2",
+    "corner-bl"
+  ],
   "safeAreaValidated": true
 }

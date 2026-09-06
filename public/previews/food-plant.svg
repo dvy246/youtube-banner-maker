@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  
+      <defs>
+        <linearGradient id="bg-food-plant" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="undefined" />
+          <stop offset="100%" stop-color="undefined" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg-food-plant)" />
+    
+  <!-- Safe area indicator border (subtle) -->
+  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
+  <rect x="224.0" y="147.6" width="192.0" height="1.1" fill="#10B981" opacity="0.8" />
+<rect x="224.0" y="205.2" width="192.0" height="1.1" fill="#10B981" opacity="0.8" />
+<text x="50%" y="47.0%" text-anchor="middle" dominant-baseline="middle" fill="#ECFDF5" font-family="Switzer, sans-serif" font-size="32" font-weight="700">PURE GREEN BOWL</text>
+<text x="50%" y="54.0%" text-anchor="middle" dominant-baseline="middle" fill="#6EE7B7" font-family="Switzer, sans-serif" font-size="15" font-weight="500">High-Protein Vegan Recipes · Whole Foods &amp; Macro Nutrition</text>
+
+</svg>

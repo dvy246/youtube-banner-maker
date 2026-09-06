@@ -6,14 +6,20 @@
   "preview": "/previews/life-minimalist.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#141517"
+      "type": "image",
+      "src": "/backgrounds/life-minimalist.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
       {
         "id": "title",
         "role": "title",
-        "type": "text",
         "text": "SIMPLICITY & INTENT",
         "font": "playfair-700",
         "size": 50,
@@ -21,20 +27,65 @@
         "align": "center",
         "x": 0.5,
         "y": 0.46,
+        "type": "text",
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
-        "type": "text",
-        "text": "Capsule Wardrobes · Mindful Habits · Slow Design",
+        "text": "Capsule Wardrobes \u00b7 Mindful Habits \u00b7 Slow Design",
         "font": "inter-500",
         "size": 19,
         "color": "#EFF1F3",
         "align": "center",
         "x": 0.5,
         "y": 0.55,
+        "type": "text",
         "safeAreaConstrained": true
+      },
+      {
+        "id": "thin-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.5,
+        "y": 0.15,
+        "w": 0.001,
+        "h": 0.1,
+        "color": "#FFFFFF",
+        "opacity": 0.05
+      },
+      {
+        "id": "frame-tl",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.06,
+        "y": 0.06,
+        "w": 0.08,
+        "h": 0.002,
+        "color": "#FFFFFF",
+        "opacity": 0.04
+      },
+      {
+        "id": "frame-bl",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.06,
+        "y": 0.94,
+        "w": 0.08,
+        "h": 0.002,
+        "color": "#FFFFFF",
+        "opacity": 0.04
+      },
+      {
+        "id": "breathe",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.5,
+        "y": 0.85,
+        "w": 0.01,
+        "h": 0.01,
+        "color": "#FFFFFF",
+        "opacity": 0.03
       }
     ]
   },
@@ -44,6 +95,11 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "thin-rule",
+    "frame-tl",
+    "frame-bl",
+    "breathe"
+  ],
   "safeAreaValidated": true
 }

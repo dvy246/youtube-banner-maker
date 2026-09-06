@@ -1,0 +1,67 @@
+{
+  "id": "food-chef",
+  "niche": "food",
+  "name": "Gourmet Chef Table",
+  "description": "Truffle black and french gold for masterclass chefs and fine dining techniques.",
+  "preview": "/previews/food-chef.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0C0B0A",
+        "#1A1816",
+        "#0C0B0A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "chef-star",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.47,
+        "y": 0.39,
+        "w": 0.06,
+        "h": 0.005,
+        "color": "#EAB308",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE CHEF TABLE",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FDFBF7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Michelin-Caliber Culinary Techniques for the Home Cook",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FEF08A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "chef-star"
+  ],
+  "safeAreaValidated": true
+}

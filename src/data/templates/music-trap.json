@@ -1,0 +1,79 @@
+{
+  "id": "music-trap",
+  "niche": "music",
+  "name": "Trap Beatmaker",
+  "description": "High-contrast 808 orange and matte carbon for hip hop beatmakers and FL Studio producers.",
+  "preview": "/previews/music-trap.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0D0D0E",
+        "#1B1B1E",
+        "#0D0D0E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "seq-bar-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.49,
+        "w": 0.05,
+        "h": 0.007,
+        "color": "#FF7A00",
+        "opacity": 0.9
+      },
+      {
+        "id": "seq-bar-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.67,
+        "y": 0.49,
+        "w": 0.05,
+        "h": 0.007,
+        "color": "#FF7A00",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "808 DISTRICT",
+        "font": "sora-700",
+        "size": 54,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "HARD TRAP BEATS · DRUM KITS · FL STUDIO TUTORIALS",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#FFB266",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "seq-bar-l",
+    "seq-bar-r"
+  ],
+  "safeAreaValidated": true
+}

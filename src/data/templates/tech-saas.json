@@ -1,0 +1,79 @@
+{
+  "id": "tech-saas",
+  "niche": "tech",
+  "name": "Modern SaaS Founder",
+  "description": "Clean Sky Blue and crisp Slate 950 composition for indie hackers and modern cloud software.",
+  "preview": "/previews/tech-saas.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0B1120",
+        "#1E293B",
+        "#0B1120"
+      ]
+    },
+    "layers": [
+      {
+        "id": "saas-pill-bg",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.38,
+        "w": 0.16,
+        "h": 0.02,
+        "color": "#38BDF8",
+        "opacity": 0.15
+      },
+      {
+        "id": "saas-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.58,
+        "w": 0.28,
+        "h": 0.003,
+        "color": "#38BDF8",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SCALE SYSTEM",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Building $100k MRR Cloud Software in Public",
+        "font": "inter-400",
+        "size": 17,
+        "color": "#7DD3FC",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "saas-pill-bg",
+    "saas-rule"
+  ],
+  "safeAreaValidated": true
+}

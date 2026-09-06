@@ -1,0 +1,91 @@
+{
+  "id": "gaming-speedrun",
+  "niche": "gaming",
+  "name": "Speedrun Minimal",
+  "description": "Split-second stopwatch aesthetic with mint accents and precision timer tick indicators.",
+  "preview": "/previews/gaming-speedrun.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#0B0F14",
+        "#111822",
+        "#0B0F14"
+      ]
+    },
+    "layers": [
+      {
+        "id": "timer-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.41,
+        "w": 0.3,
+        "h": 0.003,
+        "color": "#34D399",
+        "opacity": 0.8
+      },
+      {
+        "id": "tick-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.4,
+        "w": 0.003,
+        "h": 0.015,
+        "color": "#34D399",
+        "opacity": 0.8
+      },
+      {
+        "id": "tick-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.647,
+        "y": 0.4,
+        "w": 0.003,
+        "h": 0.015,
+        "color": "#34D399",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "FRAME PERFECT",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.48,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "WORLD RECORD SPEEDRUNS & GLITCH TUTORIALS",
+        "font": "inter-500",
+        "size": 16,
+        "color": "#6EE7B7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "timer-rule",
+    "tick-l",
+    "tick-r"
+  ],
+  "safeAreaValidated": true
+}

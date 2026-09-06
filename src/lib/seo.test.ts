@@ -9,6 +9,8 @@ import {
   getSoftwareAppSchema,
   getBreadcrumbSchema,
   getFAQSchema,
+  getContactPageSchema,
+  getCollectionPageSchema,
   SITE_URL,
 } from './seo';
 
@@ -62,6 +64,7 @@ describe('SEO Metadata & Standards Compliance', () => {
     const org = getOrganizationSchema();
     expect(org['@type']).toBe('Organization');
     expect(org.logo.url).toBe(`${SITE_URL}/logo.svg`);
+    expect(org.sameAs).toContain('https://github.com/dvy246');
 
     const app = getSoftwareAppSchema(
       'YouTube Banner Resizer',
@@ -87,5 +90,23 @@ describe('SEO Metadata & Standards Compliance', () => {
     ]);
     expect(faq['@type']).toBe('FAQPage');
     expect(faq.mainEntity.length).toBe(1);
+
+    const contact = getContactPageSchema();
+    expect(contact['@type']).toBe('ContactPage');
+    expect(contact.url).toBe(`${SITE_URL}/contact`);
+    expect(contact.mainEntity['@type']).toBe('Organization');
+
+    const collection = getCollectionPageSchema({
+      name: 'Templates',
+      description: 'Browse all templates',
+      path: '/templates',
+      items: [
+        { name: 'Neon Cyber', url: '/tools/youtube-banner-maker?template=gaming-neon', image: '/previews/gaming-neon.svg' },
+      ],
+    });
+    expect(collection['@type']).toBe('CollectionPage');
+    expect(collection.mainEntity['@type']).toBe('ItemList');
+    expect(collection.mainEntity.numberOfItems).toBe(1);
+    expect(collection.mainEntity.itemListElement[0].name).toBe('Neon Cyber');
   });
 });

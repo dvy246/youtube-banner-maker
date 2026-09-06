@@ -13,6 +13,50 @@
     },
     "layers": [
       {
+        "id": "footer-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.38,
+        "y": 0.59,
+        "w": 0.24,
+        "h": 0.003,
+        "color": "#FFE600",
+        "opacity": 0.5
+      },
+      {
+        "id": "scanline-1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.05,
+        "y": 0.15,
+        "w": 0.9,
+        "h": 0.002,
+        "color": "#FFE600",
+        "opacity": 0.2
+      },
+      {
+        "id": "scanline-2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.05,
+        "y": 0.85,
+        "w": 0.9,
+        "h": 0.002,
+        "color": "#FFE600",
+        "opacity": 0.2
+      },
+      {
+        "id": "pixel-block",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.48,
+        "y": 0.62,
+        "w": 0.04,
+        "h": 0.01,
+        "color": "#FFE600",
+        "opacity": 0.7
+      },
+      {
         "id": "title",
         "role": "title",
         "type": "text",
@@ -29,7 +73,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Speedruns · Reviews · Longplays",
+        "text": "Speedruns \u00b7 Reviews \u00b7 Longplays",
         "font": "inter-500",
         "size": 20,
         "color": "#FFFFFF",
@@ -37,17 +81,6 @@
         "x": 0.5,
         "y": 0.55,
         "safeAreaConstrained": true
-      },
-      {
-        "id": "footer-rule",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.38,
-        "y": 0.59,
-        "w": 0.24,
-        "h": 0.003,
-        "color": "#FFE600",
-        "opacity": 0.5
       }
     ]
   },
@@ -58,7 +91,10 @@
     "background.gradient"
   ],
   "protected": [
-    "footer-rule"
+    "footer-rule",
+    "scanline-1",
+    "scanline-2",
+    "pixel-block"
   ],
   "safeAreaValidated": true
 }

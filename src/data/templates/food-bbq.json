@@ -1,0 +1,79 @@
+{
+  "id": "food-bbq",
+  "niche": "food",
+  "name": "Smokehouse BBQ",
+  "description": "Hickory smoke and glowing ember orange for pitmasters and low-and-slow barbecue.",
+  "preview": "/previews/food-bbq.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#190C05",
+        "#2C160B",
+        "#190C05"
+      ]
+    },
+    "layers": [
+      {
+        "id": "bbq-gauge-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.007,
+        "color": "#F97316",
+        "opacity": 0.9
+      },
+      {
+        "id": "bbq-gauge-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.67,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.007,
+        "color": "#F97316",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SMOKE & EMBER",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFF7ED",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "TEXAS BRISKET · OFFSET SMOKERS · HOMEMADE RUBS",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#FDBA74",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "bbq-gauge-l",
+    "bbq-gauge-r"
+  ],
+  "safeAreaValidated": true
+}

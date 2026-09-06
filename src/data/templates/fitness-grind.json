@@ -6,8 +6,15 @@
   "preview": "/previews/fitness-grind.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#0E0F10"
+      "type": "image",
+      "src": "/backgrounds/fitness-grind.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
       {
@@ -35,6 +42,39 @@
         "x": 0.5,
         "y": 0.55,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "bar-left",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.08,
+        "y": 0.5,
+        "w": 0.03,
+        "h": 0.7,
+        "color": "#FFFFFF",
+        "opacity": 0.03
+      },
+      {
+        "id": "bar-right",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.92,
+        "y": 0.5,
+        "w": 0.03,
+        "h": 0.7,
+        "color": "#FFFFFF",
+        "opacity": 0.03
+      },
+      {
+        "id": "powerline",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.5,
+        "y": 0.32,
+        "w": 0.35,
+        "h": 0.006,
+        "color": "#FFFFFF",
+        "opacity": 0.1
       }
     ]
   },
@@ -44,6 +84,10 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "bar-left",
+    "bar-right",
+    "powerline"
+  ],
   "safeAreaValidated": true
 }

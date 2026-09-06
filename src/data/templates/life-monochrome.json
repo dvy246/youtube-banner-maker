@@ -11,6 +11,32 @@
     },
     "layers": [
       {
+        "id": "title",
+        "role": "title",
+        "text": "ATELIER MONO",
+        "font": "bebas-400",
+        "size": 64,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "type": "text",
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "text": "Architecture \u00b7 Coffee Cultures \u00b7 Industrial Design",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#6B7076",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "type": "text",
+        "safeAreaConstrained": true
+      },
+      {
         "id": "frame",
         "type": "shape",
         "shape": "rect",
@@ -22,30 +48,48 @@
         "opacity": 0.7
       },
       {
-        "id": "title",
-        "role": "title",
-        "type": "text",
-        "text": "ATELIER MONO",
-        "font": "bebas-400",
-        "size": 64,
-        "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
-        "safeAreaConstrained": true
+        "id": "grid-h",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.5,
+        "w": 1,
+        "h": 0.002,
+        "color": "#4A4E54",
+        "opacity": 0.35
       },
       {
-        "id": "tagline",
-        "role": "tagline",
-        "type": "text",
-        "text": "Architecture · Coffee Cultures · Industrial Design",
-        "font": "inter-500",
-        "size": 18,
-        "color": "#6B7076",
-        "align": "center",
+        "id": "grid-v",
+        "type": "shape",
+        "shape": "rect",
         "x": 0.5,
-        "y": 0.55,
-        "safeAreaConstrained": true
+        "y": 0,
+        "w": 0.002,
+        "h": 1,
+        "color": "#4A4E54",
+        "opacity": 0.35
+      },
+      {
+        "id": "block1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.15,
+        "y": 0.2,
+        "w": 0.12,
+        "h": 0.2,
+        "color": "#4A4E54",
+        "opacity": 0.15
+      },
+      {
+        "id": "block2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.75,
+        "y": 0.65,
+        "w": 0.08,
+        "h": 0.15,
+        "color": "#FFFFFF",
+        "opacity": 0.04
       }
     ]
   },
@@ -56,7 +100,11 @@
     "background.gradient"
   ],
   "protected": [
-    "frame"
+    "frame",
+    "grid-h",
+    "grid-v",
+    "block1",
+    "block2"
   ],
   "safeAreaValidated": true
 }

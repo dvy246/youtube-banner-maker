@@ -1,0 +1,91 @@
+{
+  "id": "gaming-esports",
+  "niche": "gaming",
+  "name": "Esports Arena",
+  "description": "High-voltage electric yellow and carbon black for competitive FPS tournaments and pro leagues.",
+  "preview": "/previews/gaming-esports.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 120,
+      "stops": [
+        "#0E0E10",
+        "#18181B",
+        "#27272A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "esports-bar-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.25,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.008,
+        "color": "#FACC15",
+        "opacity": 0.95
+      },
+      {
+        "id": "esports-bar-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.7,
+        "y": 0.48,
+        "w": 0.05,
+        "h": 0.008,
+        "color": "#FACC15",
+        "opacity": 0.95
+      },
+      {
+        "id": "corner-tag",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.25,
+        "y": 0.4,
+        "w": 0.03,
+        "h": 0.004,
+        "color": "#FACC15",
+        "opacity": 0.6
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "TITAN ESPORTS",
+        "font": "sora-700",
+        "size": 54,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "PRO SCRIMS · TOURNAMENT RECAPS · META ANALYSIS",
+        "font": "inter-600",
+        "size": 16,
+        "color": "#FDE047",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "esports-bar-l",
+    "esports-bar-r",
+    "corner-tag"
+  ],
+  "safeAreaValidated": true
+}

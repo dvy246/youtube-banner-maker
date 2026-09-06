@@ -1,0 +1,79 @@
+{
+  "id": "music-vinyl",
+  "niche": "music",
+  "name": "Vinyl Lounge",
+  "description": "Retro warm amber and velvet noir for record collectors, jazz bars, and crate diggers.",
+  "preview": "/previews/music-vinyl.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#120F0D",
+        "#1F1916",
+        "#120F0D"
+      ]
+    },
+    "layers": [
+      {
+        "id": "groove-ring",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.4,
+        "w": 0.28,
+        "h": 0.003,
+        "color": "#D97706",
+        "opacity": 0.7
+      },
+      {
+        "id": "groove-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.58,
+        "w": 0.28,
+        "h": 0.003,
+        "color": "#D97706",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "WAX & GROOVE",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFBEB",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Original Vinyl Sessions · Rare Jazz & Soul Grooves",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FDE68A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "groove-ring",
+    "groove-bot"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,79 @@
+{
+  "id": "food-ramen",
+  "niche": "food",
+  "name": "Tokyo Ramen Bar",
+  "description": "Nori black and savory broth gold for noodle enthusiasts and ramen shop reviews.",
+  "preview": "/previews/food-ramen.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#140E0A",
+        "#261A12",
+        "#140E0A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "chopstick-1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.3,
+        "y": 0.48,
+        "w": 0.04,
+        "h": 0.005,
+        "color": "#F59E0B",
+        "opacity": 0.8
+      },
+      {
+        "id": "chopstick-2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.66,
+        "y": 0.48,
+        "w": 0.04,
+        "h": 0.005,
+        "color": "#F59E0B",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "RAMEN MASTER",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "HOMEMADE CHASHU · 24-HOUR TONKOTSU BROTH · NOODLE CRAFT",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#FCD34D",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "chopstick-1",
+    "chopstick-2"
+  ],
+  "safeAreaValidated": true
+}

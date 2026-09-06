@@ -4,5 +4,8 @@
   <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
   <text x="50%" y="46.0%" text-anchor="middle" dominant-baseline="middle" fill="#F7F8F9" font-family="Switzer, sans-serif" font-size="32" font-weight="700">PHYSICS &amp; PROOF</text>
 <text x="50%" y="55.0%" text-anchor="middle" dominant-baseline="middle" fill="#E3E5E8" font-family="Switzer, sans-serif" font-size="15" font-weight="500">Rigorous Math &amp; Theoretical Science Made Clear</text>
+<rect x="96.0" y="0.0" width="0.6" height="360.0" fill="#FFFFFF" opacity="0.06" />
+<rect x="0.0" y="270.0" width="640.0" height="0.7" fill="#FFFFFF" opacity="0.04" />
+<rect x="544.0" y="90.0" width="12.8" height="1.4" fill="#FFFFFF" opacity="0.12" />
 
 </svg>

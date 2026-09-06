@@ -13,6 +13,32 @@
     },
     "layers": [
       {
+        "id": "title",
+        "role": "title",
+        "text": "THE OPEN COLLOQUIUM",
+        "font": "space-grotesk-700",
+        "size": 46,
+        "color": "#EFF1F3",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "type": "text",
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "text": "Classic Literature \u00b7 Political Thought \u00b7 Seminars",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#6B7076",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "type": "text",
+        "safeAreaConstrained": true
+      },
+      {
         "id": "top-rule",
         "type": "shape",
         "shape": "rect",
@@ -24,30 +50,37 @@
         "opacity": 0.6
       },
       {
-        "id": "title",
-        "role": "title",
-        "type": "text",
-        "text": "THE OPEN COLLOQUIUM",
-        "font": "space-grotesk-700",
-        "size": 46,
-        "color": "#EFF1F3",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
-        "safeAreaConstrained": true
+        "id": "bottom-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.62,
+        "w": 0.3,
+        "h": 0.002,
+        "color": "#6B7076",
+        "opacity": 0.6
       },
       {
-        "id": "tagline",
-        "role": "tagline",
-        "type": "text",
-        "text": "Classic Literature · Political Thought · Seminars",
-        "font": "inter-500",
-        "size": 18,
+        "id": "margin-left",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.08,
+        "y": 0.1,
+        "w": 0.001,
+        "h": 0.8,
         "color": "#6B7076",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
-        "safeAreaConstrained": true
+        "opacity": 0.25
+      },
+      {
+        "id": "margin-right",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.92,
+        "y": 0.1,
+        "w": 0.001,
+        "h": 0.8,
+        "color": "#6B7076",
+        "opacity": 0.25
       }
     ]
   },
@@ -58,7 +91,10 @@
     "background.gradient"
   ],
   "protected": [
-    "top-rule"
+    "top-rule",
+    "bottom-rule",
+    "margin-left",
+    "margin-right"
   ],
   "safeAreaValidated": true
 }

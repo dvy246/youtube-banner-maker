@@ -1,0 +1,79 @@
+{
+  "id": "vlog-wanderlust",
+  "niche": "vlog",
+  "name": "Wanderlust Film",
+  "description": "Warm sepia and 35mm golden amber for cinematic travel journals and nomadic living.",
+  "preview": "/previews/vlog-wanderlust.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1A120B",
+        "#2C1E14",
+        "#1A120B"
+      ]
+    },
+    "layers": [
+      {
+        "id": "film-frame-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.4,
+        "w": 0.36,
+        "h": 0.003,
+        "color": "#D97706",
+        "opacity": 0.7
+      },
+      {
+        "id": "film-frame-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.58,
+        "w": 0.36,
+        "h": 0.003,
+        "color": "#D97706",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE WANDERLUST",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#FFFBEB",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Documentary Travel Stories from 60+ Countries",
+        "font": "inter-400",
+        "size": 17,
+        "color": "#FDE68A",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "film-frame-top",
+    "film-frame-bot"
+  ],
+  "safeAreaValidated": true
+}

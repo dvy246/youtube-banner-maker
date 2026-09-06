@@ -41,6 +41,17 @@ for (const file of files) {
       const w = (layer.w * 640).toFixed(1);
       const h = ((layer.h || 0.01) * 360).toFixed(1);
       layersSvg += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${layer.color}" opacity="${layer.opacity || 1}" />\n`;
+    } else if (layer.type === 'badge') {
+      const x = (layer.x * 640).toFixed(1);
+      const y = (layer.y * 360).toFixed(1);
+      const bgCol = layer.colorScheme === 'mono-dark' ? '#0C0D0E' : (layer.colorScheme === 'mono-light' ? '#FFFFFF' : '#FF0000');
+      const textCol = layer.colorScheme === 'mono-light' ? '#0C0D0E' : '#FFFFFF';
+      layersSvg += `<g transform="translate(${x}, ${y})"><rect x="-55" y="-12" width="110" height="24" rx="12" fill="${bgCol}" /><text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="${textCol}" font-family="sans-serif" font-size="9" font-weight="700">${escapeXml(layer.text || 'SUBSCRIBE')}</text></g>\n`;
+    } else if (layer.type === 'frame') {
+      const x = ((layer.x ?? 0.35) * 640).toFixed(1);
+      const y = ((layer.y ?? 0.5) * 360).toFixed(1);
+      const r = (((layer.w ?? 0.1) * 640) / 2).toFixed(1);
+      layersSvg += `<circle cx="${x}" cy="${y}" r="${r}" fill="#333333" stroke="${layer.borderColor || '#FFFFFF'}" stroke-width="${layer.borderWidth || 2}" />\n`;
     }
   }
 

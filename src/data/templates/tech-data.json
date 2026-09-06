@@ -1,0 +1,79 @@
+{
+  "id": "tech-data",
+  "niche": "tech",
+  "name": "Data Science Insights",
+  "description": "Teal and deep navy telemetry for data analysts, Python developers, and statistical modeling.",
+  "preview": "/previews/tech-data.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#041217",
+        "#0A2530",
+        "#041217"
+      ]
+    },
+    "layers": [
+      {
+        "id": "data-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.41,
+        "w": 0.3,
+        "h": 0.004,
+        "color": "#14B8A6",
+        "opacity": 0.8
+      },
+      {
+        "id": "data-dot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.495,
+        "y": 0.395,
+        "w": 0.01,
+        "h": 0.01,
+        "color": "#14B8A6",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "DATA PULSE",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#F0FDFA",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.48,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "BIG DATA PIPELINES · PYTHON ANALYTICS · MACHINE LEARNING",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#5EEAD4",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "data-rule",
+    "data-dot"
+  ],
+  "safeAreaValidated": true
+}

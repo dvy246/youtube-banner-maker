@@ -15,6 +15,9 @@ import {
   type Scene,
   type Background,
   type TextLayer,
+  type ShapeLayer,
+  type PhotoFrameLayer,
+  type BadgeLayer,
   SCENE_KEY,
   defaultScene,
   serializeScene,
@@ -22,11 +25,13 @@ import {
   cloneScene,
 } from '../lib/scene';
 import {
+  renderScene,
   renderPreview,
   renderDeviceCrop,
   renderExport,
   clampZoom,
   clampOffset,
+  measureTextWidth,
   type ImageMap,
 } from '../lib/render';
 import { validateScene, estimateTextBounds } from '../lib/validate';
@@ -43,6 +48,7 @@ import {
   cleanImageFormat,
   getSizeTier,
 } from '../lib/analytics';
+import { computeVariation, applyDesignSystemToScene } from '../lib/variations';
 
 // App state phase per §D.1
 type AppPhase = 'BOOT' | 'EMPTY' | 'NEEDS_SOURCE' | 'READY' | 'ERROR';
@@ -100,6 +106,79 @@ class ToolIsland {
   private bgPhotoFileInput: HTMLInputElement | null = null;
   private makePhotoRepositionWrap: HTMLElement | null = null;
 
+  // Photo Frame DOM hooks
+  private frameStatusBadgeEl: HTMLElement | null = null;
+  private frameFileInputEl: HTMLInputElement | null = null;
+  private frameControlsActiveEl: HTMLElement | null = null;
+  private frameControlsInactiveEl: HTMLElement | null = null;
+  private frameUploadBtn: HTMLButtonElement | null = null;
+  private frameUploadBtnLabel: HTMLElement | null = null;
+  private frameShapeCircleBtn: HTMLButtonElement | null = null;
+  private frameShapeRectBtn: HTMLButtonElement | null = null;
+  private frameZoomSlider: HTMLInputElement | null = null;
+  private frameZoomValEl: HTMLElement | null = null;
+  private frameBorderColorInput: HTMLInputElement | null = null;
+  private frameBorderColorHexEl: HTMLElement | null = null;
+  private frameBorderWidthInput: HTMLInputElement | null = null;
+  private frameBorderWidthValEl: HTMLElement | null = null;
+  private framePosLeftBtn: HTMLButtonElement | null = null;
+  private framePosCenterBtn: HTMLButtonElement | null = null;
+  private framePosRightBtn: HTMLButtonElement | null = null;
+  private frameRemovePhotoBtn: HTMLButtonElement | null = null;
+  private frameRemoveLayerBtn: HTMLButtonElement | null = null;
+  private frameAddBtn: HTMLButtonElement | null = null;
+
+  // Frame Dragging State
+  private draggingFrameLayerId: string | null = null;
+  private frameDragStartPosX = 0;
+  private frameDragStartPosY = 0;
+  private hasDraggedFrame = false;
+
+  // Accent Shapes DOM hooks
+  private shapeStatusBadgeEl: HTMLElement | null = null;
+  private shapeAddRuleBtn: HTMLButtonElement | null = null;
+  private shapeAddCardBtn: HTMLButtonElement | null = null;
+  private shapeAddBadgeBtn: HTMLButtonElement | null = null;
+  private shapeActiveControlsEl: HTMLElement | null = null;
+  private shapeColorInput: HTMLInputElement | null = null;
+  private shapeColorHexEl: HTMLElement | null = null;
+  private shapeOpacitySlider: HTMLInputElement | null = null;
+  private shapeOpacityValEl: HTMLElement | null = null;
+  private shapeLayerLabelEl: HTMLElement | null = null;
+  private shapeRemoveBtn: HTMLButtonElement | null = null;
+
+  // Motion Studio State
+  private motionCanvasEl: HTMLCanvasElement | null = null;
+  private motionCtx: CanvasRenderingContext2D | null = null;
+  private motionToggleEl: HTMLInputElement | null = null;
+  private motionSpeedSlider: HTMLInputElement | null = null;
+  private motionSpeedValEl: HTMLElement | null = null;
+  private motionIntensitySlider: HTMLInputElement | null = null;
+  private motionIntensityValEl: HTMLElement | null = null;
+  private motionRecordVideoBtn: HTMLButtonElement | null = null;
+  private motionCopyObsBtn: HTMLButtonElement | null = null;
+  private motionCopyCssBtn: HTMLButtonElement | null = null;
+  private activeMotionPreset: string = 'neon-pulse';
+  private isMotionRunning = false;
+  private motionSpeed = 1.0;
+  private motionIntensity = 0.75;
+  private motionTime = 0;
+  private motionAnimFrameId: number | null = null;
+  private motionParticles: Array<{ x: number; y: number; r: number; vx: number; vy: number; alpha: number; pulse: number }> = [];
+  private isRecordingVideo = false;
+
+  // Background Style Presets
+  private readonly BG_STYLE_PRESETS: Record<string, Background> = {
+    carbon: { type: 'gradient', from: '#0C0D0E', to: '#1F2124', angle: 135 },
+    noir: { type: 'gradient', from: '#090A0B', to: '#15171A', angle: 180 },
+    indigo: { type: 'gradient', from: '#0B0E23', to: '#1B1F4A', angle: 135 },
+    nordic: { type: 'gradient', from: '#17191C', to: '#22262B', angle: 135 },
+    sunset: { type: 'gradient', from: '#2A1310', to: '#180B1C', angle: 135 },
+    emerald: { type: 'gradient', from: '#061510', to: '#0E2920', angle: 135 },
+    charcoal: { type: 'solid', color: '#121316' },
+    clean: { type: 'gradient', from: '#F7F8F9', to: '#E4E7EB', angle: 180 },
+  };
+
   // DOM hook references per §C.4
   private editorEl!: HTMLElement;
   private canvasEl!: HTMLCanvasElement;
@@ -154,6 +233,7 @@ class ToolIsland {
   private exportFormatSelect!: HTMLSelectElement;
   private exportButton!: HTMLButtonElement;
   private exportButtonText!: HTMLElement;
+  private exportThumbnailBtn: HTMLButtonElement | null = null;
   private exportMeta!: HTMLElement;
   private exportNote!: HTMLElement;
 
@@ -266,6 +346,7 @@ class ToolIsland {
     this.exportFormatSelect = document.getElementById('export-format') as HTMLSelectElement;
     this.exportButton = document.getElementById('export-button') as HTMLButtonElement;
     this.exportButtonText = document.getElementById('export-button-text') as HTMLElement;
+    this.exportThumbnailBtn = document.getElementById('export-thumbnail-button') as HTMLButtonElement | null;
     this.exportMeta = document.getElementById('export-meta') as HTMLElement;
     this.exportNote = document.getElementById('export-note') as HTMLElement;
 
@@ -313,6 +394,41 @@ class ToolIsland {
     this.bgPhotoFileInput = document.getElementById('bg-photo-file-input') as HTMLInputElement | null;
     this.makePhotoRepositionWrap = document.getElementById('make-photo-reposition-wrap');
 
+    // Photo Frame hooks
+    this.frameStatusBadgeEl = document.getElementById('frame-status-badge');
+    this.frameFileInputEl = document.getElementById('frame-photo-file-input') as HTMLInputElement | null;
+    this.frameControlsActiveEl = document.getElementById('frame-controls-active');
+    this.frameControlsInactiveEl = document.getElementById('frame-controls-inactive');
+    this.frameUploadBtn = document.getElementById('frame-photo-upload-btn') as HTMLButtonElement | null;
+    this.frameUploadBtnLabel = document.getElementById('frame-upload-btn-label');
+    this.frameShapeCircleBtn = document.getElementById('frame-shape-circle-btn') as HTMLButtonElement | null;
+    this.frameShapeRectBtn = document.getElementById('frame-shape-rect-btn') as HTMLButtonElement | null;
+    this.frameZoomSlider = document.getElementById('frame-zoom-slider') as HTMLInputElement | null;
+    this.frameZoomValEl = document.getElementById('frame-zoom-val');
+    this.frameBorderColorInput = document.getElementById('frame-border-color') as HTMLInputElement | null;
+    this.frameBorderColorHexEl = document.getElementById('frame-border-color-hex');
+    this.frameBorderWidthInput = document.getElementById('frame-border-width') as HTMLInputElement | null;
+    this.frameBorderWidthValEl = document.getElementById('frame-border-width-val');
+    this.framePosLeftBtn = document.getElementById('frame-pos-left') as HTMLButtonElement | null;
+    this.framePosCenterBtn = document.getElementById('frame-pos-center') as HTMLButtonElement | null;
+    this.framePosRightBtn = document.getElementById('frame-pos-right') as HTMLButtonElement | null;
+    this.frameRemovePhotoBtn = document.getElementById('frame-remove-photo-btn') as HTMLButtonElement | null;
+    this.frameRemoveLayerBtn = document.getElementById('frame-remove-layer-btn') as HTMLButtonElement | null;
+    this.frameAddBtn = document.getElementById('frame-add-btn') as HTMLButtonElement | null;
+
+    // Accent Shapes hooks
+    this.shapeStatusBadgeEl = document.getElementById('shape-status-badge');
+    this.shapeAddRuleBtn = document.getElementById('shape-add-rule-btn') as HTMLButtonElement | null;
+    this.shapeAddCardBtn = document.getElementById('shape-add-card-btn') as HTMLButtonElement | null;
+    this.shapeAddBadgeBtn = document.getElementById('shape-add-badge-btn') as HTMLButtonElement | null;
+    this.shapeActiveControlsEl = document.getElementById('shape-active-controls');
+    this.shapeColorInput = document.getElementById('shape-color-input') as HTMLInputElement | null;
+    this.shapeColorHexEl = document.getElementById('shape-color-hex');
+    this.shapeOpacitySlider = document.getElementById('shape-opacity-slider') as HTMLInputElement | null;
+    this.shapeOpacityValEl = document.getElementById('shape-opacity-val');
+    this.shapeLayerLabelEl = document.getElementById('shape-layer-label');
+    this.shapeRemoveBtn = document.getElementById('shape-remove-btn') as HTMLButtonElement | null;
+
     // Action toolbar, toast & clipboard
     this.btnUndoEl = document.getElementById('btn-undo') as HTMLButtonElement | null;
     this.btnRedoEl = document.getElementById('btn-redo') as HTMLButtonElement | null;
@@ -322,6 +438,20 @@ class ToolIsland {
     this.toolToastEl = document.getElementById('tool-toast');
     this.toolToastTextEl = document.getElementById('tool-toast-text');
     this.copyClipboardBtn = document.getElementById('copy-clipboard-button') as HTMLButtonElement | null;
+
+    // Motion Studio hooks
+    this.motionCanvasEl = document.getElementById('motion-canvas') as HTMLCanvasElement | null;
+    if (this.motionCanvasEl) {
+      this.motionCtx = this.motionCanvasEl.getContext('2d');
+    }
+    this.motionToggleEl = document.getElementById('motion-toggle') as HTMLInputElement | null;
+    this.motionSpeedSlider = document.getElementById('motion-speed-slider') as HTMLInputElement | null;
+    this.motionSpeedValEl = document.getElementById('motion-speed-val');
+    this.motionIntensitySlider = document.getElementById('motion-intensity-slider') as HTMLInputElement | null;
+    this.motionIntensityValEl = document.getElementById('motion-intensity-val');
+    this.motionRecordVideoBtn = document.getElementById('motion-record-video-btn') as HTMLButtonElement | null;
+    this.motionCopyObsBtn = document.getElementById('motion-copy-obs-btn') as HTMLButtonElement | null;
+    this.motionCopyCssBtn = document.getElementById('motion-copy-css-btn') as HTMLButtonElement | null;
   }
 
   /**
@@ -331,6 +461,7 @@ class ToolIsland {
     if (this.mode === 'make') {
       const urlParams = new URLSearchParams(window.location.search);
       const templateParam = urlParams.get('template');
+      const downloadParam = urlParams.get('download') === '1' || urlParams.get('action') === 'download';
       if (templateParam) {
         const tmpl = getTemplate(templateParam);
         if (tmpl) {
@@ -338,6 +469,11 @@ class ToolIsland {
           this.phase = 'READY';
           this.updatePhaseUI();
           this.scheduleFrame();
+          if (downloadParam) {
+            setTimeout(() => {
+              this.handleExportAction();
+            }, 300);
+          }
           return;
         }
       }
@@ -348,6 +484,15 @@ class ToolIsland {
           const parsed = deserializeScene(raw);
           if (parsed) {
             this.scene = parsed;
+            const frameLayer = this.scene.layers.find((l) => l.type === 'frame' && l.src) as PhotoFrameLayer | undefined;
+            if (frameLayer && frameLayer.src && !this.images.has(frameLayer.src)) {
+              const fImg = new Image();
+              fImg.onload = () => {
+                this.images.set(frameLayer.src!, fImg);
+                this.scheduleFrame();
+              };
+              fImg.src = frameLayer.src;
+            }
             if (parsed.background.type === 'image') {
               if (parsed.background.src && parsed.background.src.startsWith('data:image/')) {
                 const dataUrl = parsed.background.src;
@@ -367,6 +512,18 @@ class ToolIsland {
                   this.updateZoomControlsRange();
                   this.scheduleFrame();
                 });
+                return;
+              } else if (parsed.background.src) {
+                const bgSrc = parsed.background.src;
+                const bgImg = new Image();
+                bgImg.onload = () => {
+                  this.images.set(bgSrc, bgImg);
+                  this.phase = 'READY';
+                  this.updatePhaseUI();
+                  this.syncMakeControlsFromScene();
+                  this.scheduleFrame();
+                };
+                bgImg.src = bgSrc;
                 return;
               } else {
                 this.phase = 'NEEDS_SOURCE';
@@ -474,6 +631,9 @@ class ToolIsland {
     if (this.exportButton) {
       this.exportButton.disabled = this.phase !== 'READY';
     }
+    if (this.exportThumbnailBtn) {
+      this.exportThumbnailBtn.disabled = this.phase !== 'READY';
+    }
 
     if (this.verdictCountBadge) {
       if (this.phase === 'EMPTY') {
@@ -559,6 +719,36 @@ class ToolIsland {
           const clickFracX = (e.clientX - rect.left) / rect.width;
           const clickFracY = (e.clientY - rect.top) / rect.height;
 
+          let hitFrame: PhotoFrameLayer | null = null;
+          for (let i = this.scene.layers.length - 1; i >= 0; i--) {
+            const layer = this.scene.layers[i];
+            if (layer.type === 'frame') {
+              const halfW = (layer.w || 0.11) / 2;
+              const halfH = (layer.h || 0.1944) / 2;
+              if (
+                clickFracX >= layer.x - halfW &&
+                clickFracX <= layer.x + halfW &&
+                clickFracY >= layer.y - halfH &&
+                clickFracY <= layer.y + halfH
+              ) {
+                hitFrame = layer;
+                break;
+              }
+            }
+          }
+
+          if (hitFrame) {
+            this.switchDeckTab('photo');
+            this.draggingFrameLayerId = hitFrame.id;
+            this.canvasEl.setPointerCapture(e.pointerId);
+            this.pointerDragStartFracX = clickFracX;
+            this.pointerDragStartFracY = clickFracY;
+            this.frameDragStartPosX = hitFrame.x;
+            this.frameDragStartPosY = hitFrame.y;
+            this.hasDraggedFrame = false;
+            return;
+          }
+
           let hitLayer: TextLayer | null = null;
           for (let i = this.scene.layers.length - 1; i >= 0; i--) {
             const layer = this.scene.layers[i];
@@ -585,6 +775,7 @@ class ToolIsland {
           }
 
           if (hitLayer) {
+            this.switchDeckTab('text');
             this.draggingTextLayerId = hitLayer.id;
             this.canvasEl.setPointerCapture(e.pointerId);
             this.pointerDragStartFracX = clickFracX;
@@ -615,7 +806,29 @@ class ToolIsland {
       });
 
       this.canvasEl.addEventListener('pointermove', (e) => {
-        if (this.phase !== 'READY' || this.mode === 'check') return;
+        // If dragging photo frame in make mode
+        if (this.draggingFrameLayerId) {
+          const rect = this.canvasEl.getBoundingClientRect();
+          const currentFracX = (e.clientX - rect.left) / rect.width;
+          const currentFracY = (e.clientY - rect.top) / rect.height;
+          const dx = currentFracX - this.pointerDragStartFracX;
+          const dy = currentFracY - this.pointerDragStartFracY;
+
+          if (Math.hypot(dx, dy) > 0.005) {
+            this.hasDraggedFrame = true;
+          }
+
+          const frame = this.scene.layers.find(
+            (l) => l.type === 'frame' && l.id === this.draggingFrameLayerId
+          ) as PhotoFrameLayer | undefined;
+
+          if (frame) {
+            frame.x = Math.max(0.1, Math.min(0.9, this.frameDragStartPosX + dx));
+            frame.y = Math.max(0.35, Math.min(0.65, this.frameDragStartPosY + dy));
+            this.applyChange({ layers: [...this.scene.layers] });
+          }
+          return;
+        }
 
         // If dragging text layer in make mode
         if (this.draggingTextLayerId) {
@@ -667,6 +880,27 @@ class ToolIsland {
       });
 
       const stopDrag = (e: PointerEvent) => {
+        if (this.draggingFrameLayerId) {
+          const frameId = this.draggingFrameLayerId;
+          const wasDragged = this.hasDraggedFrame;
+          this.draggingFrameLayerId = null;
+          this.hasDraggedFrame = false;
+          try {
+            this.canvasEl.releasePointerCapture(e.pointerId);
+          } catch {
+            // Ignore release errors
+          }
+          if (!wasDragged) {
+            const frame = this.scene.layers.find(
+              (l) => l.type === 'frame' && l.id === frameId
+            ) as PhotoFrameLayer | undefined;
+            if (frame && !frame.src) {
+              this.frameFileInputEl?.click();
+            }
+          }
+          return;
+        }
+
         if (this.draggingTextLayerId) {
           this.draggingTextLayerId = null;
           try {
@@ -856,6 +1090,10 @@ class ToolIsland {
 
     if (this.exportButton) {
       this.exportButton.addEventListener('click', () => this.handleExportAction());
+    }
+
+    if (this.exportThumbnailBtn) {
+      this.exportThumbnailBtn.addEventListener('click', () => this.handleThumbnailExport());
     }
 
     // 9. Action Toolbar (Undo, Redo, Shortcuts)
@@ -1052,6 +1290,26 @@ class ToolIsland {
       });
     });
 
+    // 6b. Free PNG direct download from modal cards
+    const downloadBtns = document.querySelectorAll<HTMLButtonElement>('.download-template-btn');
+    downloadBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute('data-template-id');
+        if (id) {
+          const tmpl = getTemplate(id);
+          if (tmpl) {
+            this.loadTemplate(tmpl);
+            this.templatePickerModalEl?.classList.add('hidden');
+            this.scheduleFrame();
+            setTimeout(() => {
+              this.handleExportAction();
+            }, 200);
+          }
+        }
+      });
+    });
+
     // 7. Filter template modal by niche pills (REQ-021)
     const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-niche-btn');
     filterBtns.forEach((btn) => {
@@ -1132,15 +1390,826 @@ class ToolIsland {
       if (file) this.handleMakePhotoUpload(file);
     });
 
-    // 12. Cross-Door Handoff Action (REQ-022, Gate 6)
+    // 12. Instant Curated Background Styles & Palette Harmonizer (1-Click)
+    const BG_COLOR_HARMONIES: Record<string, { titleColor: string; taglineColor: string; frameBorderColor: string }> = {
+      carbon: { titleColor: '#FFFFFF', taglineColor: '#9CA3AF', frameBorderColor: '#FFFFFF' },
+      noir: { titleColor: '#F3F4F6', taglineColor: '#9CA3AF', frameBorderColor: '#E5E7EB' },
+      indigo: { titleColor: '#FFFFFF', taglineColor: '#A5B4FC', frameBorderColor: '#6366F1' },
+      nordic: { titleColor: '#F7F8F9', taglineColor: '#D1D5DB', frameBorderColor: '#F7F8F9' },
+      sunset: { titleColor: '#FFFFFF', taglineColor: '#FED7AA', frameBorderColor: '#FF7A00' },
+      emerald: { titleColor: '#FFFFFF', taglineColor: '#6EE7B7', frameBorderColor: '#10B981' },
+      charcoal: { titleColor: '#FFFFFF', taglineColor: '#9CA3AF', frameBorderColor: '#FFFFFF' },
+      clean: { titleColor: '#0B0F19', taglineColor: '#4B5563', frameBorderColor: '#0B0F19' },
+    };
+
+    const presetBtns = document.querySelectorAll<HTMLButtonElement>('.bg-preset-btn');
+    presetBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const presetKey = btn.getAttribute('data-preset');
+        if (presetKey && this.BG_STYLE_PRESETS[presetKey]) {
+          const bg = this.BG_STYLE_PRESETS[presetKey];
+          const harmony = BG_COLOR_HARMONIES[presetKey];
+
+          if (harmony) {
+            const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+            if (title) title.color = harmony.titleColor;
+
+            const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+            if (tagline) tagline.color = harmony.taglineColor;
+
+            const frame = this.getPhotoFrameLayer();
+            if (frame) frame.borderColor = harmony.frameBorderColor;
+          }
+
+          this.applyChange({ background: bg, layers: [...this.scene.layers] });
+          this.syncBackgroundControls();
+          this.renderTextLayerControls();
+          this.syncPhotoFrameControls();
+          this.showToast(`Applied ${presetKey} style`);
+        }
+      });
+    });
+
+    // 13. Photo Frame & Avatar Controls
+    this.frameUploadBtn?.addEventListener('click', () => {
+      this.frameFileInputEl?.click();
+    });
+
+    this.frameFileInputEl?.addEventListener('change', (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) this.handleFramePhotoUpload(file);
+    });
+
+    this.frameShapeCircleBtn?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.shape = 'circle';
+        frame.w = 0.10;
+        frame.h = 0.1778;
+        this.applyChange({ layers: [...this.scene.layers] });
+        this.syncPhotoFrameControls();
+      }
+    });
+
+    this.frameShapeRectBtn?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.shape = 'rect';
+        frame.w = 0.09;
+        frame.h = 0.20;
+        frame.borderRadius = 12;
+        this.applyChange({ layers: [...this.scene.layers] });
+        this.syncPhotoFrameControls();
+      }
+    });
+
+    this.frameZoomSlider?.addEventListener('input', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame && this.frameZoomSlider) {
+        const z = parseFloat(this.frameZoomSlider.value);
+        frame.zoom = z;
+        if (this.frameZoomValEl) this.frameZoomValEl.textContent = `${z.toFixed(1)}×`;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.frameBorderColorInput?.addEventListener('input', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame && this.frameBorderColorInput) {
+        const c = this.frameBorderColorInput.value;
+        frame.borderColor = c;
+        if (this.frameBorderColorHexEl) this.frameBorderColorHexEl.textContent = c;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.frameBorderWidthInput?.addEventListener('input', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame && this.frameBorderWidthInput) {
+        const w = parseInt(this.frameBorderWidthInput.value, 10);
+        frame.borderWidth = w;
+        if (this.frameBorderWidthValEl) this.frameBorderWidthValEl.textContent = `${w}px`;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.framePosLeftBtn?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.x = 0.28;
+        frame.y = 0.50;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.framePosCenterBtn?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.x = 0.50;
+        frame.y = 0.50;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.framePosRightBtn?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.x = 0.72;
+        frame.y = 0.50;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.frameRemovePhotoBtn?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame && frame.src) {
+        delete frame.src;
+        this.applyChange({ layers: [...this.scene.layers] });
+        this.syncPhotoFrameControls();
+        this.showToast('Photo removed from frame');
+      }
+    });
+
+    this.frameRemoveLayerBtn?.addEventListener('click', () => {
+      this.scene.layers = this.scene.layers.filter((l) => l.type !== 'frame');
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.syncPhotoFrameControls();
+      this.showToast('Photo frame removed');
+    });
+
+    this.frameAddBtn?.addEventListener('click', () => {
+      let frame = this.getPhotoFrameLayer();
+      if (!frame) {
+        const newFrame: PhotoFrameLayer = {
+          id: 'avatar-frame',
+          type: 'frame',
+          shape: 'circle',
+          x: 0.28,
+          y: 0.50,
+          w: 0.10,
+          h: 0.1778,
+          borderWidth: 3,
+          borderColor: '#FFFFFF',
+          safeAreaConstrained: true,
+        };
+        this.scene.layers.push(newFrame);
+        this.applyChange({ layers: [...this.scene.layers] });
+        this.syncPhotoFrameControls();
+        this.showToast('Photo frame added to canvas');
+      }
+    });
+
+    // 14. Accent Shapes & Framing Controls
+    this.shapeAddRuleBtn?.addEventListener('click', () => {
+      const rule: ShapeLayer = {
+        id: `shape-rule-${Date.now()}`,
+        type: 'shape',
+        shape: 'rect',
+        x: 0.35,
+        y: 0.43,
+        w: 0.05,
+        h: 0.003,
+        color: '#FFFFFF',
+        opacity: 0.8,
+      };
+      this.scene.layers.push(rule);
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.syncShapeControls();
+      this.showToast('Accent rule added');
+    });
+
+    this.shapeAddCardBtn?.addEventListener('click', () => {
+      const card: ShapeLayer = {
+        id: `shape-card-${Date.now()}`,
+        type: 'shape',
+        shape: 'rect',
+        x: 0.22,
+        y: 0.38,
+        w: 0.56,
+        h: 0.24,
+        color: '#FFFFFF',
+        opacity: 0.06,
+        borderRadius: 16,
+      };
+      this.scene.layers.unshift(card);
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.syncShapeControls();
+      this.showToast('Backplate card added');
+    });
+
+    this.shapeAddBadgeBtn?.addEventListener('click', () => {
+      const badge: ShapeLayer = {
+        id: `shape-badge-${Date.now()}`,
+        type: 'shape',
+        shape: 'rect',
+        x: 0.35,
+        y: 0.39,
+        w: 0.06,
+        h: 0.016,
+        color: '#FFFFFF',
+        opacity: 0.15,
+        borderRadius: 4,
+      };
+      this.scene.layers.push(badge);
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.syncShapeControls();
+      this.showToast('Brand badge added');
+    });
+
+    this.shapeColorInput?.addEventListener('input', () => {
+      const shapes = this.getShapeLayers();
+      if (shapes.length > 0 && this.shapeColorInput) {
+        const color = this.shapeColorInput.value;
+        shapes[shapes.length - 1].color = color;
+        if (this.shapeColorHexEl) this.shapeColorHexEl.textContent = color;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.shapeOpacitySlider?.addEventListener('input', () => {
+      const shapes = this.getShapeLayers();
+      if (shapes.length > 0 && this.shapeOpacitySlider) {
+        const op = parseFloat(this.shapeOpacitySlider.value);
+        shapes[shapes.length - 1].opacity = op;
+        if (this.shapeOpacityValEl) this.shapeOpacityValEl.textContent = `${Math.round(op * 100)}%`;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    this.shapeRemoveBtn?.addEventListener('click', () => {
+      this.scene.layers = this.scene.layers.filter((l) => l.type !== 'shape');
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.syncShapeControls();
+      this.showToast('Shapes removed');
+    });
+
+    // 15. Cross-Door Handoff Action (REQ-022, Gate 6)
     this.handoffCheckBtn?.addEventListener('click', () => {
       this.persist();
       window.location.href = '/tools/youtube-banner-checker';
     });
 
+    // 16. Fast Customizations: Instant Safe Layout Presets
+    document.getElementById('layout-preset-left')?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.x = 0.26;
+        frame.y = 0.50;
+      }
+      const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+      if (title) {
+        title.position.x = 0.36;
+        title.position.y = 0.47;
+        title.align = 'left';
+      }
+      const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+      if (tagline) {
+        tagline.position.x = 0.36;
+        tagline.position.y = 0.56;
+        tagline.align = 'left';
+      }
+      const shapes = this.getShapeLayers();
+      if (shapes.length > 0 && shapes[0].shape === 'rect' && shapes[0].h < 0.01) {
+        shapes[0].x = 0.36;
+        shapes[0].y = 0.42;
+      }
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.renderTextLayerControls();
+      this.syncPhotoFrameControls();
+      this.showToast('Aligned to Left Avatar layout');
+    });
+
+    document.getElementById('layout-preset-center')?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.x = 0.50;
+        frame.y = 0.42;
+      }
+      const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+      if (title) {
+        title.position.x = 0.50;
+        title.position.y = frame ? 0.52 : 0.46;
+        title.align = 'center';
+      }
+      const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+      if (tagline) {
+        tagline.position.x = 0.50;
+        tagline.position.y = frame ? 0.59 : 0.55;
+        tagline.align = 'center';
+      }
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.renderTextLayerControls();
+      this.syncPhotoFrameControls();
+      this.showToast('Aligned to Centered layout');
+    });
+
+    document.getElementById('layout-preset-right')?.addEventListener('click', () => {
+      const frame = this.getPhotoFrameLayer();
+      if (frame) {
+        frame.x = 0.72;
+        frame.y = 0.50;
+      }
+      const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+      if (title) {
+        title.position.x = 0.25;
+        title.position.y = 0.47;
+        title.align = 'left';
+      }
+      const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+      if (tagline) {
+        tagline.position.x = 0.25;
+        tagline.position.y = 0.56;
+        tagline.align = 'left';
+      }
+      this.applyChange({ layers: [...this.scene.layers] });
+      this.renderTextLayerControls();
+      this.syncPhotoFrameControls();
+      this.showToast('Aligned to Text + Card layout');
+    });
+
+    // 17. Fast Customizations: Curated Font Pairings
+    const fontPairBtns = document.querySelectorAll<HTMLButtonElement>('.font-pair-btn');
+    fontPairBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const titleFont = btn.getAttribute('data-font-title');
+        const taglineFont = btn.getAttribute('data-font-tagline');
+        const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+        if (title && titleFont) {
+          title.font = titleFont;
+        }
+        const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+        if (tagline && taglineFont) {
+          tagline.font = taglineFont;
+        }
+        this.applyChange({ layers: [...this.scene.layers] });
+        this.showToast('Applied typography pairing');
+      });
+    });
+
+    // 18. Fast Customizations: Quick Taglines
+    const taglineChips = document.querySelectorAll<HTMLButtonElement>('.tagline-chip');
+    taglineChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const text = chip.getAttribute('data-tagline');
+        if (text) {
+          const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+          if (tagline) {
+            tagline.text = text;
+            const input = document.getElementById('layer-text-tagline') as HTMLInputElement | null;
+            if (input) input.value = text;
+            this.applyChange({ layers: [...this.scene.layers] });
+            this.showToast('Tagline updated');
+          }
+        }
+      });
+    });
+
     // Initial render of text controls for current scene
+    this.setupDeckSlider();
+    this.setupMotionStudio();
+    this.setupVariationControls();
+    this.setupBadgeControls();
     this.renderTextLayerControls();
     this.syncBackgroundControls();
+    this.syncPhotoFrameControls();
+    this.syncShapeControls();
+    this.syncBadgeControls();
+  }
+
+  public switchDeckTab(tabName: string): void {
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.deck-tab-btn');
+    const slides = document.querySelectorAll<HTMLElement>('.deck-slide');
+
+    tabBtns.forEach((b) => {
+      const isSelected = b.getAttribute('data-deck-tab') === tabName;
+      b.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      if (isSelected) {
+        b.classList.remove('bg-transparent', 'text-ink-600', 'font-medium');
+        b.classList.add('bg-surface-0', 'text-ink-950', 'shadow-xs', 'border', 'border-line-200', 'font-semibold');
+      } else {
+        b.classList.remove('bg-surface-0', 'text-ink-950', 'shadow-xs', 'border', 'border-line-200', 'font-semibold');
+        b.classList.add('bg-transparent', 'text-ink-600', 'font-medium');
+      }
+    });
+
+    slides.forEach((s) => {
+      const matches = s.getAttribute('data-slide-id') === tabName;
+      if (matches) {
+        s.classList.remove('hidden');
+      } else {
+        s.classList.add('hidden');
+      }
+    });
+  }
+
+  private setupDeckSlider(): void {
+    const tabBtns = document.querySelectorAll<HTMLButtonElement>('.deck-tab-btn');
+    const navBtns = document.querySelectorAll<HTMLButtonElement>('[data-slide-nav]');
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tab = btn.getAttribute('data-deck-tab');
+        if (tab) this.switchDeckTab(tab);
+      });
+    });
+
+    navBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-slide-nav');
+        if (target) this.switchDeckTab(target);
+      });
+    });
+  }
+
+  private setupMotionStudio(): void {
+    if (this.motionToggleEl) {
+      this.motionToggleEl.addEventListener('change', () => {
+        if (this.motionToggleEl?.checked) {
+          this.startMotion();
+        } else {
+          this.stopMotion();
+        }
+      });
+    }
+
+    if (this.motionSpeedSlider) {
+      this.motionSpeedSlider.addEventListener('input', () => {
+        this.motionSpeed = parseFloat(this.motionSpeedSlider!.value);
+        if (this.motionSpeedValEl) {
+          this.motionSpeedValEl.textContent = `${this.motionSpeed.toFixed(1)}x`;
+        }
+      });
+    }
+
+    if (this.motionIntensitySlider) {
+      this.motionIntensitySlider.addEventListener('input', () => {
+        const val = parseInt(this.motionIntensitySlider!.value, 10);
+        this.motionIntensity = val / 100;
+        if (this.motionIntensityValEl) {
+          this.motionIntensityValEl.textContent = `${val}%`;
+        }
+      });
+    }
+
+    const presetBtns = document.querySelectorAll<HTMLButtonElement>('.motion-preset-btn');
+    presetBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const preset = btn.getAttribute('data-motion');
+        if (!preset) return;
+        this.activeMotionPreset = preset;
+        presetBtns.forEach((b) => {
+          b.classList.remove('border-accent', 'bg-accent/5', 'ring-1', 'ring-accent', 'active-motion-preset');
+          b.classList.add('border-line-200', 'bg-surface-50');
+        });
+        btn.classList.remove('border-line-200', 'bg-surface-50');
+        btn.classList.add('border-accent', 'bg-accent/5', 'ring-1', 'ring-accent', 'active-motion-preset');
+
+        // Automatically start motion if not running
+        if (!this.isMotionRunning) {
+          if (this.motionToggleEl) this.motionToggleEl.checked = true;
+          this.startMotion();
+        }
+      });
+    });
+
+    if (this.motionRecordVideoBtn) {
+      this.motionRecordVideoBtn.addEventListener('click', () => {
+        this.recordMotionVideo();
+      });
+    }
+
+    if (this.motionCopyObsBtn) {
+      this.motionCopyObsBtn.addEventListener('click', () => {
+        this.copyObsCode();
+      });
+    }
+
+    if (this.motionCopyCssBtn) {
+      this.motionCopyCssBtn.addEventListener('click', () => {
+        this.copyCssCode();
+      });
+    }
+  }
+
+  private startMotion(): void {
+    if (!this.motionCanvasEl || !this.motionCtx) return;
+    this.isMotionRunning = true;
+    this.motionCanvasEl.classList.remove('opacity-0');
+    this.motionCanvasEl.classList.add('opacity-100');
+
+    if (this.motionParticles.length === 0) {
+      for (let i = 0; i < 50; i++) {
+        this.motionParticles.push({
+          x: Math.random() * 2560,
+          y: Math.random() * 1440,
+          r: Math.random() * 3.5 + 1.5,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: -(Math.random() * 0.8 + 0.3),
+          alpha: Math.random() * 0.6 + 0.2,
+          pulse: Math.random() * Math.PI * 2,
+        });
+      }
+    }
+
+    this.motionLoop();
+    this.showToast('Live 60 FPS motion activated');
+  }
+
+  private stopMotion(): void {
+    this.isMotionRunning = false;
+    if (this.motionCanvasEl) {
+      this.motionCanvasEl.classList.remove('opacity-100');
+      this.motionCanvasEl.classList.add('opacity-0');
+    }
+    if (this.motionAnimFrameId !== null) {
+      cancelAnimationFrame(this.motionAnimFrameId);
+      this.motionAnimFrameId = null;
+    }
+    if (this.motionCtx && this.motionCanvasEl) {
+      this.motionCtx.clearRect(0, 0, this.motionCanvasEl.width, this.motionCanvasEl.height);
+    }
+  }
+
+  private renderMotionFrame(ctx: CanvasRenderingContext2D, w: number, h: number): void {
+    ctx.clearRect(0, 0, w, h);
+    const intensity = this.motionIntensity;
+    const t = this.motionTime;
+
+    if (this.activeMotionPreset === 'neon-pulse') {
+      const pulse = Math.sin(t * 3) * 0.3 + 0.7;
+      const glowGrad = ctx.createRadialGradient(w * 0.5, h * 0.46, 20, w * 0.5, h * 0.46, 420);
+      glowGrad.addColorStop(0, `rgba(138, 164, 255, ${0.35 * intensity * pulse})`);
+      glowGrad.addColorStop(0.5, `rgba(147, 51, 234, ${0.18 * intensity * pulse})`);
+      glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = glowGrad;
+      ctx.fillRect(w * 0.2, h * 0.3, w * 0.6, h * 0.4);
+
+      const scanY = (t * 180) % h;
+      const scanGrad = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
+      scanGrad.addColorStop(0, 'rgba(138, 164, 255, 0)');
+      scanGrad.addColorStop(0.5, `rgba(138, 164, 255, ${0.45 * intensity})`);
+      scanGrad.addColorStop(1, 'rgba(138, 164, 255, 0)');
+      ctx.fillStyle = scanGrad;
+      ctx.fillRect(0, scanY - 30, w, 60);
+
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = `rgba(138, 164, 255, ${0.7 * intensity * pulse})`;
+      ctx.beginPath();
+      ctx.moveTo(w * 0.2, h * 0.353);
+      ctx.lineTo(w * 0.8, h * 0.353);
+      ctx.moveTo(w * 0.2, h * 0.647);
+      ctx.lineTo(w * 0.8, h * 0.647);
+      ctx.stroke();
+
+    } else if (this.activeMotionPreset === 'lofi-drift') {
+      for (const p of this.motionParticles) {
+        p.y += p.vy * this.motionSpeed;
+        p.x += p.vx * this.motionSpeed + Math.sin(t + p.pulse) * 0.3;
+        if (p.y < -20) p.y = h + 20;
+        if (p.x < -20) p.x = w + 20;
+        if (p.x > w + 20) p.x = -20;
+
+        const pAlpha = p.alpha * intensity * (Math.sin(t * 2 + p.pulse) * 0.3 + 0.7);
+        const pGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2);
+        pGrad.addColorStop(0, `rgba(255, 230, 180, ${pAlpha})`);
+        pGrad.addColorStop(0.6, `rgba(200, 160, 255, ${pAlpha * 0.5})`);
+        pGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+        ctx.fillStyle = pGrad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+    } else if (this.activeMotionPreset === 'audio-wave') {
+      const numBars = 36;
+      const safeLeft = w * 0.22;
+      const safeRight = w * 0.78;
+      const totalWidth = safeRight - safeLeft;
+      const barWidth = totalWidth / numBars - 4;
+      const baseY = h * 0.64;
+
+      for (let i = 0; i < numBars; i++) {
+        const x = safeLeft + i * (barWidth + 4);
+        const freq = Math.sin(t * 5 + i * 0.35) * Math.cos(t * 3 + i * 0.2);
+        const barHeight = (Math.abs(freq) * 75 + 10) * intensity;
+
+        const barGrad = ctx.createLinearGradient(0, baseY, 0, baseY - barHeight);
+        barGrad.addColorStop(0, `rgba(35, 64, 184, ${0.8 * intensity})`);
+        barGrad.addColorStop(1, `rgba(96, 165, 250, ${0.95 * intensity})`);
+
+        ctx.fillStyle = barGrad;
+        ctx.fillRect(x, baseY - barHeight, barWidth, barHeight);
+
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.9 * intensity})`;
+        ctx.fillRect(x, baseY - barHeight - 4, barWidth, 2);
+      }
+
+    } else if (this.activeMotionPreset === 'cinema-flare') {
+      const flareX = (Math.sin(t * 0.6) * 0.25 + 0.5) * w;
+      const flareY = h * 0.48;
+
+      const streakGrad = ctx.createLinearGradient(0, flareY, w, flareY);
+      streakGrad.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      streakGrad.addColorStop(Math.max(0, flareX / w - 0.25), `rgba(253, 230, 138, ${0.2 * intensity})`);
+      streakGrad.addColorStop(flareX / w, `rgba(255, 255, 255, ${0.95 * intensity})`);
+      streakGrad.addColorStop(Math.min(1, flareX / w + 0.25), `rgba(96, 165, 250, ${0.2 * intensity})`);
+      streakGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      ctx.fillStyle = streakGrad;
+      ctx.fillRect(0, flareY - 3, w, 6);
+
+      const glintGrad = ctx.createRadialGradient(flareX, flareY, 0, flareX, flareY, 120 * intensity);
+      glintGrad.addColorStop(0, `rgba(255, 255, 255, ${0.9 * intensity})`);
+      glintGrad.addColorStop(0.3, `rgba(253, 230, 138, ${0.45 * intensity})`);
+      glintGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = glintGrad;
+      ctx.beginPath();
+      ctx.arc(flareX, flareY, 120 * intensity, 0, Math.PI * 2);
+      ctx.fill();
+
+    } else if (this.activeMotionPreset === 'esports-hud') {
+      const cx = w * 0.5;
+      const cy = h * 0.5;
+      const radius = 240;
+      const angle = (t * 2.5) % (Math.PI * 2);
+
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = `rgba(255, 152, 0, ${0.4 * intensity})`;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.arc(cx, cy, radius * 0.6, 0, Math.PI * 2);
+      ctx.stroke();
+
+      const sweepGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      sweepGrad.addColorStop(0, `rgba(255, 152, 0, ${0.5 * intensity})`);
+      sweepGrad.addColorStop(1, `rgba(255, 152, 0, ${0.1 * intensity})`);
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, radius, angle, angle + 0.4);
+      ctx.closePath();
+      ctx.fillStyle = sweepGrad;
+      ctx.fill();
+      ctx.restore();
+
+      const blips = [
+        { dist: radius * 0.7, a: 1.2 },
+        { dist: radius * 0.4, a: 3.8 },
+        { dist: radius * 0.85, a: 5.1 },
+      ];
+      for (const b of blips) {
+        const bx = cx + Math.cos(b.a) * b.dist;
+        const by = cy + Math.sin(b.a) * b.dist;
+        const diff = (angle - b.a + Math.PI * 2) % (Math.PI * 2);
+        const blink = diff < 1.0 ? 1 - diff : 0.2;
+
+        ctx.fillStyle = `rgba(255, 87, 34, ${blink * intensity})`;
+        ctx.beginPath();
+        ctx.arc(bx, by, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  private motionLoop(): void {
+    if (!this.isMotionRunning || !this.motionCanvasEl || !this.motionCtx) return;
+    this.motionTime += 0.016 * this.motionSpeed;
+    this.renderMotionFrame(this.motionCtx, this.motionCanvasEl.width, this.motionCanvasEl.height);
+    this.motionAnimFrameId = requestAnimationFrame(() => this.motionLoop());
+  }
+
+  private async recordMotionVideo(): Promise<void> {
+    if (this.isRecordingVideo) return;
+    this.isRecordingVideo = true;
+
+    if (!this.motionRecordVideoBtn) return;
+    const originalText = this.motionRecordVideoBtn.innerHTML;
+    this.motionRecordVideoBtn.innerHTML = '<span>⏳ Recording 60 FPS Video (5s)...</span>';
+    this.showToast('Recording 60 FPS WebM video loop...');
+
+    try {
+      const recCanvas = document.createElement('canvas');
+      recCanvas.width = CANVAS.width;
+      recCanvas.height = CANVAS.height;
+      const recCtx = recCanvas.getContext('2d');
+
+      if (!recCtx || typeof (recCanvas as any).captureStream !== 'function') {
+        throw new Error('Canvas video capture is not supported in this browser.');
+      }
+
+      const stream = (recCanvas as any).captureStream(60);
+      let mimeType = 'video/webm;codecs=vp9';
+      if (typeof MediaRecorder !== 'undefined' && !MediaRecorder.isTypeSupported(mimeType)) {
+        mimeType = 'video/webm';
+      }
+
+      const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 12000000 });
+      const chunks: Blob[] = [];
+
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunks.push(e.data);
+      };
+
+      const durationMs = 5000;
+      const startTime = performance.now();
+      let animId: number;
+
+      const recordFrame = () => {
+        renderScene(recCtx, this.scene, this.images);
+        this.renderMotionFrame(recCtx, recCanvas.width, recCanvas.height);
+
+        if (performance.now() - startTime < durationMs) {
+          animId = requestAnimationFrame(recordFrame);
+        } else {
+          cancelAnimationFrame(animId);
+          recorder.stop();
+        }
+      };
+
+      recorder.onstop = () => {
+        const blob = new Blob(chunks, { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `youtube-banner-${this.activeMotionPreset}-60fps.webm`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        this.isRecordingVideo = false;
+        if (this.motionRecordVideoBtn) {
+          this.motionRecordVideoBtn.innerHTML = originalText;
+        }
+        this.showToast('60 FPS animated banner exported!');
+      };
+
+      recorder.start();
+      animId = requestAnimationFrame(recordFrame);
+
+    } catch (err: any) {
+      this.isRecordingVideo = false;
+      if (this.motionRecordVideoBtn) {
+        this.motionRecordVideoBtn.innerHTML = originalText;
+      }
+      this.showToast(`Recording failed: ${err.message || 'Unsupported browser'}`);
+    }
+  }
+
+  private copyObsCode(): void {
+    const titleLayer = this.scene.layers.find((l) => l.type === 'text' && (l as TextLayer).id === 'title') as TextLayer | undefined;
+    const taglineLayer = this.scene.layers.find((l) => l.type === 'text' && (l as TextLayer).id === 'tagline') as TextLayer | undefined;
+    const titleText = titleLayer?.text || 'CHANNEL NAME';
+    const taglineText = taglineLayer?.text || 'New Videos Every Week';
+
+    const obsHtml = `<!-- OBS Browser Source (2560x1440, 60 FPS) -->
+<div style="width:2560px;height:1440px;position:relative;overflow:hidden;background:#0C0D0E;font-family:system-ui,sans-serif;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:1546px;height:423px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <h1 style="color:#FFFFFF;font-size:64px;margin:0;font-weight:900;letter-spacing:4px;text-shadow:0 0 30px #8AA4FF;">${titleText}</h1>
+    <p style="color:#8AA4FF;font-size:24px;margin:16px 0 0;font-weight:600;letter-spacing:2px;">${taglineText}</p>
+  </div>
+  <style>
+    @keyframes neonGlow { 0%,100%{filter:drop-shadow(0 0 20px #8AA4FF);} 50%{filter:drop-shadow(0 0 50px #8AA4FF);} }
+    h1 { animation: neonGlow 2s ease-in-out infinite; }
+  </style>
+</div>`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(obsHtml).then(() => {
+        this.showToast('OBS Browser Source snippet copied!');
+      });
+    } else {
+      this.showToast('Clipboard access unavailable');
+    }
+  }
+
+  private copyCssCode(): void {
+    const cssCode = `/* Ready-to-Integrate Channel Banner Animation */
+@keyframes ybmNeonPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(138, 164, 255, 0.4), 0 0 30px rgba(138, 164, 255, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(138, 164, 255, 0.8), 0 0 60px rgba(147, 51, 234, 0.5);
+    transform: scale(1.015);
+  }
+}
+
+.ybm-channel-title {
+  animation: ybmNeonPulse 2.4s ease-in-out infinite;
+  will-change: transform, text-shadow;
+}`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(cssCode).then(() => {
+        this.showToast('CSS animation keyframes copied!');
+      });
+    } else {
+      this.showToast('Clipboard access unavailable');
+    }
   }
 
   private loadTemplate(tmpl: TemplateManifest): void {
@@ -1157,8 +2226,33 @@ class ToolIsland {
       this.currentTemplateNicheEl.textContent = tmpl.niche;
     }
 
+    // Preload frame photo if defined
+    const frame = this.scene.layers.find((l) => l.type === 'frame' && l.src) as PhotoFrameLayer | undefined;
+    if (frame && frame.src && !this.images.has(frame.src)) {
+      const fImg = new Image();
+      fImg.onload = () => {
+        this.images.set(frame.src!, fImg);
+        this.scheduleFrame();
+      };
+      fImg.src = frame.src;
+    }
+
+    // Preload background image if defined
+    if (this.scene.background.type === 'image' && this.scene.background.src && !this.images.has(this.scene.background.src)) {
+      const bgSrc = this.scene.background.src;
+      const bgImg = new Image();
+      bgImg.onload = () => {
+        this.images.set(bgSrc, bgImg);
+        this.scheduleFrame();
+      };
+      bgImg.src = bgSrc;
+    }
+
     this.renderTextLayerControls();
     this.syncBackgroundControls();
+    this.syncPhotoFrameControls();
+    this.syncShapeControls();
+    this.syncBadgeControls();
     this.applyChange({});
   }
 
@@ -1176,6 +2270,9 @@ class ToolIsland {
 
     this.renderTextLayerControls();
     this.syncBackgroundControls();
+    this.syncPhotoFrameControls();
+    this.syncShapeControls();
+    this.syncBadgeControls();
     this.applyChange({});
   }
 
@@ -1299,8 +2396,14 @@ class ToolIsland {
 
       // Wire inputs
       const textInput = card.querySelector<HTMLInputElement>('.layer-text-input');
+      const sizeInput = card.querySelector<HTMLInputElement>('.layer-size-slider');
+      const sizeSpan = card.querySelector<HTMLElement>('.layer-size-val');
+
       textInput?.addEventListener('input', () => {
         layer.text = textInput.value;
+        if (layer.id === 'title') {
+          this.autoFitTitleSize(layer, sizeInput, sizeSpan);
+        }
         this.applyChange({ layers: [...this.scene.layers] });
       });
 
@@ -1312,8 +2415,6 @@ class ToolIsland {
         this.applyChange({ layers: [...this.scene.layers] });
       });
 
-      const sizeInput = card.querySelector<HTMLInputElement>('.layer-size-slider');
-      const sizeSpan = card.querySelector<HTMLElement>('.layer-size-val');
       sizeInput?.addEventListener('input', () => {
         const val = parseInt(sizeInput.value, 10);
         layer.size = val;
@@ -1366,6 +2467,335 @@ class ToolIsland {
     if (this.mode !== 'make') return;
     this.renderTextLayerControls();
     this.syncBackgroundControls();
+    this.syncPhotoFrameControls();
+    this.syncShapeControls();
+    this.syncBadgeControls();
+  }
+
+  private getPhotoFrameLayer(): PhotoFrameLayer | undefined {
+    return this.scene.layers.find((l) => l.type === 'frame') as PhotoFrameLayer | undefined;
+  }
+
+  private getShapeLayers(): ShapeLayer[] {
+    return this.scene.layers.filter((l) => l.type === 'shape') as ShapeLayer[];
+  }
+
+  private syncPhotoFrameControls(): void {
+    if (this.mode !== 'make') return;
+    const frame = this.getPhotoFrameLayer();
+    if (frame) {
+      this.frameControlsActiveEl?.classList.remove('hidden');
+      this.frameControlsInactiveEl?.classList.add('hidden');
+      if (this.frameStatusBadgeEl) {
+        this.frameStatusBadgeEl.textContent = frame.src ? 'Active' : 'Empty';
+      }
+      if (this.frameUploadBtnLabel) {
+        this.frameUploadBtnLabel.textContent = frame.src ? 'Replace Photo' : 'Upload Photo / Headshot';
+      }
+
+      if (frame.shape === 'rect') {
+        this.frameShapeRectBtn?.classList.remove('bg-surface-50', 'text-ink-700');
+        this.frameShapeRectBtn?.classList.add('bg-ink-950', 'text-surface-0');
+        this.frameShapeCircleBtn?.classList.remove('bg-ink-950', 'text-surface-0');
+        this.frameShapeCircleBtn?.classList.add('bg-surface-50', 'text-ink-700');
+      } else {
+        this.frameShapeCircleBtn?.classList.remove('bg-surface-50', 'text-ink-700');
+        this.frameShapeCircleBtn?.classList.add('bg-ink-950', 'text-surface-0');
+        this.frameShapeRectBtn?.classList.remove('bg-ink-950', 'text-surface-0');
+        this.frameShapeRectBtn?.classList.add('bg-surface-50', 'text-ink-700');
+      }
+
+      if (this.frameZoomSlider) this.frameZoomSlider.value = String(frame.zoom ?? 1.0);
+      if (this.frameZoomValEl) this.frameZoomValEl.textContent = `${(frame.zoom ?? 1.0).toFixed(1)}×`;
+
+      const borderColor = frame.borderColor || '#FFFFFF';
+      if (this.frameBorderColorInput) this.frameBorderColorInput.value = borderColor;
+      if (this.frameBorderColorHexEl) this.frameBorderColorHexEl.textContent = borderColor;
+
+      const borderWidth = frame.borderWidth ?? 3;
+      if (this.frameBorderWidthInput) this.frameBorderWidthInput.value = String(borderWidth);
+      if (this.frameBorderWidthValEl) this.frameBorderWidthValEl.textContent = `${borderWidth}px`;
+    } else {
+      this.frameControlsActiveEl?.classList.add('hidden');
+      this.frameControlsInactiveEl?.classList.remove('hidden');
+      if (this.frameStatusBadgeEl) {
+        this.frameStatusBadgeEl.textContent = 'None';
+      }
+    }
+  }
+
+  private syncShapeControls(): void {
+    if (this.mode !== 'make') return;
+    const shapes = this.getShapeLayers();
+    if (shapes.length > 0) {
+      this.shapeActiveControlsEl?.classList.remove('hidden');
+      if (this.shapeStatusBadgeEl) {
+        this.shapeStatusBadgeEl.textContent = `${shapes.length} Active`;
+        this.shapeStatusBadgeEl.classList.remove('bg-surface-100', 'text-ink-600');
+        this.shapeStatusBadgeEl.classList.add('bg-accent/10', 'text-accent', 'border-accent/20');
+      }
+      if (this.shapeLayerLabelEl) {
+        this.shapeLayerLabelEl.textContent = `${shapes.length} shape layer${shapes.length > 1 ? 's' : ''} on canvas`;
+      }
+      const activeShape = shapes[shapes.length - 1];
+      if (this.shapeColorInput) this.shapeColorInput.value = activeShape.color;
+      if (this.shapeColorHexEl) this.shapeColorHexEl.textContent = activeShape.color;
+      if (this.shapeOpacitySlider) this.shapeOpacitySlider.value = String(activeShape.opacity ?? 1);
+      if (this.shapeOpacityValEl) this.shapeOpacityValEl.textContent = `${Math.round((activeShape.opacity ?? 1) * 100)}%`;
+    } else {
+      this.shapeActiveControlsEl?.classList.add('hidden');
+      if (this.shapeStatusBadgeEl) {
+        this.shapeStatusBadgeEl.textContent = 'None';
+        this.shapeStatusBadgeEl.classList.add('bg-surface-100', 'text-ink-600');
+        this.shapeStatusBadgeEl.classList.remove('bg-accent/10', 'text-accent', 'border-accent/20');
+      }
+    }
+  }
+
+  private autoFitTitleSize(
+    layer: TextLayer,
+    sizeInput: HTMLInputElement | null,
+    sizeSpan: HTMLElement | null
+  ): void {
+    if (!layer.text) return;
+    const maxSafeWidth = 1100;
+    let currentWidth = measureTextWidth(layer.text, layer.font, layer.size);
+    if (currentWidth > maxSafeWidth && layer.size > 24) {
+      while (currentWidth > maxSafeWidth && layer.size > 24) {
+        layer.size -= 2;
+        currentWidth = measureTextWidth(layer.text, layer.font, layer.size);
+      }
+      if (sizeInput) sizeInput.value = String(layer.size);
+      if (sizeSpan) sizeSpan.textContent = `${layer.size}px`;
+    }
+  }
+
+  private getBadgeLayer(): BadgeLayer | undefined {
+    return this.scene.layers.find((l) => l.type === 'badge') as BadgeLayer | undefined;
+  }
+
+  private syncBadgeControls(): void {
+    if (this.mode !== 'make') return;
+    const badge = this.getBadgeLayer();
+    const configPanel = document.getElementById('badge-config-panel');
+    const customTextInput = document.getElementById('badge-custom-text') as HTMLInputElement | null;
+    const badgeBtns = document.querySelectorAll<HTMLButtonElement>('.badge-toggle-btn');
+    const schemeBtns = document.querySelectorAll<HTMLButtonElement>('.badge-scheme-btn');
+
+    if (badge) {
+      configPanel?.classList.remove('hidden');
+      if (customTextInput && customTextInput.value !== badge.text) {
+        customTextInput.value = badge.text || '';
+      }
+
+      badgeBtns.forEach((b) => {
+        const isMatch = b.getAttribute('data-badge-variant') === badge.variant;
+        if (isMatch) {
+          b.classList.add('ring-2', 'ring-accent', 'border-accent', 'bg-accent/10');
+          b.classList.remove('bg-surface-0');
+        } else {
+          b.classList.remove('ring-2', 'ring-accent', 'border-accent', 'bg-accent/10');
+          b.classList.add('bg-surface-0');
+        }
+      });
+
+      schemeBtns.forEach((b) => {
+        const isMatch = b.getAttribute('data-scheme') === (badge.colorScheme || 'youtube-red');
+        if (isMatch) {
+          b.classList.add('ring-2', 'ring-offset-1', 'ring-ink-950');
+        } else {
+          b.classList.remove('ring-2', 'ring-offset-1', 'ring-ink-950');
+        }
+      });
+    } else {
+      configPanel?.classList.add('hidden');
+      badgeBtns.forEach((b) => {
+        b.classList.remove('ring-2', 'ring-accent', 'border-accent', 'bg-accent/10');
+        b.classList.add('bg-surface-0');
+      });
+      schemeBtns.forEach((b) => {
+        b.classList.remove('ring-2', 'ring-offset-1', 'ring-ink-950');
+      });
+    }
+  }
+
+  private toggleBadge(variant: BadgeLayer['variant']): void {
+    const existing = this.getBadgeLayer();
+    if (existing && existing.variant === variant) {
+      this.removeBadge();
+      return;
+    }
+
+    const defaultTexts: Record<BadgeLayer['variant'], string> = {
+      'subscribe-pill': 'SUBSCRIBE',
+      'subscribe-cookie': 'SUBSCRIBE FOR A COOKIE',
+      'bell-pill': 'NOTIFICATIONS ON',
+      'schedule-tag': 'NEW VIDEO EVERY WEEK',
+      'social-row': '@channel',
+      'verified-check': 'OFFICIAL',
+    };
+
+    if (existing) {
+      existing.variant = variant;
+      existing.text = defaultTexts[variant] || 'SUBSCRIBE';
+    } else {
+      const newBadge: BadgeLayer = {
+        id: 'yt-badge',
+        type: 'badge',
+        variant,
+        text: defaultTexts[variant] || 'SUBSCRIBE',
+        colorScheme: 'youtube-red',
+        x: 0.5,
+        y: 0.58,
+        scale: 1.0,
+        safeAreaConstrained: true,
+      };
+      this.scene.layers.push(newBadge);
+    }
+
+    this.applyChange({ layers: [...this.scene.layers] });
+    this.syncBadgeControls();
+    this.showToast(`Badge updated: ${variant}`);
+  }
+
+  private removeBadge(): void {
+    this.scene.layers = this.scene.layers.filter((l) => l.type !== 'badge');
+    this.applyChange({ layers: [...this.scene.layers] });
+    this.syncBadgeControls();
+    this.showToast('Badge removed');
+  }
+
+  private setupVariationControls(): void {
+    const variationBtns = document.querySelectorAll<HTMLButtonElement>('.variation-btn');
+    variationBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const variation = btn.getAttribute('data-variation') as 'original' | 'dark' | 'warm' | 'cool';
+        if (!variation) return;
+
+        let baseDs = this.scene.designSystem;
+        if (variation === 'original' && this.currentTemplateManifest?.designSystem) {
+          baseDs = this.currentTemplateManifest.designSystem;
+        } else if (!baseDs) {
+          const titleLayer = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+          const subLayer = this.scene.layers.find((l) => l.type === 'text' && l.id !== 'title') as TextLayer | undefined;
+          const bgCol = this.scene.background.type === 'solid' ? this.scene.background.color : (this.scene.background.type === 'gradient' ? this.scene.background.from : '#0F172A');
+          baseDs = {
+            palette: {
+              primary: titleLayer?.color || '#FFFFFF',
+              secondary: subLayer?.color || '#9CA3AF',
+              surface: bgCol,
+              accent: '#2340B8',
+            },
+            typography: {
+              titleFont: titleLayer?.font || 'Inter',
+              taglineFont: subLayer?.font || 'Inter',
+            },
+          };
+        }
+
+        const newDs = computeVariation(baseDs, variation);
+        this.scene = applyDesignSystemToScene(this.scene, newDs);
+
+        variationBtns.forEach((b) => {
+          b.classList.remove('ring-2', 'ring-accent', 'border-accent', 'bg-accent/5');
+        });
+        btn.classList.add('ring-2', 'ring-accent', 'border-accent', 'bg-accent/5');
+
+        this.syncMakeControlsFromScene();
+        this.applyChange({});
+        this.showToast(`Applied ${variation} style variation`);
+      });
+    });
+  }
+
+  private setupBadgeControls(): void {
+    const badgeToggleBtns = document.querySelectorAll<HTMLButtonElement>('.badge-toggle-btn');
+    badgeToggleBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const variant = btn.getAttribute('data-badge-variant') as BadgeLayer['variant'];
+        if (!variant) return;
+        this.toggleBadge(variant);
+      });
+    });
+
+    const badgeCustomInput = document.getElementById('badge-custom-text') as HTMLInputElement | null;
+    badgeCustomInput?.addEventListener('input', () => {
+      const badge = this.getBadgeLayer();
+      if (badge) {
+        badge.text = badgeCustomInput.value;
+        this.applyChange({ layers: [...this.scene.layers] });
+      }
+    });
+
+    const badgeSchemeBtns = document.querySelectorAll<HTMLButtonElement>('.badge-scheme-btn');
+    badgeSchemeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const scheme = btn.getAttribute('data-scheme') as BadgeLayer['colorScheme'];
+        if (!scheme) return;
+        const badge = this.getBadgeLayer();
+        if (badge) {
+          badge.colorScheme = scheme;
+          this.applyChange({ layers: [...this.scene.layers] });
+          this.syncBadgeControls();
+        }
+      });
+    });
+
+    const badgeRemoveBtn = document.getElementById('badge-remove-btn');
+    badgeRemoveBtn?.addEventListener('click', () => {
+      this.removeBadge();
+    });
+  }
+
+  private handleFramePhotoUpload(file: File): void {
+    if (file.size > MAX_UPLOAD_BYTES) {
+      this.showToast('Image exceeds 6 MB maximum limit');
+      return;
+    }
+    if (!file.type.startsWith('image/')) {
+      this.showToast('Please upload a valid image file');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const dataUrl = e.target?.result as string;
+      if (!dataUrl) return;
+      const img = new Image();
+      img.onload = () => {
+        let frame = this.getPhotoFrameLayer();
+        if (!frame) {
+          frame = {
+            id: 'avatar-frame',
+            type: 'frame',
+            shape: 'circle',
+            x: 0.28,
+            y: 0.50,
+            w: 0.10,
+            h: 0.1778,
+            src: dataUrl,
+            zoom: 1.0,
+            offsetX: 0,
+            offsetY: 0,
+            borderWidth: 3,
+            borderColor: '#FFFFFF',
+            safeAreaConstrained: true,
+          };
+          this.scene.layers.push(frame);
+        } else {
+          frame.src = dataUrl;
+          frame.zoom = 1.0;
+          frame.offsetX = 0;
+          frame.offsetY = 0;
+        }
+        this.images.set(dataUrl, img);
+        this.applyChange({ layers: [...this.scene.layers] });
+        this.syncPhotoFrameControls();
+        this.showToast('Photo placed in frame');
+      };
+      img.src = dataUrl;
+    };
+    reader.readAsDataURL(file);
   }
 
   private activateBgType(type: 'gradient' | 'solid' | 'photo'): void {
@@ -2265,6 +3695,57 @@ class ToolIsland {
       if (this.exportButtonText) {
         this.exportButtonText.textContent = 'Download Banner';
       }
+    }
+  }
+
+  /**
+   * Fast HD Thumbnail Export (1280x720 16:9, sub-2MB YouTube spec)
+   * Enables zero-friction thumbnail creation for creators without Canva knowledge.
+   */
+  private async handleThumbnailExport(): Promise<void> {
+    if (this.phase !== 'READY') return;
+    this.showToast('Generating 1280 × 720 HD thumbnail...');
+
+    try {
+      if (this.exportThumbnailBtn) {
+        this.exportThumbnailBtn.disabled = true;
+      }
+
+      const fullCanvas = renderExport(this.scene, this.images);
+
+      const thumbCanvas = document.createElement('canvas');
+      thumbCanvas.width = 1280;
+      thumbCanvas.height = 720;
+      const tCtx = thumbCanvas.getContext('2d', { colorSpace: 'srgb' });
+      if (!tCtx) throw new Error('Could not create thumbnail 2D canvas context');
+
+      tCtx.imageSmoothingEnabled = true;
+      tCtx.imageSmoothingQuality = 'high';
+      tCtx.drawImage(fullCanvas, 0, 0, 1280, 720);
+
+      thumbCanvas.toBlob((blob) => {
+        if (!blob) {
+          this.showToast('Thumbnail generation failed');
+          if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
+          return;
+        }
+
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'youtube-thumbnail-1280x720.jpg';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
+        this.showToast('Downloaded 1280 × 720 YouTube Thumbnail!');
+        trackEvent('export_success', { format: 'jpeg', durationMs: 0 });
+      }, 'image/jpeg', 0.90);
+    } catch (err: any) {
+      if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
+      this.showToast(`Thumbnail export error: ${err.message || 'Failed'}`);
     }
   }
 

@@ -11,6 +11,8 @@ const niches = [
   { id: 'fitness', label: 'Fitness' },
   { id: 'education', label: 'Education' },
   { id: 'lifestyle', label: 'Lifestyle' },
+  { id: 'food', label: 'Food' },
+  { id: 'business', label: 'Business' },
 ];
 ---
 
@@ -29,7 +31,7 @@ const niches = [
       <div>
         <div class="flex items-center gap-2">
           <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider bg-accent/10 text-accent border border-accent/20">
-            24 Verified Layouts
+            {TEMPLATES.length}+ Verified Layouts
           </span>
           <span class="text-xs text-ink-500 font-medium">Safe by Construction</span>
         </div>
@@ -91,7 +93,7 @@ const niches = [
       {
         TEMPLATES.map((tmpl) => (
           <div
-            class="template-picker-card p-3.5 rounded-xl border border-line-200 bg-surface-0 hover:border-accent/50 hover:shadow-md transition-all flex flex-col justify-between group"
+            class="template-picker-card p-3.5 rounded-xl border border-line-200 bg-surface-0 cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-accent/60 hover:shadow-raised active:translate-y-0 active:scale-[0.99] flex flex-col justify-between group motion-reduce:transform-none"
             data-template-card
             data-niche={tmpl.niche.toLowerCase()}
           >
@@ -100,38 +102,48 @@ const niches = [
                 <img
                   src={tmpl.preview}
                   alt={`Preview of ${tmpl.name} YouTube banner template`}
-                  class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-200"
+                  class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
                   loading="lazy"
                   width="320"
                   height="180"
                 />
               </div>
 
-              <div class="space-y-1">
+              <div class="space-y-1.5">
                 <div class="flex items-center justify-between gap-2">
-                  <h3 class="text-sm font-semibold text-ink-950 truncate">
+                  <h3 class="text-base font-bold text-ink-950 truncate group-hover:text-accent transition-colors">
                     {tmpl.name}
                   </h3>
-                  <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-surface-100 text-ink-600 border border-line-200 shrink-0">
+                  <span class="text-xs font-mono uppercase px-2 py-0.5 rounded bg-surface-100 text-ink-700 border border-line-200 shrink-0">
                     {tmpl.niche}
                   </span>
                 </div>
                 {tmpl.description && (
-                  <p class="text-xs text-ink-600 line-clamp-2 leading-relaxed">
+                  <p class="text-xs sm:text-sm text-ink-600 line-clamp-2 leading-relaxed">
                     {tmpl.description}
                   </p>
                 )}
               </div>
             </div>
 
-            <button
-              type="button"
-              class="select-template-btn w-full mt-4 min-h-[44px] px-4 py-2.5 rounded-lg bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs font-semibold inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
-              data-template-id={tmpl.id}
-            >
-              <span>Use Template</span>
-              <span aria-hidden="true">→</span>
-            </button>
+            <div class="grid grid-cols-2 gap-2 mt-4">
+              <button
+                type="button"
+                class="select-template-btn min-h-[44px] px-3 py-2 rounded-lg bg-ink-950 text-surface-0 group-hover:bg-accent text-xs font-semibold inline-flex items-center justify-center gap-1 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
+                data-template-id={tmpl.id}
+              >
+                <span>Customize</span>
+                <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+              </button>
+              <button
+                type="button"
+                class="download-template-btn min-h-[44px] px-3 py-2 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-900 text-xs font-semibold inline-flex items-center justify-center gap-1 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-colors"
+                data-template-id={tmpl.id}
+                title="Download free default 2560×1440 PNG"
+              >
+                <span>Free PNG ↓</span>
+              </button>
+            </div>
           </div>
         ))
       }

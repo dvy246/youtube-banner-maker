@@ -1,0 +1,91 @@
+{
+  "id": "gaming-rpg",
+  "niche": "gaming",
+  "name": "Dark Fantasy RPG",
+  "description": "Ancient obsidian and burnished gold gothic composition for Souls-like and fantasy lore.",
+  "preview": "/previews/gaming-rpg.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0A0908",
+        "#1C1917",
+        "#0A0908"
+      ]
+    },
+    "layers": [
+      {
+        "id": "gothic-rule-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.41,
+        "w": 0.28,
+        "h": 0.003,
+        "color": "#F59E0B",
+        "opacity": 0.8
+      },
+      {
+        "id": "crest-pill",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.47,
+        "y": 0.38,
+        "w": 0.06,
+        "h": 0.006,
+        "color": "#F59E0B",
+        "opacity": 0.9
+      },
+      {
+        "id": "gothic-rule-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.58,
+        "w": 0.28,
+        "h": 0.003,
+        "color": "#F59E0B",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ELDER VAULT LORE",
+        "font": "cinzel-700",
+        "size": 48,
+        "color": "#FDFBF7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.48,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Souls-like Walkthroughs & Deep Fantasy Mythology",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FCD34D",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "gothic-rule-top",
+    "crest-pill",
+    "gothic-rule-bot"
+  ],
+  "safeAreaValidated": true
+}

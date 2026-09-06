@@ -11,7 +11,7 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
     const html = fs.readFileSync(indexPath, 'utf-8');
 
     // Gate 3 check: Zero client scripts (<script type="module"> or <script src>)
-    const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])[^>]*>/gi);
+    const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
     expect(clientScripts).toBeNull();
   });
 
@@ -48,7 +48,7 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
 
     // 2. Hero with h1 and primary/secondary CTAs and badges
     const h1Index = html.indexOf(
-      'Free YouTube Banner Maker That Gets Every Device Crop Right'
+      'Free YouTube Banner Maker That Fits'
     );
     expect(h1Index).toBeGreaterThan(headerIndex);
     expect(html).toContain('/tools/youtube-banner-resizer');
@@ -95,8 +95,8 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
     expect(fs.existsSync(error404Path)).toBe(true);
     const html = fs.readFileSync(error404Path, 'utf-8');
 
-    // Zero scripts
-    const scripts = html.match(/<script[^>]*>/gi);
+    // Zero client scripts (theme-boot allowed)
+    const scripts = html.match(/<script(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
     expect(scripts).toBeNull();
 
     // Robots noindex, follow

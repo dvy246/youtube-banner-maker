@@ -1,0 +1,67 @@
+{
+  "id": "biz-agency",
+  "niche": "business",
+  "name": "Scale Agency",
+  "description": "Hyper blue and dark carbon for B2B agencies, growth firms, and performance marketers.",
+  "preview": "/previews/biz-agency.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#080C14",
+        "#101726",
+        "#080C14"
+      ]
+    },
+    "layers": [
+      {
+        "id": "scale-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.34,
+        "y": 0.41,
+        "w": 0.32,
+        "h": 0.004,
+        "color": "#3B82F6",
+        "opacity": 0.85
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "VELOCITY AGENCY",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Scaling 8-Figure DTC Brands with Paid Acquisition",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#93C5FD",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "scale-rule"
+  ],
+  "safeAreaValidated": true
+}

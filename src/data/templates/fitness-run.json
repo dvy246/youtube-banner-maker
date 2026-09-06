@@ -1,0 +1,67 @@
+{
+  "id": "fitness-run",
+  "niche": "fitness",
+  "name": "Marathon Pace",
+  "description": "Electric volt and tarmac asphalt for marathon runners, track clubs, and 5K coaches.",
+  "preview": "/previews/fitness-run.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0C0E12",
+        "#181C24",
+        "#0C0E12"
+      ]
+    },
+    "layers": [
+      {
+        "id": "split-line",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.58,
+        "w": 0.28,
+        "h": 0.003,
+        "color": "#84CC16",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SUB 3:00 RUNNER",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#F8FAFC",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Marathon Training Plans · Pacing Strategies & Shoe Reviews",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#BEF264",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "split-line"
+  ],
+  "safeAreaValidated": true
+}

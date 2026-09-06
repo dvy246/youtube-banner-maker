@@ -12,5 +12,8 @@
   <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
   <text x="50%" y="46.0%" text-anchor="middle" dominant-baseline="middle" fill="#F7F8F9" font-family="Switzer, sans-serif" font-size="32" font-weight="700">ROOT &amp; BRANCH</text>
 <text x="50%" y="54.0%" text-anchor="middle" dominant-baseline="middle" fill="#E3E5E8" font-family="Switzer, sans-serif" font-size="15" font-weight="500">Indoor Plants · Permaculture · Urban Homesteading</text>
+<rect x="512.0" y="90.0" width="192.0" height="108.0" fill="#FFFFFF" opacity="0.02" />
+<rect x="576.0" y="0.0" width="1.3" height="360.0" fill="#4CAF50" opacity="0.08" />
+<rect x="524.8" y="126.0" width="51.2" height="0.7" fill="#4CAF50" opacity="0.12" />
 
 </svg>

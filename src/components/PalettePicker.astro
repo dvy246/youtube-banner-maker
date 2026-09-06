@@ -1,12 +1,5 @@
 ---
 import { PALETTES } from '../lib/palette';
-
-interface Props {
-  currentPath?: string;
-}
-
-const { currentPath = '' } = Astro.props;
-const isToolPage = currentPath.startsWith('/tools');
 ---
 
 <div class="relative inline-block text-left palette-picker-wrapper">
@@ -82,30 +75,3 @@ const isToolPage = currentPath.startsWith('/tools');
     </div>
   </details>
 </div>
-
-{isToolPage && (
-  <script is:inline>
-    (function () {
-      try {
-        var p = localStorage.getItem('ytbm-palette');
-        if (p && p !== 'cobalt') {
-          document.documentElement.setAttribute('data-palette', p);
-          document.querySelectorAll('.palette-check').forEach(function (c) {
-            var m = c.getAttribute('data-check') === p;
-            c.classList.toggle('opacity-100', m);
-            c.classList.toggle('opacity-0', !m);
-          });
-        }
-      } catch (e) {}
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function (e) {
-        document.querySelectorAll('.palette-dropdown[open]').forEach(function (det) {
-          if (!det.contains(e.target)) {
-            det.removeAttribute('open');
-          }
-        });
-      });
-    })();
-  </script>
-)}

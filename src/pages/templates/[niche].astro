@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import TemplateCard from '../../components/TemplateCard.astro';
-import { NICHE_TITLES, getBreadcrumbSchema } from '../../lib/seo';
+import { NICHE_TITLES, getBreadcrumbSchema, getCollectionPageSchema } from '../../lib/seo';
 import { getQualifyingNiches } from '../../lib/template';
 import type { TemplateManifest } from '../../lib/template';
 import { CANVAS, SAFE_PX } from '../../lib/spec';
@@ -30,46 +30,54 @@ const nicheMeta = NICHE_TITLES[niche] || {
   desc: `Free ${niche} channel banner templates. Tested against real mobile safe area crops with instant browser editing.`,
 };
 
-const NICHE_CONTENT: Record<string, { heroTitle: string; heroDesc: string; designNotes: string }> = {
+const NICHE_CONTENT: Record<string, { heroTitle: string; heroDesc: string; designNotes: string; cropAdvice: string }> = {
   gaming: {
     heroTitle: 'Gaming YouTube Banner Templates',
     heroDesc: 'Built for competitive esports rosters, retro speedrunners, and variety streamers. Each layout keeps your gamer tag, streaming schedule, and sponsor logos centered inside the mobile safe area, so your channel branding never gets cropped on mobile devices. Edit colors, swap gradients, or drop in your character art with zero sign-up.',
     designNotes: 'High-energy gaming banners frequently suffer from clipping when creator tags or team logos are pushed toward the corners. These gaming templates utilize centered cyber grids, retro arcade framing, and tactical HUD aesthetics engineered to remain crisp on 4K TVs while preserving core channel identity on mobile screens.',
+    cropAdvice: 'Esports banners and gaming streams frequently feature team rosters, stream schedules, and sponsor logos. Positioning sponsor logos and broadcast times strictly within the centered safe area ensures mobile viewers never miss your stream start times. Let background concept art, game world maps, or character silhouettes bleed outward into the desktop and TV zones to deliver immersive widescreen framing without sacrificing mobile legibility.',
   },
   tech: {
     heroTitle: 'Tech YouTube Banner Templates',
     heroDesc: 'Engineered for software developers, hardware reviewers, and tech educators. Clean terminal prompts, monospace accents, and disciplined visual hierarchies that present your publishing cadence and technical focus clearly across desktop and smartphone viewports.',
     designNotes: 'Developer and technology channels require structured precision. Our tech templates feature dark terminal themes, clean gridlines, and balanced typography calibrated to stay sharp on high-DPI desktop screens while remaining legible on smaller phone screens.',
+    cropAdvice: 'Software architecture diagrams, code syntax, and terminal commands must be positioned inside the safe area so mobile developers can read repository names and tech stacks. Avoid placing GitHub URLs or framework icons in the extreme horizontal margins where desktop-only cropping leaves mobile visitors looking at empty backgrounds.',
   },
   podcast: {
     heroTitle: 'Podcast YouTube Banner Templates',
     heroDesc: 'Crafted for video podcasters, interview series, and roundtable shows. High-contrast typography emphasizes your show title, co-host names, and episode release cadence in the central safe zone, ensuring your banner looks authoritative whether viewed on a 4K TV or mobile app.',
     designNotes: 'Video podcasts need immediate brand recognition and clear release schedules. These studio-tested layouts provide balanced focal points for show names, episode frequency, and audio network syndication badges without risking crop cutoff on narrower screens.',
+    cropAdvice: 'Podcast banners require immediate host identification and syndication awareness. Keep host monikers, co-host names, episode drop days, and network badges centered in the safe area so mobile listeners instantly recognize the show. High-resolution studio mic photography or acoustic panel patterns can bleed out to the full 16:9 canvas for a polished smart TV appearance.',
   },
   vlog: {
     heroTitle: 'Vlog & Lifestyle Channel Art Templates',
     heroDesc: 'Designed for travel vloggers, daily creators, and lifestyle documentarians. Cinematic framing and editorial typography create an inviting first impression for new subscribers while keeping channel names and upload schedules centered inside the safe viewing area.',
     designNotes: 'Personal vlogging channels connect through mood and aesthetic tone. Our vlog templates feature golden-hour palettes, magazine-style editorial typography, and spacious layouts designed to complement creator photography without compromising text visibility.',
+    cropAdvice: 'For vloggers and lifestyle documentarians, creator portraits and signature hand-lettered titles should sit directly inside the safe zone. Scenic travel landscapes, city skylines, and ambient textures should fill the surrounding canvas so desktop and TV viewers enjoy wide cinematic depth while phone screens retain a personal, centered connection.',
   },
   music: {
     heroTitle: 'Music & Producer YouTube Banner Templates',
     heroDesc: 'Curated for independent beatmakers, lo-fi stream hosts, synthwave artists, and acoustic musicians. Atmospheric color palettes and distinct musical typography establish your sound identity while keeping your artist moniker and release dates safe on every screen.',
     designNotes: 'Music channels often feature album art or abstract background visuals. These layouts ensure artist names, release announcements, and streaming handles remain completely visible across television, desktop, tablet, and mobile views.',
+    cropAdvice: 'Musicians and producer channels need artist names, EP release dates, and streaming platform callouts centered in the safe zone. Audio wave graphics, synthesizer backdrops, and atmospheric neon gradients can stretch into the widescreen periphery, ensuring your branding stays crisp on 4K televisions without clipping track announcements on mobile apps.',
   },
   fitness: {
     heroTitle: 'Fitness & Athlete YouTube Banner Templates',
     heroDesc: 'High-impact banner art for personal trainers, bodybuilding coaches, yoga instructors, and calisthenics athletes. Heavyweight display typography and high-contrast accents communicate intensity and structure while protecting your channel identity from edge cropping.',
     designNotes: 'Fitness channels demand energy and motivation. These bold channel art templates use aggressive typography and disciplined horizontal centering, ensuring workout times, program links, and coach names remain centered and legible.',
+    cropAdvice: 'Fitness creators and coaching channels should place training schedules, workout program names, and challenge dates centrally in the safe area. High-energy gym photography, barbell silhouettes, or bold directional angles can extend to the outer canvas edges to create dynamic widescreen framing without losing key fitness schedule text on smartphones.',
   },
   education: {
     heroTitle: 'Education & Tutorial YouTube Banner Templates',
     heroDesc: 'Authoritative channel art for professors, coding bootcamps, science communicators, and educational tutorials. Structured editorial layouts and academic framing establish credibility with students and lifelong learners across all viewing devices.',
     designNotes: 'Educational content relies on trust and authority. These scholarly templates feature double-rule borders, clear subject headers, and structured lecture schedules that frame your academic curriculum cleanly on desktop, tablet, and mobile.',
+    cropAdvice: 'Educational and tutorial channels depend on clear subject titles, course schedules, and academic credentials. Keep curriculum topics, university affiliations, and lecture days centered within the safe boundary. Complex formula watermarks or library backdrops can bleed into outer zones, ensuring clean presentation across all screen formats.',
   },
   lifestyle: {
     heroTitle: 'Lifestyle & Minimalist YouTube Banner Templates',
     heroDesc: 'Understated, elegant channel banners for mindfulness coaches, botanical creators, interior stylists, and minimalist creators. Balanced serif and modern sans-serif typefaces framed to preserve negative space and protect safe-area boundaries.',
     designNotes: 'Minimalist channel branding succeeds through restraint and precise alignment. These lifestyle templates utilize organic tones, botanical themes, and balanced typography that retain their elegance regardless of how YouTube trims the display.',
+    cropAdvice: 'Minimalist and lifestyle branding thrives on generous whitespace and balanced negative space. Center your boutique name, tagline, and publishing cadence to prevent edge crowding on mobile screens, while allowing subtle botanical elements, textured linen backgrounds, or warm gradients to fill the full canvas on desktop and television displays.',
   },
 };
 
@@ -77,6 +85,7 @@ const content = NICHE_CONTENT[niche] || {
   heroTitle: `${nicheMeta.name} YouTube Banner Templates`,
   heroDesc: nicheMeta.desc,
   designNotes: `Curated ${nicheMeta.name} layouts engineered to keep primary channel branding within the mobile safe zone.`,
+  cropAdvice: `Because YouTube alters the visible area across smart TVs, desktop monitors, tablets, and phones, centering core branding in the safe area ensures consistent display.`,
 };
 
 const breadcrumbs = getBreadcrumbSchema([
@@ -85,6 +94,17 @@ const breadcrumbs = getBreadcrumbSchema([
   { name: nicheMeta.name, url: `/templates/${niche}` },
 ]);
 
+const collectionSchema = getCollectionPageSchema({
+  name: nicheMeta.title,
+  description: nicheMeta.desc,
+  path: `/templates/${niche}`,
+  items: templates.map((t) => ({
+    name: t.name,
+    url: `/tools/youtube-banner-maker?template=${t.id}`,
+    image: t.preview,
+  })),
+});
+
 const firstTemplateId = templates[0]?.id || 'gaming-neon';
 ---
 
@@ -92,7 +112,7 @@ const firstTemplateId = templates[0]?.id || 'gaming-neon';
   title={nicheMeta.title}
   description={nicheMeta.desc}
   path={`/templates/${niche}`}
-  jsonLd={[breadcrumbs]}
+  jsonLd={[breadcrumbs, collectionSchema]}
 >
   <Header currentPath={`/templates/${niche}`} />
 
@@ -196,7 +216,7 @@ const firstTemplateId = templates[0]?.id || 'gaming-neon';
             </h2>
             <div class="space-y-3 text-sm text-ink-600 leading-relaxed measure-prose">
               <p>
-                Because YouTube alters the visible area depending on whether viewers access your channel from smart TVs, desktop monitors, tablets, or phones, using verified templates eliminates trial-and-error cropping.
+                {content.cropAdvice}
               </p>
               <p>
                 Learn more about safe area mathematics in our <a href="/guides/youtube-banner-safe-area" class="text-accent hover:underline font-medium">Safe Area Guide</a> or check exact dimensions in the <a href="/guides/youtube-banner-size" class="text-accent hover:underline font-medium">Banner Sizing Guide</a>.

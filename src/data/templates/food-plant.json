@@ -1,0 +1,79 @@
+{
+  "id": "food-plant",
+  "niche": "food",
+  "name": "Plant-Based Kitchen",
+  "description": "Vibrant avocado green and clean linen for vegan nutrition and high-flavor plant cooking.",
+  "preview": "/previews/food-plant.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#07160E",
+        "#10281C",
+        "#07160E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "leaf-rule-top",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.41,
+        "w": 0.3,
+        "h": 0.003,
+        "color": "#10B981",
+        "opacity": 0.8
+      },
+      {
+        "id": "leaf-rule-bot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.57,
+        "w": 0.3,
+        "h": 0.003,
+        "color": "#10B981",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "PURE GREEN BOWL",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#ECFDF5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "High-Protein Vegan Recipes · Whole Foods & Macro Nutrition",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#6EE7B7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "leaf-rule-top",
+    "leaf-rule-bot"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,67 @@
+{
+  "id": "edu-bio",
+  "niche": "education",
+  "name": "Bio Matrix",
+  "description": "Cleanroom emerald and sterile slate for biology lectures, genetics, and medical explainers.",
+  "preview": "/previews/edu-bio.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#05110E",
+        "#0D221C",
+        "#05110E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "helix-bar",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.34,
+        "y": 0.41,
+        "w": 0.32,
+        "h": 0.003,
+        "color": "#34D399",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "SYNTHETIC LIFE",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#ECFDF5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "CRISPR Gene Editing, Cellular Biology & Neuroscience",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#A7F3D0",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "helix-bar"
+  ],
+  "safeAreaValidated": true
+}

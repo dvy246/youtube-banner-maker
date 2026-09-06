@@ -2,14 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { STATIC_PAGES_SEO, getBreadcrumbSchema, getOrganizationSchema, getWebSiteSchema } from '../lib/seo';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getOrganizationSchema } from '../lib/seo';
 import { CANVAS, SAFE_PX } from '../lib/spec';
 
 const path = '/about';
 const seo = STATIC_PAGES_SEO[path];
 
 const jsonLd = [
-  getWebSiteSchema(),
   getOrganizationSchema(),
   getBreadcrumbSchema([
     { name: 'Home', url: '/' },

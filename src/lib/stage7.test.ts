@@ -28,7 +28,7 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).toContain("img-src 'self' blob: data:;");
       expect(content).toContain("frame-ancestors 'none';");
       expect(content).toContain("base-uri 'self';");
-      expect(content).toContain("form-action 'none'");
+      expect(content).toContain("form-action 'self' mailto:");
 
       // Security headers
       expect(content).toContain('X-Content-Type-Options: nosniff');
@@ -72,6 +72,7 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).toContain('<loc>https://youtubebannermaker.com/tools/youtube-banner-maker</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-size</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-safe-area</loc>');
+      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-1024-x-576</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/templates</loc>');
 
       // AdSense Trust suite
@@ -80,15 +81,15 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).toContain('<loc>https://youtubebannermaker.com/privacy</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/terms</loc>');
 
-      // All 8 qualifying niche pages (≥3 templates each)
-      const niches = ['gaming', 'tech', 'podcast', 'vlog', 'music', 'fitness', 'education', 'lifestyle'];
+      // All qualifying niche pages (≥3 templates each)
+      const niches = ['business', 'education', 'fitness', 'food', 'gaming', 'lifestyle', 'music', 'podcast', 'tech', 'vlog'];
       for (const n of niches) {
         expect(content).toContain(`<loc>https://youtubebannermaker.com/templates/${n}</loc>`);
       }
 
       // Count total URLs in sitemap
       const urlCount = (content.match(/<loc>/g) || []).length;
-      expect(urlCount).toBe(19);
+      expect(urlCount).toBe(22);
     });
   });
 

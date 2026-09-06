@@ -7,6 +7,7 @@ import {
   getBreadcrumbSchema,
   getFAQSchema,
   getOrganizationSchema,
+  getContactPageSchema,
 } from '../lib/seo';
 import { CANVAS } from '../lib/spec';
 
@@ -37,6 +38,7 @@ const faqs = [
 
 const jsonLd = [
   getOrganizationSchema(),
+  getContactPageSchema(),
   getBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Contact & Support', url: path },

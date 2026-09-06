@@ -1,0 +1,91 @@
+{
+  "id": "gaming-anime",
+  "niche": "gaming",
+  "name": "Anime Battle",
+  "description": "High-energy crimson and electric violet battle aesthetic for anime gaming and fighting games.",
+  "preview": "/previews/gaming-anime.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1A0515",
+        "#380B2C",
+        "#6B0F4A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "slash-accent",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.28,
+        "y": 0.4,
+        "w": 0.08,
+        "h": 0.006,
+        "color": "#FF2E93",
+        "opacity": 0.9
+      },
+      {
+        "id": "slash-bottom",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.64,
+        "y": 0.58,
+        "w": 0.08,
+        "h": 0.006,
+        "color": "#FF2E93",
+        "opacity": 0.9
+      },
+      {
+        "id": "kanji-marker",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.74,
+        "y": 0.46,
+        "w": 0.004,
+        "h": 0.08,
+        "color": "#FFA3D7",
+        "opacity": 0.6
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "BLADE CHRONICLES",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "FIGHTING GAME COMBOS & ANIME RPG STREAMS",
+        "font": "inter-500",
+        "size": 18,
+        "color": "#FFA3D7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "slash-accent",
+    "slash-bottom",
+    "kanji-marker"
+  ],
+  "safeAreaValidated": true
+}

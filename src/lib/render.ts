@@ -1,6 +1,7 @@
 import { CANVAS, DEVICES, type DeviceKey } from './spec';
-import type { Background, Scene, TextLayer, ShapeLayer } from './scene';
+import type { Background, Scene, TextLayer, ShapeLayer, PhotoFrameLayer } from './scene';
 import { FONTS } from './fonts';
+import { renderBadge } from './badges';
 
 export type ImageMap = Map<string, HTMLImageElement | CanvasImageSource>;
 
@@ -107,10 +108,14 @@ export function renderScene(
     }
   }
 
-  // 2. Shapes (array order = z order)
+  // 2. Shapes & Frames & Badges (array order = z order)
   for (const layer of scene.layers) {
     if (layer.type === 'shape') {
       renderShape(ctx, layer, cw, ch);
+    } else if (layer.type === 'frame') {
+      renderPhotoFrame(ctx, layer, images, cw, ch);
+    } else if (layer.type === 'badge') {
+      renderBadge(ctx, layer, cw, ch);
     }
   }
 
@@ -122,6 +127,36 @@ export function renderScene(
   }
 
   ctx.restore();
+}
+
+/**
+ * Measure rendered width of a text string at full 2560 canvas scale.
+ * Used for smart auto-fit title sizing to prevent safe-area overflow.
+ */
+export function measureTextWidth(
+  text: string,
+  fontId: string,
+  fontSize: number
+): number {
+  const fontDef = FONTS[fontId];
+  const family = fontDef?.family || 'Inter, sans-serif';
+  const weight = fontDef?.weight || 700;
+
+  // Use offscreen canvas if available, else a dummy canvas
+  let canvas: HTMLCanvasElement | null = null;
+  if (typeof document !== 'undefined') {
+    canvas = document.createElement('canvas');
+  }
+  if (!canvas) {
+    // Fallback estimation
+    return text.length * fontSize * 0.58;
+  }
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    return text.length * fontSize * 0.58;
+  }
+  ctx.font = `${weight} ${fontSize}px ${family}`;
+  return ctx.measureText(text).width;
 }
 
 function renderShape(
@@ -141,7 +176,13 @@ function renderShape(
   const h = layer.h * ch;
 
   if (layer.shape === 'rect') {
-    ctx.fillRect(x, y, w, h);
+    if (layer.borderRadius && typeof ctx.roundRect === 'function') {
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, layer.borderRadius);
+      ctx.fill();
+    } else {
+      ctx.fillRect(x, y, w, h);
+    }
   } else if (layer.shape === 'circle') {
     ctx.beginPath();
     ctx.ellipse(x + w / 2, y + h / 2, Math.abs(w / 2), Math.abs(h / 2), 0, 0, Math.PI * 2);
@@ -177,6 +218,110 @@ function renderText(
   const y = layer.position.y * ch;
 
   ctx.fillText(layer.text, x, y);
+  ctx.restore();
+}
+
+function renderPhotoFrame(
+  ctx: CanvasRenderingContext2D,
+  layer: PhotoFrameLayer,
+  images: ImageMap,
+  cw: number,
+  ch: number
+): void {
+  const cx = layer.x * cw;
+  const cy = layer.y * ch;
+  const fw = layer.w * cw;
+  const fh = layer.h * ch;
+  const x = cx - fw / 2;
+  const y = cy - fh / 2;
+
+  ctx.save();
+
+  const buildFramePath = () => {
+    ctx.beginPath();
+    if (layer.shape === 'circle') {
+      const radius = Math.min(fw, fh) / 2;
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    } else {
+      const r = layer.borderRadius ?? 16;
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(x, y, fw, fh, r);
+      } else {
+        ctx.rect(x, y, fw, fh);
+      }
+    }
+    ctx.closePath();
+  };
+
+  const img = layer.src ? images.get(layer.src) : null;
+
+  if (img) {
+    // Masked Image Rendering
+    buildFramePath();
+    ctx.save();
+    ctx.clip();
+
+    const sw =
+      'naturalWidth' in img && img.naturalWidth
+        ? img.naturalWidth
+        : 'width' in img
+          ? Number(img.width)
+          : fw;
+    const sh =
+      'naturalHeight' in img && img.naturalHeight
+        ? img.naturalHeight
+        : 'height' in img
+          ? Number(img.height)
+          : fh;
+
+    const baseScale = Math.max(fw / sw, fh / sh);
+    const zoom = Math.max(0.5, Math.min(4, layer.zoom ?? 1.0));
+    const drawW = sw * baseScale * zoom;
+    const drawH = sh * baseScale * zoom;
+
+    const panX = layer.offsetX ?? 0;
+    const panY = layer.offsetY ?? 0;
+    const imgX = x + (fw - drawW) / 2 + panX;
+    const imgY = y + (fh - drawH) / 2 + panY;
+
+    ctx.drawImage(img, imgX, imgY, drawW, drawH);
+    ctx.restore();
+
+    // Outer Border
+    const bWidth = layer.borderWidth ?? 3;
+    if (bWidth > 0) {
+      buildFramePath();
+      ctx.lineWidth = bWidth;
+      ctx.strokeStyle = layer.borderColor || '#FFFFFF';
+      ctx.stroke();
+    }
+  } else {
+    // Placeholder Frame State (No image uploaded yet)
+    ctx.save();
+    buildFramePath();
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.fill();
+
+    ctx.lineWidth = Math.max(2, layer.borderWidth ?? 2);
+    ctx.strokeStyle = layer.borderColor || 'rgba(255, 255, 255, 0.6)';
+    ctx.setLineDash([8, 6]);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = layer.borderColor || '#FFFFFF';
+
+    const iconSize = Math.min(fw, fh) * 0.22;
+    ctx.font = `600 ${Math.max(14, Math.round(iconSize * 0.85))}px ui-sans-serif, system-ui, sans-serif`;
+    ctx.fillText('+', cx, cy - 8);
+
+    ctx.font = `600 ${Math.max(10, Math.round(iconSize * 0.42))}px ui-sans-serif, system-ui, sans-serif`;
+    ctx.fillText('ADD PHOTO', cx, cy + 16);
+    ctx.restore();
+  }
+
   ctx.restore();
 }
 

@@ -15,7 +15,6 @@
       {
         "id": "title",
         "role": "title",
-        "type": "text",
         "text": "ROOT & BRANCH",
         "font": "sora-700",
         "size": 48,
@@ -23,20 +22,54 @@
         "align": "left",
         "x": 0.28,
         "y": 0.46,
+        "type": "text",
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
-        "type": "text",
-        "text": "Indoor Plants · Permaculture · Urban Homesteading",
+        "text": "Indoor Plants \u00b7 Permaculture \u00b7 Urban Homesteading",
         "font": "inter-500",
         "size": 18,
         "color": "#E3E5E8",
         "align": "left",
         "x": 0.28,
         "y": 0.54,
+        "type": "text",
         "safeAreaConstrained": true
+      },
+      {
+        "id": "circle-accent",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.8,
+        "y": 0.25,
+        "w": 0.3,
+        "h": 0.3,
+        "color": "#FFFFFF",
+        "opacity": 0.02
+      },
+      {
+        "id": "vertical-stem",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.9,
+        "y": 0.0,
+        "w": 0.002,
+        "h": 1,
+        "color": "#4CAF50",
+        "opacity": 0.08
+      },
+      {
+        "id": "leaf-line",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.82,
+        "y": 0.35,
+        "w": 0.08,
+        "h": 0.002,
+        "color": "#4CAF50",
+        "opacity": 0.12
       }
     ]
   },
@@ -46,6 +79,10 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "circle-accent",
+    "vertical-stem",
+    "leaf-line"
+  ],
   "safeAreaValidated": true
 }

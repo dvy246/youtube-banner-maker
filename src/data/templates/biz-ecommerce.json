@@ -1,0 +1,79 @@
+{
+  "id": "biz-ecommerce",
+  "niche": "business",
+  "name": "E-Com Titan",
+  "description": "Dollar green and high-tech black for Amazon FBA, Shopify store owners, and brand builders.",
+  "preview": "/previews/biz-ecommerce.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#06110A",
+        "#0E2416",
+        "#06110A"
+      ]
+    },
+    "layers": [
+      {
+        "id": "ecom-arrow-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.3,
+        "y": 0.47,
+        "w": 0.04,
+        "h": 0.006,
+        "color": "#10B981",
+        "opacity": 0.9
+      },
+      {
+        "id": "ecom-arrow-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.66,
+        "y": 0.47,
+        "w": 0.04,
+        "h": 0.006,
+        "color": "#10B981",
+        "opacity": 0.9
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "E-COM LAB",
+        "font": "sora-700",
+        "size": 54,
+        "color": "#ECFDF5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "7-FIGURE SHOPIFY BRANDS · SUPPLY CHAIN & CONVERSION",
+        "font": "inter-600",
+        "size": 15,
+        "color": "#6EE7B7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "ecom-arrow-l",
+    "ecom-arrow-r"
+  ],
+  "safeAreaValidated": true
+}

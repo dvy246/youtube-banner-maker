@@ -1,0 +1,79 @@
+{
+  "id": "fitness-crossfit",
+  "niche": "fitness",
+  "name": "CrossFit Power",
+  "description": "High-octane hazard orange and concrete grey for WOD athletes and Olympic weightlifting.",
+  "preview": "/previews/fitness-crossfit.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#111215",
+        "#1F2228",
+        "#111215"
+      ]
+    },
+    "layers": [
+      {
+        "id": "wod-tag",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.44,
+        "y": 0.39,
+        "w": 0.12,
+        "h": 0.006,
+        "color": "#F97316",
+        "opacity": 0.9
+      },
+      {
+        "id": "wod-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.57,
+        "w": 0.3,
+        "h": 0.004,
+        "color": "#F97316",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "MAX EFFORT WOD",
+        "font": "sora-700",
+        "size": 50,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "HIGH INTENSITY CONDITIONING & OLYMPIC LIFTS",
+        "font": "inter-600",
+        "size": 16,
+        "color": "#FDBA74",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "wod-tag",
+    "wod-rule"
+  ],
+  "safeAreaValidated": true
+}

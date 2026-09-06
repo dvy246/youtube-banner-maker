@@ -1,0 +1,67 @@
+{
+  "id": "vlog-coast",
+  "niche": "vlog",
+  "name": "Mediterranean Coast",
+  "description": "Aegean blue and sunbleached sand for coastal adventures, sailing, and summer vlogs.",
+  "preview": "/previews/vlog-coast.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#0A1A24",
+        "#143245",
+        "#0A1A24"
+      ]
+    },
+    "layers": [
+      {
+        "id": "coast-line",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.35,
+        "y": 0.57,
+        "w": 0.3,
+        "h": 0.003,
+        "color": "#06B6D4",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "COASTAL VOYAGE",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "SAILING THE MEDITERRANEAN · ISLAND LIFE & DIVING",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#A5F3FC",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "coast-line"
+  ],
+  "safeAreaValidated": true
+}

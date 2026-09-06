@@ -1,0 +1,67 @@
+{
+  "id": "food-sushi",
+  "niche": "food",
+  "name": "Edomae Omakase",
+  "description": "Hinoki cypress clean wood and nori dark teal for sushi masters and Japanese knife skills.",
+  "preview": "/previews/food-sushi.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#0A1211",
+        "#14221F",
+        "#0A1211"
+      ]
+    },
+    "layers": [
+      {
+        "id": "knife-slash",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.36,
+        "y": 0.57,
+        "w": 0.28,
+        "h": 0.002,
+        "color": "#10B981",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "EDOMAE SUSHI",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#ECFDF5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Traditional Fish Aging · Shari Rice Prep & Omakase Etiquette",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#6EE7B7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "knife-slash"
+  ],
+  "safeAreaValidated": true
+}

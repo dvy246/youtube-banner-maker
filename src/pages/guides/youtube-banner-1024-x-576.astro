@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import DeviceCropTable from '../../components/DeviceCropTable.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema } from '../../lib/seo';
+import { CANVAS, SAFE_PX, MAX_UPLOAD_BYTES } from '../../lib/spec';
+
+const path = '/guides/youtube-banner-1024-x-576';
+const seo = STATIC_PAGES_SEO[path];
+
+const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
+
+const faqs = [
+  {
+    question: 'Why does YouTube Studio reject a 1024x576 banner?',
+    answer: `YouTube Studio strictly enforces an absolute minimum upload dimension of 2048 × 1152 pixels. While 1024 × 576 matches the 16:9 aspect ratio, YouTube rejects any image with fewer than 2048 horizontal pixels to prevent severe rasterization blur on large smart televisions.`,
+  },
+  {
+    question: 'What is the mathematical relationship between 1024x576 and 2560x1440?',
+    answer: `Both resolutions share the exact 16:9 aspect ratio (1024 ÷ 576 = 1.7777... and 2560 ÷ 1440 = 1.7777...). 2560 × 1440 is exactly 2.5 times larger along each axis, representing 6.25 times more pixel density than 1024 × 576.`,
+  },
+  {
+    question: 'How do I resize a 1024x576 image to YouTube banner size?',
+    answer: `Do not simply stretch the 1024 × 576 file, as direct interpolation can soften fine text. Instead, use our free client-side YouTube Banner Resizer to scale your artwork into the official ${CANVAS.width} × ${CANVAS.height} canvas while centering your key focal subjects inside the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} mobile safe zone.`,
+  },
+  {
+    question: 'What is the official minimum YouTube banner size?',
+    answer: `The official minimum accepted dimension is 2048 × 1152 pixels with an aspect ratio of 16:9. However, YouTube strongly recommends 2560 × 1440 pixels (max ${maxUploadMb} MB) for full clarity across desktop and TV displays.`,
+  },
+  {
+    question: 'What is the mobile safe area on a 2560x1440 canvas?',
+    answer: `The mobile safe area is the central ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel rectangle. Any text, channel names, social handles, or faces placed inside this area remain visible across every smartphone, tablet, laptop, and TV display.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://youtubebannermaker.com' },
+  { name: 'Guides', url: 'https://youtubebannermaker.com/guides/youtube-banner-size' },
+  { name: '1024x576 YouTube Banner Guide', url: `https://youtubebannermaker.com${path}` },
+];
+
+const jsonLd = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema({
+    title: seo.title,
+    description: seo.desc,
+    path,
+    datePublished: '2025-01-15T00:00:00Z',
+    dateModified: '2026-09-06T00:00:00Z',
+  }),
+  getFAQSchema(faqs),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <main class="w-full">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center gap-2 text-xs font-mono text-ink-500">
+          <li><a href="/" class="hover:text-ink-950 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/guides/youtube-banner-size" class="hover:text-ink-950 transition-colors">Guides</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-ink-950 font-medium" aria-current="page">1024×576 Explained</li>
+        </ol>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-surface-100 text-ink-700 border border-line-200 mb-4">
+          <span>Dimensional Resolution Analysis</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink-950 tracking-tight leading-[1.15] mb-4">
+          YouTube Banner 1024×576: Why Uploads Fail and How to Fix It
+        </h1>
+        <p class="text-lg text-ink-600 leading-relaxed">
+          If you have created channel art at 1024 × 576 pixels, YouTube Studio will block your upload with an error:
+          <strong class="text-ink-950">"Image is too small."</strong> Here is the mathematical reason why, how the 16:9 ratio works, and how to fit your artwork to the required {CANVAS.width} × {CANVAS.height} standard in seconds.
+        </p>
+      </header>
+
+      <!-- Direct Answer Box (GEO / AEO) -->
+      <div class="p-6 rounded-2xl border-2 border-line-200 bg-surface-50 mb-12 space-y-4">
+        <h2 class="text-sm font-mono uppercase tracking-wider text-ink-500 font-semibold">
+          Quick Answer
+        </h2>
+        <p class="text-base text-ink-950 leading-relaxed font-medium">
+          1024 × 576 has the correct 16:9 aspect ratio, but YouTube requires a minimum of <strong>2048 × 1152 pixels</strong> and officially recommends <strong>{CANVAS.width} × {CANVAS.height} pixels</strong>. To upload without errors, your image must be scaled up to at least 2048 × 1152 while keeping all logos and channel names within the central <strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} px</strong> mobile safe area.
+        </p>
+        <div class="pt-2 flex flex-wrap gap-3">
+          <a
+            href="/tools/youtube-banner-resizer"
+            class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-ink-950 text-surface-0 hover:bg-accent text-xs font-semibold transition-colors shadow-2xs"
+          >
+            Fix 1024×576 Image in Resizer &rarr;
+          </a>
+          <a
+            href="/tools/youtube-banner-maker"
+            class="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-xs font-semibold transition-colors"
+          >
+            Create New 2560×1440 Banner &rarr;
+          </a>
+        </div>
+      </div>
+
+      <AdSlot slotId="guide-top" format="leaderboard" />
+
+      <!-- Section: The Mathematical Confusion -->
+      <section class="space-y-6 mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-ink-950 tracking-tight">
+          Why So Many Creators Search for 1024×576
+        </h2>
+        <p class="text-base text-ink-600 leading-relaxed">
+          The resolution 1024 × 576 is an old digital video benchmark (often known as 576p widescreen PAL). It shares the exact same mathematical proportions as modern high-definition widescreen media:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-0">
+            <div class="text-xs font-mono text-ink-500">1024 × 576</div>
+            <div class="text-xl font-bold text-ink-950 mt-1">16:9 Ratio</div>
+            <div class="text-xs text-ink-500 mt-2">1.7777... Aspect Ratio</div>
+            <span class="inline-block mt-3 px-2 py-0.5 rounded text-[11px] font-mono bg-red-50 text-red-700 border border-red-200">
+              Rejected by YouTube
+            </span>
+          </div>
+
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-0">
+            <div class="text-xs font-mono text-ink-500">2048 × 1152</div>
+            <div class="text-xl font-bold text-ink-950 mt-1">16:9 Ratio</div>
+            <div class="text-xs text-ink-500 mt-2">2.0× Scale Factor</div>
+            <span class="inline-block mt-3 px-2 py-0.5 rounded text-[11px] font-mono bg-amber-50 text-amber-700 border border-amber-200">
+              Minimum Allowed
+            </span>
+          </div>
+
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-0">
+            <div class="text-xs font-mono text-ink-500">{CANVAS.width} × {CANVAS.height}</div>
+            <div class="text-xl font-bold text-ink-950 mt-1">16:9 Ratio</div>
+            <div class="text-xs text-ink-500 mt-2">2.5× Scale Factor</div>
+            <span class="inline-block mt-3 px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-50 text-emerald-700 border border-emerald-200">
+              Official Recommended
+            </span>
+          </div>
+        </div>
+
+        <p class="text-base text-ink-600 leading-relaxed">
+          Because outdated design tutorials and third-party templates frequently cited 1024 × 576 as a "lightweight canvas size," thousands of creators design banners that fail YouTube's file validation.
+        </p>
+      </section>
+
+      <!-- Section: YouTube Specification Requirements -->
+      <section class="space-y-6 mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-ink-950 tracking-tight">
+          Official YouTube Channel Art Specifications
+        </h2>
+        <p class="text-base text-ink-600 leading-relaxed">
+          When uploading to YouTube Studio, your file is evaluated against these strict ingestion parameters:
+        </p>
+
+        <SpecTable />
+      </section>
+
+      <!-- Section: Safe Area Crop Danger -->
+      <section class="space-y-6 mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-ink-950 tracking-tight">
+          The Safe Area Danger on Smaller Resolutions
+        </h2>
+        <p class="text-base text-ink-600 leading-relaxed">
+          Even if YouTube accepted 1024 × 576, your content would suffer from safe-area cropping. On desktop computers, YouTube only renders the central horizontal strip. On smartphones, YouTube crops both the horizontal and vertical margins.
+        </p>
+
+        <DeviceCropTable />
+
+        <p class="text-base text-ink-600 leading-relaxed">
+          In a 1024 × 576 canvas, the proportional mobile safe area is only approximately 618 × 169 pixels. Designing detailed graphics or readable text inside such a tiny area is nearly impossible without severe pixelation.
+        </p>
+      </section>
+
+      <AdSlot slotId="guide-mid" format="rectangle" />
+
+      <!-- Section: Step-by-Step Fix -->
+      <section class="space-y-6 mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-ink-950 tracking-tight">
+          How to Convert 1024×576 to 2560×1440 for Free
+        </h2>
+        <p class="text-base text-ink-600 leading-relaxed">
+          You do not need Photoshop or a paid subscription to fix your banner. Follow this 3-step browser workflow:
+        </p>
+
+        <ol class="space-y-4 text-ink-700 leading-relaxed">
+          <li class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-surface-100 text-xs font-mono font-bold text-ink-950 shrink-0 mt-0.5">1</span>
+            <div>
+              <strong class="text-ink-950">Open the Free Resizer Tool</strong>: Visit our <a href="/tools/youtube-banner-resizer" class="text-accent hover:underline font-medium">YouTube Banner Resizer</a>. It processes everything locally in your browser with zero image uploads.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-surface-100 text-xs font-mono font-bold text-ink-950 shrink-0 mt-0.5">2</span>
+            <div>
+              <strong class="text-ink-950">Drop Your 1024×576 Image</strong>: The tool automatically maps your 16:9 artwork to the full {CANVAS.width} × {CANVAS.height} canvas and highlights the {SAFE_PX.full.width} × {SAFE_PX.full.height} mobile safe area.
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-surface-100 text-xs font-mono font-bold text-ink-950 shrink-0 mt-0.5">3</span>
+            <div>
+              <strong class="text-ink-950">Export Clean 2560×1440 PNG</strong>: Click export to download an aspect-preserving PNG ready for immediate upload to YouTube Studio with zero errors.
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Section: FAQs -->
+      <section class="space-y-6 mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-ink-950 tracking-tight">
+          Frequently Asked Questions
+        </h2>
+        <dl class="space-y-6">
+          {
+            faqs.map((faq) => (
+              <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+                <dt class="text-base font-bold text-ink-950 tracking-tight">
+                  {faq.question}
+                </dt>
+                <dd class="text-sm text-ink-600 leading-relaxed">
+                  {faq.answer}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <!-- Bottom Conversion CTA -->
+      <div class="p-8 rounded-2xl bg-surface-100 border border-line-200 text-center space-y-4">
+        <h2 class="text-2xl font-bold text-ink-950 tracking-tight">
+          Ready to Create Channel Art that Fits Every Device?
+        </h2>
+        <p class="text-sm text-ink-600 max-w-xl mx-auto leading-relaxed">
+          Choose from verified art-directed templates with built-in YouTube Subscribe badges, live 4-screen verification, and instant free download.
+        </p>
+        <div class="pt-2 flex flex-wrap justify-center gap-3">
+          <a
+            href="/tools/youtube-banner-maker"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-ink-950 text-surface-0 hover:bg-accent text-sm font-semibold transition-colors shadow-2xs"
+          >
+            Launch YouTube Banner Maker &rarr;
+          </a>
+          <a
+            href="/templates"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-50 text-ink-950 text-sm font-semibold transition-colors"
+          >
+            Browse Free Templates
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

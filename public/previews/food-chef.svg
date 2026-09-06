@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  
+      <defs>
+        <linearGradient id="bg-food-chef" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="undefined" />
+          <stop offset="100%" stop-color="undefined" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg-food-chef)" />
+    
+  <!-- Safe area indicator border (subtle) -->
+  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
+  <rect x="300.8" y="140.4" width="38.4" height="1.8" fill="#EAB308" opacity="0.9" />
+<text x="50%" y="47.0%" text-anchor="middle" dominant-baseline="middle" fill="#FDFBF7" font-family="Switzer, sans-serif" font-size="32" font-weight="700">THE CHEF TABLE</text>
+<text x="50%" y="54.0%" text-anchor="middle" dominant-baseline="middle" fill="#FEF08A" font-family="Switzer, sans-serif" font-size="15" font-weight="500">Michelin-Caliber Culinary Techniques for the Home Cook</text>
+
+</svg>

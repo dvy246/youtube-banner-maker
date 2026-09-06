@@ -6,10 +6,15 @@
   "preview": "/previews/vlog-golden-hour.svg",
   "scene": {
     "background": {
-      "type": "gradient",
-      "from": "#2A1310",
-      "to": "#180B1C",
-      "angle": 135
+      "type": "image",
+      "src": "/backgrounds/vlog-golden-hour.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
       {
@@ -29,7 +34,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Travel Stories & Visual Essays · Sundays",
+        "text": "Travel Stories & Visual Essays \u00b7 Sundays",
         "font": "inter-500",
         "size": 19,
         "color": "#EFF1F3",
@@ -37,6 +42,50 @@
         "x": 0.5,
         "y": 0.55,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "horizon",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.15,
+        "y": 0.5,
+        "w": 0.7,
+        "h": 0.002,
+        "color": "#FFD700",
+        "opacity": 0.15
+      },
+      {
+        "id": "flare-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1,
+        "y": 0.3,
+        "w": 0.05,
+        "h": 0.4,
+        "color": "#FFA500",
+        "opacity": 0.05
+      },
+      {
+        "id": "flare-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.75,
+        "y": 0.2,
+        "w": 0.15,
+        "h": 0.08,
+        "color": "#FFFFFF",
+        "opacity": 0.08
+      },
+      {
+        "id": "horizon-dash",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.45,
+        "y": 0.52,
+        "w": 0.1,
+        "h": 0.002,
+        "color": "#FFFFFF",
+        "opacity": 0.2
       }
     ]
   },
@@ -46,6 +95,11 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "horizon",
+    "flare-l",
+    "flare-r",
+    "horizon-dash"
+  ],
   "safeAreaValidated": true
 }

@@ -2,48 +2,119 @@
   "id": "tech-clean",
   "niche": "tech",
   "name": "Silicon Pure",
-  "description": "Clean consumer tech review layout with expansive centered typography.",
+  "description": "Clean consumer tech review layout with frosted backplate and avatar slot.",
   "preview": "/previews/tech-clean.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#16181B"
+      "type": "image",
+      "src": "/backgrounds/tech-clean.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
     },
     "layers": [
+      {
+        "id": "backplate",
+        "type": "shape",
+        "shape": "rect",
+        "borderRadius": 16,
+        "x": 0.21,
+        "y": 0.38,
+        "w": 0.58,
+        "h": 0.24,
+        "color": "#FFFFFF",
+        "opacity": 0.05
+      },
+      {
+        "id": "circuit-line-1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1,
+        "y": 0.2,
+        "w": 0.2,
+        "h": 0.002,
+        "color": "#4E6BFF",
+        "opacity": 0.3
+      },
+      {
+        "id": "circuit-line-2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.298,
+        "y": 0.2,
+        "w": 0.002,
+        "h": 0.1,
+        "color": "#4E6BFF",
+        "opacity": 0.3
+      },
+      {
+        "id": "accent-dot",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.295,
+        "y": 0.3,
+        "w": 0.008,
+        "h": 0.014,
+        "color": "#4E6BFF",
+        "opacity": 0.5
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.26,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 2,
+        "borderColor": "#4E6BFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "TECH HORIZON",
         "font": "sora-700",
-        "size": 54,
+        "size": 46,
         "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
+        "align": "left",
+        "x": 0.35,
+        "y": 0.47,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Hardware Reviews · AI Tools · Future Gear",
+        "text": "Hardware Reviews \u00b7 AI Tools \u00b7 Future Gear",
         "font": "inter-500",
-        "size": 20,
-        "color": "#6B7076",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.55,
+        "size": 16,
+        "color": "#A5B4FC",
+        "align": "left",
+        "x": 0.35,
+        "y": 0.56,
         "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
+    "avatar",
     "title",
     "tagline",
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "backplate",
+    "circuit-line-1",
+    "circuit-line-2",
+    "accent-dot"
+  ],
   "safeAreaValidated": true
 }

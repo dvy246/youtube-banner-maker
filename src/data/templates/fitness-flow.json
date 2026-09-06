@@ -35,6 +35,39 @@
         "x": 0.28,
         "y": 0.54,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "zen-stone1",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.85,
+        "y": 0.3,
+        "w": 0.35,
+        "h": 0.62,
+        "color": "#0F7A52",
+        "opacity": 0.06
+      },
+      {
+        "id": "zen-stone2",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.78,
+        "y": 0.35,
+        "w": 0.2,
+        "h": 0.35,
+        "color": "#0F7A52",
+        "opacity": 0.09
+      },
+      {
+        "id": "balance-line",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.15,
+        "y": 0.5,
+        "w": 0.002,
+        "h": 0.4,
+        "color": "#FFFFFF",
+        "opacity": 0.1
       }
     ]
   },
@@ -44,6 +77,10 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "zen-stone1",
+    "zen-stone2",
+    "balance-line"
+  ],
   "safeAreaValidated": true
 }

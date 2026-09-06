@@ -37,14 +37,68 @@ export interface ShapeLayer {
   h: number;
   color: string;
   opacity: number;
+  borderRadius?: number;
+}
+
+export interface PhotoFrameLayer {
+  id: string;
+  type: 'frame';
+  shape: 'circle' | 'rect';
+  x: number; // Center X as frame fraction (0..1)
+  y: number; // Center Y as frame fraction (0..1)
+  w: number; // Width as frame fraction (0..1)
+  h: number; // Height as frame fraction (0..1)
+  src?: string; // ImageMap lookup key or data URL
+  borderRadius?: number; // Corner radius in px for rect (default 16)
+  borderColor?: string; // Hex color for border (default '#FFFFFF')
+  borderWidth?: number; // Border thickness in px (default 3)
+  zoom?: number; // Zoom multiplier inside frame (default 1.0)
+  offsetX?: number; // Pan X in pixels inside frame (default 0)
+  offsetY?: number; // Pan Y in pixels inside frame (default 0)
+  safeAreaConstrained?: boolean;
+}
+
+export interface BadgeLayer {
+  id: string;
+  type: 'badge';
+  variant:
+    | 'subscribe-pill'
+    | 'subscribe-cookie'
+    | 'bell-pill'
+    | 'social-row'
+    | 'schedule-tag'
+    | 'verified-check';
+  x: number; // Center X as frame fraction (0..1)
+  y: number; // Center Y as frame fraction (0..1)
+  scale?: number; // Scale multiplier (default 1.0)
+  colorScheme?: 'youtube-red' | 'theme-accent' | 'mono-dark' | 'mono-light';
+  text?: string;
+  safeAreaConstrained?: boolean;
+}
+
+export type SceneLayer = TextLayer | ShapeLayer | PhotoFrameLayer | BadgeLayer;
+
+export interface SceneDesignSystem {
+  palette: {
+    primary: string;
+    secondary: string;
+    surface: string;
+    accent: string;
+  };
+  typography: {
+    titleFont: string;
+    taglineFont: string;
+  };
+  layout?: 'centered' | 'split-left' | 'split-right' | 'editorial' | 'badge' | 'meme';
 }
 
 export interface Scene {
   version: 1;
   canvas: { width: number; height: number };
   background: Background;
-  layers: Array<TextLayer | ShapeLayer>; // max 8
+  layers: Array<TextLayer | ShapeLayer | PhotoFrameLayer | BadgeLayer>; // max 8
   export: { format: 'png' | 'jpeg' | 'webp'; quality: number };
+  designSystem?: SceneDesignSystem;
 }
 
 export const SCENE_KEY = 'ybm.scene.v1';
@@ -184,6 +238,24 @@ export function deserializeScene(raw: string): Scene | null {
           typeof layer.h !== 'number' ||
           typeof layer.color !== 'string' ||
           typeof layer.opacity !== 'number'
+        ) {
+          return null;
+        }
+      } else if (layer.type === 'frame') {
+        if (
+          !['circle', 'rect'].includes(layer.shape) ||
+          typeof layer.x !== 'number' ||
+          typeof layer.y !== 'number' ||
+          typeof layer.w !== 'number' ||
+          typeof layer.h !== 'number'
+        ) {
+          return null;
+        }
+      } else if (layer.type === 'badge') {
+        if (
+          typeof layer.variant !== 'string' ||
+          typeof layer.x !== 'number' ||
+          typeof layer.y !== 'number'
         ) {
           return null;
         }

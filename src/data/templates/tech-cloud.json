@@ -1,0 +1,79 @@
+{
+  "id": "tech-cloud",
+  "niche": "tech",
+  "name": "Cloud Infrastructure",
+  "description": "Enterprise Azure blue and graphite for DevOps engineers, Kubernetes, and cloud architects.",
+  "preview": "/previews/tech-cloud.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#081020",
+        "#13233F",
+        "#081020"
+      ]
+    },
+    "layers": [
+      {
+        "id": "infra-bar-l",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.32,
+        "y": 0.51,
+        "w": 0.06,
+        "h": 0.004,
+        "color": "#2563EB",
+        "opacity": 0.8
+      },
+      {
+        "id": "infra-bar-r",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.62,
+        "y": 0.51,
+        "w": 0.06,
+        "h": 0.004,
+        "color": "#2563EB",
+        "opacity": 0.8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "CLOUD ARCHITECT",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.45,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "KUBERNETES · TERRAFORM · HIGH-AVAILABILITY CLUSTERS",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#93C5FD",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "infra-bar-l",
+    "infra-bar-r"
+  ],
+  "safeAreaValidated": true
+}

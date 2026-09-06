@@ -35,6 +35,50 @@
         "x": 0.28,
         "y": 0.54,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "string1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1,
+        "y": 0.5,
+        "w": 0.002,
+        "h": 0.6,
+        "color": "#F5DEC3",
+        "opacity": 0.06
+      },
+      {
+        "id": "string2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.12,
+        "y": 0.5,
+        "w": 0.002,
+        "h": 0.6,
+        "color": "#F5DEC3",
+        "opacity": 0.06
+      },
+      {
+        "id": "beam1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.85,
+        "y": 0.15,
+        "w": 0.15,
+        "h": 0.005,
+        "color": "#8B5A2B",
+        "opacity": 0.2
+      },
+      {
+        "id": "beam2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.5,
+        "y": 0.85,
+        "w": 0.7,
+        "h": 0.003,
+        "color": "#8B5A2B",
+        "opacity": 0.1
       }
     ]
   },
@@ -44,6 +88,11 @@
     "background.photo",
     "background.gradient"
   ],
-  "protected": [],
+  "protected": [
+    "string1",
+    "string2",
+    "beam1",
+    "beam2"
+  ],
   "safeAreaValidated": true
 }

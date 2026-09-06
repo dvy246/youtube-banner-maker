@@ -1,0 +1,79 @@
+{
+  "id": "podcast-crime",
+  "niche": "podcast",
+  "name": "True Crime Files",
+  "description": "Chilling forensic red and shadow black for investigative journalism and cold cases.",
+  "preview": "/previews/podcast-crime.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 90,
+      "stops": [
+        "#0A0606",
+        "#170B0B",
+        "#0A0606"
+      ]
+    },
+    "layers": [
+      {
+        "id": "crime-rule",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.34,
+        "y": 0.4,
+        "w": 0.32,
+        "h": 0.004,
+        "color": "#EF4444",
+        "opacity": 0.8
+      },
+      {
+        "id": "dossier-pill",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.46,
+        "y": 0.58,
+        "w": 0.08,
+        "h": 0.005,
+        "color": "#EF4444",
+        "opacity": 0.7
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "COLD FILE DOSSIER",
+        "font": "sora-700",
+        "size": 48,
+        "color": "#F5F5F5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.47,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Unsolved Mysteries & Investigative Audio Deep Dives",
+        "font": "inter-400",
+        "size": 16,
+        "color": "#FCA5A5",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.55,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "crime-rule",
+    "dossier-pill"
+  ],
+  "safeAreaValidated": true
+}

@@ -1,0 +1,79 @@
+{
+  "id": "podcast-diffuser",
+  "niche": "podcast",
+  "name": "Acoustic Diffuser",
+  "description": "Warm amber and deep charcoal with studio acoustic wood ribbing elements.",
+  "preview": "/previews/podcast-diffuser.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#14110E",
+        "#241D17",
+        "#14110E"
+      ]
+    },
+    "layers": [
+      {
+        "id": "diff-bar-1",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.33,
+        "y": 0.41,
+        "w": 0.003,
+        "h": 0.15,
+        "color": "#F59E0B",
+        "opacity": 0.6
+      },
+      {
+        "id": "diff-bar-2",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.667,
+        "y": 0.41,
+        "w": 0.003,
+        "h": 0.15,
+        "color": "#F59E0B",
+        "opacity": 0.6
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "THE DEEP TAKE",
+        "font": "sora-700",
+        "size": 52,
+        "color": "#FDFBF7",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.46,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "UNCUT CONVERSATIONS WITH INDUSTRY TITANS",
+        "font": "inter-500",
+        "size": 16,
+        "color": "#FCD34D",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.54,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "background.photo",
+    "background.gradient"
+  ],
+  "protected": [
+    "diff-bar-1",
+    "diff-bar-2"
+  ],
+  "safeAreaValidated": true
+}

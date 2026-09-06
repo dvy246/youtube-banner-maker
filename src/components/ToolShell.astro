@@ -64,27 +64,20 @@ const {
     </div>
   </noscript>
 
-  <!-- Interactive Two-Column Editor Layout -->
+  <!-- Interactive Two-Column Editor Layout: Configurations on Left (4 cols), Banner Preview on Right (8 cols) -->
+  <!-- Interactive Two-Column Editor Layout: Configurations on Left (4 cols), Banner Preview on Right (8 cols) -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-    <!-- Left / Primary Column: Previews & Diagnostics (8 cols on desktop) -->
-    <div class="lg:col-span-8 space-y-6">
-      <!-- Crop Switcher Tabs -->
-      <CropTabs />
-
-      <!-- Canvas Stage (Editor canvas, overlay guides, dropzone, per-device preview strip) -->
-      <CanvasStage />
-
-      <!-- Verdict Region (Rendered in left column when NOT check mode) -->
-      {mode !== 'check' && <VerdictList />}
-    </div>
-
-    <!-- Right Column: Control Panels & Export (4 cols on desktop) -->
-    <div class="lg:col-span-4 space-y-4">
+    <!-- Left Column: Control Panels & Export (4 cols on desktop) -->
+    <aside
+      id="tool-sidebar"
+      aria-label="Configuration Deck"
+      class="lg:col-span-4 space-y-4 lg:sticky lg:top-[4.75rem] self-start order-2 lg:order-1 lg:max-h-[calc(100vh-5.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1.5 transition-all duration-200 [scrollbar-width:thin] [scrollbar-color:var(--color-line-200)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-line-200 hover:[&::-webkit-scrollbar-thumb]:bg-ink-300 dark:[&::-webkit-scrollbar-thumb]:bg-ink-700"
+    >
       {
         mode === 'check' ? (
           <>
             <VerdictList />
-            <div id="check-handoff-action" class="p-4 rounded-lg border border-line-200 bg-surface-0 space-y-3">
+            <div id="check-handoff-action" class="p-4 rounded-xl border border-line-200 bg-surface-0 space-y-3 shadow-2xs">
               <div class="space-y-1">
                 <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
                   One-Click Fix Handoff
@@ -96,7 +89,7 @@ const {
               <button
                 id="handoff-fix-btn"
                 type="button"
-                class="w-full min-h-[44px] px-4 py-2.5 rounded-md bg-surface-0 border border-line-200 text-ink-950 text-xs font-semibold hover:bg-surface-50 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer transition-colors inline-flex items-center justify-center gap-1.5"
+                class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-surface-0 border border-line-200 text-ink-950 text-xs font-semibold hover:bg-surface-50 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer transition-colors inline-flex items-center justify-center gap-1.5 shadow-2xs"
               >
                 Fix in Resizer Editor →
               </button>
@@ -112,38 +105,50 @@ const {
           </>
         )
       }
-    </div>
-  </div>
+    </aside>
 
-  <!-- Below-the-fold Static Explanatory Copy & Advisories (Server-rendered, crawlable) -->
-  <div class="pt-8 border-t border-line-200 space-y-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-2">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-          YouTube CDN Cache Advisory (REQ-014)
-        </h3>
-        <p class="text-xs text-ink-600 leading-relaxed measure-prose">
-          When you upload your corrected banner to YouTube Studio, changes may take up to 24 hours to appear across all edge networks, caching layers, and mobile apps. If your previous banner appears to linger, clear your browser cache or test in a private browsing window.
-        </p>
+    <!-- Right / Primary Column: Previews & Diagnostics (8 cols on desktop) -->
+    <div class="lg:col-span-8 space-y-6 order-1 lg:order-2">
+      <!-- Crop Switcher Tabs -->
+      <CropTabs />
+
+      <!-- Canvas Stage (Editor canvas, overlay guides, dropzone, per-device preview strip) -->
+      <CanvasStage />
+
+      <!-- Verdict Region (Rendered in right column when NOT check mode) -->
+      {mode !== 'check' && <VerdictList />}
+
+      <!-- Below-the-fold Static Explanatory Copy & Advisories (Server-rendered, crawlable) -->
+      <div class="pt-6 border-t border-line-200 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
+              YouTube CDN Cache Advisory (REQ-014)
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+              When you upload your corrected banner to YouTube Studio, changes may take up to 24 hours to appear across all edge networks, caching layers, and mobile apps. If your previous banner appears to linger, clear your browser cache or test in a private browsing window.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
+              Understanding YouTube's Automatic Re-Encoding
+            </h3>
+            <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+              YouTube automatically re-compresses every uploaded channel art image down to approximately 134 KB for desktop devices and smaller budgets for mobile screens. This re-encoding cannot be bypassed, which is why testing your banner with our simulation mode helps verify text contrast before uploading.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl border border-line-100 bg-surface-0 text-xs text-ink-600">
+          <span>
+            Need to verify specific dimension numbers? Check the <a href="/guides/youtube-banner-size" class="text-accent hover:underline font-medium">YouTube Banner Size Guide</a> or explore the <a href="/guides/youtube-banner-safe-area" class="text-accent hover:underline font-medium">Safe Area Calculation Guide</a>.
+          </span>
+          <a href="/templates" class="text-ink-950 font-medium hover:text-accent transition-colors">
+            Browse Safe Templates →
+          </a>
+        </div>
       </div>
-
-      <div class="p-4 rounded-lg border border-line-200 bg-surface-50 space-y-2">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-          Understanding YouTube's Automatic Re-Encoding
-        </h3>
-        <p class="text-xs text-ink-600 leading-relaxed measure-prose">
-          YouTube automatically re-compresses every uploaded channel art image down to approximately 134 KB for desktop devices and smaller budgets for mobile screens. This re-encoding cannot be bypassed, which is why testing your banner with our simulation mode helps verify text contrast before uploading.
-        </p>
-      </div>
-    </div>
-
-    <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-lg border border-line-100 bg-surface-0 text-xs text-ink-600">
-      <span>
-        Need to verify specific dimension numbers? Check the <a href="/guides/youtube-banner-size" class="text-accent hover:underline font-medium">YouTube Banner Size Guide</a> or explore the <a href="/guides/youtube-banner-safe-area" class="text-accent hover:underline font-medium">Safe Area Calculation Guide</a>.
-      </span>
-      <a href="/templates" class="text-ink-950 font-medium hover:text-accent transition-colors">
-        Browse Safe Templates →
-      </a>
     </div>
   </div>
 

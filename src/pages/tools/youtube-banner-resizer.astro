@@ -46,41 +46,111 @@ const jsonLd = [
     />
 
     <!-- Comprehensive Explanatory Content & Supporting Specs -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-line-200 space-y-16">
+    <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 border-t border-line-200 space-y-20 lg:space-y-28">
       <!-- Section 1: How the Resizing Engine Operates -->
-      <div class="space-y-4 max-w-3xl">
-        <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-          Algorithm & Mechanics
-        </span>
-        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-          How Our Aspect-Preserving Cover Fit Works
-        </h2>
-        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-          Most online image resizers either force-stretch your image to 16:9 — warping facial proportions and distorting typography — or place thick black bars along the sides (letterboxing). Our engine uses mathematical cover-fit scaling:
-        </p>
-        <ul class="space-y-2 text-xs text-ink-800 list-disc pl-5 measure-prose">
-          <li>
-            <strong>Proportional Coverage:</strong> We scale the source image by the maximum ratio between canvas dimensions ({CANVAS.width} × {CANVAS.height} px) and your image's native dimensions, ensuring every pixel of the YouTube canvas is filled.
-          </li>
-          <li>
-            <strong>Clamped Offsets:</strong> When you drag or nudge your image to position a face or logo within the mobile safe zone, our boundary clamps prevent you from dragging past the frame edge, eliminating accidental transparent margins.
-          </li>
-          <li>
-            <strong>1:1 Resolution Ceiling:</strong> Zooming is strictly capped to prevent upscaling beyond your source image's true optical resolution, preventing blurry exports.
-          </li>
-        </ul>
+      <div class="space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Scaling Architecture</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+            How Our Aspect-Preserving Cover Fit Works
+          </h2>
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
+            Most online image resizers either force-stretch your image to 16:9 (warping facial proportions and distorting typography) or place thick black bars along the sides (letterboxing). Our engine uses mathematical cover-fit scaling:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1: Proportional Coverage -->
+          <div class="group p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="9" x2="21" y2="9"></line>
+                  <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">Proportional Coverage</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">16:9 Fit</span>
+                </div>
+                <p class="text-sm text-ink-600 leading-relaxed">
+                  We scale the source image by the maximum ratio between canvas dimensions ({CANVAS.width} × {CANVAS.height} px) and your image's native dimensions, ensuring every pixel of the YouTube canvas is filled.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
+              Mathematical aspect preserved
+            </div>
+          </div>
+
+          <!-- Card 2: Clamped Offsets -->
+          <div class="group p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <line x1="12" y1="3" x2="12" y2="7"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                  <line x1="3" y1="12" x2="7" y2="12"></line>
+                  <line x1="17" y1="12" x2="21" y2="12"></line>
+                </svg>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">Clamped Offsets</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">Zero Gaps</span>
+                </div>
+                <p class="text-sm text-ink-600 leading-relaxed">
+                  When you drag or nudge your image to position a face or logo within the mobile safe zone, our boundary clamps prevent you from dragging past the frame edge, eliminating accidental transparent margins.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
+              Safe-area bound clamping
+            </div>
+          </div>
+
+          <!-- Card 3: 1:1 Resolution Ceiling -->
+          <div class="group p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-105 transition-transform">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">1:1 Resolution Ceiling</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">Native Cap</span>
+                </div>
+                <p class="text-sm text-ink-600 leading-relaxed">
+                  Zooming is strictly capped to prevent upscaling beyond your source image's true optical resolution, preventing blurry exports.
+                </p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
+              Upscaling restricted to 1:1 density
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Section 2: Device Crops Breakdown -->
-      <div class="space-y-5">
-        <div class="space-y-1 max-w-3xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-            Cross-Platform Verification
-          </span>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+      <div class="border-t border-line-200 pt-16 sm:pt-20 space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Multi-Screen Specs</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             YouTube Per-Device Crop Boundaries
           </h2>
-          <p class="text-sm text-ink-600 measure-prose">
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
             YouTube does not scale down your banner uniformly on smaller screens. Instead, it extracts distinct rectangular cuts from your single uploaded {CANVAS.width} × {CANVAS.height} px image.
           </p>
         </div>
@@ -88,15 +158,16 @@ const jsonLd = [
       </div>
 
       <!-- Section 3: Official Specifications -->
-      <div class="space-y-5">
-        <div class="space-y-1 max-w-3xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-            Official Standards
-          </span>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+      <div class="border-t border-line-200 pt-16 sm:pt-20 space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Technical Standard</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             YouTube Channel Art Specifications
           </h2>
-          <p class="text-sm text-ink-600 measure-prose">
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
             Adhering strictly to Google's published channel art guidelines prevents upload rejection and unexpected post-upload cropping.
           </p>
         </div>
@@ -104,15 +175,16 @@ const jsonLd = [
       </div>
 
       <!-- Section 4: Frequently Asked Questions -->
-      <div class="space-y-5">
-        <div class="space-y-1 max-w-3xl">
-          <span class="text-xs font-semibold uppercase tracking-wider text-accent font-mono">
-            Troubleshooting & Guidance
-          </span>
-          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+      <div class="border-t border-line-200 pt-16 sm:pt-20 space-y-8">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            <span>Knowledge Base</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             Frequently Asked Questions
           </h2>
-          <p class="text-sm text-ink-600 measure-prose">
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
             Everything you need to know about YouTube channel banner sizing, safe areas, and image compression.
           </p>
         </div>
@@ -120,28 +192,34 @@ const jsonLd = [
       </div>
 
       <!-- Section 5: Contextual Interlinking Hub (SEO §3.4) -->
-      <div class="p-6 sm:p-8 rounded-2xl bg-surface-50 border border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div class="space-y-1.5 max-w-xl">
-          <h3 class="text-base font-semibold text-ink-950">
-            Want to test an existing banner before modifying it?
-          </h3>
-          <p class="text-xs text-ink-600 leading-relaxed">
-            Use our Safe Area Checker to run automated diagnostic tests across mobile, desktop, and tablet crops without entering the editor.
-          </p>
-        </div>
-        <div class="flex items-center gap-3 shrink-0">
-          <a
-            href="/tools/youtube-banner-checker"
-            class="h-10 px-4 rounded-md bg-surface-0 border border-line-200 text-xs font-medium text-ink-950 hover:bg-surface-50 inline-flex items-center"
-          >
-            Open Checker →
-          </a>
-          <a
-            href="/guides/youtube-banner-size"
-            class="h-10 px-4 rounded-md bg-ink-950 text-surface-0 text-xs font-medium hover:bg-ink-800 inline-flex items-center"
-          >
-            Read Size Guide
-          </a>
+      <div class="border-t border-line-200 pt-16 sm:pt-20">
+        <div class="p-8 sm:p-10 rounded-2xl bg-surface-50 border border-line-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-2xs">
+          <div class="space-y-2 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-xs font-mono font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20">
+              Next Diagnostic Step
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+              Want to test an existing banner before modifying it?
+            </h3>
+            <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+              Use our Safe Area Checker to run automated diagnostic tests across mobile, desktop, and tablet crops without entering the editor.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 shrink-0">
+            <a
+              href="/tools/youtube-banner-checker"
+              class="h-11 px-6 rounded-xl bg-surface-0 border border-line-200 text-sm font-semibold text-ink-950 hover:bg-surface-100 hover:border-ink-300 transition-all shadow-2xs inline-flex items-center gap-2"
+            >
+              <span>Open Safe Area Checker</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a
+              href="/guides/youtube-banner-size"
+              class="h-11 px-6 rounded-xl bg-ink-950 text-surface-0 text-sm font-semibold hover:bg-ink-800 transition-colors shadow-xs inline-flex items-center"
+            >
+              Read Size Guide
+            </a>
+          </div>
         </div>
       </div>
     </section>

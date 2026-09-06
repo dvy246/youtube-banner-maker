@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import TemplateCard from '../../components/TemplateCard.astro';
-import { STATIC_PAGES_SEO, getBreadcrumbSchema, NICHE_TITLES } from '../../lib/seo';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getCollectionPageSchema, NICHE_TITLES } from '../../lib/seo';
 import { listTemplates, getQualifyingNiches } from '../../lib/template';
 import { CANVAS, SAFE_PX } from '../../lib/spec';
 
@@ -15,13 +15,24 @@ const breadcrumbs = getBreadcrumbSchema([
   { name: 'Home', url: '/' },
   { name: 'Templates', url: '/templates' },
 ]);
+
+const collectionSchema = getCollectionPageSchema({
+  name: seo.title,
+  description: seo.desc,
+  path: '/templates',
+  items: templates.map((t) => ({
+    name: t.name,
+    url: `/tools/youtube-banner-maker?template=${t.id}`,
+    image: t.preview,
+  })),
+});
 ---
 
 <BaseLayout
   title={seo.title}
   description={seo.desc}
   path="/templates"
-  jsonLd={[breadcrumbs]}
+  jsonLd={[breadcrumbs, collectionSchema]}
 >
   <Header currentPath="/templates" />
 
@@ -91,6 +102,206 @@ const breadcrumbs = getBreadcrumbSchema([
               fetchpriority={idx < 3 ? 'high' : 'auto'}
             />
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Section 2: Why Creators Choose Us Over Canva
+         Zero Learning Curve, Instant 10-Second Creation, Zero Paywalls
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="border-t border-line-200 bg-surface-0 py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="max-w-3xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/8 border border-accent/20 text-xs font-mono font-medium text-accent">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            The Anti-Canva YouTube Art Engine
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+            Why Creators Choose Us Over Canva
+          </h2>
+          <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+            Even if you have never used Canva, Photoshop, or graphic design software, you can create studio-grade YouTube banners and video thumbnails in under 10 seconds. Everything is mathematically safe-area locked, 100% free forever, and processed entirely inside your browser.
+          </p>
+        </div>
+
+        <!-- Comparison Matrix Table -->
+        <div class="overflow-x-auto rounded-2xl border border-line-200 shadow-raised bg-surface-0">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="border-b border-line-200 bg-surface-50">
+                <th class="py-4 px-5 font-semibold text-ink-950 w-1/3">Feature Comparison</th>
+                <th class="py-4 px-5 font-bold text-accent w-1/3 bg-accent/5">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
+                    YouTubeBannerMaker.com
+                  </div>
+                </th>
+                <th class="py-4 px-5 font-semibold text-ink-500 w-1/3">Generic Tools (e.g. Canva)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line-100">
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">Time to Finished Banner</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">Under 10 seconds (Instant 1-Click)</td>
+                <td class="py-4 px-5 text-ink-600">25–45 minutes of manual layout</td>
+              </tr>
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">Mobile Safe-Area Protection</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">Mathematically locked to {SAFE_PX.full.width}×{SAFE_PX.full.height} px safe area</td>
+                <td class="py-4 px-5 text-ink-600">Manual guesswork (frequently cropped)</td>
+              </tr>
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">Pricing &amp; Hidden Paywalls</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">100% Free Forever (Zero Upsells)</td>
+                <td class="py-4 px-5 text-ink-600">$15/mo for Canva Pro elements</td>
+              </tr>
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">Watermarks</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">Zero Watermarks</td>
+                <td class="py-4 px-5 text-ink-600">Watermarks on premium graphics</td>
+              </tr>
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">Learning Curve</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">Zero (Type channel name &amp; export)</td>
+                <td class="py-4 px-5 text-ink-600">50+ toolbars, panels, and layers</td>
+              </tr>
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">HD Video Thumbnail Export</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">1-Click 1280×720 HD Export</td>
+                <td class="py-4 px-5 text-ink-600">Manual canvas resizing step</td>
+              </tr>
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">Ready-to-Integrate Animations</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">60 FPS WebM &amp; OBS stream code</td>
+                <td class="py-4 px-5 text-ink-600">Hours of manual timeline keyframing</td>
+              </tr>
+              <tr class="hover:bg-surface-50/50 transition-colors">
+                <td class="py-4 px-5 font-medium text-ink-950">Data Privacy</td>
+                <td class="py-4 px-5 font-semibold text-accent bg-accent/5">100% Client-Side (0 server bytes)</td>
+                <td class="py-4 px-5 text-ink-600">Uploaded to third-party cloud servers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bento Highlights -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-surface-50 border border-line-200 space-y-2">
+            <div class="w-9 h-9 rounded-lg bg-surface-0 border border-line-200 flex items-center justify-center text-accent font-bold text-sm shadow-2xs">
+              ⚡
+            </div>
+            <h3 class="text-base font-bold text-ink-950">Instant Studio Quality</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              No need to spend hours learning graphic design principles. Every preset comes with art-directed lighting, curated typography pairings, and balanced contrast.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-surface-50 border border-line-200 space-y-2">
+            <div class="w-9 h-9 rounded-lg bg-surface-0 border border-line-200 flex items-center justify-center text-accent font-bold text-sm shadow-2xs">
+              🎯
+            </div>
+            <h3 class="text-base font-bold text-ink-950">Safe-Area Bounded</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              YouTube crops banners drastically on mobile screens. Our mathematical frame constraints ensure your channel name and avatar remain visible on all screen sizes.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-surface-50 border border-line-200 space-y-2">
+            <div class="w-9 h-9 rounded-lg bg-surface-0 border border-line-200 flex items-center justify-center text-accent font-bold text-sm shadow-2xs">
+              🎬
+            </div>
+            <h3 class="text-base font-bold text-ink-950">Banners &amp; Thumbnails</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Export in full 2560×1440 for your channel header, or downsample in 1 click to 1280×720 for video thumbnails under 2 MB, ready for YouTube Studio.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Section 3: Ready-to-Integrate 60 FPS Channel Animations
+         Motion Presets That Take Hours in Canva
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="border-t border-line-200 bg-surface-50/50 py-16 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+          <div class="max-w-2xl space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/8 border border-accent/20 text-xs font-mono font-medium text-accent">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              Live Motion Studio
+            </div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+              Ready-to-Integrate Channel Animations
+            </h2>
+            <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+              In Canva, animating channel art requires painstaking frame-by-frame timeline editing and a paid subscription. In our maker, choose a preset, toggle 60 FPS live motion, and record video loops or copy OBS stream codes instantly.
+            </p>
+          </div>
+          <a
+            href="/tools/youtube-banner-maker"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ink-950 text-surface-0 hover:bg-accent text-sm font-semibold transition-colors focus-visible:outline-accent shadow-raised shrink-0 min-h-[44px]"
+          >
+            <span>Open Motion Studio</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <!-- 5 Animation Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-5 rounded-2xl bg-surface-0 border border-line-200 space-y-3 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase">Preset 01</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-50 border border-line-200 text-ink-600">60 FPS</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">⚡ Neon Cyber Pulse</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Kinetic breathing neon title glow with sweeping laser scanlines and chromatic aberration fringes. Ideal for competitive esports, hardware, and cyberpunk creators.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-surface-0 border border-line-200 space-y-3 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase">Preset 02</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-50 border border-line-200 text-ink-600">Smooth Loop</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">☕ Lofi Ambient Drift</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Gentle stardust particle motes floating with soft sinusoidal wobble and warm amber bokeh. Perfect for study beats, chill podcasts, and slow living channels.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-surface-0 border border-line-200 space-y-3 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase">Preset 03</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-50 border border-line-200 text-ink-600">Audio Reactive</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">📊 Live Audio Spectrum</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              A 36-band dancing equalizer visualizer mapped along the safe-area baseline with floating peak decay. Built for music producers, DJ sets, and podcasts.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-surface-0 border border-line-200 space-y-3 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase">Preset 04</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-50 border border-line-200 text-ink-600">Cinema 4K</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">🌅 Anamorphic Lens Flare</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              A wide 2.39:1 horizontal anamorphic light leak beam sweeping across the horizon with diffraction star glints. Designed for travel vloggers and visual essayists.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-surface-0 border border-line-200 space-y-3 shadow-2xs sm:col-span-2 lg:col-span-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase">Preset 05</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-50 border border-line-200 text-ink-600">Telemetry HUD</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">🎯 Tactical HUD Radar</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Rotating tactical military radar sweep with target acquisition blips and live coordinate telemetry readouts. Built for military sims, battle royales, and FPS channels.
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -58,6 +58,16 @@ export const NICHE_TITLES: Record<string, { name: string; title: string; desc: s
     title: 'Lifestyle YouTube Banner Templates: Minimalist Art',
     desc: 'Understated, minimal lifestyle channel banners. Elegant serif and sans typography framed perfectly inside the mobile safe area.',
   },
+  food: {
+    name: 'Food & Culinary',
+    title: 'Food YouTube Banner Templates: Cooking & Restaurant Art',
+    desc: 'Curated food and cooking channel banners. Appetizing typography and culinary layout elements verified safe across mobile and desktop displays.',
+  },
+  business: {
+    name: 'Business & Real Estate',
+    title: 'Business YouTube Banner Templates: Agency & Creator Art',
+    desc: 'High-authority channel banners for real estate agents, agencies, and business creators. Centered safe-area layouts with zero paywalls.',
+  },
   edu: {
     name: 'Education',
     title: 'Education YouTube Banner Templates: Academic & Modern',
@@ -82,6 +92,10 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
   '/guides/youtube-banner-safe-area': {
     title: 'YouTube Banner Safe Area Dimensions & Device Crop Guide',
     desc: 'Understand the YouTube banner safe area. See the math proving that both official safe area numbers describe the exact same centered viewing area.',
+  },
+  '/guides/youtube-banner-1024-x-576': {
+    title: 'YouTube Banner 1024x576: Why Upload Fails & Correct Size',
+    desc: 'Why YouTube rejects 1024×576 banners. Learn the 16:9 ratio math, minimum 2048×1152 requirements, and how to upscale safely to 2560×1440 for free.',
   },
   '/tools/youtube-banner-resizer': {
     title: 'YouTube Banner Resizer: Fit Any Image to 2560×1440',
@@ -183,7 +197,7 @@ export function getOrganizationSchema() {
       height: 48,
     },
     sameAs: [
-      'https://github.com/divyyadav',
+      'https://github.com/dvy246',
     ],
   };
 }
@@ -318,5 +332,61 @@ export function getFAQSchema(faqs: { question: string; answer: string }[]) {
         text: faq.answer,
       },
     })),
+  };
+}
+
+/**
+ * ContactPage schema for support and creator communications
+ */
+export function getContactPageSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${SITE_URL}/contact#webpage`,
+    url: `${SITE_URL}/contact`,
+    name: 'Contact & Support — YouTubeBannerMaker',
+    description: 'Get in touch with the YouTubeBannerMaker team for support, bug reports, and creator feature requests.',
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'Customer Support',
+        email: 'support@youtubebannermaker.com',
+        availableLanguage: ['en'],
+      },
+    },
+  };
+}
+
+/**
+ * CollectionPage schema for template catalogs and category pages
+ */
+export function getCollectionPageSchema(options: {
+  name: string;
+  description: string;
+  path: string;
+  items: { name: string; url: string; image?: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${SITE_URL}${options.path}#collection`,
+    url: `${SITE_URL}${options.path}`,
+    name: options.name,
+    description: options.description,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: options.items.length,
+      itemListElement: options.items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        url: item.url.startsWith('http') ? item.url : `${SITE_URL}${item.url}`,
+        ...(item.image ? { image: item.image.startsWith('http') ? item.image : `${SITE_URL}${item.image}` } : {}),
+      })),
+    },
   };
 }
