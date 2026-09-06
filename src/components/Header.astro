@@ -60,11 +60,11 @@ const navItems = [
 
       <div class="h-4 w-px bg-line-200" aria-hidden="true" />
 
-      <!-- Dark / White Mode Slider Toggle (Omitted on /templates to satisfy REQ-021 no-input test) -->
-      {!currentPath.startsWith('/templates') && <ThemeToggle />}
+      <!-- Dark / White Mode Slider Toggle -->
+      <ThemeToggle />
 
-      <!-- Color Palette Picker (Omitted on /templates to satisfy REQ-021 no-input test) -->
-      {!currentPath.startsWith('/templates') && <PalettePicker currentPath={currentPath} />}
+      <!-- Color Palette Picker -->
+      <PalettePicker currentPath={currentPath} />
 
       {!isToolPage && (
         <a
@@ -79,8 +79,8 @@ const navItems = [
 
     <!-- Mobile Navigation & Actions -->
     <div class="flex md:hidden items-center gap-1.5">
-      {!currentPath.startsWith('/templates') && <ThemeToggle />}
-      {!currentPath.startsWith('/templates') && <PalettePicker currentPath={currentPath} />}
+      <ThemeToggle />
+      <PalettePicker currentPath={currentPath} />
       <details class="palette-dropdown group relative">
         <summary
           class="min-h-[38px] min-w-[38px] p-2 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center justify-center cursor-pointer list-none select-none shadow-2xs focus-visible:outline-accent"

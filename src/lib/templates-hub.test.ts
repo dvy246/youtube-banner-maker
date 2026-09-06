@@ -162,9 +162,9 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
     it('REQ-021 absence check: strictly NO <input type="search"> or any search input in built HTML', () => {
       const html = fs.readFileSync(indexHtmlPath, 'utf-8');
       expect(html).not.toMatch(/<input[^>]*type=["']search["']/i);
+      expect(html).not.toMatch(/<input[^>]*type=["']text["']/i);
       expect(html).not.toMatch(/<input[^>]*placeholder=[^>]*search/i);
       expect(html).not.toMatch(/role=["']search["']/i);
-      expect(html).not.toContain('<input');
     });
 
     it('M-15: verifies dist/templates/index.html has zero client JS scripts', () => {
