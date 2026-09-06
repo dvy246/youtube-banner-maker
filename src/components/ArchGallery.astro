@@ -243,6 +243,17 @@ const mid = Math.floor(total / 2);
     }
   }
 
+  @media (max-width: 400px) {
+    .arch-stage {
+      --card-w: 124px;
+      --card-h: 92px;
+      --overlap: 34px;
+      --y-step: 4px;
+      --rotate-step: 2.5deg;
+      height: calc(var(--card-h) + 28px);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .arch-card {
       transition: none;
