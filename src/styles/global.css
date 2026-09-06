@@ -96,27 +96,6 @@ html {
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
 
-@keyframes scroll-beam {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(200%);
-    opacity: 0;
-  }
-}
-
-.animate-scroll-beam {
-  animation: scroll-beam 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
 /* ═══════════════════════════════════════════════════════════
    Artisanal Hand-Drawn Sketch Animation Tokens
 ═══════════════════════════════════════════════════════════ */
