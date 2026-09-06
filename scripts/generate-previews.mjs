@@ -256,6 +256,8 @@ const ARCHETYPE_MAP = {
   'biz-product': 'swiss_clean',
   'biz-realestate': 'deco_luxe',
   'biz-venture': 'bold_split',
+  'biz-finance-glow': 'biz_finance_glow',
+  'biz-entrepreneur-impact': 'biz_entrepreneur_impact',
 
   // Tech (11)
   'tech-clean': 'frame_left_modern',
@@ -298,8 +300,10 @@ const ARCHETYPE_MAP = {
   'vlog-analog': 'film_noir',
   'vlog-cinema': 'film_noir',
   'vlog-urban': 'bold_split',
+  'vlog-daily-diaries': 'vlog_daily_diaries',
 
-  // Lifestyle (11)
+  // Lifestyle (13)
+  'life-fashion-lookbook': 'life_fashion_lookbook',
   'aesthetic-pastel': 'frame_ribbon_vlog',
   'life-glow': 'frame_center_card',
   'life-fashion': 'frame_left_modern',
@@ -340,6 +344,7 @@ const ARCHETYPE_MAP = {
   'food-cocktail': 'deco_luxe',
   'food-bbq': 'paint_stroke',
   'food-street': 'bold_split',
+  'food-desi-kitchen': 'food_desi_kitchen',
 
   // Music (10)
   'music-acoustic': 'frame_left_modern',
@@ -353,7 +358,9 @@ const ARCHETYPE_MAP = {
   'music-neoclassical': 'swiss_clean',
   'music-trap': 'bold_split',
 
-  // Podcast (10)
+  // Podcast (12)
+  'podcast-mindful-path': 'podcast_mindful_path',
+  'podcast-memphis-pop': 'podcast_memphis_pop',
   'podcast-dialogue': 'frame_center_card',
   'podcast-studio': 'frame_center_card',
   'podcast-roundtable': 'frame_left_modern',
@@ -1023,6 +1030,273 @@ for (const file of files) {
       <clipPath id="clip-r2-${json.id}">
         <rect x="224" y="8" width="208" height="408" rx="2" />
       </clipPath>
+    `;
+  } else if (style === 'biz_finance_glow') {
+    const avatarUri = avatarDataUris['finance-exec'] || avatarDataUris['finance'];
+    bodySvg = `
+      <!-- Glowing Neon Stock Market Curve Lines -->
+      <path d="M 0 960 Q 340 700 720 860 T 1400 680 T 2000 780 T 2560 620" fill="none" stroke="#00E5FF" stroke-width="6" opacity="0.8" />
+      <path d="M 0 1020 Q 360 760 740 920 T 1420 740 T 2020 840 T 2560 680" fill="none" stroke="#0077B6" stroke-width="3" opacity="0.5" />
+      
+      <!-- Chart Nodes / Data points -->
+      <circle cx="720" cy="860" r="8" fill="#00E5FF" />
+      <circle cx="1400" cy="680" r="10" fill="#00E5FF" />
+      <circle cx="2000" cy="780" r="8" fill="#00E5FF" />
+
+      <!-- Left Text Group -->
+      <g transform="translate(380, 680)">
+        <text x="0" y="-80" fill="#00E5FF" font-family="system-ui" font-size="28" font-weight="800" letter-spacing="4px">CREATIVE DESIGNER</text>
+        <text x="0" y="40" fill="#FFFFFF" font-family="'Impact', 'Arial Black', -apple-system, sans-serif" font-size="140" font-weight="900" letter-spacing="4px">${escapeXml(titleText)}</text>
+        <text x="0" y="110" fill="#93C5FD" font-family="system-ui" font-size="32" font-weight="600">${escapeXml(taglineText)}</text>
+        
+        <!-- Weekly Uploads Badge -->
+        <g transform="translate(0, 150)">
+          <rect width="320" height="48" rx="24" fill="#0369A1" fill-opacity="0.5" stroke="#00E5FF" stroke-width="2" />
+          <polygon points="28,16 28,32 42,24" fill="#00E5FF" />
+          <text x="56" y="32" fill="#FFFFFF" font-family="system-ui" font-size="18" font-weight="bold" letter-spacing="1px">NEW VIDEOS EVERY WEEK</text>
+        </g>
+      </g>
+
+      <!-- Executive Avatar with Neon Arch/Frame -->
+      <g transform="translate(1780, 720)">
+        <!-- Backplate Neon Glow Circle -->
+        <circle cx="0" cy="0" r="230" fill="#0B1B44" stroke="#00E5FF" stroke-width="8" filter="drop-shadow(0 0 40px rgba(0,229,255,0.6))" />
+        <clipPath id="exec-clip-${json.id}">
+          <circle cx="0" cy="0" r="226" />
+        </clipPath>
+        <g clip-path="url(#exec-clip-${json.id})">
+          <image href="${avatarUri}" x="-226" y="-226" width="452" height="452" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Subscribe Button on Right -->
+      ${renderAnimatedSubscribeBtn(2080, 680, '#E60000', 1.0)}
+    `;
+  } else if (style === 'life_fashion_lookbook') {
+    const avatarCircle = avatarDataUris['fashion-portrait'] || avatarDataUris['beauty'];
+    const avatarRect = avatarDataUris['fashion-lookbook'] || avatarDataUris['creative'];
+    bodySvg = `
+      <!-- Soft ambient watercolor wash -->
+      <circle cx="600" cy="720" r="380" fill="#FCE7F3" opacity="0.6" />
+      <circle cx="1900" cy="720" r="380" fill="#FFE4E6" opacity="0.6" />
+
+      <!-- Left Circular Framed Model -->
+      <g transform="translate(560, 720)">
+        <circle cx="0" cy="0" r="210" fill="none" stroke="#E11D48" stroke-width="8" filter="drop-shadow(0 16px 36px rgba(225,29,72,0.25))" />
+        <clipPath id="fash-circ-${json.id}">
+          <circle cx="0" cy="0" r="206" />
+        </clipPath>
+        <g clip-path="url(#fash-circ-${json.id})">
+          <image href="${avatarCircle}" x="-206" y="-206" width="412" height="412" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Center Typography Group -->
+      <g transform="translate(1280, 700)" text-anchor="middle">
+        <text x="0" y="-60" fill="#BE185D" font-family="Georgia, serif" font-style="italic" font-size="44" letter-spacing="3px">New Design</text>
+        <text x="0" y="55" fill="#E11D48" font-family="Georgia, serif" font-size="140" font-weight="900" letter-spacing="8px">${escapeXml(titleText)}</text>
+        <text x="0" y="125" fill="#4B5563" font-family="system-ui" font-size="24" font-weight="700" letter-spacing="8px">${escapeXml(taglineText.toUpperCase())}</text>
+      </g>
+
+      <!-- Right Rectangular Polaroid Photo Frame -->
+      <g transform="translate(1860, 540)">
+        <rect x="0" y="0" width="280" height="360" rx="8" fill="#FFFFFF" stroke="#FCE7F3" stroke-width="4" filter="drop-shadow(0 20px 40px rgba(0,0,0,0.18))" />
+        <clipPath id="fash-rect-${json.id}">
+          <rect x="12" y="12" width="256" height="336" rx="4" />
+        </clipPath>
+        <g clip-path="url(#fash-rect-${json.id})">
+          <image href="${avatarRect}" x="12" y="12" width="256" height="336" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Subscribe Button with Bell -->
+      ${renderAnimatedSubscribeBtn(2140, 680, '#E60000', 0.95)}
+    `;
+  } else if (style === 'biz_entrepreneur_impact') {
+    const avatarUri = avatarDataUris['entrepreneur-presenter'] || avatarDataUris['finance'];
+    bodySvg = `
+      <!-- Angular Cyan & Charcoal Speed Facets -->
+      <polygon points="0,0 680,0 520,1440 0,1440" fill="#00B4D8" />
+      <polygon points="1900,0 2560,0 2560,1440 2060,1440" fill="#0077B6" />
+
+      <!-- Left Presenter Frame -->
+      <g transform="translate(680, 720)">
+        <circle cx="0" cy="0" r="220" fill="#0F172A" stroke="#00E5FF" stroke-width="8" filter="drop-shadow(0 16px 36px rgba(0,0,0,0.5))" />
+        <clipPath id="entre-clip-${json.id}">
+          <circle cx="0" cy="0" r="216" />
+        </clipPath>
+        <g clip-path="url(#entre-clip-${json.id})">
+          <image href="${avatarUri}" x="-216" y="-216" width="432" height="432" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Center Title Group -->
+      <g transform="translate(1000, 700)">
+        <text x="0" y="-40" fill="#38BDF8" font-family="system-ui" font-size="28" font-weight="800" letter-spacing="4px">GROWTH &amp; CAPITAL</text>
+        <text x="0" y="60" fill="#00E5FF" font-family="'Impact', 'Arial Black', -apple-system, sans-serif" font-size="130" font-weight="900" letter-spacing="3px">${escapeXml(titleText)}</text>
+        
+        <!-- Milestone Tags Pill -->
+        <g transform="translate(0, 100)">
+          <rect width="440" height="48" rx="24" fill="#FFFFFF" />
+          <text x="220" y="32" fill="#0B0F19" font-family="system-ui" font-size="20" font-weight="800" letter-spacing="3px" text-anchor="middle">${escapeXml(taglineText)}</text>
+        </g>
+      </g>
+
+      <!-- Subscribe Button on Right -->
+      ${renderAnimatedSubscribeBtn(2120, 680, '#00E5FF', 1.0)}
+    `;
+  } else if (style === 'podcast_mindful_path') {
+    const avatarUri = avatarDataUris['mindful-host'] || avatarDataUris['podcast'];
+    bodySvg = `
+      <!-- Soft Warm Studio Linen Shadows -->
+      <rect x="0" y="508.5" width="2560" height="423" fill="#FFFFFF" fill-opacity="0.8" />
+
+      <!-- Left Sofa Host Avatar Frame -->
+      <g transform="translate(620, 720)">
+        <circle cx="0" cy="0" r="210" fill="#F4EFE6" stroke="#BE185D" stroke-width="6" filter="drop-shadow(0 16px 32px rgba(0,0,0,0.12))" />
+        <clipPath id="mind-clip-${json.id}">
+          <circle cx="0" cy="0" r="207" />
+        </clipPath>
+        <g clip-path="url(#mind-clip-${json.id})">
+          <image href="${avatarUri}" x="-207" y="-207" width="414" height="414" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Center Editorial Typography -->
+      <g transform="translate(1320, 680)" text-anchor="middle">
+        <text x="0" y="-30" fill="#BE185D" font-family="Georgia, serif" font-size="64" font-weight="700" letter-spacing="6px">THE MINDFUL</text>
+        <text x="0" y="65" fill="#1C1917" font-family="Georgia, serif" font-size="115" font-weight="900" letter-spacing="4px">PATH PODCAST</text>
+        <text x="0" y="125" fill="#78716C" font-family="system-ui" font-size="24" font-weight="600" letter-spacing="6px">${escapeXml(taglineText.toUpperCase())}</text>
+      </g>
+
+      <!-- Subscribe Button on Right -->
+      ${renderAnimatedSubscribeBtn(2080, 680, '#E60000', 0.95)}
+    `;
+  } else if (style === 'food_desi_kitchen') {
+    const avatarUri = avatarDataUris['desi-chef'] || avatarDataUris['chef'];
+    bodySvg = `
+      <!-- Center Safe Area Wood-Plank Ribbon -->
+      <rect x="0" y="508.5" width="2560" height="423" fill="#D4A373" stroke="#78350F" stroke-width="8" filter="drop-shadow(0 16px 36px rgba(0,0,0,0.5))" />
+
+      <!-- Chef Avatar Centered -->
+      <g transform="translate(1280, 720)">
+        <circle cx="0" cy="0" r="200" fill="#451A03" stroke="#78350F" stroke-width="12" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.35))" />
+        <clipPath id="desi-clip-${json.id}">
+          <circle cx="0" cy="0" r="194" />
+        </clipPath>
+        <g clip-path="url(#desi-clip-${json.id})">
+          <image href="${avatarUri}" x="-194" y="-194" width="388" height="388" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Left Chef Name -->
+      <g transform="translate(780, 720)" text-anchor="middle">
+        <line x1="-280" y1="-70" x2="280" y2="-70" stroke="#78350F" stroke-width="4" />
+        <text x="0" y="20" fill="#451A03" font-family="'Impact', 'Arial Black', sans-serif" font-size="95" font-weight="900" letter-spacing="4px">NIDA YASEEN</text>
+        <line x1="-280" y1="70" x2="280" y2="70" stroke="#78350F" stroke-width="4" />
+      </g>
+
+      <!-- Right Food Title -->
+      <g transform="translate(1780, 710)" text-anchor="middle">
+        <line x1="-280" y1="-70" x2="280" y2="-70" stroke="#78350F" stroke-width="4" />
+        <text x="0" y="10" fill="#3E1E05" font-family="'Impact', 'Arial Black', sans-serif" font-size="95" font-weight="900" letter-spacing="4px">EAT DESI FOOD</text>
+        <text x="0" y="60" fill="#78350F" font-family="system-ui" font-size="26" font-weight="700">we have variety of desi food</text>
+        <line x1="-280" y1="90" x2="280" y2="90" stroke="#78350F" stroke-width="4" />
+      </g>
+    `;
+  } else if (style === 'vlog_daily_diaries') {
+    const avatarUri = avatarDataUris['vlog-bilal'] || avatarDataUris['vlog'];
+    bodySvg = `
+      <!-- Full-width center ribbon -->
+      <rect x="0" y="508.5" width="2560" height="423" fill="#F4C9B4" filter="drop-shadow(0 12px 28px rgba(0,0,0,0.2))" />
+
+      <!-- Left Channel Title -->
+      <g transform="translate(480, 710)">
+        <text x="0" y="-10" fill="#9A3412" font-family="Georgia, serif" font-style="italic" font-size="120" font-weight="900" letter-spacing="3px">${escapeXml(titleText)}</text>
+        <text x="0" y="65" fill="#431407" font-family="system-ui" font-size="36" font-weight="600" letter-spacing="8px">V L O G G E R</text>
+        
+        <!-- Subscribe Button -->
+        <g transform="translate(480, 30)">
+          ${renderAnimatedSubscribeBtn(0, 0, '#DC2626', 0.95)}
+        </g>
+      </g>
+
+      <!-- Right Circular Avatar Frame -->
+      <g transform="translate(1960, 720)">
+        <circle cx="0" cy="0" r="220" fill="#8B5E3C" stroke="#FFFFFF" stroke-width="12" filter="drop-shadow(0 16px 36px rgba(0,0,0,0.3))" />
+        <clipPath id="bilal-clip-${json.id}">
+          <circle cx="0" cy="0" r="214" />
+        </clipPath>
+        <g clip-path="url(#bilal-clip-${json.id})">
+          <image href="${avatarUri}" x="-214" y="-214" width="428" height="428" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+    `;
+  } else if (style === 'podcast_memphis_pop') {
+    const avatarUri = avatarDataUris['memphis-sam'] || avatarDataUris['podcast'];
+    bodySvg = `
+      <!-- 90s Memphis Background Grid Pattern -->
+      <g stroke="#F472B6" stroke-width="2" opacity="0.3">
+        <line x1="0" y1="200" x2="2560" y2="200" />
+        <line x1="0" y1="400" x2="2560" y2="400" />
+        <line x1="0" y1="600" x2="2560" y2="600" />
+        <line x1="0" y1="800" x2="2560" y2="800" />
+        <line x1="0" y1="1000" x2="2560" y2="1000" />
+        <line x1="0" y1="1200" x2="2560" y2="1200" />
+        <line x1="400" y1="0" x2="400" y2="1440" />
+        <line x1="800" y1="0" x2="800" y2="1440" />
+        <line x1="1200" y1="0" x2="1200" y2="1440" />
+        <line x1="1600" y1="0" x2="1600" y2="1440" />
+        <line x1="2000" y1="0" x2="2000" y2="1440" />
+      </g>
+
+      <!-- Memphis Waves & Geometric Decors -->
+      <path d="M 100 240 Q 180 180 260 240 T 420 240 T 580 240 T 740 240" fill="none" stroke="#00B4D8" stroke-width="16" stroke-linecap="round" />
+      <circle cx="950" cy="180" r="160" fill="none" stroke="#00B4D8" stroke-width="40" />
+      <polygon points="2150,300 2300,200 2380,340" fill="#FFE600" stroke="#000000" stroke-width="8" />
+
+      <!-- Left Social Handle Pills -->
+      <g transform="translate(180, 520)">
+        <rect width="420" height="60" rx="6" fill="#000000" />
+        <rect x="-6" y="-6" width="420" height="60" rx="6" fill="#FEF08A" stroke="#000000" stroke-width="4" />
+        <text x="50" y="32" fill="#000000" font-family="system-ui" font-size="22" font-weight="900">@NavigatingAdulthood</text>
+        
+        <g transform="translate(0, 80)">
+          <rect width="420" height="60" rx="6" fill="#000000" />
+          <rect x="-6" y="-6" width="420" height="60" rx="6" fill="#FEF08A" stroke="#000000" stroke-width="4" />
+          <text x="50" y="32" fill="#000000" font-family="system-ui" font-size="22" font-weight="900">@AdultingWithSam</text>
+        </g>
+      </g>
+
+      <!-- Center-Left Avatar with 3D Black Drop Shadow -->
+      <g transform="translate(980, 720)">
+        <!-- Hard 3D Black Drop Shadow -->
+        <circle cx="20" cy="20" r="230" fill="#000000" />
+        <circle cx="0" cy="0" r="230" fill="#00B4D8" stroke="#000000" stroke-width="12" />
+        <clipPath id="memp-clip-${json.id}">
+          <circle cx="0" cy="0" r="218" />
+        </clipPath>
+        <g clip-path="url(#memp-clip-${json.id})">
+          <image href="${avatarUri}" x="-218" y="-218" width="436" height="436" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Center-Right Yellow Comic Banner Box with 3D Black Shadow -->
+      <g transform="translate(1260, 580)">
+        <rect x="20" y="20" width="860" height="280" rx="4" fill="#000000" />
+        <rect x="0" y="0" width="860" height="280" rx="4" fill="#FEF08A" stroke="#000000" stroke-width="10" />
+        
+        <text x="50" y="100" fill="#000000" font-family="'Impact', 'Arial Black', system-ui" font-size="95" font-weight="900" letter-spacing="2px">NAVIGATING</text>
+        <text x="50" y="195" fill="#000000" font-family="'Impact', 'Arial Black', system-ui" font-size="95" font-weight="900" letter-spacing="2px">ADULTHOOD</text>
+        <text x="50" y="245" fill="#1E293B" font-family="Georgia, serif" font-style="italic" font-size="36" font-weight="bold">with Sam</text>
+      </g>
+
+      <!-- Isometric 3D SUBSCRIBE NOW Box -->
+      <g transform="translate(1700, 920)">
+        <rect x="12" y="12" width="440" height="80" rx="4" fill="#000000" />
+        <rect x="0" y="0" width="440" height="80" rx="4" fill="#FFE600" stroke="#000000" stroke-width="6" />
+        <text x="220" y="52" fill="#000000" font-family="'Impact', 'Arial Black', system-ui" font-size="36" font-weight="900" letter-spacing="4px" text-anchor="middle">SUBSCRIBE NOW</text>
+      </g>
     `;
   } else {
     // Swiss Clean default

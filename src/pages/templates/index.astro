@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import TemplateCard from '../../components/TemplateCard.astro';
+import ArchGallery from '../../components/ArchGallery.astro';
 import { STATIC_PAGES_SEO, getBreadcrumbSchema, getCollectionPageSchema, NICHE_TITLES } from '../../lib/seo';
 import { listTemplates, getQualifyingNiches } from '../../lib/template';
 import { CANVAS, SAFE_PX } from '../../lib/spec';
@@ -38,7 +39,7 @@ const collectionSchema = getCollectionPageSchema({
 
   <main id="main-content" class="flex-1">
     <!-- Hero Section -->
-    <section class="border-b border-line-200 bg-surface-0 py-12 sm:py-16">
+    <section class="border-b border-line-200 bg-surface-0 py-12 sm:py-16 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-50 border border-line-200 text-xs font-medium text-ink-600 mb-4">
@@ -51,28 +52,33 @@ const collectionSchema = getCollectionPageSchema({
           <p class="mt-4 text-base sm:text-lg text-ink-600 measure-prose leading-relaxed">
             Every template in this catalog is mathematically pre-centered and tested across TV, desktop, tablet, and mobile displays. No cut-off channel names, no displaced typography, and zero watermark.
           </p>
+        </div>
 
-          <!-- Category filter navigation (REQ-021: static category links, zero search input) -->
-          <div class="mt-8 flex flex-wrap items-center gap-2" aria-label="Template Categories">
-            <a
-              href="/templates"
-              class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-ink-950 text-surface-0"
-              aria-current="page"
-            >
-              All Templates ({templates.length})
-            </a>
-            {qualifyingNiches.map(({ niche }) => {
-              const info = NICHE_TITLES[niche] || { name: niche.charAt(0).toUpperCase() + niche.slice(1) };
-              return (
-                <a
-                  href={`/templates/${niche}`}
-                  class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-surface-50 text-ink-600 hover:text-ink-950 hover:bg-surface-100 border border-line-200 transition-colors"
-                >
-                  {info.name}
-                </a>
-              );
-            })}
-          </div>
+        <!-- Arch Gallery Showcase -->
+        <div class="mt-8 sm:mt-10">
+          <ArchGallery />
+        </div>
+
+        <!-- Category filter navigation (REQ-021: static category links, zero search input) -->
+        <div class="mt-10 sm:mt-12 flex flex-wrap items-center gap-2" aria-label="Template Categories">
+          <a
+            href="/templates"
+            class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-ink-950 text-surface-0"
+            aria-current="page"
+          >
+            All Templates ({templates.length})
+          </a>
+          {qualifyingNiches.map(({ niche }) => {
+            const info = NICHE_TITLES[niche] || { name: niche.charAt(0).toUpperCase() + niche.slice(1) };
+            return (
+              <a
+                href={`/templates/${niche}`}
+                class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-surface-50 text-ink-600 hover:text-ink-950 hover:bg-surface-100 border border-line-200 transition-colors"
+              >
+                {info.name}
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

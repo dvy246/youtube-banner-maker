@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <style>
+      @keyframes cursorClick {
+        0%, 100% { transform: translate(235px, 42px) scale(1); }
+        38% { transform: translate(230px, 36px) scale(1); }
+        46% { transform: translate(228px, 34px) scale(0.85); }
+        54% { transform: translate(230px, 36px) scale(1); }
+      }
+      @keyframes btnTap {
+        0%, 100% { transform: scale(1); }
+        46% { transform: scale(0.97); }
+        54% { transform: scale(1); }
+      }
+      @keyframes bellWiggle {
+        0%, 42%, 68%, 100% { transform: translate(225px, 33px) rotate(0deg); }
+        46% { transform: translate(225px, 33px) rotate(-20deg); }
+        50% { transform: translate(225px, 33px) rotate(20deg); }
+        54% { transform: translate(225px, 33px) rotate(-14deg); }
+        58% { transform: translate(225px, 33px) rotate(10deg); }
+        62% { transform: translate(225px, 33px) rotate(-4deg); }
+      }
+      @keyframes neonGlow {
+        0%, 100% { opacity: 0.88; filter: drop-shadow(0 0 8px currentColor); }
+        50% { opacity: 1; filter: drop-shadow(0 0 26px currentColor); }
+      }
+      @keyframes floatGently {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-14px); }
+      }
+      @keyframes eqBounce1 { 0%, 100% { height: 25px; y: -25px; } 50% { height: 75px; y: -75px; } }
+      @keyframes eqBounce2 { 0%, 100% { height: 65px; y: -65px; } 50% { height: 20px; y: -20px; } }
+      @keyframes eqBounce3 { 0%, 100% { height: 35px; y: -35px; } 50% { height: 85px; y: -85px; } }
+      @keyframes glitchTwitch {
+        0%, 88%, 100% { transform: translate(0, 0); }
+        90% { transform: translate(-6px, 2px); }
+        93% { transform: translate(5px, -2px); }
+        96% { transform: translate(-2px, 1px); }
+      }
+      .anim-cursor { animation: cursorClick 2.6s ease-in-out infinite; transform-origin: 0 0; }
+      .anim-btn { animation: btnTap 2.6s ease-in-out infinite; transform-origin: center; }
+      .anim-bell { animation: bellWiggle 2.6s ease-in-out infinite; transform-origin: 0 -12px; }
+      .anim-glow { animation: neonGlow 2.2s ease-in-out infinite; }
+      .anim-float { animation: floatGently 3.5s ease-in-out infinite; }
+      .anim-eq1 { animation: eqBounce1 0.8s ease-in-out infinite; }
+      .anim-eq2 { animation: eqBounce2 1.1s ease-in-out infinite; }
+      .anim-eq3 { animation: eqBounce3 0.9s ease-in-out infinite; }
+      .anim-glitch { animation: glitchTwitch 3.5s step-end infinite; }
+    </style>
+    <linearGradient id="bg-biz-finance-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050814" />
+      <stop offset="50%" stop-color="#0B1B44" />
+      <stop offset="100%" stop-color="#020B20" />
+    </linearGradient>
+    
+  </defs>
+
+  <rect width="2560" height="1440" fill="url(#bg-biz-finance-glow)" />
+  
+      <!-- Glowing Neon Stock Market Curve Lines -->
+      <path d="M 0 960 Q 340 700 720 860 T 1400 680 T 2000 780 T 2560 620" fill="none" stroke="#00E5FF" stroke-width="6" opacity="0.8" />
+      <path d="M 0 1020 Q 360 760 740 920 T 1420 740 T 2020 840 T 2560 680" fill="none" stroke="#0077B6" stroke-width="3" opacity="0.5" />
+      
+      <!-- Chart Nodes / Data points -->
+      <circle cx="720" cy="860" r="8" fill="#00E5FF" />
+      <circle cx="1400" cy="680" r="10" fill="#00E5FF" />
+      <circle cx="2000" cy="780" r="8" fill="#00E5FF" />
+
+      <!-- Left Text Group -->
+      <g transform="translate(380, 680)">
+        <text x="0" y="-80" fill="#00E5FF" font-family="system-ui" font-size="28" font-weight="800" letter-spacing="4px">CREATIVE DESIGNER</text>
+        <text x="0" y="40" fill="#FFFFFF" font-family="'Impact', 'Arial Black', -apple-system, sans-serif" font-size="140" font-weight="900" letter-spacing="4px">FINANCE</text>
+        <text x="0" y="110" fill="#93C5FD" font-family="system-ui" font-size="32" font-weight="600">WEALTH &amp; STRATEGY</text>
+        
+        <!-- Weekly Uploads Badge -->
+        <g transform="translate(0, 150)">
+          <rect width="320" height="48" rx="24" fill="#0369A1" fill-opacity="0.5" stroke="#00E5FF" stroke-width="2" />
+          <polygon points="28,16 28,32 42,24" fill="#00E5FF" />
+          <text x="56" y="32" fill="#FFFFFF" font-family="system-ui" font-size="18" font-weight="bold" letter-spacing="1px">NEW VIDEOS EVERY WEEK</text>
+        </g>
+      </g>
+
+      <!-- Executive Avatar with Neon Arch/Frame -->
+      <g transform="translate(1780, 720)">
+        <!-- Backplate Neon Glow Circle -->
+        <circle cx="0" cy="0" r="230" fill="#0B1B44" stroke="#00E5FF" stroke-width="8" filter="drop-shadow(0 0 40px rgba(0,229,255,0.6))" />
+        <clipPath id="exec-clip-biz-finance-glow">
+          <circle cx="0" cy="0" r="226" />
+        </clipPath>
+        <g clip-path="url(#exec-clip-biz-finance-glow)">
+          <image href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAgKADAAQAAAABAAAAgAAAAAD/wAARCACAAIADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9sAQwACAgICAgIDAgIDBQMDAwUGBQUFBQYIBgYGBgYICggICAgICAoKCgoKCgoKDAwMDAwMDg4ODg4PDw8PDw8PDw8P/9sAQwECAgIEBAQHBAQHEAsJCxAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ/90ABAAI/9oADAMBAAIRAxEAPwD7DX/gpz+yUf8AmNaj/wCC2anH/gpv+yWemtal/wCC2av5mFp/0r+kqfhHl0n8Uvv/AOAeZLGS7H9Mo/4Ka/smY51nUf8AwWzUv/Dzb9k3trOpf+C2av5oY1JFWFjr1KHgrl0vtS+9C+uy7H9K4/4KafsnH/mM6l/4LZqP+Hmv7J3/AEGdS/8ABbNX83kWkXLRedMpijYEqWH3sdgP8inx2scYwwya/Rcg+i1gcZD2kpTivNr/ACOOtnDi7JH9Iqf8FLf2VJDhdY1E/wDcOm7/AIVPP/wUm/ZUtsfaNb1CPcOh06cn8QB3r+e7wR4dl8RatbafboM3M8cAYrkIGPzMAPQV9U6L+y/4a1B5Gur2cXKklpCq9c8/LjGOOn86/mjxxyDJ+G80/srBSlKUEuZytu+ise/keFxGMg5xtY/X7Tv+Chn7M2qBjaarqDiMgEHT5gQD0PP8J6AjvVLUf+CjX7MOlXDQXup6lGw7/wBnTYP0NfBvhj9k7wfHDBm6vbiYjBw4jQof4cY+77fyr5r/AGm/gf8A8K6vrC60qaSfTLiNsea250KNtCg/xYBHJ59Sa+F8OcTleYZtQwWY8yp1Hy3Wlm/62PSzPJ8Rh6LqprTofrn/AMPMf2UAedZ1L/wXTU0/8FNf2TFHOs6iP+4bMf6V/OG8SnKkDjg1m3NsdpZRn2r+5c3+ibllGm6lCpOVvNHxVPOJN2aP6S/+HnP7Jn/Qb1H/AMFs3+FH/Dzn9kvvreo/+C2b/Cv5odoI4qJl796/G8X4OZfTlbml/XyPRhjW1of0x/8ADzr9kjodc1HP/YNm/wAKT/h51+ySOTreo/8Agtm/wr+ZYqd1OA65OPwzXBS8KMvb1lL7yvrcj//Q/GE57CpY19asyO0jb25J9gKFU1/oNTy6Knyw1R89zDkiZmCqCSemO9eg6JoMVsVub8LJLwVjIyq/7w7n9PrUWhaV9lAu7lczMMqpH3Aeh+p/lXR5PBr9j4U4ShGCr4ha9F2JnFtWM7XmLJGWOSBiuNxya67WjmOP6GuS/iNfsGBVoWR42JpuMrLc+of2aba2PiXz9Tt38i2SW8R9vEnkAAqpOM89cV9F6J8atHsfFoh1LR7qG2uJli80+WybpmIRSFclS2DjIHSvO/2ZEtr7w+Y7hkEcLXkHA+bzZhG7bz6eWihB0Pz9wM+oawPC0HiHT7DVIooY7ZfOQnCKJIMLFuPHClsAZ6ngV/jb9I3Fuvxdj1Wp8rUrfct/mj9e4WounhoSpS3Po2/+Lvhv4cXdrD4isrqSTUCptwjRIvlt8oYmSRBgscfX8K5r9plNH8Z/DjTteW2dYInlUxkfvA7Rl02lcg5K44JBzXrg8LeDvFmj6Dc3yx313Yxoq4O5e0ih1Ixn+IAjPQiuq8WnSdN0azmmijS102V71+AqxRIjedLxjBRWLA5HPTnFfj/DWJlQx1GpTjzSUk7LrqrL9D380o+0i4t2TR/O2wKuwbIOT16/rTfetTXL/wDtTWb/AFMdLueWX/vti39aygQBX++WBlKVCm5qzaWnyP59qK0mkWE0qO9jbZ8kuOD2P1/xrmrm3kgkaKVSjr1B/wA9K7nTTnd+FO1TT0vocj/XJ90+v+z/AJ6V+UcecJUqzdbDq0uvZ/8ABPawafKeaMpHOKhZnIrTki2kq3BHWqpbA2jpX864nC8j952Os//R/GxBjk10ejWS3VzvkUmOL5iPU9hWAgyRXoOmRfZrRFONzfMfx/wHFf6f8I5Wq1dOey1PFoU7s2lPfHWnbhVMS1Lu4Br9vpyTR0qkrmfrJHlofrXLZ+biul1b7uK5ivcwbvBHzuYxtUZ6r8HPEUugfEDS3810t7hzDIoJCnepVSw9jzntX1p4qur/AF/Vnu/PtotPtEiDbmcNvbBHCKxI7nkYz3r4s+G6SN4+8PtEAdl7AzE8KFDgsTnoAOtfZni3Q9d8O6mfE/hVPtVtLNsNsCd6MMYA4IZCMYz0r/Nb6a2Bw8M8wtWm1zyp628m9/kfc8GYiUaU+qTPrj4eN4mg0jTtet76C80xpUWSMyyEquSBhZIl4XIC8jC46nNfNf7cvxQ1qKXR/BehX81pZahb3D3yROVSeLzVEUb4+8AykkdM/SvVfh5qHxV1jQIP+Eosk02BdqebKymVwMcrECcZ9yMe4r59/bj8GR6ZqHgnxFZ3Idb7TJ4xbnG4R28wYT+4ladsZ67Ce+B+R/RipYH/AFwwzx7XKk7X25re7+J7PGWP/wBjbjpsj4HB4xSUdTRX+x7a3R+OXNzTDgNmr7yFc7az9O6GrzIW6V85nGHc3dI+gwDXJqcrrduAwu0x8/DfX1rlnUg5r0K6hE0TRN/EMVw8qFWKn+Hiv5543yKVOt7TlspfmdU31P/S/Hqyi86eOL+8wGfQV3LMQcVx+mY+1Bl4Azx+FdOJCa/1r4LpxVCU+7PHpTsi6rcZNSeYcdao+YeBQ9wI0LNwK+xx2ZUsJh54mo/dgm38jSeISV2RXs8c5dVYEjFczdXXkA7V3sOeDVZ3cTyDJOGyM+/NVpSc789Dk571/HnEf0l82r0pUMvgqSf2t5W+ei+4+frydSfMz2T4J3Vo/wAVPCMN/Gj2lzqUEE6E4V4pyY3U5/vBsV+iGq6JB4Oit47W/efQpG3W856vFE2FYFgDuUfIwx+YIJ/KfRb+fRtXsdVt8CaxuIbhC3I3QuJFz7ZFfrjqngTxH4x8J6do2lMlxLqcUOqWSIeUaRMvE7kfKn7w4J4zg+or+UOPZ4rNJfW8TUc6vdu7Po+GMzWFqNS2Z7T8NbCy8aXS33itzpug29qL5LeUlLi/gLbfNY8CO3GOQCGcY6Kfm/LT49fF1/ir8T9X8SvKBpUDfY9LROI4rG3JWIKBwA+S/T+Lt0r7G/a1+JVz4U8LaToVpdR22tXejf2BcLbgiPyFCfbHU5BCsyeVHxwpOOa/Kee4439M9KvhbLI4SHtYK0u/U87iLM6mLqcsn7q2Jpbu3lupFCALk4Ze+en4VL9nbG6Mhx7f1FYQLO+9j1q7btNJIkMbYJ6n0Ff0lwT49Z3lbVKrL21Popbr0e58/Olyq8eh6n4I8CeJfFMvl6fbGKEqX8+YiKEKM5JdsAAYPOa7yX4VW8N+unTeKtLExfYcSOyK2ccsEwBkdc1y2i6je28MRFxLLFBDJEFdyQFZMEAHp/8AWrAmvme4LZ5ZiT7k81/W/CfFGJz/AA/1+jL2cduWybT9Xv8AgeDTlja9V8lblguiS/Fs6fUvhp4htg8un/Z9UjXJLWk8cxAHqqknPt1rkJPhf4xuJDdSaTLaWxPzTXIFvEpxnlpNo7fnxVMX1wrB43KMO4OD+dVb/Uby6x9pmklxzh2LAH1GTX1OIymvWgo1pRlbq4u/4Ox6UfrySi5p+bWv4Ox//9P8fLJWM3ytsPPPWtgRzDrcH8qwImwRk4BPJFarxwGNisrdDzmv9Ucimo0HeO396x89zWLu2YMq/aDlugwM02585Ys79+fUdK4fdISCzEsOhzzXUXEvlW0ShiWKgnJ6H+VflfihxuqmS1aMI8rk0vibuuv5HNi5vlSKHmh7toyMMFznsaYcZZCMj/Gqzb4r2CY8JKGQkdM9RV0pliw71/Iqk23cw5bJDojujCucnGD+HFfuX8CNejT4H6L4obBvxo8MOepZd5Xbn/ejIH41+GEIImeM98MO/B4Nfoh4D+LC+GP2XreSCcC90uW5tYlz8xkErywkjuFa5zjuEqMRT5oL1MlK0j5y/aI8cTeMviXqkiyb7fSidPibPDGAkSP/AMCk3H6YNfP3MzD0Xp9e5qe7nMkhjLEs5yzEknHrn3NMRlVTjrXTBWSgiZJ7hhd209AOfw/+tU1lMBiUcF8H8Og/Ss3UHWGzcg4eQhfzPNO053Kq0nOfxpwrJVORCqU7wu+p6vYzutpJ82MIcD6isQNmZDnvUNpfO0MqkY+XOeeMevaqDXREgyeBX97fR/zGn/Yc7vabX5HmYOk1zepdy4XqMVUnJGNxzmgGMxqSxBIz1qnPIAMA5r9vx2MUad9LHeon/9T8ZheLkrt71YvZ9kSeXxuPNdB4w8E6n4Q1BLe8KzW86+Zb3MR3Qzx5+8jDj8P6EGuZvV3FPw/lX+jVPE140Kqm+23qfMYevCrBTpu6ZDbxtPPHGvViBXsPgH4fXPxL8S/2HBK1rbW8LzT3SxGbyY4hwzICNwLYXGe+ccGvK9LUC6yRkhTivW/hF4utfBXjzTdd1JpvsCs0VwIHKMY5FK5OPvBWKvtOQcV/O3i3jKsYxw9PeK5vmzWiqc8VCFX4ep1njf8AZy8S+GfBkuu2F0dTurQyTTQRx5Q2sbcT28mSZBtwZFIBTJ7AE/O0F7G6gnvX7C2Pi7wlNGLWHXLFrZSpKQTIVHm8LcRrk7fmOJEBwPm/H8z/ANofwCvw++IF3JpsaR6NrBN3Z+UwdELf62IFScbHyR22suK/nnKM7xEqjhXR9bxBkFCnTjVwz06q9zzEjDx3C9jg/wC6TXR/8JLeReH7jwuH22YuI7thnjeEZen0xXH2ErXUJ+RmXp0pFgv7iIBYXeSaUAgDkgcAV9kq7cbpbnwjpK+pfRt4LH+Lkew7CrIQBQfWuzn+F/xHsJ0tdQ8L6lbzSJ5io9s4dkzjcBjpkYqmfAfj+eU29p4a1GabsotpM/yxR9fo003KSv6mscFVn8MXb0POtRYXF1FaDBEfzt9T0FbVs2wfKdufasKCyvLS+uv7SiaG5jfa0bjDKw7Ee1bkXJBJ6UsBP2knV6MnGx5Eqb6HWwQg6Vdzk7mVMg49SK5Zp8uD0xXYEbNCnlY7cxgZ/GvP3kjJzv8A0r+svCzNJ0sqcI6LmfbsjzMsXNzPz/Q24JIjb7m5wD+lVWmG3is/7TstSe5OKprcEyKu7vX6fmHGF406XWyPTVDqf//V/Lnwp47gtNPk8L+JrY6l4fuCSYePMgc/8tIG/hYenAP4nNjV/hndXobU/A9wviLTS3HkcXMQwSBLCcMCMYyBgngc14/G7A9a3tO1K60+VbqzmeCZCCrxsVZT7Ec1/ppl+IhXuqjs3v5nwNbLJwm6mFlyt7p/C/67o0tY8O3Xh22H26cQ3jFBLalXWWNHXf8AOxGAcYyvUZwa59Lt2CtnmTLt2x/dH4Cu71jxfP4hsZINVtILm9mRUe9cMbhwgwpY7tpbGAWK5OOeck+UzXDrIyk4Oea/m3xwy+pQzCniF8EopLsmtzbAutKP75e8dCl2hHIH5VYF6SnlIcDqx7KPX0z6VyiznIDcfSppLolfJH3Op9z71+KrHXR2exZ1Ru0APlAxxoPlGa7P4cxHV/H3hvTwA/2rU7KMqe4adAf0ry4TRmBXa4QAexPJ7f5/nxXReDvFC+F/FGneIQRKdNmWdRnbkr05wcc+1bwxy2MKmGdrn7leN7nTo/F2mKtxCkhsdrCWRUyRI2cAkc1x/jPxx4G8IafNe+INQgsiFBVGkBkcnptiGXfnuBgdc1+S3xO+M/jH4oX1vLq06WcFqT9njti0ec8fM/3jnqB0Hp3rzFZrpyXSVpZDydx+cnv1yG+o/KviavDUauJlVm9GfY4biOVHDRpRjqlYv+I9Qn1HXtS1JQoiuLiR14wSrHIOCfTtTrHZIwDAZ64HceorO8yTcXkT5hwy9yPUe9XYLfy5IprST5NwII9D6j1Br7TAUY0rRhsj5HHV3NuUup2WouLfQ3Qg4lKqMDdnvXnMrAsSBg/TFdZ4lv1KWtgAv7tC7DBIyegGPxrg2OTkH9MV/T3Cklh8shG2sm3/AFoY5LQfsuZ9dSeSRvL8sZqGI/vF+tRs2BgmotxVs55FTicbaopNnvRhof/W/FzBzViNmVSDn1piuPSrsTAcnpX+jOW4aNSatOx8+0ORiEMhyAKz5CJpPMKBgT3FX7i9V/3cf3B14xmqRkGMKK24g+qVrYeVpxj3S3FGHUtjTrR7UTPGcsT0Yjp7Cs+NY7O5LiCOYAZ2yrvBx9ea6RiEiWL0GMZrDuMF5FQZK4X8SMmv4z4ohSni6kqUUld2tpocNCu22emfGaz8LXl3ofiDwkIlsr7T4hJHCAoSeP8A1ilRjBGQPWvGo1MTZUAhuoq4sEzttVc9T1wOOT+lW2sLyONXkh8kMGALjkhTg4+hBH4V8m6Tb0OtS01MwCBupMf6j/61KtwkbbLhS69mQ7WH17GrD2DyAkv8xHGOKsx6WoEMWclgQT1JPWtIUarJc4bMhF4znbbO0x6BWQ7h9CK1IJrmwkR72F4QeQGG3P0zVq209LVhICSR05re8SRR3Oix3UYHmW5B7Z2ng19lwrlUa+KhTxEmk+xwVq0JSjC2jOFvbyS8upLlvlLnjHYdv0qixp0h6H1qLcK/ecTyxioReiPbpU1GKUehG5zUZDdaeTk0FgeK8aqr9ToSsrn/2Q==" x="-226" y="-226" width="452" height="452" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Subscribe Button on Right -->
+      
+    <g transform="translate(2080, 680) scale(1)">
+      <!-- Subscribe Pill Button with Tap Animation -->
+      <g class="anim-btn">
+        <rect width="280" height="66" rx="33" fill="#E60000" filter="drop-shadow(0 8px 18px rgba(0,0,0,0.32))" />
+        <text x="116" y="41" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" letter-spacing="1.5px" text-anchor="middle">SUBSCRIBE</text>
+      </g>
+
+      <!-- Ringing Notification Bell -->
+      <g class="anim-bell" transform="translate(225, 33)">
+        <path d="M 0 -13 C -5 -13, -8 -8, -8 0 L -11 9 L 11 9 L 8 0 C 8 -8, 5 -13, 0 -13 Z" fill="#FFFFFF" />
+        <circle cx="0" cy="12" r="3" fill="#FFFFFF" />
+      </g>
+
+      <!-- Animated Clicking Pointer Hand Cursor -->
+      <g class="anim-cursor" transform="translate(235, 42)">
+        <path d="M 0 0 L 0 28 L 7 21 L 13 33 L 18 30 L 12 18 L 20 18 Z" fill="#FFFFFF" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.45))" />
+      </g>
+    </g>
+  
+    
+</svg>

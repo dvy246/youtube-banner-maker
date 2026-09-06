@@ -1,11 +1,10 @@
-import { BgradientAnim } from "@/components/ui/soft-gradient-background-animation";
+// This is a file with a demo for your component
+// That's what users will see in the preview
+// Create new files in this directory to add more demos
 
-const DemoOne = () => {
-  return (
-    <div className="flex w-full h-screen justify-center items-center">
-      <BgradientAnim />
-    </div>
-  );
-};
+import { ArchGallery } from "@/components/ui/arch-gallery";
 
-export { DemoOne };
+// ONLY DEFAULT EXPORT WILL BE TREATED AS A DEMO
+export default function DemoOne() {
+  return <ArchGallery />;
+}

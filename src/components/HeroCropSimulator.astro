@@ -22,6 +22,22 @@ const tabletWidth = Math.round(DEVICES.tablet.w * CANVAS.width);
 
 const bannerStyles = [
   {
+    id: 'finance',
+    name: 'Finance',
+    label: 'Executive Finance Glow',
+    image: '/hero/finance-glow.webp',
+    avatar: '/avatars/finance-executive-thumb.jpg',
+    channelName: 'ALEXANDER CROSS',
+    category: 'WEALTH STRATEGY & MARKETS',
+    kicker: 'FINANCIAL INTELLIGENCE',
+    metrics: '1.2M SUBSCRIBERS',
+    monogram: 'AC',
+    tvLeft: 'GLOBAL CAPITAL MARKETS',
+    tvRight: '4K BROADCAST · EST. 2024',
+    desktopLeft: 'NEW ANALYSIS EVERY TUESDAY',
+    desktopRight: 'ROAD TO WEALTH ARCHIVE',
+  },
+  {
     id: 'brand',
     name: 'Creator',
     label: 'Studio Creator Brand',
@@ -810,6 +826,7 @@ const tabs = [
   /* ═══════════════════════════════════════════════════════════
      Banner Style Switching via :has(#hba-STYLE:checked)
   ═══════════════════════════════════════════════════════════ */
+  :global(#hero-sim):has(#hba-finance:checked) .art-layer-finance,
   :global(#hero-sim):has(#hba-brand:checked) .art-layer-brand,
   :global(#hero-sim):has(#hba-cinema:checked) .art-layer-cinema,
   :global(#hero-sim):has(#hba-tech:checked) .art-layer-tech,
@@ -820,6 +837,7 @@ const tabs = [
     visibility: visible;
   }
 
+  :global(#hero-sim):has(#hba-finance:checked) .sim-style-finance,
   :global(#hero-sim):has(#hba-brand:checked) .sim-style-brand,
   :global(#hero-sim):has(#hba-cinema:checked) .sim-style-cinema,
   :global(#hero-sim):has(#hba-tech:checked) .sim-style-tech,
@@ -829,6 +847,56 @@ const tabs = [
     background: var(--color-accent);
     color: #FFFFFF;
     box-shadow: 0 1px 4px color-mix(in srgb, var(--color-accent) 40%, transparent);
+  }
+
+  /* ── Bespoke Niche Art Accents ── */
+  .art-layer-finance .safe-person-frame {
+    box-shadow: 0 0 0 2.5px #00E5FF, 0 0 24px rgba(0, 229, 255, 0.6);
+  }
+  .art-layer-finance .safe-person-glow {
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.5) 0%, transparent 70%);
+  }
+  .art-layer-finance .safe-pill-kicker {
+    background: rgba(0, 229, 255, 0.16);
+    border-color: rgba(0, 229, 255, 0.45);
+    color: #38BDF8;
+  }
+  .art-layer-finance .safe-pill-kicker span {
+    background: #00E5FF;
+  }
+  .art-layer-finance .safe-verified-badge {
+    background: #00E5FF;
+    color: #030712;
+  }
+
+  .art-layer-tech .safe-person-frame {
+    box-shadow: 0 0 0 2px #10B981, 0 0 20px rgba(16, 185, 129, 0.5);
+  }
+  .art-layer-tech .safe-person-glow {
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+  }
+  .art-layer-tech .safe-pill-kicker {
+    background: rgba(16, 185, 129, 0.16);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #6EE7B7;
+  }
+  .art-layer-tech .safe-verified-badge {
+    background: #10B981;
+  }
+
+  .art-layer-gaming .safe-person-frame {
+    box-shadow: 0 0 0 2.5px #A855F7, 0 0 24px rgba(168, 85, 247, 0.6);
+  }
+  .art-layer-gaming .safe-person-glow {
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%);
+  }
+  .art-layer-gaming .safe-pill-kicker {
+    background: rgba(168, 85, 247, 0.16);
+    border-color: rgba(168, 85, 247, 0.4);
+    color: #E9D5FF;
+  }
+  .art-layer-gaming .safe-verified-badge {
+    background: #A855F7;
   }
 
   /* ═══════════════════════════════════════════════════════════
