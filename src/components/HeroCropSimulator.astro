@@ -23,6 +23,23 @@ const tabletWidth = Math.round(DEVICES.tablet.w * CANVAS.width);
 
 const bannerStyles = [
   {
+    id: 'editorial',
+    name: 'Editorial',
+    label: 'Editorial Studio',
+    image: '/hero/aura-archive.webp',
+    avatar: '/avatars/avatar-business-female-thumb.jpg',
+    channelName: 'AURA ARCHIVE',
+    category: 'ARCHITECTURAL THEORY & FORM',
+    kicker: 'DESIGN ARCHIVE',
+    metrics: '480K MEMBERS',
+    monogram: 'AA',
+    tvLeft: 'MONOGRAPH EDITIONS',
+    tvRight: '4K ARCHIVE · VOL. 04',
+    desktopLeft: 'COPENHAGEN / TOKYO',
+    desktopRight: 'WEEKLY ESSAYS',
+    accentColor: '#F8FAFC',
+  },
+  {
     id: 'finance',
     name: 'Finance',
     label: 'Executive Finance Glow',
@@ -106,23 +123,6 @@ const bannerStyles = [
     desktopLeft: 'UNCUT CONVERSATIONS',
     desktopRight: 'NEW GUESTS THURSDAYS',
     accentColor: '#A855F7',
-  },
-  {
-    id: 'editorial',
-    name: 'Editorial',
-    label: 'Editorial Studio',
-    image: '/hero/aura-archive.webp',
-    avatar: '/avatars/avatar-business-female-thumb.jpg',
-    channelName: 'AURA ARCHIVE',
-    category: 'ARCHITECTURAL THEORY & FORM',
-    kicker: 'DESIGN ARCHIVE',
-    metrics: '480K MEMBERS',
-    monogram: 'AA',
-    tvLeft: 'MONOGRAPH EDITIONS',
-    tvRight: '4K ARCHIVE · VOL. 04',
-    desktopLeft: 'COPENHAGEN / TOKYO',
-    desktopRight: 'WEEKLY ESSAYS',
-    accentColor: '#F8FAFC',
   },
   {
     id: 'gaming',
@@ -225,8 +225,8 @@ const tabs = [
     </div>
 
     <!-- Studio Resolution & Aspect Tag -->
-    <div class="sim-header-res font-mono hidden sm:flex items-center gap-1.5 text-[10px] text-white/70">
-      <span class="px-1.5 py-0.5 rounded bg-white/10 text-white/90 font-bold">4K HDR</span>
+    <div class="sim-header-res font-mono hidden sm:flex items-center gap-1.5 text-[10px] text-ink-600">
+      <span class="px-1.5 py-0.5 rounded bg-black/5 text-ink-950 font-bold border border-black/10">4K HDR</span>
       <span>2560 × 1440</span>
     </div>
   </div>
@@ -389,14 +389,15 @@ const tabs = [
     flex-direction: column;
     gap: 0.625rem;
     width: 100%;
-    background: #080C16;
-    border: 1.5px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, #FBF8F4 0%, #F4EDE2 100%);
+    border: 1.5px solid #E6DCD0;
     border-radius: 1.25rem;
     padding: 0.625rem 0.625rem 0.75rem;
     box-shadow:
-      0 24px 48px -12px rgba(0, 0, 0, 0.6),
-      0 0 0 1px rgba(255, 255, 255, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      0 20px 48px -12px rgba(110, 85, 60, 0.12),
+      0 4px 16px -2px rgba(60, 45, 30, 0.05),
+      inset 0 1px 0 #FFFFFF,
+      0 0 0 1px rgba(230, 220, 208, 0.6);
     container-type: inline-size;
     position: relative;
     user-select: none;
@@ -422,8 +423,8 @@ const tabs = [
     width: 7px;
     height: 7px;
     border-radius: 9999px;
-    background: #10B981;
-    box-shadow: 0 0 8px #10B981, 0 0 16px rgba(16, 185, 129, 0.5);
+    background: #059669;
+    box-shadow: 0 0 6px #059669, 0 0 12px rgba(5, 150, 105, 0.4);
     animation: status-dot-pulse 2s infinite ease-in-out;
   }
 
@@ -433,7 +434,7 @@ const tabs = [
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #F1F5F9;
+    color: #1E2430;
   }
 
   .sim-tally-fps {
@@ -442,9 +443,9 @@ const tabs = [
     font-weight: 600;
     padding: 0.1rem 0.35rem;
     border-radius: 4px;
-    background: rgba(16, 185, 129, 0.15);
-    color: #34D399;
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background: rgba(5, 150, 105, 0.1);
+    color: #065F46;
+    border: 1px solid rgba(5, 150, 105, 0.25);
   }
 
   .sim-style-nav {
@@ -452,12 +453,13 @@ const tabs = [
     align-items: center;
     gap: 0.25rem;
     padding: 0.25rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 9999px;
     overflow-x: auto;
     max-width: 100%;
     scrollbar-width: none;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
   }
   .sim-style-nav::-webkit-scrollbar {
     display: none;
@@ -471,7 +473,7 @@ const tabs = [
     border-radius: 9999px;
     font-size: 0.6875rem;
     font-weight: 600;
-    color: #94A3B8;
+    color: #64748B;
     background: transparent;
     cursor: pointer;
     line-height: 1;
@@ -481,8 +483,8 @@ const tabs = [
   }
 
   .sim-style-pill:hover {
-    color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.1);
+    color: #0F172A;
+    background: rgba(0, 0, 0, 0.06);
   }
 
   /* ── Stage (2560 × 1440 / 16:9) ── */
@@ -493,10 +495,10 @@ const tabs = [
     border-radius: 0.875rem;
     overflow: hidden;
     background: #030712;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid #E5DCCE;
     box-shadow:
-      0 12px 32px -4px rgba(0, 0, 0, 0.7),
-      inset 0 0 60px rgba(0, 0, 0, 0.6);
+      0 8px 24px -4px rgba(90, 70, 50, 0.15),
+      inset 0 0 45px rgba(0, 0, 0, 0.55);
   }
 
   .sim-dropzone {
@@ -582,7 +584,7 @@ const tabs = [
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   }
 
-  /* ── Mobile Safe Area Core Centered (Crystalline Glass HUD Pane) ── */
+  /* ── Mobile Safe Area Core Centered (Crafted Elegant Glass HUD Plate) ── */
   .art-safe-core {
     position: absolute;
     top: 35.3125%;
@@ -595,14 +597,16 @@ const tabs = [
     gap: 1.25rem;
     padding: 0 1.25rem;
     z-index: 2;
-    background: rgba(8, 12, 22, 0.48);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    background: linear-gradient(135deg, rgba(16, 20, 30, 0.68) 0%, rgba(8, 11, 18, 0.78) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 12px;
     box-shadow:
-      0 12px 36px -4px rgba(0, 0, 0, 0.65),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      0 24px 48px -8px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 0 28px rgba(255, 255, 255, 0.06);
   }
 
   .safe-mark-wrap {
@@ -734,15 +738,17 @@ const tabs = [
 
   .reg-bracket {
     position: absolute;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
     line-height: 1;
     pointer-events: none;
+    user-select: none;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
   }
-  .reg-tl { top: 4px; left: 6px; }
-  .reg-tr { top: 4px; right: 6px; }
-  .reg-bl { bottom: 4px; left: 6px; }
-  .reg-br { bottom: 4px; right: 6px; }
+  .reg-tl { top: 6px; left: 8px; }
+  .reg-tr { top: 6px; right: 8px; }
+  .reg-bl { bottom: 6px; left: 8px; }
+  .reg-br { bottom: 6px; right: 8px; }
 
   .center-crosshair {
     position: absolute;
@@ -750,9 +756,10 @@ const tabs = [
     top: 50%;
     transform: translate(-50%, -50%);
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.35);
     pointer-events: none;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
   }
 
   /* ── 3. Dynamic Crop Viewport Mask (Vignettes outer non-visible zones) ── */
@@ -771,9 +778,23 @@ const tabs = [
     inset: 0;
     pointer-events: none;
     z-index: 4;
-    box-shadow: inset 0 0 0 2px #00E5FF, inset 0 0 16px rgba(0, 229, 255, 0.4);
     animation: live-crop-boundary 16s infinite ease-in-out;
   }
+
+  /* Viewfinder Corner Brackets */
+  .hud-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 6;
+    color: #FFFFFF;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+  }
+  .hud-tl { top: 0; left: 0; border-top: 2px solid currentColor; border-left: 2px solid currentColor; }
+  .hud-tr { top: 0; right: 0; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+  .hud-bl { bottom: 0; left: 0; border-bottom: 2px solid currentColor; border-left: 2px solid currentColor; }
+  .hud-br { bottom: 0; right: 0; border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; }
 
   /* ── 5. Status Pill Readout ── */
   .sim-status-pill {
@@ -785,21 +806,21 @@ const tabs = [
     gap: 0.45rem;
     padding: 0.35rem 0.75rem;
     border-radius: 9999px;
-    background: rgba(7, 10, 18, 0.88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(9, 13, 22, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     z-index: 5;
     pointer-events: none;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .status-pulse-dot {
     width: 6px;
     height: 6px;
     border-radius: 9999px;
-    background: #00E5FF;
-    box-shadow: 0 0 8px #00E5FF;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px #FFFFFF, 0 0 14px rgba(255, 255, 255, 0.6);
     animation: status-dot-pulse 2s infinite ease-in-out;
   }
 
@@ -861,15 +882,15 @@ const tabs = [
     animation-play-state: paused;
   }
 
-  /* ── Tabs Below Preview (Illuminated Studio Selector Deck) ── */
+  /* ── Tabs Below Preview (Studio Selector Deck) ── */
   .sim-tabs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.45rem;
-    padding: 0.25rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 0.75rem;
+    padding: 0.3rem;
+    background: rgba(0, 0, 0, 0.035);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 0.875rem;
   }
 
   .sim-tab {
@@ -877,12 +898,13 @@ const tabs = [
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.2rem;
+    gap: 0.25rem;
     padding: 0.45rem 0.35rem;
-    border-radius: 0.5rem;
+    border-radius: 0.625rem;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
     transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     min-height: 48px;
     user-select: none;
@@ -890,22 +912,23 @@ const tabs = [
   }
 
   .sim-tab:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   }
 
   .tab-indicator-dot {
     width: 6px;
     height: 6px;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #CBD5E1;
     transition: all 0.2s ease;
   }
 
   .sim-tab-label {
     font-size: 0.75rem;
     font-weight: 700;
-    color: #94A3B8;
+    color: #334155;
     line-height: 1;
     transition: color 0.15s ease;
   }
@@ -964,10 +987,10 @@ const tabs = [
     box-shadow: 0 0 16px rgba(168, 85, 247, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
   :global(#hero-sim):has(#hba-editorial:checked) .sim-style-editorial {
-    background: #F8FAFC;
-    color: #090D16;
+    background: #0F172A;
+    color: #FFFFFF;
     font-weight: 800;
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
   :global(#hero-sim):has(#hba-gaming:checked) .sim-style-gaming {
     background: #EC4899;
@@ -1176,19 +1199,21 @@ const tabs = [
 
   /* Mobile Selected */
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile {
-    background: rgba(0, 229, 255, 0.12);
-    border-color: rgba(0, 229, 255, 0.5);
-    box-shadow: 0 0 16px rgba(0, 229, 255, 0.25), inset 0 1px 0 rgba(0, 229, 255, 0.4);
+    background: #FFFFFF;
+    border-color: #0284C7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .tab-indicator-dot {
-    background: #00E5FF;
-    box-shadow: 0 0 8px #00E5FF;
+    background: #0284C7;
+    box-shadow: 0 0 6px rgba(2, 132, 199, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-label {
-    color: #FFFFFF;
+    color: #0F172A;
+    font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim {
-    color: #38BDF8;
+    color: #0284C7;
+    font-weight: 700;
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-crop-wireframe {
     clip-path: inset(35.3125% 19.8047% 35.3125% 19.8047% round 4px);
@@ -1202,19 +1227,21 @@ const tabs = [
 
   /* Desktop Selected */
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop {
-    background: rgba(16, 185, 129, 0.12);
-    border-color: rgba(16, 185, 129, 0.5);
-    box-shadow: 0 0 16px rgba(16, 185, 129, 0.25), inset 0 1px 0 rgba(16, 185, 129, 0.4);
+    background: #FFFFFF;
+    border-color: #059669;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .tab-indicator-dot {
-    background: #10B981;
-    box-shadow: 0 0 8px #10B981;
+    background: #059669;
+    box-shadow: 0 0 6px rgba(5, 150, 105, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-label {
-    color: #FFFFFF;
+    color: #0F172A;
+    font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim {
-    color: #34D399;
+    color: #059669;
+    font-weight: 700;
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-crop-wireframe {
     clip-path: inset(35.3125% 0% 35.3125% 0% round 4px);
@@ -1228,19 +1255,21 @@ const tabs = [
 
   /* Tablet Selected */
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet {
-    background: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.5);
-    box-shadow: 0 0 16px rgba(245, 158, 11, 0.25), inset 0 1px 0 rgba(245, 158, 11, 0.4);
+    background: #FFFFFF;
+    border-color: #D97706;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .tab-indicator-dot {
-    background: #F59E0B;
-    box-shadow: 0 0 8px #F59E0B;
+    background: #D97706;
+    box-shadow: 0 0 6px rgba(217, 119, 6, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-label {
-    color: #FFFFFF;
+    color: #0F172A;
+    font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim {
-    color: #FBBF24;
+    color: #D97706;
+    font-weight: 700;
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-crop-wireframe {
     clip-path: inset(35.3125% 13.7695% 35.3125% 13.7695% round 4px);
@@ -1254,19 +1283,21 @@ const tabs = [
 
   /* TV Selected */
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv {
-    background: rgba(139, 92, 246, 0.12);
-    border-color: rgba(139, 92, 246, 0.5);
-    box-shadow: 0 0 16px rgba(139, 92, 246, 0.25), inset 0 1px 0 rgba(139, 92, 246, 0.4);
+    background: #FFFFFF;
+    border-color: #7C3AED;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .tab-indicator-dot {
-    background: #8B5CF6;
-    box-shadow: 0 0 8px #8B5CF6;
+    background: #7C3AED;
+    box-shadow: 0 0 6px rgba(124, 58, 237, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-label {
-    color: #FFFFFF;
+    color: #0F172A;
+    font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim {
-    color: #C4B5FD;
+    color: #7C3AED;
+    font-weight: 700;
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-crop-wireframe {
     clip-path: inset(0% 0% 0% 0% round 4px);

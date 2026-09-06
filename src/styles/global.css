@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *, body:has(#theme-toggle:checked), body:has(#theme-toggle:checked) *));
+
 @theme {
   --color-ink-950: #0C0D0E;
   --color-ink-800: #1F2124;
@@ -30,12 +32,16 @@
 
 :root {
   color-scheme: light;
+  /* Default light mode ambient glow tokens (matches warm pearl/gold) */
+  --palette-glow-1: rgba(246, 36, 64, 0.04);
+  --palette-glow-2: rgba(255, 229, 191, 0.07);
+  --palette-glow-3: rgba(246, 36, 64, 0.03);
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--color-surface-0);
-  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, rgba(246, 36, 64, 0.05), transparent 70%);
+  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, var(--palette-glow-1), transparent 70%);
   color: var(--color-ink-950);
   margin: 0;
   padding: 0;
@@ -188,12 +194,18 @@ html {
   }
 }
 
-/* Dark Theme Mode (Base dark surfaces and ink - does NOT override custom palettes) */
+/* Dark Theme Mode (Base dark surfaces and ink) */
 body:has(#theme-toggle:checked),
 html[data-theme="dark"],
-html.dark {
+html[data-theme="dark"] body,
+html.dark,
+html.dark body {
   color-scheme: dark;
-  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, rgba(59, 130, 246, 0.08), transparent 70%);
+  /* Very light, ethereal dark mode ambient glow - soft whisper of color */
+  --palette-glow-1: color-mix(in srgb, var(--color-accent, #F62440) 7.5%, transparent);
+  --palette-glow-2: color-mix(in srgb, var(--color-accent-light, #F62440) 5%, transparent);
+  --palette-glow-3: color-mix(in srgb, var(--color-accent, #F62440) 4%, transparent);
+  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, var(--palette-glow-1), transparent 70%);
   --color-surface-0: #0B0D10;
   --color-surface-50: #13161B;
   --color-surface-100: #1B1F26;
@@ -223,6 +235,9 @@ html[data-palette="cobalt"] body,
   --color-accent: #2340B8 !important;
   --color-accent-hover: #1D3499 !important;
   --color-accent-light: #93C5FD !important;
+  --palette-glow-1: rgba(35, 64, 184, 0.045);
+  --palette-glow-2: rgba(59, 130, 246, 0.05);
+  --palette-glow-3: rgba(147, 197, 253, 0.04);
 }
 
 :root[data-palette="emerald"],
@@ -233,6 +248,9 @@ html[data-palette="emerald"] body,
   --color-accent: #059669 !important;
   --color-accent-hover: #047857 !important;
   --color-accent-light: #6EE7B7 !important;
+  --palette-glow-1: rgba(5, 150, 105, 0.045);
+  --palette-glow-2: rgba(16, 185, 129, 0.05);
+  --palette-glow-3: rgba(110, 231, 183, 0.04);
 }
 
 :root[data-palette="violet"],
@@ -243,6 +261,9 @@ html[data-palette="violet"] body,
   --color-accent: #7C3AED !important;
   --color-accent-hover: #6D28D9 !important;
   --color-accent-light: #C4B5FD !important;
+  --palette-glow-1: rgba(124, 58, 237, 0.045);
+  --palette-glow-2: rgba(168, 85, 247, 0.05);
+  --palette-glow-3: rgba(196, 181, 253, 0.04);
 }
 
 :root[data-palette="crimson"],
@@ -253,21 +274,33 @@ html[data-palette="crimson"] body,
   --color-accent: #E63946 !important;
   --color-accent-hover: #8B1E2D !important;
   --color-accent-light: #F4D35E !important;
+  --palette-glow-1: rgba(230, 57, 70, 0.04);
+  --palette-glow-2: rgba(244, 211, 94, 0.05);
+  --palette-glow-3: rgba(230, 57, 70, 0.03);
 }
 
-:root[data-palette="pearl"],
-html[data-palette="pearl"],
-body[data-palette="pearl"],
-html[data-palette="pearl"] body,
-[data-palette="pearl"] {
+/* Warm Pearl — Light Mode (Warm ivory paper and punch red) */
+:root:not(.dark):not([data-theme="dark"])[data-palette="pearl"],
+html:not(.dark):not([data-theme="dark"])[data-palette="pearl"],
+html:not(.dark):not([data-theme="dark"]) body[data-palette="pearl"]:not(:has(#theme-toggle:checked)),
+html:not(.dark):not([data-theme="dark"])[data-palette="pearl"] body:not(:has(#theme-toggle:checked)),
+body:not(.dark):not([data-theme="dark"])[data-palette="pearl"]:not(:has(#theme-toggle:checked)),
+[data-palette="pearl"]:not(.dark):not([data-theme="dark"]):not(:has(#theme-toggle:checked)) {
   --color-surface-0: #FFFAF3 !important;
   --color-surface-50: #FFF2DB !important;
   --color-surface-100: #FFE5BF !important;
   --color-line-200: #EADBC8 !important;
   --color-line-100: #F4E7D5 !important;
+  --color-ink-950: #0C0D0E !important;
+  --color-ink-800: #1F2124 !important;
+  --color-ink-600: #4A4E54 !important;
+  --color-ink-500: #6B7076 !important;
   --color-accent: #F62440 !important;
   --color-accent-hover: #D9142E !important;
   --color-accent-light: #FFE5BF !important;
+  --palette-glow-1: rgba(246, 36, 64, 0.04);
+  --palette-glow-2: rgba(255, 229, 191, 0.07);
+  --palette-glow-3: rgba(246, 36, 64, 0.03);
 }
 
 :root[data-palette="noir-rose"],
@@ -287,6 +320,9 @@ html[data-palette="noir-rose"] body,
   --color-accent: #CB2957 !important;
   --color-accent-hover: #A61B40 !important;
   --color-accent-light: #DDDDDD !important;
+  --palette-glow-1: rgba(203, 41, 87, 0.06);
+  --palette-glow-2: rgba(244, 63, 94, 0.04);
+  --palette-glow-3: rgba(168, 85, 247, 0.03);
 }
 
 :root[data-palette="amber"],
@@ -297,6 +333,9 @@ html[data-palette="amber"] body,
   --color-accent: #D97706 !important;
   --color-accent-hover: #B45309 !important;
   --color-accent-light: #FCD34D !important;
+  --palette-glow-1: rgba(217, 119, 6, 0.045);
+  --palette-glow-2: rgba(245, 158, 11, 0.05);
+  --palette-glow-3: rgba(252, 211, 77, 0.04);
 }
 
 :root[data-palette="cyan"],
@@ -307,6 +346,9 @@ html[data-palette="cyan"] body,
   --color-accent: #0891B2 !important;
   --color-accent-hover: #0E7490 !important;
   --color-accent-light: #67E8F9 !important;
+  --palette-glow-1: rgba(8, 145, 178, 0.045);
+  --palette-glow-2: rgba(6, 182, 212, 0.05);
+  --palette-glow-3: rgba(103, 232, 249, 0.04);
 }
 
 :root[data-palette="obsidian"],
@@ -326,13 +368,18 @@ html[data-palette="obsidian"] body,
   --color-accent: #3B82F6 !important;
   --color-accent-hover: #2563EB !important;
   --color-accent-light: #93C5FD !important;
+  --palette-glow-1: rgba(59, 130, 246, 0.08);
+  --palette-glow-2: rgba(99, 102, 241, 0.06);
+  --palette-glow-3: rgba(147, 197, 253, 0.04);
 }
 
-:root[data-palette="sand"],
-html[data-palette="sand"],
-body[data-palette="sand"],
-html[data-palette="sand"] body,
-[data-palette="sand"] {
+/* Sand — Light Mode (Editorial paper and burnt orange) */
+:root:not(.dark):not([data-theme="dark"])[data-palette="sand"],
+html:not(.dark):not([data-theme="dark"])[data-palette="sand"],
+html:not(.dark):not([data-theme="dark"]) body[data-palette="sand"]:not(:has(#theme-toggle:checked)),
+html:not(.dark):not([data-theme="dark"])[data-palette="sand"] body:not(:has(#theme-toggle:checked)),
+body:not(.dark):not([data-theme="dark"])[data-palette="sand"]:not(:has(#theme-toggle:checked)),
+[data-palette="sand"]:not(.dark):not([data-theme="dark"]):not(:has(#theme-toggle:checked)) {
   --color-surface-0: #FAF8F5 !important;
   --color-surface-50: #F2EFE9 !important;
   --color-line-200: #E3DED4 !important;
@@ -344,6 +391,118 @@ html[data-palette="sand"] body,
   --color-accent: #C2410C !important;
   --color-accent-hover: #9A3412 !important;
   --color-accent-light: #FDBA74 !important;
+  --palette-glow-1: rgba(194, 65, 12, 0.045);
+  --palette-glow-2: rgba(234, 88, 12, 0.05);
+  --palette-glow-3: rgba(253, 186, 116, 0.04);
+}
+
+/* Dark Mode Palette Overrides: Warm Pearl (Deep obsidian canvas with punch red accents) */
+body:has(#theme-toggle:checked)[data-palette="pearl"],
+body:has(#theme-toggle:checked) [data-palette="pearl"],
+html.dark[data-palette="pearl"],
+html.dark[data-palette="pearl"] body,
+html.dark body[data-palette="pearl"],
+html[data-theme="dark"][data-palette="pearl"],
+html[data-theme="dark"][data-palette="pearl"] body,
+html[data-theme="dark"] body[data-palette="pearl"],
+html[data-palette="pearl"] body:has(#theme-toggle:checked) {
+  color-scheme: dark;
+  --color-surface-0: #0B0D10 !important;
+  --color-surface-50: #13161B !important;
+  --color-surface-100: #1B1F26 !important;
+  --color-line-200: #242A34 !important;
+  --color-line-100: #1B1F26 !important;
+  --color-ink-950: #F8FAFC !important;
+  --color-ink-800: #E2E8F0 !important;
+  --color-ink-600: #94A3B8 !important;
+  --color-ink-500: #64748B !important;
+  --color-accent: #F62440 !important;
+  --color-accent-hover: #D9142E !important;
+  --color-accent-light: #FDA4AF !important;
+  --palette-glow-1: rgba(246, 36, 64, 0.06) !important;
+  --palette-glow-2: rgba(251, 113, 133, 0.04) !important;
+  --palette-glow-3: rgba(244, 63, 94, 0.03) !important;
+}
+
+body:has(#theme-toggle:checked)[data-palette="crimson"],
+html[data-theme="dark"][data-palette="crimson"],
+html.dark[data-palette="crimson"],
+html[data-palette="crimson"] body:has(#theme-toggle:checked) {
+  --palette-glow-1: rgba(230, 57, 70, 0.06) !important;
+  --palette-glow-2: rgba(244, 211, 94, 0.04) !important;
+  --palette-glow-3: rgba(225, 29, 72, 0.03) !important;
+}
+
+body:has(#theme-toggle:checked)[data-palette="cobalt"],
+html[data-theme="dark"][data-palette="cobalt"],
+html.dark[data-palette="cobalt"],
+html[data-palette="cobalt"] body:has(#theme-toggle:checked) {
+  --palette-glow-1: rgba(59, 130, 246, 0.08) !important;
+  --palette-glow-2: rgba(99, 102, 241, 0.06) !important;
+  --palette-glow-3: rgba(147, 197, 253, 0.04) !important;
+}
+
+body:has(#theme-toggle:checked)[data-palette="emerald"],
+html[data-theme="dark"][data-palette="emerald"],
+html.dark[data-palette="emerald"],
+html[data-palette="emerald"] body:has(#theme-toggle:checked) {
+  --palette-glow-1: rgba(16, 185, 129, 0.08) !important;
+  --palette-glow-2: rgba(52, 211, 153, 0.05) !important;
+  --palette-glow-3: rgba(5, 150, 105, 0.04) !important;
+}
+
+body:has(#theme-toggle:checked)[data-palette="violet"],
+html[data-theme="dark"][data-palette="violet"],
+html.dark[data-palette="violet"],
+html[data-palette="violet"] body:has(#theme-toggle:checked) {
+  --palette-glow-1: rgba(168, 85, 247, 0.08) !important;
+  --palette-glow-2: rgba(192, 132, 252, 0.06) !important;
+  --palette-glow-3: rgba(124, 58, 237, 0.04) !important;
+}
+
+body:has(#theme-toggle:checked)[data-palette="amber"],
+html[data-theme="dark"][data-palette="amber"],
+html.dark[data-palette="amber"],
+html[data-palette="amber"] body:has(#theme-toggle:checked) {
+  --palette-glow-1: rgba(245, 158, 11, 0.08) !important;
+  --palette-glow-2: rgba(251, 191, 36, 0.05) !important;
+  --palette-glow-3: rgba(217, 119, 6, 0.04) !important;
+}
+
+body:has(#theme-toggle:checked)[data-palette="cyan"],
+html[data-theme="dark"][data-palette="cyan"],
+html.dark[data-palette="cyan"],
+html[data-palette="cyan"] body:has(#theme-toggle:checked) {
+  --palette-glow-1: rgba(6, 182, 212, 0.08) !important;
+  --palette-glow-2: rgba(56, 189, 248, 0.06) !important;
+  --palette-glow-3: rgba(8, 145, 178, 0.04) !important;
+}
+
+body:has(#theme-toggle:checked)[data-palette="sand"],
+body:has(#theme-toggle:checked) [data-palette="sand"],
+html.dark[data-palette="sand"],
+html.dark[data-palette="sand"] body,
+html.dark body[data-palette="sand"],
+html[data-theme="dark"][data-palette="sand"],
+html[data-theme="dark"][data-palette="sand"] body,
+html[data-theme="dark"] body[data-palette="sand"],
+html[data-palette="sand"] body:has(#theme-toggle:checked) {
+  color-scheme: dark;
+  --color-surface-0: #0E0D0B !important;
+  --color-surface-50: #181613 !important;
+  --color-surface-100: #221F1B !important;
+  --color-line-200: #2E2A24 !important;
+  --color-line-100: #221F1B !important;
+  --color-ink-950: #FAF8F5 !important;
+  --color-ink-800: #E7E3DC !important;
+  --color-ink-600: #ABA499 !important;
+  --color-ink-500: #7C756B !important;
+  --color-accent: #EA580C !important;
+  --color-accent-hover: #C2410C !important;
+  --color-accent-light: #FDBA74 !important;
+  --palette-glow-1: rgba(234, 88, 12, 0.08) !important;
+  --palette-glow-2: rgba(251, 146, 60, 0.05) !important;
+  --palette-glow-3: rgba(194, 65, 12, 0.04) !important;
 }
 
 /* Header active dot color matching palette */
@@ -401,75 +560,59 @@ details.palette-dropdown summary::-webkit-details-marker {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   Crafty Premium Light Beige Gradient Animation (OKLCH)
-   Zero-JS, 60fps GPU-composited ambient background
+   Palette-Adaptive Ambient Gradient Background Animation
+   Zero-JS, 60fps GPU-composited atmospheric glow
+   Adapts dynamically to the active palette in Light & Dark modes
 ═══════════════════════════════════════════════════════════ */
-@property --hue1 {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 38deg;
-}
-
-@property --hue2 {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 82deg;
-}
-
 .oklch-gradient-bg {
   background-image:
     radial-gradient(
       ellipse 90% 65% at 50% -10%,
-      oklch(0.975 0.040 var(--hue1) / 60%),
+      var(--palette-glow-1),
       transparent 80%
     ),
     linear-gradient(
-      135deg in oklch,
-      oklch(0.965 0.035 var(--hue1) / 50%),
-      oklch(0.952 0.045 var(--hue2) / 45%)
+      135deg,
+      var(--palette-glow-2),
+      transparent 65%
     ),
-    linear-gradient(
-      225deg in oklch,
-      oklch(0.968 0.040 var(--hue2) / 45%),
-      oklch(0.958 0.032 var(--hue1) / 40%)
+    radial-gradient(
+      ellipse 80% 55% at 85% 95%,
+      var(--palette-glow-3),
+      transparent 70%
     );
   background-size: 160% 160%;
   animation: anim_bg 14s ease-in-out infinite alternate;
+  transition: opacity 0.3s ease;
 }
 
 @keyframes anim_bg {
   0% {
-    --hue1: 38deg;
-    --hue2: 82deg;
     background-position: 0% 0%;
   }
   50% {
-    --hue1: 78deg;
-    --hue2: 45deg;
     background-position: 100% 70%;
   }
   100% {
-    --hue1: 52deg;
-    --hue2: 100deg;
     background-position: 30% 100%;
   }
 }
 
 /* Floating Artisanal Craft Orbs for Distinctive Ambient Movement */
 .craft-orb-1 {
-  background: radial-gradient(circle, oklch(0.958 0.048 var(--hue1) / 60%), transparent 70%);
+  background: radial-gradient(circle, var(--palette-glow-1), transparent 70%);
   animation: orb_float_1 14s ease-in-out infinite alternate;
   will-change: transform;
 }
 
 .craft-orb-2 {
-  background: radial-gradient(circle, oklch(0.950 0.052 var(--hue2) / 55%), transparent 70%);
+  background: radial-gradient(circle, var(--palette-glow-2), transparent 70%);
   animation: orb_float_2 17s ease-in-out infinite alternate;
   will-change: transform;
 }
 
 .craft-orb-3 {
-  background: radial-gradient(circle, oklch(0.962 0.042 var(--hue1) / 50%), transparent 70%);
+  background: radial-gradient(circle, var(--palette-glow-3), transparent 70%);
   animation: orb_float_3 20s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -493,8 +636,8 @@ details.palette-dropdown summary::-webkit-details-marker {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   Dark Theme Artisanal Amber-Bronze Ambient Animation (OKLCH)
-   Luminous, warm golden embers and burnished copper in dark mode
+   Dark Theme Light Ethereal Ambient Glow
+   Light, subtle, elegant atmospheric sheen matching active palette
 ═══════════════════════════════════════════════════════════ */
 body:has(#theme-toggle:checked) .oklch-gradient-bg,
 html.dark .oklch-gradient-bg,
@@ -506,18 +649,18 @@ html[data-theme="dark"] .oklch-gradient-bg,
   background-image:
     radial-gradient(
       ellipse 95% 65% at 50% -12%,
-      oklch(0.36 0.12 var(--hue1) / 85%),
-      transparent 75%
+      var(--palette-glow-1),
+      transparent 80%
     ),
     linear-gradient(
-      135deg in oklch,
-      oklch(0.28 0.10 var(--hue1) / 75%),
-      oklch(0.20 0.11 var(--hue2) / 70%)
+      135deg,
+      var(--palette-glow-2),
+      transparent 70%
     ),
     radial-gradient(
       ellipse 80% 55% at 85% 95%,
-      oklch(0.26 0.09 var(--hue2) / 65%),
-      transparent 70%
+      var(--palette-glow-3),
+      transparent 75%
     ) !important;
   background-size: 160% 160% !important;
   animation: anim_bg 14s ease-in-out infinite alternate !important;
@@ -526,19 +669,19 @@ html[data-theme="dark"] .oklch-gradient-bg,
 body:has(#theme-toggle:checked) .craft-orb-1,
 html.dark .craft-orb-1,
 html[data-theme="dark"] .craft-orb-1 {
-  background: radial-gradient(circle, oklch(0.38 0.13 var(--hue1) / 85%), transparent 70%) !important;
+  background: radial-gradient(circle, var(--palette-glow-1), transparent 70%) !important;
 }
 
 body:has(#theme-toggle:checked) .craft-orb-2,
 html.dark .craft-orb-2,
 html[data-theme="dark"] .craft-orb-2 {
-  background: radial-gradient(circle, oklch(0.32 0.12 var(--hue2) / 80%), transparent 70%) !important;
+  background: radial-gradient(circle, var(--palette-glow-2), transparent 70%) !important;
 }
 
 body:has(#theme-toggle:checked) .craft-orb-3,
 html.dark .craft-orb-3,
 html[data-theme="dark"] .craft-orb-3 {
-  background: radial-gradient(circle, oklch(0.34 0.11 var(--hue1) / 75%), transparent 70%) !important;
+  background: radial-gradient(circle, var(--palette-glow-3), transparent 70%) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

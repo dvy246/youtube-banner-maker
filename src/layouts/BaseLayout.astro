@@ -28,7 +28,7 @@ const canonicalUrl = getCanonicalUrl(path);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-palette="pearl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -59,6 +59,9 @@ const canonicalUrl = getCanonicalUrl(path);
                 toggle.checked = isCurrentlyDark;
               }
               var activePal = localStorage.getItem('ytbm-palette') || 'pearl';
+              if (document.body && activePal) {
+                document.body.setAttribute('data-palette', activePal);
+              }
               var btn = document.querySelector('button[data-palette-id="' + activePal + '"]');
               if (btn) {
                 var color = btn.getAttribute('data-palette-color');
