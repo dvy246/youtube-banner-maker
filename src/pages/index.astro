@@ -5,11 +5,9 @@ import Footer from '../components/Footer.astro';
 import SpecTable from '../components/SpecTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import HeroCropSimulator from '../components/HeroCropSimulator.astro';
-import TemplateCard from '../components/TemplateCard.astro';
 import ArchGallery from '../components/ArchGallery.astro';
 import { STATIC_PAGES_SEO, getWebSiteSchema, getOrganizationSchema, getSoftwareAppSchema } from '../lib/seo';
 import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES } from '../lib/spec';
-import { getTemplate, type TemplateManifest } from '../lib/template';
 
 const path = '/';
 const seo = STATIC_PAGES_SEO[path];
@@ -31,15 +29,6 @@ const tabletX = Math.round(DEVICES.tablet.x * CANVAS.width);
 const mobileX = Math.round(SAFE.x * CANVAS.width);
 const mobileY = Math.round(SAFE.y * CANVAS.height);
 const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
-
-const featuredTemplates = [
-  getTemplate('biz-finance-glow'),
-  getTemplate('life-fashion-lookbook'),
-  getTemplate('biz-entrepreneur-impact'),
-  getTemplate('podcast-mindful-path'),
-  getTemplate('food-desi-kitchen'),
-  getTemplate('podcast-memphis-pop'),
-].filter((t): t is TemplateManifest => t !== undefined);
 ---
 
 <BaseLayout
@@ -406,15 +395,7 @@ const featuredTemplates = [
       </div>
 
       <!-- Arch Gallery Showcase -->
-      <div class="mb-10 sm:mb-12">
-        <ArchGallery />
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {featuredTemplates.map((template) => (
-          <TemplateCard template={template} loading="lazy" />
-        ))}
-      </div>
+      <ArchGallery />
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
