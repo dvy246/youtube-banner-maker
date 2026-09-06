@@ -364,7 +364,7 @@ const featuredTemplates = [
          Block 3: "What YouTube Actually Does to Your Banner"
          Architectural & Technical Blueprint (Zero Text Collision)
     ═══════════════════════════════════════════════════════════ -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-10">
+    <section id="what-youtube-does" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-10">
       <div class="space-y-3 max-w-3xl">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
           What YouTube Actually Does to Your Banner
@@ -577,13 +577,52 @@ const featuredTemplates = [
           Because YouTube's compression pipeline optimizes for worldwide bandwidth rather than graphical fidelity, aggressive re-encoding can soften delicate gradients and fine text. Our tools provide an approximate preview of this re-encode step so you can test contrast and readability before uploading to your live channel.
         </p>
       </div>
+
+      <!-- Smooth Scrolling Animation Conduit linking Block 3 to Block 4 -->
+      <div class="pt-6 flex flex-col items-center justify-center">
+        <div class="relative flex flex-col items-center">
+          <a
+            href="#official-banner-dimensions"
+            aria-label="Scroll smoothly down to official YouTube banner dimensions and limits table"
+            class="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-surface-0 border-2 border-line-200 text-xs font-mono font-bold text-ink-950 shadow-raised hover:border-accent hover:text-accent hover:shadow-overlay active:scale-[0.98] transition-all duration-300 z-10 focus-visible:outline-accent"
+          >
+            <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+            <span>Smooth Scroll to Official Dimensions &amp; Limits</span>
+            <svg
+              class="w-4 h-4 text-accent transition-transform duration-300 group-hover:translate-y-1 animate-bounce"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+
+          <!-- Animated Pulse Beam Conduit -->
+          <div class="w-0.5 h-16 sm:h-24 bg-gradient-to-b from-accent/60 via-line-200 to-accent/60 relative overflow-hidden my-3" aria-hidden="true">
+            <div class="absolute inset-x-0 w-full h-12 bg-gradient-to-b from-transparent via-accent to-transparent animate-scroll-beam"></div>
+          </div>
+
+          <span class="text-[11px] font-mono uppercase tracking-widest text-ink-500 font-semibold flex items-center gap-1.5">
+            <svg class="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+            Verified YouTube Studio Parameters Below
+          </span>
+        </div>
+      </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
          Block 4: Key Specifications Strip
     ═══════════════════════════════════════════════════════════ -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-6">
+    <section id="official-banner-dimensions" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-6">
       <div class="space-y-2 max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          Official Studio Parameters
+        </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
           Official YouTube Banner Dimensions & Limits
         </h2>
@@ -592,6 +631,25 @@ const featuredTemplates = [
         </p>
       </div>
       <SpecTable />
+
+      <div class="flex items-center justify-between pt-2">
+        <a
+          href="#what-youtube-does"
+          class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-500 hover:text-accent transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+          <span>Back to Visual Crop Blueprint</span>
+        </a>
+        <a
+          href="/guides/youtube-banner-size"
+          class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline"
+        >
+          <span>Read Comprehensive Sizing Guide</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
