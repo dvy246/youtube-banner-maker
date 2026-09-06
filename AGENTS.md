@@ -89,6 +89,18 @@ The project adheres to the design specifications defined in `DESIGN.md`:
 - Primary Font: Inter Variable (with robust system sans-serif fallback).
 - Numeric / Dimensional Readouts: Always render coordinate readouts, crop numbers, zoom levels, and aspect ratios using monospace tabular numbers (`tabular-nums` / JetBrains Mono) to prevent jitter during interaction.
 
+### Light & Dark Theme Coexistence Invariant
+- **No Unconditional Light Overrides**: Custom light-mode surface and palette tokens (such as Warm Pearl `#FFFAF3` or Sand `#FAF8F5`) must **never** be applied unconditionally with `!important` across all states. They must be strictly scoped to light mode (`:not(.dark):not([data-theme="dark"]):not(:has(#theme-toggle:checked))`) so dark mode surfaces (`#0B0D10` canvas, dark cards, `#F8FAFC` typography) remain crisp and fully legible.
+- **Tailwind v4 Dark Mode Custom Variant**: The `@custom-variant dark` directive must be configured in `global.css` to support class-based (`.dark`), attribute-based (`[data-theme="dark"]`), and pure-CSS checkbox (`body:has(#theme-toggle:checked)`) activations simultaneously.
+- **Palette Glow Subtlety**: In dark mode, ambient background glow tokens (`--palette-glow-*`) must remain very soft and ethereal (whisper opacity $\le 8\%$) to prevent eye strain and preserve WCAG AAA text contrast.
+
+### Mobile Responsiveness & Zero Horizontal Overflow Guarantee
+- **320px Viewport Floor**: All pages and interactive tools must render cleanly on screens as narrow as `320px` without clipped controls or broken layouts.
+- **Zero Document Scroll Invariant**: Under no circumstances may any component cause horizontal document scroll (`scrollWidth > innerWidth`).
+- **Arch & Fan Showcase Scaling**: Multi-card fan showcases (`ArchGallery`) must dynamically scale card dimensions, overlaps, and rotation angles across breakpoints (`1024px`, `768px`, `520px`, `400px`) and enforce strict `overflow-hidden` stage containment.
+- **Console Container Queries**: Interactive preview consoles (`HeroCropSimulator`) must utilize container queries (`@container (max-width: 480px)`) to scale typography, conceal non-critical telemetry badges, and preserve $\ge 44 \times 44\text{ px}$ touch targets on all interactive selectors.
+- **Data Table Containment**: All wide data tables and coordinate grids must be housed within responsive `overflow-x: auto` wrappers with soft rounded borders.
+
 ---
 
 ## 5. Performance Budgets & Architecture Boundaries
