@@ -9,7 +9,11 @@
       "type": "gradient",
       "from": "#090A0B",
       "to": "#15171A",
-      "angle": 180
+      "angle": 180,
+      "stops": [
+        "#090A0B",
+        "#15171A"
+      ]
     },
     "layers": [
       {

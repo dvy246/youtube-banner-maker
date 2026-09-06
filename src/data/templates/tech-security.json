@@ -12,17 +12,19 @@
         "#050D0A",
         "#0D1F17",
         "#050D0A"
-      ]
+      ],
+      "from": "#050D0A",
+      "to": "#050D0A"
     },
     "layers": [
       {
         "id": "fw-bracket-1",
         "type": "shape",
         "shape": "rect",
-        "x": 0.28,
+        "x": 0.25,
         "y": 0.42,
-        "w": 0.004,
-        "h": 0.12,
+        "w": 0.006,
+        "h": 0.14,
         "color": "#10B981",
         "opacity": 0.8
       },
@@ -30,10 +32,10 @@
         "id": "fw-bracket-2",
         "type": "shape",
         "shape": "rect",
-        "x": 0.71,
+        "x": 0.74,
         "y": 0.42,
-        "w": 0.004,
-        "h": 0.12,
+        "w": 0.006,
+        "h": 0.14,
         "color": "#10B981",
         "opacity": 0.8
       },
@@ -54,7 +56,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "DEFENSIVE SECURITY · ZERO TRUST · REVERSE ENGINEERING",
+        "text": "DEFENSIVE SECURITY \u00b7 ZERO TRUST \u00b7 REVERSE ENGINEERING",
         "font": "inter-500",
         "size": 15,
         "color": "#6EE7B7",

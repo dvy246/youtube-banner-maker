@@ -24,7 +24,9 @@
         "#08090C",
         "#0F1117",
         "#161922"
-      ]
+      ],
+      "from": "#08090C",
+      "to": "#161922"
     },
     "layers": [
       {
@@ -55,7 +57,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "TACTICAL SHOOTERS • RANKED CLIMB • GUIDES",
+        "text": "TACTICAL SHOOTERS \u2022 RANKED CLIMB \u2022 GUIDES",
         "font": "inter-500",
         "size": 17,
         "color": "#9CA3AF",

@@ -1,17 +1,164 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
-  
-      <defs>
-        <linearGradient id="bg-edu-literary" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="undefined" />
-          <stop offset="100%" stop-color="undefined" />
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#bg-edu-literary)" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <style>
+      @keyframes cursorClick {
+        0%, 100% { transform: translate(235px, 42px) scale(1); }
+        38% { transform: translate(230px, 36px) scale(1); }
+        46% { transform: translate(228px, 34px) scale(0.85); }
+        54% { transform: translate(230px, 36px) scale(1); }
+      }
+      @keyframes btnTap {
+        0%, 100% { transform: scale(1); }
+        46% { transform: scale(0.97); }
+        54% { transform: scale(1); }
+      }
+      @keyframes bellWiggle {
+        0%, 42%, 68%, 100% { transform: translate(225px, 33px) rotate(0deg); }
+        46% { transform: translate(225px, 33px) rotate(-20deg); }
+        50% { transform: translate(225px, 33px) rotate(20deg); }
+        54% { transform: translate(225px, 33px) rotate(-14deg); }
+        58% { transform: translate(225px, 33px) rotate(10deg); }
+        62% { transform: translate(225px, 33px) rotate(-4deg); }
+      }
+      @keyframes neonGlow {
+        0%, 100% { opacity: 0.88; filter: drop-shadow(0 0 8px currentColor); }
+        50% { opacity: 1; filter: drop-shadow(0 0 26px currentColor); }
+      }
+      @keyframes floatGently {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-14px); }
+      }
+      @keyframes eqBounce1 { 0%, 100% { height: 25px; y: -25px; } 50% { height: 75px; y: -75px; } }
+      @keyframes eqBounce2 { 0%, 100% { height: 65px; y: -65px; } 50% { height: 20px; y: -20px; } }
+      @keyframes eqBounce3 { 0%, 100% { height: 35px; y: -35px; } 50% { height: 85px; y: -85px; } }
+      @keyframes glitchTwitch {
+        0%, 88%, 100% { transform: translate(0, 0); }
+        90% { transform: translate(-6px, 2px); }
+        93% { transform: translate(5px, -2px); }
+        96% { transform: translate(-2px, 1px); }
+      }
+      .anim-cursor { animation: cursorClick 2.6s ease-in-out infinite; transform-origin: 0 0; }
+      .anim-btn { animation: btnTap 2.6s ease-in-out infinite; transform-origin: center; }
+      .anim-bell { animation: bellWiggle 2.6s ease-in-out infinite; transform-origin: 0 -12px; }
+      .anim-glow { animation: neonGlow 2.2s ease-in-out infinite; }
+      .anim-float { animation: floatGently 3.5s ease-in-out infinite; }
+      .anim-eq1 { animation: eqBounce1 0.8s ease-in-out infinite; }
+      .anim-eq2 { animation: eqBounce2 1.1s ease-in-out infinite; }
+      .anim-eq3 { animation: eqBounce3 0.9s ease-in-out infinite; }
+      .anim-glitch { animation: glitchTwitch 3.5s step-end infinite; }
+    </style>
+    <linearGradient id="bg-edu-literary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8F0" />
+      <stop offset="50%" stop-color="#FFEDD5" />
+      <stop offset="100%" stop-color="#FFE4E6" />
+    </linearGradient>
     
-  <!-- Safe area indicator border (subtle) -->
-  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
-  <rect x="294.4" y="136.8" width="51.2" height="1.8" fill="#86EFAC" opacity="0.8" />
-<text x="50%" y="47.0%" text-anchor="middle" dominant-baseline="middle" fill="#F2FBF5" font-family="Switzer, sans-serif" font-size="32" font-weight="700">THE CHAPTER HOUSE</text>
-<text x="50%" y="54.0%" text-anchor="middle" dominant-baseline="middle" fill="#BBF7D0" font-family="Switzer, sans-serif" font-size="15" font-weight="500">Deep Literary Analysis · Classic Novels &amp; Modern Fiction</text>
+  </defs>
 
+  <rect width="2560" height="1440" fill="url(#bg-edu-literary)" />
+  
+      <!-- Hand-Drawn Dashed Border Frame -->
+      <rect x="100" y="100" width="2360" height="1240" fill="none" stroke="#1B5E20" stroke-width="4" stroke-dasharray="14 10" />
+
+      <!-- Floating Doodles & Stars -->
+      <g class="anim-float">
+        <path d="M 160 160 L 180 130 L 200 160 L 230 180 L 200 200 L 180 230 L 160 200 L 130 180 Z" fill="none" stroke="#1B5E20" stroke-width="3.5" />
+        <path d="M 2390 160 L 2410 130 L 2430 160 L 2460 180 L 2430 200 L 2410 230 L 2390 200 L 2360 180 Z" fill="none" stroke="#1B5E20" stroke-width="3.5" />
+        <path d="M 160 1280 L 180 1250 L 200 1280 L 230 1300 L 200 1320 L 180 1350 L 160 1320 L 130 1300 Z" fill="none" stroke="#1B5E20" stroke-width="3.5" />
+        <path d="M 2390 1280 L 2410 1250 L 2430 1280 L 2460 1300 L 2430 1320 L 2410 1350 L 2390 1320 L 2360 1300 Z" fill="none" stroke="#1B5E20" stroke-width="3.5" />
+      </g>
+
+      <!-- Polaroid Photo Frame on Left -->
+      <g transform="translate(620, 720) rotate(-3)">
+        <rect x="-190" y="-230" width="380" height="460" rx="8" fill="#FFFFFF" filter="drop-shadow(0 16px 30px rgba(0,0,0,0.18))" stroke="#E2E8F0" stroke-width="2" />
+        <!-- Tape at top of polaroid -->
+        <rect x="-60" y="-250" width="120" height="36" fill="#FEF08A" opacity="0.85" rx="4" transform="rotate(2)" />
+        <!-- Sketched Avatar Inside Polaroid -->
+        
+    <g transform="translate(0, -30)">
+      <defs>
+        <clipPath id="av-clip-edu-literary">
+          <circle cx="0" cy="0" r="136" />
+        </clipPath>
+        <radialGradient id="av-grad-edu-literary" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#FFFFFF" />
+          <stop offset="100%" stop-color="#E2E8F0" />
+        </radialGradient>
+      </defs>
+
+      <!-- Frame Outer Drop Shadow & Ring -->
+      <circle cx="0" cy="0" r="140" fill="none" stroke="#E2E8F0" stroke-width="8" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.32))" />
+
+      <!-- Clipped Portrait -->
+      <g clip-path="url(#av-clip-edu-literary)">
+        <!-- Studio Background -->
+        <rect x="-140" y="-140" width="280" height="280" fill="url(#av-grad-edu-literary)" />
+
+        <!-- Torso / Shoulders -->
+        <path d="M -128.8 140 C -105 42, -42 16.8, 0 22.400000000000002 C 42 16.8, 105 42, 128.8 140 Z" fill="#B45309" />
+
+        <!-- Collar / Neck -->
+        <path d="M -30.8 25.2 L 0 50.4 L 30.8 25.2 L 25.2 -7 L -25.2 -7 Z" fill="#FAD8C0" />
+
+        <!-- Head / Face -->
+        <ellipse cx="0" cy="-16.8" rx="49" ry="61.6" fill="#FAD8C0" />
+
+        <!-- Hair -->
+        <path d="M -53.2 -21 C -61.6 -91, 61.6 -91, 53.2 -21 C 47.6 -70, -47.6 -70, -53.2 -21 Z" fill="#6B21A8" />
+        <ellipse cx="0" cy="-58.8" rx="47.6" ry="30.8" fill="#6B21A8" />
+
+        <!-- Eyes -->
+        <ellipse cx="-18.2" cy="-19.6" rx="5.32" ry="6.72" fill="#0F172A" />
+        <ellipse cx="18.2" cy="-19.6" rx="5.32" ry="6.72" fill="#0F172A" />
+
+        <!-- Friendly Smile -->
+        <path d="M -18.2 9.8 Q 0 23.8 18.2 9.8" fill="none" stroke="#78350F" stroke-width="3.36" stroke-linecap="round" />
+
+        
+          <!-- Glasses -->
+          <rect x="-35" y="-30.8" width="29.4" height="22.400000000000002" rx="5.6000000000000005" fill="none" stroke="#0F172A" stroke-width="4.48" />
+          <rect x="5.6000000000000005" y="-30.8" width="29.4" height="22.400000000000002" rx="5.6000000000000005" fill="none" stroke="#0F172A" stroke-width="4.48" />
+          <line x1="-5.6000000000000005" y1="-19.6" x2="5.6000000000000005" y2="-19.6" stroke="#0F172A" stroke-width="4.48" />
+        
+      </g>
+    </g>
+  
+        <text x="0" y="190" fill="#334155" font-family="'Comic Sans MS', cursive, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">@edu-literary</text>
+      </g>
+
+      <!-- Center-Right Typography -->
+      <g transform="translate(1380, 720)" text-anchor="middle">
+        <text x="0" y="-30" fill="#1B5E20" font-family="system-ui, -apple-system, sans-serif" font-size="120" font-weight="bold">THE CHAPTER HOUSE</text>
+        <!-- Wavy Hand-Drawn Underline -->
+        <path d="M -380 5 Q -190 35 0 0 T 380 5" fill="none" stroke="#1B5E20" stroke-width="6" stroke-linecap="round" />
+        <text x="0" y="75" fill="#1B5E20" font-family="system-ui, sans-serif" font-size="34">Deep Literary Analysis · Classic Novels &amp; Modern Fiction</text>
+
+        <!-- Animated Hand-Drawn Arrow -->
+        <path d="M -160 115 Q -100 170 -40 145" fill="none" stroke="#1B5E20" stroke-width="4" />
+        <path d="M -48 132 L -40 145 L -56 148" fill="none" stroke="#1B5E20" stroke-width="4" />
+
+        <g transform="translate(-140, 140)">
+          
+    <g transform="translate(0, 0) scale(0.9)">
+      <!-- Subscribe Pill Button with Tap Animation -->
+      <g class="anim-btn">
+        <rect width="280" height="66" rx="33" fill="#E60000" filter="drop-shadow(0 8px 18px rgba(0,0,0,0.32))" />
+        <text x="116" y="41" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" letter-spacing="1.5px" text-anchor="middle">SUBSCRIBE</text>
+      </g>
+
+      <!-- Ringing Notification Bell -->
+      <g class="anim-bell" transform="translate(225, 33)">
+        <path d="M 0 -13 C -5 -13, -8 -8, -8 0 L -11 9 L 11 9 L 8 0 C 8 -8, 5 -13, 0 -13 Z" fill="#FFFFFF" />
+        <circle cx="0" cy="12" r="3" fill="#FFFFFF" />
+      </g>
+
+      <!-- Animated Clicking Pointer Hand Cursor -->
+      <g class="anim-cursor" transform="translate(235, 42)">
+        <path d="M 0 0 L 0 28 L 7 21 L 13 33 L 18 30 L 12 18 L 20 18 Z" fill="#FFFFFF" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.45))" />
+      </g>
+    </g>
+  
+        </g>
+      </g>
+    
 </svg>

@@ -12,16 +12,31 @@
         "#0A1A24",
         "#143245",
         "#0A1A24"
-      ]
+      ],
+      "from": "#0A1A24",
+      "to": "#0A1A24"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.35,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "coast-line",
         "type": "shape",
         "shape": "rect",
-        "x": 0.35,
-        "y": 0.57,
-        "w": 0.3,
+        "x": 0.32,
+        "y": 0.58,
+        "w": 0.36,
         "h": 0.003,
         "color": "#06B6D4",
         "opacity": 0.8
@@ -43,7 +58,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "SAILING THE MEDITERRANEAN · ISLAND LIFE & DIVING",
+        "text": "SAILING THE MEDITERRANEAN \u00b7 ISLAND LIFE & DIVING",
         "font": "inter-500",
         "size": 15,
         "color": "#A5F3FC",
@@ -58,7 +73,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "coast-line"

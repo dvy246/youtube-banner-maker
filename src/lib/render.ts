@@ -94,8 +94,15 @@ export function renderScene(
     const y1 = cy + Math.sin(angleRad) * length;
 
     const grad = ctx.createLinearGradient(x0, y0, x1, y1);
-    grad.addColorStop(0, bg.from);
-    grad.addColorStop(1, bg.to);
+    if ('stops' in bg && Array.isArray(bg.stops) && bg.stops.length > 0) {
+      const stops = bg.stops;
+      stops.forEach((stopColor, idx) => {
+        grad.addColorStop(idx / Math.max(1, stops.length - 1), stopColor);
+      });
+    } else {
+      grad.addColorStop(0, bg.from || '#0C0D0E');
+      grad.addColorStop(1, bg.to || '#1F2124');
+    }
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, cw, ch);
   } else if (bg.type === 'image') {

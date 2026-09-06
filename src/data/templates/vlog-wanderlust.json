@@ -12,16 +12,31 @@
         "#1A120B",
         "#2C1E14",
         "#1A120B"
-      ]
+      ],
+      "from": "#1A120B",
+      "to": "#1A120B"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "film-frame-top",
         "type": "shape",
         "shape": "rect",
-        "x": 0.32,
+        "x": 0.3,
         "y": 0.4,
-        "w": 0.36,
+        "w": 0.4,
         "h": 0.003,
         "color": "#D97706",
         "opacity": 0.7
@@ -30,9 +45,9 @@
         "id": "film-frame-bot",
         "type": "shape",
         "shape": "rect",
-        "x": 0.32,
+        "x": 0.3,
         "y": 0.58,
-        "w": 0.36,
+        "w": 0.4,
         "h": 0.003,
         "color": "#D97706",
         "opacity": 0.7
@@ -69,7 +84,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "film-frame-top",

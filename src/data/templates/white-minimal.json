@@ -24,7 +24,9 @@
         "#FFFFFF",
         "#F9FAFB",
         "#F3F4F6"
-      ]
+      ],
+      "from": "#FFFFFF",
+      "to": "#F3F4F6"
     },
     "layers": [
       {

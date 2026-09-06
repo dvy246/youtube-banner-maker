@@ -12,9 +12,24 @@
         "#1C0B1B",
         "#341432",
         "#1C0B1B"
-      ]
+      ],
+      "from": "#1C0B1B",
+      "to": "#1C0B1B"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.35,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "spot-l",
         "type": "shape",
@@ -54,7 +69,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "WEEKLY COMEDY ROUNDTABLE · LIVE EPISODES FRIDAYS",
+        "text": "WEEKLY COMEDY ROUNDTABLE \u00b7 LIVE EPISODES FRIDAYS",
         "font": "inter-600",
         "size": 15,
         "color": "#FDE047",
@@ -69,7 +84,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "spot-l",

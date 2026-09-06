@@ -12,7 +12,9 @@
         "#0D0D0E",
         "#1B1B1E",
         "#0D0D0E"
-      ]
+      ],
+      "from": "#0D0D0E",
+      "to": "#0D0D0E"
     },
     "layers": [
       {
@@ -54,7 +56,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "HARD TRAP BEATS · DRUM KITS · FL STUDIO TUTORIALS",
+        "text": "HARD TRAP BEATS \u00b7 DRUM KITS \u00b7 FL STUDIO TUTORIALS",
         "font": "inter-600",
         "size": 15,
         "color": "#FFB266",

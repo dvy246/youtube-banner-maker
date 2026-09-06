@@ -1,18 +1,198 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
-  
-      <defs>
-        <linearGradient id="bg-food-plant" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="undefined" />
-          <stop offset="100%" stop-color="undefined" />
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#bg-food-plant)" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <style>
+      @keyframes cursorClick {
+        0%, 100% { transform: translate(235px, 42px) scale(1); }
+        38% { transform: translate(230px, 36px) scale(1); }
+        46% { transform: translate(228px, 34px) scale(0.85); }
+        54% { transform: translate(230px, 36px) scale(1); }
+      }
+      @keyframes btnTap {
+        0%, 100% { transform: scale(1); }
+        46% { transform: scale(0.97); }
+        54% { transform: scale(1); }
+      }
+      @keyframes bellWiggle {
+        0%, 42%, 68%, 100% { transform: translate(225px, 33px) rotate(0deg); }
+        46% { transform: translate(225px, 33px) rotate(-20deg); }
+        50% { transform: translate(225px, 33px) rotate(20deg); }
+        54% { transform: translate(225px, 33px) rotate(-14deg); }
+        58% { transform: translate(225px, 33px) rotate(10deg); }
+        62% { transform: translate(225px, 33px) rotate(-4deg); }
+      }
+      @keyframes neonGlow {
+        0%, 100% { opacity: 0.88; filter: drop-shadow(0 0 8px currentColor); }
+        50% { opacity: 1; filter: drop-shadow(0 0 26px currentColor); }
+      }
+      @keyframes floatGently {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-14px); }
+      }
+      @keyframes eqBounce1 { 0%, 100% { height: 25px; y: -25px; } 50% { height: 75px; y: -75px; } }
+      @keyframes eqBounce2 { 0%, 100% { height: 65px; y: -65px; } 50% { height: 20px; y: -20px; } }
+      @keyframes eqBounce3 { 0%, 100% { height: 35px; y: -35px; } 50% { height: 85px; y: -85px; } }
+      @keyframes glitchTwitch {
+        0%, 88%, 100% { transform: translate(0, 0); }
+        90% { transform: translate(-6px, 2px); }
+        93% { transform: translate(5px, -2px); }
+        96% { transform: translate(-2px, 1px); }
+      }
+      .anim-cursor { animation: cursorClick 2.6s ease-in-out infinite; transform-origin: 0 0; }
+      .anim-btn { animation: btnTap 2.6s ease-in-out infinite; transform-origin: center; }
+      .anim-bell { animation: bellWiggle 2.6s ease-in-out infinite; transform-origin: 0 -12px; }
+      .anim-glow { animation: neonGlow 2.2s ease-in-out infinite; }
+      .anim-float { animation: floatGently 3.5s ease-in-out infinite; }
+      .anim-eq1 { animation: eqBounce1 0.8s ease-in-out infinite; }
+      .anim-eq2 { animation: eqBounce2 1.1s ease-in-out infinite; }
+      .anim-eq3 { animation: eqBounce3 0.9s ease-in-out infinite; }
+      .anim-glitch { animation: glitchTwitch 3.5s step-end infinite; }
+    </style>
+    <linearGradient id="bg-food-plant" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E6FAF0" />
+      <stop offset="50%" stop-color="#D1FAE5" />
+      <stop offset="100%" stop-color="#A7F3D0" />
+    </linearGradient>
     
-  <!-- Safe area indicator border (subtle) -->
-  <rect x="127" y="127" width="386" height="106" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4" rx="4" />
-  <rect x="224.0" y="147.6" width="192.0" height="1.1" fill="#10B981" opacity="0.8" />
-<rect x="224.0" y="205.2" width="192.0" height="1.1" fill="#10B981" opacity="0.8" />
-<text x="50%" y="47.0%" text-anchor="middle" dominant-baseline="middle" fill="#ECFDF5" font-family="Switzer, sans-serif" font-size="32" font-weight="700">PURE GREEN BOWL</text>
-<text x="50%" y="54.0%" text-anchor="middle" dominant-baseline="middle" fill="#6EE7B7" font-family="Switzer, sans-serif" font-size="15" font-weight="500">High-Protein Vegan Recipes · Whole Foods &amp; Macro Nutrition</text>
+  </defs>
 
+  <rect width="2560" height="1440" fill="url(#bg-food-plant)" />
+  
+      <rect x="100" y="100" width="2360" height="1240" fill="none" stroke="#065F46" stroke-width="2" opacity="0.5" />
+      
+      <g transform="translate(100, 100) rotate(45)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(100, 100) rotate(0)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(100, 100) rotate(90)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+    
+      
+      <g transform="translate(2460, 100) rotate(135)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(2460, 100) rotate(90)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(2460, 100) rotate(180)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+    
+      
+      <g transform="translate(100, 1340) rotate(-45)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(100, 1340) rotate(0)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(100, 1340) rotate(-90)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+    
+      
+      <g transform="translate(2460, 1340) rotate(-135)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(2460, 1340) rotate(-90)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+     
+      <g transform="translate(2460, 1340) rotate(-180)">
+        <path d="M 0 0 C 20 -40, 80 -40, 100 0 C 80 40, 20 40, 0 0 Z" fill="#065F46" opacity="0.65" />
+        <line x1="0" y1="0" x2="90" y2="0" stroke="#E6FAF0" stroke-width="2" />
+      </g>
+    
+
+      <!-- Center Avatar Inside Botanical Seal -->
+      
+    <g transform="translate(1280, 520)">
+      <defs>
+        <clipPath id="av-clip-food-plant">
+          <circle cx="0" cy="0" r="144" />
+        </clipPath>
+        <radialGradient id="av-grad-food-plant" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#FFFFFF" />
+          <stop offset="100%" stop-color="#E2E8F0" />
+        </radialGradient>
+      </defs>
+
+      <!-- Frame Outer Drop Shadow & Ring -->
+      <circle cx="0" cy="0" r="150" fill="none" stroke="#FFFFFF" stroke-width="12" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.32))" />
+
+      <!-- Clipped Portrait -->
+      <g clip-path="url(#av-clip-food-plant)">
+        <!-- Studio Background -->
+        <rect x="-150" y="-150" width="300" height="300" fill="url(#av-grad-food-plant)" />
+
+        <!-- Torso / Shoulders -->
+        <path d="M -138 150 C -112.5 45, -45 18, 0 24 C 45 18, 112.5 45, 138 150 Z" fill="#BE185D" />
+
+        <!-- Collar / Neck -->
+        <path d="M -33 27 L 0 54 L 33 27 L 27 -7.5 L -27 -7.5 Z" fill="#F3C5A0" />
+
+        <!-- Head / Face -->
+        <ellipse cx="0" cy="-18" rx="52.5" ry="66" fill="#F3C5A0" />
+
+        <!-- Hair -->
+        <path d="M -57 -22.5 C -66 -97.5, 66 -97.5, 57 -22.5 C 51.00000000000001 -75, -51.00000000000001 -75, -57 -22.5 Z" fill="#4A3B32" />
+        <ellipse cx="0" cy="-63" rx="51.00000000000001" ry="33" fill="#4A3B32" />
+
+        <!-- Eyes -->
+        <ellipse cx="-19.5" cy="-21.000000000000004" rx="5.7" ry="7.2" fill="#0F172A" />
+        <ellipse cx="19.5" cy="-21.000000000000004" rx="5.7" ry="7.2" fill="#0F172A" />
+
+        <!-- Friendly Smile -->
+        <path d="M -19.5 10.500000000000002 Q 0 25.500000000000004 19.5 10.500000000000002" fill="none" stroke="#78350F" stroke-width="3.6" stroke-linecap="round" />
+
+        
+      </g>
+    </g>
+  
+
+      <text x="1280" y="760" fill="#022C22" font-family="Georgia, serif" font-size="120" font-weight="bold" text-anchor="middle">PURE GREEN BOWL</text>
+      <text x="1280" y="830" fill="#022C22" font-family="Georgia, serif" font-size="34" text-anchor="middle">High-Protein Vegan Recipes · Whole Foods &amp; Macro Nutrition</text>
+
+      <g transform="translate(1140, 890)">
+        
+    <g transform="translate(0, 0) scale(0.95)">
+      <!-- Subscribe Pill Button with Tap Animation -->
+      <g class="anim-btn">
+        <rect width="280" height="66" rx="33" fill="#065F46" filter="drop-shadow(0 8px 18px rgba(0,0,0,0.32))" />
+        <text x="116" y="41" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" letter-spacing="1.5px" text-anchor="middle">SUBSCRIBE</text>
+      </g>
+
+      <!-- Ringing Notification Bell -->
+      <g class="anim-bell" transform="translate(225, 33)">
+        <path d="M 0 -13 C -5 -13, -8 -8, -8 0 L -11 9 L 11 9 L 8 0 C 8 -8, 5 -13, 0 -13 Z" fill="#FFFFFF" />
+        <circle cx="0" cy="12" r="3" fill="#FFFFFF" />
+      </g>
+
+      <!-- Animated Clicking Pointer Hand Cursor -->
+      <g class="anim-cursor" transform="translate(235, 42)">
+        <path d="M 0 0 L 0 28 L 7 21 L 13 33 L 18 30 L 12 18 L 20 18 Z" fill="#FFFFFF" stroke="#111827" stroke-width="2.5" stroke-linejoin="round" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.45))" />
+      </g>
+    </g>
+  
+      </g>
+    
 </svg>

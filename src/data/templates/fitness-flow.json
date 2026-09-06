@@ -11,6 +11,19 @@
     },
     "layers": [
       {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.35,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
+      {
         "id": "title",
         "role": "title",
         "type": "text",
@@ -27,7 +40,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Daily Breathwork · Mobility Routines · Stillness",
+        "text": "Daily Breathwork \u00b7 Mobility Routines \u00b7 Stillness",
         "font": "inter-500",
         "size": 18,
         "color": "#0F7A52",
@@ -75,7 +88,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "zen-stone1",

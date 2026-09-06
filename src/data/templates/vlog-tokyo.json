@@ -12,7 +12,9 @@
         "#0D0714",
         "#210F33",
         "#0D0714"
-      ]
+      ],
+      "from": "#0D0714",
+      "to": "#0D0714"
     },
     "layers": [
       {
@@ -54,7 +56,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Cinematic City Vlogs · Hidden Alleys & Street Food",
+        "text": "Cinematic City Vlogs \u00b7 Hidden Alleys & Street Food",
         "font": "inter-400",
         "size": 17,
         "color": "#FDA4AF",

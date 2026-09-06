@@ -24,7 +24,9 @@
         "#0C061A",
         "#1D0B38",
         "#2E0E57"
-      ]
+      ],
+      "from": "#0C061A",
+      "to": "#2E0E57"
     },
     "layers": [
       {
@@ -55,7 +57,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "VTUBER STREAMS • JRPG SPEEDRUNS • RETRO SYNTH",
+        "text": "VTUBER STREAMS \u2022 JRPG SPEEDRUNS \u2022 RETRO SYNTH",
         "font": "inter-500",
         "size": 16,
         "color": "#A5F3FC",

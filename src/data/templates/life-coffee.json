@@ -12,16 +12,18 @@
         "#140D09",
         "#241811",
         "#140D09"
-      ]
+      ],
+      "from": "#140D09",
+      "to": "#140D09"
     },
     "layers": [
       {
         "id": "coffee-line",
         "type": "shape",
         "shape": "rect",
-        "x": 0.36,
+        "x": 0.39,
         "y": 0.58,
-        "w": 0.28,
+        "w": 0.22,
         "h": 0.003,
         "color": "#D97706",
         "opacity": 0.75
@@ -43,7 +45,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Specialty Coffee Roasts · V60 Recipes & Grinder Reviews",
+        "text": "Specialty Coffee Roasts \u00b7 V60 Recipes & Grinder Reviews",
         "font": "inter-400",
         "size": 16,
         "color": "#FDE68A",

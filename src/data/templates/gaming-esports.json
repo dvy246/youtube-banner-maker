@@ -12,9 +12,24 @@
         "#0E0E10",
         "#18181B",
         "#27272A"
-      ]
+      ],
+      "from": "#0E0E10",
+      "to": "#27272A"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "esports-bar-l",
         "type": "shape",
@@ -65,7 +80,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "PRO SCRIMS · TOURNAMENT RECAPS · META ANALYSIS",
+        "text": "PRO SCRIMS \u00b7 TOURNAMENT RECAPS \u00b7 META ANALYSIS",
         "font": "inter-600",
         "size": 16,
         "color": "#FDE047",
@@ -80,7 +95,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "esports-bar-l",

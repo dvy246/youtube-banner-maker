@@ -12,9 +12,24 @@
         "#0A0A0A",
         "#171717",
         "#0A0A0A"
-      ]
+      ],
+      "from": "#0A0A0A",
+      "to": "#0A0A0A"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "couture-rule-top",
         "type": "shape",
@@ -54,7 +69,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Paris & Milan Fashion Week Reviews · Capsule Wardrobe",
+        "text": "Paris & Milan Fashion Week Reviews \u00b7 Capsule Wardrobe",
         "font": "inter-400",
         "size": 16,
         "color": "#A3A3A3",
@@ -69,7 +84,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "couture-rule-top",

@@ -12,9 +12,24 @@
         "#0C0B0A",
         "#1A1816",
         "#0C0B0A"
-      ]
+      ],
+      "from": "#0C0B0A",
+      "to": "#0C0B0A"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.5,
+        "y": 0.44,
+        "w": 0.08,
+        "h": 0.14,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "chef-star",
         "type": "shape",
@@ -58,7 +73,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "chef-star"

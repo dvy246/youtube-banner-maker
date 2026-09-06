@@ -11,6 +11,19 @@
     },
     "layers": [
       {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
+      {
         "id": "title",
         "role": "title",
         "type": "text",
@@ -27,7 +40,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Original Songs · Fingerstyle Guitar · Live Studio Sessions",
+        "text": "Original Songs \u00b7 Fingerstyle Guitar \u00b7 Live Studio Sessions",
         "font": "inter-500",
         "size": 18,
         "color": "#E3E5E8",
@@ -86,7 +99,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "string1",

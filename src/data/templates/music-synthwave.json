@@ -9,7 +9,11 @@
       "type": "gradient",
       "from": "#23002B",
       "to": "#500940",
-      "angle": 90
+      "angle": 90,
+      "stops": [
+        "#23002B",
+        "#500940"
+      ]
     },
     "layers": [
       {
@@ -29,7 +33,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "80s Electronic · Darksynth · Synthwave Mixes",
+        "text": "80s Electronic \u00b7 Darksynth \u00b7 Synthwave Mixes",
         "font": "inter-500",
         "size": 20,
         "color": "#FFFFFF",

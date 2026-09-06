@@ -12,7 +12,9 @@
         "#070A08",
         "#0F1612",
         "#070A08"
-      ]
+      ],
+      "from": "#070A08",
+      "to": "#070A08"
     },
     "layers": [
       {
@@ -65,7 +67,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "NO DAMAGE RUNS · STEALTH TACTICS · FPS RECON",
+        "text": "NO DAMAGE RUNS \u00b7 STEALTH TACTICS \u00b7 FPS RECON",
         "font": "inter-500",
         "size": 16,
         "color": "#6EE7B7",

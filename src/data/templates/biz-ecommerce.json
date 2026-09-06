@@ -12,7 +12,9 @@
         "#06110A",
         "#0E2416",
         "#06110A"
-      ]
+      ],
+      "from": "#06110A",
+      "to": "#06110A"
     },
     "layers": [
       {
@@ -54,7 +56,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "7-FIGURE SHOPIFY BRANDS · SUPPLY CHAIN & CONVERSION",
+        "text": "7-FIGURE SHOPIFY BRANDS \u00b7 SUPPLY CHAIN & CONVERSION",
         "font": "inter-600",
         "size": 15,
         "color": "#6EE7B7",

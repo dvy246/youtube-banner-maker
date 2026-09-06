@@ -2,7 +2,7 @@ import { CANVAS } from './spec';
 
 export type Background =
   | { type: 'solid'; color: string }
-  | { type: 'gradient'; from: string; to: string; angle: number }
+  | { type: 'gradient'; from: string; to: string; angle: number; stops?: string[] }
   | {
       type: 'image';
       src: string;
@@ -183,6 +183,10 @@ export function deserializeScene(raw: string): Scene | null {
     if (bg.type === 'solid') {
       if (typeof bg.color !== 'string') return null;
     } else if (bg.type === 'gradient') {
+      if (Array.isArray(bg.stops) && bg.stops.length >= 2) {
+        if (!bg.from) bg.from = bg.stops[0];
+        if (!bg.to) bg.to = bg.stops[bg.stops.length - 1];
+      }
       if (
         typeof bg.from !== 'string' ||
         typeof bg.to !== 'string' ||

@@ -1,7 +1,7 @@
 {
   "id": "food-pastry",
   "niche": "food",
-  "name": "French Pâtisserie",
+  "name": "French P\u00e2tisserie",
   "description": "Macaron pastel pink and marble grey for pastry chefs and delicate viennoiserie.",
   "preview": "/previews/food-pastry.svg",
   "scene": {
@@ -12,16 +12,31 @@
         "#170F14",
         "#281A22",
         "#170F14"
-      ]
+      ],
+      "from": "#170F14",
+      "to": "#170F14"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.35,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "pastry-rule-top",
         "type": "shape",
         "shape": "rect",
-        "x": 0.34,
+        "x": 0.36,
         "y": 0.4,
-        "w": 0.32,
+        "w": 0.28,
         "h": 0.003,
         "color": "#F472B6",
         "opacity": 0.75
@@ -30,9 +45,9 @@
         "id": "pastry-rule-bot",
         "type": "shape",
         "shape": "rect",
-        "x": 0.34,
+        "x": 0.36,
         "y": 0.58,
-        "w": 0.32,
+        "w": 0.28,
         "h": 0.003,
         "color": "#F472B6",
         "opacity": 0.75
@@ -54,7 +69,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Laminated Croissants · Éclairs & Advanced French Pastry",
+        "text": "Laminated Croissants \u00b7 \u00c9clairs & Advanced French Pastry",
         "font": "inter-400",
         "size": 16,
         "color": "#FBCFE8",
@@ -69,7 +84,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "pastry-rule-top",

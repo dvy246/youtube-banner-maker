@@ -12,7 +12,9 @@
         "#0A071B",
         "#1E1245",
         "#0A071B"
-      ]
+      ],
+      "from": "#0A071B",
+      "to": "#0A071B"
     },
     "layers": [
       {
@@ -65,7 +67,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "LLM ARCHITECTURES · PYTORCH · AGENTIC SYSTEMS",
+        "text": "LLM ARCHITECTURES \u00b7 PYTORCH \u00b7 AGENTIC SYSTEMS",
         "font": "inter-500",
         "size": 16,
         "color": "#D8B4FE",

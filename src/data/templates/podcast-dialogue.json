@@ -12,9 +12,24 @@
         "#12100E",
         "#211B17",
         "#12100E"
-      ]
+      ],
+      "from": "#12100E",
+      "to": "#12100E"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.5,
+        "y": 0.44,
+        "w": 0.08,
+        "h": 0.14,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "quote-mark-l",
         "type": "shape",
@@ -69,7 +84,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "quote-mark-l",

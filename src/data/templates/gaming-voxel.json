@@ -12,7 +12,9 @@
         "#141E30",
         "#243B55",
         "#141E30"
-      ]
+      ],
+      "from": "#141E30",
+      "to": "#141E30"
     },
     "layers": [
       {
@@ -65,7 +67,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "MASSIVE BUILDS · REDSTONE TECH · SURVIVAL SMPS",
+        "text": "MASSIVE BUILDS \u00b7 REDSTONE TECH \u00b7 SURVIVAL SMPS",
         "font": "inter-500",
         "size": 16,
         "color": "#FCD34D",

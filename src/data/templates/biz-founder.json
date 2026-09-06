@@ -12,7 +12,9 @@
         "#0C091A",
         "#1B1536",
         "#0C091A"
-      ]
+      ],
+      "from": "#0C091A",
+      "to": "#0C091A"
     },
     "layers": [
       {
@@ -43,7 +45,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Building Profitable Micro-SaaS to $50k/mo · Zero Venture Capital",
+        "text": "Building Profitable Micro-SaaS to $50k/mo \u00b7 Zero Venture Capital",
         "font": "inter-400",
         "size": 16,
         "color": "#C7D2FE",

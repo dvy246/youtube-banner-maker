@@ -12,9 +12,24 @@
         "#090D14",
         "#131B2A",
         "#090D14"
-      ]
+      ],
+      "from": "#090D14",
+      "to": "#090D14"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "rt-bar-l",
         "type": "shape",
@@ -54,7 +69,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "4 CREATORS · NO SCRIPT · RAW INDUSTRY TAKES",
+        "text": "4 CREATORS \u00b7 NO SCRIPT \u00b7 RAW INDUSTRY TAKES",
         "font": "inter-600",
         "size": 16,
         "color": "#FDBA74",
@@ -69,7 +84,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "rt-bar-l",

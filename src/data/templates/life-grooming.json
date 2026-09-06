@@ -2,7 +2,7 @@
   "id": "life-grooming",
   "niche": "lifestyle",
   "name": "The Groomed Man",
-  "description": "Vintage barber blue and tan leather for men’s grooming, haircuts, and tailoring.",
+  "description": "Vintage barber blue and tan leather for men\u2019s grooming, haircuts, and tailoring.",
   "preview": "/previews/life-grooming.svg",
   "scene": {
     "background": {
@@ -12,9 +12,24 @@
         "#0A1016",
         "#14202C",
         "#0A1016"
-      ]
+      ],
+      "from": "#0A1016",
+      "to": "#0A1016"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.09,
+        "h": 0.16,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "barber-rule-top",
         "type": "shape",
@@ -69,7 +84,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "barber-rule-top",

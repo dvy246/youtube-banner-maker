@@ -9,7 +9,11 @@
       "type": "gradient",
       "from": "#0C1711",
       "to": "#16281F",
-      "angle": 140
+      "angle": 140,
+      "stops": [
+        "#0C1711",
+        "#16281F"
+      ]
     },
     "layers": [
       {
@@ -54,7 +58,7 @@
         "type": "shape",
         "shape": "rect",
         "x": 0.9,
-        "y": 0.0,
+        "y": 0,
         "w": 0.002,
         "h": 1,
         "color": "#4CAF50",

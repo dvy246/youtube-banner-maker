@@ -1,7 +1,7 @@
 {
   "id": "food-italian",
   "niche": "food",
-  "name": "Nonna’s Trattoria",
+  "name": "Nonna\u2019s Trattoria",
   "description": "Burnt sienna and virgin olive green for rustic hand-rolled pasta and Italian comfort food.",
   "preview": "/previews/food-italian.svg",
   "scene": {
@@ -12,16 +12,31 @@
         "#160C08",
         "#26160F",
         "#160C08"
-      ]
+      ],
+      "from": "#160C08",
+      "to": "#160C08"
     },
     "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.5,
+        "y": 0.44,
+        "w": 0.08,
+        "h": 0.14,
+        "borderWidth": 4,
+        "borderColor": "#FFFFFF",
+        "safeAreaConstrained": true
+      },
       {
         "id": "trattoria-pill",
         "type": "shape",
         "shape": "rect",
-        "x": 0.44,
+        "x": 0.42,
         "y": 0.39,
-        "w": 0.12,
+        "w": 0.16,
         "h": 0.005,
         "color": "#EA580C",
         "opacity": 0.85
@@ -58,7 +73,8 @@
     "title",
     "tagline",
     "background.photo",
-    "background.gradient"
+    "background.gradient",
+    "photo"
   ],
   "protected": [
     "trattoria-pill"

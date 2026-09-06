@@ -9,7 +9,11 @@
       "type": "gradient",
       "from": "#1A0C08",
       "to": "#2E140C",
-      "angle": 135
+      "angle": 135,
+      "stops": [
+        "#1A0C08",
+        "#2E140C"
+      ]
     },
     "layers": [
       {
@@ -54,7 +58,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Marathon Prep · Triathlon · VO2 Testing",
+        "text": "Marathon Prep \u00b7 Triathlon \u00b7 VO2 Testing",
         "font": "inter-500",
         "size": 16,
         "color": "#FFFFFF",

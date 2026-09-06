@@ -12,7 +12,9 @@
         "#041217",
         "#0A2530",
         "#041217"
-      ]
+      ],
+      "from": "#041217",
+      "to": "#041217"
     },
     "layers": [
       {
@@ -54,7 +56,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "BIG DATA PIPELINES · PYTHON ANALYTICS · MACHINE LEARNING",
+        "text": "BIG DATA PIPELINES \u00b7 PYTHON ANALYTICS \u00b7 MACHINE LEARNING",
         "font": "inter-500",
         "size": 15,
         "color": "#5EEAD4",

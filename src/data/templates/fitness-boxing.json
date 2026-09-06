@@ -12,7 +12,9 @@
         "#0A0A0A",
         "#1C1C1C",
         "#0A0A0A"
-      ]
+      ],
+      "from": "#0A0A0A",
+      "to": "#0A0A0A"
     },
     "layers": [
       {
@@ -54,7 +56,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "BOXING FOOTWORK · COMBAT CONDITIONING · SPARRING",
+        "text": "BOXING FOOTWORK \u00b7 COMBAT CONDITIONING \u00b7 SPARRING",
         "font": "inter-600",
         "size": 15,
         "color": "#FDE047",
