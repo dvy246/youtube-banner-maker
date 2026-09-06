@@ -6,6 +6,7 @@ import SpecTable from '../components/SpecTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import HeroCropSimulator from '../components/HeroCropSimulator.astro';
 import TemplateCard from '../components/TemplateCard.astro';
+import ArchGallery from '../components/ArchGallery.astro';
 import { STATIC_PAGES_SEO, getWebSiteSchema, getOrganizationSchema, getSoftwareAppSchema } from '../lib/seo';
 import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES } from '../lib/spec';
 import { getTemplate, type TemplateManifest } from '../lib/template';
@@ -402,6 +403,11 @@ const featuredTemplates = [
           <span>Explore All 100+ Free Presets</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
+      </div>
+
+      <!-- Arch Gallery Showcase -->
+      <div class="mb-10 sm:mb-12">
+        <ArchGallery />
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
