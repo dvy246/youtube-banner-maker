@@ -8,7 +8,14 @@ describe('Color Palette System', () => {
     expect(ids.size).toBe(10);
   });
 
-  it('includes crimson as the signature default red palette', () => {
+  it('includes pearl as the primary signature beige & red palette', () => {
+    const pearl = PALETTES[0];
+    expect(pearl.id).toBe('pearl');
+    expect(pearl.accentColor.toUpperCase()).toBe('#F62440');
+    expect(pearl.colors).toEqual(['#FFFAF3', '#FFF2DB', '#FFE5BF', '#F62440']);
+  });
+
+  it('includes crimson as an available palette', () => {
     const crimson = PALETTES.find((p) => p.id === 'crimson');
     expect(crimson).toBeDefined();
     expect(crimson?.accentColor.toUpperCase()).toBe('#E63946');

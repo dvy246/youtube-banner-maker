@@ -44,7 +44,7 @@ const canonicalUrl = getCanonicalUrl(path);
             document.documentElement.classList.remove('dark');
             document.documentElement.setAttribute('data-theme', 'light');
           }
-          var p = localStorage.getItem('ytbm-palette') || 'crimson';
+          var p = localStorage.getItem('ytbm-palette') || 'pearl';
           if (p) {
             document.documentElement.setAttribute('data-palette', p);
           }
@@ -58,7 +58,7 @@ const canonicalUrl = getCanonicalUrl(path);
                 var isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.documentElement.classList.contains('dark');
                 toggle.checked = isCurrentlyDark;
               }
-              var activePal = localStorage.getItem('ytbm-palette') || 'crimson';
+              var activePal = localStorage.getItem('ytbm-palette') || 'pearl';
               var btn = document.querySelector('button[data-palette-id="' + activePal + '"]');
               if (btn) {
                 var color = btn.getAttribute('data-palette-color');

@@ -5,17 +5,17 @@
   --color-ink-800: #1F2124;
   --color-ink-600: #4A4E54;
   --color-ink-500: #6B7076;
-  --color-line-200: #E3E5E8;
-  --color-line-100: #EFF1F3;
-  --color-surface-50: #F7F8F9;
-  --color-surface-100: #EFF1F3;
-  --color-surface-0: #FFFFFF;
-  --color-accent: #E63946;
-  --color-accent-hover: #8B1E2D;
-  --color-accent-light: #F4D35E;
+  --color-line-200: #EADBC8;
+  --color-line-100: #F4E7D5;
+  --color-surface-50: #FFF2DB;
+  --color-surface-100: #FFE5BF;
+  --color-surface-0: #FFFAF3;
+  --color-accent: #F62440;
+  --color-accent-hover: #D9142E;
+  --color-accent-light: #FFE5BF;
   --color-success: #0F7A52;
   --color-warning: #A15C00;
-  --color-danger: #B3261E;
+  --color-danger: #F62440;
 
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: 'Sora', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -35,7 +35,7 @@
 body {
   font-family: var(--font-sans);
   background-color: var(--color-surface-0);
-  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, rgba(230, 57, 70, 0.04), transparent 70%);
+  background-image: radial-gradient(ellipse 80% 40% at 50% -20%, rgba(246, 36, 64, 0.05), transparent 70%);
   color: var(--color-ink-950);
   margin: 0;
   padding: 0;
@@ -167,6 +167,11 @@ html[data-palette="pearl"],
 body[data-palette="pearl"],
 html[data-palette="pearl"] body,
 [data-palette="pearl"] {
+  --color-surface-0: #FFFAF3 !important;
+  --color-surface-50: #FFF2DB !important;
+  --color-surface-100: #FFE5BF !important;
+  --color-line-200: #EADBC8 !important;
+  --color-line-100: #F4E7D5 !important;
   --color-accent: #F62440 !important;
   --color-accent-hover: #D9142E !important;
   --color-accent-light: #FFE5BF !important;

@@ -145,143 +145,183 @@ const featuredTemplates = [
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         Block 2: Three Workflow Doors (asymmetric workbench layout)
+         Block 2: Three Workflow Doors (Locked Scroll Section & Stacking Cards)
     ═══════════════════════════════════════════════════════════ -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 mt-14">
-      <div class="space-y-2 mb-10">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
-          Choose Your Channel Art Door
-        </h2>
-        <p class="text-sm text-ink-600 max-w-[52ch] leading-relaxed">
-          Whether you have finished artwork that needs resizing, want to check an existing banner for mobile cutoff, or need a fresh mobile-tested design.
-        </p>
-      </div>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-line-200 mt-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-      <!-- Asymmetric grid: primary door (Fix) has prominent visual weight -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-
-        <!-- Door 01: Fix - primary, larger visual weight -->
-        <div class="group relative rounded-2xl border-2 border-ink-950 dark:border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-raised transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-accent cursor-pointer active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
+        <!-- Pinned Left Rail: Section Title & Locked Navigation Status -->
+        <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
           <div class="space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0 group-hover:bg-accent transition-colors">
-                Door 01 · Fix
-              </span>
-              <span class="text-[10px] font-mono text-ink-500 pt-0.5">Most used</span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+              Three Studio Doors
             </div>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug group-hover:text-accent transition-colors">
-              Banner Resizer<br class="hidden sm:block" />&amp; Refitter
-            </h3>
-            <p class="text-sm text-ink-600 leading-relaxed">
-              Upload any existing image and fit it to YouTube's exact dimensions with live per-device preview.
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-ink-950 leading-[1.1]">
+              Choose Your Channel Art Door
+            </h2>
+            <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+              Whether you have finished artwork that needs resizing, want to check an existing banner for mobile cutoff, or need a fresh mobile-tested design.
             </p>
-            <ul class="space-y-1.5 text-xs text-ink-600 mt-1">
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Reposition focal subjects safely inside the mobile safe area
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Toggle instant YouTube CDN re-encode compression preview
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Inspect mobile, desktop, tablet, and TV crops in real time
-              </li>
-            </ul>
           </div>
-          <a
-            href="/tools/youtube-banner-resizer"
-            class="w-full h-11 px-5 rounded-lg bg-ink-950 text-surface-0 font-semibold text-xs group-hover:bg-accent transition-colors inline-flex items-center justify-center gap-2 min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
-          >
-            <span>Open Banner Resizer</span>
-            <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-          </a>
+
+          <!-- Visual Locked Step Roadmap -->
+          <div class="hidden lg:block p-4 rounded-xl border border-line-200 bg-surface-50/70 space-y-3 shadow-2xs">
+            <p class="text-[11px] font-mono font-semibold uppercase tracking-wider text-ink-500">
+              Workflow Index
+            </p>
+            <div class="space-y-2 text-xs font-medium">
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0 border border-line-200/80 shadow-2xs text-ink-950">
+                <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">1</span>
+                <span>Door 01 · Fix &amp; Refit</span>
+              </div>
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">2</span>
+                <span>Door 02 · Diagnostic Check</span>
+              </div>
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">3</span>
+                <span>Door 03 · New Generator</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Door 02: Check -->
-        <div class="group relative rounded-2xl border border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-2xs transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-raised hover:border-ink-400/40 cursor-pointer active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
-          <div class="space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-600 border border-line-200">
-                Door 02 · Check
-              </span>
-              <span class="text-[10px] font-mono text-ink-500 pt-0.5">Diagnostic</span>
-            </div>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug group-hover:text-accent transition-colors">
-              Safe Area Checker
-            </h3>
-            <p class="text-sm text-ink-600 leading-relaxed">
-              Instant diagnostic safe-area crop verification with actionable plain-language verdicts.
-            </p>
-            <ul class="space-y-1.5 text-xs text-ink-600 mt-1">
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Immediate per-device verdict on text and logo positioning
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Clear warnings if graphics collide with mobile crop boundaries
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                One-click handoff into the resizer to adjust your layout
-              </li>
-            </ul>
-          </div>
-          <a
-            href="/tools/youtube-banner-checker"
-            class="w-full h-11 px-5 rounded-lg bg-surface-0 text-ink-950 border border-line-200 font-semibold text-xs group-hover:bg-surface-100 group-hover:border-ink-400/40 transition-colors inline-flex items-center justify-center gap-2 min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
-          >
-            <span>Launch Safe Area Checker</span>
-            <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
+        <!-- Right Rail: Stacking Locked Cards Deck -->
+        <div class="lg:col-span-8 space-y-6 relative">
 
-        <!-- Door 03: Create -->
-        <div class="group relative rounded-2xl border border-line-200 bg-surface-0 p-7 sm:p-8 flex flex-col justify-between space-y-6 shadow-2xs transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-raised hover:border-ink-400/40 cursor-pointer active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
-          <div class="space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-600 border border-line-200">
-                Door 03 · Create
-              </span>
-              <span class="text-[10px] font-mono text-ink-500 pt-0.5">Generator</span>
+          <!-- Door 01: Fix (Sticky Locked Card 1) -->
+          <div class="sticky top-20 sm:top-24 z-10 rounded-2xl border-2 border-ink-950 bg-surface-0 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-overlay transition-all duration-300 backdrop-blur-md">
+            <div class="space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0">
+                  Door 01 · Fix
+                </span>
+                <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span>
+                  Most Popular
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
+                Banner Resizer &amp; Refitter
+              </h3>
+              <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                Upload any existing image and fit it to YouTube's exact dimensions with live per-device preview.
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Reposition focal subjects safely inside the mobile safe area
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Toggle instant YouTube CDN re-encode compression preview
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Inspect mobile, desktop, tablet, and TV crops in real time
+                </li>
+              </ul>
             </div>
-            <h3 class="text-xl font-bold tracking-tight text-ink-950 leading-snug group-hover:text-accent transition-colors">
-              Banner Generator
-            </h3>
-            <p class="text-sm text-ink-600 leading-relaxed">
-              Start from curated, geometry-safe templates engineered to fit mobile screens.
-            </p>
-            <ul class="space-y-1.5 text-xs text-ink-600 mt-1">
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Category-specific layouts for gaming, tech, podcasting, and vlogs
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Typography and logos pre-aligned inside the safe center frame
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 w-1 h-1 rounded-full bg-ink-400 flex-shrink-0"></span>
-                Customizable colors, text layers, and background art
-              </li>
-            </ul>
-          </div>
-          <div class="space-y-2">
             <a
-              href="/tools/youtube-banner-maker"
-              class="w-full h-11 px-5 rounded-lg bg-surface-0 text-ink-950 border border-line-200 font-semibold text-xs group-hover:bg-surface-100 group-hover:border-ink-400/40 transition-colors inline-flex items-center justify-center gap-2 min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
+              href="/tools/youtube-banner-resizer"
+              class="w-full sm:w-auto self-start h-12 px-6 rounded-xl bg-accent text-surface-0 font-semibold text-sm hover:bg-accent-hover active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2.5 min-h-[44px] shadow-raised"
             >
-              <span>Design New Banner</span>
-              <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+              <span>Open Banner Resizer</span>
+              <span aria-hidden="true">&rarr;</span>
             </a>
-            <div class="text-center relative z-10">
-              <a href="/templates" class="text-[11px] text-ink-500 hover:text-accent underline underline-offset-2 transition-colors">
+          </div>
+
+          <!-- Door 02: Check (Sticky Locked Card 2) -->
+          <div class="sticky top-24 sm:top-28 z-20 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-overlay transition-all duration-300 backdrop-blur-md">
+            <div class="space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Door 02 · Check
+                </span>
+                <span class="text-xs font-mono text-ink-500">
+                  Instant Diagnostic
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
+                Safe Area Checker
+              </h3>
+              <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                Instant diagnostic safe-area crop verification with actionable plain-language verdicts.
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Immediate per-device verdict on text and logo positioning
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Clear warnings if graphics collide with mobile crop boundaries
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  One-click handoff into the resizer to adjust your layout
+                </li>
+              </ul>
+            </div>
+            <a
+              href="/tools/youtube-banner-checker"
+              class="w-full sm:w-auto self-start h-12 px-6 rounded-xl bg-surface-50 text-ink-950 border border-line-200 font-semibold text-sm hover:bg-surface-100 hover:border-ink-400 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2.5 min-h-[44px] shadow-2xs"
+            >
+              <span>Launch Safe Area Checker</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+
+          <!-- Door 03: Create (Sticky Locked Card 3) -->
+          <div class="sticky top-28 sm:top-32 z-30 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-overlay transition-all duration-300 backdrop-blur-md">
+            <div class="space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Door 03 · Create
+                </span>
+                <span class="text-xs font-mono text-ink-500">
+                  Generator &amp; Presets
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
+                Banner Generator
+              </h3>
+              <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                Start from curated, geometry-safe templates engineered to fit mobile screens.
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Category-specific layouts for gaming, tech, podcasting, and vlogs
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Typography and logos pre-aligned inside the safe center frame
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Customizable colors, text layers, and background art
+                </li>
+              </ul>
+            </div>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <a
+                href="/tools/youtube-banner-maker"
+                class="w-full sm:w-auto h-12 px-6 rounded-xl bg-surface-50 text-ink-950 border border-line-200 font-semibold text-sm hover:bg-surface-100 hover:border-ink-400 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2.5 min-h-[44px] shadow-2xs"
+              >
+                <span>Design New Banner</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a
+                href="/templates"
+                class="text-xs font-semibold text-accent hover:underline underline-offset-4 py-2 px-1"
+              >
                 Or explore curated template gallery &rarr;
               </a>
             </div>
           </div>
+
         </div>
 
       </div>

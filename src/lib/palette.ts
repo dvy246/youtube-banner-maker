@@ -11,6 +11,15 @@ export interface PaletteOption {
 
 export const PALETTES: PaletteOption[] = [
   {
+    id: 'pearl',
+    name: 'Warm Pearl',
+    accentColor: '#F62440',
+    accentHover: '#D9142E',
+    accentLight: '#FFE5BF',
+    description: 'Beige & Punch Red',
+    colors: ['#FFFAF3', '#FFF2DB', '#FFE5BF', '#F62440'],
+  },
+  {
     id: 'crimson',
     name: 'Crimson',
     accentColor: '#E63946',
@@ -18,15 +27,6 @@ export const PALETTES: PaletteOption[] = [
     accentLight: '#F4D35E',
     description: 'YouTube Red & Gold',
     colors: ['#8B1E2D', '#E63946', '#F4D35E', '#457B9D'],
-  },
-  {
-    id: 'pearl',
-    name: 'Warm Pearl',
-    accentColor: '#F62440',
-    accentHover: '#D9142E',
-    accentLight: '#FFE5BF',
-    description: 'Ivory & Crimson Punch',
-    colors: ['#FFFAF3', '#FFF2DB', '#FFE5BF', '#F62440'],
   },
   {
     id: 'noir-rose',
