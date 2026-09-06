@@ -1,0 +1,126 @@
+{
+  "id": "life-fashion-lookbook",
+  "niche": "lifestyle",
+  "name": "Fashion Editorial Lookbook",
+  "description": "Chic blush champagne lookbook layout with dual portrait frames, high-fashion serif title, and clean subtitle.",
+  "preview": "/previews/life-fashion-lookbook.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#FFF1F2",
+        "#FCE7F3",
+        "#FFF5F5"
+      ],
+      "from": "#FFF1F2",
+      "to": "#FFF5F5"
+    },
+    "layers": [
+      {
+        "id": "avatar-circle",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.27,
+        "y": 0.5,
+        "w": 0.105,
+        "h": 0.185,
+        "src": "/avatars/fashion-portrait.jpg",
+        "borderColor": "#E11D48",
+        "borderWidth": 3,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "kicker",
+        "role": "tagline",
+        "type": "text",
+        "text": "EDITORIAL LOOKBOOK",
+        "font": "inter-600",
+        "size": 14,
+        "color": "#BE185D",
+        "align": "center",
+        "x": 0.51,
+        "y": 0.44,
+        "position": {
+          "x": 0.51,
+          "y": 0.44
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "FASHION",
+        "font": "cinzel-700",
+        "size": 66,
+        "color": "#E11D48",
+        "align": "center",
+        "x": 0.51,
+        "y": 0.5,
+        "position": {
+          "x": 0.51,
+          "y": 0.5
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "BEAUTY · STYLE · RUNWAY · CULTURE",
+        "font": "inter-600",
+        "size": 14,
+        "color": "#4B5563",
+        "align": "center",
+        "x": 0.51,
+        "y": 0.555,
+        "position": {
+          "x": 0.51,
+          "y": 0.555
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "avatar-rect",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.74,
+        "y": 0.5,
+        "w": 0.08,
+        "h": 0.22,
+        "src": "/avatars/fashion-lookbook.jpg",
+        "borderColor": "#FFFFFF",
+        "borderWidth": 4,
+        "borderRadius": 8,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "accent-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "color": "#FCE7F3",
+        "opacity": 0.8,
+        "x": 0.74,
+        "y": 0.5,
+        "w": 0.084,
+        "h": 0.228
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "kicker",
+    "avatar-circle",
+    "avatar-rect",
+    "background.gradient"
+  ],
+  "protected": [
+    "accent-box"
+  ],
+  "safeAreaValidated": true
+}

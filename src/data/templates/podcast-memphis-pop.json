@@ -1,0 +1,116 @@
+{
+  "id": "podcast-memphis-pop",
+  "niche": "podcast",
+  "name": "Memphis Pop Talk",
+  "description": "Playful 90s Memphis revival featuring pastel pink grid, yellow comic banner box, black 3D shadows, and headphone avatar.",
+  "preview": "/previews/podcast-memphis-pop.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#FF85A2",
+        "#FFB3C6",
+        "#FFA6C1"
+      ],
+      "from": "#FF85A2",
+      "to": "#FFA6C1"
+    },
+    "layers": [
+      {
+        "id": "shadow-block",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "color": "#000000",
+        "opacity": 0.9,
+        "x": 0.625,
+        "y": 0.505,
+        "w": 0.32,
+        "h": 0.18
+      },
+      {
+        "id": "banner-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "color": "#FEF08A",
+        "opacity": 1.0,
+        "x": 0.62,
+        "y": 0.5,
+        "w": 0.32,
+        "h": 0.18
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.38,
+        "y": 0.5,
+        "w": 0.11,
+        "h": 0.195,
+        "src": "/avatars/memphis-sam.jpg",
+        "borderColor": "#00B4D8",
+        "borderWidth": 5,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "NAVIGATING ADULTHOOD",
+        "font": "syne-800",
+        "size": 40,
+        "color": "#000000",
+        "align": "left",
+        "x": 0.5,
+        "y": 0.47,
+        "position": {
+          "x": 0.5,
+          "y": 0.47
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "with Sam · Raw Stories & Adulting 101",
+        "font": "inter-600",
+        "size": 16,
+        "color": "#1E293B",
+        "align": "left",
+        "x": 0.5,
+        "y": 0.53,
+        "position": {
+          "x": 0.5,
+          "y": 0.53
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-cookie",
+        "colorScheme": "theme-accent",
+        "x": 0.74,
+        "y": 0.58,
+        "scale": 0.72,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "avatar",
+    "background.gradient"
+  ],
+  "protected": [
+    "shadow-block",
+    "banner-box"
+  ],
+  "safeAreaValidated": true
+}

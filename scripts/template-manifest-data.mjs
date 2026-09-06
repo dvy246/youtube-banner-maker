@@ -1914,5 +1914,209 @@ export const TEMPLATE_DATA = {
       tagColor: '#292524',
       accentColor: '#292524'
     }
+  },
+  'vlog-travel-collage': {
+    style: 'multi_photo_collage',
+    kicker: 'Travel Collage',
+    tag1: 'Adventure',
+    tag2: 'Expeditions',
+    cardTitle: 'Eat Sleep Travel',
+    cardMetric: 'Wanderlust',
+    cardDetail: 'Multi-Photo',
+    previewPalette: {
+      bg1: '#0F172A',
+      bg2: '#0369A1',
+      bg3: '#0284C7',
+      titleColor: '#38BDF8',
+      tagColor: '#E0F2FE',
+      accentColor: '#38BDF8'
+    }
+  },
+  'food-culinary-collage': {
+    style: 'multi_photo_collage',
+    kicker: 'Kitchen Collage',
+    tag1: 'Artisan',
+    tag2: 'Gastronomy',
+    cardTitle: 'Prep Cook Feast',
+    cardMetric: 'Farm to Table',
+    cardDetail: 'Multi-Photo',
+    previewPalette: {
+      bg1: '#1C1917',
+      bg2: '#292524',
+      bg3: '#44403C',
+      titleColor: '#F59E0B',
+      tagColor: '#FEF3C7',
+      accentColor: '#F59E0B'
+    }
+  },
+  'fitness-workout-collage': {
+    style: 'multi_photo_collage',
+    kicker: 'Athlete Collage',
+    tag1: 'Strength',
+    tag2: 'Conditioning',
+    cardTitle: 'Train Recover Repeat',
+    cardMetric: 'Peak Fitness',
+    cardDetail: 'Multi-Photo',
+    previewPalette: {
+      bg1: '#0B0F19',
+      bg2: '#1E293B',
+      bg3: '#334155',
+      titleColor: '#F62440',
+      tagColor: '#F8FAFC',
+      accentColor: '#F62440'
+    }
+  },
+  'life-aesthetic-collage': {
+    style: 'multi_photo_collage',
+    kicker: 'Studio Collage',
+    tag1: 'Minimalist',
+    tag2: 'Interior',
+    cardTitle: 'Create Inspire Live',
+    cardMetric: 'Chic Living',
+    cardDetail: 'Multi-Photo',
+    previewPalette: {
+      bg1: '#FAF5EE',
+      bg2: '#F5E6D3',
+      bg3: '#EADBC8',
+      titleColor: '#FAF5EE',
+      tagColor: '#D4D4D8',
+      accentColor: '#18181B'
+    }
+  },
+  'gaming-creator-collage': {
+    style: 'multi_photo_collage',
+    kicker: 'Esports Collage',
+    tag1: 'Streaming',
+    tag2: 'Ranked',
+    cardTitle: 'Grind Stream Win',
+    cardMetric: 'Pro Gaming',
+    cardDetail: 'Multi-Photo',
+    previewPalette: {
+      bg1: '#050510',
+      bg2: '#111827',
+      bg3: '#1E1B4B',
+      titleColor: '#00F0FF',
+      tagColor: '#E0E7FF',
+      accentColor: '#00F0FF'
+    }
+  },
+  'biz-finance-glow': {
+    style: 'neon_glow',
+    kicker: 'Wealth & Strategy',
+    tag1: 'Finance',
+    tag2: 'Investing',
+    cardTitle: 'Smart Capital',
+    cardMetric: 'Market Alpha',
+    cardDetail: 'Executive Frame',
+    previewPalette: {
+      bg1: '#050814',
+      bg2: '#0B1B44',
+      bg3: '#020B20',
+      titleColor: '#FFFFFF',
+      tagColor: '#94A3B8',
+      accentColor: '#00E5FF'
+    }
+  },
+  'life-fashion-lookbook': {
+    style: 'watercolor_bloom',
+    kicker: 'Editorial Lookbook',
+    tag1: 'Runway',
+    tag2: 'Couture',
+    cardTitle: 'Haute Fashion',
+    cardMetric: 'Vogue Style',
+    cardDetail: 'Dual Photo Frame',
+    previewPalette: {
+      bg1: '#FFF1F2',
+      bg2: '#FCE7F3',
+      bg3: '#FFF5F5',
+      titleColor: '#E11D48',
+      tagColor: '#4B5563',
+      accentColor: '#E11D48'
+    }
+  },
+  'biz-entrepreneur-impact': {
+    style: 'velocity_stripe',
+    kicker: 'Growth & Capital',
+    tag1: 'Startups',
+    tag2: 'Scale',
+    cardTitle: 'Miles to Million',
+    cardMetric: 'Impact Driven',
+    cardDetail: 'Presenter Frame',
+    previewPalette: {
+      bg1: '#0B0F19',
+      bg2: '#0284C7',
+      bg3: '#0369A1',
+      titleColor: '#00E5FF',
+      tagColor: '#FFFFFF',
+      accentColor: '#00E5FF'
+    }
+  },
+  'podcast-mindful-path': {
+    style: 'swiss_clean',
+    kicker: 'Lifestyle & Wellness',
+    tag1: 'Wellness',
+    tag2: 'Mindset',
+    cardTitle: 'The Mindful Path',
+    cardMetric: 'Deep Conversations',
+    cardDetail: 'Studio Sofa Frame',
+    previewPalette: {
+      bg1: '#FDFBF7',
+      bg2: '#F4EFE6',
+      bg3: '#EAE3D6',
+      titleColor: '#1C1917',
+      tagColor: '#78716C',
+      accentColor: '#BE185D'
+    }
+  },
+  'food-desi-kitchen': {
+    style: 'deco_luxe',
+    kicker: 'Artisan Kitchen',
+    tag1: 'Desi Flavors',
+    tag2: 'Recipes',
+    cardTitle: 'Eat Desi Food',
+    cardMetric: 'Street Flavors',
+    cardDetail: 'Wood Plank Ribbon',
+    previewPalette: {
+      bg1: '#451A03',
+      bg2: '#78350F',
+      bg3: '#9A3412',
+      titleColor: '#3E1E05',
+      tagColor: '#78350F',
+      accentColor: '#D4A373'
+    }
+  },
+  'vlog-daily-diaries': {
+    style: 'sketch_doodle',
+    kicker: 'Daily Stories',
+    tag1: 'Travel',
+    tag2: 'Memoir',
+    cardTitle: 'Daily Diaries',
+    cardMetric: 'Weekly Vlogs',
+    cardDetail: 'Terracotta Ribbon',
+    previewPalette: {
+      bg1: '#8B5E3C',
+      bg2: '#A26744',
+      bg3: '#784C2F',
+      titleColor: '#9A3412',
+      tagColor: '#431407',
+      accentColor: '#F4C9B4'
+    }
+  },
+  'podcast-memphis-pop': {
+    style: 'halftone_pop',
+    kicker: 'Gen-Z Talk',
+    tag1: 'Adulting',
+    tag2: 'Culture',
+    cardTitle: 'Navigating Adulthood',
+    cardMetric: 'Raw & Unfiltered',
+    cardDetail: '90s Comic Box',
+    previewPalette: {
+      bg1: '#FF85A2',
+      bg2: '#FFB3C6',
+      bg3: '#FFA6C1',
+      titleColor: '#000000',
+      tagColor: '#1E293B',
+      accentColor: '#00B4D8'
+    }
   }
 };

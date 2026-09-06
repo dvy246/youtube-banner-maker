@@ -108,6 +108,18 @@ import aesthetic_pastel from "./aesthetic-pastel.json";
 import white_minimal from "./white-minimal.json";
 import black_stealth from "./black-stealth.json";
 import anime_cyber from "./anime-cyber.json";
+import vlog_travel_collage from "./vlog-travel-collage.json";
+import food_culinary_collage from "./food-culinary-collage.json";
+import fitness_workout_collage from "./fitness-workout-collage.json";
+import life_aesthetic_collage from "./life-aesthetic-collage.json";
+import gaming_creator_collage from "./gaming-creator-collage.json";
+import biz_finance_glow from "./biz-finance-glow.json";
+import life_fashion_lookbook from "./life-fashion-lookbook.json";
+import biz_entrepreneur_impact from "./biz-entrepreneur-impact.json";
+import podcast_mindful_path from "./podcast-mindful-path.json";
+import food_desi_kitchen from "./food-desi-kitchen.json";
+import vlog_daily_diaries from "./vlog-daily-diaries.json";
+import podcast_memphis_pop from "./podcast-memphis-pop.json";
 import type { TemplateManifest } from "../../lib/template";
 
 export const TEMPLATES: TemplateManifest[] = [
@@ -220,4 +232,16 @@ export const TEMPLATES: TemplateManifest[] = [
   white_minimal,
   black_stealth,
   anime_cyber,
+  vlog_travel_collage,
+  food_culinary_collage,
+  fitness_workout_collage,
+  life_aesthetic_collage,
+  gaming_creator_collage,
+  biz_finance_glow,
+  life_fashion_lookbook,
+  biz_entrepreneur_impact,
+  podcast_mindful_path,
+  food_desi_kitchen,
+  vlog_daily_diaries,
+  podcast_memphis_pop,
 ] as unknown as TemplateManifest[];

@@ -1,0 +1,142 @@
+{
+  "id": "life-aesthetic-collage",
+  "niche": "lifestyle",
+  "name": "Studio Aesthetic Collage",
+  "description": "Chic multi-frame photo collage with neutral mats, black architectural borders, and editorial typography.",
+  "preview": "/previews/life-aesthetic-collage.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#FAF5EE",
+        "#F5E6D3",
+        "#EADBC8"
+      ],
+      "from": "#FAF5EE",
+      "to": "#EADBC8"
+    },
+    "layers": [
+      {
+        "id": "frame-l1",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.055,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/avatars/avatar-beauty-creator.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-l2",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.142,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/collage/travel-flatlay.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-r1",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.858,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/backgrounds/life-minimalist.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-r2",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.945,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/avatars/avatar-creative-male.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "center-ribbon",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.27,
+        "y": 0.44,
+        "w": 0.46,
+        "h": 0.12,
+        "color": "#18181B",
+        "opacity": 0.95,
+        "borderRadius": 8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "CREATE. INSPIRE. LIVE",
+        "font": "playfair-700",
+        "size": 44,
+        "color": "#FAF5EE",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.485,
+        "position": {
+          "x": 0.5,
+          "y": 0.485
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "MINIMALIST LIVING & DESIGN DIARIES",
+        "font": "inter-500",
+        "size": 13,
+        "color": "#D4D4D8",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.535,
+        "position": {
+          "x": 0.5,
+          "y": 0.535
+        },
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "frame-l1",
+    "frame-l2",
+    "frame-r1",
+    "frame-r2",
+    "background.gradient"
+  ],
+  "protected": [
+    "center-ribbon"
+  ],
+  "safeAreaValidated": true
+}

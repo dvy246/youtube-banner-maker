@@ -1,0 +1,117 @@
+{
+  "id": "food-desi-kitchen",
+  "niche": "food",
+  "name": "Artisan Desi Kitchen",
+  "description": "Authentic rustic culinary feast layout featuring wood plank ribbon, chef portrait badge, and classic kitchen typography.",
+  "preview": "/previews/food-desi-kitchen.svg",
+  "scene": {
+    "background": {
+      "type": "image",
+      "src": "/backgrounds/desi-feast.jpg",
+      "color": "#451A03"
+    },
+    "layers": [
+      {
+        "id": "wood-ribbon",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "color": "#D4A373",
+        "opacity": 0.94,
+        "x": 0.5,
+        "y": 0.5,
+        "w": 1.0,
+        "h": 0.285
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.5,
+        "y": 0.5,
+        "w": 0.11,
+        "h": 0.195,
+        "src": "/avatars/desi-chef.jpg",
+        "borderColor": "#78350F",
+        "borderWidth": 4,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "chef-name",
+        "role": "tagline",
+        "type": "text",
+        "text": "NIDA YASEEN",
+        "font": "syne-800",
+        "size": 40,
+        "color": "#451A03",
+        "align": "center",
+        "x": 0.32,
+        "y": 0.5,
+        "position": {
+          "x": 0.32,
+          "y": 0.5
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "EAT DESI FOOD",
+        "font": "syne-800",
+        "size": 40,
+        "color": "#3E1E05",
+        "align": "center",
+        "x": 0.68,
+        "y": 0.485,
+        "position": {
+          "x": 0.68,
+          "y": 0.485
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Authentic Recipes & Street Flavors",
+        "font": "inter-600",
+        "size": 14,
+        "color": "#78350F",
+        "align": "center",
+        "x": 0.68,
+        "y": 0.54,
+        "position": {
+          "x": 0.68,
+          "y": 0.54
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "divider-line",
+        "role": "shape",
+        "type": "shape",
+        "shape": "line",
+        "color": "#78350F",
+        "opacity": 0.6,
+        "x": 0.32,
+        "y": 0.44,
+        "w": 0.22,
+        "h": 0.002
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "chef-name",
+    "avatar",
+    "background.image"
+  ],
+  "protected": [
+    "wood-ribbon",
+    "divider-line"
+  ],
+  "safeAreaValidated": true
+}

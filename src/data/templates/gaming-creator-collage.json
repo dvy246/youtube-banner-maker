@@ -1,0 +1,142 @@
+{
+  "id": "gaming-creator-collage",
+  "niche": "gaming",
+  "name": "Pro Esports Collage",
+  "description": "High-octane esports collage featuring stream setup, arena gameplay, and tournament highlights.",
+  "preview": "/previews/gaming-creator-collage.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#050510",
+        "#111827",
+        "#1E1B4B"
+      ],
+      "from": "#050510",
+      "to": "#1E1B4B"
+    },
+    "layers": [
+      {
+        "id": "frame-l1",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.055,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/avatars/avatar-gaming-streamer.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-l2",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.142,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/backgrounds/gaming-neon.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-r1",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.858,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/backgrounds/gaming-tactical.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-r2",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.945,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/avatars/avatar-gaming-streamer.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "center-ribbon",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.26,
+        "y": 0.44,
+        "w": 0.48,
+        "h": 0.12,
+        "color": "#000000",
+        "opacity": 0.95,
+        "borderRadius": 8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "GRIND. STREAM. WIN",
+        "font": "sora-700",
+        "size": 46,
+        "color": "#00F0FF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.485,
+        "position": {
+          "x": 0.5,
+          "y": 0.485
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "HIGH-ELO RANKED GAMEPLAY & TOURNAMENT HIGHLIGHTS",
+        "font": "inter-600",
+        "size": 13,
+        "color": "#E0E7FF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.535,
+        "position": {
+          "x": 0.5,
+          "y": 0.535
+        },
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "frame-l1",
+    "frame-l2",
+    "frame-r1",
+    "frame-r2",
+    "background.gradient"
+  ],
+  "protected": [
+    "center-ribbon"
+  ],
+  "safeAreaValidated": true
+}

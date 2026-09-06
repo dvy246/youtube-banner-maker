@@ -1,0 +1,142 @@
+{
+  "id": "fitness-workout-collage",
+  "niche": "fitness",
+  "name": "Iron Athlete Collage",
+  "description": "High-octane multi-frame training collage featuring heavy lifting, sprint mechanics, and recovery.",
+  "preview": "/previews/fitness-workout-collage.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#0B0F19",
+        "#1E293B",
+        "#334155"
+      ],
+      "from": "#0B0F19",
+      "to": "#334155"
+    },
+    "layers": [
+      {
+        "id": "frame-l1",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.055,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/avatars/avatar-fitness-trainer.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-l2",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.142,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/backgrounds/fitness-grind.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-r1",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.858,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/collage/travel-kayak.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "frame-r2",
+        "role": "frame",
+        "type": "frame",
+        "shape": "rect",
+        "x": 0.945,
+        "y": 0.5,
+        "w": 0.082,
+        "h": 0.285,
+        "src": "/avatars/avatar-fitness-trainer.jpg",
+        "borderColor": "#000000",
+        "borderWidth": 6,
+        "borderRadius": 0,
+        "safeAreaConstrained": false
+      },
+      {
+        "id": "center-ribbon",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.26,
+        "y": 0.44,
+        "w": 0.48,
+        "h": 0.12,
+        "color": "#000000",
+        "opacity": 0.95,
+        "borderRadius": 8
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "TRAIN. RECOVER. REPEAT",
+        "font": "sora-700",
+        "size": 44,
+        "color": "#F62440",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.485,
+        "position": {
+          "x": 0.5,
+          "y": 0.485
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "STRENGTH CONDITIONING & HYBRID ATHLETIC PERFORMANCE",
+        "font": "inter-600",
+        "size": 13,
+        "color": "#F8FAFC",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.535,
+        "position": {
+          "x": 0.5,
+          "y": 0.535
+        },
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "frame-l1",
+    "frame-l2",
+    "frame-r1",
+    "frame-r2",
+    "background.gradient"
+  ],
+  "protected": [
+    "center-ribbon"
+  ],
+  "safeAreaValidated": true
+}

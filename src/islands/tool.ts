@@ -2236,18 +2236,20 @@ class ToolIsland {
       this.currentTemplateNicheEl.textContent = tmpl.niche;
     }
 
-    // Preload frame photo if defined
-    const frame = this.scene.layers.find((l) => l.type === 'frame' && l.src) as PhotoFrameLayer | undefined;
-    if (frame && frame.src && !this.images.has(frame.src)) {
-      const fImg = new Image();
-      fImg.onload = () => {
-        this.images.set(frame.src!, fImg);
-        this.scheduleFrame();
-      };
-      fImg.src = frame.src;
-      if (fImg.complete && fImg.naturalWidth > 0) {
-        this.images.set(frame.src, fImg);
-        this.scheduleFrame();
+    // Preload all frame photos if defined
+    const frames = this.scene.layers.filter((l) => l.type === 'frame' && l.src) as PhotoFrameLayer[];
+    for (const frame of frames) {
+      if (frame.src && !this.images.has(frame.src)) {
+        const fImg = new Image();
+        fImg.onload = () => {
+          this.images.set(frame.src!, fImg);
+          this.scheduleFrame();
+        };
+        fImg.src = frame.src;
+        if (fImg.complete && fImg.naturalWidth > 0) {
+          this.images.set(frame.src, fImg);
+          this.scheduleFrame();
+        }
       }
     }
 

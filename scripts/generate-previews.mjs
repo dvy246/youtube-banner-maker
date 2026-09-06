@@ -76,6 +76,14 @@ const AVATAR_MAP = {
   gaming: 'avatar-gaming-streamer-thumb.jpg',
   podcast: 'avatar-podcast-host-thumb.jpg',
   beauty: 'avatar-beauty-creator-thumb.jpg',
+  'finance-exec': 'finance-executive-thumb.jpg',
+  'fashion-portrait': 'fashion-portrait-thumb.jpg',
+  'fashion-lookbook': 'fashion-lookbook-thumb.jpg',
+  'entrepreneur-presenter': 'entrepreneur-presenter-thumb.jpg',
+  'mindful-host': 'mindful-host-thumb.jpg',
+  'desi-chef': 'desi-chef-thumb.jpg',
+  'vlog-bilal': 'vlog-bilal-thumb.jpg',
+  'memphis-sam': 'memphis-sam-thumb.jpg',
 };
 
 const avatarDataUris = {};
@@ -83,6 +91,21 @@ for (const [k, filename] of Object.entries(AVATAR_MAP)) {
   const p = path.resolve('public/avatars', filename);
   if (fs.existsSync(p)) {
     avatarDataUris[k] = `data:image/jpeg;base64,${fs.readFileSync(p).toString('base64')}`;
+  }
+}
+
+const COLLAGE_MAP = {
+  waterfall: 'travel-waterfall-thumb.jpg',
+  kayak: 'travel-kayak-thumb.jpg',
+  flatlay: 'travel-flatlay-thumb.jpg',
+  summit: 'travel-summit-thumb.jpg',
+};
+
+const collageDataUris = {};
+for (const [k, filename] of Object.entries(COLLAGE_MAP)) {
+  const p = path.resolve('public/collage', filename);
+  if (fs.existsSync(p)) {
+    collageDataUris[k] = `data:image/jpeg;base64,${fs.readFileSync(p).toString('base64')}`;
   }
 }
 
@@ -144,6 +167,13 @@ function getAvatarKeyForTemplate(id, niche = '') {
     'life-ceramic': 'beauty',
     'life-botanical': 'beauty',
     'life-coffee': 'beauty',
+    'biz-finance-glow': 'finance-exec',
+    'life-fashion-lookbook': 'fashion-portrait',
+    'biz-entrepreneur-impact': 'entrepreneur-presenter',
+    'podcast-mindful-path': 'mindful-host',
+    'food-desi-kitchen': 'desi-chef',
+    'vlog-daily-diaries': 'vlog-bilal',
+    'podcast-memphis-pop': 'memphis-sam',
   };
   if (specific[id]) return specific[id];
   if (niche === 'food') return 'chef';
@@ -254,8 +284,10 @@ const ARCHETYPE_MAP = {
   'gaming-speedrun': 'velocity_stripe',
   'gaming-voxel': 'sketch_doodle',
   'gaming-rpg': 'paint_stroke',
+  'gaming-creator-collage': 'multi_photo_collage',
 
-  // Vlog (10)
+  // Vlog (11)
+  'vlog-travel-collage': 'multi_photo_collage',
   'vlog-golden-hour': 'frame_ribbon_vlog',  // Hannah Porter style
   'vlog-coast': 'frame_ribbon_vlog',
   'vlog-editorial': 'frame_center_card',    // Richard Manuel style
@@ -279,8 +311,10 @@ const ARCHETYPE_MAP = {
   'life-japandi': 'swiss_clean',
   'life-minimalist': 'swiss_clean',
   'life-monochrome': 'bold_split',
+  'life-aesthetic-collage': 'multi_photo_collage',
 
-  // Fitness (10)
+  // Fitness (11)
+  'fitness-workout-collage': 'multi_photo_collage',
   'fitness-titan': 'frame_center_card',
   'fitness-calisthenics': 'frame_left_modern',
   'fitness-flow': 'frame_ribbon_vlog',
@@ -292,7 +326,8 @@ const ARCHETYPE_MAP = {
   'fitness-raw': 'bold_split',
   'fitness-mobility': 'watercolor_bloom',
 
-  // Food (12)
+  // Food (13)
+  'food-culinary-collage': 'multi_photo_collage',
   'food-chef': 'frame_center_card',
   'food-italian': 'frame_center_card',
   'food-pastry': 'frame_ribbon_vlog',
@@ -883,6 +918,111 @@ for (const file of files) {
       <g transform="translate(1140, 840)">
         ${renderAnimatedSubscribeBtn(0, 0, accentColor || '#E60000', 0.95)}
       </g>
+    `;
+  }
+  // =========================================================================
+  // ARCHETYPE 17: MULTI-PHOTO COLLAGE (Dual Flanking Black Framed Panels)
+  // =========================================================================
+  else if (style === 'multi_photo_collage') {
+    let img1 = collageDataUris['waterfall'] || avatarDataUris['creative'];
+    let img2 = collageDataUris['kayak'] || avatarDataUris['chef'];
+    let img3 = collageDataUris['flatlay'] || avatarDataUris['beauty'];
+    let img4 = collageDataUris['summit'] || avatarDataUris['fitness'];
+
+    if (json.niche === 'food') {
+      img1 = avatarDataUris['chef'] || img1;
+      img2 = collageDataUris['flatlay'] || img2;
+      img3 = collageDataUris['waterfall'] || img3;
+      img4 = avatarDataUris['chef'] || img4;
+    } else if (json.niche === 'fitness') {
+      img1 = avatarDataUris['fitness'] || img1;
+      img2 = collageDataUris['kayak'] || img2;
+      img3 = collageDataUris['summit'] || img3;
+      img4 = avatarDataUris['fitness'] || img4;
+    } else if (json.niche === 'lifestyle') {
+      img1 = avatarDataUris['beauty'] || img1;
+      img2 = collageDataUris['flatlay'] || img2;
+      img3 = avatarDataUris['creative'] || img3;
+      img4 = avatarDataUris['beauty'] || img4;
+    } else if (json.niche === 'gaming') {
+      img1 = avatarDataUris['gaming'] || img1;
+      img2 = collageDataUris['kayak'] || img2;
+      img3 = collageDataUris['summit'] || img3;
+      img4 = avatarDataUris['gaming'] || img4;
+    }
+
+    const mountainPaths = (json.niche === 'vlog' || json.id.includes('travel')) ? `
+      <!-- Far Mountain Ridge Silhouette -->
+      <path d="M 0 920 Q 380 680 720 840 T 1440 760 T 2160 810 T 2560 740 L 2560 1440 L 0 1440 Z" fill="#0369A1" opacity="0.35" />
+      <!-- Mid Mountain Ridge Silhouette -->
+      <path d="M 0 990 Q 420 820 860 960 T 1680 880 T 2560 920 L 2560 1440 L 0 1440 Z" fill="#075985" opacity="0.55" />
+      <!-- Near Mountain Foreground Silhouette -->
+      <path d="M 0 1100 Q 560 980 1200 1080 T 2560 1020 L 2560 1440 L 0 1440 Z" fill="#0C4A6E" opacity="0.75" />
+    ` : '';
+
+    bodySvg = `
+      ${mountainPaths}
+
+      <!-- Left Dual-Photo Panel with Bold Architectural Black Border -->
+      <g transform="translate(60, 508)">
+        <!-- Outer Black Border Frame -->
+        <rect x="0" y="0" width="440" height="424" rx="4" fill="#000000" filter="drop-shadow(0 16px 32px rgba(0,0,0,0.45))" />
+        <!-- Inner Photo 1 -->
+        <g clip-path="url(#clip-l1-${json.id})">
+          <image href="${img1}" x="8" y="8" width="208" height="408" preserveAspectRatio="xMidYMid slice" />
+        </g>
+        <!-- Center Divider Border -->
+        <line x1="220" y1="0" x2="220" y2="424" stroke="#000000" stroke-width="8" />
+        <!-- Inner Photo 2 -->
+        <g clip-path="url(#clip-l2-${json.id})">
+          <image href="${img2}" x="224" y="8" width="208" height="408" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Right Dual-Photo Panel with Bold Architectural Black Border -->
+      <g transform="translate(2060, 508)">
+        <!-- Outer Black Border Frame -->
+        <rect x="0" y="0" width="440" height="424" rx="4" fill="#000000" filter="drop-shadow(0 16px 32px rgba(0,0,0,0.45))" />
+        <!-- Inner Photo 3 -->
+        <g clip-path="url(#clip-r1-${json.id})">
+          <image href="${img3}" x="8" y="8" width="208" height="408" preserveAspectRatio="xMidYMid slice" />
+        </g>
+        <!-- Center Divider Border -->
+        <line x1="220" y1="0" x2="220" y2="424" stroke="#000000" stroke-width="8" />
+        <!-- Inner Photo 4 -->
+        <g clip-path="url(#clip-r2-${json.id})">
+          <image href="${img4}" x="224" y="8" width="208" height="408" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </g>
+
+      <!-- Center Solid Black Title Ribbon (Safe Area Focused) -->
+      <g transform="translate(680, 626)">
+        <rect x="0" y="0" width="1200" height="188" rx="10" fill="#000000" opacity="0.96" filter="drop-shadow(0 20px 40px rgba(0,0,0,0.6))" />
+        <!-- Thin Accent Inset Border -->
+        <rect x="8" y="8" width="1184" height="172" rx="6" fill="none" stroke="${accentColor}" stroke-width="2" opacity="0.4" />
+        <text x="600" y="96" fill="${titleColor}" font-family="'Syne', 'Inter', system-ui, sans-serif" font-size="96" font-weight="900" letter-spacing="4px" text-anchor="middle">${escapeXml(titleText)}</text>
+        <text x="600" y="148" fill="${tagColor}" font-family="'Inter', system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="2px" text-anchor="middle">${escapeXml(taglineText)}</text>
+      </g>
+
+      <!-- Animated Subscribe Button -->
+      <g transform="translate(1140, 835)">
+        ${renderAnimatedSubscribeBtn(0, 0, '#E60000', 0.95)}
+      </g>
+    `;
+
+    defsSvg += `
+      <clipPath id="clip-l1-${json.id}">
+        <rect x="8" y="8" width="208" height="408" rx="2" />
+      </clipPath>
+      <clipPath id="clip-l2-${json.id}">
+        <rect x="224" y="8" width="208" height="408" rx="2" />
+      </clipPath>
+      <clipPath id="clip-r1-${json.id}">
+        <rect x="8" y="8" width="208" height="408" rx="2" />
+      </clipPath>
+      <clipPath id="clip-r2-${json.id}">
+        <rect x="224" y="8" width="208" height="408" rx="2" />
+      </clipPath>
     `;
   } else {
     // Swiss Clean default

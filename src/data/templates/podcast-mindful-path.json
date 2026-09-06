@@ -1,0 +1,121 @@
+{
+  "id": "podcast-mindful-path",
+  "niche": "podcast",
+  "name": "Mindful Studio Podcast",
+  "description": "Tranquil oatmeal studio palette with elegant editorial serif typography, creator sofa portrait, and clean conversations tag.",
+  "preview": "/previews/podcast-mindful-path.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 180,
+      "stops": [
+        "#FDFBF7",
+        "#F4EFE6",
+        "#EAE3D6"
+      ],
+      "from": "#FDFBF7",
+      "to": "#EAE3D6"
+    },
+    "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.11,
+        "h": 0.195,
+        "src": "/avatars/mindful-host.jpg",
+        "borderColor": "#BE185D",
+        "borderWidth": 3,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "kicker",
+        "role": "tagline",
+        "type": "text",
+        "text": "THE MINDFUL",
+        "font": "cinzel-700",
+        "size": 28,
+        "color": "#BE185D",
+        "align": "center",
+        "x": 0.52,
+        "y": 0.445,
+        "position": {
+          "x": 0.52,
+          "y": 0.445
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "PATH PODCAST",
+        "font": "cinzel-700",
+        "size": 48,
+        "color": "#1C1917",
+        "align": "center",
+        "x": 0.52,
+        "y": 0.505,
+        "position": {
+          "x": 0.52,
+          "y": 0.505
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "LIFESTYLE & WELLNESS CONVERSATIONS",
+        "font": "inter-600",
+        "size": 13,
+        "color": "#78716C",
+        "align": "center",
+        "x": 0.52,
+        "y": 0.555,
+        "position": {
+          "x": 0.52,
+          "y": 0.555
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.74,
+        "y": 0.5,
+        "scale": 0.72,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "zen-plate",
+        "role": "shape",
+        "type": "shape",
+        "shape": "line",
+        "color": "#BE185D",
+        "opacity": 0.2,
+        "x": 0.52,
+        "y": 0.585,
+        "w": 0.3,
+        "h": 0.002
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "kicker",
+    "avatar",
+    "background.gradient"
+  ],
+  "protected": [
+    "zen-plate"
+  ],
+  "safeAreaValidated": true
+}

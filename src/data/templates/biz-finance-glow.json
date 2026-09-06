@@ -1,0 +1,121 @@
+{
+  "id": "biz-finance-glow",
+  "niche": "business",
+  "name": "Finance Executive Glow",
+  "description": "Executive dark blue theme with luminous neon chart lines, high-contrast typography, and circular presenter frame.",
+  "preview": "/previews/biz-finance-glow.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#050814",
+        "#0B1B44",
+        "#020B20"
+      ],
+      "from": "#050814",
+      "to": "#020B20"
+    },
+    "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.685,
+        "y": 0.5,
+        "w": 0.11,
+        "h": 0.195,
+        "src": "/avatars/finance-executive.jpg",
+        "borderColor": "#00E5FF",
+        "borderWidth": 4,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "kicker",
+        "role": "tagline",
+        "type": "text",
+        "text": "WEALTH & STRATEGY",
+        "font": "inter-600",
+        "size": 14,
+        "color": "#38BDF8",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.445,
+        "position": {
+          "x": 0.28,
+          "y": 0.445
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "FINANCE",
+        "font": "sora-700",
+        "size": 56,
+        "color": "#FFFFFF",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.5,
+        "position": {
+          "x": 0.28,
+          "y": 0.5
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Smart Decisions · Market Insights",
+        "font": "inter-600",
+        "size": 18,
+        "color": "#94A3B8",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.555,
+        "position": {
+          "x": 0.28,
+          "y": 0.555
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.74,
+        "y": 0.5,
+        "scale": 0.72,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "chart-plate",
+        "role": "shape",
+        "type": "shape",
+        "shape": "line",
+        "color": "#00E5FF",
+        "opacity": 0.25,
+        "x": 0.45,
+        "y": 0.58,
+        "w": 0.4,
+        "h": 0.002
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "kicker",
+    "avatar",
+    "background.gradient"
+  ],
+  "protected": [
+    "chart-plate"
+  ],
+  "safeAreaValidated": true
+}

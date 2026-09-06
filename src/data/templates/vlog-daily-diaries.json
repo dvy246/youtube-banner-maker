@@ -1,0 +1,116 @@
+{
+  "id": "vlog-daily-diaries",
+  "niche": "vlog",
+  "name": "Warm Daily Diaries",
+  "description": "Earthy terracotta palette featuring central horizontal ribbon, stylish script title, and creator circular badge frame.",
+  "preview": "/previews/vlog-daily-diaries.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#8B5E3C",
+        "#A26744",
+        "#784C2F"
+      ],
+      "from": "#8B5E3C",
+      "to": "#784C2F"
+    },
+    "layers": [
+      {
+        "id": "center-ribbon",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "color": "#F4C9B4",
+        "opacity": 0.95,
+        "x": 0.5,
+        "y": 0.5,
+        "w": 1.0,
+        "h": 0.285
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.72,
+        "y": 0.5,
+        "w": 0.11,
+        "h": 0.195,
+        "src": "/avatars/vlog-bilal.jpg",
+        "borderColor": "#FFFFFF",
+        "borderWidth": 4,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "Daily Diaries",
+        "font": "lora-600",
+        "size": 52,
+        "color": "#9A3412",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.475,
+        "position": {
+          "x": 0.28,
+          "y": 0.475
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "Vlogger · Travel, Life & Weekly Stories",
+        "font": "inter-600",
+        "size": 16,
+        "color": "#431407",
+        "align": "left",
+        "x": 0.28,
+        "y": 0.54,
+        "position": {
+          "x": 0.28,
+          "y": 0.54
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.56,
+        "y": 0.54,
+        "scale": 0.7,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "accent-rule",
+        "role": "shape",
+        "type": "shape",
+        "shape": "line",
+        "color": "#9A3412",
+        "opacity": 0.4,
+        "x": 0.42,
+        "y": 0.59,
+        "w": 0.28,
+        "h": 0.002
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "avatar",
+    "background.gradient"
+  ],
+  "protected": [
+    "center-ribbon",
+    "accent-rule"
+  ],
+  "safeAreaValidated": true
+}

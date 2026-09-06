@@ -1,0 +1,121 @@
+{
+  "id": "biz-entrepreneur-impact",
+  "niche": "business",
+  "name": "Entrepreneur Impact",
+  "description": "Electric cyan and midnight charcoal angular design with presenter portrait frame, high-impact headline, and milestone tags.",
+  "preview": "/previews/biz-entrepreneur-impact.svg",
+  "scene": {
+    "background": {
+      "type": "gradient",
+      "angle": 120,
+      "stops": [
+        "#0B0F19",
+        "#0284C7",
+        "#0369A1"
+      ],
+      "from": "#0B0F19",
+      "to": "#0369A1"
+    },
+    "layers": [
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "circle",
+        "x": 0.28,
+        "y": 0.5,
+        "w": 0.11,
+        "h": 0.195,
+        "src": "/avatars/entrepreneur-presenter.jpg",
+        "borderColor": "#00E5FF",
+        "borderWidth": 4,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "kicker",
+        "role": "tagline",
+        "type": "text",
+        "text": "GROWTH & CAPITAL",
+        "font": "inter-600",
+        "size": 14,
+        "color": "#38BDF8",
+        "align": "left",
+        "x": 0.42,
+        "y": 0.445,
+        "position": {
+          "x": 0.42,
+          "y": 0.445
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "MILES TO MILLION",
+        "font": "syne-800",
+        "size": 54,
+        "color": "#00E5FF",
+        "align": "left",
+        "x": 0.42,
+        "y": 0.5,
+        "position": {
+          "x": 0.42,
+          "y": 0.5
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "tagline",
+        "role": "tagline",
+        "type": "text",
+        "text": "• IMAGINE • INVENT • IMPACT",
+        "font": "inter-600",
+        "size": 16,
+        "color": "#FFFFFF",
+        "align": "left",
+        "x": 0.42,
+        "y": 0.555,
+        "position": {
+          "x": 0.42,
+          "y": 0.555
+        },
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.74,
+        "y": 0.5,
+        "scale": 0.72,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "angular-plate",
+        "role": "shape",
+        "type": "shape",
+        "shape": "line",
+        "color": "#00E5FF",
+        "opacity": 0.3,
+        "x": 0.56,
+        "y": 0.58,
+        "w": 0.35,
+        "h": 0.002
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "tagline",
+    "kicker",
+    "avatar",
+    "background.gradient"
+  ],
+  "protected": [
+    "angular-plate"
+  ],
+  "safeAreaValidated": true
+}

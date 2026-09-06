@@ -130,7 +130,15 @@ const canonicalUrl = getCanonicalUrl(path);
       ))
     }
   </head>
-  <body class="min-h-screen flex flex-col bg-surface-0 text-ink-950 antialiased selection:bg-accent/10 selection:text-accent">
+  <body class="min-h-screen flex flex-col bg-surface-0 text-ink-950 antialiased selection:bg-accent/10 selection:text-accent relative">
+    <!-- Ambient Artisanal Gradient Background Animation (Zero-JS, 60fps GPU) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+      <div class="oklch-gradient-bg absolute inset-0 w-full h-full" />
+      <div class="craft-orb craft-orb-1 absolute -top-24 -left-20 w-[500px] h-[500px] rounded-full blur-[90px] opacity-50 dark:opacity-40" />
+      <div class="craft-orb craft-orb-2 absolute top-1/4 -right-24 w-[550px] h-[550px] rounded-full blur-[90px] opacity-45 dark:opacity-35" />
+      <div class="craft-orb craft-orb-3 absolute -bottom-24 left-1/3 w-[600px] h-[600px] rounded-full blur-[90px] opacity-40 dark:opacity-35" />
+    </div>
+
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-ink-950 focus:text-surface-0 focus:rounded-md focus:shadow-md focus:text-sm focus:font-medium"
@@ -138,6 +146,8 @@ const canonicalUrl = getCanonicalUrl(path);
       Skip to content
     </a>
 
-    <slot />
+    <div class="relative z-1 flex flex-col flex-1">
+      <slot />
+    </div>
   </body>
 </html>
