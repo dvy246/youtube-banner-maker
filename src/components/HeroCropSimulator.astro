@@ -190,7 +190,7 @@ const tabs = [
           <!-- 16:9 Photographic Backdrop -->
           <img
             src={b.image}
-            alt={b.channelName}
+            alt={`YouTube banner preview for ${b.channelName} (${b.label})`}
             class="art-backdrop-img"
             loading={b.id === 'editorial' ? 'eager' : 'lazy'}
             fetchpriority={b.id === 'editorial' ? 'high' : undefined}

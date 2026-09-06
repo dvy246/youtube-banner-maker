@@ -6,7 +6,7 @@ import SpecTable from '../components/SpecTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import HeroCropSimulator from '../components/HeroCropSimulator.astro';
 import TemplateCard from '../components/TemplateCard.astro';
-import { STATIC_PAGES_SEO, getWebSiteSchema, getOrganizationSchema } from '../lib/seo';
+import { STATIC_PAGES_SEO, getWebSiteSchema, getOrganizationSchema, getSoftwareAppSchema } from '../lib/seo';
 import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES } from '../lib/spec';
 import { getTemplate, type TemplateManifest } from '../lib/template';
 
@@ -16,6 +16,11 @@ const seo = STATIC_PAGES_SEO[path];
 const jsonLd = [
   getWebSiteSchema(),
   getOrganizationSchema(),
+  getSoftwareAppSchema(
+    'YouTube Banner Maker',
+    'Free client-side YouTube banner maker, resizer, and safe area checker tool.',
+    '/'
+  ),
 ];
 
 const desktopHeight = Math.round(DEVICES.desktop.h * CANVAS.height);
@@ -606,6 +611,161 @@ const featuredTemplates = [
             </a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 5.5: Deep Dive: YouTube Banner Size & Channel Art Engineering
+         Comprehensive 600+ word on-page SEO guide
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200">
+      <div class="space-y-4 max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          Comprehensive Sizing &amp; Design Manual
+        </div>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+          The Definitive Guide to YouTube Banner Size, Safe Areas &amp; Channel Art
+        </h2>
+        <p class="text-base sm:text-lg text-ink-600 leading-relaxed font-normal">
+          Everything you need to know about official dimensions, multi-device viewport cropping, aspect ratio math, and crafting high-converting channel banners that never get cut off.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+
+        <!-- Column 1: Core Sizing & Safe Area Diagnostics -->
+        <div class="space-y-8">
+          <!-- Article Card 1 -->
+          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              What Size Is a YouTube Banner? Dimensions &amp; Upload Specifications
+            </h3>
+            <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+              <p>
+                If you are asking <strong class="text-ink-950 font-semibold">what size is a youtube banner</strong>, the official standard <strong class="text-ink-950 font-semibold">youtube banner size</strong> recommended by YouTube Studio is <span class="font-mono font-semibold text-ink-900">{CANVAS.width} × {CANVAS.height} pixels</span> with a widescreen <strong class="text-ink-950 font-semibold">16:9 aspect ratio</strong>. YouTube enforces concrete boundaries on every uploaded <strong class="text-ink-950 font-semibold">youtube banner image</strong>: your graphic file must have a minimum resolution of <span class="font-mono font-semibold text-ink-900">2048 × 1152 pixels</span> and a maximum file weight of <span class="font-mono font-semibold text-ink-900">6 MB</span> in PNG, JPEG, or non-animated GIF format.
+              </p>
+              <p>
+                A widespread misconception involves the <strong class="text-ink-950 font-semibold">1024x576 youtube banner</strong> (or <strong class="text-ink-950 font-semibold">1024 x 576 pixels youtube banner</strong>). While 1024 × 576 shares the exact mathematical 16:9 aspect ratio, uploading this resolution triggers an immediate rejection inside YouTube Studio. YouTube requires an absolute minimum upload floor of a <strong class="text-ink-950 font-semibold">2048 x 1152 youtube banner</strong>. For the sharpest multi-device presentation, you should always design at the full {CANVAS.width} × {CANVAS.height} px specification.
+              </p>
+              <div class="p-4 rounded-xl bg-surface-50 border border-line-200 space-y-2 mt-4">
+                <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-ink-950">
+                  YouTube Banner Size for All Devices at a Glance
+                </h4>
+                <ul class="text-xs text-ink-600 space-y-1.5">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Smart TVs (16:9 Full Canvas):</strong> {CANVAS.width} × {CANVAS.height} px &mdash; 100% of the canvas is visible exclusively on television sets and console apps.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Desktop Viewport Ribbon:</strong> {CANVAS.width} × {desktopHeight} px &mdash; crops off the top and bottom ~35% margins, leaving a panoramic header band.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Tablet Viewport:</strong> {tabletWidth} × {desktopHeight} px &mdash; clips side graphics compared to desktop while preserving vertical ribbon height.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Mobile Safe Area:</strong> {SAFE_PX.full.width} × {SAFE_PX.full.height} px &mdash; the centered core visible across every smartphone, tablet, computer, and TV screen.</span>
+                  </li>
+                </ul>
+              </div>
+              <p>
+                Accounting for these responsive <strong class="text-ink-950 font-semibold">youtube banner dimensions</strong> is critical because YouTube never scales down your entire canvas for mobile. It carves out specific crops dynamically depending on screen size.
+              </p>
+            </div>
+          </article>
+
+          <!-- Article Card 2 -->
+          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              The Mobile Safe Area: Why Your YouTube Banner Gets Cut Off
+            </h3>
+            <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+              <p>
+                More than 70% of YouTube views originate on mobile devices and tablet apps. The centered <span class="font-mono font-semibold text-accent">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</span> bounding box represents YouTube's universal safe area. When channel artwork appears cut off, disjointed, or missing vital text on mobile phones, it is almost invariably because logos, names, social media handles, or face portraits were placed outside this safe rectangle.
+              </p>
+              <p>
+                If you have existing artwork that suffers from mobile truncation, an interactive <strong class="text-ink-950 font-semibold">youtube banner resizer</strong> allows you to reposition your focal subject safely into the center, rescale artwork with aspect ratio constraints, and simulate the exact crop across mobile, desktop, tablet, and TV before re-uploading.
+              </p>
+              <p>
+                When starting from scratch, working with a purpose-built <strong class="text-ink-950 font-semibold">youtube banner creator</strong> prevents positioning mistakes by visually locking all typography and crucial branding layers directly inside the safe coordinates.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Column 2: Design Aesthetics & Channel Art Creator Workflows -->
+        <div class="space-y-8">
+          <!-- Article Card 3 -->
+          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              How to Make a YouTube Banner: Ideas, Aesthetics &amp; Backgrounds
+            </h3>
+            <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+              <p>
+                Discovering <strong class="text-ink-950 font-semibold">how to make a youtube banner</strong> that converts casual viewers into lifelong subscribers hinges on clear visual hierarchy, legible typography, and niche-appropriate aesthetics. Consider these proven channel art strategies:
+              </p>
+              <ul class="text-xs text-ink-600 space-y-2.5 my-3 pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                  <span><strong class="text-ink-900">Select an Atmospheric YouTube Banner Background:</strong> Busy, over-saturated graphics create visual noise that makes text unreadable. Choose a textured <strong class="text-ink-900">youtube banner background</strong> &mdash; such as dark brushed metal, subtle architectural gradients, or cinematic photo blurs &mdash; that establishes mood while keeping foreground titles legible.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                  <span><strong class="text-ink-900">Black YouTube Banner for Minimalist Authority:</strong> A stealth <strong class="text-ink-900">black youtube banner</strong> featuring monochrome palettes and high-contrast monospace typography has become the gold standard for developer tools, hardware reviews, cryptocurrency channels, and technical tutorials.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                  <span><strong class="text-ink-900">Aesthetic YouTube Banner for Lifestyle &amp; Vlogs:</strong> Lifestyle, wellness, and photography creators often thrive with an <strong class="text-ink-900">aesthetic youtube banner</strong> utilizing warm film grain, organic neutral palettes, and elegant serif headlines framed comfortably within the safe area.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                  <span><strong class="text-ink-900">Gather Compelling YouTube Banner Ideas:</strong> Before designing, study top creators in your niche. The most successful <strong class="text-ink-900">youtube banner ideas</strong> communicate three things within two seconds: who you are, what content you produce, and your upload frequency.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                  <span><strong class="text-ink-900">Start from a Verified YouTube Banner Template:</strong> Rather than calculating pixel coordinates manually, selecting a <strong class="text-ink-900">free youtube banner</strong> layout or curated <strong class="text-ink-900">youtube banner template</strong> ensures that your visual assets remain intact regardless of which device your audience uses.</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Article Card 4 -->
+          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              Client-Side YouTube Banner Maker: Zero Server Uploads &amp; Complete Privacy
+            </h3>
+            <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+              <p>
+                Unlike conventional graphic design platforms that require cloud rendering, compulsory user registrations, watermarked downloads, or recurring subscriptions, YouTubeBannerMaker.com operates as a client-side <strong class="text-ink-950 font-semibold">youtube banner maker</strong> built entirely upon modern web standards.
+              </p>
+              <p>
+                All image decoding, canvas scaling, aspect ratio calculations, typography rendering, and raster exports execute strictly inside your local browser tab via HTML5 Canvas APIs. Zero image bytes are ever transmitted across external networks. Creators retain 100% intellectual property ownership of their artwork, with clean {CANVAS.width} × {CANVAS.height} px PNG downloads that are free of watermarks and hidden fees.
+              </p>
+            </div>
+          </article>
+
+          <!-- Article Card 5 -->
+          <article class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 shadow-2xs space-y-4">
+            <h3 class="text-xl font-bold tracking-tight text-ink-950">
+              Channel Branding Clarifications &amp; Common Queries
+            </h3>
+            <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+              <p>
+                Creators searching for <strong class="text-ink-950 font-semibold">banner youtube</strong>, <strong class="text-ink-950 font-semibold">banner youtube size</strong>, <strong class="text-ink-950 font-semibold">banner youtube maker</strong>, or a <strong class="text-ink-950 font-semibold">banner youtube template</strong> often run into confusing YouTube Studio nomenclature:
+              </p>
+              <p>
+                <strong class="text-ink-900 font-medium">Channel Header vs. Video Watermark:</strong> A common search phrase among creators is <strong class="text-ink-950 font-semibold">&ldquo;sub for a cookie banner youtube&rdquo;</strong>. This query often conflates website cookie consent banners with YouTube Studio's branding elements. Specifically, YouTube provides two distinct branding assets under <em class="not-italic font-mono text-xs bg-surface-100 px-1.5 py-0.5 rounded text-ink-800">YouTube Studio &gt; Customization &gt; Branding</em>: the top channel banner ({CANVAS.width} × {CANVAS.height} px) and the small 150 × 150 px video watermark button in the lower-right player corner that invites viewers to subscribe. It is important to distinguish this video watermark from your primary channel banner artwork.
+              </p>
+              <p>
+                <strong class="text-ink-900 font-medium">Publishing Your Final Banner:</strong> Once you export your 2560 × 1440 PNG file from our tool, navigate to your channel dashboard, click <strong class="text-ink-900">Customization &gt; Branding</strong>, locate the <strong class="text-ink-900">Banner image</strong> section, and click <strong class="text-ink-900">Change / Upload</strong>. YouTube Studio will display its interactive safe-area grid overlay &mdash; and because your artwork was pre-aligned with our tool, your channel art will fit without any awkward cropping.
+              </p>
+            </div>
+          </article>
+        </div>
+
       </div>
     </section>
 

@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
+import { STATIC_PAGES_SEO } from './seo';
 
 describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
   const indexPath = path.resolve('dist/index.html');
@@ -18,13 +19,9 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
   it('verifies dist/index.html head metadata and schemas', () => {
     const html = fs.readFileSync(indexPath, 'utf-8');
 
-    // Title: Free YouTube Banner Maker — Correct on Every Device
-    expect(html).toContain('<title>Free YouTube Banner Maker — Correct on Every Device</title>');
-
-    // Meta description
-    expect(html).toContain(
-      '<meta name="description" content="Free YouTube banner maker. Correct 2560×1440, safe-area aware, device preview, no account, no watermark. See what YouTube will cut before you upload.">'
-    );
+    // Title & Meta description from STATIC_PAGES_SEO
+    expect(html).toContain(`<title>${STATIC_PAGES_SEO['/'].title.replace(/&/g, '&amp;')}</title>`);
+    expect(html).toContain(`<meta name="description" content="${STATIC_PAGES_SEO['/'].desc}">`);
 
     // Canonical self-referential
     expect(html).toContain('<link rel="canonical" href="https://youtubebannermaker.com/">');

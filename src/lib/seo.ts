@@ -82,8 +82,8 @@ export const NICHE_TITLES: Record<string, { name: string; title: string; desc: s
 
 export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> = {
   '/': {
-    title: 'Free YouTube Banner Maker — Correct on Every Device',
-    desc: 'Free YouTube banner maker. Correct 2560×1440, safe-area aware, device preview, no account, no watermark. See what YouTube will cut before you upload.',
+    title: 'YouTube Banner Size: Free Maker, Resizer & Templates',
+    desc: 'The official YouTube banner size is 2560×1440 px. Resize, check safe areas, and create free channel art that fits every device without cropping.',
   },
   '/guides/youtube-banner-size': {
     title: 'YouTube Banner Size: 2560×1440, Safe Area & Device Crops',

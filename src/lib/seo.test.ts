@@ -29,6 +29,14 @@ describe('SEO Metadata & Standards Compliance', () => {
     }
   });
 
+  it('ensures home page title and description contain primary keyword youtube banner size', () => {
+    const homeSeo = STATIC_PAGES_SEO['/'];
+    expect(homeSeo.title.toLowerCase()).toContain('youtube banner size');
+    expect(homeSeo.desc.toLowerCase()).toContain('youtube banner size');
+    expect(homeSeo.title.length).toBeLessThanOrEqual(60);
+    expect(homeSeo.desc.length).toBeLessThanOrEqual(155);
+  });
+
   it('enforces title <= 60 chars and meta description <= 155 chars on all niche template pages', () => {
     for (const [niche, meta] of Object.entries(NICHE_TITLES)) {
       const res = validateMetadataLength(meta.title, meta.desc);
