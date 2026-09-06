@@ -1,19 +1,20 @@
 ---
 /**
- * HeroCropSimulator - "Live Crop Intelligence" Product Demonstration for the Homepage.
+ * HeroCropSimulator - Live Studio Crop Intelligence for the Homepage.
  *
- * Implements world-class art-directed channel art showcase:
- * - 6 distinct, professionally designed preview banners:
- *   1. Editorial Studio (Aura Archive)
- *   2. Cinematic Minimal (Kairen Cinema)
- *   3. Modern Technology (Synapse Lab)
- *   4. Personal Brand (Elena Rostova)
- *   5. Monochrome Luxury (Atelier Noir)
- *   6. Subtle Abstract (Meridian Protocol)
- * - Pure CSS style switcher: visitors can flip between all 6 styles instantly.
+ * Implements high-craft art-directed channel art showcase:
+ * - 7 distinct, professionally designed preview banners:
+ *   1. Executive Finance (Alexander Cross)
+ *   2. Personal Creator (Elena Rostova)
+ *   3. Cinema Minimal (Kairen Vance)
+ *   4. Modern Technology (Synapse Lab)
+ *   5. Studio Podcast (The Dialogue)
+ *   6. Editorial Theory (Aura Archive)
+ *   7. Neon Esports (Neon Velocity)
+ * - Pure CSS style switcher: visitors can flip between all 7 styles instantly.
  * - Smooth autonomous 16s crop intelligence cycle demonstrating Mobile -> Desktop -> Tablet -> TV crops.
  * - Interactive: Clicking any device tab locks to that device's exact crop boundaries.
- * - ZERO client JS scripts - preserves Gate 3 (0 scripts on dist/index.html).
+ * - ZERO client JS scripts - strictly preserving the 0 KB static page budget.
  */
 import { CANVAS, DEVICES, SAFE_PX } from '../lib/spec';
 
@@ -36,6 +37,7 @@ const bannerStyles = [
     tvRight: '4K BROADCAST · EST. 2024',
     desktopLeft: 'NEW ANALYSIS EVERY TUESDAY',
     desktopRight: 'ROAD TO WEALTH ARCHIVE',
+    accentColor: '#00E5FF',
   },
   {
     id: 'brand',
@@ -52,6 +54,7 @@ const bannerStyles = [
     tvRight: 'EST. 2024 · VOL. 08',
     desktopLeft: 'NEW EPISODES EVERY SUNDAY',
     desktopRight: '1.4M CREATIVE COMMUNITY',
+    accentColor: '#FB7185',
   },
   {
     id: 'cinema',
@@ -68,6 +71,7 @@ const bannerStyles = [
     tvRight: 'ANAMORPHIC MASTER · 2.39:1',
     desktopLeft: 'DIRECTED BY K. VANCE',
     desktopRight: 'MONTHLY PREMIERE',
+    accentColor: '#F59E0B',
   },
   {
     id: 'tech',
@@ -84,6 +88,7 @@ const bannerStyles = [
     tvRight: 'LAB DISPATCH 08',
     desktopLeft: 'KERNEL & PROTOCOL',
     desktopRight: 'WEEKLY DISPATCH',
+    accentColor: '#10B981',
   },
   {
     id: 'podcast',
@@ -100,6 +105,7 @@ const bannerStyles = [
     tvRight: 'EPISODE 142 STREAMING',
     desktopLeft: 'UNCUT CONVERSATIONS',
     desktopRight: 'NEW GUESTS THURSDAYS',
+    accentColor: '#A855F7',
   },
   {
     id: 'editorial',
@@ -116,6 +122,7 @@ const bannerStyles = [
     tvRight: '4K ARCHIVE · VOL. 04',
     desktopLeft: 'COPENHAGEN / TOKYO',
     desktopRight: 'WEEKLY ESSAYS',
+    accentColor: '#F8FAFC',
   },
   {
     id: 'gaming',
@@ -132,6 +139,7 @@ const bannerStyles = [
     tvRight: 'LIVE 1080P 240FPS',
     desktopLeft: 'DAILY LIVESTREAMS 6PM',
     desktopRight: 'JOIN THE DISCORD',
+    accentColor: '#EC4899',
   },
 ] as const;
 
@@ -139,30 +147,34 @@ const tabs = [
   {
     id: 'mobile',
     label: 'Mobile',
+    icon: '📱',
     dim: `${SAFE_PX.full.width} × ${SAFE_PX.full.height}`,
     badge: 'Mobile Safe Area',
-    color: 'var(--color-accent)',
+    color: '#00E5FF',
   },
   {
     id: 'desktop',
     label: 'Desktop',
+    icon: '💻',
     dim: `${CANVAS.width} × ${desktopHeight}`,
     badge: 'Desktop Viewport',
-    color: '#059669',
+    color: '#10B981',
   },
   {
     id: 'tablet',
     label: 'Tablet',
+    icon: '📟',
     dim: `${tabletWidth} × ${desktopHeight}`,
     badge: 'Tablet Viewport',
-    color: '#D97706',
+    color: '#F59E0B',
   },
   {
     id: 'tv',
     label: 'TV',
+    icon: '📺',
     dim: `${CANVAS.width} × ${CANVAS.height}`,
     badge: 'TV Full Canvas',
-    color: '#7C3AED',
+    color: '#8B5CF6',
   },
 ] as const;
 ---
@@ -191,12 +203,15 @@ const tabs = [
     />
   ))}
 
-  <!-- Top Controls: Banner Style Switcher Bar -->
+  <!-- Top Studio Bezel Bar: Live Tally + Genre Switcher Deck -->
   <div class="sim-header-bar">
-    <div class="sim-header-label">
-      <span class="sim-header-dot"></span>
-      <span>Preview Artwork</span>
+    <div class="sim-header-tally">
+      <span class="sim-tally-dot"></span>
+      <span class="sim-tally-label">STUDIO VIEWFINDER</span>
+      <span class="sim-tally-fps">60 FPS</span>
     </div>
+
+    <!-- Interactive Backlit Genre Selector -->
     <div class="sim-style-nav" role="tablist" aria-label="Preview banner artwork styles">
       {bannerStyles.map((b) => (
         <label
@@ -207,6 +222,12 @@ const tabs = [
           <span>{b.name}</span>
         </label>
       ))}
+    </div>
+
+    <!-- Studio Resolution & Aspect Tag -->
+    <div class="sim-header-res font-mono hidden sm:flex items-center gap-1.5 text-[10px] text-white/70">
+      <span class="px-1.5 py-0.5 rounded bg-white/10 text-white/90 font-bold">4K HDR</span>
+      <span>2560 × 1440</span>
     </div>
   </div>
 
@@ -221,7 +242,7 @@ const tabs = [
       <!-- Multi-Artwork Layers (Crossfades based on radio state) -->
       {bannerStyles.map((b, i) => (
         <div class={`sim-artwork-layer art-layer-${b.id}`}>
-          <!-- 16:9 Photographic Backdrop -->
+          <!-- 16:9 Photographic / Vector Backdrop -->
           <img
             src={b.image}
             alt={`YouTube banner preview for ${b.channelName} (${b.label})`}
@@ -233,7 +254,23 @@ const tabs = [
             height="1440"
           />
 
-          <!-- Atmospheric Vignette & Contrast Overlay -->
+          <!-- Special Electric Bull-Market Trendline Overlay for Finance -->
+          {b.id === 'finance' && (
+            <svg class="art-svg-overlay" viewBox="0 0 2560 1440" preserveAspectRatio="none" aria-hidden="true">
+              <!-- Grid lines -->
+              <line x1="0" y1="500" x2="2560" y2="500" stroke="#00E5FF" stroke-width="1" stroke-dasharray="8 8" opacity="0.18" />
+              <line x1="0" y1="940" x2="2560" y2="940" stroke="#00E5FF" stroke-width="1" stroke-dasharray="8 8" opacity="0.18" />
+              <!-- Bull Market Luminous Trend Curve -->
+              <path d="M 0 1020 Q 420 780 840 880 T 1540 680 T 2100 620 T 2560 480" fill="none" stroke="#00E5FF" stroke-width="6" opacity="0.85" filter="drop-shadow(0 0 16px #00E5FF)" />
+              <path d="M 0 1040 Q 420 800 840 900 T 1540 700 T 2100 640 T 2560 500" fill="none" stroke="#38BDF8" stroke-width="2" opacity="0.5" />
+              <!-- Data Nodes -->
+              <circle cx="840" cy="880" r="7" fill="#00E5FF" filter="drop-shadow(0 0 8px #00E5FF)" />
+              <circle cx="1540" cy="680" r="9" fill="#00E5FF" filter="drop-shadow(0 0 12px #00E5FF)" />
+              <circle cx="2100" cy="620" r="7" fill="#00E5FF" filter="drop-shadow(0 0 8px #00E5FF)" />
+            </svg>
+          )}
+
+          <!-- Light Cinematic Vignette -->
           <div class="art-scrim-overlay" aria-hidden="true"></div>
 
           <!-- Ambient Tint Glow -->
@@ -241,19 +278,19 @@ const tabs = [
 
           <!-- TV Bleed Details (Top/Bottom 1440 Canvas Bleed) -->
           <div class="art-tv-header" aria-hidden="true">
-            <span class="font-mono text-[9px] text-white/45 tracking-widest uppercase">{b.tvLeft}</span>
-            <span class="font-mono text-[9px] text-white/45 tracking-widest uppercase">{b.tvRight}</span>
+            <span class="font-mono text-[9px] text-white/75 tracking-widest uppercase">{b.tvLeft}</span>
+            <span class="font-mono text-[9px] text-white/75 tracking-widest uppercase">{b.tvRight}</span>
           </div>
 
           <!-- Desktop Peripheral Details (Left/Right 2560 Canvas Bleed) -->
           <div class="art-desktop-left" aria-hidden="true">
-            <span class="text-[10px] font-mono text-white/60 tracking-wider uppercase">{b.desktopLeft}</span>
+            <span class="text-[10px] font-mono text-white/80 tracking-wider uppercase font-semibold">{b.desktopLeft}</span>
           </div>
           <div class="art-desktop-right" aria-hidden="true">
-            <span class="text-[10px] font-mono text-white/60 tracking-wider uppercase">{b.desktopRight}</span>
+            <span class="text-[10px] font-mono text-white/80 tracking-wider uppercase font-semibold">{b.desktopRight}</span>
           </div>
 
-          <!-- Centered Mobile Safe Area Core -->
+          <!-- Centered Mobile Safe Area Core (Glassmorphic HUD Plate) -->
           <div class="art-safe-core">
             <!-- Custom Geometric Person Frame -->
             <div class="safe-mark-wrap">
@@ -278,7 +315,7 @@ const tabs = [
             <div class="safe-typography">
               <div class="safe-badge-strip">
                 <span class="safe-pill-kicker font-mono">
-                  <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
                   {b.kicker}
                 </span>
                 <span class="safe-pill-stat font-mono">{b.metrics}</span>
@@ -288,36 +325,46 @@ const tabs = [
             </div>
 
             <!-- Mathematical Corner Registration Brackets -->
-            <span class="reg-bracket reg-tl font-mono">+</span>
-            <span class="reg-bracket reg-tr font-mono">+</span>
-            <span class="reg-bracket reg-bl font-mono">+</span>
-            <span class="reg-bracket reg-br font-mono">+</span>
+            <span class="reg-bracket reg-tl font-mono">┌</span>
+            <span class="reg-bracket reg-tr font-mono">┐</span>
+            <span class="reg-bracket reg-bl font-mono">└</span>
+            <span class="reg-bracket reg-br font-mono">┘</span>
+
+            <!-- Optical Center Reticle -->
+            <div class="center-crosshair" aria-hidden="true">+</div>
           </div>
         </div>
       ))}
 
-      <!-- Dynamic Crop Viewport Mask (Darkens non-visible crop periphery) -->
+      <!-- Dynamic Crop Viewport Mask (Vignettes outer non-visible zones) -->
       <div class="sim-viewport-mask" aria-hidden="true"></div>
 
-      <!-- Dynamic Crop Wireframe Boundary -->
-      <div class="sim-crop-wireframe" aria-hidden="true"></div>
+      <!-- Dynamic Laser Crop Wireframe Boundary -->
+      <div class="sim-crop-wireframe" aria-hidden="true">
+        <!-- Laser Viewfinder Corner Markers -->
+        <span class="hud-corner hud-tl" aria-hidden="true"></span>
+        <span class="hud-corner hud-tr" aria-hidden="true"></span>
+        <span class="hud-corner hud-bl" aria-hidden="true"></span>
+        <span class="hud-corner hud-br" aria-hidden="true"></span>
+      </div>
 
       <!-- Active Crop Readout Pill -->
       <div class="sim-status-pill" aria-hidden="true">
         <span class="status-pulse-dot"></span>
         <span class="status-device-text">MOBILE SAFE AREA</span>
         <span class="status-dim-text tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height}</span>
+        <span class="status-aspect-tag font-mono">3.65:1</span>
       </div>
 
       <!-- Interactive Hover Tooltip Overlay -->
       <div class="sim-launch-hint">
-        <span>Test in Interactive Resizer</span>
-        <span class="ml-1">→</span>
+        <span class="font-semibold">Open in 1-Click Resizer</span>
+        <span class="ml-1 text-accent" aria-hidden="true">&rarr;</span>
       </div>
     </a>
   </div>
 
-  <!-- Device Switcher Tabs Below Preview -->
+  <!-- Device Switcher Studio Tabs Below Preview -->
   <div class="sim-tabs" role="tablist" aria-label="Device crop preview modes">
     {tabs.map((t) => (
       <label
@@ -326,10 +373,11 @@ const tabs = [
         role="tab"
       >
         <div class="flex items-center gap-1.5">
+          <span class="tab-device-icon text-xs leading-none">{t.icon}</span>
+          <span class="sim-tab-label font-bold">{t.label}</span>
           <span class="tab-indicator-dot"></span>
-          <span class="sim-tab-label">{t.label}</span>
         </div>
-        <span class="sim-tab-dim tabular-nums">{t.dim}</span>
+        <span class="sim-tab-dim tabular-nums font-mono">{t.dim}</span>
       </label>
     ))}
   </div>
@@ -339,9 +387,19 @@ const tabs = [
   .hero-sim-root {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.625rem;
     width: 100%;
+    background: #080C16;
+    border: 1.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1.25rem;
+    padding: 0.625rem 0.625rem 0.75rem;
+    box-shadow:
+      0 24px 48px -12px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
     container-type: inline-size;
+    position: relative;
+    user-select: none;
   }
 
   /* ── Header Bar & Banner Style Switcher ── */
@@ -351,36 +409,51 @@ const tabs = [
     justify-content: space-between;
     gap: 0.5rem;
     flex-wrap: wrap;
-    padding: 0 0.125rem;
+    padding: 0.15rem 0.25rem;
   }
 
-  .sim-header-label {
+  .sim-header-tally {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    font-size: 0.6875rem;
-    font-family: var(--font-mono);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-ink-500);
+    gap: 0.45rem;
   }
 
-  .sim-header-dot {
-    width: 6px;
-    height: 6px;
+  .sim-tally-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 9999px;
-    background: var(--color-accent);
-    box-shadow: 0 0 6px var(--color-accent);
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981, 0 0 16px rgba(16, 185, 129, 0.5);
+    animation: status-dot-pulse 2s infinite ease-in-out;
+  }
+
+  .sim-tally-label {
+    font-size: 0.6875rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #F1F5F9;
+  }
+
+  .sim-tally-fps {
+    font-size: 0.5625rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
   }
 
   .sim-style-nav {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.2rem;
-    background: var(--color-surface-100);
-    border: 1px solid var(--color-line-200);
+    padding: 0.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 9999px;
     overflow-x: auto;
     max-width: 100%;
@@ -394,22 +467,22 @@ const tabs = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.25rem 0.55rem;
+    padding: 0.28rem 0.65rem;
     border-radius: 9999px;
-    font-size: 0.625rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    color: var(--color-ink-600);
+    color: #94A3B8;
     background: transparent;
     cursor: pointer;
     line-height: 1;
     white-space: nowrap;
     user-select: none;
-    transition: all 0.15s ease;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .sim-style-pill:hover {
-    color: var(--color-ink-950);
-    background: var(--color-surface-0);
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.1);
   }
 
   /* ── Stage (2560 × 1440 / 16:9) ── */
@@ -417,11 +490,13 @@ const tabs = [
     position: relative;
     width: 100%;
     aspect-ratio: 2560 / 1440;
-    border-radius: var(--radius-lg);
+    border-radius: 0.875rem;
     overflow: hidden;
-    background: #07090E;
-    border: 1px solid var(--color-line-200);
-    box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.35);
+    background: #030712;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 12px 32px -4px rgba(0, 0, 0, 0.7),
+      inset 0 0 60px rgba(0, 0, 0, 0.6);
   }
 
   .sim-dropzone {
@@ -449,53 +524,65 @@ const tabs = [
     height: 100%;
     object-fit: cover;
     object-position: center;
+    filter: brightness(1.05) contrast(1.08);
+  }
+
+  .art-svg-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
   }
 
   .art-scrim-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(6, 8, 12, 0.45) 0%, rgba(6, 8, 12, 0.2) 35%, rgba(6, 8, 12, 0.2) 65%, rgba(6, 8, 12, 0.6) 100%);
+    background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 40%, rgba(3, 7, 18, 0.65) 100%);
     pointer-events: none;
   }
 
   .art-ambient-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 40% at 50% 50%, color-mix(in srgb, var(--color-accent) 20%, transparent) 0%, transparent 75%);
     mix-blend-mode: screen;
     pointer-events: none;
   }
 
   .art-tv-header {
     position: absolute;
-    top: 7%;
-    left: 5%;
-    right: 5%;
+    top: 6%;
+    left: 4.5%;
+    right: 4.5%;
     display: flex;
     justify-content: space-between;
     pointer-events: none;
     z-index: 2;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   }
 
   .art-desktop-left {
     position: absolute;
     top: 50%;
-    left: 3.5%;
+    left: 3%;
     transform: translateY(-50%);
     pointer-events: none;
     z-index: 2;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   }
 
   .art-desktop-right {
     position: absolute;
     top: 50%;
-    right: 3.5%;
+    right: 3%;
     transform: translateY(-50%);
     pointer-events: none;
     z-index: 2;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   }
 
-  /* ── Mobile Safe Area Core Centered ── */
+  /* ── Mobile Safe Area Core Centered (Crystalline Glass HUD Pane) ── */
   .art-safe-core {
     position: absolute;
     top: 35.3125%;
@@ -508,12 +595,14 @@ const tabs = [
     gap: 1.25rem;
     padding: 0 1.25rem;
     z-index: 2;
-    background: rgba(12, 14, 20, 0.72);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(8, 12, 22, 0.48);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
     border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 12px 36px -4px rgba(0, 0, 0, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
   .safe-mark-wrap {
@@ -529,7 +618,7 @@ const tabs = [
     border-radius: 9999px;
     overflow: hidden;
     background: #0C0E14;
-    box-shadow: 0 0 0 2px rgba(246, 36, 64, 0.6), 0 4px 16px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4), 0 4px 20px rgba(0, 0, 0, 0.7);
     flex-shrink: 0;
   }
 
@@ -539,62 +628,41 @@ const tabs = [
     object-fit: cover;
     object-position: center 20%;
     display: block;
-    filter: contrast(1.06) brightness(1.02);
+    filter: contrast(1.08) brightness(1.04);
   }
 
   .safe-person-rim {
     position: absolute;
     inset: 0;
     border-radius: 9999px;
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
     pointer-events: none;
   }
 
   .safe-person-glow {
     position: absolute;
-    inset: -4px;
+    inset: -6px;
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(246, 36, 64, 0.35) 0%, transparent 70%);
     pointer-events: none;
     mix-blend-mode: screen;
-  }
-
-  .safe-monogram-box {
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 8px;
-    background: rgba(15, 20, 30, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  }
-
-  .monogram-text {
-    font-size: 0.875rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    color: #FFFFFF;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
   }
 
   .safe-verified-badge {
     position: absolute;
     bottom: -2px;
     right: -2px;
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     border-radius: 9999px;
-    background: var(--color-accent);
-    color: #FFFFFF;
-    font-size: 9px;
-    font-weight: 800;
+    background: #00E5FF;
+    color: #030712;
+    font-size: 10px;
+    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid #07090E;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 8px currentColor;
     z-index: 3;
   }
 
@@ -608,7 +676,7 @@ const tabs = [
   .safe-badge-strip {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
     margin-bottom: 0.1rem;
   }
 
@@ -616,14 +684,14 @@ const tabs = [
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.1rem 0.35rem;
+    padding: 0.12rem 0.4rem;
     border-radius: 9999px;
-    background: rgba(246, 36, 64, 0.18);
-    border: 1px solid rgba(246, 36, 64, 0.4);
-    font-size: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.525rem;
     font-weight: 700;
-    color: #FFE5BF;
-    letter-spacing: 0.06em;
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     line-height: 1.2;
   }
@@ -631,14 +699,14 @@ const tabs = [
   .safe-pill-stat {
     display: inline-flex;
     align-items: center;
-    padding: 0.1rem 0.35rem;
+    padding: 0.12rem 0.4rem;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    font-size: 0.5rem;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.525rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
-    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     line-height: 1.2;
   }
@@ -646,36 +714,48 @@ const tabs = [
   .safe-channel-title {
     display: block;
     font-family: var(--font-display, var(--font-sans));
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: -0.01em;
     color: #FFFFFF;
     line-height: 1.1;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
   }
 
   .safe-channel-sub {
-    font-size: 0.5625rem;
+    font-size: 0.5875rem;
     font-family: var(--font-mono);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   }
 
   .reg-bracket {
     position: absolute;
-    color: rgba(255, 255, 255, 0.35);
-    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
     line-height: 1;
     pointer-events: none;
   }
-  .reg-tl { top: 3px; left: 4px; }
-  .reg-tr { top: 3px; right: 4px; }
-  .reg-bl { bottom: 3px; left: 4px; }
-  .reg-br { bottom: 3px; right: 4px; }
+  .reg-tl { top: 4px; left: 6px; }
+  .reg-tr { top: 4px; right: 6px; }
+  .reg-bl { bottom: 4px; left: 6px; }
+  .reg-br { bottom: 4px; right: 6px; }
 
-  /* ── 3. Dynamic Crop Viewport Mask (Darkens outer non-visible zones) ── */
+  .center-crosshair {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.25);
+    pointer-events: none;
+  }
+
+  /* ── 3. Dynamic Crop Viewport Mask (Vignettes outer non-visible zones) ── */
   .sim-viewport-mask {
     position: absolute;
     inset: 0;
@@ -685,74 +765,85 @@ const tabs = [
     animation: live-crop-mask 16s infinite ease-in-out;
   }
 
-  /* ── 4. Dynamic Crop Wireframe Boundary ── */
+  /* ── 4. Dynamic Laser Crop Wireframe Boundary ── */
   .sim-crop-wireframe {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 4;
-    box-shadow: inset 0 0 0 2px var(--color-accent);
+    box-shadow: inset 0 0 0 2px #00E5FF, inset 0 0 16px rgba(0, 229, 255, 0.4);
     animation: live-crop-boundary 16s infinite ease-in-out;
   }
 
   /* ── 5. Status Pill Readout ── */
   .sim-status-pill {
     position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
+    top: 0.625rem;
+    left: 0.625rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.3rem 0.6rem;
+    gap: 0.45rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 9999px;
-    background: rgba(7, 9, 14, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(7, 10, 18, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 5;
     pointer-events: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   }
 
   .status-pulse-dot {
     width: 6px;
     height: 6px;
     border-radius: 9999px;
-    background: var(--color-accent);
+    background: #00E5FF;
+    box-shadow: 0 0 8px #00E5FF;
     animation: status-dot-pulse 2s infinite ease-in-out;
   }
 
   .status-device-text {
-    font-size: 0.625rem;
+    font-size: 0.65rem;
     font-family: var(--font-mono);
-    font-weight: 700;
+    font-weight: 800;
     color: #FFFFFF;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
   .status-dim-text {
-    font-size: 0.5625rem;
+    font-size: 0.5875rem;
     font-family: var(--font-mono);
-    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
     border-left: 1px solid rgba(255, 255, 255, 0.2);
-    padding-left: 0.4rem;
+    padding-left: 0.45rem;
+  }
+
+  .status-aspect-tag {
+    font-size: 0.525rem;
+    padding: 0.08rem 0.3rem;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #38BDF8;
+    font-weight: 700;
   }
 
   /* ── 6. Hover Tooltip ── */
   .sim-launch-hint {
     position: absolute;
-    bottom: 0.625rem;
-    right: 0.625rem;
+    bottom: 0.75rem;
+    right: 0.75rem;
     display: inline-flex;
     align-items: center;
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 0.85rem;
     border-radius: 9999px;
-    background: var(--color-surface-0);
-    color: var(--color-ink-950);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    color: #0F172A;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
     z-index: 6;
     opacity: 0;
     transform: translateY(4px);
@@ -770,15 +861,15 @@ const tabs = [
     animation-play-state: paused;
   }
 
-  /* ── Tabs Below Preview ── */
+  /* ── Tabs Below Preview (Illuminated Studio Selector Deck) ── */
   .sim-tabs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.375rem;
+    gap: 0.45rem;
     padding: 0.25rem;
-    background: var(--color-surface-100);
-    border: 1px solid var(--color-line-200);
-    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
   }
 
   .sim-tab {
@@ -786,41 +877,45 @@ const tabs = [
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.125rem;
-    padding: 0.4rem 0.25rem;
-    border-radius: 6px;
+    gap: 0.2rem;
+    padding: 0.45rem 0.35rem;
+    border-radius: 0.5rem;
     cursor: pointer;
-    background: transparent;
-    transition: all 0.15s ease;
-    min-height: 44px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 48px;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }
 
   .sim-tab:hover {
-    background: var(--color-surface-0);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
   }
 
   .tab-indicator-dot {
     width: 6px;
     height: 6px;
     border-radius: 9999px;
-    background: var(--color-line-200);
-    transition: background 0.15s ease;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
   }
 
   .sim-tab-label {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--color-ink-600);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94A3B8;
     line-height: 1;
+    transition: color 0.15s ease;
   }
 
   .sim-tab-dim {
-    font-size: 0.5625rem;
-    font-family: var(--font-mono);
-    color: var(--color-ink-500);
+    font-size: 0.6rem;
+    color: #64748B;
     line-height: 1;
+    letter-spacing: -0.01em;
+    transition: color 0.15s ease;
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -837,66 +932,164 @@ const tabs = [
     visibility: visible;
   }
 
-  :global(#hero-sim):has(#hba-finance:checked) .sim-style-finance,
-  :global(#hero-sim):has(#hba-brand:checked) .sim-style-brand,
-  :global(#hero-sim):has(#hba-cinema:checked) .sim-style-cinema,
-  :global(#hero-sim):has(#hba-tech:checked) .sim-style-tech,
-  :global(#hero-sim):has(#hba-podcast:checked) .sim-style-podcast,
-  :global(#hero-sim):has(#hba-editorial:checked) .sim-style-editorial,
+  /* Bespoke Radiant Active States for Style Switcher Tabs */
+  :global(#hero-sim):has(#hba-finance:checked) .sim-style-finance {
+    background: #00E5FF;
+    color: #020817;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  :global(#hero-sim):has(#hba-brand:checked) .sim-style-brand {
+    background: #FB7185;
+    color: #1C050B;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(251, 113, 133, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  :global(#hero-sim):has(#hba-cinema:checked) .sim-style-cinema {
+    background: #F59E0B;
+    color: #1E1202;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  :global(#hero-sim):has(#hba-tech:checked) .sim-style-tech {
+    background: #10B981;
+    color: #022013;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  :global(#hero-sim):has(#hba-podcast:checked) .sim-style-podcast {
+    background: #A855F7;
+    color: #160326;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  :global(#hero-sim):has(#hba-editorial:checked) .sim-style-editorial {
+    background: #F8FAFC;
+    color: #090D16;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
   :global(#hero-sim):has(#hba-gaming:checked) .sim-style-gaming {
-    background: var(--color-accent);
-    color: #FFFFFF;
-    box-shadow: 0 1px 4px color-mix(in srgb, var(--color-accent) 40%, transparent);
+    background: #EC4899;
+    color: #2A0418;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(236, 72, 153, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   /* ── Bespoke Niche Art Accents ── */
   .art-layer-finance .safe-person-frame {
-    box-shadow: 0 0 0 2.5px #00E5FF, 0 0 24px rgba(0, 229, 255, 0.6);
+    box-shadow: 0 0 0 2.5px #00E5FF, 0 0 24px rgba(0, 229, 255, 0.65);
   }
   .art-layer-finance .safe-person-glow {
-    background: radial-gradient(circle, rgba(0, 229, 255, 0.5) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.6) 0%, transparent 70%);
   }
   .art-layer-finance .safe-pill-kicker {
-    background: rgba(0, 229, 255, 0.16);
-    border-color: rgba(0, 229, 255, 0.45);
-    color: #38BDF8;
-  }
-  .art-layer-finance .safe-pill-kicker span {
-    background: #00E5FF;
+    background: rgba(0, 229, 255, 0.2);
+    border-color: rgba(0, 229, 255, 0.6);
+    color: #00E5FF;
   }
   .art-layer-finance .safe-verified-badge {
     background: #00E5FF;
     color: #030712;
   }
+  .art-layer-finance .art-ambient-glow {
+    background: radial-gradient(circle at 60% 40%, rgba(0, 229, 255, 0.2) 0%, transparent 60%);
+  }
+
+  .art-layer-brand .safe-person-frame {
+    box-shadow: 0 0 0 2.5px #FB7185, 0 0 24px rgba(251, 113, 133, 0.65);
+  }
+  .art-layer-brand .safe-person-glow {
+    background: radial-gradient(circle, rgba(251, 113, 133, 0.6) 0%, transparent 70%);
+  }
+  .art-layer-brand .safe-pill-kicker {
+    background: rgba(251, 113, 133, 0.2);
+    border-color: rgba(251, 113, 133, 0.6);
+    color: #FB7185;
+  }
+  .art-layer-brand .safe-verified-badge {
+    background: #FB7185;
+    color: #1C050B;
+  }
+
+  .art-layer-cinema .safe-person-frame {
+    box-shadow: 0 0 0 2.5px #F59E0B, 0 0 24px rgba(245, 158, 11, 0.65);
+  }
+  .art-layer-cinema .safe-person-glow {
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.6) 0%, transparent 70%);
+  }
+  .art-layer-cinema .safe-pill-kicker {
+    background: rgba(245, 158, 11, 0.2);
+    border-color: rgba(245, 158, 11, 0.6);
+    color: #F59E0B;
+  }
+  .art-layer-cinema .safe-verified-badge {
+    background: #F59E0B;
+    color: #1E1202;
+  }
 
   .art-layer-tech .safe-person-frame {
-    box-shadow: 0 0 0 2px #10B981, 0 0 20px rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 0 2.5px #10B981, 0 0 24px rgba(16, 185, 129, 0.65);
   }
   .art-layer-tech .safe-person-glow {
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.6) 0%, transparent 70%);
   }
   .art-layer-tech .safe-pill-kicker {
-    background: rgba(16, 185, 129, 0.16);
-    border-color: rgba(16, 185, 129, 0.4);
-    color: #6EE7B7;
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.6);
+    color: #34D399;
   }
   .art-layer-tech .safe-verified-badge {
     background: #10B981;
+    color: #022013;
+  }
+
+  .art-layer-podcast .safe-person-frame {
+    box-shadow: 0 0 0 2.5px #A855F7, 0 0 24px rgba(168, 85, 247, 0.65);
+  }
+  .art-layer-podcast .safe-person-glow {
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.6) 0%, transparent 70%);
+  }
+  .art-layer-podcast .safe-pill-kicker {
+    background: rgba(168, 85, 247, 0.2);
+    border-color: rgba(168, 85, 247, 0.6);
+    color: #C084FC;
+  }
+  .art-layer-podcast .safe-verified-badge {
+    background: #A855F7;
+    color: #160326;
+  }
+
+  .art-layer-editorial .safe-person-frame {
+    box-shadow: 0 0 0 2.5px #FFFFFF, 0 0 24px rgba(255, 255, 255, 0.6);
+  }
+  .art-layer-editorial .safe-person-glow {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+  }
+  .art-layer-editorial .safe-pill-kicker {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #FFFFFF;
+  }
+  .art-layer-editorial .safe-verified-badge {
+    background: #FFFFFF;
+    color: #090D16;
   }
 
   .art-layer-gaming .safe-person-frame {
-    box-shadow: 0 0 0 2.5px #A855F7, 0 0 24px rgba(168, 85, 247, 0.6);
+    box-shadow: 0 0 0 2.5px #EC4899, 0 0 24px rgba(236, 72, 153, 0.7);
   }
   .art-layer-gaming .safe-person-glow {
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.6) 0%, transparent 70%);
   }
   .art-layer-gaming .safe-pill-kicker {
-    background: rgba(168, 85, 247, 0.16);
-    border-color: rgba(168, 85, 247, 0.4);
-    color: #E9D5FF;
+    background: rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.6);
+    color: #F472B6;
   }
   .art-layer-gaming .safe-verified-badge {
-    background: #A855F7;
+    background: #EC4899;
+    color: #2A0418;
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -906,34 +1099,30 @@ const tabs = [
   @keyframes live-crop-mask {
     /* 0% - 22%: Mobile Safe Area */
     0%, 22% {
-      background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(5, 7, 10, 0.75) 90%);
-      box-shadow: inset 0 0 0 9999px rgba(5, 7, 10, 0.55);
+      background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(3, 7, 18, 0.8) 90%);
       clip-path: polygon(0% 0%, 0% 100%, 19.8% 100%, 19.8% 35.3%, 80.2% 35.3%, 80.2% 64.7%, 19.8% 64.7%, 19.8% 100%, 100% 100%, 100% 0%);
     }
 
     /* 25% - 47%: Desktop Viewport */
     25%, 47% {
-      background: rgba(5, 7, 10, 0.65);
-      box-shadow: none;
+      background: rgba(3, 7, 18, 0.72);
       clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 35.3%, 100% 35.3%, 100% 64.7%, 0% 64.7%, 0% 100%, 100% 100%, 100% 0%);
     }
 
     /* 50% - 72%: Tablet Viewport */
     50%, 72% {
-      background: rgba(5, 7, 10, 0.65);
-      box-shadow: none;
+      background: rgba(3, 7, 18, 0.72);
       clip-path: polygon(0% 0%, 0% 100%, 13.8% 100%, 13.8% 35.3%, 86.2% 35.3%, 86.2% 64.7%, 13.8% 64.7%, 13.8% 100%, 100% 100%, 100% 0%);
     }
 
     /* 75% - 97%: TV Full Canvas (2560 × 1440) */
     75%, 97% {
       background: transparent;
-      box-shadow: none;
       clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
     }
 
     100% {
-      background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(5, 7, 10, 0.75) 90%);
+      background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(3, 7, 18, 0.8) 90%);
       clip-path: polygon(0% 0%, 0% 100%, 19.8% 100%, 19.8% 35.3%, 80.2% 35.3%, 80.2% 64.7%, 19.8% 64.7%, 19.8% 100%, 100% 100%, 100% 0%);
     }
   }
@@ -942,32 +1131,32 @@ const tabs = [
     /* Mobile */
     0%, 22% {
       clip-path: inset(35.3125% 19.8047% 35.3125% 19.8047% round 4px);
-      box-shadow: inset 0 0 0 2px var(--color-accent);
+      box-shadow: inset 0 0 0 2px #00E5FF, inset 0 0 16px rgba(0, 229, 255, 0.45);
     }
     /* Desktop */
     25%, 47% {
       clip-path: inset(35.3125% 0% 35.3125% 0% round 4px);
-      box-shadow: inset 0 0 0 2px #059669;
+      box-shadow: inset 0 0 0 2px #10B981, inset 0 0 16px rgba(16, 185, 129, 0.45);
     }
     /* Tablet */
     50%, 72% {
       clip-path: inset(35.3125% 13.7695% 35.3125% 13.7695% round 4px);
-      box-shadow: inset 0 0 0 2px #D97706;
+      box-shadow: inset 0 0 0 2px #F59E0B, inset 0 0 16px rgba(245, 158, 11, 0.45);
     }
     /* TV */
     75%, 97% {
       clip-path: inset(0% 0% 0% 0% round 4px);
-      box-shadow: inset 0 0 0 2px #7C3AED;
+      box-shadow: inset 0 0 0 2px #8B5CF6, inset 0 0 16px rgba(139, 92, 246, 0.45);
     }
     100% {
       clip-path: inset(35.3125% 19.8047% 35.3125% 19.8047% round 4px);
-      box-shadow: inset 0 0 0 2px var(--color-accent);
+      box-shadow: inset 0 0 0 2px #00E5FF, inset 0 0 16px rgba(0, 229, 255, 0.45);
     }
   }
 
   @keyframes status-dot-pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
+    50% { opacity: 0.35; transform: scale(0.8); }
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -987,91 +1176,113 @@ const tabs = [
 
   /* Mobile Selected */
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile {
-    background: var(--color-surface-0);
-    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+    background: rgba(0, 229, 255, 0.12);
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.25), inset 0 1px 0 rgba(0, 229, 255, 0.4);
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .tab-indicator-dot {
-    background: var(--color-accent);
+    background: #00E5FF;
+    box-shadow: 0 0 8px #00E5FF;
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-label {
-    color: var(--color-ink-950);
+    color: #FFFFFF;
+  }
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim {
+    color: #38BDF8;
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-crop-wireframe {
     clip-path: inset(35.3125% 19.8047% 35.3125% 19.8047% round 4px);
-    box-shadow: inset 0 0 0 2px var(--color-accent);
+    box-shadow: inset 0 0 0 2px #00E5FF, inset 0 0 20px rgba(0, 229, 255, 0.5);
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-viewport-mask {
     clip-path: polygon(0% 0%, 0% 100%, 19.8% 100%, 19.8% 35.3%, 80.2% 35.3%, 80.2% 64.7%, 19.8% 64.7%, 19.8% 100%, 100% 100%, 100% 0%);
-    background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(5, 7, 10, 0.75) 90%);
+    background: radial-gradient(ellipse 65% 35% at 50% 50%, transparent 40%, rgba(3, 7, 18, 0.8) 90%);
   }
+  :global(#hero-sim):has(#hcs-tab-mobile:checked) .status-pulse-dot { background: #00E5FF; box-shadow: 0 0 8px #00E5FF; }
 
   /* Desktop Selected */
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop {
-    background: var(--color-surface-0);
-    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.25), inset 0 1px 0 rgba(16, 185, 129, 0.4);
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .tab-indicator-dot {
-    background: #059669;
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981;
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-label {
-    color: var(--color-ink-950);
+    color: #FFFFFF;
+  }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim {
+    color: #34D399;
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-crop-wireframe {
     clip-path: inset(35.3125% 0% 35.3125% 0% round 4px);
-    box-shadow: inset 0 0 0 2px #059669;
+    box-shadow: inset 0 0 0 2px #10B981, inset 0 0 20px rgba(16, 185, 129, 0.5);
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-viewport-mask {
     clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 35.3%, 100% 35.3%, 100% 64.7%, 0% 64.7%, 0% 100%, 100% 100%, 100% 0%);
-    background: rgba(5, 7, 10, 0.75);
+    background: rgba(3, 7, 18, 0.75);
   }
-  :global(#hero-sim):has(#hcs-tab-desktop:checked) .status-pulse-dot { background: #059669; }
+  :global(#hero-sim):has(#hcs-tab-desktop:checked) .status-pulse-dot { background: #10B981; box-shadow: 0 0 8px #10B981; }
 
   /* Tablet Selected */
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet {
-    background: var(--color-surface-0);
-    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.25), inset 0 1px 0 rgba(245, 158, 11, 0.4);
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .tab-indicator-dot {
-    background: #D97706;
+    background: #F59E0B;
+    box-shadow: 0 0 8px #F59E0B;
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-label {
-    color: var(--color-ink-950);
+    color: #FFFFFF;
+  }
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim {
+    color: #FBBF24;
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-crop-wireframe {
     clip-path: inset(35.3125% 13.7695% 35.3125% 13.7695% round 4px);
-    box-shadow: inset 0 0 0 2px #D97706;
+    box-shadow: inset 0 0 0 2px #F59E0B, inset 0 0 20px rgba(245, 158, 11, 0.5);
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-viewport-mask {
     clip-path: polygon(0% 0%, 0% 100%, 13.8% 100%, 13.8% 35.3%, 86.2% 35.3%, 86.2% 64.7%, 13.8% 64.7%, 13.8% 100%, 100% 100%, 100% 0%);
-    background: rgba(5, 7, 10, 0.75);
+    background: rgba(3, 7, 18, 0.75);
   }
-  :global(#hero-sim):has(#hcs-tab-tablet:checked) .status-pulse-dot { background: #D97706; }
+  :global(#hero-sim):has(#hcs-tab-tablet:checked) .status-pulse-dot { background: #F59E0B; box-shadow: 0 0 8px #F59E0B; }
 
   /* TV Selected */
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv {
-    background: var(--color-surface-0);
-    box-shadow: 0 1px 3px rgba(12, 13, 14, 0.12);
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.25), inset 0 1px 0 rgba(139, 92, 246, 0.4);
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .tab-indicator-dot {
-    background: #7C3AED;
+    background: #8B5CF6;
+    box-shadow: 0 0 8px #8B5CF6;
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-label {
-    color: var(--color-ink-950);
+    color: #FFFFFF;
+  }
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim {
+    color: #C4B5FD;
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-crop-wireframe {
     clip-path: inset(0% 0% 0% 0% round 4px);
-    box-shadow: inset 0 0 0 2px #7C3AED;
+    box-shadow: inset 0 0 0 2px #8B5CF6, inset 0 0 20px rgba(139, 92, 246, 0.5);
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-viewport-mask {
     clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 100%, 100% 100%, 100% 0%);
     background: transparent;
   }
-  :global(#hero-sim):has(#hcs-tab-tv:checked) .status-pulse-dot { background: #7C3AED; }
+  :global(#hero-sim):has(#hcs-tab-tv:checked) .status-pulse-dot { background: #8B5CF6; box-shadow: 0 0 8px #8B5CF6; }
 
   @media (prefers-reduced-motion: reduce) {
     .sim-viewport-mask,
     .sim-crop-wireframe,
-    .status-pulse-dot {
+    .status-pulse-dot,
+    .sim-tally-dot {
       animation: none !important;
     }
   }
@@ -1125,13 +1336,5 @@ const tabs = [
       font-size: 0.5625rem;
       padding: 0.2rem 0.4rem;
     }
-    .safe-monogram-box {
-      width: 2.125rem;
-      height: 2.125rem;
-    }
-    .monogram-text {
-      font-size: 0.75rem;
-    }
   }
 </style>
-

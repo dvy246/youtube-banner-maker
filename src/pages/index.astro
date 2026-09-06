@@ -150,8 +150,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
 
         </div>
 
-        <!-- Right rail: crop simulator inside luxury double-bezel frame -->
-        <div class="w-full p-2 sm:p-2.5 rounded-2xl bg-surface-100/70 border border-line-200 shadow-overlay">
+        <!-- Right rail: crop simulator inside studio console housing -->
+        <div class="w-full relative group">
+          <!-- Ambient backlight glow -->
+          <div class="absolute -inset-1.5 bg-gradient-to-r from-accent/20 via-cyan-500/20 to-purple-600/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-95 transition-opacity pointer-events-none -z-10" aria-hidden="true"></div>
           <HeroCropSimulator />
         </div>
 
