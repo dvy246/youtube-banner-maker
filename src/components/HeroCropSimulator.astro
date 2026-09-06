@@ -226,7 +226,7 @@ const tabs = [
 
     <!-- Studio Resolution & Aspect Tag -->
     <div class="sim-header-res font-mono hidden sm:flex items-center gap-1.5 text-[10px] text-ink-600">
-      <span class="px-1.5 py-0.5 rounded bg-black/5 text-ink-950 font-bold border border-black/10">4K HDR</span>
+      <span class="px-1.5 py-0.5 rounded bg-black/5 dark:bg-white/10 text-ink-950 font-bold border border-black/10 dark:border-white/15">4K HDR</span>
       <span>2560 × 1440</span>
     </div>
   </div>
@@ -385,22 +385,102 @@ const tabs = [
 
 <style>
   .hero-sim-root {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    width: 100%;
-    background: linear-gradient(180deg, #FBF8F4 0%, #F4EDE2 100%);
-    border: 1.5px solid #E6DCD0;
-    border-radius: 1.25rem;
-    padding: 0.625rem 0.625rem 0.75rem;
-    box-shadow:
+    --sim-bg: linear-gradient(180deg, #FBF8F4 0%, #F4EDE2 100%);
+    --sim-border: #E6DCD0;
+    --sim-shadow:
       0 20px 48px -12px rgba(110, 85, 60, 0.12),
       0 4px 16px -2px rgba(60, 45, 30, 0.05),
       inset 0 1px 0 #FFFFFF,
       0 0 0 1px rgba(230, 220, 208, 0.6);
+    --sim-tally-color: #1E2430;
+    --sim-tally-fps-bg: rgba(5, 150, 105, 0.1);
+    --sim-tally-fps-color: #065F46;
+    --sim-tally-fps-border: rgba(5, 150, 105, 0.25);
+    --sim-nav-bg: rgba(0, 0, 0, 0.04);
+    --sim-nav-border: rgba(0, 0, 0, 0.08);
+    --sim-nav-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    --sim-pill-color: #64748B;
+    --sim-pill-hover-color: #0F172A;
+    --sim-pill-hover-bg: rgba(0, 0, 0, 0.06);
+    --sim-stage-border: #E5DCCE;
+    --sim-stage-shadow: 0 8px 24px -4px rgba(90, 70, 50, 0.15), inset 0 0 45px rgba(0, 0, 0, 0.55);
+    --sim-tabs-bg: rgba(0, 0, 0, 0.035);
+    --sim-tabs-border: rgba(0, 0, 0, 0.07);
+    --sim-tab-bg: rgba(255, 255, 255, 0.7);
+    --sim-tab-border: rgba(0, 0, 0, 0.06);
+    --sim-tab-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    --sim-tab-hover-bg: #FFFFFF;
+    --sim-tab-hover-border: rgba(0, 0, 0, 0.12);
+    --sim-tab-hover-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    --sim-tab-dot: #CBD5E1;
+    --sim-tab-label: #334155;
+    --sim-tab-dim: #64748B;
+    --sim-editorial-active-bg: #0F172A;
+    --sim-editorial-active-color: #FFFFFF;
+    --sim-editorial-active-shadow: 0 2px 10px rgba(15, 23, 42, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    --sim-tab-mobile-active-bg: #FFFFFF;
+    --sim-tab-desktop-active-bg: #FFFFFF;
+    --sim-tab-tablet-active-bg: #FFFFFF;
+    --sim-tab-tv-active-bg: #FFFFFF;
+    --sim-tab-active-label: #0F172A;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 100%;
+    background: var(--sim-bg);
+    border: 1.5px solid var(--sim-border);
+    border-radius: 1.25rem;
+    padding: 0.625rem 0.625rem 0.75rem;
+    box-shadow: var(--sim-shadow);
     container-type: inline-size;
     position: relative;
     user-select: none;
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  /* ── Dark Theme Chassis Mode ── */
+  :global(.dark) .hero-sim-root,
+  :global([data-theme="dark"]) .hero-sim-root,
+  :global(body:has(#theme-toggle:checked)) .hero-sim-root {
+    --sim-bg: linear-gradient(180deg, #13161F 0%, #0D0F14 100%);
+    --sim-border: rgba(255, 255, 255, 0.09);
+    --sim-shadow:
+      0 24px 60px -12px rgba(0, 0, 0, 0.8),
+      0 4px 16px -2px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(255, 255, 255, 0.04);
+    --sim-tally-color: #F1F5F9;
+    --sim-tally-fps-bg: rgba(16, 185, 129, 0.12);
+    --sim-tally-fps-color: #34D399;
+    --sim-tally-fps-border: rgba(16, 185, 129, 0.3);
+    --sim-nav-bg: rgba(255, 255, 255, 0.04);
+    --sim-nav-border: rgba(255, 255, 255, 0.08);
+    --sim-nav-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    --sim-pill-color: #94A3B8;
+    --sim-pill-hover-color: #F8FAFC;
+    --sim-pill-hover-bg: rgba(255, 255, 255, 0.08);
+    --sim-stage-border: rgba(255, 255, 255, 0.09);
+    --sim-stage-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.6), inset 0 0 45px rgba(0, 0, 0, 0.8);
+    --sim-tabs-bg: rgba(0, 0, 0, 0.35);
+    --sim-tabs-border: rgba(255, 255, 255, 0.06);
+    --sim-tab-bg: rgba(255, 255, 255, 0.04);
+    --sim-tab-border: rgba(255, 255, 255, 0.07);
+    --sim-tab-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --sim-tab-hover-bg: rgba(255, 255, 255, 0.08);
+    --sim-tab-hover-border: rgba(255, 255, 255, 0.14);
+    --sim-tab-hover-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --sim-tab-dot: #475569;
+    --sim-tab-label: #E2E8F0;
+    --sim-tab-dim: #94A3B8;
+    --sim-editorial-active-bg: #F8FAFC;
+    --sim-editorial-active-color: #0B0D10;
+    --sim-editorial-active-shadow: 0 0 16px rgba(255, 255, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --sim-tab-mobile-active-bg: rgba(2, 132, 199, 0.18);
+    --sim-tab-desktop-active-bg: rgba(16, 185, 129, 0.18);
+    --sim-tab-tablet-active-bg: rgba(245, 158, 11, 0.18);
+    --sim-tab-tv-active-bg: rgba(139, 92, 246, 0.18);
+    --sim-tab-active-label: #FFFFFF;
   }
 
   /* ── Header Bar & Banner Style Switcher ── */
@@ -434,7 +514,8 @@ const tabs = [
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #1E2430;
+    color: var(--sim-tally-color);
+    transition: color 0.2s ease;
   }
 
   .sim-tally-fps {
@@ -443,9 +524,10 @@ const tabs = [
     font-weight: 600;
     padding: 0.1rem 0.35rem;
     border-radius: 4px;
-    background: rgba(5, 150, 105, 0.1);
-    color: #065F46;
-    border: 1px solid rgba(5, 150, 105, 0.25);
+    background: var(--sim-tally-fps-bg);
+    color: var(--sim-tally-fps-color);
+    border: 1px solid var(--sim-tally-fps-border);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
 
   .sim-style-nav {
@@ -453,13 +535,14 @@ const tabs = [
     align-items: center;
     gap: 0.25rem;
     padding: 0.25rem;
-    background: rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: var(--sim-nav-bg);
+    border: 1px solid var(--sim-nav-border);
     border-radius: 9999px;
     overflow-x: auto;
     max-width: 100%;
     scrollbar-width: none;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--sim-nav-shadow);
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
   .sim-style-nav::-webkit-scrollbar {
     display: none;
@@ -473,7 +556,7 @@ const tabs = [
     border-radius: 9999px;
     font-size: 0.6875rem;
     font-weight: 600;
-    color: #64748B;
+    color: var(--sim-pill-color);
     background: transparent;
     cursor: pointer;
     line-height: 1;
@@ -483,8 +566,8 @@ const tabs = [
   }
 
   .sim-style-pill:hover {
-    color: #0F172A;
-    background: rgba(0, 0, 0, 0.06);
+    color: var(--sim-pill-hover-color);
+    background: var(--sim-pill-hover-bg);
   }
 
   /* ── Stage (2560 × 1440 / 16:9) ── */
@@ -495,10 +578,9 @@ const tabs = [
     border-radius: 0.875rem;
     overflow: hidden;
     background: #030712;
-    border: 2px solid #E5DCCE;
-    box-shadow:
-      0 8px 24px -4px rgba(90, 70, 50, 0.15),
-      inset 0 0 45px rgba(0, 0, 0, 0.55);
+    border: 2px solid var(--sim-stage-border);
+    box-shadow: var(--sim-stage-shadow);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .sim-dropzone {
@@ -888,9 +970,10 @@ const tabs = [
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.45rem;
     padding: 0.3rem;
-    background: rgba(0, 0, 0, 0.035);
-    border: 1px solid rgba(0, 0, 0, 0.07);
+    background: var(--sim-tabs-bg);
+    border: 1px solid var(--sim-tabs-border);
     border-radius: 0.875rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
 
   .sim-tab {
@@ -902,9 +985,9 @@ const tabs = [
     padding: 0.45rem 0.35rem;
     border-radius: 0.625rem;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    background: var(--sim-tab-bg);
+    border: 1px solid var(--sim-tab-border);
+    box-shadow: var(--sim-tab-shadow);
     transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     min-height: 48px;
     user-select: none;
@@ -912,30 +995,30 @@ const tabs = [
   }
 
   .sim-tab:hover {
-    background: #FFFFFF;
-    border-color: rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    background: var(--sim-tab-hover-bg);
+    border-color: var(--sim-tab-hover-border);
+    box-shadow: var(--sim-tab-hover-shadow);
   }
 
   .tab-indicator-dot {
     width: 6px;
     height: 6px;
     border-radius: 9999px;
-    background: #CBD5E1;
+    background: var(--sim-tab-dot);
     transition: all 0.2s ease;
   }
 
   .sim-tab-label {
     font-size: 0.75rem;
     font-weight: 700;
-    color: #334155;
+    color: var(--sim-tab-label);
     line-height: 1;
     transition: color 0.15s ease;
   }
 
   .sim-tab-dim {
     font-size: 0.6rem;
-    color: #64748B;
+    color: var(--sim-tab-dim);
     line-height: 1;
     letter-spacing: -0.01em;
     transition: color 0.15s ease;
@@ -987,10 +1070,10 @@ const tabs = [
     box-shadow: 0 0 16px rgba(168, 85, 247, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
   :global(#hero-sim):has(#hba-editorial:checked) .sim-style-editorial {
-    background: #0F172A;
-    color: #FFFFFF;
+    background: var(--sim-editorial-active-bg);
+    color: var(--sim-editorial-active-color);
     font-weight: 800;
-    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: var(--sim-editorial-active-shadow);
   }
   :global(#hero-sim):has(#hba-gaming:checked) .sim-style-gaming {
     background: #EC4899;
@@ -1199,7 +1282,7 @@ const tabs = [
 
   /* Mobile Selected */
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile {
-    background: #FFFFFF;
+    background: var(--sim-tab-mobile-active-bg);
     border-color: #0284C7;
     box-shadow: 0 4px 12px rgba(2, 132, 199, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
@@ -1208,7 +1291,7 @@ const tabs = [
     box-shadow: 0 0 6px rgba(2, 132, 199, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-label {
-    color: #0F172A;
+    color: var(--sim-tab-active-label);
     font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim {
@@ -1227,7 +1310,7 @@ const tabs = [
 
   /* Desktop Selected */
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop {
-    background: #FFFFFF;
+    background: var(--sim-tab-desktop-active-bg);
     border-color: #059669;
     box-shadow: 0 4px 12px rgba(5, 150, 105, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
@@ -1236,7 +1319,7 @@ const tabs = [
     box-shadow: 0 0 6px rgba(5, 150, 105, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-label {
-    color: #0F172A;
+    color: var(--sim-tab-active-label);
     font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim {
@@ -1255,7 +1338,7 @@ const tabs = [
 
   /* Tablet Selected */
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet {
-    background: #FFFFFF;
+    background: var(--sim-tab-tablet-active-bg);
     border-color: #D97706;
     box-shadow: 0 4px 12px rgba(217, 119, 6, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
@@ -1264,7 +1347,7 @@ const tabs = [
     box-shadow: 0 0 6px rgba(217, 119, 6, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-label {
-    color: #0F172A;
+    color: var(--sim-tab-active-label);
     font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim {
@@ -1283,7 +1366,7 @@ const tabs = [
 
   /* TV Selected */
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv {
-    background: #FFFFFF;
+    background: var(--sim-tab-tv-active-bg);
     border-color: #7C3AED;
     box-shadow: 0 4px 12px rgba(124, 58, 237, 0.18), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
@@ -1292,7 +1375,7 @@ const tabs = [
     box-shadow: 0 0 6px rgba(124, 58, 237, 0.6);
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-label {
-    color: #0F172A;
+    color: var(--sim-tab-active-label);
     font-weight: 800;
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim {
@@ -1308,6 +1391,55 @@ const tabs = [
     background: transparent;
   }
   :global(#hero-sim):has(#hcs-tab-tv:checked) .status-pulse-dot { background: #8B5CF6; box-shadow: 0 0 8px #8B5CF6; }
+
+  /* Dark mode active tab borders and glow refinements */
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile {
+    border-color: #00E5FF;
+    box-shadow: 0 4px 16px rgba(0, 229, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim {
+    color: #38BDF8;
+  }
+
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop {
+    border-color: #10B981;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim {
+    color: #34D399;
+  }
+
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet {
+    border-color: #F59E0B;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim {
+    color: #FBBF24;
+  }
+
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv {
+    border-color: #8B5CF6;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  :global(.dark) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim,
+  :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim,
+  :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim {
+    color: #C084FC;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .sim-viewport-mask,
