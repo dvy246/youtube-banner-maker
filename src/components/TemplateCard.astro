@@ -23,8 +23,17 @@ const formatField = (field: string) => {
 };
 ---
 
-<article class="group relative flex flex-col bg-surface-0 rounded-2xl border border-line-200 overflow-hidden cursor-pointer transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
-  <div class="relative w-full aspect-[16/9] bg-surface-50 border-b border-line-200 overflow-hidden">
+<article class="group relative flex flex-col bg-surface-0 rounded-2xl border-2 border-line-200 overflow-hidden cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-accent/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none">
+  <!-- Artisanal sketch frame inner dashed boundary -->
+  <div class="absolute inset-1.5 sm:inset-2 rounded-xl border border-dashed border-line-200/80 pointer-events-none transition-colors duration-300 group-hover:border-accent/30 z-10" aria-hidden="true"></div>
+
+  <!-- Corner drafting sketch registration ticks -->
+  <span class="absolute top-2 left-2.5 font-mono text-[9px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+  <span class="absolute top-2 right-2.5 font-mono text-[9px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+  <span class="absolute bottom-2 left-2.5 font-mono text-[9px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+  <span class="absolute bottom-2 right-2.5 font-mono text-[9px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+  <div class="relative w-full aspect-[16/9] bg-surface-50 border-b-2 border-line-200 overflow-hidden">
     <img
       src={template.preview}
       alt={`${template.name} YouTube Banner Template`}
@@ -35,6 +44,16 @@ const formatField = (field: string) => {
       decoding="async"
       class="w-full aspect-[16/9] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
     />
+    <!-- Inset sketch mat line around preview image -->
+    <div class="absolute inset-2 rounded-md border border-dashed border-white/30 pointer-events-none transition-colors duration-300 group-hover:border-accent/50" aria-hidden="true"></div>
+    <!-- Corner brackets inside preview artwork -->
+    <span class="absolute top-2.5 left-2.5 text-[10px] font-mono text-white/50 group-hover:text-accent transition-colors pointer-events-none leading-none select-none" aria-hidden="true">┌</span>
+    <span class="absolute top-2.5 right-2.5 text-[10px] font-mono text-white/50 group-hover:text-accent transition-colors pointer-events-none leading-none select-none" aria-hidden="true">┐</span>
+    <span class="absolute bottom-2.5 left-2.5 text-[10px] font-mono text-white/50 group-hover:text-accent transition-colors pointer-events-none leading-none select-none" aria-hidden="true">└</span>
+    <span class="absolute bottom-2.5 right-2.5 text-[10px] font-mono text-white/50 group-hover:text-accent transition-colors pointer-events-none leading-none select-none" aria-hidden="true">┘</span>
+    <div class="absolute bottom-2 right-3 px-1.5 py-0.5 rounded bg-black/75 backdrop-blur-xs border border-white/20 text-[8px] font-mono uppercase tracking-widest text-white/90 select-none">
+      DRAFT · 16:9
+    </div>
   </div>
 
   <div class="p-5 sm:p-6 flex flex-col flex-1 gap-3.5">

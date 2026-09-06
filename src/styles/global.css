@@ -117,6 +117,98 @@ html {
   animation: scroll-beam 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   Artisanal Hand-Drawn Sketch Animation Tokens
+═══════════════════════════════════════════════════════════ */
+@keyframes sketch-draw-loop {
+  0% {
+    stroke-dashoffset: 340;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  45%, 82% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  95%, 100% {
+    stroke-dashoffset: -340;
+    opacity: 0;
+  }
+}
+
+@keyframes sketch-tagline-draw {
+  0% {
+    stroke-dashoffset: 200;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50%, 85% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  96%, 100% {
+    stroke-dashoffset: -200;
+    opacity: 0;
+  }
+}
+
+@keyframes sketch-star-pulse {
+  0%, 35% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-20deg);
+  }
+  48%, 82% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  92%, 100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(20deg);
+  }
+}
+
+.sketch-stroke-primary {
+  stroke-dasharray: 340;
+  animation: sketch-draw-loop 4.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.sketch-stroke-secondary {
+  stroke-dasharray: 300;
+  animation: sketch-draw-loop 4.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation-delay: 0.22s;
+}
+
+.sketch-star {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sketch-star-pulse 4.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+.sketch-tagline-stroke {
+  stroke-dasharray: 200;
+  animation: sketch-tagline-draw 4.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation-delay: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sketch-stroke-primary,
+  .sketch-stroke-secondary,
+  .sketch-tagline-stroke {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .sketch-star {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Dark Theme Mode (Base dark surfaces and ink - does NOT override custom palettes) */
 body:has(#theme-toggle:checked),
 html[data-theme="dark"],
