@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0A0606",
-        "#170B0B",
-        "#0A0606"
+        "#120808",
+        "#1F0B0B",
+        "#2D1010"
       ],
-      "from": "#0A0606",
-      "to": "#0A0606"
+      "from": "#120808",
+      "to": "#2D1010"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "COLD FILE DOSSIER",
         "font": "sora-700",
         "size": 48,
-        "color": "#F5F5F5",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Unsolved Mysteries & Investigative Audio Deep Dives",
         "font": "inter-400",
         "size": 16,
-        "color": "#FCA5A5",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

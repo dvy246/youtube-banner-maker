@@ -19,7 +19,7 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
         "#FFFFFF",
         "#F9FAFB",
@@ -47,7 +47,7 @@
         "text": "STUDIO TECH",
         "font": "sora-700",
         "size": 48,
-        "color": "#0A0D14",
+        "color": "#111827",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -60,7 +60,7 @@
         "text": "HARDWARE BENCHMARKS & WORKFLOW ENGINEERING",
         "font": "inter-500",
         "size": 16,
-        "color": "#4B5563",
+        "color": "#111827",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

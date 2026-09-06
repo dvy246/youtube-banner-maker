@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#070814",
-        "#10132B",
-        "#070814"
+        "#2E1065",
+        "#4C1D95",
+        "#5B21B6"
       ],
-      "from": "#070814",
-      "to": "#070814"
+      "from": "#2E1065",
+      "to": "#5B21B6"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "CELESTIAL HARMONY",
         "font": "sora-700",
         "size": 48,
-        "color": "#EEF2FF",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Generative Modular Ambient Music for Focus & Sleep",
         "font": "inter-400",
         "size": 16,
-        "color": "#C7D2FE",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

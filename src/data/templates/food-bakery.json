@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#19120B",
-        "#2C2014",
-        "#19120B"
+        "#FFF8F0",
+        "#FFEDD5",
+        "#FFE4E6"
       ],
-      "from": "#19120B",
-      "to": "#19120B"
+      "from": "#FFF8F0",
+      "to": "#FFE4E6"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "WHEAT & CRUST",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFBEB",
+        "color": "#431407",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Wild Yeast Sourdough \u00b7 Ancient Grains & French Baguettes",
+        "text": "Wild Yeast Sourdough · Ancient Grains & French Baguettes",
         "font": "inter-400",
         "size": 16,
-        "color": "#FDE68A",
+        "color": "#431407",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

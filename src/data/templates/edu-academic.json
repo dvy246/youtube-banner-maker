@@ -7,112 +7,99 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "from": "#131417",
-      "to": "#1F232B",
       "angle": 135,
       "stops": [
-        "#131417",
-        "#1F232B"
-      ]
+        "#FFFDF5",
+        "#Fef9c3",
+        "#FEF08A"
+      ],
+      "from": "#FFFDF5",
+      "to": "#FEF08A"
     },
     "layers": [
+      {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1875,
+        "y": 0.3333,
+        "w": 0.625,
+        "h": 0.3402,
+        "color": "#FFFFFF",
+        "borderRadius": 20,
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-finance-male-thumb.jpg",
         "x": 0.5,
-        "y": 0.44,
+        "y": 0.425,
         "w": 0.08,
         "h": 0.14,
-        "borderWidth": 4,
+        "borderWidth": 5,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
       },
       {
         "id": "title",
         "role": "title",
-        "text": "THE OPEN COLLOQUIUM",
-        "font": "space-grotesk-700",
-        "size": 46,
-        "color": "#EFF1F3",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
         "type": "text",
+        "text": "THE OPEN COLLOQUIUM",
+        "font": "inter-700",
+        "size": 48,
+        "color": "#111827",
+        "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.515
+        },
+        "x": 0.5,
+        "y": 0.515,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
-        "text": "Classic Literature \u00b7 Political Thought \u00b7 Seminars",
-        "font": "inter-500",
-        "size": 18,
-        "color": "#6B7076",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
         "type": "text",
+        "text": "Classic Literature · Political Thought · Seminars",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#4B5563",
+        "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.56
+        },
+        "x": 0.5,
+        "y": 0.56,
         "safeAreaConstrained": true
       },
       {
-        "id": "top-rule",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.35,
-        "y": 0.38,
-        "w": 0.3,
-        "h": 0.002,
-        "color": "#6B7076",
-        "opacity": 0.6
-      },
-      {
-        "id": "bottom-rule",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.35,
-        "y": 0.62,
-        "w": 0.3,
-        "h": 0.002,
-        "color": "#6B7076",
-        "opacity": 0.6
-      },
-      {
-        "id": "margin-left",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.08,
-        "y": 0.1,
-        "w": 0.001,
-        "h": 0.8,
-        "color": "#6B7076",
-        "opacity": 0.25
-      },
-      {
-        "id": "margin-right",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.92,
-        "y": 0.1,
-        "w": 0.001,
-        "h": 0.8,
-        "color": "#6B7076",
-        "opacity": 0.25
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.61,
+        "scale": 0.75,
+        "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "top-rule",
-    "bottom-rule",
-    "margin-left",
-    "margin-right"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

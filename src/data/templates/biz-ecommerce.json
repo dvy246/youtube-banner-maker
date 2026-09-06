@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#06110A",
-        "#0E2416",
-        "#06110A"
+        "#0D9488",
+        "#4F46E5",
+        "#818CF8"
       ],
-      "from": "#06110A",
-      "to": "#06110A"
+      "from": "#0D9488",
+      "to": "#818CF8"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "E-COM LAB",
         "font": "sora-700",
         "size": 54,
-        "color": "#ECFDF5",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "7-FIGURE SHOPIFY BRANDS \u00b7 SUPPLY CHAIN & CONVERSION",
+        "text": "7-FIGURE SHOPIFY BRANDS · SUPPLY CHAIN & CONVERSION",
         "font": "inter-600",
         "size": 15,
-        "color": "#6EE7B7",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

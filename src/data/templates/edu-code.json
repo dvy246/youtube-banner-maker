@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#060F1A",
-        "#0D1E33",
-        "#060F1A"
+        "#0D1117",
+        "#161B22",
+        "#21262D"
       ],
-      "from": "#060F1A",
-      "to": "#060F1A"
+      "from": "#0D1117",
+      "to": "#21262D"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "CODE PRINCIPLES",
         "font": "sora-700",
         "size": 48,
-        "color": "#FFFFFF",
+        "color": "#10B981",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Data Structures & System Design for Senior Engineers",
         "font": "inter-400",
         "size": 16,
-        "color": "#7DD3FC",
+        "color": "#10B981",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

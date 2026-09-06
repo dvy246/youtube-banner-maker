@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#161311",
-        "#241F1B",
-        "#161311"
+        "#F5F0E8",
+        "#FAF7F2",
+        "#EBE3D9"
       ],
-      "from": "#161311",
-      "to": "#161311"
+      "from": "#F5F0E8",
+      "to": "#EBE3D9"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "WABI SABI HOME",
         "font": "sora-700",
         "size": 48,
-        "color": "#FDFBF7",
+        "color": "#3E2723",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -48,7 +48,7 @@
         "text": "Scandinavian Simplicity Meets Japanese Natural Warmth",
         "font": "inter-400",
         "size": 16,
-        "color": "#FDE68A",
+        "color": "#3E2723",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

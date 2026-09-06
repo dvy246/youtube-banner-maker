@@ -7,64 +7,85 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0A1A24",
-        "#143245",
-        "#0A1A24"
+        "#99F6E4",
+        "#FDE68A",
+        "#CCFBF1"
       ],
-      "from": "#0A1A24",
-      "to": "#0A1A24"
+      "from": "#99F6E4",
+      "to": "#CCFBF1"
     },
     "layers": [
+      {
+        "id": "ribbon-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.353125,
+        "w": 1,
+        "h": 0.29375,
+        "color": "#FFFFFF",
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.35,
+        "src": "/avatars/avatar-vlog-female-thumb.jpg",
+        "x": 0.33,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
-        "borderColor": "#FFFFFF",
+        "borderWidth": 6,
+        "borderColor": "#99F6E4",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "coast-line",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.32,
-        "y": 0.58,
-        "w": 0.36,
-        "h": 0.003,
-        "color": "#06B6D4",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "COASTAL VOYAGE",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
+        "font": "inter-700",
+        "size": 42,
+        "color": "#111827",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.47
+        },
+        "x": 0.43,
+        "y": 0.47,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "SAILING THE MEDITERRANEAN \u00b7 ISLAND LIFE & DIVING",
+        "text": "SAILING THE MEDITERRANEAN · ISLAND LIFE & DIVING",
         "font": "inter-500",
         "size": 15,
-        "color": "#A5F3FC",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "color": "#6B7280",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.53
+        },
+        "x": 0.43,
+        "y": 0.53,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.48,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -72,12 +93,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "coast-line"
+    "ribbon-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

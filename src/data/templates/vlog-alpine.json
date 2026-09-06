@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0A131F",
-        "#17273C",
-        "#0A131F"
+        "#BAE6FD",
+        "#FFFFFF",
+        "#E0F2FE"
       ],
-      "from": "#0A131F",
-      "to": "#0A131F"
+      "from": "#BAE6FD",
+      "to": "#E0F2FE"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "SUMMIT RIDGE",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#0F172A",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -59,7 +59,7 @@
         "text": "SOLO ALPINE TREKKING & ULTRA RUNNING EXPEDITIONS",
         "font": "inter-500",
         "size": 15,
-        "color": "#BAE6FD",
+        "color": "#0F172A",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

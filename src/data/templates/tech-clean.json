@@ -18,61 +18,17 @@
     },
     "layers": [
       {
-        "id": "backplate",
-        "type": "shape",
-        "shape": "rect",
-        "borderRadius": 16,
-        "x": 0.21,
-        "y": 0.38,
-        "w": 0.58,
-        "h": 0.24,
-        "color": "#FFFFFF",
-        "opacity": 0.05
-      },
-      {
-        "id": "circuit-line-1",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.1,
-        "y": 0.2,
-        "w": 0.2,
-        "h": 0.002,
-        "color": "#4E6BFF",
-        "opacity": 0.3
-      },
-      {
-        "id": "circuit-line-2",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.298,
-        "y": 0.2,
-        "w": 0.002,
-        "h": 0.1,
-        "color": "#4E6BFF",
-        "opacity": 0.3
-      },
-      {
-        "id": "accent-dot",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.295,
-        "y": 0.3,
-        "w": 0.008,
-        "h": 0.014,
-        "color": "#4E6BFF",
-        "opacity": 0.5
-      },
-      {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.26,
+        "src": "/avatars/avatar-tech-glasses-thumb.jpg",
+        "x": 0.31,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 2,
-        "borderColor": "#4E6BFF",
+        "borderWidth": 6,
+        "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
       },
       {
@@ -80,41 +36,70 @@
         "role": "title",
         "type": "text",
         "text": "TECH HORIZON",
-        "font": "sora-700",
-        "size": 46,
-        "color": "#FFFFFF",
+        "font": "inter-700",
+        "size": 44,
+        "color": "#0F172A",
         "align": "left",
-        "x": 0.35,
-        "y": 0.47,
+        "position": {
+          "x": 0.42,
+          "y": 0.46
+        },
+        "x": 0.42,
+        "y": 0.46,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.505,
+        "w": 0.22,
+        "h": 0.032,
+        "borderRadius": 6,
+        "color": "#475569",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Hardware Reviews \u00b7 AI Tools \u00b7 Future Gear",
+        "text": "Hardware Reviews · AI Tools · Future Gear",
         "font": "inter-500",
-        "size": 16,
-        "color": "#A5B4FC",
+        "size": 13,
+        "color": "#0F172A",
         "align": "left",
-        "x": 0.35,
-        "y": 0.56,
+        "position": {
+          "x": 0.43,
+          "y": 0.521
+        },
+        "x": 0.43,
+        "y": 0.521,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
-    "avatar",
     "title",
     "tagline",
-    "background.photo",
+    "avatar",
     "background.gradient"
   ],
   "protected": [
-    "backplate",
-    "circuit-line-1",
-    "circuit-line-2",
-    "accent-dot"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

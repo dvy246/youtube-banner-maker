@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#080415",
-        "#190A36",
-        "#080415"
+        "#0A0A14",
+        "#111118",
+        "#1A1A24"
       ],
-      "from": "#080415",
-      "to": "#080415"
+      "from": "#0A0A14",
+      "to": "#1A1A24"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "SUBWOOFER SOUND",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#A855F7",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "HEAVY BASS DROPS \u00b7 FESTIVAL MIXES \u00b7 SOUND DESIGN",
+        "text": "HEAVY BASS DROPS · FESTIVAL MIXES · SOUND DESIGN",
         "font": "inter-600",
         "size": 15,
-        "color": "#BEF264",
+        "color": "#A855F7",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

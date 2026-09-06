@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 120,
+      "angle": 135,
       "stops": [
-        "#0E0E10",
-        "#18181B",
-        "#27272A"
+        "#111111",
+        "#1F2937",
+        "#374151"
       ],
-      "from": "#0E0E10",
-      "to": "#27272A"
+      "from": "#111111",
+      "to": "#374151"
     },
     "layers": [
       {
@@ -22,71 +22,71 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-gaming-streamer-thumb.jpg",
+        "x": 0.31,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "esports-bar-l",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.25,
-        "y": 0.48,
-        "w": 0.05,
-        "h": 0.008,
-        "color": "#FACC15",
-        "opacity": 0.95
-      },
-      {
-        "id": "esports-bar-r",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.7,
-        "y": 0.48,
-        "w": 0.05,
-        "h": 0.008,
-        "color": "#FACC15",
-        "opacity": 0.95
-      },
-      {
-        "id": "corner-tag",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.25,
-        "y": 0.4,
-        "w": 0.03,
-        "h": 0.004,
-        "color": "#FACC15",
-        "opacity": 0.6
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "TITAN ESPORTS",
-        "font": "sora-700",
-        "size": 54,
+        "font": "inter-700",
+        "size": 44,
         "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
+        "align": "left",
+        "position": {
+          "x": 0.42,
+          "y": 0.46
+        },
+        "x": 0.42,
         "y": 0.46,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.505,
+        "w": 0.22,
+        "h": 0.032,
+        "borderRadius": 6,
+        "color": "#3B82F6",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "PRO SCRIMS \u00b7 TOURNAMENT RECAPS \u00b7 META ANALYSIS",
-        "font": "inter-600",
-        "size": 16,
-        "color": "#FDE047",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "text": "PRO SCRIMS · TOURNAMENT RECAPS · META ANALYSIS",
+        "font": "inter-500",
+        "size": 13,
+        "color": "#FFFFFF",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.521
+        },
+        "x": 0.43,
+        "y": 0.521,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -94,14 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "esports-bar-l",
-    "esports-bar-r",
-    "corner-tag"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

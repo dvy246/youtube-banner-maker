@@ -7,13 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "from": "#0C0D0E",
-      "to": "#1A2130",
-      "angle": 110,
+      "angle": 135,
       "stops": [
-        "#0C0D0E",
-        "#1A2130"
-      ]
+        "#0A0A14",
+        "#111118",
+        "#1A1A24"
+      ],
+      "from": "#0A0A14",
+      "to": "#1A1A24"
     },
     "layers": [
       {
@@ -78,7 +79,7 @@
         "text": "HARDWARE BENCH",
         "font": "space-grotesk-700",
         "size": 50,
-        "color": "#F7F8F9",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -88,10 +89,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Custom PC Builds \u00b7 Overclocking \u00b7 Thermal Tests",
+        "text": "Custom PC Builds · Overclocking · Thermal Tests",
         "font": "inter-500",
         "size": 18,
-        "color": "#8AA4FF",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

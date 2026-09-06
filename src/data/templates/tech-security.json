@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#050D0A",
-        "#0D1F17",
-        "#050D0A"
+        "#052E16",
+        "#064E3B",
+        "#047857"
       ],
-      "from": "#050D0A",
-      "to": "#050D0A"
+      "from": "#052E16",
+      "to": "#047857"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "SEC_PROTOCOL",
         "font": "sora-700",
         "size": 50,
-        "color": "#E6FBF2",
+        "color": "#22C55E",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "DEFENSIVE SECURITY \u00b7 ZERO TRUST \u00b7 REVERSE ENGINEERING",
+        "text": "DEFENSIVE SECURITY · ZERO TRUST · REVERSE ENGINEERING",
         "font": "inter-500",
         "size": 15,
-        "color": "#6EE7B7",
+        "color": "#22C55E",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

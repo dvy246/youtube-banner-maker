@@ -7,51 +7,58 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0C0B0A",
         "#1A1816",
-        "#0C0B0A"
+        "#292524",
+        "#44403C"
       ],
-      "from": "#0C0B0A",
-      "to": "#0C0B0A"
+      "from": "#1A1816",
+      "to": "#44403C"
     },
     "layers": [
+      {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1875,
+        "y": 0.3333,
+        "w": 0.625,
+        "h": 0.3402,
+        "color": "#FFFFFF",
+        "borderRadius": 20,
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-chef-food-thumb.jpg",
         "x": 0.5,
-        "y": 0.44,
+        "y": 0.425,
         "w": 0.08,
         "h": 0.14,
-        "borderWidth": 4,
+        "borderWidth": 5,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "chef-star",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.47,
-        "y": 0.39,
-        "w": 0.06,
-        "h": 0.005,
-        "color": "#EAB308",
-        "opacity": 0.9
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "THE CHEF TABLE",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#FDFBF7",
+        "font": "inter-700",
+        "size": 48,
+        "color": "#111827",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.515
+        },
         "x": 0.5,
-        "y": 0.47,
+        "y": 0.515,
         "safeAreaConstrained": true
       },
       {
@@ -59,12 +66,27 @@
         "role": "tagline",
         "type": "text",
         "text": "Michelin-Caliber Culinary Techniques for the Home Cook",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#FEF08A",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#4B5563",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.56
+        },
         "x": 0.5,
-        "y": 0.54,
+        "y": 0.56,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.61,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -72,12 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "chef-star"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#190C05",
-        "#2C160B",
-        "#190C05"
+        "#7F1D1D",
+        "#991B1B",
+        "#B91C1C"
       ],
-      "from": "#190C05",
-      "to": "#190C05"
+      "from": "#7F1D1D",
+      "to": "#B91C1C"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "SMOKE & EMBER",
         "font": "sora-700",
         "size": 52,
-        "color": "#FFF7ED",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "TEXAS BRISKET \u00b7 OFFSET SMOKERS \u00b7 HOMEMADE RUBS",
+        "text": "TEXAS BRISKET · OFFSET SMOKERS · HOMEMADE RUBS",
         "font": "inter-600",
         "size": 15,
-        "color": "#FDBA74",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

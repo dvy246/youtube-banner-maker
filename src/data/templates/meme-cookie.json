@@ -21,49 +21,55 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#1F130B",
-        "#2E190E",
-        "#451E09"
+        "#FB923C",
+        "#FFFFFF",
+        "#FDBA74"
       ],
-      "from": "#1F130B",
-      "to": "#451E09"
+      "from": "#FB923C",
+      "to": "#FDBA74"
     },
     "layers": [
+      {
+        "id": "ribbon-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.353125,
+        "w": 1,
+        "h": 0.29375,
+        "color": "#FFFFFF",
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.35,
+        "src": "/avatars/avatar-gaming-streamer-thumb.jpg",
+        "x": 0.33,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
-        "borderColor": "#FFFFFF",
+        "borderWidth": 6,
+        "borderColor": "#FB923C",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "glow-accent",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.35,
-        "y": 0.39,
-        "w": 0.3,
-        "h": 0.005,
-        "color": "#F59E0B",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "COOKIE ARCADE",
-        "font": "sora-700",
-        "size": 50,
-        "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
+        "font": "inter-700",
+        "size": 42,
+        "color": "#111827",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.47
+        },
+        "x": 0.43,
+        "y": 0.47,
         "safeAreaConstrained": true
       },
       {
@@ -72,22 +78,26 @@
         "type": "text",
         "text": "DAILY GAMING CLIPS & CHAOTIC HIGHLIGHTS",
         "font": "inter-500",
-        "size": 17,
-        "color": "#FED7AA",
-        "align": "center",
-        "x": 0.5,
+        "size": 15,
+        "color": "#6B7280",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.53
+        },
+        "x": 0.43,
         "y": 0.53,
         "safeAreaConstrained": true
       },
       {
-        "id": "badge-cookie",
+        "id": "subscribe-badge",
+        "role": "badge",
         "type": "badge",
-        "variant": "subscribe-cookie",
-        "text": "SUBSCRIBE FOR A COOKIE",
+        "variant": "subscribe-pill",
         "colorScheme": "youtube-red",
-        "scale": 1,
-        "x": 0.5,
-        "y": 0.6,
+        "x": 0.48,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -95,13 +105,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "glow-accent",
-    "badge-cookie"
+    "ribbon-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

@@ -21,48 +21,54 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#FAF8FF",
-        "#F2ECFE",
-        "#EAE2FC"
+        "#F0E6FF",
+        "#F5F3FF",
+        "#E0E7FF"
       ],
-      "from": "#FAF8FF",
-      "to": "#EAE2FC"
+      "from": "#F0E6FF",
+      "to": "#E0E7FF"
     },
     "layers": [
+      {
+        "id": "ribbon-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.353125,
+        "w": 1,
+        "h": 0.29375,
+        "color": "#FFFFFF",
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.35,
+        "src": "/avatars/avatar-vlog-female-thumb.jpg",
+        "x": 0.33,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
-        "borderColor": "#FFFFFF",
+        "borderWidth": 6,
+        "borderColor": "#7C3AED",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "card-backplate",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.32,
-        "y": 0.41,
-        "w": 0.36,
-        "h": 0.19,
-        "color": "#FFFFFF",
-        "opacity": 0.95
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "COZY CORNER",
-        "font": "sora-700",
-        "size": 46,
-        "color": "#1F1D2B",
-        "align": "center",
-        "x": 0.5,
+        "font": "inter-700",
+        "size": 42,
+        "color": "#111827",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.47
+        },
+        "x": 0.43,
         "y": 0.47,
         "safeAreaConstrained": true
       },
@@ -70,13 +76,28 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "SLOW LIVING \u2022 DESK SETUPS \u2022 STUDY VLOGS",
+        "text": "SLOW LIVING • DESK SETUPS • STUDY VLOGS",
         "font": "inter-500",
-        "size": 16,
-        "color": "#5E5873",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "size": 15,
+        "color": "#6B7280",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.53
+        },
+        "x": 0.43,
+        "y": 0.53,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.48,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -84,12 +105,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "card-backplate"
+    "ribbon-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

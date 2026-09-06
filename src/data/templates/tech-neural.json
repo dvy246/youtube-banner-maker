@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 120,
+      "angle": 135,
       "stops": [
-        "#0A071B",
-        "#1E1245",
-        "#0A071B"
+        "#581C87",
+        "#8B5CF6",
+        "#A78BFA"
       ],
-      "from": "#0A071B",
-      "to": "#0A071B"
+      "from": "#581C87",
+      "to": "#A78BFA"
     },
     "layers": [
       {
@@ -67,10 +67,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "LLM ARCHITECTURES \u00b7 PYTORCH \u00b7 AGENTIC SYSTEMS",
+        "text": "LLM ARCHITECTURES · PYTORCH · AGENTIC SYSTEMS",
         "font": "inter-500",
         "size": 16,
-        "color": "#D8B4FE",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

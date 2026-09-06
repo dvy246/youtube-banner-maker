@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#120A06",
-        "#21130D",
-        "#120A06"
+        "#C4A882",
+        "#D4B896",
+        "#E5D3B3"
       ],
-      "from": "#120A06",
-      "to": "#120A06"
+      "from": "#C4A882",
+      "to": "#E5D3B3"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "ORIGIN ROAST",
         "font": "sora-700",
         "size": 52,
-        "color": "#FFFBEB",
+        "color": "#FFF8F0",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -48,7 +48,7 @@
         "text": "Single Origin Green Coffee Cupping & Drum Roasting Logs",
         "font": "inter-400",
         "size": 16,
-        "color": "#FDE68A",
+        "color": "#FFF8F0",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

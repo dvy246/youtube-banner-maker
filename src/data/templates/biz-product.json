@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0D091A",
-        "#1B1333",
-        "#0D091A"
+        "#F8FAFC",
+        "#F1F5F9",
+        "#E2E8F0"
       ],
-      "from": "#0D091A",
-      "to": "#0D091A"
+      "from": "#F8FAFC",
+      "to": "#E2E8F0"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "PRODUCT CRAFT",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#0F172A",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Design Systems, User Research & High-Conversion Interfaces",
         "font": "inter-400",
         "size": 16,
-        "color": "#D8B4FE",
+        "color": "#0F172A",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#0A0A0A",
-        "#1C1C1C",
-        "#0A0A0A"
+        "#DC2626",
+        "#111111",
+        "#EF4444"
       ],
-      "from": "#0A0A0A",
-      "to": "#0A0A0A"
+      "from": "#DC2626",
+      "to": "#EF4444"
     },
     "layers": [
       {
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "BOXING FOOTWORK \u00b7 COMBAT CONDITIONING \u00b7 SPARRING",
+        "text": "BOXING FOOTWORK · COMBAT CONDITIONING · SPARRING",
         "font": "inter-600",
         "size": 15,
-        "color": "#FDE047",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

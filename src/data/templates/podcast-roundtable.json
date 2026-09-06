@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#090D14",
-        "#131B2A",
-        "#090D14"
+        "#1E3A5F",
+        "#7DD3FC",
+        "#38BDF8"
       ],
-      "from": "#090D14",
-      "to": "#090D14"
+      "from": "#1E3A5F",
+      "to": "#38BDF8"
     },
     "layers": [
       {
@@ -22,60 +22,71 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-podcast-host-thumb.jpg",
+        "x": 0.31,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "rt-bar-l",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.28,
-        "y": 0.46,
-        "w": 0.05,
-        "h": 0.005,
-        "color": "#EA580C",
-        "opacity": 0.8
-      },
-      {
-        "id": "rt-bar-r",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.67,
-        "y": 0.46,
-        "w": 0.05,
-        "h": 0.005,
-        "color": "#EA580C",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "THE ROUNDTABLE",
-        "font": "sora-700",
-        "size": 48,
+        "font": "inter-700",
+        "size": 44,
         "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
+        "align": "left",
+        "position": {
+          "x": 0.42,
+          "y": 0.46
+        },
+        "x": 0.42,
         "y": 0.46,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.505,
+        "w": 0.22,
+        "h": 0.032,
+        "borderRadius": 6,
+        "color": "#1E3A5F",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "4 CREATORS \u00b7 NO SCRIPT \u00b7 RAW INDUSTRY TAKES",
-        "font": "inter-600",
-        "size": 16,
-        "color": "#FDBA74",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "text": "4 CREATORS · NO SCRIPT · RAW INDUSTRY TAKES",
+        "font": "inter-500",
+        "size": 13,
+        "color": "#FFFFFF",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.521
+        },
+        "x": 0.43,
+        "y": 0.521,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "rt-bar-l",
-    "rt-bar-r"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#041217",
-        "#0A2530",
-        "#041217"
+        "#0F766E",
+        "#18181B",
+        "#14B8A6"
       ],
-      "from": "#041217",
-      "to": "#041217"
+      "from": "#0F766E",
+      "to": "#14B8A6"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "DATA PULSE",
         "font": "sora-700",
         "size": 52,
-        "color": "#F0FDFA",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.48,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "BIG DATA PIPELINES \u00b7 PYTHON ANALYTICS \u00b7 MACHINE LEARNING",
+        "text": "BIG DATA PIPELINES · PYTHON ANALYTICS · MACHINE LEARNING",
         "font": "inter-500",
         "size": 15,
-        "color": "#5EEAD4",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

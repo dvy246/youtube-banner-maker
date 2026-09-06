@@ -492,6 +492,10 @@ class ToolIsland {
                 this.scheduleFrame();
               };
               fImg.src = frameLayer.src;
+              if (fImg.complete && fImg.naturalWidth > 0) {
+                this.images.set(frameLayer.src, fImg);
+                this.scheduleFrame();
+              }
             }
             if (parsed.background.type === 'image') {
               if (parsed.background.src && parsed.background.src.startsWith('data:image/')) {
@@ -2235,6 +2239,10 @@ class ToolIsland {
         this.scheduleFrame();
       };
       fImg.src = frame.src;
+      if (fImg.complete && fImg.naturalWidth > 0) {
+        this.images.set(frame.src, fImg);
+        this.scheduleFrame();
+      }
     }
 
     // Preload background image if defined

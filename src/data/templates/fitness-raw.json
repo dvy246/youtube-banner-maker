@@ -7,13 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "from": "#1A0C08",
-      "to": "#2E140C",
       "angle": 135,
       "stops": [
-        "#1A0C08",
-        "#2E140C"
-      ]
+        "#374151",
+        "#1F2937",
+        "#4B5563"
+      ],
+      "from": "#374151",
+      "to": "#4B5563"
     },
     "layers": [
       {
@@ -39,7 +40,8 @@
         "h": 0.18,
         "borderWidth": 3,
         "borderColor": "#FF7A00",
-        "safeAreaConstrained": true
+        "safeAreaConstrained": true,
+        "src": "/avatars/avatar-fitness-trainer-thumb.jpg"
       },
       {
         "id": "title",
@@ -48,7 +50,7 @@
         "text": "ENDURANCE LAB",
         "font": "bebas-400",
         "size": 58,
-        "color": "#FF7A00",
+        "color": "#FFFFFF",
         "align": "left",
         "x": 0.36,
         "y": 0.47,
@@ -58,7 +60,7 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Marathon Prep \u00b7 Triathlon \u00b7 VO2 Testing",
+        "text": "Marathon Prep · Triathlon · VO2 Testing",
         "font": "inter-500",
         "size": 16,
         "color": "#FFFFFF",

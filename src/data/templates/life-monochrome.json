@@ -6,8 +6,15 @@
   "preview": "/previews/life-monochrome.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#1B1C1E"
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1B1C1E",
+        "#E5E7EB",
+        "#374151"
+      ],
+      "from": "#1B1C1E",
+      "to": "#374151"
     },
     "layers": [
       {
@@ -26,10 +33,10 @@
       {
         "id": "tagline",
         "role": "tagline",
-        "text": "Architecture \u00b7 Coffee Cultures \u00b7 Industrial Design",
+        "text": "Architecture · Coffee Cultures · Industrial Design",
         "font": "inter-500",
         "size": 18,
-        "color": "#6B7076",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

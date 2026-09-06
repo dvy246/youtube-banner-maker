@@ -21,12 +21,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#0C061A",
-        "#1D0B38",
-        "#2E0E57"
+        "#1A0533",
+        "#2D0B5A",
+        "#4C1D95"
       ],
-      "from": "#0C061A",
-      "to": "#2E0E57"
+      "from": "#1A0533",
+      "to": "#4C1D95"
     },
     "layers": [
       {
@@ -47,7 +47,7 @@
         "text": "NEO TOKYO 2099",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#EC4899",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -57,10 +57,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "VTUBER STREAMS \u2022 JRPG SPEEDRUNS \u2022 RETRO SYNTH",
+        "text": "VTUBER STREAMS • JRPG SPEEDRUNS • RETRO SYNTH",
         "font": "inter-500",
         "size": 16,
-        "color": "#A5F3FC",
+        "color": "#EC4899",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

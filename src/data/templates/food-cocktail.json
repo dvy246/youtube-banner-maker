@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0E0C0A",
-        "#1B1713",
-        "#0E0C0A"
+        "#0F172A",
+        "#1E293B",
+        "#334155"
       ],
-      "from": "#0E0C0A",
-      "to": "#0E0C0A"
+      "from": "#0F172A",
+      "to": "#334155"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "THE APOTHECARY",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFBEB",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -45,10 +45,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Classic Cocktail Specs \u00b7 Clarified Drinks & House Syrups",
+        "text": "Classic Cocktail Specs · Clarified Drinks & House Syrups",
         "font": "inter-400",
         "size": 16,
-        "color": "#FCD34D",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#1A120B",
-        "#2C1E14",
-        "#1A120B"
+        "#FDE8D8",
+        "#FFEDD5",
+        "#FDBA74"
       ],
-      "from": "#1A120B",
-      "to": "#1A120B"
+      "from": "#FDE8D8",
+      "to": "#FDBA74"
     },
     "layers": [
       {
@@ -22,60 +22,71 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-creative-male-thumb.jpg",
+        "x": 0.31,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "film-frame-top",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.3,
-        "y": 0.4,
-        "w": 0.4,
-        "h": 0.003,
-        "color": "#D97706",
-        "opacity": 0.7
-      },
-      {
-        "id": "film-frame-bot",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.3,
-        "y": 0.58,
-        "w": 0.4,
-        "h": 0.003,
-        "color": "#D97706",
-        "opacity": 0.7
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "THE WANDERLUST",
-        "font": "sora-700",
-        "size": 48,
-        "color": "#FFFBEB",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.47,
+        "font": "inter-700",
+        "size": 44,
+        "color": "#78350F",
+        "align": "left",
+        "position": {
+          "x": 0.42,
+          "y": 0.46
+        },
+        "x": 0.42,
+        "y": 0.46,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.505,
+        "w": 0.22,
+        "h": 0.032,
+        "borderRadius": 6,
+        "color": "#B45309",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
         "text": "Documentary Travel Stories from 60+ Countries",
-        "font": "inter-400",
-        "size": 17,
-        "color": "#FDE68A",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "font": "inter-500",
+        "size": 13,
+        "color": "#78350F",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.521
+        },
+        "x": 0.43,
+        "y": 0.521,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "film-frame-top",
-    "film-frame-bot"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

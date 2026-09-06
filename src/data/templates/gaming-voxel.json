@@ -9,57 +9,55 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#141E30",
-        "#243B55",
-        "#141E30"
+        "#BEF264",
+        "#D9F99D",
+        "#ECFCCB"
       ],
-      "from": "#141E30",
-      "to": "#141E30"
+      "from": "#BEF264",
+      "to": "#ECFCCB"
     },
     "layers": [
       {
-        "id": "voxel-block-1",
+        "id": "sketch-box",
+        "role": "shape",
         "type": "shape",
         "shape": "rect",
-        "x": 0.31,
-        "y": 0.42,
-        "w": 0.02,
-        "h": 0.02,
-        "color": "#F59E0B",
-        "opacity": 0.8
+        "x": 0.22,
+        "y": 0.38,
+        "w": 0.56,
+        "h": 0.24,
+        "color": "#1A2E05",
+        "opacity": 0.25
       },
       {
-        "id": "voxel-block-2",
-        "type": "shape",
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
         "shape": "rect",
-        "x": 0.67,
-        "y": 0.54,
-        "w": 0.02,
-        "h": 0.02,
-        "color": "#38BDF8",
-        "opacity": 0.8
-      },
-      {
-        "id": "voxel-underline",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.38,
-        "y": 0.52,
-        "w": 0.24,
-        "h": 0.005,
-        "color": "#F59E0B",
-        "opacity": 0.6
+        "src": "/avatars/avatar-creative-male-thumb.jpg",
+        "x": 0.29,
+        "y": 0.5,
+        "w": 0.08,
+        "h": 0.14,
+        "borderWidth": 5,
+        "borderColor": "#FFFFFF",
+        "borderRadius": 8,
+        "safeAreaConstrained": true
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "BLOCK REALMS",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
+        "font": "inter-700",
+        "size": 42,
+        "color": "#1A2E05",
+        "align": "left",
+        "position": {
+          "x": 0.39,
+          "y": 0.46
+        },
+        "x": 0.39,
         "y": 0.46,
         "safeAreaConstrained": true
       },
@@ -67,13 +65,40 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "MASSIVE BUILDS \u00b7 REDSTONE TECH \u00b7 SURVIVAL SMPS",
+        "text": "MASSIVE BUILDS · REDSTONE TECH · SURVIVAL SMPS",
         "font": "inter-500",
-        "size": 16,
-        "color": "#FCD34D",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.55,
+        "size": 15,
+        "color": "#1A2E05",
+        "align": "left",
+        "position": {
+          "x": 0.39,
+          "y": 0.53
+        },
+        "x": 0.39,
+        "y": 0.53,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "doodle-star",
+        "role": "shape",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.72,
+        "y": 0.46,
+        "w": 0.02,
+        "h": 0.035,
+        "color": "#1A2E05",
+        "opacity": 0.8
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.45,
+        "y": 0.6,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -81,13 +106,13 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
+    "avatar",
     "background.gradient"
   ],
   "protected": [
-    "voxel-block-1",
-    "voxel-block-2",
-    "voxel-underline"
+    "sketch-box",
+    "doodle-star",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

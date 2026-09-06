@@ -6,81 +6,113 @@
   "preview": "/previews/edu-chalkboard.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#111714"
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#1A3B2A",
+        "#224D36",
+        "#2D6648"
+      ],
+      "from": "#1A3B2A",
+      "to": "#2D6648"
     },
     "layers": [
       {
+        "id": "sketch-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.22,
+        "y": 0.38,
+        "w": 0.56,
+        "h": 0.24,
+        "color": "#FFFFFF",
+        "opacity": 0.25
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "rect",
+        "src": "/avatars/avatar-creative-male-thumb.jpg",
+        "x": 0.29,
+        "y": 0.5,
+        "w": 0.08,
+        "h": 0.14,
+        "borderWidth": 5,
+        "borderColor": "#FFFFFF",
+        "borderRadius": 8,
+        "safeAreaConstrained": true
+      },
+      {
         "id": "title",
         "role": "title",
-        "text": "PHYSICS & PROOF",
-        "font": "playfair-700",
-        "size": 52,
-        "color": "#F7F8F9",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
         "type": "text",
+        "text": "PHYSICS & PROOF",
+        "font": "inter-700",
+        "size": 42,
+        "color": "#FFFFFF",
+        "align": "left",
+        "position": {
+          "x": 0.39,
+          "y": 0.46
+        },
+        "x": 0.39,
+        "y": 0.46,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
+        "type": "text",
         "text": "Rigorous Math & Theoretical Science Made Clear",
         "font": "inter-500",
-        "size": 19,
-        "color": "#E3E5E8",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.55,
-        "type": "text",
+        "size": 15,
+        "color": "#FFFFFF",
+        "align": "left",
+        "position": {
+          "x": 0.39,
+          "y": 0.53
+        },
+        "x": 0.39,
+        "y": 0.53,
         "safeAreaConstrained": true
       },
       {
-        "id": "grid-v",
+        "id": "doodle-star",
+        "role": "shape",
         "type": "shape",
-        "shape": "rect",
-        "x": 0.15,
-        "y": 0,
-        "w": 0.001,
-        "h": 1,
-        "color": "#FFFFFF",
-        "opacity": 0.06
-      },
-      {
-        "id": "grid-h",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0,
-        "y": 0.75,
-        "w": 1,
-        "h": 0.002,
-        "color": "#FFFFFF",
-        "opacity": 0.04
-      },
-      {
-        "id": "marker",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.85,
-        "y": 0.25,
+        "shape": "circle",
+        "x": 0.72,
+        "y": 0.46,
         "w": 0.02,
-        "h": 0.004,
+        "h": 0.035,
         "color": "#FFFFFF",
-        "opacity": 0.12
+        "opacity": 0.8
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.45,
+        "y": 0.6,
+        "scale": 0.75,
+        "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
     "title",
     "tagline",
-    "background.photo",
+    "avatar",
     "background.gradient"
   ],
   "protected": [
-    "grid-v",
-    "grid-h",
-    "marker"
+    "sketch-box",
+    "doodle-star",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

@@ -9,73 +9,84 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#070F1E",
-        "#102140",
-        "#070F1E"
+        "#2563EB",
+        "#1E293B",
+        "#60A5FA"
       ],
-      "from": "#070F1E",
-      "to": "#070F1E"
+      "from": "#2563EB",
+      "to": "#60A5FA"
     },
     "layers": [
+      {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.22,
+        "y": 0.34,
+        "w": 0.56,
+        "h": 0.33,
+        "color": "#FFFFFF",
+        "borderRadius": 16,
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-finance-male-thumb.jpg",
         "x": 0.5,
         "y": 0.44,
-        "w": 0.08,
-        "h": 0.14,
+        "w": 0.075,
+        "h": 0.13,
         "borderWidth": 4,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "pitch-bracket-l",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.28,
-        "y": 0.43,
-        "w": 0.004,
-        "h": 0.1,
-        "color": "#2563EB",
-        "opacity": 0.8
-      },
-      {
-        "id": "pitch-bracket-r",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.71,
-        "y": 0.43,
-        "w": 0.004,
-        "h": 0.1,
-        "color": "#2563EB",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "THE PITCH LAB",
-        "font": "sora-700",
-        "size": 50,
-        "color": "#FFFFFF",
+        "font": "inter-700",
+        "size": 38,
+        "color": "#111827",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.53
+        },
         "x": 0.5,
-        "y": 0.46,
+        "y": 0.53,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "HOW TO RAISE SEED CAPITAL \u00b7 DECK REVIEWS & FOUNDER ADVICE",
-        "font": "inter-600",
-        "size": 15,
-        "color": "#93C5FD",
+        "text": "HOW TO RAISE SEED CAPITAL · DECK REVIEWS & FOUNDER ADVICE",
+        "font": "inter-500",
+        "size": 14,
+        "color": "#4B5563",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.575
+        },
         "x": 0.5,
-        "y": 0.54,
+        "y": 0.575,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.62,
+        "scale": 0.7,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "pitch-bracket-l",
-    "pitch-bracket-r"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

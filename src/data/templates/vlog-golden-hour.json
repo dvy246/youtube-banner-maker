@@ -18,16 +18,29 @@
     },
     "layers": [
       {
+        "id": "ribbon-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.36,
+        "w": 1,
+        "h": 0.28,
+        "color": "#FFFFFF",
+        "opacity": 1
+      },
+      {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.35,
+        "src": "/avatars/avatar-vlog-female-thumb.jpg",
+        "x": 0.36,
         "y": 0.5,
-        "w": 0.09,
-        "h": 0.16,
-        "borderWidth": 4,
-        "borderColor": "#FFFFFF",
+        "w": 0.085,
+        "h": 0.15,
+        "borderWidth": 6,
+        "borderColor": "#D97706",
         "safeAreaConstrained": true
       },
       {
@@ -35,11 +48,15 @@
         "role": "title",
         "type": "text",
         "text": "LIFE IN MOTION",
-        "font": "playfair-700",
-        "size": 52,
-        "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
+        "font": "inter-700",
+        "size": 46,
+        "color": "#111827",
+        "align": "left",
+        "position": {
+          "x": 0.46,
+          "y": 0.46
+        },
+        "x": 0.46,
         "y": 0.46,
         "safeAreaConstrained": true
       },
@@ -47,73 +64,41 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Travel Stories & Visual Essays \u00b7 Sundays",
+        "text": "Travel Stories & Visual Essays · Sundays",
         "font": "inter-500",
-        "size": 19,
-        "color": "#EFF1F3",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.55,
+        "size": 15,
+        "color": "#6B7280",
+        "align": "left",
+        "position": {
+          "x": 0.46,
+          "y": 0.52
+        },
+        "x": 0.46,
+        "y": 0.52,
         "safeAreaConstrained": true
       },
       {
-        "id": "horizon",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.15,
-        "y": 0.5,
-        "w": 0.7,
-        "h": 0.002,
-        "color": "#FFD700",
-        "opacity": 0.15
-      },
-      {
-        "id": "flare-l",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.1,
-        "y": 0.3,
-        "w": 0.05,
-        "h": 0.4,
-        "color": "#FFA500",
-        "opacity": 0.05
-      },
-      {
-        "id": "flare-r",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.75,
-        "y": 0.2,
-        "w": 0.15,
-        "h": 0.08,
-        "color": "#FFFFFF",
-        "opacity": 0.08
-      },
-      {
-        "id": "horizon-dash",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.45,
-        "y": 0.52,
-        "w": 0.1,
-        "h": 0.002,
-        "color": "#FFFFFF",
-        "opacity": 0.2
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.51,
+        "y": 0.58,
+        "scale": 0.75,
+        "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "horizon",
-    "flare-l",
-    "flare-r",
-    "horizon-dash"
+    "ribbon-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

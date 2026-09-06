@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0A0908",
-        "#1C1917",
-        "#0A0908"
+        "#4C1D36",
+        "#701A4A",
+        "#831843"
       ],
-      "from": "#0A0908",
-      "to": "#0A0908"
+      "from": "#4C1D36",
+      "to": "#831843"
     },
     "layers": [
       {
@@ -57,7 +57,7 @@
         "text": "ELDER VAULT LORE",
         "font": "cinzel-700",
         "size": 48,
-        "color": "#FDFBF7",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.48,
@@ -70,7 +70,7 @@
         "text": "Souls-like Walkthroughs & Deep Fantasy Mythology",
         "font": "inter-400",
         "size": 16,
-        "color": "#FCD34D",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

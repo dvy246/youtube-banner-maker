@@ -9,60 +9,56 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#16081B",
-        "#2A1134",
-        "#16081B"
+        "#4C1D3D",
+        "#701A4A",
+        "#831843"
       ],
-      "from": "#16081B",
-      "to": "#16081B"
+      "from": "#4C1D3D",
+      "to": "#831843"
     },
     "layers": [
+      {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1875,
+        "y": 0.3333,
+        "w": 0.625,
+        "h": 0.3402,
+        "color": "#FFFFFF",
+        "borderRadius": 20,
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-podcast-host-thumb.jpg",
         "x": 0.5,
-        "y": 0.44,
+        "y": 0.425,
         "w": 0.08,
         "h": 0.14,
-        "borderWidth": 4,
+        "borderWidth": 5,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "soul-pill",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.44,
-        "y": 0.39,
-        "w": 0.12,
-        "h": 0.005,
-        "color": "#F59E0B",
-        "opacity": 0.8
-      },
-      {
-        "id": "soul-rule",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.36,
-        "y": 0.58,
-        "w": 0.28,
-        "h": 0.003,
-        "color": "#F59E0B",
-        "opacity": 0.6
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "VELVET VIBES",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#FFFFFF",
+        "font": "inter-700",
+        "size": 48,
+        "color": "#111827",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.515
+        },
         "x": 0.5,
-        "y": 0.47,
+        "y": 0.515,
         "safeAreaConstrained": true
       },
       {
@@ -70,12 +66,27 @@
         "role": "tagline",
         "type": "text",
         "text": "Smooth Neo-Soul Guitar & Late Night R&B Jams",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#FCD34D",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#4B5563",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.56
+        },
         "x": 0.5,
-        "y": 0.54,
+        "y": 0.56,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.61,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "soul-pill",
-    "soul-rule"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

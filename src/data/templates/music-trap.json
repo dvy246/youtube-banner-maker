@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0D0D0E",
-        "#1B1B1E",
-        "#0D0D0E"
+        "#111111",
+        "#DC2626",
+        "#EF4444"
       ],
-      "from": "#0D0D0E",
-      "to": "#0D0D0E"
+      "from": "#111111",
+      "to": "#EF4444"
     },
     "layers": [
       {
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "HARD TRAP BEATS \u00b7 DRUM KITS \u00b7 FL STUDIO TUTORIALS",
+        "text": "HARD TRAP BEATS · DRUM KITS · FL STUDIO TUTORIALS",
         "font": "inter-600",
         "size": 15,
-        "color": "#FFB266",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

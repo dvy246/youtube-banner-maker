@@ -9,73 +9,84 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#0E0F12",
-        "#1C1E24",
-        "#0E0F12"
+        "#FAF9F7",
+        "#F5F5F5",
+        "#E5E5E5"
       ],
-      "from": "#0E0F12",
-      "to": "#0E0F12"
+      "from": "#FAF9F7",
+      "to": "#E5E5E5"
     },
     "layers": [
+      {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1875,
+        "y": 0.3333,
+        "w": 0.625,
+        "h": 0.3402,
+        "color": "#FFFFFF",
+        "borderRadius": 20,
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-finance-male-thumb.jpg",
         "x": 0.5,
-        "y": 0.44,
+        "y": 0.425,
         "w": 0.08,
         "h": 0.14,
-        "borderWidth": 4,
+        "borderWidth": 5,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "auth-rule-top",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.35,
-        "y": 0.4,
-        "w": 0.3,
-        "h": 0.003,
-        "color": "#F59E0B",
-        "opacity": 0.8
-      },
-      {
-        "id": "auth-rule-bot",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.35,
-        "y": 0.58,
-        "w": 0.3,
-        "h": 0.003,
-        "color": "#F59E0B",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "THE ADVISORY",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#FDFBF7",
+        "font": "inter-700",
+        "size": 48,
+        "color": "#111827",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.515
+        },
         "x": 0.5,
-        "y": 0.47,
+        "y": 0.515,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Boardroom Strategy \u00b7 CEO Leadership & Corporate Governance",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#FCD34D",
+        "text": "Boardroom Strategy · CEO Leadership & Corporate Governance",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#4B5563",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.56
+        },
         "x": 0.5,
-        "y": 0.54,
+        "y": 0.56,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.61,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "auth-rule-top",
-    "auth-rule-bot"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

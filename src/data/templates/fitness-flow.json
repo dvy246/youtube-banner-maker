@@ -6,21 +6,41 @@
   "preview": "/previews/fitness-flow.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#131917"
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#E8F3EF",
+        "#F0F9F6",
+        "#D1EAE1"
+      ],
+      "from": "#E8F3EF",
+      "to": "#D1EAE1"
     },
     "layers": [
+      {
+        "id": "ribbon-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.353125,
+        "w": 1,
+        "h": 0.29375,
+        "color": "#FFFFFF",
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.35,
+        "src": "/avatars/avatar-fitness-trainer-thumb.jpg",
+        "x": 0.33,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
-        "borderColor": "#FFFFFF",
+        "borderWidth": 6,
+        "borderColor": "#0D9488",
         "safeAreaConstrained": true
       },
       {
@@ -28,73 +48,57 @@
         "role": "title",
         "type": "text",
         "text": "FLOW STATE YOGA",
-        "font": "sora-700",
-        "size": 46,
-        "color": "#EFF1F3",
+        "font": "inter-700",
+        "size": 42,
+        "color": "#111827",
         "align": "left",
-        "x": 0.28,
-        "y": 0.46,
+        "position": {
+          "x": 0.43,
+          "y": 0.47
+        },
+        "x": 0.43,
+        "y": 0.47,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Daily Breathwork \u00b7 Mobility Routines \u00b7 Stillness",
+        "text": "Daily Breathwork · Mobility Routines · Stillness",
         "font": "inter-500",
-        "size": 18,
-        "color": "#0F7A52",
+        "size": 15,
+        "color": "#6B7280",
         "align": "left",
-        "x": 0.28,
-        "y": 0.54,
+        "position": {
+          "x": 0.43,
+          "y": 0.53
+        },
+        "x": 0.43,
+        "y": 0.53,
         "safeAreaConstrained": true
       },
       {
-        "id": "zen-stone1",
-        "type": "shape",
-        "shape": "circle",
-        "x": 0.85,
-        "y": 0.3,
-        "w": 0.35,
-        "h": 0.62,
-        "color": "#0F7A52",
-        "opacity": 0.06
-      },
-      {
-        "id": "zen-stone2",
-        "type": "shape",
-        "shape": "circle",
-        "x": 0.78,
-        "y": 0.35,
-        "w": 0.2,
-        "h": 0.35,
-        "color": "#0F7A52",
-        "opacity": 0.09
-      },
-      {
-        "id": "balance-line",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.15,
-        "y": 0.5,
-        "w": 0.002,
-        "h": 0.4,
-        "color": "#FFFFFF",
-        "opacity": 0.1
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.48,
+        "y": 0.59,
+        "scale": 0.75,
+        "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "zen-stone1",
-    "zen-stone2",
-    "balance-line"
+    "ribbon-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

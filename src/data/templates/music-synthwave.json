@@ -7,13 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "from": "#23002B",
-      "to": "#500940",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#23002B",
-        "#500940"
-      ]
+        "#1A002B",
+        "#2D0B5A",
+        "#4C1D95"
+      ],
+      "from": "#1A002B",
+      "to": "#4C1D95"
     },
     "layers": [
       {
@@ -23,7 +24,7 @@
         "text": "RETRO SYNTHETIC",
         "font": "bebas-400",
         "size": 64,
-        "color": "#00F0FF",
+        "color": "#FF1493",
         "align": "center",
         "x": 0.5,
         "y": 0.43,
@@ -33,10 +34,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "80s Electronic \u00b7 Darksynth \u00b7 Synthwave Mixes",
+        "text": "80s Electronic · Darksynth · Synthwave Mixes",
         "font": "inter-500",
         "size": 20,
-        "color": "#FFFFFF",
+        "color": "#FF1493",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

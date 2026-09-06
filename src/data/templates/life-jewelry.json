@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0B0B0C",
-        "#18181A",
-        "#0B0B0C"
+        "#0C1445",
+        "#121E66",
+        "#1E32A8"
       ],
-      "from": "#0B0B0C",
-      "to": "#0B0B0C"
+      "from": "#0C1445",
+      "to": "#1E32A8"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "MAISON ATELIER",
         "font": "sora-700",
         "size": 50,
-        "color": "#FDFBF7",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -48,7 +48,7 @@
         "text": "Handcrafted Fine Gold Jewelry & Natural Gemstones",
         "font": "inter-400",
         "size": 16,
-        "color": "#FCD34D",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

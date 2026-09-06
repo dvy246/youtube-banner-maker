@@ -7,62 +7,58 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#12100E",
-        "#211B17",
-        "#12100E"
+        "#78716C",
+        "#FAF5F0",
+        "#A8A29E"
       ],
-      "from": "#12100E",
-      "to": "#12100E"
+      "from": "#78716C",
+      "to": "#A8A29E"
     },
     "layers": [
+      {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1875,
+        "y": 0.3333,
+        "w": 0.625,
+        "h": 0.3402,
+        "color": "#FFFFFF",
+        "borderRadius": 20,
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-podcast-host-thumb.jpg",
         "x": 0.5,
-        "y": 0.44,
+        "y": 0.425,
         "w": 0.08,
         "h": 0.14,
-        "borderWidth": 4,
+        "borderWidth": 5,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "quote-mark-l",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.32,
-        "y": 0.42,
-        "w": 0.02,
-        "h": 0.004,
-        "color": "#FB923C",
-        "opacity": 0.7
-      },
-      {
-        "id": "quote-mark-r",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.66,
-        "y": 0.56,
-        "w": 0.02,
-        "h": 0.004,
-        "color": "#FB923C",
-        "opacity": 0.7
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "THE DIALOGUE",
-        "font": "sora-700",
-        "size": 54,
-        "color": "#FDFBF7",
+        "font": "inter-700",
+        "size": 48,
+        "color": "#111827",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.515
+        },
         "x": 0.5,
-        "y": 0.46,
+        "y": 0.515,
         "safeAreaConstrained": true
       },
       {
@@ -70,12 +66,27 @@
         "role": "tagline",
         "type": "text",
         "text": "Long-Form Intellectual Interviews on Science & Mind",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#FDBA74",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#4B5563",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.56
+        },
         "x": 0.5,
-        "y": 0.54,
+        "y": 0.56,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.61,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "quote-mark-l",
-    "quote-mark-r"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

@@ -22,98 +22,84 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-tech-glasses-thumb.jpg",
+        "x": 0.31,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
       },
       {
         "id": "title",
         "role": "title",
-        "text": "VISUAL ECONOMICS",
-        "font": "sora-700",
-        "size": 46,
-        "color": "#FFFFFF",
-        "align": "left",
-        "x": 0.26,
-        "y": 0.46,
         "type": "text",
+        "text": "VISUAL ECONOMICS",
+        "font": "inter-700",
+        "size": 44,
+        "color": "#111827",
+        "align": "left",
+        "position": {
+          "x": 0.42,
+          "y": 0.46
+        },
+        "x": 0.42,
+        "y": 0.46,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.505,
+        "w": 0.22,
+        "h": 0.032,
+        "borderRadius": 6,
+        "color": "#5EEAD4",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
+        "type": "text",
         "text": "Animated Data Stories & Global Market Breakdown",
         "font": "inter-500",
-        "size": 18,
-        "color": "#8AA4FF",
+        "size": 13,
+        "color": "#111827",
         "align": "left",
-        "x": 0.26,
-        "y": 0.54,
-        "type": "text",
+        "position": {
+          "x": 0.43,
+          "y": 0.521
+        },
+        "x": 0.43,
+        "y": 0.521,
         "safeAreaConstrained": true
       },
       {
-        "id": "divider",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.26,
-        "y": 0.38,
-        "w": 0.06,
-        "h": 0.003,
-        "color": "#8AA4FF",
-        "opacity": 0.8
-      },
-      {
-        "id": "bar1",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.8,
-        "y": 0.6,
-        "w": 0.04,
-        "h": 0.25,
-        "color": "#8AA4FF",
-        "opacity": 0.15
-      },
-      {
-        "id": "bar2",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.86,
-        "y": 0.4,
-        "w": 0.04,
-        "h": 0.45,
-        "color": "#8AA4FF",
-        "opacity": 0.25
-      },
-      {
-        "id": "accent-dot",
-        "type": "shape",
-        "shape": "circle",
-        "x": 0.1,
-        "y": 0.15,
-        "w": 0.015,
-        "h": 0.015,
-        "color": "#8AA4FF",
-        "opacity": 0.4
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
+        "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "divider",
-    "bar1",
-    "bar2",
-    "accent-dot"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

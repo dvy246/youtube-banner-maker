@@ -6,8 +6,15 @@
   "preview": "/previews/music-acoustic.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#1B1816"
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#4A3728",
+        "#5C4033",
+        "#6B4423"
+      ],
+      "from": "#4A3728",
+      "to": "#6B4423"
     },
     "layers": [
       {
@@ -15,11 +22,12 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-podcast-host-thumb.jpg",
+        "x": 0.31,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
       },
@@ -28,85 +36,70 @@
         "role": "title",
         "type": "text",
         "text": "WOOD & STRINGS",
-        "font": "playfair-700",
-        "size": 48,
-        "color": "#F7F8F9",
+        "font": "inter-700",
+        "size": 44,
+        "color": "#FFF8F0",
         "align": "left",
-        "x": 0.28,
+        "position": {
+          "x": 0.42,
+          "y": 0.46
+        },
+        "x": 0.42,
         "y": 0.46,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.505,
+        "w": 0.22,
+        "h": 0.032,
+        "borderRadius": 6,
+        "color": "#D4AF37",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Original Songs \u00b7 Fingerstyle Guitar \u00b7 Live Studio Sessions",
+        "text": "Original Songs · Fingerstyle Guitar · Live Studio Sessions",
         "font": "inter-500",
-        "size": 18,
-        "color": "#E3E5E8",
+        "size": 13,
+        "color": "#FFF8F0",
         "align": "left",
-        "x": 0.28,
-        "y": 0.54,
+        "position": {
+          "x": 0.43,
+          "y": 0.521
+        },
+        "x": 0.43,
+        "y": 0.521,
         "safeAreaConstrained": true
       },
       {
-        "id": "string1",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.1,
-        "y": 0.5,
-        "w": 0.002,
-        "h": 0.6,
-        "color": "#F5DEC3",
-        "opacity": 0.06
-      },
-      {
-        "id": "string2",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.12,
-        "y": 0.5,
-        "w": 0.002,
-        "h": 0.6,
-        "color": "#F5DEC3",
-        "opacity": 0.06
-      },
-      {
-        "id": "beam1",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.85,
-        "y": 0.15,
-        "w": 0.15,
-        "h": 0.005,
-        "color": "#8B5A2B",
-        "opacity": 0.2
-      },
-      {
-        "id": "beam2",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.5,
-        "y": 0.85,
-        "w": 0.7,
-        "h": 0.003,
-        "color": "#8B5A2B",
-        "opacity": 0.1
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
+        "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "string1",
-    "string2",
-    "beam1",
-    "beam2"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

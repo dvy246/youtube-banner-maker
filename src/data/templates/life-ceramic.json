@@ -7,51 +7,57 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#170F0A",
-        "#281A12",
-        "#170F0A"
+        "#F5E6D3",
+        "#FAEBD7",
+        "#FDF5E6"
       ],
-      "from": "#170F0A",
-      "to": "#170F0A"
+      "from": "#F5E6D3",
+      "to": "#FDF5E6"
     },
     "layers": [
+      {
+        "id": "ribbon-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.36,
+        "w": 1,
+        "h": 0.28,
+        "color": "#FFFFFF",
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.35,
+        "src": "/avatars/avatar-beauty-creator-thumb.jpg",
+        "x": 0.36,
         "y": 0.5,
-        "w": 0.09,
-        "h": 0.16,
-        "borderWidth": 4,
-        "borderColor": "#FFFFFF",
+        "w": 0.085,
+        "h": 0.15,
+        "borderWidth": 6,
+        "borderColor": "#A0522D",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "clay-pill",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.45,
-        "y": 0.39,
-        "w": 0.1,
-        "h": 0.005,
-        "color": "#F97316",
-        "opacity": 0.85
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "CLAY & KILN",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#FFF7ED",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.47,
+        "font": "inter-700",
+        "size": 46,
+        "color": "#111827",
+        "align": "left",
+        "position": {
+          "x": 0.46,
+          "y": 0.46
+        },
+        "x": 0.46,
+        "y": 0.46,
         "safeAreaConstrained": true
       },
       {
@@ -59,12 +65,27 @@
         "role": "tagline",
         "type": "text",
         "text": "Wheel-Thrown Stoneware Pottery & Studio Glaze Recipes",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#FDBA74",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "font": "inter-500",
+        "size": 15,
+        "color": "#6B7280",
+        "align": "left",
+        "position": {
+          "x": 0.46,
+          "y": 0.52
+        },
+        "x": 0.46,
+        "y": 0.52,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.51,
+        "y": 0.58,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -72,12 +93,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "clay-pill"
+    "ribbon-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

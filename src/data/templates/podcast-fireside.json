@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#160D08",
-        "#28170D",
-        "#160D08"
+        "#FDE68A",
+        "#FEF3C7",
+        "#FDE047"
       ],
-      "from": "#160D08",
-      "to": "#160D08"
+      "from": "#FDE68A",
+      "to": "#FDE047"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "FIRESIDE SESSIONS",
         "font": "sora-700",
         "size": 48,
-        "color": "#FEF3C7",
+        "color": "#451A03",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Intimate Discussions on Life, Design & Craftsmanship",
         "font": "inter-400",
         "size": 16,
-        "color": "#FDBA74",
+        "color": "#451A03",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

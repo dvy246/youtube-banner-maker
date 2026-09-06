@@ -9,73 +9,83 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#1C0B1B",
-        "#341432",
-        "#1C0B1B"
+        "#FDE047",
+        "#FEF08A",
+        "#FACC15"
       ],
-      "from": "#1C0B1B",
-      "to": "#1C0B1B"
+      "from": "#FDE047",
+      "to": "#FACC15"
     },
     "layers": [
+      {
+        "id": "ribbon-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0,
+        "y": 0.353125,
+        "w": 1,
+        "h": 0.29375,
+        "color": "#FFFFFF",
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.35,
+        "src": "/avatars/avatar-podcast-host-thumb.jpg",
+        "x": 0.33,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
-        "borderColor": "#FFFFFF",
+        "borderWidth": 6,
+        "borderColor": "#EC4899",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "spot-l",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.3,
-        "y": 0.48,
-        "w": 0.05,
-        "h": 0.006,
-        "color": "#FACC15",
-        "opacity": 0.9
-      },
-      {
-        "id": "spot-r",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.65,
-        "y": 0.48,
-        "w": 0.05,
-        "h": 0.006,
-        "color": "#FACC15",
-        "opacity": 0.9
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "ROOM LAUGHTER",
-        "font": "sora-700",
-        "size": 50,
-        "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.46,
+        "font": "inter-700",
+        "size": 42,
+        "color": "#111827",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.47
+        },
+        "x": 0.43,
+        "y": 0.47,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "WEEKLY COMEDY ROUNDTABLE \u00b7 LIVE EPISODES FRIDAYS",
-        "font": "inter-600",
+        "text": "WEEKLY COMEDY ROUNDTABLE · LIVE EPISODES FRIDAYS",
+        "font": "inter-500",
         "size": 15,
-        "color": "#FDE047",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "color": "#6B7280",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.53
+        },
+        "x": 0.43,
+        "y": 0.53,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.48,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +93,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "spot-l",
-    "spot-r"
+    "ribbon-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

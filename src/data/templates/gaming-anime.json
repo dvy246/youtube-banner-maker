@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#1A0515",
-        "#380B2C",
-        "#6B0F4A"
+        "#FACC15",
+        "#FDE047",
+        "#FEF08A"
       ],
-      "from": "#1A0515",
-      "to": "#6B0F4A"
+      "from": "#FACC15",
+      "to": "#FEF08A"
     },
     "layers": [
       {
@@ -57,7 +57,7 @@
         "text": "BLADE CHRONICLES",
         "font": "sora-700",
         "size": 52,
-        "color": "#FFFFFF",
+        "color": "#111827",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -70,7 +70,7 @@
         "text": "FIGHTING GAME COMBOS & ANIME RPG STREAMS",
         "font": "inter-500",
         "size": 18,
-        "color": "#FFA3D7",
+        "color": "#111827",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

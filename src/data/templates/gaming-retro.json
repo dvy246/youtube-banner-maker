@@ -7,13 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "from": "#1a002c",
-      "to": "#4d004d",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#1a002c",
-        "#4d004d"
-      ]
+        "#FF6B6B",
+        "#FF8787",
+        "#FFA8A8"
+      ],
+      "from": "#FF6B6B",
+      "to": "#FFA8A8"
     },
     "layers": [
       {
@@ -67,7 +68,7 @@
         "text": "PIXEL CHRONICLES",
         "font": "bebas-400",
         "size": 64,
-        "color": "#FFE600",
+        "color": "#111827",
         "align": "center",
         "x": 0.5,
         "y": 0.44,
@@ -77,10 +78,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Speedruns \u00b7 Reviews \u00b7 Longplays",
+        "text": "Speedruns · Reviews · Longplays",
         "font": "inter-500",
         "size": 20,
-        "color": "#FFFFFF",
+        "color": "#111827",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

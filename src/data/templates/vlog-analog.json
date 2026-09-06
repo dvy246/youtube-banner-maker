@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#1C1412",
-        "#2E1E1B",
-        "#1C1412"
+        "#D4B896",
+        "#E5D3B3",
+        "#F3E8D6"
       ],
-      "from": "#1C1412",
-      "to": "#1C1412"
+      "from": "#D4B896",
+      "to": "#F3E8D6"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "ANALOG MEMORIES",
         "font": "sora-700",
         "size": 48,
-        "color": "#FFF1F2",
+        "color": "#FFF8F0",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Weekly 35mm Photo Diaried & Slow Travel Reflections",
         "font": "inter-400",
         "size": 16,
-        "color": "#FECDD3",
+        "color": "#FFF8F0",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

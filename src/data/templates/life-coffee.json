@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#140D09",
-        "#241811",
-        "#140D09"
+        "#F5F0EB",
+        "#FAF7F2",
+        "#EBE3D9"
       ],
-      "from": "#140D09",
-      "to": "#140D09"
+      "from": "#F5F0EB",
+      "to": "#EBE3D9"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "POUR OVER LAB",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFBEB",
+        "color": "#3E2723",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -45,10 +45,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Specialty Coffee Roasts \u00b7 V60 Recipes & Grinder Reviews",
+        "text": "Specialty Coffee Roasts · V60 Recipes & Grinder Reviews",
         "font": "inter-400",
         "size": 16,
-        "color": "#FDE68A",
+        "color": "#3E2723",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

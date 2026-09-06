@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#071412",
-        "#102421",
-        "#071412"
+        "#CCFBF1",
+        "#E0F2FE",
+        "#99F6E4"
       ],
-      "from": "#071412",
-      "to": "#071412"
+      "from": "#CCFBF1",
+      "to": "#99F6E4"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "JOINT & SPINE LAB",
         "font": "sora-700",
         "size": 48,
-        "color": "#F0FDFA",
+        "color": "#042F2E",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -45,10 +45,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Physical Therapy Drills \u00b7 Posture Correction & Longevity",
+        "text": "Physical Therapy Drills · Posture Correction & Longevity",
         "font": "inter-400",
         "size": 16,
-        "color": "#5EEAD4",
+        "color": "#042F2E",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

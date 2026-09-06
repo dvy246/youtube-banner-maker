@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0A0A0B",
-        "#16171A",
-        "#0A0A0B"
+        "#FFFBF5",
+        "#F5F5F5",
+        "#EBEBEB"
       ],
-      "from": "#0A0A0B",
-      "to": "#0A0A0B"
+      "from": "#FFFBF5",
+      "to": "#EBEBEB"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "NOCTURNE ECHO",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#1C1917",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -48,7 +48,7 @@
         "text": "Cinematic Piano Compositions & Orchestral Soundscapes",
         "font": "inter-400",
         "size": 16,
-        "color": "#CBD5E1",
+        "color": "#1C1917",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

@@ -7,13 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "from": "#0C1711",
-      "to": "#16281F",
-      "angle": 140,
+      "angle": 135,
       "stops": [
-        "#0C1711",
-        "#16281F"
-      ]
+        "#E8F5E9",
+        "#F1F8E9",
+        "#DCEDC8"
+      ],
+      "from": "#E8F5E9",
+      "to": "#DCEDC8"
     },
     "layers": [
       {
@@ -22,7 +23,7 @@
         "text": "ROOT & BRANCH",
         "font": "sora-700",
         "size": 48,
-        "color": "#F7F8F9",
+        "color": "#1B5E20",
         "align": "left",
         "x": 0.28,
         "y": 0.46,
@@ -32,10 +33,10 @@
       {
         "id": "tagline",
         "role": "tagline",
-        "text": "Indoor Plants \u00b7 Permaculture \u00b7 Urban Homesteading",
+        "text": "Indoor Plants · Permaculture · Urban Homesteading",
         "font": "inter-500",
         "size": 18,
-        "color": "#E3E5E8",
+        "color": "#1B5E20",
         "align": "left",
         "x": 0.28,
         "y": 0.54,

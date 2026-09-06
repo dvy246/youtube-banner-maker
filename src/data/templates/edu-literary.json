@@ -7,51 +7,98 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0A140E",
-        "#14261C",
-        "#0A140E"
+        "#FFF8F0",
+        "#FFEDD5",
+        "#FFE4E6"
       ],
-      "from": "#0A140E",
-      "to": "#0A140E"
+      "from": "#FFF8F0",
+      "to": "#FFE4E6"
     },
     "layers": [
       {
-        "id": "bookmark-tab",
+        "id": "sketch-box",
+        "role": "shape",
         "type": "shape",
         "shape": "rect",
-        "x": 0.46,
-        "y": 0.38,
-        "w": 0.08,
-        "h": 0.005,
-        "color": "#86EFAC",
-        "opacity": 0.8
+        "x": 0.24,
+        "y": 0.39,
+        "w": 0.54,
+        "h": 0.23,
+        "color": "#1B5E20",
+        "opacity": 0.25
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "rect",
+        "src": "/avatars/avatar-creative-male-thumb.jpg",
+        "x": 0.31,
+        "y": 0.5,
+        "w": 0.075,
+        "h": 0.13,
+        "borderWidth": 5,
+        "borderColor": "#FFFFFF",
+        "borderRadius": 8,
+        "safeAreaConstrained": true
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "THE CHAPTER HOUSE",
-        "font": "sora-700",
-        "size": 48,
-        "color": "#F2FBF5",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.47,
+        "font": "inter-700",
+        "size": 46,
+        "color": "#1B5E20",
+        "align": "left",
+        "position": {
+          "x": 0.41,
+          "y": 0.45
+        },
+        "x": 0.41,
+        "y": 0.45,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Deep Literary Analysis \u00b7 Classic Novels & Modern Fiction",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#BBF7D0",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "text": "Deep Literary Analysis · Classic Novels & Modern Fiction",
+        "font": "inter-500",
+        "size": 14,
+        "color": "#1B5E20",
+        "align": "left",
+        "position": {
+          "x": 0.41,
+          "y": 0.52
+        },
+        "x": 0.41,
+        "y": 0.52,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "doodle-star",
+        "role": "shape",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.71,
+        "y": 0.45,
+        "w": 0.02,
+        "h": 0.035,
+        "color": "#1B5E20",
+        "opacity": 0.8
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -59,11 +106,13 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
+    "avatar",
     "background.gradient"
   ],
   "protected": [
-    "bookmark-tab"
+    "sketch-box",
+    "doodle-star",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

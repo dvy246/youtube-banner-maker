@@ -6,8 +6,15 @@
   "preview": "/previews/tech-terminal.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#0A0D12"
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#0D1117",
+        "#161B22",
+        "#21262D"
+      ],
+      "from": "#0D1117",
+      "to": "#21262D"
     },
     "layers": [
       {
@@ -25,9 +32,9 @@
         "id": "term-header",
         "type": "shape",
         "shape": "rect",
-        "x": 0.0,
-        "y": 0.0,
-        "w": 1.0,
+        "x": 0,
+        "y": 0,
+        "w": 1,
         "h": 0.02,
         "color": "#0F7A52",
         "opacity": 0.3
@@ -36,9 +43,9 @@
         "id": "status-bar",
         "type": "shape",
         "shape": "rect",
-        "x": 0.0,
+        "x": 0,
         "y": 0.96,
-        "w": 1.0,
+        "w": 1,
         "h": 0.04,
         "color": "#0F7A52",
         "opacity": 0.15
@@ -50,7 +57,7 @@
         "text": "> STACKOVERFLOW",
         "font": "space-grotesk-700",
         "size": 46,
-        "color": "#0F7A52",
+        "color": "#10B981",
         "align": "left",
         "x": 0.28,
         "y": 0.46,
@@ -60,10 +67,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Full-Stack Engineering \u00b7 Architecture \u00b7 DevOps",
+        "text": "Full-Stack Engineering · Architecture · DevOps",
         "font": "inter-500",
         "size": 18,
-        "color": "#EFF1F3",
+        "color": "#10B981",
         "align": "left",
         "x": 0.28,
         "y": 0.54,

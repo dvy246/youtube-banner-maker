@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0E0E10",
-        "#1C1C20",
-        "#0E0E10"
+        "#FFFDF7",
+        "#F5F5F0",
+        "#EBEBE6"
       ],
-      "from": "#0E0E10",
-      "to": "#0E0E10"
+      "from": "#FFFDF7",
+      "to": "#EBEBE6"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "PHILOSOPHIA",
         "font": "sora-700",
         "size": 52,
-        "color": "#F4F4F5",
+        "color": "#292524",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Stoicism, Existentialism & First Principles for Modern Life",
         "font": "inter-400",
         "size": 16,
-        "color": "#D4D4D8",
+        "color": "#292524",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

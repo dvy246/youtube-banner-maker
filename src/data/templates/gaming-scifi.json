@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#040B14",
-        "#0A1E36",
-        "#040B14"
+        "#050510",
+        "#0B0B1A",
+        "#14142B"
       ],
-      "from": "#040B14",
-      "to": "#040B14"
+      "from": "#050510",
+      "to": "#14142B"
     },
     "layers": [
       {
@@ -68,7 +68,7 @@
         "text": "ORBITAL PROTOCOL",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#00F0FF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -81,7 +81,7 @@
         "text": "DEEP SPACE EXPLORATION & MECHA WARFARE",
         "font": "inter-500",
         "size": 17,
-        "color": "#70E3FF",
+        "color": "#00F0FF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#0A0F1A",
-        "#131C30",
-        "#0A0F1A"
+        "#0A2E1F",
+        "#064E3B",
+        "#047857"
       ],
-      "from": "#0A0F1A",
-      "to": "#0A0F1A"
+      "from": "#0A2E1F",
+      "to": "#047857"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "BEVERLY ESTATES",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#FFF8F0",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "ARCHITECTURAL MANSIONS \u00b7 LUXURY TOURS \u00b7 MARKET REPORTS",
+        "text": "ARCHITECTURAL MANSIONS · LUXURY TOURS · MARKET REPORTS",
         "font": "inter-600",
         "size": 15,
-        "color": "#93C5FD",
+        "color": "#FFF8F0",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

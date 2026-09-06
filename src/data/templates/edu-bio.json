@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#05110E",
-        "#0D221C",
-        "#05110E"
+        "#D1FAE5",
+        "#A7F3D0",
+        "#6EE7B7"
       ],
-      "from": "#05110E",
-      "to": "#05110E"
+      "from": "#D1FAE5",
+      "to": "#6EE7B7"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "SYNTHETIC LIFE",
         "font": "sora-700",
         "size": 50,
-        "color": "#ECFDF5",
+        "color": "#064E3B",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -48,7 +48,7 @@
         "text": "CRISPR Gene Editing, Cellular Biology & Neuroscience",
         "font": "inter-400",
         "size": 16,
-        "color": "#A7F3D0",
+        "color": "#064E3B",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

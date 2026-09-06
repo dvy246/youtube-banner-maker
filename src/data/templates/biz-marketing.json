@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0F081C",
-        "#1E1038",
-        "#0F081C"
+        "#FFDAB9",
+        "#F97316",
+        "#FDBA74"
       ],
-      "from": "#0F081C",
-      "to": "#0F081C"
+      "from": "#FFDAB9",
+      "to": "#FDBA74"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "GROWTH ENGINE",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#292524",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -59,7 +59,7 @@
         "text": "Data-Driven Retention, Viral Loops & Organic CAC Reduction",
         "font": "inter-400",
         "size": 16,
-        "color": "#D8B4FE",
+        "color": "#292524",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

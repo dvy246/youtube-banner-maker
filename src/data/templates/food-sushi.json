@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0A1211",
-        "#14221F",
-        "#0A1211"
+        "#FFFBF0",
+        "#Fef3c7",
+        "#FDE68A"
       ],
-      "from": "#0A1211",
-      "to": "#0A1211"
+      "from": "#FFFBF0",
+      "to": "#FDE68A"
     },
     "layers": [
       {
@@ -22,49 +22,71 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-chef-food-thumb.jpg",
+        "x": 0.34,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "knife-slash",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.36,
-        "y": 0.57,
-        "w": 0.28,
-        "h": 0.002,
-        "color": "#10B981",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "EDOMAE SUSHI",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#ECFDF5",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.47,
+        "font": "inter-700",
+        "size": 48,
+        "color": "#1C1917",
+        "align": "left",
+        "position": {
+          "x": 0.45,
+          "y": 0.45
+        },
+        "x": 0.45,
+        "y": 0.45,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.45,
+        "y": 0.515,
+        "w": 0.24,
+        "h": 0.035,
+        "borderRadius": 6,
+        "color": "#292524",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Traditional Fish Aging \u00b7 Shari Rice Prep & Omakase Etiquette",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#6EE7B7",
-        "align": "center",
+        "text": "Traditional Fish Aging · Shari Rice Prep & Omakase Etiquette",
+        "font": "inter-500",
+        "size": 14,
+        "color": "#1C1917",
+        "align": "left",
+        "position": {
+          "x": 0.46,
+          "y": 0.532
+        },
+        "x": 0.46,
+        "y": 0.532,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
         "x": 0.5,
-        "y": 0.54,
+        "y": 0.6,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -72,12 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "knife-slash"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

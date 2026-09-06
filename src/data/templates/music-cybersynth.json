@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#1C0728",
-        "#380E4F",
-        "#1C0728"
+        "#1A0A2E",
+        "#2D144A",
+        "#3C1D6A"
       ],
-      "from": "#1C0728",
-      "to": "#1C0728"
+      "from": "#1A0A2E",
+      "to": "#3C1D6A"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "NEON DREAMWAVE",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#FF00FF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "VINTAGE ANALOG SYNTHS \u00b7 RETROWAVE \u00b7 CYBERPUNK BEATS",
+        "text": "VINTAGE ANALOG SYNTHS · RETROWAVE · CYBERPUNK BEATS",
         "font": "inter-500",
         "size": 15,
-        "color": "#FDA4AF",
+        "color": "#FF00FF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

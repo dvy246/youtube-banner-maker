@@ -6,8 +6,15 @@
   "preview": "/previews/podcast-minimal.svg",
   "scene": {
     "background": {
-      "type": "solid",
-      "color": "#1F2124"
+      "type": "gradient",
+      "angle": 135,
+      "stops": [
+        "#FAFAFA",
+        "#FFFFFF",
+        "#F3F4F6"
+      ],
+      "from": "#FAFAFA",
+      "to": "#F3F4F6"
     },
     "layers": [
       {
@@ -28,7 +35,7 @@
         "text": "DEEP PERSPECTIVES",
         "font": "playfair-700",
         "size": 46,
-        "color": "#F7F8F9",
+        "color": "#262626",
         "align": "left",
         "x": 0.26,
         "y": 0.46,
@@ -38,10 +45,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Ideas Shaping Tomorrow \u00b7 Hosted by Alex Rivera",
+        "text": "Ideas Shaping Tomorrow · Hosted by Alex Rivera",
         "font": "inter-500",
         "size": 18,
-        "color": "#E3E5E8",
+        "color": "#262626",
         "align": "left",
         "x": 0.26,
         "y": 0.54,

@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#14110E",
-        "#241D17",
-        "#14110E"
+        "#3D3D42",
+        "#4B4B52",
+        "#5A5A63"
       ],
-      "from": "#14110E",
-      "to": "#14110E"
+      "from": "#3D3D42",
+      "to": "#5A5A63"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "THE DEEP TAKE",
         "font": "sora-700",
         "size": 52,
-        "color": "#FDFBF7",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -59,7 +59,7 @@
         "text": "UNCUT CONVERSATIONS WITH INDUSTRY TITANS",
         "font": "inter-500",
         "size": 16,
-        "color": "#FCD34D",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

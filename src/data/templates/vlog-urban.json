@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#121316",
-        "#22252B",
-        "#121316"
+        "#6B7280",
+        "#111111",
+        "#9CA3AF"
       ],
-      "from": "#121316",
-      "to": "#121316"
+      "from": "#6B7280",
+      "to": "#9CA3AF"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "METROPOLIS",
         "font": "sora-700",
         "size": 54,
-        "color": "#F8FAFC",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Urban Design \u00b7 Architecture Walkthroughs & City Life",
+        "text": "Urban Design · Architecture Walkthroughs & City Life",
         "font": "inter-400",
         "size": 16,
-        "color": "#FDBA74",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

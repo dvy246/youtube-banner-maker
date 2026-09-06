@@ -18,14 +18,28 @@
     },
     "layers": [
       {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.22,
+        "y": 0.34,
+        "w": 0.56,
+        "h": 0.33,
+        "color": "#FFFFFF",
+        "borderRadius": 16,
+        "opacity": 1
+      },
+      {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-podcast-host-thumb.jpg",
         "x": 0.5,
         "y": 0.44,
-        "w": 0.08,
-        "h": 0.14,
+        "w": 0.075,
+        "h": 0.13,
         "borderWidth": 4,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
@@ -35,85 +49,57 @@
         "role": "title",
         "type": "text",
         "text": "THE CONVERSATION",
-        "font": "sora-700",
-        "size": 50,
-        "color": "#FFFFFF",
+        "font": "inter-700",
+        "size": 38,
+        "color": "#111827",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.53
+        },
         "x": 0.5,
-        "y": 0.46,
+        "y": 0.53,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Unfiltered Discussions \u00b7 New Episodes Every Tuesday",
+        "text": "Unfiltered Discussions · New Episodes Every Tuesday",
         "font": "inter-500",
-        "size": 20,
-        "color": "#EFF1F3",
+        "size": 14,
+        "color": "#4B5563",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.575
+        },
         "x": 0.5,
-        "y": 0.55,
+        "y": 0.575,
         "safeAreaConstrained": true
       },
       {
-        "id": "h-rule-top",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.2,
-        "y": 0.35,
-        "w": 0.6,
-        "h": 0.002,
-        "color": "#FFFFFF",
-        "opacity": 0.1
-      },
-      {
-        "id": "h-rule-bot",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.2,
-        "y": 0.65,
-        "w": 0.6,
-        "h": 0.002,
-        "color": "#FFFFFF",
-        "opacity": 0.1
-      },
-      {
-        "id": "v-mark-lt",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.2,
-        "y": 0.35,
-        "w": 0.003,
-        "h": 0.05,
-        "color": "#FFFFFF",
-        "opacity": 0.15
-      },
-      {
-        "id": "v-mark-rb",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.797,
-        "y": 0.602,
-        "w": 0.003,
-        "h": 0.05,
-        "color": "#FFFFFF",
-        "opacity": 0.15
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.62,
+        "scale": 0.7,
+        "safeAreaConstrained": true
       }
     ]
   },
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "h-rule-top",
-    "h-rule-bot",
-    "v-mark-lt",
-    "v-mark-rb"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

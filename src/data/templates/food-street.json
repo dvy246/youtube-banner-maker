@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#1C0707",
-        "#340F0F",
-        "#1C0707"
+        "#DC2626",
+        "#FACC15",
+        "#EF4444"
       ],
-      "from": "#1C0707",
-      "to": "#1C0707"
+      "from": "#DC2626",
+      "to": "#EF4444"
     },
     "layers": [
       {
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "NIGHT MARKETS \u00b7 LOCAL STALLS \u00b7 SECRET EATS WORLDWIDE",
+        "text": "NIGHT MARKETS · LOCAL STALLS · SECRET EATS WORLDWIDE",
         "font": "inter-600",
         "size": 15,
-        "color": "#FCA5A5",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

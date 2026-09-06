@@ -9,73 +9,84 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#081020",
-        "#13233F",
-        "#081020"
+        "#312E81",
+        "#38BDF8",
+        "#7DD3FC"
       ],
-      "from": "#081020",
-      "to": "#081020"
+      "from": "#312E81",
+      "to": "#7DD3FC"
     },
     "layers": [
+      {
+        "id": "center-card",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.1875,
+        "y": 0.3333,
+        "w": 0.625,
+        "h": 0.3402,
+        "color": "#FFFFFF",
+        "borderRadius": 20,
+        "opacity": 1
+      },
       {
         "id": "avatar",
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
+        "src": "/avatars/avatar-tech-glasses-thumb.jpg",
         "x": 0.5,
-        "y": 0.44,
+        "y": 0.425,
         "w": 0.08,
         "h": 0.14,
-        "borderWidth": 4,
+        "borderWidth": 5,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "infra-bar-l",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.32,
-        "y": 0.51,
-        "w": 0.06,
-        "h": 0.004,
-        "color": "#2563EB",
-        "opacity": 0.8
-      },
-      {
-        "id": "infra-bar-r",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.62,
-        "y": 0.51,
-        "w": 0.06,
-        "h": 0.004,
-        "color": "#2563EB",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "CLOUD ARCHITECT",
-        "font": "sora-700",
+        "font": "inter-700",
         "size": 48,
-        "color": "#FFFFFF",
+        "color": "#111827",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.515
+        },
         "x": 0.5,
-        "y": 0.45,
+        "y": 0.515,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "KUBERNETES \u00b7 TERRAFORM \u00b7 HIGH-AVAILABILITY CLUSTERS",
+        "text": "KUBERNETES · TERRAFORM · HIGH-AVAILABILITY CLUSTERS",
         "font": "inter-500",
         "size": 15,
-        "color": "#93C5FD",
+        "color": "#4B5563",
         "align": "center",
+        "position": {
+          "x": 0.5,
+          "y": 0.56
+        },
         "x": 0.5,
-        "y": 0.55,
+        "y": 0.56,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.61,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "infra-bar-l",
-    "infra-bar-r"
+    "center-card",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

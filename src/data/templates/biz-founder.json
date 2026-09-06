@@ -7,51 +7,98 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0C091A",
-        "#1B1536",
-        "#0C091A"
+        "#FFF5E1",
+        "#FFE4B5",
+        "#FFDAB9"
       ],
-      "from": "#0C091A",
-      "to": "#0C091A"
+      "from": "#FFF5E1",
+      "to": "#FFDAB9"
     },
     "layers": [
       {
-        "id": "founder-pill",
+        "id": "sketch-box",
+        "role": "shape",
         "type": "shape",
         "shape": "rect",
-        "x": 0.43,
-        "y": 0.39,
-        "w": 0.14,
-        "h": 0.005,
-        "color": "#818CF8",
-        "opacity": 0.8
+        "x": 0.22,
+        "y": 0.38,
+        "w": 0.56,
+        "h": 0.24,
+        "color": "#D97706",
+        "opacity": 0.25
+      },
+      {
+        "id": "avatar",
+        "role": "avatar",
+        "type": "frame",
+        "shape": "rect",
+        "src": "/avatars/avatar-creative-male-thumb.jpg",
+        "x": 0.29,
+        "y": 0.5,
+        "w": 0.08,
+        "h": 0.14,
+        "borderWidth": 5,
+        "borderColor": "#FFFFFF",
+        "borderRadius": 8,
+        "safeAreaConstrained": true
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "SOLO FOUNDER",
-        "font": "sora-700",
-        "size": 50,
-        "color": "#EEF2FF",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.47,
+        "font": "inter-700",
+        "size": 42,
+        "color": "#292524",
+        "align": "left",
+        "position": {
+          "x": 0.39,
+          "y": 0.46
+        },
+        "x": 0.39,
+        "y": 0.46,
         "safeAreaConstrained": true
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Building Profitable Micro-SaaS to $50k/mo \u00b7 Zero Venture Capital",
-        "font": "inter-400",
-        "size": 16,
-        "color": "#C7D2FE",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "text": "Building Profitable Micro-SaaS to $50k/mo · Zero Venture Capital",
+        "font": "inter-500",
+        "size": 15,
+        "color": "#292524",
+        "align": "left",
+        "position": {
+          "x": 0.39,
+          "y": 0.53
+        },
+        "x": 0.39,
+        "y": 0.53,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "doodle-star",
+        "role": "shape",
+        "type": "shape",
+        "shape": "circle",
+        "x": 0.72,
+        "y": 0.46,
+        "w": 0.02,
+        "h": 0.035,
+        "color": "#D97706",
+        "opacity": 0.8
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.45,
+        "y": 0.6,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -59,11 +106,13 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
+    "avatar",
     "background.gradient"
   ],
   "protected": [
-    "founder-pill"
+    "sketch-box",
+    "doodle-star",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#070A08",
-        "#0F1612",
-        "#070A08"
+        "#0B0D0F",
+        "#13161A",
+        "#1C2127"
       ],
-      "from": "#070A08",
-      "to": "#070A08"
+      "from": "#0B0D0F",
+      "to": "#1C2127"
     },
     "layers": [
       {
@@ -57,7 +57,7 @@
         "text": "BLACKOUT AGENT",
         "font": "sora-700",
         "size": 48,
-        "color": "#E6F4EA",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -67,10 +67,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "NO DAMAGE RUNS \u00b7 STEALTH TACTICS \u00b7 FPS RECON",
+        "text": "NO DAMAGE RUNS · STEALTH TACTICS · FPS RECON",
         "font": "inter-500",
         "size": 16,
-        "color": "#6EE7B7",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

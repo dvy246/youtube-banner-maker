@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0B1120",
         "#1E293B",
-        "#0B1120"
+        "#14B8A6",
+        "#2DD4BF"
       ],
-      "from": "#0B1120",
-      "to": "#0B1120"
+      "from": "#1E293B",
+      "to": "#2DD4BF"
     },
     "layers": [
       {
@@ -59,7 +59,7 @@
         "text": "Building $100k MRR Cloud Software in Public",
         "font": "inter-400",
         "size": 17,
-        "color": "#7DD3FC",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

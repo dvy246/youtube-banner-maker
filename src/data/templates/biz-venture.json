@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#070E1A",
-        "#0F1E36",
-        "#070E1A"
+        "#0F172A",
+        "#10B981",
+        "#34D399"
       ],
-      "from": "#070E1A",
-      "to": "#070E1A"
+      "from": "#0F172A",
+      "to": "#34D399"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "SEED TO SERIE A",
         "font": "sora-700",
         "size": 48,
-        "color": "#ECFDF5",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -48,7 +48,7 @@
         "text": "Venture Capital Economics, Term Sheets & Cap Table Math",
         "font": "inter-400",
         "size": 16,
-        "color": "#6EE7B7",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

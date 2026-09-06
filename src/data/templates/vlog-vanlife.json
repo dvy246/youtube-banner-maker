@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#0B140E",
-        "#17261C",
-        "#0B140E"
+        "#D1FAE5",
+        "#ECFDF5",
+        "#A7F3D0"
       ],
-      "from": "#0B140E",
-      "to": "#0B140E"
+      "from": "#D1FAE5",
+      "to": "#A7F3D0"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "ROAD UNBOUND",
         "font": "sora-700",
         "size": 50,
-        "color": "#F7FEE7",
+        "color": "#78350F",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -45,10 +45,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Full-Time Van Life \u00b7 Off-Grid Solar & Camping Guides",
+        "text": "Full-Time Van Life · Off-Grid Solar & Camping Guides",
         "font": "inter-400",
         "size": 16,
-        "color": "#FEF08A",
+        "color": "#78350F",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

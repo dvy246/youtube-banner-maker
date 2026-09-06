@@ -65,21 +65,107 @@ function getColors(json) {
   return { bg1, bg2, bg3, titleColor, tagColor, accentColor };
 }
 
+const AVATAR_MAP = {
+  finance: 'avatar-finance-male-thumb.jpg',
+  tech: 'avatar-tech-glasses-thumb.jpg',
+  vlog: 'avatar-vlog-female-thumb.jpg',
+  business: 'avatar-business-female-thumb.jpg',
+  fitness: 'avatar-fitness-trainer-thumb.jpg',
+  creative: 'avatar-creative-male-thumb.jpg',
+  chef: 'avatar-chef-food-thumb.jpg',
+  gaming: 'avatar-gaming-streamer-thumb.jpg',
+  podcast: 'avatar-podcast-host-thumb.jpg',
+  beauty: 'avatar-beauty-creator-thumb.jpg',
+};
+
+const avatarDataUris = {};
+for (const [k, filename] of Object.entries(AVATAR_MAP)) {
+  const p = path.resolve('public/avatars', filename);
+  if (fs.existsSync(p)) {
+    avatarDataUris[k] = `data:image/jpeg;base64,${fs.readFileSync(p).toString('base64')}`;
+  }
+}
+
+function getAvatarKeyForTemplate(id, niche = '') {
+  const specific = {
+    'biz-authority': 'finance',
+    'biz-pitch': 'finance',
+    'edu-finance': 'finance',
+    'edu-academic': 'finance',
+    'tech-clean': 'tech',
+    'tech-cloud': 'tech',
+    'tech-mobile': 'tech',
+    'edu-modern': 'tech',
+    'tech-neural': 'tech',
+    'tech-quantum': 'tech',
+    'vlog-golden-hour': 'vlog',
+    'vlog-coast': 'vlog',
+    'vlog-editorial': 'vlog',
+    'aesthetic-pastel': 'vlog',
+    'food-pastry': 'vlog',
+    'food-bakery': 'vlog',
+    'biz-agency': 'business',
+    'biz-freelance': 'business',
+    'biz-nomad': 'business',
+    'life-glow': 'business',
+    'life-fashion': 'business',
+    'biz-marketing': 'business',
+    'fitness-titan': 'fitness',
+    'fitness-calisthenics': 'fitness',
+    'fitness-flow': 'fitness',
+    'fitness-run': 'fitness',
+    'fitness-boxing': 'fitness',
+    'fitness-mobility': 'fitness',
+    'vlog-wanderlust': 'creative',
+    'life-grooming': 'creative',
+    'gaming-voxel': 'creative',
+    'biz-founder': 'creative',
+    'edu-literary': 'creative',
+    'edu-chalkboard': 'creative',
+    'edu-history': 'creative',
+    'food-chef': 'chef',
+    'food-italian': 'chef',
+    'food-ramen': 'chef',
+    'food-sushi': 'chef',
+    'food-farm': 'chef',
+    'food-roastery': 'chef',
+    'food-plant': 'chef',
+    'gaming-esports': 'gaming',
+    'gaming-tactical': 'gaming',
+    'meme-cookie': 'gaming',
+    'gaming-anime': 'gaming',
+    'gaming-retro': 'gaming',
+    'podcast-dialogue': 'podcast',
+    'podcast-studio': 'podcast',
+    'podcast-roundtable': 'podcast',
+    'podcast-comedy': 'podcast',
+    'music-neosoul': 'podcast',
+    'music-acoustic': 'podcast',
+    'life-ceramic': 'beauty',
+    'life-botanical': 'beauty',
+    'life-coffee': 'beauty',
+  };
+  if (specific[id]) return specific[id];
+  if (niche === 'food') return 'chef';
+  if (niche === 'fitness') return 'fitness';
+  if (niche === 'gaming') return 'gaming';
+  if (niche === 'podcast') return 'podcast';
+  if (niche === 'tech') return 'tech';
+  if (niche === 'business') return 'finance';
+  if (niche === 'lifestyle') return 'beauty';
+  if (niche === 'education') return 'finance';
+  if (niche === 'vlog') return 'vlog';
+  if (niche === 'music') return 'podcast';
+  return 'business';
+}
+
 /**
- * Renders a high-fidelity vector avatar portrait inside a circular photo frame.
+ * Renders a high-fidelity photorealistic AI avatar inside a circular photo frame.
  */
-function renderVectorAvatar(id, seed, cx, cy, r, borderW = 12, borderColor = '#FFFFFF') {
+function renderVectorAvatar(id, _seed, cx, cy, r, borderW = 12, borderColor = '#FFFFFF') {
   const clipId = `av-clip-${id}`;
-  const gradId = `av-grad-${id}`;
-
-  const skinTones = ['#FAD8C0', '#F3C5A0', '#E5A67D', '#D18E66'];
-  const hairColors = ['#231610', '#3D2314', '#1A1A1A', '#A35223', '#4A3B32', '#6B21A8'];
-  const clothesColors = ['#881337', '#1E3A8A', '#065F46', '#312E81', '#B45309', '#18181B', '#BE185D'];
-
-  const skin = skinTones[seed % skinTones.length];
-  const hair = hairColors[(seed >> 2) % hairColors.length];
-  const clothes = clothesColors[(seed >> 4) % clothesColors.length];
-  const hasGlasses = (seed % 2) === 0;
+  const key = getAvatarKeyForTemplate(id);
+  const dataUri = avatarDataUris[key] || avatarDataUris['business'];
 
   return `
     <g transform="translate(${cx}, ${cy})">
@@ -87,46 +173,14 @@ function renderVectorAvatar(id, seed, cx, cy, r, borderW = 12, borderColor = '#F
         <clipPath id="${clipId}">
           <circle cx="0" cy="0" r="${r - borderW / 2}" />
         </clipPath>
-        <radialGradient id="${gradId}" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#FFFFFF" />
-          <stop offset="100%" stop-color="#E2E8F0" />
-        </radialGradient>
       </defs>
 
       <!-- Frame Outer Drop Shadow & Ring -->
       <circle cx="0" cy="0" r="${r}" fill="none" stroke="${borderColor}" stroke-width="${borderW}" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.32))" />
 
-      <!-- Clipped Portrait -->
+      <!-- Clipped Photorealistic AI Avatar Portrait -->
       <g clip-path="url(#${clipId})">
-        <!-- Studio Background -->
-        <rect x="-${r}" y="-${r}" width="${r * 2}" height="${r * 2}" fill="url(#${gradId})" />
-
-        <!-- Torso / Shoulders -->
-        <path d="M -${r * 0.92} ${r} C -${r * 0.75} ${r * 0.3}, -${r * 0.3} ${r * 0.12}, 0 ${r * 0.16} C ${r * 0.3} ${r * 0.12}, ${r * 0.75} ${r * 0.3}, ${r * 0.92} ${r} Z" fill="${clothes}" />
-
-        <!-- Collar / Neck -->
-        <path d="M -${r * 0.22} ${r * 0.18} L 0 ${r * 0.36} L ${r * 0.22} ${r * 0.18} L ${r * 0.18} -${r * 0.05} L -${r * 0.18} -${r * 0.05} Z" fill="${skin}" />
-
-        <!-- Head / Face -->
-        <ellipse cx="0" cy="-${r * 0.12}" rx="${r * 0.35}" ry="${r * 0.44}" fill="${skin}" />
-
-        <!-- Hair -->
-        <path d="M -${r * 0.38} -${r * 0.15} C -${r * 0.44} -${r * 0.65}, ${r * 0.44} -${r * 0.65}, ${r * 0.38} -${r * 0.15} C ${r * 0.34} -${r * 0.5}, -${r * 0.34} -${r * 0.5}, -${r * 0.38} -${r * 0.15} Z" fill="${hair}" />
-        <ellipse cx="0" cy="-${r * 0.42}" rx="${r * 0.34}" ry="${r * 0.22}" fill="${hair}" />
-
-        <!-- Eyes -->
-        <ellipse cx="-${r * 0.13}" cy="-${r * 0.14}" rx="${r * 0.038}" ry="${r * 0.048}" fill="#0F172A" />
-        <ellipse cx="${r * 0.13}" cy="-${r * 0.14}" rx="${r * 0.038}" ry="${r * 0.048}" fill="#0F172A" />
-
-        <!-- Friendly Smile -->
-        <path d="M -${r * 0.13} ${r * 0.07} Q 0 ${r * 0.17} ${r * 0.13} ${r * 0.07}" fill="none" stroke="#78350F" stroke-width="${Math.max(2, r * 0.024)}" stroke-linecap="round" />
-
-        ${hasGlasses ? `
-          <!-- Glasses -->
-          <rect x="-${r * 0.25}" y="-${r * 0.22}" width="${r * 0.21}" height="${r * 0.16}" rx="${r * 0.04}" fill="none" stroke="#0F172A" stroke-width="${Math.max(2, r * 0.032)}" />
-          <rect x="${r * 0.04}" y="-${r * 0.22}" width="${r * 0.21}" height="${r * 0.16}" rx="${r * 0.04}" fill="none" stroke="#0F172A" stroke-width="${Math.max(2, r * 0.032)}" />
-          <line x1="-${r * 0.04}" y1="-${r * 0.14}" x2="${r * 0.04}" y2="-${r * 0.14}" stroke="#0F172A" stroke-width="${Math.max(2, r * 0.032)}" />
-        ` : ''}
+        <image href="${dataUri}" x="-${r}" y="-${r}" width="${r * 2}" height="${r * 2}" preserveAspectRatio="xMidYMid slice" />
       </g>
     </g>
   `;

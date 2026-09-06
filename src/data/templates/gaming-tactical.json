@@ -22,81 +22,44 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-gaming-streamer-thumb.jpg",
+        "x": 0.34,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "vert-indicator",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.26,
-        "y": 0.42,
-        "w": 0.005,
-        "h": 0.16,
-        "color": "#4A4E54",
-        "opacity": 0.8
-      },
-      {
-        "id": "crosshair-h",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.15,
-        "y": 0.5,
-        "w": 0.05,
-        "h": 0.002,
-        "color": "#4A4E54",
-        "opacity": 0.6
-      },
-      {
-        "id": "crosshair-v",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.174,
-        "y": 0.46,
-        "w": 0.0015,
-        "h": 0.08,
-        "color": "#4A4E54",
-        "opacity": 0.6
-      },
-      {
-        "id": "bracket-br-h",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.85,
-        "y": 0.85,
-        "w": 0.05,
-        "h": 0.004,
-        "color": "#4A4E54",
-        "opacity": 0.8
-      },
-      {
-        "id": "bracket-br-v",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.898,
-        "y": 0.8,
-        "w": 0.002,
-        "h": 0.054,
-        "color": "#4A4E54",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "VANGUARD OPS",
-        "font": "space-grotesk-700",
+        "font": "inter-700",
         "size": 48,
-        "color": "#F7F8F9",
+        "color": "#FFFFFF",
         "align": "left",
-        "x": 0.28,
-        "y": 0.46,
+        "position": {
+          "x": 0.45,
+          "y": 0.45
+        },
+        "x": 0.45,
+        "y": 0.45,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.45,
+        "y": 0.515,
+        "w": 0.24,
+        "h": 0.035,
+        "borderRadius": 6,
+        "color": "#4A5310",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
@@ -104,11 +67,26 @@
         "type": "text",
         "text": "Tactical Breakdowns & Esports Analysis",
         "font": "inter-500",
-        "size": 19,
-        "color": "#6B7076",
+        "size": 14,
+        "color": "#FFFFFF",
         "align": "left",
-        "x": 0.28,
-        "y": 0.54,
+        "position": {
+          "x": 0.46,
+          "y": 0.532
+        },
+        "x": 0.46,
+        "y": 0.532,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.5,
+        "y": 0.6,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -116,16 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "vert-indicator",
-    "crosshair-h",
-    "crosshair-v",
-    "bracket-br-h",
-    "bracket-br-v"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

@@ -7,13 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "from": "#090C10",
-      "to": "#1B2028",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#090C10",
-        "#1B2028"
-      ]
+        "#121212",
+        "#1C1C1C",
+        "#292929"
+      ],
+      "from": "#121212",
+      "to": "#292929"
     },
     "layers": [
       {
@@ -34,7 +35,7 @@
         "text": "FRAME & LIGHT",
         "font": "bebas-400",
         "size": 64,
-        "color": "#FFFFFF",
+        "color": "#C59B27",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -47,7 +48,7 @@
         "text": "Cinematic Documentaries & Visual Craft",
         "font": "inter-500",
         "size": 18,
-        "color": "#8AA4FF",
+        "color": "#C59B27",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

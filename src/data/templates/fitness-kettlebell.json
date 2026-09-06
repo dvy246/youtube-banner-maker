@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#14100D",
-        "#241C16",
-        "#14100D"
+        "#C2410C",
+        "#FFF7ED",
+        "#EA580C"
       ],
-      "from": "#14100D",
-      "to": "#14100D"
+      "from": "#C2410C",
+      "to": "#EA580C"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "IRON CORE CLUB",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFF7ED",
+        "color": "#431407",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -59,7 +59,7 @@
         "text": "HARDSTYLE KETTLEBELL FLOWS & HIP POWER CONDITIONING",
         "font": "inter-500",
         "size": 15,
-        "color": "#FDBA74",
+        "color": "#431407",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

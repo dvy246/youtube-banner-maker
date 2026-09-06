@@ -21,12 +21,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#08090C",
-        "#0F1117",
-        "#161922"
+        "#0A0A0F",
+        "#11111A",
+        "#1A1A26"
       ],
-      "from": "#08090C",
-      "to": "#161922"
+      "from": "#0A0A0F",
+      "to": "#1A1A26"
     },
     "layers": [
       {
@@ -47,7 +47,7 @@
         "text": "STEALTH OPS",
         "font": "sora-700",
         "size": 52,
-        "color": "#F9FAFB",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -57,10 +57,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "TACTICAL SHOOTERS \u2022 RANKED CLIMB \u2022 GUIDES",
+        "text": "TACTICAL SHOOTERS • RANKED CLIMB • GUIDES",
         "font": "inter-500",
         "size": 17,
-        "color": "#9CA3AF",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

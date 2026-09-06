@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0B0F14",
-        "#111822",
-        "#0B0F14"
+        "#111827",
+        "#1F2937",
+        "#374151"
       ],
-      "from": "#0B0F14",
-      "to": "#0B0F14"
+      "from": "#111827",
+      "to": "#374151"
     },
     "layers": [
       {
@@ -70,7 +70,7 @@
         "text": "WORLD RECORD SPEEDRUNS & GLITCH TUTORIALS",
         "font": "inter-500",
         "size": 16,
-        "color": "#6EE7B7",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.55,

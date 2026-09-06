@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#0A0A0A",
-        "#171717",
-        "#0A0A0A"
+        "#FFF8F0",
+        "#FDECE4",
+        "#FAD4C0"
       ],
-      "from": "#0A0A0A",
-      "to": "#0A0A0A"
+      "from": "#FFF8F0",
+      "to": "#FAD4C0"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "STUDIO HAUS",
         "font": "sora-700",
         "size": 50,
-        "color": "#FFFFFF",
+        "color": "#1C1917",
         "align": "center",
         "x": 0.49,
         "y": 0.46,
@@ -59,7 +59,7 @@
         "text": "Brand Systems, Typography Direction & High-End Art Direction",
         "font": "inter-400",
         "size": 16,
-        "color": "#FCA5A5",
+        "color": "#1C1917",
         "align": "center",
         "x": 0.49,
         "y": 0.54,

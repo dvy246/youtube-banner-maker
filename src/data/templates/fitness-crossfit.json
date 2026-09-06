@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#111215",
-        "#1F2228",
-        "#111215"
+        "#1F2937",
+        "#111827",
+        "#374151"
       ],
-      "from": "#111215",
-      "to": "#111215"
+      "from": "#1F2937",
+      "to": "#374151"
     },
     "layers": [
       {
@@ -59,7 +59,7 @@
         "text": "HIGH INTENSITY CONDITIONING & OLYMPIC LIFTS",
         "font": "inter-600",
         "size": 16,
-        "color": "#FDBA74",
+        "color": "#FFFFFF",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

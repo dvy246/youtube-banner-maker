@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 90,
+      "angle": 135,
       "stops": [
-        "#0C140E",
-        "#18241A",
-        "#0C140E"
+        "#D4E7D1",
+        "#E8F5E9",
+        "#C8E6C9"
       ],
-      "from": "#0C140E",
-      "to": "#0C140E"
+      "from": "#D4E7D1",
+      "to": "#C8E6C9"
     },
     "layers": [
       {
@@ -35,7 +35,7 @@
         "text": "HARVEST ROOTS",
         "font": "sora-700",
         "size": 50,
-        "color": "#F7FEE7",
+        "color": "#1B5E20",
         "align": "center",
         "x": 0.5,
         "y": 0.47,
@@ -48,7 +48,7 @@
         "text": "Regenerative Agriculture, Foraging & Seasonal Feasts",
         "font": "inter-400",
         "size": 16,
-        "color": "#BEF264",
+        "color": "#1B5E20",
         "align": "center",
         "x": 0.5,
         "y": 0.54,

@@ -9,12 +9,12 @@
       "type": "gradient",
       "angle": 135,
       "stops": [
-        "#140E0A",
-        "#261A12",
-        "#140E0A"
+        "#FFF5E1",
+        "#FFE4B5",
+        "#FFDAB9"
       ],
-      "from": "#140E0A",
-      "to": "#140E0A"
+      "from": "#FFF5E1",
+      "to": "#FFDAB9"
     },
     "layers": [
       {
@@ -22,60 +22,71 @@
         "role": "avatar",
         "type": "frame",
         "shape": "circle",
-        "x": 0.28,
+        "src": "/avatars/avatar-chef-food-thumb.jpg",
+        "x": 0.31,
         "y": 0.5,
         "w": 0.09,
         "h": 0.16,
-        "borderWidth": 4,
+        "borderWidth": 6,
         "borderColor": "#FFFFFF",
         "safeAreaConstrained": true
-      },
-      {
-        "id": "chopstick-1",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.3,
-        "y": 0.48,
-        "w": 0.04,
-        "h": 0.005,
-        "color": "#F59E0B",
-        "opacity": 0.8
-      },
-      {
-        "id": "chopstick-2",
-        "type": "shape",
-        "shape": "rect",
-        "x": 0.66,
-        "y": 0.48,
-        "w": 0.04,
-        "h": 0.005,
-        "color": "#F59E0B",
-        "opacity": 0.8
       },
       {
         "id": "title",
         "role": "title",
         "type": "text",
         "text": "RAMEN MASTER",
-        "font": "sora-700",
-        "size": 52,
-        "color": "#FFFFFF",
-        "align": "center",
-        "x": 0.5,
+        "font": "inter-700",
+        "size": 44,
+        "color": "#431407",
+        "align": "left",
+        "position": {
+          "x": 0.42,
+          "y": 0.46
+        },
+        "x": 0.42,
         "y": 0.46,
         "safeAreaConstrained": true
+      },
+      {
+        "id": "category-box",
+        "role": "shape",
+        "type": "shape",
+        "shape": "rect",
+        "x": 0.42,
+        "y": 0.505,
+        "w": 0.22,
+        "h": 0.032,
+        "borderRadius": 6,
+        "color": "#C2410C",
+        "opacity": 0.35
       },
       {
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "HOMEMADE CHASHU \u00b7 24-HOUR TONKOTSU BROTH \u00b7 NOODLE CRAFT",
-        "font": "inter-600",
-        "size": 15,
-        "color": "#FCD34D",
-        "align": "center",
-        "x": 0.5,
-        "y": 0.54,
+        "text": "HOMEMADE CHASHU · 24-HOUR TONKOTSU BROTH · NOODLE CRAFT",
+        "font": "inter-500",
+        "size": 13,
+        "color": "#431407",
+        "align": "left",
+        "position": {
+          "x": 0.43,
+          "y": 0.521
+        },
+        "x": 0.43,
+        "y": 0.521,
+        "safeAreaConstrained": true
+      },
+      {
+        "id": "subscribe-badge",
+        "role": "badge",
+        "type": "badge",
+        "variant": "subscribe-pill",
+        "colorScheme": "youtube-red",
+        "x": 0.47,
+        "y": 0.59,
+        "scale": 0.75,
         "safeAreaConstrained": true
       }
     ]
@@ -83,13 +94,12 @@
   "editable": [
     "title",
     "tagline",
-    "background.photo",
-    "background.gradient",
-    "photo"
+    "avatar",
+    "background.gradient"
   ],
   "protected": [
-    "chopstick-1",
-    "chopstick-2"
+    "category-box",
+    "subscribe-badge"
   ],
   "safeAreaValidated": true
 }

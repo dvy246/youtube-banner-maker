@@ -7,14 +7,14 @@
   "scene": {
     "background": {
       "type": "gradient",
-      "angle": 180,
+      "angle": 135,
       "stops": [
-        "#13100B",
-        "#241E15",
-        "#13100B"
+        "#F5E6D3",
+        "#E5D3B3",
+        "#D4B896"
       ],
-      "from": "#13100B",
-      "to": "#13100B"
+      "from": "#F5E6D3",
+      "to": "#D4B896"
     },
     "layers": [
       {
@@ -46,7 +46,7 @@
         "text": "CHRONO ARCHIVE",
         "font": "sora-700",
         "size": 52,
-        "color": "#FEF3C7",
+        "color": "#3E2723",
         "align": "center",
         "x": 0.5,
         "y": 0.46,
@@ -56,10 +56,10 @@
         "id": "tagline",
         "role": "tagline",
         "type": "text",
-        "text": "Declassified History \u00b7 Forgotten Battles & Ancient Empires",
+        "text": "Declassified History · Forgotten Battles & Ancient Empires",
         "font": "inter-400",
         "size": 16,
-        "color": "#FDE68A",
+        "color": "#3E2723",
         "align": "center",
         "x": 0.5,
         "y": 0.54,
