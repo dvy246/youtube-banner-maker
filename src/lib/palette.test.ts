@@ -2,13 +2,19 @@ import { describe, it, expect } from 'vitest';
 import { PALETTES } from './palette';
 
 describe('Color Palette System', () => {
-  it('defines 8 curated palettes with unique IDs', () => {
-    expect(PALETTES.length).toBe(8);
+  it('defines 10 curated palettes with unique IDs', () => {
+    expect(PALETTES.length).toBe(10);
     const ids = new Set(PALETTES.map((p) => p.id));
-    expect(ids.size).toBe(8);
+    expect(ids.size).toBe(10);
   });
 
-  it('includes cobalt as the signature default palette', () => {
+  it('includes crimson as the signature default red palette', () => {
+    const crimson = PALETTES.find((p) => p.id === 'crimson');
+    expect(crimson).toBeDefined();
+    expect(crimson?.accentColor.toUpperCase()).toBe('#E63946');
+  });
+
+  it('includes cobalt as an available palette', () => {
     const cobalt = PALETTES.find((p) => p.id === 'cobalt');
     expect(cobalt).toBeDefined();
     expect(cobalt?.accentColor.toUpperCase()).toBe('#2340B8');

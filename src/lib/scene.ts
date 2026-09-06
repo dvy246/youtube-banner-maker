@@ -109,8 +109,9 @@ export function defaultScene(): Scene {
     canvas: { width: CANVAS.width, height: CANVAS.height },
     background: {
       type: 'gradient',
-      from: '#0C0D0E',
-      to: '#1F2124',
+      from: '#8B1E2D',
+      to: '#E63946',
+      stops: ['#8B1E2D', '#B3261E', '#E63946'],
       angle: 135,
     },
     layers: [
@@ -131,7 +132,7 @@ export function defaultScene(): Scene {
         text: 'New Videos Every Week · Subscribe',
         font: 'inter-500',
         size: 22,
-        color: '#E3E5E8',
+        color: '#F4D35E',
         align: 'center',
         position: { x: 0.5, y: 0.54 },
         safeAreaConstrained: true,

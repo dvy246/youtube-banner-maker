@@ -18,16 +18,16 @@ const niches = [
 
 <div
   id="template-picker-modal"
-  class="hidden fixed inset-0 z-50 overflow-y-auto bg-ink-950/80 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6"
+  class="hidden fixed inset-0 z-50 overflow-y-auto bg-ink-950/80 backdrop-blur-xs flex items-center justify-center p-2 sm:p-6"
   role="dialog"
   aria-modal="true"
   aria-labelledby="template-picker-title"
 >
   <div
-    class="relative bg-surface-0 border border-line-200 rounded-2xl max-w-5xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"
+    class="relative bg-surface-0 border border-line-200 rounded-2xl max-w-5xl w-full max-h-[92vh] sm:max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"
   >
     <!-- Modal Header -->
-    <div class="px-6 py-5 border-b border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-surface-50">
+    <div class="px-4 sm:px-6 py-3.5 sm:py-5 border-b border-line-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 bg-surface-50">
       <div>
         <div class="flex items-center gap-2">
           <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider bg-accent/10 text-accent border border-accent/20">
@@ -35,10 +35,10 @@ const niches = [
           </span>
           <span class="text-xs text-ink-500 font-medium">Safe by Construction</span>
         </div>
-        <h2 id="template-picker-title" class="text-lg sm:text-xl font-bold tracking-tight text-ink-950 mt-1">
+        <h2 id="template-picker-title" class="text-base sm:text-xl font-bold tracking-tight text-ink-950 mt-1">
           Choose a YouTube Banner Template
         </h2>
-        <p class="text-xs text-ink-600 mt-0.5">
+        <p class="text-[11px] sm:text-xs text-ink-600 mt-0.5">
           Every layout is pre-aligned to YouTube's centered mobile safe area. Select a layout or start blank.
         </p>
       </div>
@@ -47,7 +47,7 @@ const niches = [
         <button
           type="button"
           id="start-blank-btn"
-          class="min-h-[44px] px-4 py-2 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-900 text-xs font-semibold inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
+          class="min-h-[40px] sm:min-h-[44px] px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-900 text-xs font-semibold inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
         >
           <span>Start Blank</span>
           <span aria-hidden="true">□</span>
@@ -56,7 +56,7 @@ const niches = [
         <button
           type="button"
           id="close-template-modal-btn"
-          class="min-h-[44px] min-w-[44px] p-2.5 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-600 hover:text-ink-950 flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors"
+          class="min-h-[40px] min-w-[40px] sm:min-h-[44px] sm:min-w-[44px] p-2 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-600 hover:text-ink-950 flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors"
           aria-label="Close template picker"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -67,12 +67,12 @@ const niches = [
     </div>
 
     <!-- Category Filter Pills (REQ-021: Strict absence of free-text search input) -->
-    <div class="px-6 py-3 border-b border-line-100 bg-surface-0 overflow-x-auto flex items-center gap-2 scrollbar-none">
+    <div class="px-4 sm:px-6 py-2.5 sm:py-3 border-b border-line-100 bg-surface-0 overflow-x-auto flex items-center gap-2 scrollbar-none">
       {
         niches.map((n, idx) => (
           <button
             type="button"
-            class={`filter-niche-btn min-h-[44px] px-4 py-2 rounded-full text-xs font-medium cursor-pointer transition-all whitespace-nowrap focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-accent shrink-0 ${
+            class={`filter-niche-btn min-h-[38px] sm:min-h-[44px] px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-medium cursor-pointer transition-all whitespace-nowrap focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-accent shrink-0 ${
               idx === 0
                 ? 'bg-ink-950 text-surface-0 shadow-xs active-pill'
                 : 'bg-surface-50 hover:bg-surface-100 text-ink-700 border border-line-200'
@@ -88,7 +88,7 @@ const niches = [
     <!-- Template Card Grid (Scrollable) -->
     <div
       id="template-picker-grid"
-      class="overflow-y-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 bg-surface-50/50 flex-1"
+      class="overflow-y-auto p-3.5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5 bg-surface-50/50 flex-1"
     >
       {
         TEMPLATES.map((tmpl) => (

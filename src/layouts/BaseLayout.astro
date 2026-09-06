@@ -44,8 +44,8 @@ const canonicalUrl = getCanonicalUrl(path);
             document.documentElement.classList.remove('dark');
             document.documentElement.setAttribute('data-theme', 'light');
           }
-          var p = localStorage.getItem('ytbm-palette');
-          if (p && p !== 'cobalt') {
+          var p = localStorage.getItem('ytbm-palette') || 'crimson';
+          if (p) {
             document.documentElement.setAttribute('data-palette', p);
           }
         } catch (e) {}
@@ -58,24 +58,22 @@ const canonicalUrl = getCanonicalUrl(path);
                 var isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.documentElement.classList.contains('dark');
                 toggle.checked = isCurrentlyDark;
               }
-              var activePal = localStorage.getItem('ytbm-palette');
-              if (activePal && activePal !== 'cobalt') {
-                var btn = document.querySelector('button[data-palette-id="' + activePal + '"]');
-                if (btn) {
-                  var color = btn.getAttribute('data-palette-color');
-                  var name = btn.getAttribute('data-palette-name');
-                  if (color) {
-                    document.querySelectorAll('.palette-active-dot').forEach(function (d) { d.style.backgroundColor = color; });
-                  }
-                  if (name) {
-                    document.querySelectorAll('.palette-label').forEach(function (l) { l.textContent = name; });
-                  }
-                  document.querySelectorAll('.palette-check').forEach(function (c) {
-                    var m = c.getAttribute('data-check') === activePal;
-                    c.classList.toggle('opacity-100', m);
-                    c.classList.toggle('opacity-0', !m);
-                  });
+              var activePal = localStorage.getItem('ytbm-palette') || 'crimson';
+              var btn = document.querySelector('button[data-palette-id="' + activePal + '"]');
+              if (btn) {
+                var color = btn.getAttribute('data-palette-color');
+                var name = btn.getAttribute('data-palette-name');
+                if (color) {
+                  document.querySelectorAll('.palette-active-dot').forEach(function (d) { d.style.backgroundColor = color; });
                 }
+                if (name) {
+                  document.querySelectorAll('.palette-label').forEach(function (l) { l.textContent = name; });
+                }
+                document.querySelectorAll('.palette-check').forEach(function (c) {
+                  var m = c.getAttribute('data-check') === activePal;
+                  c.classList.toggle('opacity-100', m);
+                  c.classList.toggle('opacity-0', !m);
+                });
               }
             } catch (e) {}
           });

@@ -78,15 +78,41 @@ const navItems = [
     </div>
 
     <!-- Mobile Navigation & Actions -->
-    <div class="flex md:hidden items-center gap-2">
+    <div class="flex md:hidden items-center gap-1.5">
       {!currentPath.startsWith('/templates') && <ThemeToggle />}
       {!currentPath.startsWith('/templates') && <PalettePicker currentPath={currentPath} />}
-      <a
-        href="/tools/youtube-banner-resizer"
-        class="h-9 px-3 rounded-md bg-ink-950 text-surface-0 text-xs font-medium inline-flex items-center"
-      >
-        Fix Banner
-      </a>
+      <details class="palette-dropdown group relative">
+        <summary
+          class="min-h-[38px] min-w-[38px] p-2 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center justify-center cursor-pointer list-none select-none shadow-2xs focus-visible:outline-accent"
+          aria-label="Open mobile navigation menu"
+        >
+          <svg class="w-4 h-4 text-ink-700 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </summary>
+        <div
+          class="absolute right-0 mt-1.5 w-48 rounded-lg bg-surface-0 border border-line-200 shadow-overlay p-1.5 z-50 focus:outline-none space-y-0.5"
+          role="menu"
+        >
+          {
+            navItems.map((item) => {
+              const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+              return (
+                <a
+                  href={item.href}
+                  class:list={[
+                    'block px-3 py-2 rounded-md text-xs font-medium transition-colors',
+                    isActive ? 'bg-surface-100 text-ink-950 font-semibold' : 'text-ink-700 hover:bg-surface-50 hover:text-ink-950',
+                  ]}
+                  role="menuitem"
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+        </div>
+      </details>
     </div>
   </div>
 </header>

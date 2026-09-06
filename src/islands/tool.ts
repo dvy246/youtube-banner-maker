@@ -169,6 +169,9 @@ class ToolIsland {
 
   // Background Style Presets
   private readonly BG_STYLE_PRESETS: Record<string, Background> = {
+    crimson: { type: 'gradient', from: '#8B1E2D', to: '#E63946', stops: ['#8B1E2D', '#B3261E', '#E63946'], angle: 135 },
+    pearl: { type: 'gradient', from: '#FFFAF3', to: '#FFF2DB', stops: ['#FFFAF3', '#FFF2DB', '#FFE5BF'], angle: 135 },
+    noir_rose: { type: 'gradient', from: '#000000', to: '#1A080E', stops: ['#000000', '#1A080E', '#26161F'], angle: 135 },
     carbon: { type: 'gradient', from: '#0C0D0E', to: '#1F2124', angle: 135 },
     noir: { type: 'gradient', from: '#090A0B', to: '#15171A', angle: 180 },
     indigo: { type: 'gradient', from: '#0B0E23', to: '#1B1F4A', angle: 135 },
@@ -1396,6 +1399,9 @@ class ToolIsland {
 
     // 12. Instant Curated Background Styles & Palette Harmonizer (1-Click)
     const BG_COLOR_HARMONIES: Record<string, { titleColor: string; taglineColor: string; frameBorderColor: string }> = {
+      crimson: { titleColor: '#FFFFFF', taglineColor: '#F4D35E', frameBorderColor: '#E63946' },
+      pearl: { titleColor: '#F62440', taglineColor: '#4A4E54', frameBorderColor: '#F62440' },
+      noir_rose: { titleColor: '#EEEEEE', taglineColor: '#CB2957', frameBorderColor: '#CB2957' },
       carbon: { titleColor: '#FFFFFF', taglineColor: '#9CA3AF', frameBorderColor: '#FFFFFF' },
       noir: { titleColor: '#F3F4F6', taglineColor: '#9CA3AF', frameBorderColor: '#E5E7EB' },
       indigo: { titleColor: '#FFFFFF', taglineColor: '#A5B4FC', frameBorderColor: '#6366F1' },
