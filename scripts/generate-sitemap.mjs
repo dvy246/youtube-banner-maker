@@ -82,26 +82,68 @@ if (filteredRoutes.length !== 22) {
   console.warn(`WARNING: Expected 22 routes in sitemap, found ${filteredRoutes.length}`);
 }
 
-const xmlEntries = filteredRoutes.map((r) => {
-  const loc = r.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${r.path}`;
-  return `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${TODAY}</lastmod>
-  </url>`;
-});
+const LOCALES = [
+  { code: 'en', hreflang: 'en' },
+  { code: 'es', hreflang: 'es' },
+  { code: 'de', hreflang: 'de' },
+  { code: 'fr', hreflang: 'fr' },
+  { code: 'pt-br', hreflang: 'pt-BR' },
+  { code: 'it', hreflang: 'it' },
+  { code: 'ja', hreflang: 'ja' },
+];
 
-const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${xmlEntries.join('\n')}
+function getUrlForLocale(basePath, localeCode) {
+  if (localeCode === 'en') {
+    return basePath === '/' ? `${SITE_URL}/` : `${SITE_URL}${basePath}`;
+  }
+  return basePath === '/' ? `${SITE_URL}/${localeCode}` : `${SITE_URL}/${localeCode}${basePath}`;
+}
+
+function generateSitemapXmlForLocale(localeCode) {
+  const entries = filteredRoutes.map((r) => {
+    const pageUrl = getUrlForLocale(r.path, localeCode);
+    const xhtmlLinks = LOCALES.map((target) => {
+      const altUrl = getUrlForLocale(r.path, target.code);
+      return `    <xhtml:link rel="alternate" hreflang="${target.hreflang}" href="${altUrl}"/>`;
+    });
+    const xDefaultUrl = getUrlForLocale(r.path, 'en');
+    xhtmlLinks.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${xDefaultUrl}"/>`);
+
+    return `  <url>
+    <loc>${pageUrl}</loc>
+    <lastmod>${TODAY}</lastmod>
+    <changefreq>${r.changefreq}</changefreq>
+    <priority>${localeCode === 'en' ? r.priority : (parseFloat(r.priority) * 0.9).toFixed(1)}</priority>
+${xhtmlLinks.join('\n')}
+  </url>`;
+  });
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries.join('\n')}
 </urlset>
 `;
+}
 
+// Generate primary sitemap.xml (22 English canonical URLs with full reciprocal hreflang)
+const sitemapXml = generateSitemapXmlForLocale('en');
+
+// Generate sitemap-index.xml linking all sitemaps
 const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${SITE_URL}/sitemap.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
+${LOCALES.filter((l) => l.code !== 'en')
+  .map(
+    (l) => `  <sitemap>
+    <loc>${SITE_URL}/sitemap-${l.code}.xml</loc>
+    <lastmod>${TODAY}</lastmod>
+  </sitemap>`
+  )
+  .join('\n')}
 </sitemapindex>
 `;
 
@@ -109,7 +151,14 @@ const publicPath = path.resolve('public/sitemap.xml');
 fs.writeFileSync(publicPath, sitemapXml, 'utf-8');
 fs.writeFileSync(path.resolve('public/sitemap-0.xml'), sitemapXml, 'utf-8');
 fs.writeFileSync(path.resolve('public/sitemap-index.xml'), sitemapIndexXml, 'utf-8');
-console.log(`Generated public/sitemap.xml, sitemap-0.xml, and sitemap-index.xml with ${filteredRoutes.length} indexable routes.`);
+
+// Write per-locale sitemaps
+for (const loc of LOCALES.filter((l) => l.code !== 'en')) {
+  const locXml = generateSitemapXmlForLocale(loc.code);
+  fs.writeFileSync(path.resolve(`public/sitemap-${loc.code}.xml`), locXml, 'utf-8');
+}
+
+console.log(`Generated public/sitemap.xml (22 routes with reciprocal hreflang), per-locale sitemaps (154 total URLs across 7 locales), and sitemap-index.xml.`);
 
 // Also write to dist/ if dist exists
 const distDir = path.resolve('dist');
@@ -117,5 +166,9 @@ if (fs.existsSync(distDir)) {
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf-8');
   fs.writeFileSync(path.join(distDir, 'sitemap-0.xml'), sitemapXml, 'utf-8');
   fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), sitemapIndexXml, 'utf-8');
-  console.log(`Synced sitemaps to dist/.`);
+  for (const loc of LOCALES.filter((l) => l.code !== 'en')) {
+    const locXml = generateSitemapXmlForLocale(loc.code);
+    fs.writeFileSync(path.join(distDir, `sitemap-${loc.code}.xml`), locXml, 'utf-8');
+  }
+  console.log(`Synced all sitemaps to dist/.`);
 }

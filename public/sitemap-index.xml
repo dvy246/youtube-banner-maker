@@ -2,6 +2,30 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://youtubebannermaker.com/sitemap.xml</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-07</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://youtubebannermaker.com/sitemap-es.xml</loc>
+    <lastmod>2026-09-07</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://youtubebannermaker.com/sitemap-de.xml</loc>
+    <lastmod>2026-09-07</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://youtubebannermaker.com/sitemap-fr.xml</loc>
+    <lastmod>2026-09-07</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://youtubebannermaker.com/sitemap-pt-br.xml</loc>
+    <lastmod>2026-09-07</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://youtubebannermaker.com/sitemap-it.xml</loc>
+    <lastmod>2026-09-07</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://youtubebannermaker.com/sitemap-ja.xml</loc>
+    <lastmod>2026-09-07</lastmod>
   </sitemap>
 </sitemapindex>

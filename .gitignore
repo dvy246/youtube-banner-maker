@@ -5,6 +5,7 @@ node_modules/
 dist/
 .astro/
 .cache/
+.i18n-baseline/
 
 # Environment variables
 .env
