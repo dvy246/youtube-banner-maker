@@ -88,12 +88,24 @@ export function invertLuminance(hex: string): string {
   return hslToHex(h, s, 100 - l);
 }
 
+export type VariationType =
+  | 'original'
+  | 'dark'
+  | 'editorial'
+  | 'cyberpunk'
+  | 'minimalist'
+  | 'sunset'
+  | 'warm'
+  | 'cool';
+
 /**
- * Compute one of 4 instant style variations from a template's design system.
+ * Compute one of the instant style variations from a template's design system.
+ * Supports 6 curated aesthetic vibes (Original, Dark Noir, Editorial Warm Pearl,
+ * Cyberpunk Neon, Stealth Minimalist, Sunset Luxe) plus dynamic hue shifts.
  */
 export function computeVariation(
   ds: SceneDesignSystem,
-  type: 'original' | 'dark' | 'warm' | 'cool'
+  type: VariationType
 ): SceneDesignSystem {
   if (type === 'original') {
     return JSON.parse(JSON.stringify(ds));
@@ -110,6 +122,58 @@ export function computeVariation(
         secondary: '#9CA3AF',
         surface: '#0A0B0D',
         accent: rotateHue(p.accent, 15),
+      },
+      typography: { ...t },
+    };
+  }
+
+  if (type === 'editorial') {
+    return {
+      ...ds,
+      palette: {
+        primary: '#18181B',
+        secondary: '#71717A',
+        surface: '#FAF8F5',
+        accent: '#C26738',
+      },
+      typography: { ...t },
+    };
+  }
+
+  if (type === 'cyberpunk') {
+    return {
+      ...ds,
+      palette: {
+        primary: '#00F0FF',
+        secondary: '#A855F7',
+        surface: '#070913',
+        accent: '#FF0055',
+      },
+      typography: { ...t },
+    };
+  }
+
+  if (type === 'minimalist') {
+    return {
+      ...ds,
+      palette: {
+        primary: '#F8FAFC',
+        secondary: '#94A3B8',
+        surface: '#0F172A',
+        accent: '#E2E8F0',
+      },
+      typography: { ...t },
+    };
+  }
+
+  if (type === 'sunset') {
+    return {
+      ...ds,
+      palette: {
+        primary: '#FFAA40',
+        secondary: '#F472B6',
+        surface: '#140A26',
+        accent: '#FF4572',
       },
       typography: { ...t },
     };

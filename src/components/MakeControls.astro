@@ -103,42 +103,60 @@ const t = getTranslations(locale).toolUi.makeControls;
       <p class="text-[11px] text-ink-600">
         {t.typography.cascadeDesc}
       </p>
-      <div class="grid grid-cols-4 gap-1.5 pt-1" id="variation-strip">
+      <div class="grid grid-cols-3 gap-1.5 pt-1" id="variation-strip">
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          class="variation-btn min-h-[40px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
           data-variation="original"
           title="Original template palette"
         >
-          <div class="text-[11px] font-bold">{t.typography.varOriginal}</div>
+          <div class="text-[11px] font-bold leading-tight">{t.typography.varOriginal}</div>
           <div class="text-[9px] text-ink-500 font-mono">{t.typography.varOriginalSub}</div>
         </button>
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          class="variation-btn min-h-[40px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
           data-variation="dark"
           title="Dark Noir inverted palette"
         >
-          <div class="text-[11px] font-bold">{t.typography.varDark}</div>
+          <div class="text-[11px] font-bold leading-tight">{t.typography.varDark}</div>
           <div class="text-[9px] text-ink-500 font-mono">{t.typography.varDarkSub}</div>
         </button>
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
-          data-variation="warm"
-          title="Warm amber/golden shift"
+          class="variation-btn min-h-[40px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          data-variation="editorial"
+          title="Editorial Warm Pearl aesthetic"
         >
-          <div class="text-[11px] font-bold">{t.typography.varWarm}</div>
-          <div class="text-[9px] text-ink-500 font-mono">{t.typography.varWarmSub}</div>
+          <div class="text-[11px] font-bold leading-tight">{t.typography.varEditorial}</div>
+          <div class="text-[9px] text-ink-500 font-mono">{t.typography.varEditorialSub}</div>
         </button>
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
-          data-variation="cool"
-          title="Cool cyan/indigo shift"
+          class="variation-btn min-h-[40px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          data-variation="cyberpunk"
+          title="Cyberpunk Neon futuristic aesthetic"
         >
-          <div class="text-[11px] font-bold">{t.typography.varCool}</div>
-          <div class="text-[9px] text-ink-500 font-mono">{t.typography.varCoolSub}</div>
+          <div class="text-[11px] font-bold leading-tight">{t.typography.varCyberpunk}</div>
+          <div class="text-[9px] text-ink-500 font-mono">{t.typography.varCyberpunkSub}</div>
+        </button>
+        <button
+          type="button"
+          class="variation-btn min-h-[40px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          data-variation="minimalist"
+          title="Stealth Minimalist clean monochrome"
+        >
+          <div class="text-[11px] font-bold leading-tight">{t.typography.varMinimalist}</div>
+          <div class="text-[9px] text-ink-500 font-mono">{t.typography.varMinimalistSub}</div>
+        </button>
+        <button
+          type="button"
+          class="variation-btn min-h-[40px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          data-variation="sunset"
+          title="Sunset Luxe warm radiant aesthetic"
+        >
+          <div class="text-[11px] font-bold leading-tight">{t.typography.varSunset}</div>
+          <div class="text-[9px] text-ink-500 font-mono">{t.typography.varSunsetSub}</div>
         </button>
       </div>
     </div>

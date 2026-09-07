@@ -33,7 +33,7 @@ describe('variations.ts — Design System Tokens & Style Variations', () => {
     expect(inverted).toBe('#FFFFFF');
   });
 
-  it('computes 4 instant style variations', () => {
+  it('computes instant style variations including 6 aesthetic vibes', () => {
     const baseDs: SceneDesignSystem = {
       palette: {
         primary: '#FFE600',
@@ -61,6 +61,22 @@ describe('variations.ts — Design System Tokens & Style Variations', () => {
     const cool = computeVariation(baseDs, 'cool');
     expect(cool.palette.primary).not.toBe(baseDs.palette.primary);
     expect(cool.palette.primary).not.toBe(warm.palette.primary);
+
+    const editorial = computeVariation(baseDs, 'editorial');
+    expect(editorial.palette.surface).toBe('#FAF8F5');
+    expect(editorial.palette.primary).toBe('#18181B');
+
+    const cyberpunk = computeVariation(baseDs, 'cyberpunk');
+    expect(cyberpunk.palette.primary).toBe('#00F0FF');
+    expect(cyberpunk.palette.accent).toBe('#FF0055');
+
+    const minimalist = computeVariation(baseDs, 'minimalist');
+    expect(minimalist.palette.primary).toBe('#F8FAFC');
+    expect(minimalist.palette.surface).toBe('#0F172A');
+
+    const sunset = computeVariation(baseDs, 'sunset');
+    expect(sunset.palette.primary).toBe('#FFAA40');
+    expect(sunset.palette.accent).toBe('#FF4572');
   });
 
   it('applies design system tokens atomically across all scene layers', () => {

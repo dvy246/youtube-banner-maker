@@ -49,8 +49,7 @@ import {
   trackEvent,
   cleanImageFormat,
   getSizeTier,
-} from '../lib/analytics';
-import { computeVariation, applyDesignSystemToScene } from '../lib/variations';
+import { computeVariation, applyDesignSystemToScene, type VariationType } from '../lib/variations';
 
 // Client i18n lookup from embedded payload
 function getClientI18n(): any {
@@ -2858,7 +2857,7 @@ class ToolIsland {
     const variationBtns = document.querySelectorAll<HTMLButtonElement>('.variation-btn');
     variationBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const variation = btn.getAttribute('data-variation') as 'original' | 'dark' | 'warm' | 'cool';
+        const variation = btn.getAttribute('data-variation') as VariationType;
         if (!variation) return;
 
         let baseDs = this.scene.designSystem;
