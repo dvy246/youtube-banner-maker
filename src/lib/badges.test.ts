@@ -115,6 +115,24 @@ describe('badges.ts — YouTube-Native Conversion Badges', () => {
     expect(ctx.fillText).toHaveBeenCalledWith('@gamingpro', expect.any(Number), expect.any(Number));
   });
 
+  it('renders social-row with multiple selected platforms and brand glyphs', () => {
+    const ctx = createMockContext();
+    const layer: BadgeLayer = {
+      id: 'social-multi',
+      type: 'badge',
+      variant: 'social-row',
+      x: 0.5,
+      y: 0.65,
+      text: '@creatorhub',
+      platforms: ['youtube', 'x', 'instagram', 'discord', 'tiktok', 'spotify'],
+    };
+
+    renderBadge(ctx, layer, 2560, 1440);
+    expect(ctx.fillText).toHaveBeenCalledWith('@creatorhub', expect.any(Number), expect.any(Number));
+    expect(ctx.save).toHaveBeenCalled();
+    expect(ctx.restore).toHaveBeenCalled();
+  });
+
   it('renders verified-check variant', () => {
     const ctx = createMockContext();
     const layer: BadgeLayer = {

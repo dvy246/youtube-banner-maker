@@ -59,6 +59,48 @@ describe('scene.ts (M-11, REQ-022)', () => {
     expect(s.canvas.width).toBe(CANVAS.width);
   });
 
+  it('supports background studio scrim configuration in scene serialization', () => {
+    const s = defaultScene();
+    (s.background as any).scrim = { enabled: true, intensity: 0.6, type: 'radial' };
+
+    const raw = serializeScene(s);
+    const restored = deserializeScene(raw);
+    expect(restored).not.toBeNull();
+    expect((restored?.background as any).scrim?.enabled).toBe(true);
+    expect((restored?.background as any).scrim?.intensity).toBe(0.6);
+  });
+
+  it('supports aeroPlate frosted glass configuration on text layers', () => {
+    const s = defaultScene();
+    (s.layers[0] as any).aeroPlate = { enabled: true, style: 'dark-frosted', padding: 16 };
+
+    const raw = serializeScene(s);
+    const restored = deserializeScene(raw);
+    expect(restored).not.toBeNull();
+    expect((restored?.layers[0] as any).aeroPlate?.enabled).toBe(true);
+    expect((restored?.layers[0] as any).aeroPlate?.style).toBe('dark-frosted');
+  });
+
+  it('supports multi-platform social handles in badge layers', () => {
+    const s = defaultScene();
+    s.layers.push({
+      id: 'social-badge',
+      type: 'badge',
+      variant: 'social-row',
+      x: 0.5,
+      y: 0.65,
+      text: '@channel',
+      platforms: ['youtube', 'x', 'instagram'],
+    } as any);
+
+    const raw = serializeScene(s);
+    const restored = deserializeScene(raw);
+    expect(restored).not.toBeNull();
+    const badge = restored?.layers.find((l) => l.id === 'social-badge');
+    expect(badge).toBeDefined();
+    expect((badge as any).platforms).toEqual(['youtube', 'x', 'instagram']);
+  });
+
   it('SCENE_KEY is ybm.scene.v1', () => {
     expect(SCENE_KEY).toBe('ybm.scene.v1');
   });

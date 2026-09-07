@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { CANVAS, DEVICES, type DeviceKey } from './spec';
-import { clampZoom, clampOffset, renderDeviceCrop } from './render';
+import { clampZoom, clampOffset, renderDeviceCrop, fitTextToSafeArea } from './render';
 
 describe('render.ts math, clamps, and invariants (M-3, M-4, M-5, M-10)', () => {
   it('M-5: Zoom is never permitted above max(1, min(sw/cw, sh/ch))', () => {
@@ -105,5 +105,16 @@ describe('render.ts math, clamps, and invariants (M-3, M-4, M-5, M-10)', () => {
       expect(dw).toBe(mockCtx.canvas.width);
       expect(dh).toBe(mockCtx.canvas.height);
     }
+  });
+
+  it('fitTextToSafeArea calculates valid safe font size within bounds', () => {
+    const longTitle = 'THE ULTIMATE TECH & CODING SHOW FOR DEVELOPERS';
+    const safeSize = fitTextToSafeArea(longTitle, 'sora-700', 1200, 72, 24);
+    expect(safeSize).toBeLessThanOrEqual(72);
+    expect(safeSize).toBeGreaterThanOrEqual(24);
+
+    const shortTitle = 'TECH';
+    const shortSize = fitTextToSafeArea(shortTitle, 'sora-700', 1200, 72, 24);
+    expect(shortSize).toBe(72);
   });
 });

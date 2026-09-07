@@ -115,6 +115,25 @@ export function renderScene(
     }
   }
 
+  // 1.5 Studio Scrim (Contrast Guard)
+  if (bg.scrim && bg.scrim.enabled && bg.scrim.intensity > 0) {
+    ctx.save();
+    const maxRadius = Math.sqrt(cw * cw + ch * ch) / 2;
+    const radGrad = ctx.createRadialGradient(
+      cw / 2,
+      ch / 2,
+      ch * 0.25,
+      cw / 2,
+      ch / 2,
+      maxRadius
+    );
+    radGrad.addColorStop(0, 'rgba(0, 0, 0, 0)');
+    radGrad.addColorStop(1, `rgba(0, 0, 0, ${Math.min(0.95, bg.scrim.intensity)})`);
+    ctx.fillStyle = radGrad;
+    ctx.fillRect(0, 0, cw, ch);
+    ctx.restore();
+  }
+
   // 2. Shapes & Frames & Badges (array order = z order)
   for (const layer of scene.layers) {
     if (layer.type === 'shape') {
@@ -164,6 +183,27 @@ export function measureTextWidth(
   }
   ctx.font = `${weight} ${fontSize}px ${family}`;
   return ctx.measureText(text).width;
+}
+
+/**
+ * Calculate maximum font size that safely fits within specified safe bounds.
+ */
+export function fitTextToSafeArea(
+  text: string,
+  fontId: string,
+  maxWidth = 1400,
+  maxFontSize = 72,
+  minFontSize = 24
+): number {
+  let size = maxFontSize;
+  while (size > minFontSize) {
+    const w = measureTextWidth(text, fontId, size);
+    if (w <= maxWidth) {
+      return size;
+    }
+    size -= 2;
+  }
+  return minFontSize;
 }
 
 function renderShape(
@@ -217,13 +257,52 @@ function renderText(
   const weight = fontDef ? fontDef.weight : 600;
 
   ctx.font = `${weight} ${layer.size}px ${family}, sans-serif`;
-  ctx.fillStyle = layer.color;
   ctx.textAlign = layer.align;
   ctx.textBaseline = 'middle';
 
   const x = layer.position.x * cw;
   const y = layer.position.y * ch;
 
+  // Render Aero Plate frosted glass plate if enabled
+  if (layer.aeroPlate && layer.aeroPlate.enabled) {
+    ctx.save();
+    const textMetrics = ctx.measureText(layer.text);
+    const textWidth = textMetrics.width;
+    const padX = layer.aeroPlate.padding ?? 24;
+    const padY = Math.round(padX * 0.45);
+    const plateW = textWidth + padX * 2;
+    const plateH = layer.size + padY * 2;
+
+    let plateX = x - padX;
+    if (layer.align === 'center') {
+      plateX = x - plateW / 2;
+    } else if (layer.align === 'right') {
+      plateX = x - textWidth - padX;
+    }
+    const plateY = y - plateH / 2;
+    const radius = Math.min(16, plateH / 2);
+
+    ctx.beginPath();
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(plateX, plateY, plateW, plateH, radius);
+    } else {
+      ctx.rect(plateX, plateY, plateW, plateH);
+    }
+
+    if (layer.aeroPlate.style === 'light-frosted') {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+    } else {
+      ctx.fillStyle = 'rgba(12, 13, 16, 0.65)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+    }
+    ctx.fill();
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  ctx.fillStyle = layer.color;
   ctx.fillText(layer.text, x, y);
   ctx.restore();
 }

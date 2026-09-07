@@ -1,8 +1,14 @@
 import { CANVAS } from './spec';
 
+export interface BackgroundScrim {
+  enabled: boolean;
+  intensity: number; // 0..1 (e.g. 0.4)
+  type?: 'radial' | 'vignette';
+}
+
 export type Background =
-  | { type: 'solid'; color: string }
-  | { type: 'gradient'; from: string; to: string; angle: number; stops?: string[] }
+  | { type: 'solid'; color: string; scrim?: BackgroundScrim }
+  | { type: 'gradient'; from: string; to: string; angle: number; stops?: string[]; scrim?: BackgroundScrim }
   | {
       type: 'image';
       src: string;
@@ -13,7 +19,14 @@ export type Background =
       offsetY: number;
       zoom: number;
       extend: boolean;
+      scrim?: BackgroundScrim;
     };
+
+export interface AeroPlate {
+  enabled: boolean;
+  style?: 'dark-frosted' | 'light-frosted';
+  padding?: number; // padding in px, default 16
+}
 
 export interface TextLayer {
   id: string;
@@ -25,6 +38,7 @@ export interface TextLayer {
   align: 'left' | 'center' | 'right';
   position: { x: number; y: number }; // FRAME FRACTIONS, never pixels
   safeAreaConstrained: boolean;
+  aeroPlate?: AeroPlate;
 }
 
 export interface ShapeLayer {
@@ -58,6 +72,15 @@ export interface PhotoFrameLayer {
   safeAreaConstrained?: boolean;
 }
 
+export type SocialPlatform =
+  | 'youtube'
+  | 'x'
+  | 'instagram'
+  | 'tiktok'
+  | 'twitch'
+  | 'discord'
+  | 'spotify';
+
 export interface BadgeLayer {
   id: string;
   type: 'badge';
@@ -74,6 +97,7 @@ export interface BadgeLayer {
   colorScheme?: 'youtube-red' | 'theme-accent' | 'mono-dark' | 'mono-light';
   text?: string;
   safeAreaConstrained?: boolean;
+  platforms?: SocialPlatform[];
 }
 
 export type SceneLayer = TextLayer | ShapeLayer | PhotoFrameLayer | BadgeLayer;
@@ -212,6 +236,17 @@ export function deserializeScene(raw: string): Scene | null {
       return null;
     }
 
+    if (bg.scrim !== undefined) {
+      if (
+        !bg.scrim ||
+        typeof bg.scrim !== 'object' ||
+        typeof bg.scrim.enabled !== 'boolean' ||
+        typeof bg.scrim.intensity !== 'number'
+      ) {
+        return null;
+      }
+    }
+
     if (!Array.isArray(data.layers) || data.layers.length > 8) {
       return null;
     }
@@ -233,6 +268,15 @@ export function deserializeScene(raw: string): Scene | null {
           typeof layer.safeAreaConstrained !== 'boolean'
         ) {
           return null;
+        }
+        if (layer.aeroPlate !== undefined) {
+          if (
+            !layer.aeroPlate ||
+            typeof layer.aeroPlate !== 'object' ||
+            typeof layer.aeroPlate.enabled !== 'boolean'
+          ) {
+            return null;
+          }
         }
       } else if (layer.type === 'shape') {
         if (
@@ -263,6 +307,11 @@ export function deserializeScene(raw: string): Scene | null {
           typeof layer.y !== 'number'
         ) {
           return null;
+        }
+        if (layer.platforms !== undefined) {
+          if (!Array.isArray(layer.platforms)) {
+            return null;
+          }
         }
       } else {
         return null;

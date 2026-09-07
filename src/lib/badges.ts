@@ -338,31 +338,138 @@ export function renderBadge(
       break;
     }
 
+// Draw multi-platform vector brand icon
+function drawPlatformIcon(
+  ctx: CanvasRenderingContext2D,
+  platform: string,
+  cx: number,
+  cy: number,
+  size: number,
+  color: string
+): void {
+  ctx.save();
+  ctx.fillStyle = color;
+  ctx.strokeStyle = color;
+  const s = size / 2;
+
+  switch (platform) {
+    case 'youtube': {
+      ctx.lineWidth = Math.max(1, size * 0.1);
+      drawRoundedRect(ctx, cx - s * 0.8, cy - s * 0.6, size * 0.8, size * 0.6, s * 0.25);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx - s * 0.15, cy - s * 0.25);
+      ctx.lineTo(cx + s * 0.3, cy);
+      ctx.lineTo(cx - s * 0.15, cy + s * 0.25);
+      ctx.closePath();
+      ctx.fill();
+      break;
+    }
+    case 'x': {
+      ctx.lineWidth = Math.max(1.5, size * 0.14);
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(cx - s * 0.6, cy - s * 0.6);
+      ctx.lineTo(cx + s * 0.6, cy + s * 0.6);
+      ctx.moveTo(cx + s * 0.6, cy - s * 0.6);
+      ctx.lineTo(cx - s * 0.6, cy + s * 0.6);
+      ctx.stroke();
+      break;
+    }
+    case 'instagram': {
+      ctx.lineWidth = Math.max(1.2, size * 0.12);
+      drawRoundedRect(ctx, cx - s * 0.7, cy - s * 0.7, size * 0.7, size * 0.7, s * 0.25);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, s * 0.22, 0, Math.PI * 2);
+      ctx.stroke();
+      break;
+    }
+    case 'tiktok': {
+      ctx.lineWidth = Math.max(1.4, size * 0.14);
+      ctx.beginPath();
+      ctx.arc(cx - s * 0.15, cy + s * 0.3, s * 0.22, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx + s * 0.07, cy + s * 0.3);
+      ctx.lineTo(cx + s * 0.07, cy - s * 0.6);
+      ctx.quadraticCurveTo(cx + s * 0.35, cy - s * 0.6, cx + s * 0.5, cy - s * 0.2);
+      ctx.stroke();
+      break;
+    }
+    case 'twitch': {
+      drawRoundedRect(ctx, cx - s * 0.65, cy - s * 0.65, size * 0.65, size * 0.65, s * 0.2);
+      ctx.stroke();
+      ctx.fillRect(cx - s * 0.2, cy - s * 0.2, s * 0.12, s * 0.25);
+      ctx.fillRect(cx + s * 0.1, cy - s * 0.2, s * 0.12, s * 0.25);
+      break;
+    }
+    case 'discord': {
+      ctx.lineWidth = Math.max(1.2, size * 0.12);
+      drawRoundedRect(ctx, cx - s * 0.75, cy - s * 0.45, size * 0.75, size * 0.45, s * 0.2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx - s * 0.25, cy - s * 0.2, s * 0.08, 0, Math.PI * 2);
+      ctx.arc(cx + s * 0.25, cy - s * 0.2, s * 0.08, 0, Math.PI * 2);
+      ctx.fill();
+      break;
+    }
+    case 'spotify': {
+      ctx.beginPath();
+      ctx.arc(cx, cy, s * 0.7, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.lineWidth = Math.max(1, size * 0.1);
+      ctx.beginPath();
+      ctx.arc(cx, cy + s * 0.35, s * 0.4, -Math.PI * 0.8, -Math.PI * 0.2);
+      ctx.stroke();
+      break;
+    }
+  }
+  ctx.restore();
+}
+
     case 'social-row': {
       const handle = layer.text || '@channel';
       const fontSize = Math.round(22 * scale);
       ctx.font = `600 ${fontSize}px Inter, sans-serif`;
       const textWidth = ctx.measureText(handle).width;
 
-      const paddingX = 20 * scale;
+      const platforms = layer.platforms && layer.platforms.length > 0
+        ? layer.platforms
+        : ['youtube', 'x', 'instagram'];
+
+      const iconSize = 20 * scale;
+      const iconGap = 10 * scale;
+      const iconsWidth = platforms.length * iconSize + (platforms.length - 1) * iconGap;
+      const handleGap = 12 * scale;
+
+      const paddingX = 22 * scale;
       const paddingY = 12 * scale;
-      const pillW = textWidth + paddingX * 2;
+      const pillW = iconsWidth + handleGap + textWidth + paddingX * 2;
       const pillH = fontSize + paddingY * 2;
       const x0 = px - pillW / 2;
       const y0 = py - pillH / 2;
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.fillStyle = 'rgba(12, 13, 16, 0.7)';
       drawRoundedRect(ctx, x0, y0, pillW, pillH, pillH / 2);
       ctx.fill();
 
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-      ctx.lineWidth = Math.max(1, 1 * scale);
+      ctx.lineWidth = Math.max(1, 1.2 * scale);
       ctx.stroke();
 
+      // Draw platform icons
+      let curX = x0 + paddingX + iconSize / 2;
+      for (const p of platforms) {
+        drawPlatformIcon(ctx, p, curX, py, iconSize, '#FFFFFF');
+        curX += iconSize + iconGap;
+      }
+
+      // Draw handle text
       ctx.fillStyle = '#FFFFFF';
       ctx.textBaseline = 'middle';
-      ctx.textAlign = 'center';
-      ctx.fillText(handle, px, py);
+      ctx.textAlign = 'left';
+      ctx.fillText(handle, curX - iconGap / 2 + handleGap / 2, py);
       break;
     }
 
