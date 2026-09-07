@@ -1,13 +1,15 @@
 ---
 import type { TemplateManifest } from '../lib/template';
+import { getLocalizedUrl, type Locale } from '../i18n';
 
 interface Props {
   template: TemplateManifest;
   loading?: 'lazy' | 'eager';
   fetchpriority?: 'auto' | 'high' | 'low';
+  locale?: Locale;
 }
 
-const { template, loading = 'lazy', fetchpriority = 'auto' } = Astro.props;
+const { template, loading = 'lazy', fetchpriority = 'auto', locale = 'en' } = Astro.props;
 
 const formatField = (field: string) => {
   if (field === 'title') return 'Title';
@@ -86,14 +88,14 @@ const formatField = (field: string) => {
 
     <div class="mt-auto pt-4 grid grid-cols-2 gap-2">
       <a
-        href={`/tools/youtube-banner-maker?template=${template.id}`}
+        href={`${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${template.id}`}
         class="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2.5 rounded-xl bg-ink-950 text-surface-0 hover:bg-accent text-xs font-semibold transition-colors focus-visible:outline-accent shadow-2xs"
       >
         <span>Customize</span>
         <span aria-hidden="true">&rarr;</span>
       </a>
       <a
-        href={`/tools/youtube-banner-maker?template=${template.id}&download=1`}
+        href={`${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${template.id}&download=1`}
         class="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 text-xs font-semibold transition-colors focus-visible:outline-accent"
         title="Direct free download at official 2560×1440"
       >

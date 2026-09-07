@@ -1,4 +1,12 @@
 ---
+import { getLocalizedUrl, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+
 interface GalleryBanner {
   id: string;
   name: string;
@@ -78,7 +86,7 @@ const mid = Math.floor(total / 2);
 
         return (
           <a
-            href={`/tools/youtube-banner-maker?template=${banner.id}`}
+            href={`${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${banner.id}`}
             class="arch-card group"
             style={{
               '--offset': offset,

@@ -1,46 +1,50 @@
 ---
 import PalettePicker from './PalettePicker.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguagePicker from './LanguagePicker.astro';
+import { getLocalizedUrl, getTranslations, type Locale } from '../i18n';
 
 interface Props {
   currentPath?: string;
+  locale?: Locale;
 }
 
-const { currentPath = '' } = Astro.props;
-const isToolPage = currentPath.startsWith('/tools');
+const { currentPath = '', locale = 'en' } = Astro.props;
+const isToolPage = currentPath.includes('/tools');
+const dict = getTranslations(locale);
 
 const navItems = [
-  { label: 'Fix Banner', href: '/tools/youtube-banner-resizer' },
-  { label: 'Checker', href: '/tools/youtube-banner-checker' },
-  { label: 'Maker', href: '/tools/youtube-banner-maker' },
-  { label: 'Templates', href: '/templates' },
-  { label: 'Size Guide', href: '/guides/youtube-banner-size' },
+  { label: dict.nav.fixBanner, href: getLocalizedUrl('/tools/youtube-banner-resizer', locale) },
+  { label: dict.nav.checker, href: getLocalizedUrl('/tools/youtube-banner-checker', locale) },
+  { label: dict.nav.maker, href: getLocalizedUrl('/tools/youtube-banner-maker', locale) },
+  { label: dict.nav.templates, href: getLocalizedUrl('/templates', locale) },
+  { label: dict.nav.sizeGuide, href: getLocalizedUrl('/guides/youtube-banner-size', locale) },
 ];
 ---
 
 <header class="sticky top-0 z-40 w-full bg-surface-0/95 backdrop-blur-md border-b border-line-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
     <!-- Brand -->
-    <a href="/" class="flex items-center gap-3 text-ink-950 hover:opacity-90 transition-opacity shrink-0">
+    <a href={getLocalizedUrl('/', locale)} class="flex items-center gap-3 text-ink-950 hover:opacity-90 transition-opacity shrink-0">
       <div class="w-7 h-7 rounded-sm bg-ink-950 text-surface-0 flex items-center justify-center font-bold text-xs font-mono tracking-tight shadow-xs">
         YT
       </div>
       <div class="flex items-baseline">
-        <span class="text-sm font-semibold tracking-tight text-ink-950">YouTube Banner Maker</span>
+        <span class="text-sm font-semibold tracking-tight text-ink-950">{dict.common.brandName}</span>
       </div>
     </a>
 
     <!-- Navigation & Desktop Actions -->
-    <div class="hidden md:flex items-center gap-4">
+    <div class="hidden md:flex items-center gap-3 lg:gap-4">
       <nav class="flex items-center gap-1" aria-label="Main Navigation">
         {
           navItems.map((item) => {
-            const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+            const isActive = currentPath === item.href || (item.href !== '/' && item.href !== `/${locale}` && currentPath.startsWith(item.href));
             return (
               <a
                 href={item.href}
                 class:list={[
-                  'relative h-9 px-3 text-[13px] font-medium transition-colors inline-flex items-center',
+                  'relative h-9 px-2.5 lg:px-3 text-[13px] font-medium transition-colors inline-flex items-center',
                   isActive
                     ? 'text-ink-950 font-semibold'
                     : 'text-ink-600 hover:text-ink-950',
@@ -49,7 +53,7 @@ const navItems = [
               >
                 <span>{item.label}</span>
                 {isActive && (
-                  <span class="absolute bottom-0 left-3 right-3 h-[2px] bg-accent rounded-full" aria-hidden="true" />
+                  <span class="absolute bottom-0 left-2.5 lg:left-3 right-2.5 lg:right-3 h-[2px] bg-accent rounded-full" aria-hidden="true" />
                 )}
               </a>
             );
@@ -59,6 +63,9 @@ const navItems = [
 
       <div class="h-4 w-px bg-line-200" aria-hidden="true" />
 
+      <!-- Language Selector (Pure-HTML, Zero JS) -->
+      <LanguagePicker currentPath={currentPath} currentLocale={locale} />
+
       <!-- Dark / White Mode Slider Toggle -->
       <ThemeToggle />
 
@@ -67,10 +74,10 @@ const navItems = [
 
       {!isToolPage && (
         <a
-          href="/tools/youtube-banner-resizer"
+          href={getLocalizedUrl('/tools/youtube-banner-resizer', locale)}
           class="h-9 px-3.5 rounded-md bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs font-medium inline-flex items-center gap-1.5 transition-colors shadow-xs"
         >
-          <span>Launch Resizer</span>
+          <span>{dict.common.launchResizer}</span>
           <span aria-hidden="true">→</span>
         </a>
       )}
@@ -78,12 +85,13 @@ const navItems = [
 
     <!-- Mobile Navigation & Actions -->
     <div class="flex md:hidden items-center gap-1.5">
+      <LanguagePicker currentPath={currentPath} currentLocale={locale} />
       <ThemeToggle />
       <PalettePicker currentPath={currentPath} />
       <details class="palette-dropdown group relative">
         <summary
           class="min-h-[38px] min-w-[38px] p-2 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center justify-center cursor-pointer list-none select-none shadow-2xs focus-visible:outline-accent"
-          aria-label="Open mobile navigation menu"
+          aria-label={dict.common.openMobileMenu}
         >
           <svg class="w-4 h-4 text-ink-700 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -95,7 +103,7 @@ const navItems = [
         >
           {
             navItems.map((item) => {
-              const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+              const isActive = currentPath === item.href || (item.href !== '/' && item.href !== `/${locale}` && currentPath.startsWith(item.href));
               return (
                 <a
                   href={item.href}
@@ -115,4 +123,3 @@ const navItems = [
     </div>
   </div>
 </header>
-

@@ -8,6 +8,7 @@ import VerdictList from './VerdictList.astro';
 import ExportButton from './ExportButton.astro';
 import ReencodeSimulation from './ReencodeSimulation.astro';
 import SpecTable from './SpecTable.astro';
+import { getLocalizedUrl, type Locale } from '../i18n';
 
 interface Props {
   mode: 'make' | 'fix' | 'check';
@@ -15,6 +16,7 @@ interface Props {
   intro: string;
   showControls?: boolean;
   showExport?: boolean;
+  locale?: Locale;
 }
 
 const {
@@ -23,6 +25,7 @@ const {
   intro,
   showControls = true,
   showExport = true,
+  locale = 'en',
 } = Astro.props;
 ---
 
@@ -59,7 +62,7 @@ const {
         <SpecTable />
       </div>
       <p class="text-xs text-ink-600">
-        Review our <a href="/guides/youtube-banner-size" class="text-accent underline font-medium">YouTube Banner Size Guide</a> or learn how to calculate safe areas in our <a href="/guides/youtube-banner-safe-area" class="text-accent underline font-medium">Safe Area Guide</a>.
+        Review our <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent underline font-medium">YouTube Banner Size Guide</a> or learn how to calculate safe areas in our <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent underline font-medium">Safe Area Guide</a>.
       </p>
     </div>
   </noscript>
@@ -142,9 +145,9 @@ const {
 
         <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl border border-line-100 bg-surface-0 text-xs text-ink-600">
           <span>
-            Need to verify specific dimension numbers? Check the <a href="/guides/youtube-banner-size" class="text-accent hover:underline font-medium">YouTube Banner Size Guide</a> or explore the <a href="/guides/youtube-banner-safe-area" class="text-accent hover:underline font-medium">Safe Area Calculation Guide</a>.
+            Need to verify specific dimension numbers? Check the <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent hover:underline font-medium">YouTube Banner Size Guide</a> or explore the <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent hover:underline font-medium">Safe Area Calculation Guide</a>.
           </span>
-          <a href="/templates" class="text-ink-950 font-medium hover:text-accent transition-colors">
+          <a href={getLocalizedUrl('/templates', locale)} class="text-ink-950 font-medium hover:text-accent transition-colors">
             Browse Safe Templates →
           </a>
         </div>

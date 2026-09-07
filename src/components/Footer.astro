@@ -1,7 +1,15 @@
 ---
 import { CANVAS, SAFE_PX, MAX_UPLOAD_BYTES } from '../lib/spec';
+import { LOCALES, LOCALE_CONFIG, getLocalizedUrl, getTranslations, type Locale } from '../i18n';
 
+interface Props {
+  currentPath?: string;
+  locale?: Locale;
+}
+
+const { currentPath = '/', locale = 'en' } = Astro.props;
 const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
+const dict = getTranslations(locale);
 ---
 
 <footer class="w-full border-t border-line-200 bg-surface-50 mt-auto">
@@ -10,45 +18,45 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8">
       <!-- Brand & Trust -->
       <div class="sm:col-span-2 lg:col-span-1 space-y-3">
-        <div class="flex items-center gap-2 text-ink-950 font-semibold tracking-tight">
+        <a href={getLocalizedUrl('/', locale)} class="flex items-center gap-2 text-ink-950 font-semibold tracking-tight hover:opacity-90 transition-opacity">
           <div class="w-6 h-6 rounded bg-ink-950 text-surface-0 flex items-center justify-center font-bold text-xs">
             YT
           </div>
-          <span class="text-sm font-semibold">YouTube Banner Maker</span>
-        </div>
+          <span class="text-sm font-semibold">{dict.common.brandName}</span>
+        </a>
         <p class="text-xs text-ink-600 leading-relaxed measure-prose">
-          Browser-first channel art utility. Resizing, crop verification, and safe-area diagnostics powered entirely by local HTML5 Canvas.
+          {dict.footer.brandDesc}
         </p>
         <div class="pt-2">
           <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-success bg-surface-0 border border-line-200 px-2.5 py-1 rounded-full">
             <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
-            100% Client-Side Privacy
+            {dict.common.privacyBadge}
           </span>
         </div>
       </div>
 
       <!-- Column 1: Tools -->
       <div class="space-y-3">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">Tools</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">{dict.footer.colTools}</h3>
         <ul class="space-y-1 text-xs">
           <li>
-            <a href="/tools/youtube-banner-resizer" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Banner Resizer (Fix Door)
+            <a href={getLocalizedUrl('/tools/youtube-banner-resizer', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.resizer}
             </a>
           </li>
           <li>
-            <a href="/tools/youtube-banner-checker" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Safe Area Checker (Check Door)
+            <a href={getLocalizedUrl('/tools/youtube-banner-checker', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.checker}
             </a>
           </li>
           <li>
-            <a href="/tools/youtube-banner-maker" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Banner Generator (Create Door)
+            <a href={getLocalizedUrl('/tools/youtube-banner-maker', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.generator}
             </a>
           </li>
           <li>
-            <a href="/templates" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Curated Template Gallery
+            <a href={getLocalizedUrl('/templates', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.templateGallery}
             </a>
           </li>
         </ul>
@@ -56,16 +64,16 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
       <!-- Column 2: Guides -->
       <div class="space-y-3">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">Guides</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">{dict.footer.colGuides}</h3>
         <ul class="space-y-1 text-xs">
           <li>
-            <a href="/guides/youtube-banner-size" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              YouTube Banner Size & Specs
+            <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.guideSize}
             </a>
           </li>
           <li>
-            <a href="/guides/youtube-banner-safe-area" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Safe Area Math & Crop Rules
+            <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.guideSafeArea}
             </a>
           </li>
         </ul>
@@ -73,26 +81,26 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
       <!-- Column 3: Trust & Legal -->
       <div class="space-y-3">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">Trust & Legal</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">{dict.footer.colTrust}</h3>
         <ul class="space-y-1 text-xs">
           <li>
-            <a href="/about" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              About & Methodology
+            <a href={getLocalizedUrl('/about', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.about}
             </a>
           </li>
           <li>
-            <a href="/contact" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Contact & Support
+            <a href={getLocalizedUrl('/contact', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.contact}
             </a>
           </li>
           <li>
-            <a href="/privacy" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Privacy Policy
+            <a href={getLocalizedUrl('/privacy', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.privacy}
             </a>
           </li>
           <li>
-            <a href="/terms" class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
-              Terms of Service
+            <a href={getLocalizedUrl('/terms', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.terms}
             </a>
           </li>
         </ul>
@@ -100,35 +108,61 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
       <!-- Column 4: Specs at a Glance -->
       <div class="space-y-3">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">Key Specifications</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">{dict.footer.colSpecs}</h3>
         <dl class="space-y-1.5 text-xs">
           <div class="flex justify-between py-0.5 border-b border-line-100">
-            <dt class="text-ink-500">Recommended</dt>
+            <dt class="text-ink-500">{dict.footer.specRecommended}</dt>
             <dd class="font-mono text-ink-800 tabular-nums">{CANVAS.width} × {CANVAS.height} px</dd>
           </div>
           <div class="flex justify-between py-0.5 border-b border-line-100">
-            <dt class="text-ink-500">Safe Area (Mobile)</dt>
+            <dt class="text-ink-500">{dict.footer.specSafeArea}</dt>
             <dd class="font-mono text-ink-800 tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</dd>
           </div>
           <div class="flex justify-between py-0.5 border-b border-line-100">
-            <dt class="text-ink-500">Max File Size</dt>
+            <dt class="text-ink-500">{dict.footer.specMaxFileSize}</dt>
             <dd class="font-mono text-ink-800 tabular-nums">{maxUploadMb} MB</dd>
           </div>
           <div class="flex justify-between py-0.5">
-            <dt class="text-ink-500">Aspect Ratio</dt>
+            <dt class="text-ink-500">{dict.footer.specAspectRatio}</dt>
             <dd class="font-mono text-ink-800 tabular-nums">16:9</dd>
           </div>
         </dl>
       </div>
     </div>
 
+    <!-- Language Cross-Links for Global SEO & User Discovery -->
+    <div class="mt-8 pt-6 border-t border-line-100 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-ink-600">
+      <span class="text-ink-400 font-semibold uppercase tracking-wider text-[11px]">{dict.common.languages}:</span>
+      {
+        LOCALES.map((loc) => {
+          const cfg = LOCALE_CONFIG[loc];
+          const targetUrl = getLocalizedUrl(currentPath, loc);
+          const isCurrent = loc === locale;
+          return (
+            <a
+              href={targetUrl}
+              hreflang={cfg.hreflang}
+              class:list={[
+                'hover:text-ink-950 transition-colors inline-flex items-center gap-1',
+                isCurrent ? 'font-semibold text-ink-950 underline underline-offset-4 decoration-accent' : 'text-ink-600',
+              ]}
+              aria-current={isCurrent ? 'true' : undefined}
+            >
+              <span aria-hidden="true">{cfg.flag}</span>
+              <span>{cfg.nativeName}</span>
+            </a>
+          );
+        })
+      }
+    </div>
+
     <!-- Bottom Bar -->
-    <div class="mt-12 pt-6 border-t border-line-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-500">
+    <div class="mt-8 pt-6 border-t border-line-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-500">
       <p>
-        Zero image bytes transmitted over network. No watermark. No account required.
+        {dict.footer.zeroTransmitted}
       </p>
       <p>
-        YouTube is a registered trademark of Google LLC. This tool is independently built.
+        {dict.footer.trademark}
       </p>
     </div>
   </div>

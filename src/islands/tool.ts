@@ -1656,7 +1656,9 @@ class ToolIsland {
     // 15. Cross-Door Handoff Action (REQ-022, Gate 6)
     this.handoffCheckBtn?.addEventListener('click', () => {
       this.persist();
-      window.location.href = '/tools/youtube-banner-checker';
+      const m = window.location.pathname.match(/^\/(es|de|fr|pt-br|it|ja)\b/);
+      const prefix = m ? m[0] : '';
+      window.location.href = `${prefix}/tools/youtube-banner-checker`;
     });
 
     // 16. Fast Customizations: Instant Safe Layout Presets
@@ -3797,10 +3799,12 @@ class ToolIsland {
    */
   private handoffToFixEditor(): void {
     this.persist();
+    const m = window.location.pathname.match(/^\/(es|de|fr|pt-br|it|ja)\b/);
+    const prefix = m ? m[0] : '';
     if (this.scene.layers.some((l) => l.type === 'text')) {
-      window.location.href = '/tools/youtube-banner-maker';
+      window.location.href = `${prefix}/tools/youtube-banner-maker`;
     } else {
-      window.location.href = '/tools/youtube-banner-resizer';
+      window.location.href = `${prefix}/tools/youtube-banner-resizer`;
     }
   }
 
