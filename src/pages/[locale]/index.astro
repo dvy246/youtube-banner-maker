@@ -7,7 +7,7 @@ import FaqAccordion from '../../components/FaqAccordion.astro';
 import HeroCropSimulator from '../../components/HeroCropSimulator.astro';
 import ArchGallery from '../../components/ArchGallery.astro';
 import { getWebSiteSchema, getOrganizationSchema, getSoftwareAppSchema } from '../../lib/seo';
-import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES } from '../../lib/spec';
+import { CANVAS, SAFE, SAFE_PX, DEVICES } from '../../lib/spec';
 import {
   TARGET_LOCALES,
   getStaticPageSeo,
@@ -43,7 +43,6 @@ const tabletWidth = Math.round(DEVICES.tablet.w * CANVAS.width);
 const tabletX = Math.round(DEVICES.tablet.x * CANVAS.width);
 const mobileX = Math.round(SAFE.x * CANVAS.width);
 const mobileY = Math.round(SAFE.y * CANVAS.height);
-const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
 ---
 
 <BaseLayout
@@ -217,33 +216,33 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           <div class="space-y-3">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
               <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-              Three Studio Doors
+              {dict.homeExtended.doorsBadge}
             </div>
             <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-ink-950 leading-[1.1]">
-              Choose Your Channel Art Door
+              {dict.homeExtended.doorsTitle}
             </h2>
             <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
-              Whether you have finished artwork that needs resizing, want to check an existing banner for mobile cutoff, or need a fresh mobile-tested design.
+              {dict.homeExtended.doorsSubtitle}
             </p>
           </div>
 
           <!-- Visual Locked Step Roadmap -->
           <div class="hidden lg:block p-4 rounded-xl border border-line-200 bg-surface-50/70 space-y-3 shadow-2xs">
             <p class="text-[11px] font-mono font-semibold uppercase tracking-wider text-ink-500">
-              Workflow Index
+              {dict.homeExtended.workflowIndex}
             </p>
             <div class="space-y-2 text-xs font-medium">
               <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0 border border-line-200/80 shadow-2xs text-ink-950">
                 <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">1</span>
-                <span>Door 01 · Fix &amp; Refit</span>
+                <span>{dict.homeExtended.door1Nav}</span>
               </div>
               <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700">
                 <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">2</span>
-                <span>Door 02 · Diagnostic Check</span>
+                <span>{dict.homeExtended.door2Nav}</span>
               </div>
               <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700">
                 <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">3</span>
-                <span>Door 03 · New Generator</span>
+                <span>{dict.homeExtended.door3Nav}</span>
               </div>
             </div>
           </div>
@@ -266,11 +265,11 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="space-y-4 relative z-10">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0">
-                  Door 01 · Fix
+                  {dict.homeExtended.door1Tag}
                 </span>
                 <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-accent"></span>
-                  Most Popular
+                  {dict.homeExtended.door1Popular}
                 </span>
               </div>
               <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
@@ -282,15 +281,15 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Reposition focal subjects safely inside the mobile safe area
+                  {dict.homeExtended.door1Bullet1}
                 </li>
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Toggle instant YouTube CDN re-encode compression preview
+                  {dict.homeExtended.door1Bullet2}
                 </li>
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Inspect mobile, desktop, tablet, and TV crops in real time
+                  {dict.homeExtended.door1Bullet3}
                 </li>
               </ul>
             </div>
@@ -317,10 +316,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="space-y-4 relative z-10">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
-                  Door 02 · Check
+                  {dict.homeExtended.door2Tag}
                 </span>
                 <span class="text-xs font-mono text-ink-500">
-                  Instant Diagnostic
+                  {dict.homeExtended.door2Subtitle}
                 </span>
               </div>
               <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
@@ -332,15 +331,15 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Immediate per-device verdict on text and logo positioning
+                  {dict.homeExtended.door2Bullet1}
                 </li>
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Clear warnings if graphics collide with mobile crop boundaries
+                  {dict.homeExtended.door2Bullet2}
                 </li>
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  One-click handoff into the resizer to adjust your layout
+                  {dict.homeExtended.door2Bullet3}
                 </li>
               </ul>
             </div>
@@ -367,10 +366,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="space-y-4 relative z-10">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
-                  Door 03 · Create
+                  {dict.homeExtended.door3Tag}
                 </span>
                 <span class="text-xs font-mono text-ink-500">
-                  Generator &amp; Presets
+                  {dict.homeExtended.door3Subtitle}
                 </span>
               </div>
               <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
@@ -382,15 +381,15 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
               <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Category-specific layouts for gaming, tech, podcasting, and vlogs
+                  {dict.homeExtended.door3Bullet1}
                 </li>
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Typography and logos pre-aligned inside the safe center frame
+                  {dict.homeExtended.door3Bullet2}
                 </li>
                 <li class="flex items-start gap-2.5">
                   <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  Customizable colors, text layers, and background art
+                  {dict.homeExtended.door3Bullet3}
                 </li>
               </ul>
             </div>
@@ -423,10 +422,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
     <section id="what-youtube-does" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-10">
       <div class="space-y-3 max-w-3xl">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
-          What YouTube Actually Does to Your Banner
+          {dict.homeExtended.whatTitle}
         </h2>
         <p class="text-sm text-ink-600 leading-relaxed max-w-[60ch]">
-          YouTube does not scale your channel art down evenly. Instead, it uploads a single 16:9 canvas ({CANVAS.width} × {CANVAS.height} px) and carves out different viewports depending on the viewer's device.
+          {dict.homeExtended.whatDesc}
         </p>
       </div>
 
@@ -454,10 +453,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <g transform="translate(60, 60)">
               <rect width="480" height="74" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" />
               <text x="24" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
-                1. TV SCREEN VIEWPORT
+                {dict.homeExtended.viewportTv}
               </text>
               <text x="24" y="56" font-family="ui-monospace, monospace" font-size="16" font-weight="600" fill="#64748B">
-                {CANVAS.width} × {CANVAS.height} px · Full 16:9 Canvas
+                {dict.homeExtended.viewportTvSub}
               </text>
             </g>
 
@@ -477,10 +476,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <g transform={`translate(60, ${desktopY - 88})`}>
               <rect width="520" height="72" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" />
               <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
-                2. DESKTOP VIEWPORT
+                {dict.homeExtended.viewportDesktop}
               </text>
               <text x="24" y="54" font-family="ui-monospace, monospace" font-size="16" font-weight="600" fill="#475569">
-                {CANVAS.width} × {desktopHeight} px · Top &amp; Bottom Cropped
+                {dict.homeExtended.viewportDesktopSub}
               </text>
             </g>
 
@@ -501,10 +500,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <g transform={`translate(${CANVAS.width - 580}, ${desktopY - 88})`}>
               <rect width="520" height="72" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" />
               <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
-                3. TABLET VIEWPORT
+                {dict.homeExtended.viewportTablet}
               </text>
               <text x="24" y="54" font-family="ui-monospace, monospace" font-size="16" font-weight="600" fill="#475569">
-                {tabletWidth} × {desktopHeight} px · Scaled Ribbon
+                {dict.homeExtended.viewportTabletSub}
               </text>
             </g>
 
@@ -551,10 +550,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <g transform={`translate(${mobileX + (SAFE_PX.full.width - 480) / 2}, ${mobileY + (SAFE_PX.full.height - 84) / 2})`}>
               <rect width="480" height="84" rx="14" fill="#FFFFFF" stroke="var(--color-accent)" stroke-width="3" />
               <text x="240" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#0F172A">
-                4. MOBILE SAFE AREA
+                {dict.homeExtended.viewportMobile}
               </text>
               <text x="240" y="62" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" font-weight="700" fill="var(--color-accent)">
-                {SAFE_PX.full.width} × {SAFE_PX.full.height} px · Universal Safe Zone
+                {dict.homeExtended.viewportMobileSub}
               </text>
             </g>
 
@@ -574,14 +573,14 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
         <div class="flex items-center gap-2">
           <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/10 text-accent font-mono text-xs font-bold">i</span>
           <h3 class="text-sm font-semibold uppercase tracking-wider text-ink-950 font-mono">
-            YouTube CDN Re-Encode Notice
+            {dict.homeExtended.cdnNoticeTitle}
           </h3>
         </div>
         <p class="text-sm text-ink-800 leading-relaxed measure-prose">
-          YouTube automatically compresses every uploaded banner to approximately {desktopKb} KB on desktop viewports, and even smaller packages for mobile screens. This automatic re-compression cannot be avoided or bypassed by any export setting or file format.
+          {dict.homeExtended.cdnNoticeP1}
         </p>
         <p class="text-xs text-ink-600 leading-relaxed measure-prose">
-          Because YouTube's compression pipeline optimizes for worldwide bandwidth rather than graphical fidelity, aggressive re-encoding can soften delicate gradients and fine text. Our tools provide an approximate preview of this re-encode step so you can test contrast and readability before uploading to your live channel.
+          {dict.homeExtended.cdnNoticeP2}
         </p>
       </div>
 
@@ -593,7 +592,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-0 hover:bg-surface-50 border border-line-200 text-xs font-mono font-medium text-ink-600 hover:text-ink-950 shadow-2xs hover:border-accent/40 transition-all duration-200 focus-visible:outline-accent"
         >
           <span class="w-1.5 h-1.5 rounded-full bg-accent group-hover:animate-ping"></span>
-          <span>Official Dimensions &amp; Limits</span>
+          <span>{dict.homeExtended.btnDimensions}</span>
           <svg
             class="w-3.5 h-3.5 text-ink-400 group-hover:text-accent group-hover:translate-y-0.5 transition-transform"
             fill="none"
@@ -623,7 +622,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           {dict.home.specsDesc}
         </p>
       </div>
-      <SpecTable />
+      <SpecTable locale={locale} />
 
       <div class="flex items-center justify-between pt-2">
         <a
@@ -633,13 +632,13 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
-          <span>Back to Visual Crop Blueprint</span>
+          <span>{dict.homeExtended.btnBackBlueprint}</span>
         </a>
         <a
           href={getLocalizedUrl('/guides/youtube-banner-size', locale)}
           class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline"
         >
-          <span>Read Comprehensive Sizing Guide</span>
+          <span>{dict.homeExtended.btnReadSizingGuide}</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -651,10 +650,10 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-8">
       <div class="space-y-2 max-w-2xl">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
-          Complete Channel Art Guides
+          {dict.homeExtended.guidesTitle}
         </h2>
         <p class="text-sm text-ink-600 leading-relaxed max-w-[52ch]">
-          Deep-dive technical guides explaining the mathematics of YouTube banner cropping and responsive safe areas.
+          {dict.homeExtended.guidesDesc}
         </p>
       </div>
 
@@ -662,12 +661,12 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
         <!-- Guide 1: YouTube Banner Size -->
         <div class="group relative p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 flex flex-col justify-between space-y-6 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none cursor-pointer">
           <div class="space-y-3">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Dimension Standards</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">{dict.homeExtended.guideDimTag}</span>
             <h3 class="text-xl font-bold tracking-tight text-ink-950 group-hover:text-accent transition-colors">
               {dict.guideSize.title}
             </h3>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
-              Comprehensive reference covering recommended dimensions ({CANVAS.width} × {CANVAS.height} px), minimum sizes, maximum upload limits, and the exact viewport fractions served to each viewing device.
+              {dict.homeExtended.guideDimDesc}
             </p>
           </div>
           <div>
@@ -684,12 +683,12 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
         <!-- Guide 2: Safe Area Math -->
         <div class="group relative p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 flex flex-col justify-between space-y-6 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none cursor-pointer">
           <div class="space-y-3">
-            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Safe Area Arithmetic</span>
+            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">{dict.homeExtended.guideSafeTag}</span>
             <h3 class="text-xl font-bold tracking-tight text-ink-950 group-hover:text-accent transition-colors">
               {dict.guideSafeArea.title}
             </h3>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
-              The arithmetic reconciling YouTube's two official safe-area numbers. Proves why {SAFE_PX.min.width}×{SAFE_PX.min.height} at minimum upload matches {SAFE_PX.full.width}×{SAFE_PX.full.height} at full upload as the exact same centered window.
+              {dict.homeExtended.guideSafeDesc}
             </p>
           </div>
           <div>
@@ -717,41 +716,41 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
           <div class="space-y-3">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
               <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-              Comprehensive Sizing &amp; Design Manual
+              {dict.homeExtended.deepDiveBadge}
             </div>
             <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-ink-950 leading-[1.15]">
-              The Definitive Guide to YouTube Banner Size, Safe Areas &amp; Channel Art
+              {dict.homeExtended.deepDiveTitle}
             </h2>
             <p class="text-sm sm:text-base text-ink-600 leading-relaxed font-normal">
-              Everything you need to know about official dimensions, multi-device viewport cropping, aspect ratio math, and crafting high-converting channel banners that never get cut off.
+              {dict.homeExtended.deepDiveDesc}
             </p>
           </div>
 
           <!-- Interactive Chapter Table of Contents / Index -->
           <div class="hidden lg:block p-4 rounded-xl border border-line-200 bg-surface-50/70 space-y-3 shadow-2xs">
             <p class="text-[11px] font-mono font-semibold uppercase tracking-wider text-ink-500">
-              Chapter Index (5 Sections)
+              {dict.homeExtended.chapterIndexTitle}
             </p>
             <div class="space-y-2 text-xs font-medium">
               <a href="#guide-chapter-1" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0 border border-line-200/80 shadow-2xs text-ink-950 hover:text-accent transition-colors">
                 <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">1</span>
-                <span>Ch 01 · Dimensions &amp; Upload Limits</span>
+                <span>{dict.homeExtended.ch1Nav}</span>
               </a>
               <a href="#guide-chapter-2" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
                 <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">2</span>
-                <span>Ch 02 · The Mobile Safe Area</span>
+                <span>{dict.homeExtended.ch2Nav}</span>
               </a>
               <a href="#guide-chapter-3" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
                 <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">3</span>
-                <span>Ch 03 · Ideas, Aesthetics &amp; Backgrounds</span>
+                <span>{dict.homeExtended.ch3Nav}</span>
               </a>
               <a href="#guide-chapter-4" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
                 <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">4</span>
-                <span>Ch 04 · Zero-Upload Privacy Engine</span>
+                <span>{dict.homeExtended.ch4Nav}</span>
               </a>
               <a href="#guide-chapter-5" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
                 <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">5</span>
-                <span>Ch 05 · YouTube Studio Clarifications</span>
+                <span>{dict.homeExtended.ch5Nav}</span>
               </a>
             </div>
           </div>
@@ -774,7 +773,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="relative z-10 space-y-4">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0">
-                  Chapter 01 · Dimensions &amp; Specs
+                  {dict.homeExtended.ch1Tag}
                 </span>
                 <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-accent"></span>
@@ -782,40 +781,40 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
                 </span>
               </div>
               <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-                What Size Is a YouTube Banner? Dimensions &amp; Upload Specifications
+                {dict.homeExtended.ch1Title}
               </h3>
               <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
                 <p>
-                  If you are asking <strong class="text-ink-950 font-semibold">what size is a youtube banner</strong>, the official standard <strong class="text-ink-950 font-semibold">youtube banner size</strong> recommended by YouTube Studio is <span class="font-mono font-semibold text-ink-900">{CANVAS.width} × {CANVAS.height} pixels</span> with a widescreen <strong class="text-ink-950 font-semibold">16:9 aspect ratio</strong>. YouTube enforces concrete boundaries on every uploaded <strong class="text-ink-950 font-semibold">youtube banner image</strong>: your graphic file must have a minimum resolution of <span class="font-mono font-semibold text-ink-900">2048 × 1152 pixels</span> and a maximum file weight of <span class="font-mono font-semibold text-ink-900">6 MB</span> in PNG, JPEG, or non-animated GIF format.
+                  {dict.homeExtended.ch1P1}
                 </p>
                 <p>
-                  A widespread misconception involves the <strong class="text-ink-950 font-semibold">1024x576 youtube banner</strong> (or <strong class="text-ink-950 font-semibold">1024 x 576 pixels youtube banner</strong>). While 1024 × 576 shares the exact mathematical 16:9 aspect ratio, uploading this resolution triggers an immediate rejection inside YouTube Studio. YouTube requires an absolute minimum upload floor of a <strong class="text-ink-950 font-semibold">2048 x 1152 youtube banner</strong>. For the sharpest multi-device presentation, you should always design at the full {CANVAS.width} × {CANVAS.height} px specification.
+                  {dict.homeExtended.ch1P2}
                 </p>
                 <div class="p-4 rounded-xl bg-surface-50 border border-line-200 space-y-2 mt-4">
                   <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-ink-950">
-                    YouTube Banner Size for All Devices at a Glance
+                    {dict.homeExtended.ch1GlanceTitle}
                   </h4>
                   <ul class="text-xs text-ink-600 space-y-1.5">
                     <li class="flex items-start gap-2">
                       <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                      <span><strong class="text-ink-900">Smart TVs (16:9 Full Canvas):</strong> {CANVAS.width} × {CANVAS.height} px &mdash; 100% of the canvas is visible exclusively on television sets and console apps.</span>
+                      <span>{dict.homeExtended.ch1GlanceTv}</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                      <span><strong class="text-ink-900">Desktop Viewport Ribbon:</strong> {CANVAS.width} × {desktopHeight} px &mdash; crops off the top and bottom ~35% margins, leaving a panoramic header band.</span>
+                      <span>{dict.homeExtended.ch1GlanceDesktop}</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                      <span><strong class="text-ink-900">Tablet Viewport:</strong> {tabletWidth} × {desktopHeight} px &mdash; clips side graphics compared to desktop while preserving vertical ribbon height.</span>
+                      <span>{dict.homeExtended.ch1GlanceTablet}</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                      <span><strong class="text-ink-900">Mobile Safe Area:</strong> {SAFE_PX.full.width} × {SAFE_PX.full.height} px &mdash; the centered core visible across every smartphone, tablet, computer, and TV screen.</span>
+                      <span>{dict.homeExtended.ch1GlanceMobile}</span>
                     </li>
                   </ul>
                 </div>
                 <p>
-                  Accounting for these responsive <strong class="text-ink-950 font-semibold">youtube banner dimensions</strong> is critical because YouTube never scales down your entire canvas for mobile. It carves out specific crops dynamically depending on screen size.
+                  {dict.homeExtended.ch1P3}
                 </p>
               </div>
             </div>
@@ -835,7 +834,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="relative z-10 space-y-4">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
-                  Chapter 02 · Safe Area
+                  {dict.homeExtended.ch2Tag}
                 </span>
                 <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-accent"></span>
@@ -843,17 +842,17 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
                 </span>
               </div>
               <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-                The Mobile Safe Area: Why Your YouTube Banner Gets Cut Off
+                {dict.homeExtended.ch2Title}
               </h3>
               <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
                 <p>
-                  More than 70% of YouTube views originate on mobile devices and tablet apps. The centered <span class="font-mono font-semibold text-accent">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</span> bounding box represents YouTube's universal safe area. When channel artwork appears cut off, disjointed, or missing vital text on mobile phones, it is almost invariably because logos, names, social media handles, or face portraits were placed outside this safe rectangle.
+                  {dict.homeExtended.ch2P1}
                 </p>
                 <p>
-                  If you have existing artwork that suffers from mobile truncation, an interactive <strong class="text-ink-950 font-semibold">youtube banner resizer</strong> allows you to reposition your focal subject safely into the center, rescale artwork with aspect ratio constraints, and simulate the exact crop across mobile, desktop, tablet, and TV before re-uploading.
+                  {dict.homeExtended.ch2P2}
                 </p>
                 <p>
-                  When starting from scratch, working with a purpose-built <strong class="text-ink-950 font-semibold">youtube banner creator</strong> prevents positioning mistakes by visually locking all typography and crucial branding layers directly inside the safe coordinates.
+                  {dict.homeExtended.ch2P3}
                 </p>
               </div>
             </div>
@@ -873,39 +872,39 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="relative z-10 space-y-4">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
-                  Chapter 03 · Design &amp; Aesthetics
+                  {dict.homeExtended.ch3Tag}
                 </span>
                 <span class="text-xs font-mono text-ink-500">
-                  Visual Hierarchy
+                  {dict.homeExtended.ch3Sub}
                 </span>
               </div>
               <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-                How to Make a YouTube Banner: Ideas, Aesthetics &amp; Backgrounds
+                {dict.homeExtended.ch3Title}
               </h3>
               <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
                 <p>
-                  Discovering <strong class="text-ink-950 font-semibold">how to make a youtube banner</strong> that converts casual viewers into lifelong subscribers hinges on clear visual hierarchy, legible typography, and niche-appropriate aesthetics. Consider these proven channel art strategies:
+                  {dict.homeExtended.ch3P1}
                 </p>
                 <ul class="text-xs text-ink-600 space-y-2.5 my-3 pl-1">
                   <li class="flex items-start gap-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                    <span><strong class="text-ink-900">Select an Atmospheric YouTube Banner Background:</strong> Busy, over-saturated graphics create visual noise that makes text unreadable. Choose a textured <strong class="text-ink-900">youtube banner background</strong> &mdash; such as dark brushed metal, subtle architectural gradients, or cinematic photo blurs &mdash; that establishes mood while keeping foreground titles legible.</span>
+                    <span>{dict.homeExtended.ch3Point1}</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                    <span><strong class="text-ink-900">Black YouTube Banner for Minimalist Authority:</strong> A stealth <strong class="text-ink-900">black youtube banner</strong> featuring monochrome palettes and high-contrast monospace typography has become the gold standard for developer tools, hardware reviews, cryptocurrency channels, and technical tutorials.</span>
+                    <span>{dict.homeExtended.ch3Point2}</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                    <span><strong class="text-ink-900">Aesthetic YouTube Banner for Lifestyle &amp; Vlogs:</strong> Lifestyle, wellness, and photography creators often thrive with an <strong class="text-ink-900">aesthetic youtube banner</strong> utilizing warm film grain, organic neutral palettes, and elegant serif headlines framed comfortably within the safe area.</span>
+                    <span>{dict.homeExtended.ch3Point3}</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                    <span><strong class="text-ink-900">Gather Compelling YouTube Banner Ideas:</strong> Before designing, study top creators in your niche. The most successful <strong class="text-ink-900">youtube banner ideas</strong> communicate three things within two seconds: who you are, what content you produce, and your upload frequency.</span>
+                    <span>{dict.homeExtended.ch3Point4}</span>
                   </li>
                   <li class="flex items-start gap-2">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
-                    <span><strong class="text-ink-900">Start from a Verified YouTube Banner Template:</strong> Rather than calculating pixel coordinates manually, selecting a <strong class="text-ink-900">free youtube banner</strong> layout or curated <strong class="text-ink-900">youtube banner template</strong> ensures that your visual assets remain intact regardless of which device your audience uses.</span>
+                    <span>{dict.homeExtended.ch3Point5}</span>
                   </li>
                 </ul>
               </div>
@@ -926,21 +925,21 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="relative z-10 space-y-4">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
-                  Chapter 04 · Architecture
+                  {dict.homeExtended.ch4Tag}
                 </span>
                 <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
-                  100% Client-Side
+                  {dict.homeExtended.ch4Sub}
                 </span>
               </div>
               <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-                Client-Side YouTube Banner Maker: Zero Server Uploads &amp; Complete Privacy
+                {dict.homeExtended.ch4Title}
               </h3>
               <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
                 <p>
-                  Unlike conventional graphic design platforms that require cloud rendering, compulsory user registrations, watermarked downloads, or recurring subscriptions, YouTubeBannerMaker.com operates as a client-side <strong class="text-ink-950 font-semibold">youtube banner maker</strong> built entirely upon modern web standards.
+                  {dict.homeExtended.ch4P1}
                 </p>
                 <p>
-                  All image decoding, canvas scaling, aspect ratio calculations, typography rendering, and raster exports execute strictly inside your local browser tab via HTML5 Canvas APIs. Zero image bytes are ever transmitted across external networks. Creators retain 100% intellectual property ownership of their artwork, with clean {CANVAS.width} × {CANVAS.height} px PNG downloads that are free of watermarks and hidden fees.
+                  {dict.homeExtended.ch4P2}
                 </p>
               </div>
             </div>
@@ -960,24 +959,24 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
             <div class="relative z-10 space-y-4">
               <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
                 <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
-                  Chapter 05 · YouTube Studio
+                  {dict.homeExtended.ch5Tag}
                 </span>
                 <span class="text-xs font-mono text-ink-500">
-                  Publishing Guide
+                  {dict.homeExtended.ch5Sub}
                 </span>
               </div>
               <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-                Channel Branding Clarifications &amp; Common Queries
+                {dict.homeExtended.ch5Title}
               </h3>
               <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
                 <p>
-                  Creators searching for <strong class="text-ink-950 font-semibold">banner youtube</strong>, <strong class="text-ink-950 font-semibold">banner youtube size</strong>, <strong class="text-ink-950 font-semibold">banner youtube maker</strong>, or a <strong class="text-ink-950 font-semibold">banner youtube template</strong> often run into confusing YouTube Studio nomenclature:
+                  {dict.homeExtended.ch5P1}
                 </p>
                 <p>
-                  <strong class="text-ink-900 font-medium">Channel Header vs. Video Watermark:</strong> A common search phrase among creators is <strong class="text-ink-950 font-semibold">&ldquo;sub for a cookie banner youtube&rdquo;</strong>. This query often conflates website cookie consent banners with YouTube Studio's branding elements. Specifically, YouTube provides two distinct branding assets under <em class="not-italic font-mono text-xs bg-surface-100 px-1.5 py-0.5 rounded text-ink-800">YouTube Studio &gt; Customization &gt; Branding</em>: the top channel banner ({CANVAS.width} × {CANVAS.height} px) and the small 150 × 150 px video watermark button in the lower-right player corner that invites viewers to subscribe. It is important to distinguish this video watermark from your primary channel banner artwork.
+                  {dict.homeExtended.ch5P2}
                 </p>
                 <p>
-                  <strong class="text-ink-900 font-medium">Publishing Your Final Banner:</strong> Once you export your 2560 × 1440 PNG file from our tool, navigate to your channel dashboard, click <strong class="text-ink-900">Customization &gt; Branding</strong>, locate the <strong class="text-ink-900">Banner image</strong> section, and click <strong class="text-ink-900">Change / Upload</strong>. YouTube Studio will display its interactive safe-area grid overlay &mdash; and because your artwork was pre-aligned with our tool, your channel art will fit without any awkward cropping.
+                  {dict.homeExtended.ch5P3}
                 </p>
               </div>
             </div>
@@ -1011,7 +1010,7 @@ const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
         </div>
 
         <div>
-          <FaqAccordion />
+          <FaqAccordion locale={locale} />
         </div>
       </div>
     </section>

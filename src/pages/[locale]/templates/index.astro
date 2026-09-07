@@ -73,7 +73,7 @@ const collectionSchema = getCollectionPageSchema({
 
         <!-- Arch Gallery Showcase -->
         <div class="mt-8 sm:mt-10">
-          <ArchGallery />
+          <ArchGallery locale={locale} />
         </div>
       </div>
     </section>
@@ -90,7 +90,7 @@ const collectionSchema = getCollectionPageSchema({
               class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-50 hover:border-line-300 transition-colors flex flex-col justify-between group"
             >
               <span class="text-sm font-semibold text-ink-950 group-hover:text-accent transition-colors">{nicheSeo.name}</span>
-              <span class="text-xs font-mono text-ink-500 mt-2">{nicheTemplates.length} templates</span>
+              <span class="text-xs font-mono text-ink-500 mt-2">{dict.templatesExtended.templatesCount.replace('{count}', String(nicheTemplates.length))}</span>
             </a>
           );
         })}

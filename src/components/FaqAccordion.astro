@@ -1,30 +1,13 @@
 ---
-import { CANVAS, SAFE_PX, MAX_UPLOAD_BYTES } from '../lib/spec';
+import { getTranslations, type Locale } from '../i18n';
 
-const maxMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
+interface Props {
+  locale?: Locale;
+}
 
-const faqs = [
-  {
-    question: 'Why does my YouTube banner get cut off on mobile phones?',
-    answer: `YouTube displays different portions of your banner depending on screen size. While smart TVs display the entire ${CANVAS.width} × ${CANVAS.height} px artwork, mobile devices crop away the outer edges and show only the center ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px safe area. If your text, logo, or key visual elements sit outside this central zone, they will be clipped on smartphones.`,
-  },
-  {
-    question: 'What are the required dimensions and file size limits?',
-    answer: `YouTube recommends an upload size of ${CANVAS.width} × ${CANVAS.height} px with a 16:9 aspect ratio. The minimum accepted size is 2048 × 1152 px. The maximum file size limit is ${maxMb} MB. The mobile safe area where all essential elements must remain visible is ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px.`,
-  },
-  {
-    question: 'Why does YouTube re-compress my banner after upload?',
-    answer: `YouTube serves banner images to millions of viewers on varying network connections. To ensure fast load times, YouTube Studio automatically re-encodes uploaded images down to approximately 134 KB for desktop devices and even smaller packages for mobile devices. Using this tool's re-encode simulation allows you to preview that compression before publishing.`,
-  },
-  {
-    question: 'How does cover-fit resizing prevent image distortion?',
-    answer: `Unlike simple stretching tools that squish or elongate your image to fit a 16:9 ratio, cover-fit scaling preserves your image's native aspect ratio. It scales your image to completely cover the ${CANVAS.width} × ${CANVAS.height} canvas without letterboxing, and lets you pan and nudge your subject safely into the mobile safe area without creating transparent borders.`,
-  },
-  {
-    question: 'Why is this tool free with no account and no watermark?',
-    answer: `This tool runs 100% in your browser using HTML5 Canvas. Because processing happens locally on your device, there are no server compute or cloud storage costs required to process your image. We believe creators deserve reliable, honest tools without artificial paywalls or watermarks.`,
-  },
-];
+const { locale = 'en' } = Astro.props;
+const dict = getTranslations(locale);
+const faqs = dict.faqs;
 ---
 
 <div class="space-y-4">

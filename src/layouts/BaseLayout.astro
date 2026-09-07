@@ -33,7 +33,7 @@ const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
 ---
 
 <!doctype html>
-<html lang={locConfig.htmlLang} data-palette="pearl">
+<html lang={locConfig.htmlLang} class="dark" data-theme="dark" data-palette="pearl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,11 +41,11 @@ const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
       (function () {
         try {
           var t = localStorage.getItem('ytbm-theme');
-          var isDark = t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var isDark = t ? t === 'dark' : true;
           if (isDark) {
             document.documentElement.classList.add('dark');
             document.documentElement.setAttribute('data-theme', 'dark');
-          } else if (t === 'light') {
+          } else {
             document.documentElement.classList.remove('dark');
             document.documentElement.setAttribute('data-theme', 'light');
           }

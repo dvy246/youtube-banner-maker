@@ -71,12 +71,12 @@ const jsonLd = [
       <!-- Explanation -->
       <section class="space-y-6">
         <div class="p-6 rounded-2xl border border-line-200 bg-surface-50 space-y-4">
-          <h2 class="text-lg font-bold text-ink-950">16:9 Aspect Ratio vs. Upload Limits</h2>
+          <h2 class="text-lg font-bold text-ink-950">{dict.guidesExtended.ratioTitle}</h2>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            1024×576 shares the exact 16:9 aspect ratio as YouTube channel art. However, YouTube Studio rejects any upload smaller than 2048 × 1152 pixels with the error "Image is too small".
+            {dict.guidesExtended.ratioDesc}
           </p>
           <div class="p-4 rounded-xl bg-surface-0 border border-line-200 space-y-1">
-            <span class="text-xs font-mono text-ink-500">Target Recommended Resolution</span>
+            <span class="text-xs font-mono text-ink-500">{dict.guidesExtended.targetResLabel}</span>
             <p class="text-xl font-mono font-bold text-accent">{CANVAS.width} × {CANVAS.height} px</p>
           </div>
         </div>

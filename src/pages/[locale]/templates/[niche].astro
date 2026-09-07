@@ -6,7 +6,6 @@ import TemplateCard from '../../../components/TemplateCard.astro';
 import { getBreadcrumbSchema, getCollectionPageSchema } from '../../../lib/seo';
 import { getQualifyingNiches } from '../../../lib/template';
 import type { TemplateManifest } from '../../../lib/template';
-import { CANVAS, SAFE_PX } from '../../../lib/spec';
 import {
   TARGET_LOCALES,
   getNicheSeo,
@@ -86,7 +85,7 @@ const firstTemplateId = templates[0]?.id || 'gaming-neon';
         <div class="max-w-3xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-50 border border-line-200 text-xs font-medium text-ink-600 mb-4">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            Category: {nicheSeo.name}
+            {dict.templatesExtended.category}: {nicheSeo.name}
           </div>
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink-950 tracking-tight leading-[1.12]">
             {content.heroTitle}
@@ -169,7 +168,7 @@ const firstTemplateId = templates[0]?.id || 'gaming-neon';
                 {content.designNotes}
               </p>
               <p>
-                Every design in this collection is rendered onto the master {CANVAS.width} × {CANVAS.height} px canvas. All editable typography is strictly constrained inside the mobile safe area ({SAFE_PX.full.width} × {SAFE_PX.full.height} px).
+                {dict.templatesExtended.allDesignsRendered}
               </p>
             </div>
           </div>
@@ -183,7 +182,7 @@ const firstTemplateId = templates[0]?.id || 'gaming-neon';
                 {content.cropAdvice}
               </p>
               <p>
-                Learn more about safe area mathematics in our <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent hover:underline font-medium">{dict.footer.guideSafeArea}</a> or check exact dimensions in the <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent hover:underline font-medium">{dict.footer.guideSize}</a>.
+                {dict.templatesExtended.learnMoreSafe} <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent hover:underline font-medium">{dict.footer.guideSafeArea}</a> {dict.templatesExtended.orCheckDimensions} <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent hover:underline font-medium">{dict.footer.guideSize}</a>.
               </p>
             </div>
           </div>

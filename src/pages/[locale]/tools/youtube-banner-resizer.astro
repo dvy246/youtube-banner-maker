@@ -68,13 +68,13 @@ const jsonLd = [
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            <span>Scaling Architecture</span>
+            <span>{dict.toolsExtended.resizer.archBadge}</span>
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
-            How Our Aspect-Preserving Cover Fit Works
+            {dict.toolsExtended.resizer.coverFitTitle}
           </h2>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
-            Most online image resizers either force-stretch your image to 16:9 (warping facial proportions and distorting typography) or place thick black bars along the sides (letterboxing). Our engine uses mathematical cover-fit scaling:
+            {dict.toolsExtended.resizer.coverFitDesc}
           </p>
         </div>
 
@@ -91,16 +91,16 @@ const jsonLd = [
               </div>
               <div class="space-y-1.5">
                 <div class="flex items-center justify-between">
-                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">Proportional Coverage</h3>
-                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">16:9 Fit</span>
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">{dict.toolsExtended.resizer.card1Title}</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">{dict.toolsExtended.resizer.card1Tag}</span>
                 </div>
                 <p class="text-sm text-ink-600 leading-relaxed">
-                  We scale the source image by the maximum ratio between canvas dimensions ({CANVAS.width} × {CANVAS.height} px) and your image's native dimensions, ensuring every pixel of the YouTube canvas is filled.
+                  {dict.toolsExtended.resizer.card1Desc}
                 </p>
               </div>
             </div>
             <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
-              Mathematical aspect preserved
+              {dict.toolsExtended.resizer.card1Footer}
             </div>
           </div>
 
@@ -118,16 +118,16 @@ const jsonLd = [
               </div>
               <div class="space-y-1.5">
                 <div class="flex items-center justify-between">
-                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">Clamped Offsets</h3>
-                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">Zero Gaps</span>
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">{dict.toolsExtended.resizer.card2Title}</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">{dict.toolsExtended.resizer.card2Tag}</span>
                 </div>
                 <p class="text-sm text-ink-600 leading-relaxed">
-                  When you drag or nudge your image to position a face or logo within the mobile safe zone, our boundary clamps prevent you from dragging past the frame edge, eliminating accidental transparent margins.
+                  {dict.toolsExtended.resizer.card2Desc}
                 </p>
               </div>
             </div>
             <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
-              Safe-area bound clamping
+              {dict.toolsExtended.resizer.card2Footer}
             </div>
           </div>
 
@@ -141,16 +141,16 @@ const jsonLd = [
               </div>
               <div class="space-y-1.5">
                 <div class="flex items-center justify-between">
-                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">1:1 Resolution Ceiling</h3>
-                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">Native Cap</span>
+                  <h3 class="text-base sm:text-lg font-semibold text-ink-950">{dict.toolsExtended.resizer.card3Title}</h3>
+                  <span class="text-[10px] font-mono font-medium text-ink-600 uppercase px-2 py-0.5 rounded bg-surface-100 border border-line-200">{dict.toolsExtended.resizer.card3Tag}</span>
                 </div>
                 <p class="text-sm text-ink-600 leading-relaxed">
-                  Zooming is strictly capped to prevent upscaling beyond your source image's true optical resolution, preventing blurry exports.
+                  {dict.toolsExtended.resizer.card3Desc}
                 </p>
               </div>
             </div>
             <div class="pt-4 border-t border-line-100 text-xs font-mono text-ink-500">
-              Upscaling restricted to 1:1 density
+              {dict.toolsExtended.resizer.card3Footer}
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@ const jsonLd = [
             YouTube does not scale down your banner uniformly on smaller screens. Instead, it extracts distinct rectangular cuts from your single uploaded {CANVAS.width} × {CANVAS.height} px image.
           </p>
         </div>
-        <DeviceCropTable />
+        <DeviceCropTable locale={locale} />
       </div>
 
       <!-- Section 3: Official Specifications -->
@@ -187,7 +187,7 @@ const jsonLd = [
             Adhering strictly to Google's published channel art guidelines prevents upload rejection and unexpected post-upload cropping.
           </p>
         </div>
-        <SpecTable />
+        <SpecTable locale={locale} />
       </div>
 
       <!-- Section 4: Frequently Asked Questions -->
@@ -204,7 +204,7 @@ const jsonLd = [
             Everything you need to know about YouTube channel banner sizing, safe areas, and image compression.
           </p>
         </div>
-        <FaqAccordion />
+        <FaqAccordion locale={locale} />
       </div>
 
       <!-- Section 5: Contextual Interlinking Hub (SEO §3.4) -->
@@ -212,13 +212,13 @@ const jsonLd = [
         <div class="p-8 sm:p-10 rounded-2xl bg-surface-50 border border-line-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-2xs">
           <div class="space-y-2 max-w-2xl">
             <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-xs font-mono font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20">
-              Next Diagnostic Step
+              {dict.toolsExtended.resizer.nextStepBadge}
             </div>
             <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
-              Want to test an existing banner before modifying it?
+              {dict.toolsExtended.resizer.nextStepTitle}
             </h3>
             <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
-              Use our Safe Area Checker to run automated diagnostic tests across mobile, desktop, and tablet crops without entering the editor.
+              {dict.toolsExtended.resizer.nextStepDesc}
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-3 shrink-0">

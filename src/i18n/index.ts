@@ -199,6 +199,8 @@ export function getTranslations(locale: Locale = DEFAULT_LOCALE): Translations {
   return TRANSLATIONS[locale] || TRANSLATIONS[DEFAULT_LOCALE];
 }
 
+export const getDictionary = getTranslations;
+
 /**
  * Helper to look up a nested translation string by dot notation with optional parameter interpolation.
  * E.g. t('pt-br', 'common.brandName')

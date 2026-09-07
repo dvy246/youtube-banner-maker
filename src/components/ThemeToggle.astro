@@ -19,6 +19,7 @@
     type="checkbox"
     id="theme-toggle"
     class="sr-only cursor-pointer"
+    checked
     aria-label="Toggle dark and light mode"
     onchange="try{var d=this.checked;document.documentElement.classList.toggle('dark',d);document.documentElement.setAttribute('data-theme',d?'dark':'light');localStorage.setItem('ytbm-theme',d?'dark':'light');window.dispatchEvent(new CustomEvent('ytbm-theme-change',{detail:{theme:d?'dark':'light'}}));}catch(e){}"
   />

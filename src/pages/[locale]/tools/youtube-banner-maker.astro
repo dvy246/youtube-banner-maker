@@ -10,7 +10,7 @@ import {
   getSoftwareAppSchema,
   getBreadcrumbSchema,
 } from '../../../lib/seo';
-import { CANVAS, SAFE, SAFE_PX } from '../../../lib/spec';
+import { CANVAS } from '../../../lib/spec';
 import {
   TARGET_LOCALES,
   getStaticPageSeo,
@@ -30,9 +30,6 @@ const { locale } = Astro.params as { locale: Locale };
 const path = `/${locale}/tools/youtube-banner-maker`;
 const seo = getStaticPageSeo('/tools/youtube-banner-maker', locale);
 const dict = getTranslations(locale);
-
-const safePctW = (SAFE.w * 100).toFixed(1);
-const safePctH = (SAFE.h * 100).toFixed(1);
 
 const nicheIds = ['gaming', 'tech', 'podcast', 'vlog', 'music', 'fitness', 'education', 'lifestyle'];
 
@@ -74,13 +71,13 @@ const jsonLd = [
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            <span>Design Philosophy</span>
+            <span>{dict.toolsExtended.maker.philBadge}</span>
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
-            Geometry-Safe Design vs Blank Canvas Fatigue
+            {dict.toolsExtended.maker.philTitle}
           </h2>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
-            Most design tools force creators to start from an intimidating, empty 16:9 canvas without any indication of where YouTube's aggressive viewport crops will cut. Hours later, after uploading to YouTube Studio, creators discover their title is sliced in half on mobile phones or obscured behind avatar badges.
+            {dict.toolsExtended.maker.philDesc}
           </p>
         </div>
 
@@ -89,19 +86,19 @@ const jsonLd = [
             <div class="space-y-3">
               <div class="flex items-center justify-between">
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-bold bg-danger/10 text-danger border border-danger/20">
-                  The Blank Canvas Trap
+                  {dict.toolsExtended.maker.trapBadge}
                 </span>
-                <span class="text-xs font-mono text-ink-400">Generic Editors</span>
+                <span class="text-xs font-mono text-ink-400">{dict.toolsExtended.maker.trapSub}</span>
               </div>
               <h3 class="text-lg font-semibold text-ink-950">
-                Unconstrained Guesswork
+                {dict.toolsExtended.maker.trapTitle}
               </h3>
               <p class="text-sm text-ink-600 leading-relaxed">
-                Starting from a blank 2560 × 1440 box hides the reality that 70% of viewers on mobile screens only see a narrow central strip. Designers position elements along borders, leading to clipped names, cut logos, and multiple re-exports.
+                {dict.toolsExtended.maker.trapDesc}
               </p>
             </div>
             <div class="pt-3 border-t border-line-100 text-xs font-mono text-ink-500">
-              High risk of mobile cropping errors
+              {dict.toolsExtended.maker.trapFooter}
             </div>
           </div>
 
@@ -109,19 +106,19 @@ const jsonLd = [
             <div class="space-y-3">
               <div class="flex items-center justify-between">
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-bold bg-accent/10 text-accent border border-accent/20">
-                  Safe by Construction
+                  {dict.toolsExtended.maker.safeBadge}
                 </span>
-                <span class="text-xs font-mono text-accent">Our Generator</span>
+                <span class="text-xs font-mono text-accent">{dict.toolsExtended.maker.safeSub}</span>
               </div>
               <h3 class="text-lg font-semibold text-ink-950">
-                Universal Safe Area Anchored
+                {dict.toolsExtended.maker.safeTitle}
               </h3>
               <p class="text-sm text-ink-600 leading-relaxed">
-                Every template begins mathematically constrained to YouTube's {SAFE_PX.full.width} × {SAFE_PX.full.height} px safe area. When you customize channel names, palettes, and typography, all essential elements stay centered and visible on every screen.
+                {dict.toolsExtended.maker.safeDesc}
               </p>
             </div>
             <div class="pt-3 border-t border-accent/20 text-xs font-mono text-accent">
-              Zero guesswork · verified safe layouts
+              {dict.toolsExtended.maker.safeFooter}
             </div>
           </div>
         </div>
@@ -132,13 +129,13 @@ const jsonLd = [
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            <span>Safe Area Mathematics</span>
+            <span>{dict.toolsExtended.maker.mathBadge}</span>
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
-            Why Typography Must Sit Inside the Mobile Safe Area
+            {dict.toolsExtended.maker.mathTitle}
           </h2>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
-            Across the entire {CANVAS.width} × {CANVAS.height} px canvas required by Google, mobile devices display only the central {SAFE_PX.full.width} × {SAFE_PX.full.height} px rectangle. In relative screen coordinates, this safe zone represents exactly {safePctW}% of the canvas width and {safePctH}% of the canvas height.
+            {dict.toolsExtended.maker.mathDesc}
           </p>
         </div>
 
@@ -146,34 +143,34 @@ const jsonLd = [
           <div class="p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 space-y-3 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between">
             <div class="space-y-2">
               <span class="text-xs font-mono text-accent uppercase tracking-wider font-semibold">
-                The {safePctW}% × {safePctH}% Rule
+                {dict.toolsExtended.maker.ruleBadge}
               </span>
               <h3 class="text-lg font-semibold text-ink-950">
-                Universal Viewport Coverage
+                {dict.toolsExtended.maker.ruleTitle}
               </h3>
               <p class="text-sm text-ink-600 leading-relaxed">
-                Every device profile (from a 5-inch smartphone to a 32-inch 4K desktop monitor) renders this centered rectangle. Text placed inside it is never cut off.
+                {dict.toolsExtended.maker.ruleDesc}
               </p>
             </div>
             <div class="pt-3 border-t border-line-100 text-xs font-mono text-ink-500">
-              Protected across mobile, desktop, & tablet
+              {dict.toolsExtended.maker.ruleFooter}
             </div>
           </div>
 
           <div class="p-6 sm:p-7 rounded-2xl border border-line-200 bg-surface-0 space-y-3 shadow-2xs hover:shadow-raised hover:border-ink-400/30 transition-all duration-200 flex flex-col justify-between">
             <div class="space-y-2">
               <span class="text-xs font-mono text-accent uppercase tracking-wider font-semibold">
-                Real-Time Boundary Feedback
+                {dict.toolsExtended.maker.feedbackBadge}
               </span>
               <h3 class="text-lg font-semibold text-ink-950">
-                Automatic Cutoff Warnings
+                {dict.toolsExtended.maker.feedbackTitle}
               </h3>
               <p class="text-sm text-ink-600 leading-relaxed">
-                If you drag a constrained text element outside the safe boundary, our live validator flags it immediately with directional guidance to pull it back into view.
+                {dict.toolsExtended.maker.feedbackDesc}
               </p>
             </div>
             <div class="pt-3 border-t border-line-100 text-xs font-mono text-ink-500">
-              Interactive safe boundary clamps
+              {dict.toolsExtended.maker.feedbackFooter}
             </div>
           </div>
         </div>
@@ -193,7 +190,7 @@ const jsonLd = [
             YouTube extracts different viewports from a single {CANVAS.width} × {CANVAS.height} px upload. Use this reference to verify what viewers see across hardware platforms.
           </p>
         </div>
-        <DeviceCropTable />
+        <DeviceCropTable locale={locale} />
       </div>
 
       <!-- Section 4: Specifications Reference -->
@@ -210,7 +207,7 @@ const jsonLd = [
             Official Google standards for YouTube banner dimensions, minimum resolution, file size limits, and supported raster formats.
           </p>
         </div>
-        <SpecTable />
+        <SpecTable locale={locale} />
       </div>
 
       <!-- Section 5: Curated Category Link Grid -->
@@ -219,7 +216,7 @@ const jsonLd = [
           <div class="space-y-3">
             <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
               <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-              <span>Curated Presets</span>
+              <span>{dict.toolsExtended.maker.presetsBadge}</span>
             </div>
             <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
               {dict.templatesHub.browseNiche}
@@ -260,7 +257,7 @@ const jsonLd = [
                     </p>
                   </div>
                   <div class="pt-2 border-t border-line-100 text-[11px] font-mono text-ink-400 group-hover:text-ink-600 transition-colors">
-                    Verified Designs
+                    {dict.toolsExtended.maker.verifiedDesigns}
                   </div>
                 </a>
               );
@@ -283,7 +280,7 @@ const jsonLd = [
             Answers to frequent questions about designing channel art, safe areas, template customization, and YouTube Studio uploads.
           </p>
         </div>
-        <FaqAccordion />
+        <FaqAccordion locale={locale} />
       </div>
 
       <!-- Section 7: Contextual Diagnostic Interlinking -->
@@ -291,7 +288,7 @@ const jsonLd = [
         <div class="p-8 sm:p-10 rounded-2xl bg-surface-50 border border-line-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-2xs">
           <div class="space-y-2 max-w-2xl">
             <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-xs font-mono font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20">
-              Safe Area Inspection
+              {dict.toolsExtended.maker.inspectBadge}
             </div>
             <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
               {dict.tools.checker.title}

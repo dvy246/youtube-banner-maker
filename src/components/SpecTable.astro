@@ -1,67 +1,75 @@
 ---
 import { CANVAS, SAFE, SAFE_PX, MAX_UPLOAD_BYTES } from '../lib/spec';
+import { getTranslations, type Locale } from '../i18n';
 
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const dict = getTranslations(locale);
+const t = dict.specTable;
 const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 ---
 
 <div class="overflow-x-auto rounded-2xl border border-line-200 bg-surface-0 shadow-2xs">
   <table class="w-full text-left text-sm text-ink-800 border-collapse min-w-[640px]">
-    <caption class="sr-only">Official YouTube Banner Specifications and Dimensions</caption>
+    <caption class="sr-only">{t.caption}</caption>
     <thead class="bg-surface-50/80 border-b border-line-200 text-ink-950 font-semibold uppercase tracking-wider text-[11px]">
       <tr>
-        <th scope="col" class="py-3.5 px-5 sm:px-6">Parameter</th>
-        <th scope="col" class="py-3.5 px-5 sm:px-6">Specification Value</th>
-        <th scope="col" class="py-3.5 px-5 sm:px-6">Requirement Details</th>
+        <th scope="col" class="py-3.5 px-5 sm:px-6">{t.colParam}</th>
+        <th scope="col" class="py-3.5 px-5 sm:px-6">{t.colValue}</th>
+        <th scope="col" class="py-3.5 px-5 sm:px-6">{t.colDetails}</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-line-100 font-normal">
       <tr class="hover:bg-surface-50/50 transition-colors">
         <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950">
           <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-accent/10 text-accent border border-accent/20">
-            Recommended Size
+            {t.recommendedSize}
           </span>
         </th>
         <td class="py-4 px-5 sm:px-6 font-mono font-bold text-accent tabular-nums text-xs sm:text-sm">{CANVAS.width} × {CANVAS.height} px</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Standard 16:9 canvas displayed completely on TV displays</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.recommendedSizeDesc}</td>
       </tr>
       <tr class="hover:bg-surface-50/50 transition-colors">
-        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">Minimum Size</th>
-        <td class="py-4 px-5 sm:px-6 font-mono text-ink-900 font-semibold tabular-nums text-xs sm:text-sm">2048 × 1152 px</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Lowest upload dimensions accepted by YouTube Studio</td>
+        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">{t.minSize}</th>
+        <td class="py-4 px-5 sm:px-6 font-mono text-ink-950 font-semibold tabular-nums text-xs sm:text-sm">2048 × 1152 px</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.minSizeDesc}</td>
       </tr>
       <tr class="hover:bg-surface-50/50 transition-colors">
         <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950">
           <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-accent/10 text-accent border border-accent/20">
-            Safe Area (Full Canvas)
+            {t.safeAreaFull}
           </span>
         </th>
         <td class="py-4 px-5 sm:px-6 font-mono font-bold text-accent tabular-nums text-xs sm:text-sm">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Ensures no cutoff on any smartphone or mobile viewport</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.safeAreaFullDesc}</td>
       </tr>
       <tr class="hover:bg-surface-50/50 transition-colors">
-        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">Safe Area (Min Canvas)</th>
-        <td class="py-4 px-5 sm:px-6 font-mono text-ink-900 font-semibold tabular-nums text-xs sm:text-sm">{SAFE_PX.min.width} × {SAFE_PX.min.height} px</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Proportional safe area at the 2048 × 1152 minimum upload size</td>
+        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">{t.safeAreaMin}</th>
+        <td class="py-4 px-5 sm:px-6 font-mono text-ink-950 font-semibold tabular-nums text-xs sm:text-sm">{SAFE_PX.min.width} × {SAFE_PX.min.height} px</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.safeAreaMinDesc}</td>
       </tr>
       <tr class="hover:bg-surface-50/50 transition-colors">
-        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">Safe Area Fraction</th>
-        <td class="py-4 px-5 sm:px-6 font-mono text-ink-900 font-semibold tabular-nums text-xs sm:text-sm">{(SAFE.w * 100).toFixed(1)}% × {(SAFE.h * 100).toFixed(1)}%</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Unified center frame proportion across all canvas resolutions</td>
+        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">{t.safeAreaFraction}</th>
+        <td class="py-4 px-5 sm:px-6 font-mono text-ink-950 font-semibold tabular-nums text-xs sm:text-sm">{(SAFE.w * 100).toFixed(1)}% × {(SAFE.h * 100).toFixed(1)}%</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.safeAreaFractionDesc}</td>
       </tr>
       <tr class="hover:bg-surface-50/50 transition-colors">
-        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">Maximum File Size</th>
-        <td class="py-4 px-5 sm:px-6 font-mono text-ink-900 font-semibold tabular-nums text-xs sm:text-sm">{maxUploadMb} MB</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Hard limit enforced by YouTube Studio upload validation</td>
+        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">{t.maxFileSize}</th>
+        <td class="py-4 px-5 sm:px-6 font-mono text-ink-950 font-semibold tabular-nums text-xs sm:text-sm">{maxUploadMb} MB</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.maxFileSizeDesc}</td>
       </tr>
       <tr class="hover:bg-surface-50/50 transition-colors">
-        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">Color Space</th>
-        <td class="py-4 px-5 sm:px-6 font-mono text-ink-900 font-semibold tabular-nums text-xs sm:text-sm">sRGB</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Standard web color profile to prevent post-upload hue shifting</td>
+        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">{t.colorSpace}</th>
+        <td class="py-4 px-5 sm:px-6 font-mono text-ink-950 font-semibold tabular-nums text-xs sm:text-sm">sRGB</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.colorSpaceDesc}</td>
       </tr>
       <tr class="hover:bg-surface-50/50 transition-colors">
-        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">Accepted Formats</th>
+        <th scope="row" class="py-4 px-5 sm:px-6 font-medium text-ink-950 text-xs sm:text-sm">{t.acceptedFormats}</th>
         <td class="py-4 px-5 sm:px-6 font-mono text-ink-900 font-semibold tabular-nums text-xs sm:text-sm">PNG, JPG, WebP, GIF</td>
-        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">Static image uploads only; animated GIFs are not supported</td>
+        <td class="py-4 px-5 sm:px-6 text-xs sm:text-sm text-ink-600 leading-relaxed">{t.acceptedFormatsDesc}</td>
       </tr>
     </tbody>
   </table>

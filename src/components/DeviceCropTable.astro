@@ -1,52 +1,61 @@
 ---
 import { CANVAS, DEVICES, SAFE, SAFE_PX } from '../lib/spec';
+import { getTranslations, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const dict = getTranslations(locale);
+const t = dict.deviceCrops;
 
 const rows = [
   {
-    device: 'Television / Full Frame',
+    device: t.tvName,
     isSafe: false,
     dims: `${CANVAS.width} × ${CANVAS.height} px`,
     aspect: '16:9',
     visibleFrac: '100% × 100%',
-    notes: 'The entire uploaded image is shown only on smart TVs and gaming consoles.',
+    notes: t.tvNotes,
   },
   {
-    device: 'Desktop',
+    device: t.desktopName,
     isSafe: false,
     dims: `${Math.round(DEVICES.desktop.w * CANVAS.width)} × ${Math.round(DEVICES.desktop.h * CANVAS.height)} px`,
     aspect: '6.04:1',
     visibleFrac: `100% × ${(DEVICES.desktop.h * 100).toFixed(1)}%`,
-    notes: 'Wide horizontal band. Top and bottom margins (~35% each) are cropped out.',
+    notes: t.desktopNotes,
   },
   {
-    device: 'Tablet',
+    device: t.tabletName,
     isSafe: false,
     dims: `${Math.round(DEVICES.tablet.w * CANVAS.width)} × ${Math.round(DEVICES.tablet.h * CANVAS.height)} px`,
     aspect: '1.29:1',
     visibleFrac: `${(DEVICES.tablet.w * 100).toFixed(1)}% × 100%`,
-    notes: 'Vertical center pillar. Left and right margins are cropped out.',
+    notes: t.tabletNotes,
   },
   {
-    device: 'Mobile (Safe Area)',
+    device: t.mobileName,
     isSafe: true,
     dims: `${SAFE_PX.full.width} × ${SAFE_PX.full.height} px`,
     aspect: '3.65:1',
     visibleFrac: `${(SAFE.w * 100).toFixed(1)}% × ${(SAFE.h * 100).toFixed(1)}%`,
-    notes: 'Visible on every device without exception. Keep text, logos, and focal subjects here.',
+    notes: t.mobileNotes,
   },
 ];
 ---
 
 <div class="overflow-x-auto rounded-2xl border border-line-200 bg-surface-0 shadow-2xs">
   <table class="w-full text-left text-sm text-ink-800 border-collapse min-w-[640px]">
-    <caption class="sr-only">YouTube Per-Device Crop Dimensions and Visible Areas</caption>
+    <caption class="sr-only">{t.caption}</caption>
     <thead class="bg-surface-50/80 border-b border-line-200 text-ink-950 font-semibold uppercase tracking-wider text-[11px]">
       <tr>
-        <th scope="col" class="py-3.5 px-5">Device Viewport</th>
-        <th scope="col" class="py-3.5 px-5">Visible Dimensions</th>
-        <th scope="col" class="py-3.5 px-5">Aspect Ratio</th>
-        <th scope="col" class="py-3.5 px-5">Frame Share</th>
-        <th scope="col" class="py-3.5 px-5">Display Behavior</th>
+        <th scope="col" class="py-3.5 px-5">{t.colViewport}</th>
+        <th scope="col" class="py-3.5 px-5">{t.colDims}</th>
+        <th scope="col" class="py-3.5 px-5">{t.colAspect}</th>
+        <th scope="col" class="py-3.5 px-5">{t.colShare}</th>
+        <th scope="col" class="py-3.5 px-5">{t.colBehavior}</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-line-100 font-normal">
