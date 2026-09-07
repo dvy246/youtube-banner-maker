@@ -750,6 +750,8 @@ export const ja: Translations = {
       "downloadBanner": "バナーをダウンロード (2560 × 1440)",
       "downloadThumbnail": "サムネイルをダウンロード (1280 × 720)",
       "thumbnailTitle": "1280×720 HD YouTubeサムネイルを出力",
+      "downloadAvatar": "アバターをダウンロード (800 × 800)",
+      "avatarTitle": "お揃いの800×800 YouTubeプロフィールアイコンを出力",
       "copyClipboard": "クリップボードにコピー",
       "copyTitle": "2560×1440画像を直接クリップボードにコピー",
       "dimensions": "解像度:",

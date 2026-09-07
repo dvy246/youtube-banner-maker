@@ -750,6 +750,8 @@ export const it: Translations = {
       "downloadBanner": "Scarica Banner (2560 × 1440)",
       "downloadThumbnail": "Scarica Miniatura (1280 × 720)",
       "thumbnailTitle": "Esporta Miniatura Video HD 1280×720 per YouTube",
+      "downloadAvatar": "Scarica Avatar (800 × 800)",
+      "avatarTitle": "Esporta immagine del profilo coordinata 800×800 per YouTube",
       "copyClipboard": "Copia negli Appunti",
       "copyTitle": "Copia l'immagine 2560×1440 direttamente negli appunti",
       "dimensions": "Dimensioni:",

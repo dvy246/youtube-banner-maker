@@ -750,6 +750,8 @@ export const ptBr: Translations = {
       "downloadBanner": "Baixar Banner (2560 × 1440)",
       "downloadThumbnail": "Baixar Miniatura (1280 × 720)",
       "thumbnailTitle": "Exportar Miniatura de Vídeo HD 1280×720 para YouTube",
+      "downloadAvatar": "Baixar Avatar (800 × 800)",
+      "avatarTitle": "Exportar foto de perfil coordenada 800×800 para YouTube",
       "copyClipboard": "Copiar para Área de Transferência",
       "copyTitle": "Copiar imagem 2560×1440 diretamente para a área de transferência",
       "dimensions": "Dimensões:",

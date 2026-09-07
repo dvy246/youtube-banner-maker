@@ -116,3 +116,153 @@ export async function exportBanner(
     note,
   };
 }
+
+export const AVATAR_SIZE = 800;
+
+/**
+ * 1-Click Coordinated YouTube Profile Avatar Export (800 × 800)
+ * Renders an 800 × 800 square avatar coordinated with the current banner's
+ * background, theme palette, and either photo frame or branding monogram.
+ */
+export async function exportAvatar(
+  scene: Scene,
+  images: ImageMap
+): Promise<ExportResult> {
+  const requestedFormat = scene.export?.format || 'png';
+  const requestedType = getMimeForFormat(requestedFormat);
+  const quality = scene.export?.quality ?? 0.95;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = AVATAR_SIZE;
+  canvas.height = AVATAR_SIZE;
+  const ctx = canvas.getContext('2d', { colorSpace: 'srgb' });
+
+  if (ctx) {
+    // 1. Render background
+    if (scene.background.type === 'solid') {
+      ctx.fillStyle = scene.background.color;
+      ctx.fillRect(0, 0, AVATAR_SIZE, AVATAR_SIZE);
+    } else if (scene.background.type === 'gradient') {
+      const grad = ctx.createLinearGradient(0, 0, AVATAR_SIZE, AVATAR_SIZE);
+      grad.addColorStop(0, scene.background.from);
+      grad.addColorStop(1, scene.background.to);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, AVATAR_SIZE, AVATAR_SIZE);
+    } else if (scene.background.type === 'image') {
+      const bgImg = images.get(scene.background.src);
+      if (bgImg) {
+        const bgW = (bgImg as HTMLImageElement).naturalWidth || (bgImg as any).width || AVATAR_SIZE;
+        const bgH = (bgImg as HTMLImageElement).naturalHeight || (bgImg as any).height || AVATAR_SIZE;
+        const scale = Math.max(AVATAR_SIZE / bgW, AVATAR_SIZE / bgH);
+        const w = bgW * scale;
+        const h = bgH * scale;
+        ctx.drawImage(bgImg, (AVATAR_SIZE - w) / 2, (AVATAR_SIZE - h) / 2, w, h);
+      } else {
+        ctx.fillStyle = '#0B0D10';
+        ctx.fillRect(0, 0, AVATAR_SIZE, AVATAR_SIZE);
+      }
+    } else {
+      ctx.fillStyle = '#0B0D10';
+      ctx.fillRect(0, 0, AVATAR_SIZE, AVATAR_SIZE);
+    }
+
+    // 2. Scrim overlay if present
+    if (scene.background.scrim && scene.background.scrim.enabled && scene.background.scrim.intensity > 0) {
+      const intensity = Math.min(1, Math.max(0, scene.background.scrim.intensity));
+      const radGrad = ctx.createRadialGradient(
+        AVATAR_SIZE / 2,
+        AVATAR_SIZE / 2,
+        AVATAR_SIZE * 0.1,
+        AVATAR_SIZE / 2,
+        AVATAR_SIZE / 2,
+        AVATAR_SIZE * 0.7
+      );
+      radGrad.addColorStop(0, 'rgba(0,0,0,0)');
+      radGrad.addColorStop(1, `rgba(0,0,0,${intensity * 0.9})`);
+      ctx.fillStyle = radGrad;
+      ctx.fillRect(0, 0, AVATAR_SIZE, AVATAR_SIZE);
+    }
+
+    // 3. Subject: photo frame or monogram
+    const frameLayer = scene.layers.find((l) => l.type === 'frame');
+    const photoImg = frameLayer ? images.get(frameLayer.id) : undefined;
+
+    if (photoImg) {
+      const photoSize = 520;
+      const cx = AVATAR_SIZE / 2;
+      const cy = AVATAR_SIZE / 2;
+      const radius = photoSize / 2;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+
+      const photoW = (photoImg as HTMLImageElement).naturalWidth || (photoImg as any).width || photoSize;
+      const photoH = (photoImg as HTMLImageElement).naturalHeight || (photoImg as any).height || photoSize;
+      const scale = Math.max(photoSize / photoW, photoSize / photoH);
+      const w = photoW * scale;
+      const h = photoH * scale;
+      ctx.drawImage(photoImg, cx - w / 2, cy - h / 2, w, h);
+      ctx.restore();
+
+      const accentColor = scene.designSystem?.palette.accent || '#2340B8';
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.strokeStyle = accentColor;
+      ctx.lineWidth = 12;
+      ctx.stroke();
+      ctx.restore();
+    } else {
+      const titleLayer = scene.layers.find((l) => l.type === 'text' && l.id === 'title') as any;
+      const titleText = (titleLayer?.text || 'YT').trim();
+      const words = titleText.split(/\s+/).filter(Boolean);
+      const initials = words.length > 1
+        ? (words[0][0] + words[1][0]).toUpperCase()
+        : titleText.slice(0, 2).toUpperCase();
+
+      const primaryColor = scene.designSystem?.palette.primary || titleLayer?.color || '#FFFFFF';
+      const accentColor = scene.designSystem?.palette.accent || '#2340B8';
+
+      const cx = AVATAR_SIZE / 2;
+      const cy = AVATAR_SIZE / 2;
+      const radius = 260;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.06)';
+      ctx.fill();
+      ctx.strokeStyle = accentColor;
+      ctx.lineWidth = 8;
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.save();
+      const fontName = titleLayer?.font || 'Inter';
+      ctx.font = `bold 180px "${fontName}", sans-serif`;
+      ctx.fillStyle = primaryColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(initials, cx, cy);
+      ctx.restore();
+    }
+  }
+
+  const blob = await canvasToBlob(canvas, requestedType, quality);
+  const actualType = blob.type || requestedType;
+  const ext = getExtensionForType(actualType);
+  const filename = `youtube-avatar-800x800.${ext}`;
+
+  return {
+    blob,
+    type: actualType,
+    requestedType,
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
+    bytes: blob.size,
+    filename,
+  };
+}

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { exportBanner } from './export';
+import { exportBanner, exportAvatar, AVATAR_SIZE } from './export';
 import { defaultScene } from './scene';
 import { CANVAS, MAX_UPLOAD_BYTES, JPEG_QUALITY_FLOOR } from './spec';
 import { renderExport } from './render';
@@ -182,6 +182,54 @@ describe('export.ts (M-6, M-7, M-8, M-9, REQ-006, REQ-010, REQ-011, REQ-012, REQ
         expect(result.height).toBe(1440);
         expect(result.type).toBe('image/png');
       }
+    } finally {
+      globalThis.document = originalDoc;
+    }
+  });
+
+  it('exportAvatar: renders coordinated 800x800 square avatar with correct metadata', async () => {
+    const scene = defaultScene();
+    const images = new Map();
+
+    const originalDoc = globalThis.document;
+    globalThis.document = {
+      createElement: (tag: string) => {
+        if (tag === 'canvas') {
+          return {
+            width: AVATAR_SIZE,
+            height: AVATAR_SIZE,
+            getContext: () => ({
+              save: () => {},
+              restore: () => {},
+              clearRect: () => {},
+              fillRect: () => {},
+              beginPath: () => {},
+              arc: () => {},
+              closePath: () => {},
+              clip: () => {},
+              stroke: () => {},
+              fill: () => {},
+              drawImage: () => {},
+              createLinearGradient: () => ({ addColorStop: () => {} }),
+              createRadialGradient: () => ({ addColorStop: () => {} }),
+              fillText: () => {},
+            }),
+            toBlob: (cb: (b: Blob) => void) => {
+              cb(new Blob([new Uint8Array(256)], { type: 'image/png' }));
+            },
+          } as unknown as HTMLCanvasElement;
+        }
+        return {} as any;
+      },
+    } as any;
+
+    try {
+      const avatarResult = await exportAvatar(scene, images);
+      expect(avatarResult).toBeDefined();
+      expect(avatarResult.width).toBe(800);
+      expect(avatarResult.height).toBe(800);
+      expect(avatarResult.filename).toBe('youtube-avatar-800x800.png');
+      expect(avatarResult.type).toBe('image/png');
     } finally {
       globalThis.document = originalDoc;
     }

@@ -750,6 +750,8 @@ export const es: Translations = {
       "downloadBanner": "Descargar Banner (2560 × 1440)",
       "downloadThumbnail": "Descargar Miniatura (1280 × 720)",
       "thumbnailTitle": "Exportar Miniatura de Vídeo HD 1280×720 para YouTube",
+      "downloadAvatar": "Descargar Avatar (800 × 800)",
+      "avatarTitle": "Exportar avatar de perfil a juego de 800×800 para YouTube",
       "copyClipboard": "Copiar al Portapapeles",
       "copyTitle": "Copiar imagen 2560×1440 directamente al portapapeles",
       "dimensions": "Dimensiones:",

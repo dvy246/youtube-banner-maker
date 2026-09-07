@@ -37,7 +37,7 @@ import {
   type ImageMap,
 } from '../lib/render';
 import { validateScene, estimateTextBounds } from '../lib/validate';
-import { exportBanner } from '../lib/export';
+import { exportBanner, exportAvatar } from '../lib/export';
 import { simulateReencode } from '../lib/simulate';
 import {
   type TemplateManifest,
@@ -49,6 +49,7 @@ import {
   trackEvent,
   cleanImageFormat,
   getSizeTier,
+} from '../lib/analytics';
 import { computeVariation, applyDesignSystemToScene, type VariationType } from '../lib/variations';
 
 // Client i18n lookup from embedded payload
@@ -249,6 +250,7 @@ class ToolIsland {
   private exportButton!: HTMLButtonElement;
   private exportButtonText!: HTMLElement;
   private exportThumbnailBtn: HTMLButtonElement | null = null;
+  private exportAvatarBtn: HTMLButtonElement | null = null;
   private exportMeta!: HTMLElement;
   private exportNote!: HTMLElement;
 
@@ -362,6 +364,7 @@ class ToolIsland {
     this.exportButton = document.getElementById('export-button') as HTMLButtonElement;
     this.exportButtonText = document.getElementById('export-button-text') as HTMLElement;
     this.exportThumbnailBtn = document.getElementById('export-thumbnail-button') as HTMLButtonElement | null;
+    this.exportAvatarBtn = document.getElementById('export-avatar-button') as HTMLButtonElement | null;
     this.exportMeta = document.getElementById('export-meta') as HTMLElement;
     this.exportNote = document.getElementById('export-note') as HTMLElement;
 
@@ -652,6 +655,9 @@ class ToolIsland {
     }
     if (this.exportThumbnailBtn) {
       this.exportThumbnailBtn.disabled = this.phase !== 'READY';
+    }
+    if (this.exportAvatarBtn) {
+      this.exportAvatarBtn.disabled = this.phase !== 'READY';
     }
 
     if (this.verdictCountBadge) {
@@ -1113,6 +1119,9 @@ class ToolIsland {
 
     if (this.exportThumbnailBtn) {
       this.exportThumbnailBtn.addEventListener('click', () => this.handleThumbnailExport());
+    }
+    if (this.exportAvatarBtn) {
+      this.exportAvatarBtn.addEventListener('click', () => this.handleAvatarExport());
     }
 
     // 9. Action Toolbar (Undo, Redo, Shortcuts)
@@ -4031,6 +4040,39 @@ class ToolIsland {
     } catch (err: any) {
       if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
       this.showToast(`Thumbnail export error: ${err.message || 'Failed'}`);
+    }
+  }
+
+  /**
+   * Coordinated Avatar Export (800x800 square, sub-6MB YouTube spec)
+   * Derives matching YouTube profile avatar from banner branding and theme palette.
+   */
+  private async handleAvatarExport(): Promise<void> {
+    if (this.phase !== 'READY') return;
+    this.showToast('Generating 800 × 800 matching avatar...');
+
+    try {
+      if (this.exportAvatarBtn) {
+        this.exportAvatarBtn.disabled = true;
+      }
+
+      const result = await exportAvatar(this.scene, this.images);
+
+      const url = URL.createObjectURL(result.blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = result.filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      if (this.exportAvatarBtn) this.exportAvatarBtn.disabled = false;
+      this.showToast('Downloaded matching 800 × 800 profile avatar!');
+      trackEvent('export_success', { format: result.type, durationMs: 0 });
+    } catch (err: any) {
+      if (this.exportAvatarBtn) this.exportAvatarBtn.disabled = false;
+      this.showToast(`Avatar export error: ${err.message || 'Failed'}`);
     }
   }
 

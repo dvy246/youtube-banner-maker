@@ -750,6 +750,8 @@ export const de: Translations = {
       "downloadBanner": "Banner herunterladen (2560 × 1440)",
       "downloadThumbnail": "Thumbnail herunterladen (1280 × 720)",
       "thumbnailTitle": "1280×720 HD YouTube Thumbnail exportieren",
+      "downloadAvatar": "Avatar herunterladen (800 × 800)",
+      "avatarTitle": "Passendes 800×800 YouTube-Profilbild exportieren",
       "copyClipboard": "In die Zwischenablage kopieren",
       "copyTitle": "2560×1440 Bild direkt in die Zwischenablage kopieren",
       "dimensions": "Abmessungen:",

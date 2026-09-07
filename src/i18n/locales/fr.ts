@@ -750,6 +750,8 @@ export const fr: Translations = {
       "downloadBanner": "Télécharger la Bannière (2560 × 1440)",
       "downloadThumbnail": "Télécharger la Miniature (1280 × 720)",
       "thumbnailTitle": "Exporter la Miniature HD 1280×720 pour YouTube",
+      "downloadAvatar": "Télécharger l'Avatar (800 × 800)",
+      "avatarTitle": "Exporter l'avatar de profil YouTube assorti 800×800",
       "copyClipboard": "Copier dans le Presse-papiers",
       "copyTitle": "Copier l'image 2560×1440 directement dans le presse-papiers",
       "dimensions": "Dimensions :",

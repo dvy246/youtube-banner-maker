@@ -749,6 +749,8 @@ export const en = {
       "downloadBanner": "Download Banner (2560 × 1440)",
       "downloadThumbnail": "Download Thumbnail (1280 × 720)",
       "thumbnailTitle": "Export 1280×720 HD YouTube Video Thumbnail",
+      "downloadAvatar": "Download Avatar (800 × 800)",
+      "avatarTitle": "Export 800×800 matching YouTube profile avatar",
       "copyClipboard": "Copy to Clipboard",
       "copyTitle": "Copy 2560×1440 image directly to clipboard",
       "dimensions": "Dimensions:",
