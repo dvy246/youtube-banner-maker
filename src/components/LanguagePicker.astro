@@ -14,7 +14,7 @@ const dict = getTranslations(currentLocale);
 <div class="relative inline-block text-left language-picker-wrapper">
   <details class="language-dropdown group relative">
     <summary
-      class="min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 hover:border-ink-500 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center gap-1.5 text-xs font-medium transition-colors focus-visible:outline-accent cursor-pointer list-none select-none shadow-2xs"
+      class="min-h-[38px] px-3.5 py-1.5 rounded-full border border-line-200 hover:border-ink-500 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center gap-1.5 text-xs font-medium transition-all focus-visible:outline-accent cursor-pointer list-none select-none shadow-2xs active:scale-[0.98]"
       aria-label={dict.common.selectLanguage}
     >
       <svg class="w-3.5 h-3.5 text-ink-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -30,7 +30,7 @@ const dict = getTranslations(currentLocale);
     </summary>
 
     <div
-      class="absolute right-0 mt-1.5 w-52 rounded-lg bg-surface-0 border border-line-200 shadow-overlay p-1.5 z-50 focus:outline-none"
+      class="absolute right-0 mt-1.5 w-52 rounded-2xl bg-surface-0 border border-line-200 shadow-overlay p-1.5 z-50 focus:outline-none"
       role="menu"
       aria-orientation="vertical"
       tabindex="-1"
@@ -50,7 +50,7 @@ const dict = getTranslations(currentLocale);
                 href={targetUrl}
                 hreflang={cfg.hreflang}
                 class:list={[
-                  'w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors text-left select-none',
+                  'w-full flex items-center justify-between px-3 py-1.5 rounded-full text-xs font-medium transition-colors text-left select-none',
                   isCurrent
                     ? 'bg-accent/10 text-accent font-semibold'
                     : 'text-ink-800 hover:bg-surface-50',

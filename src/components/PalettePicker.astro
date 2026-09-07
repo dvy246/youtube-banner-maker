@@ -5,7 +5,7 @@ import { PALETTES } from '../lib/palette';
 <div class="relative inline-block text-left palette-picker-wrapper">
   <details class="palette-dropdown group relative">
     <summary
-      class="min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 hover:border-ink-500 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center gap-2 text-xs font-medium transition-colors focus-visible:outline-accent cursor-pointer list-none select-none shadow-2xs"
+      class="min-h-[38px] px-3.5 py-1.5 rounded-full border border-line-200 hover:border-ink-500 bg-surface-0 hover:bg-surface-50 text-ink-800 flex items-center gap-2 text-xs font-medium transition-all focus-visible:outline-accent cursor-pointer list-none select-none shadow-2xs active:scale-[0.98]"
       aria-label="Select color palette"
     >
       <svg class="w-3.5 h-3.5 text-ink-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -20,7 +20,7 @@ import { PALETTES } from '../lib/palette';
     </summary>
 
     <div
-      class="absolute right-0 mt-1.5 w-56 rounded-lg bg-surface-0 border border-line-200 shadow-overlay p-1.5 z-50 focus:outline-none"
+      class="absolute right-0 mt-1.5 w-56 rounded-2xl bg-surface-0 border border-line-200 shadow-overlay p-1.5 z-50 focus:outline-none"
       role="menu"
       aria-orientation="vertical"
       tabindex="-1"
@@ -36,7 +36,7 @@ import { PALETTES } from '../lib/palette';
             return (
               <button
                 type="button"
-                class="palette-item w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium text-ink-800 hover:bg-surface-50 transition-colors text-left cursor-pointer group/item select-none"
+                class="palette-item w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-medium text-ink-800 hover:bg-surface-50 transition-all text-left cursor-pointer group/item select-none active:scale-[0.98]"
                 role="menuitem"
                 data-palette-id={p.id}
                 data-palette-color={p.accentColor}
