@@ -20,6 +20,7 @@ export const de: Translations = {
     checker: 'Prüfer',
     maker: 'Ersteller',
     templates: 'Vorlagen',
+    howToMake: 'Anleitung',
     sizeGuide: 'Größen-Guide',
     safeAreaGuide: 'Safe-Area-Leitfaden',
   },
@@ -33,6 +34,8 @@ export const de: Translations = {
     generator: 'Banner-Ersteller (Neu erstellen)',
     templateGallery: 'Kuratierte Vorlagen-Galerie',
     colGuides: 'Leitfäden',
+    guideHowToMake: 'YouTube Banner Erstellen Anleitung',
+    guideBestTemplates: 'Beste Vorlagen & Anpassungs-Leitfaden',
     guideSize: 'YouTube Banner Maße & Richtlinien',
     guideSafeArea: 'Sicherheitsbereich & Zuschnittregeln',
     colTrust: 'Transparenz & Rechtliches',
@@ -51,7 +54,7 @@ export const de: Translations = {
       'YouTube ist eine eingetragene Marke von Google LLC. Dieses Tool ist unabhängig entwickelt.',
   },
   home: {
-    metaTitle: 'YouTube Banner Größe: Kostenloser Maker & Vorlagen',
+    metaTitle: 'YouTube Banner Erstellen Kostenlos: Kanalbild Maker',
     metaDesc:
       `Die offizielle YouTube Banner Größe ist ${CANVAS.width}×${CANVAS.height} px. Passe Kanalbilder kostenlos an und erstelle sichere Designs ohne mobile Zuschnitte.`,
     badgePrivacy: '100% Client-Datenschutz im Browser',
@@ -187,7 +190,7 @@ export const de: Translations = {
     fieldPhoto: "Foto",
     fieldGradient: "Verlauf",
     fieldColor: "Farbe",
-    metaTitle: 'YouTube Banner Vorlagen: Kostenlose Kanalbilder',
+    metaTitle: 'YouTube Banner Vorlagen: Kostenlos & Sicher',
     metaDesc:
       'Entdecke kostenlose YouTube Banner Vorlagen mit geprüftem Sicherheitsbereich für Mobilgeräte. Vorlagen für Gaming, Tech, Podcast, Musik und Vlogs.',
     title: 'Kuratierte YouTube Banner Vorlagen',
@@ -219,7 +222,7 @@ export const de: Translations = {
       handoffBtn: 'Im Resizer Korrigieren →',
     },
     maker: {
-      metaTitle: 'YouTube Banner Erstellen: Gratis Kanalbild Maker',
+      metaTitle: 'YouTube Banner Erstellen: Gratis Generator',
       metaDesc:
         'Erstelle professionelle YouTube-Banner online mit Sicherheitsbereich-Hilfslinien. Kostenlose Vorlagen, moderne Typografie und ohne Wasserzeichen.',
       title: 'YouTube Banner Generator (Erstellen)',

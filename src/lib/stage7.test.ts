@@ -73,6 +73,8 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-size</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-safe-area</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-1024-x-576</loc>');
+      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/how-to-make-a-youtube-banner</loc>');
+      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/how-to-choose-a-youtube-banner-template</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/templates</loc>');
 
       // AdSense Trust suite
@@ -89,7 +91,7 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
 
       // Count total URLs in sitemap
       const urlCount = (content.match(/<loc>/g) || []).length;
-      expect(urlCount).toBe(22);
+      expect(urlCount).toBe(24);
     });
   });
 

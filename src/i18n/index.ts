@@ -2,7 +2,7 @@
  * YouTubeBannerMaker.com — i18n & International SEO Engine
  * Handles locale routing, hreflang generation, and localized copy lookup.
  */
-import { SITE_URL } from '../lib/seo';
+import { SITE_URL, STATIC_PAGES_SEO } from '../lib/seo';
 
 export const LOCALES = ['en', 'es', 'de', 'fr', 'pt-br', 'it', 'ja'] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -274,6 +274,10 @@ export function getStaticPageSeo(
       return { title: dict.guideSafeArea.metaTitle, desc: dict.guideSafeArea.metaDesc };
     case '/guides/youtube-banner-1024-x-576':
       return { title: dict.guide1024.metaTitle, desc: dict.guide1024.metaDesc };
+    case '/guides/how-to-make-a-youtube-banner':
+      return STATIC_PAGES_SEO['/guides/how-to-make-a-youtube-banner'];
+    case '/guides/how-to-choose-a-youtube-banner-template':
+      return STATIC_PAGES_SEO['/guides/how-to-choose-a-youtube-banner-template'];
     case '/templates':
       return { title: dict.templatesHub.metaTitle, desc: dict.templatesHub.metaDesc };
     case '/tools/youtube-banner-resizer':

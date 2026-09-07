@@ -34,6 +34,8 @@ if (fs.existsSync(distDir)) {
     'index.html',
     'guides/youtube-banner-size/index.html',
     'guides/youtube-banner-safe-area/index.html',
+    'guides/how-to-make-a-youtube-banner/index.html',
+    'guides/how-to-choose-a-youtube-banner-template/index.html',
     'templates/index.html',
     '404.html',
   ];

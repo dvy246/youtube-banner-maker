@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema } from '../../lib/seo';
+import { CANVAS, SAFE_PX } from '../../lib/spec';
+
+const path = '/guides/youtube-banner-background';
+const seo = STATIC_PAGES_SEO[path];
+
+const faqs = [
+  {
+    question: 'What size should a YouTube banner background be?',
+    answer: `Your YouTube banner background image should be exactly ${CANVAS.width} × ${CANVAS.height} pixels. This is the maximum canvas size that YouTube uses to display your banner on large smart TVs.`,
+  },
+  {
+    question: 'Can I use a plain black YouTube banner?',
+    answer: `Yes, a minimal black YouTube banner is highly popular in tech, gaming, and minimalist niches. You can easily create a solid black or dark gray background and place a crisp white logo in the dead center (${SAFE_PX.full.width} × ${SAFE_PX.full.height} px safe area).`,
+  },
+  {
+    question: 'Where can I find an aesthetic YouTube banner background?',
+    answer: `You can use high-quality stock photography sites (like Unsplash or Pexels) to find aesthetic landscapes, abstract gradients, or textures. Once you have an image, drop it into our free YouTube Banner Maker to perfectly crop and center it.`,
+  },
+  {
+    question: 'How do I add text to a blank YouTube banner template?',
+    answer: `Use our free YouTube Banner Maker. Select a blank or gradient background, then use the typography tools to type your channel name. The tool will automatically restrict your text to the mobile safe area, ensuring it never gets cut off.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://youtubebannermaker.com' },
+  { name: 'Guides', url: 'https://youtubebannermaker.com/guides' },
+  { name: 'YouTube Banner Backgrounds', url: `https://youtubebannermaker.com${path}` },
+];
+
+const jsonLd = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema({
+    title: seo.title,
+    description: seo.desc,
+    path,
+  }),
+  getFAQSchema(faqs),
+];
+---
+
+<BaseLayout 
+  title={seo.title} 
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header />
+  
+  <main class="w-full flex flex-col min-h-screen bg-surface-0 pb-20">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 w-full pt-16 sm:pt-24 flex flex-col gap-12 sm:gap-16">
+      
+      <!-- Hero Header -->
+      <header class="flex flex-col items-start gap-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          <span class="text-xs font-bold text-accent tracking-wide uppercase">Design Guide</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink-950 leading-[1.1]">
+          YouTube Banner Backgrounds: Sizes, Ideas & Templates
+        </h1>
+        <p class="text-lg sm:text-xl text-ink-600 max-w-2xl leading-relaxed mt-2">
+          Discover how to choose an aesthetic YouTube banner background, the exact dimensions you need, and how to use blank templates to design your channel art.
+        </p>
+      </header>
+
+      <AdSlot slotId="guide-top" class="my-2" />
+
+      <!-- Content -->
+      <div class="flex flex-col gap-10">
+        
+        <!-- Section 1 -->
+        <section class="flex flex-col gap-4">
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            The Right Size for a YouTube Banner Background
+          </h2>
+          <div class="prose prose-ink max-w-none">
+            <p class="text-ink-600 leading-relaxed">
+              When sourcing an image for your channel's background, the dimensions matter. A YouTube banner background must cover the entire <strong>{CANVAS.width} × {CANVAS.height} pixels</strong> TV display area to avoid ugly letterboxing or stretching.
+            </p>
+            <p class="text-ink-600 leading-relaxed mt-4">
+              Even if a viewer is on a smartphone, YouTube loads the full 2560×1440 image and crops it dynamically. If you start with a <em>blank YouTube banner template</em> or a high-resolution photograph, ensure it meets this 16:9 ratio before you add any text.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="flex flex-col gap-4">
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Aesthetic YouTube Banner Ideas
+          </h2>
+          <div class="prose prose-ink max-w-none">
+            <p class="text-ink-600 leading-relaxed">
+              A background sets the vibe of your channel. The best backgrounds are visually interesting but don't compete with your text. Consider these approaches:
+            </p>
+            <ul class="list-disc pl-5 mt-4 space-y-2 text-ink-600">
+              <li><strong>The Black YouTube Banner:</strong> A solid black or dark charcoal background instantly conveys a premium, tech, or minimalist aesthetic. It provides massive contrast for white or neon text.</li>
+              <li><strong>Abstract Gradients:</strong> Smooth, blurred color transitions (like our Cyberpunk or Sunset Luxe presets) add depth without adding distracting details.</li>
+              <li><strong>Desaturated Photography:</strong> Using a workspace, gaming setup, or landscape photo? Lower the contrast and add a slight dark overlay so your channel name pops.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="bg-surface-50 border border-line-200 rounded-2xl p-6 sm:p-8 flex flex-col gap-5 text-center items-center mt-4 shadow-sm relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-surface-0/50 to-surface-50/50 pointer-events-none"></div>
+          <h3 class="text-xl font-bold text-ink-950 relative z-10">Turn Your Background into a Full Banner</h3>
+          <p class="text-ink-600 max-w-lg relative z-10">
+            Have a great background image? Drop it into our free Maker, add your text in the safe area, and download a YouTube-ready 2560×1440 image.
+          </p>
+          <a href="/tools/youtube-banner-maker" class="relative z-10 h-12 px-8 rounded-full bg-accent text-white font-semibold flex items-center justify-center hover:bg-accent-600 active:scale-[0.98] transition-all shadow-md mt-2">
+            Open YouTube Banner Maker &rarr;
+          </a>
+        </section>
+        
+        <AdSlot slotId="guide-mid" class="my-4" />
+
+      </div>
+
+      <!-- FAQ Section -->
+      <section class="flex flex-col gap-6 pt-4 border-t border-line-200">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Backgrounds & Blank Templates FAQs
+          </h2>
+          <p class="text-ink-600">
+            Common questions about finding and formatting your channel art background.
+          </p>
+        </div>
+        <FaqAccordion faqs={faqs} />
+      </section>
+
+    </article>
+  </main>
+  
+  <Footer />
+</BaseLayout>

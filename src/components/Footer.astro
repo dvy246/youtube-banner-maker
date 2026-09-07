@@ -67,6 +67,16 @@ const dict = getTranslations(locale);
         <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">{dict.footer.colGuides}</h3>
         <ul class="space-y-1 text-xs">
           <li>
+            <a href={getLocalizedUrl('/guides/how-to-make-a-youtube-banner', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.guideHowToMake}
+            </a>
+          </li>
+          <li>
+            <a href={getLocalizedUrl('/guides/how-to-choose-a-youtube-banner-template', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.guideBestTemplates}
+            </a>
+          </li>
+          <li>
             <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
               {dict.footer.guideSize}
             </a>

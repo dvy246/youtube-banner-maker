@@ -13,6 +13,8 @@ const CORE_ROUTES = [
   { path: '/guides/youtube-banner-size', changefreq: 'weekly', priority: '0.8' },
   { path: '/guides/youtube-banner-safe-area', changefreq: 'weekly', priority: '0.8' },
   { path: '/guides/youtube-banner-1024-x-576', changefreq: 'weekly', priority: '0.8' },
+  { path: '/guides/how-to-make-a-youtube-banner', changefreq: 'weekly', priority: '0.8' },
+  { path: '/guides/how-to-choose-a-youtube-banner-template', changefreq: 'weekly', priority: '0.8' },
   { path: '/templates', changefreq: 'weekly', priority: '0.8' },
   { path: '/about', changefreq: 'monthly', priority: '0.5' },
   { path: '/contact', changefreq: 'monthly', priority: '0.5' },
@@ -78,8 +80,8 @@ const allRoutes = [...CORE_ROUTES, ...nicheRoutes];
 // Hard rule: /404 is strictly excluded from sitemap.xml
 const filteredRoutes = allRoutes.filter((r) => r.path !== '/404' && !r.path.includes('404'));
 
-if (filteredRoutes.length !== 22) {
-  console.warn(`WARNING: Expected 22 routes in sitemap, found ${filteredRoutes.length}`);
+if (filteredRoutes.length !== 24) {
+  console.warn(`WARNING: Expected 24 routes in sitemap, found ${filteredRoutes.length}`);
 }
 
 const LOCALES = [
@@ -158,7 +160,7 @@ for (const loc of LOCALES.filter((l) => l.code !== 'en')) {
   fs.writeFileSync(path.resolve(`public/sitemap-${loc.code}.xml`), locXml, 'utf-8');
 }
 
-console.log(`Generated public/sitemap.xml (22 routes with reciprocal hreflang), per-locale sitemaps (154 total URLs across 7 locales), and sitemap-index.xml.`);
+console.log(`Generated public/sitemap.xml (${filteredRoutes.length} routes with reciprocal hreflang), per-locale sitemaps (${filteredRoutes.length * LOCALES.length} total URLs across ${LOCALES.length} locales), and sitemap-index.xml.`);
 
 // Also write to dist/ if dist exists
 const distDir = path.resolve('dist');

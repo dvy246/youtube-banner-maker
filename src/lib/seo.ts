@@ -82,11 +82,11 @@ export const NICHE_TITLES: Record<string, { name: string; title: string; desc: s
 
 export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> = {
   '/': {
-    title: 'YouTube Banner Size: Free Maker, Resizer & Templates',
-    desc: 'The official YouTube banner size is 2560×1440 px. Resize, check safe areas, and create free channel art that fits every device without cropping.',
+    title: 'Free YouTube Banner Maker: Channel Art That Fits',
+    desc: 'The official YouTube banner maker. Resize, check safe areas, and create free channel art that fits every device without cropping.',
   },
   '/guides/youtube-banner-size': {
-    title: 'YouTube Banner Size: 2560×1440, Safe Area & Device Crops',
+    title: 'YouTube Banner Size: Dimensions, 2560×1440 & Safe Area',
     desc: 'The correct YouTube banner size is 2560×1440 px (min 2048×1152), max 6 MB. Safe area details, device crops, and why channel art gets cut off.',
   },
   '/guides/youtube-banner-safe-area': {
@@ -97,6 +97,18 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
     title: 'YouTube Banner 1024x576: Why Upload Fails & Correct Size',
     desc: 'Why YouTube rejects 1024×576 banners. Learn the 16:9 ratio math, minimum 2048×1152 requirements, and how to upscale safely to 2560×1440 for free.',
   },
+  '/guides/how-to-make-a-youtube-banner': {
+    title: 'How to Make a YouTube Banner: Step-by-Step Creator Guide',
+    desc: 'Learn how to make a YouTube banner that fits every device. Step-by-step layout rules, safe-area design, typography, and free browser tools.',
+  },
+  '/guides/how-to-choose-a-youtube-banner-template': {
+    title: 'How to Choose the Best YouTube Banner Template (2026 Guide)',
+    desc: 'Find the best YouTube banner template for your channel niche. Learn layout archetypes, color contrast rules, and how to customize in browser.',
+  },
+  '/guides/youtube-banner-background': {
+    title: 'YouTube Banner Backgrounds: Sizes, Ideas & Free Templates',
+    desc: 'Find the perfect YouTube banner background. Learn the correct 2560x1440 dimensions, explore aesthetic ideas, and download blank templates.',
+  },
   '/tools/youtube-banner-resizer': {
     title: 'YouTube Banner Resizer: Fit Any Image to 2560×1440',
     desc: 'Resize and crop any image to the exact 2560×1440 YouTube banner dimensions. Cover fit, mobile safe area preview, sRGB export, no signup or watermark.',
@@ -106,11 +118,11 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
     desc: 'Check your YouTube banner against mobile, desktop, tablet, and TV safe areas. Instant crop verdict and safe-area check with zero signup or watermarks.',
   },
   '/tools/youtube-banner-maker': {
-    title: 'YouTube Banner Generator: Safe Templates for All Devices',
+    title: 'YouTube Banner Creator and Generator: Free Safe Templates',
     desc: 'Design a custom YouTube banner that never cuts off on mobile or desktop. Curated templates, real device previews, instant free 2560×1440 export.',
   },
   '/templates': {
-    title: 'Free YouTube Banner Templates: Tested for Every Device',
+    title: 'Free YouTube Banner Templates: Download 2560x1440',
     desc: 'Browse verified YouTube banner templates crafted for gaming, tech, podcasting, and vlogs. Engineered to fit mobile and desktop safe areas cleanly.',
   },
   '/about': {

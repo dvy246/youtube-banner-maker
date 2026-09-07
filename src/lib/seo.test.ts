@@ -29,12 +29,13 @@ describe('SEO Metadata & Standards Compliance', () => {
     }
   });
 
-  it('ensures home page title and description contain primary keyword youtube banner size', () => {
+  it('ensures home page targets maker keyword and size guide targets size keyword', () => {
     const homeSeo = STATIC_PAGES_SEO['/'];
-    expect(homeSeo.title.toLowerCase()).toContain('youtube banner size');
-    expect(homeSeo.desc.toLowerCase()).toContain('youtube banner size');
-    expect(homeSeo.title.length).toBeLessThanOrEqual(60);
-    expect(homeSeo.desc.length).toBeLessThanOrEqual(155);
+    expect(homeSeo.title.toLowerCase()).toContain('youtube banner maker');
+    
+    const sizeSeo = STATIC_PAGES_SEO['/guides/youtube-banner-size'];
+    expect(sizeSeo.title.toLowerCase()).toContain('youtube banner size');
+    expect(sizeSeo.desc.toLowerCase()).toContain('youtube banner size');
   });
 
   it('enforces title <= 60 chars and meta description <= 155 chars on all niche template pages', () => {

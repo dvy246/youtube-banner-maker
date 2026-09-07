@@ -20,6 +20,7 @@ export const fr: Translations = {
     checker: 'Vérificateur',
     maker: 'Créateur',
     templates: 'Modèles',
+    howToMake: 'Comment Créer',
     sizeGuide: 'Guide des Tailles',
     safeAreaGuide: 'Guide Zone de Sécurité',
   },
@@ -33,6 +34,8 @@ export const fr: Translations = {
     generator: 'Générateur de Bannière (Créer)',
     templateGallery: 'Galerie de Modèles de Bannières',
     colGuides: 'Guides',
+    guideHowToMake: 'Comment Créer une Bannière YouTube',
+    guideBestTemplates: 'Meilleurs Modèles et Guide de Personnalisation',
     guideSize: 'Tailles et Formats de Bannières YouTube',
     guideSafeArea: 'Zone de Sécurité & Règles de Rognage',
     colTrust: 'Confiance & Légal',
@@ -51,7 +54,7 @@ export const fr: Translations = {
       'YouTube est une marque déposée de Google LLC. Cet outil est développé de façon indépendante.',
   },
   home: {
-    metaTitle: 'Taille Bannière YouTube: Créateur & Modèles Gratuits',
+    metaTitle: 'Créateur de Bannière YouTube Gratuit en Ligne',
     metaDesc:
       `La taille officielle de bannière YouTube est ${CANVAS.width}×${CANVAS.height} px. Redimensionnez et créez des bannières adaptées aux mobiles, PC et TV sans coupure.`,
     badgePrivacy: 'Confidentialité 100% Côté Client',
@@ -145,7 +148,7 @@ export const fr: Translations = {
       'Cet outil est fourni "en l\'état". Nous nous efforçons de proposer la reproduction mathématique la plus rigoureuse des spécifications officielles de YouTube Studio.',
   },
   guideSize: {
-    metaTitle: 'Taille Bannière YouTube: 2560x1440 & Zone de Sécurité',
+    metaTitle: 'Taille et Dimension Bannière YouTube: 2560x1440',
     metaDesc:
       `Guide complet des dimensions de bannière YouTube: ${CANVAS.width}×${CANVAS.height} px, zone sécurisée mobile, limite de 6 Mo et conseils contre les coupures.`,
     title: 'Guide Taille Bannière YouTube: Dimensions & Zone Sécurisée',
@@ -187,7 +190,7 @@ export const fr: Translations = {
     fieldPhoto: "Photo",
     fieldGradient: "Dégradé",
     fieldColor: "Couleur",
-    metaTitle: 'Modèles de Bannière YouTube: Templates Gratuits',
+    metaTitle: 'Modèle Bannière YouTube: Télécharger Gratuitement',
     metaDesc:
       'Collection de modèles de bannière YouTube conformes à la zone sécurisée mobile. Templates pour gaming, tech, podcast, musique et vlogs.',
     title: 'Modèles de Bannières pour YouTube',
@@ -219,7 +222,7 @@ export const fr: Translations = {
       handoffBtn: 'Corriger dans le Redimensionneur →',
     },
     maker: {
-      metaTitle: 'Créateur de Bannière YouTube: Outil Gratuit en Ligne',
+      metaTitle: 'Créer une Bannière YouTube: Outil et Modèles',
       metaDesc:
         'Créez une bannière YouTube professionnelle avec repères de zone de sécurité. Modèles gratuits, typographie moderne et sans filigrane.',
       title: 'Créateur de Bannière YouTube (Générer)',

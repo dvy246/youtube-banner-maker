@@ -19,6 +19,7 @@ export const en = {
     checker: 'Checker',
     maker: 'Maker',
     templates: 'Templates',
+    howToMake: 'How to Make',
     sizeGuide: 'Size Guide',
     safeAreaGuide: 'Safe Area Guide',
   },
@@ -32,6 +33,8 @@ export const en = {
     generator: 'Banner Generator (Create Door)',
     templateGallery: 'Curated Template Gallery',
     colGuides: 'Guides',
+    guideHowToMake: 'How to Make a YouTube Banner',
+    guideBestTemplates: 'Best Templates & Customization Guide',
     guideSize: 'YouTube Banner Size & Specs',
     guideSafeArea: 'Safe Area Math & Crop Rules',
     colTrust: 'Trust & Legal',
@@ -50,9 +53,9 @@ export const en = {
       'YouTube is a registered trademark of Google LLC. This tool is independently built.',
   },
   home: {
-    metaTitle: 'YouTube Banner Size: Free Maker, Resizer & Templates',
+    metaTitle: 'Free YouTube Banner Maker: Channel Art That Fits',
     metaDesc:
-      `The official YouTube banner size is ${CANVAS.width}×${CANVAS.height} px. Resize, check safe areas, and create free channel art that fits every device without cropping.`,
+      `The official YouTube banner maker. Resize, check safe areas, and create free channel art that fits every device without cropping.`,
     badgePrivacy: '100% Client-Side Privacy',
     badgeNoAccount: 'No Sign-Up or Accounts',
     badgeNoWatermark: 'No Watermark',
@@ -144,7 +147,7 @@ export const en = {
       'This tool is provided "as is" without warranty of any kind. We strive to provide the most accurate mathematical representation of YouTube Studio banner specifications.',
   },
   guideSize: {
-    metaTitle: 'YouTube Banner Size: 2560×1440, Safe Area & Device Crops',
+    metaTitle: 'YouTube Banner Size: Dimensions, 2560×1440 & Safe Area',
     metaDesc:
       `The correct YouTube banner size is ${CANVAS.width}×${CANVAS.height} px (min 2048×1152), max 6 MB. Safe area details, device crops, and why channel art gets cut off.`,
     title: 'YouTube Banner Size Guide: Dimensions & Safe Area',
@@ -186,7 +189,7 @@ export const en = {
     fieldPhoto: "Photo",
     fieldGradient: "Gradient",
     fieldColor: "Color",
-    metaTitle: 'Free YouTube Banner Templates: Tested for Mobile Safe Area',
+    metaTitle: 'Free YouTube Banner Templates: Download 2560x1440',
     metaDesc:
       'Explore free, customizable YouTube banner templates designed for mobile safe area compliance. Filter by gaming, tech, podcast, music, and more.',
     title: 'Curated YouTube Banner Templates',
@@ -218,7 +221,7 @@ export const en = {
       handoffBtn: 'Fix in Resizer Editor →',
     },
     maker: {
-      metaTitle: 'YouTube Banner Maker: Free Online Channel Art Creator',
+      metaTitle: 'YouTube Banner Creator and Generator: Free Safe Templates',
       metaDesc:
         'Create YouTube channel banners online with safe-area guides. Clean typography, customizable templates, 100% browser-based with no watermark.',
       title: 'YouTube Banner Maker (Create Door)',

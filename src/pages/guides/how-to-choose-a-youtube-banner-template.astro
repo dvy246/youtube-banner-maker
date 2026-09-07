@@ -1,0 +1,384 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema } from '../../lib/seo';
+import { CANVAS, SAFE_PX, MAX_UPLOAD_BYTES } from '../../lib/spec';
+
+const path = '/guides/how-to-choose-a-youtube-banner-template';
+const seo = STATIC_PAGES_SEO[path];
+const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
+
+const faqs = [
+  {
+    question: 'How do I know if a YouTube banner template will work on mobile?',
+    answer: `Check whether all text, logos, and focal subjects are contained within the centered ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe zone. If a template spreads headings across the outer corners or places taglines along the bottom edge, it will be cropped on smartphones. Every layout in our curated catalog is pre-tested against official mobile boundaries.`,
+  },
+  {
+    question: 'What is the best YouTube banner template style for a business channel?',
+    answer: `For business, consulting, and finance channels, the Split-Left or Stacked layout with a dark navy or warm pearl palette performs best. It places your professional portrait or authority monogram on the left, paired with a high-contrast headline, one-line value proposition, and crisp upload schedule.`,
+  },
+  {
+    question: 'Can I customize a YouTube banner template without graphic design software?',
+    answer: `Yes. You can customize any layout directly in your browser using our free YouTube Banner Maker. Select a niche template, adjust the headline and subtitle, change color themes with the 1-click aesthetic harmonizer, and download a ready-to-upload ${CANVAS.width} × ${CANVAS.height} pixel PNG file.`,
+  },
+  {
+    question: 'How do I prevent my template text from blending into the background?',
+    answer: `Look for templates featuring contrast defense mechanisms: either a subtle studio scrim (radial ambient vignette) or an Aero Plate frosted glass backplate. These elements ensure high contrast between your typography and background photography, maintaining readability across both light and dark display modes.`,
+  },
+  {
+    question: 'Why do many Canva or Photoshop banner templates get cropped on YouTube?',
+    answer: `Many third-party templates are designed for standard 1920×1080 screens rather than YouTube's ${CANVAS.width} × ${CANVAS.height} canvas, or they ignore the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel safe zone. When uploaded to YouTube Studio, the outer margins are truncated on mobile and desktop viewports.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Templates', url: '/templates' },
+  { name: 'How to Choose the Best Template', url: path },
+];
+
+const jsonLd = [
+  getBreadcrumbSchema(breadcrumbs),
+  getTechArticleSchema({
+    title: seo.title,
+    description: seo.desc,
+    path,
+    datePublished: '2026-03-01T00:00:00Z',
+    dateModified: '2026-09-07T00:00:00Z',
+  }),
+  getFAQSchema(faqs),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Hero / Header -->
+      <header class="space-y-6 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href="/" class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <a href="/templates" class="hover:text-ink-950 transition-colors">Templates</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">How to Choose a Template</span>
+        </nav>
+
+        <div class="space-y-3">
+          <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+            ARCHITECTURAL SELECTION GUIDE · 2026
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+            How to Choose the Best YouTube Banner Template
+          </h1>
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+            A practical evaluation framework to select, customize, and implement channel art templates that communicate authority and fit every screen size.
+          </p>
+        </div>
+
+        <!-- E-E-A-T Author & Citation Byline -->
+        <div class="flex flex-wrap items-center gap-3 text-xs text-ink-600 border-t border-line-200 pt-4">
+          <span>By <strong>Divy Yadav & Channel Branding Operations Team</strong></span>
+          <span>·</span>
+          <span>Verified against <a href="https://support.google.com/youtube/answer/2657964" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent font-medium">Official YouTube Studio Specifications</a></span>
+          <span>·</span>
+          <span>Updated September 2026</span>
+          <span>·</span>
+          <span>100% Client-Side Privacy</span>
+        </div>
+
+        <!-- Direct Answer Card (Snippet Target & AI Overviews Ready) -->
+        <div class="p-6 rounded-2xl border border-accent/20 bg-surface-50 space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-mono uppercase tracking-wider font-bold text-accent">
+              Core Definition: What Makes a Great Banner Template?
+            </span>
+            <p class="text-base sm:text-lg text-ink-950 font-medium leading-snug">
+              The best YouTube banner template is one where all vital text, portraits, and branding fit strictly within the central <strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} pixel</strong> mobile safe area on a full <strong>{CANVAS.width} × {CANVAS.height} pixel</strong> canvas. It uses high-contrast typography, pairs with your channel icon, and adapts cleanly between light and dark themes.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs border-t border-line-200">
+            <div>
+              <span class="text-ink-500 block">Mobile Safe Zone</span>
+              <strong class="font-mono text-ink-950 tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</strong>
+            </div>
+            <div>
+              <span class="text-ink-500 block">Contrast Threshold</span>
+              <strong class="font-mono text-ink-950">&ge; 4.5:1 WCAG AA</strong>
+            </div>
+            <div>
+              <span class="text-ink-500 block">Avatar Synergy</span>
+              <strong class="font-mono text-ink-950">Left-Side Balanced</strong>
+            </div>
+            <div>
+              <span class="text-ink-500 block">Export Standard</span>
+              <strong class="font-mono text-ink-950 tabular-nums">&le; {maxUploadMb} MB sRGB</strong>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Section 1: The 5-Point Quality Checklist -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            01 · Quality Audit Checklist
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            The 5-Point Quality Checklist Before Choosing Any Template
+          </h2>
+          <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+            Before committing to a template design, evaluate it against these five technical criteria to ensure it does not break when uploaded to YouTube Studio.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">1</span>
+              <h3 class="text-base font-bold text-ink-950">Centered Safe-Area Geometry</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              Examine where the channel title and tagline reside. If any lettering sits in the top 35% or bottom 35% of the 16:9 canvas, that text will be cropped on desktop viewports. If it extends beyond the central {SAFE_PX.full.width} pixels horizontally, mobile users will see sliced words.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">2</span>
+              <h3 class="text-base font-bold text-ink-950">Contrast Resilience Across Themes</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              YouTube viewers use both light mode and dark mode interfaces. A template must feature sufficient background separation—via radial scrims, frosted glass backplates, or dark underlays—so that text never washes out against bright imagery.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">3</span>
+              <h3 class="text-base font-bold text-ink-950">Typographic Hierarchy & Glanceability</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              A high-performing banner establishes three clear typographic tiers: a primary channel title (display font, 52–72 pt equivalent), a focused value proposition (bold sans-serif, 20–28 pt equivalent), and secondary badges or schedules (monospace or small sans, 14–18 pt).
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">4</span>
+              <h3 class="text-base font-bold text-ink-950">Channel Profile Icon Clearance</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              On desktop browsers, your circular YouTube channel icon sits beneath the banner. On mobile, however, the profile avatar partially overlaps the bottom-left area of the header. Ensure your template leaves adequate negative breathing room on the bottom-left edge.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">5</span>
+              <h3 class="text-base font-bold text-ink-950">TV Aspect Ratio Bleed Quality</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              While mobile is the primary view, television apps display the entire {CANVAS.width} &times; {CANVAS.height} canvas. The outer margins must not look unfinished or empty; they should feature tasteful ambient textures, gradients, or background photography that extends seamlessly to all edges.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Niche Template Archetypes -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            02 · Category Breakdown
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            YouTube Banner Ideas: Matching Templates to Your Niche
+          </h2>
+          <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+            If you're looking for YouTube banner ideas, starting with a layout built for your content category is the fastest way to get inspired. Explore how our curated templates serve specific content creator needs:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <!-- Gaming -->
+          <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Gaming & Esports</span>
+              <a href="/templates/gaming" class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Gaming &rarr;</a>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">High-Energy Cyber & Neo-Noir</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Features dark carbon backdrops, vibrant neon accents (magenta, cyan, electric lime), and Split-Right mascot positioning. Built to withstand high-saturation gameplay screenshots without losing font legibility.
+            </p>
+          </div>
+
+          <!-- Tech -->
+          <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Tech & Coding</span>
+              <a href="/templates/tech" class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Tech &rarr;</a>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">Monochrome Developer Minimalist</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Utilitarian layouts featuring monospace accents (JetBrains Mono), subtle gridlines, and True Center or Stacked geometry. Emphasizes technical authority, GitHub handles, and clean release schedules.
+            </p>
+          </div>
+
+          <!-- Podcast -->
+          <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Podcasts & Talk Shows</span>
+              <a href="/templates/podcast" class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Podcast &rarr;</a>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">Editorial Studio & Audio Wave</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Bold serif titles paired with platform badges (Spotify, Apple Podcasts, YouTube). Designed to establish instant journalistic trust and promote weekly episode release days.
+            </p>
+          </div>
+
+          <!-- Business -->
+          <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Business & Agency</span>
+              <a href="/templates/business" class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Business &rarr;</a>
+            </div>
+            <h3 class="text-lg font-bold text-ink-950">Executive Split & Warm Pearl</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Professional creator layouts featuring portrait cutouts on the left, clear revenue/coaching positioning on the right, and subtle gold or navy ambient accents.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Customization Playbook -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            03 · In-Browser Customization
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            How to Customize a Template in the YouTube Banner Maker
+          </h2>
+          <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+            Once you have selected a starting template from our <a href="/templates" class="underline text-accent font-medium">template catalog</a>, customize it using our browser-native editor:
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <h3 class="text-sm font-bold text-ink-950">Step 1: Open Template in Generator</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Click "Customize in Maker" on any template card. The design loads instantly into the local HTML5 canvas with all layers mapped to your selected palette.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <h3 class="text-sm font-bold text-ink-950">Step 2: Edit Title, Tagline & Schedule</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Type your channel name and core value proposition. The editor automatically adjusts font size and line breaks to prevent text from overflowing the safe zone.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <h3 class="text-sm font-bold text-ink-950">Step 3: Switch Aesthetic Vibe Harmonizer</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Test different visual tones with 1-click aesthetic presets (Dark Noir, Warm Pearl, Cyberpunk Neon, Stealth Minimalist, Sunset Luxe). All text colors, borders, and gradient stops update atomically.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <h3 class="text-sm font-bold text-ink-950">Step 4: Toggle Aero Plate or Studio Scrim</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              If your background contains detailed photography or high-contrast textures, activate the Aero Plate toggle or adjust the Contrast Guard slider to isolate text cleanly.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
+            <h3 class="text-sm font-bold text-ink-950">Step 5: Export Banner & Coordinated Avatar</h3>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Download your full {CANVAS.width} &times; {CANVAS.height} pixel banner PNG, then click "Download 800&times;800 Avatar" to export a matching profile picture with identical colors and branding.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Companion Guide Cross-Link -->
+      <section class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono uppercase tracking-wider font-semibold text-accent">Companion Creator Masterclass</span>
+          <h2 class="text-xl font-bold text-ink-950">How to Make a YouTube Banner (Step-by-Step)</h2>
+          <p class="text-xs sm:text-sm text-ink-600 measure-prose">
+            Prefer designing from scratch with custom photography and custom layout rules? Read our foundational creation masterclass.
+          </p>
+        </div>
+        <a
+          href="/guides/how-to-make-a-youtube-banner"
+          class="h-10 px-5 rounded-full bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs font-medium inline-flex items-center gap-1.5 transition-all shadow-xs active:scale-[0.98] shrink-0"
+        >
+          <span>Read Masterclass</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </section>
+
+      <!-- Section 5: FAQs -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            04 · Frequently Asked Questions
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Frequently Asked Questions About Choosing Banner Templates
+          </h2>
+        </div>
+        <FaqAccordion faqs={faqs} />
+      </section>
+
+      <!-- Section 6: Next Steps / Internal Links Grid -->
+      <section class="border-t border-line-200 pt-12 space-y-6">
+        <h2 class="text-base font-bold text-ink-950">Explore Curated Templates & Tools</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <a
+            href="/templates"
+            class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
+          >
+            <span class="text-xs font-bold text-ink-950 block">Template Catalog &rarr;</span>
+            <span class="text-xs text-ink-600 block">Browse all verified layouts.</span>
+          </a>
+          <a
+            href="/tools/youtube-banner-maker"
+            class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
+          >
+            <span class="text-xs font-bold text-ink-950 block">Banner Generator &rarr;</span>
+            <span class="text-xs text-ink-600 block">Customize templates live in browser.</span>
+          </a>
+          <a
+            href="/tools/youtube-banner-checker"
+            class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
+          >
+            <span class="text-xs font-bold text-ink-950 block">Safe Area Checker &rarr;</span>
+            <span class="text-xs text-ink-600 block">Test cross-device viewport crops.</span>
+          </a>
+          <a
+            href="/guides/youtube-banner-size"
+            class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
+          >
+            <span class="text-xs font-bold text-ink-950 block">Banner Size Guide &rarr;</span>
+            <span class="text-xs text-ink-600 block">Official YouTube dimensions.</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer currentPath={path} />
+</BaseLayout>
