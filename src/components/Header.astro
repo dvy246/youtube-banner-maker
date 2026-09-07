@@ -67,7 +67,7 @@ const navItems = [
       <LanguagePicker currentPath={currentPath} currentLocale={locale} />
 
       <!-- Dark / White Mode Slider Toggle -->
-      <ThemeToggle />
+      <ThemeToggle id="theme-toggle" />
 
       <!-- Color Palette Picker -->
       <PalettePicker currentPath={currentPath} />
@@ -86,7 +86,7 @@ const navItems = [
     <!-- Mobile Navigation & Actions -->
     <div class="flex md:hidden items-center gap-1.5">
       <LanguagePicker currentPath={currentPath} currentLocale={locale} />
-      <ThemeToggle />
+      <ThemeToggle id="theme-toggle-mobile" />
       <PalettePicker currentPath={currentPath} />
       <details class="palette-dropdown group relative">
         <summary

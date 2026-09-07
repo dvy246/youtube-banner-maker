@@ -30,10 +30,11 @@ const {
 const canonicalUrl = getCanonicalUrl(path);
 const hreflangLinks = getHreflangLinks(path);
 const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
+const is404 = path === '/404' || path.endsWith('/404');
 ---
 
 <!doctype html>
-<html lang={locConfig.htmlLang} class="dark" data-theme="dark" data-palette="pearl">
+<html lang={locConfig.htmlLang} data-theme="light" data-palette="pearl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,7 +42,7 @@ const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
       (function () {
         try {
           var t = localStorage.getItem('ytbm-theme');
-          var isDark = t ? t === 'dark' : true;
+          var isDark = t === 'dark';
           if (isDark) {
             document.documentElement.classList.add('dark');
             document.documentElement.setAttribute('data-theme', 'dark');
@@ -58,11 +59,10 @@ const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
         if (typeof document !== 'undefined') {
           document.addEventListener('DOMContentLoaded', function () {
             try {
-              var toggle = document.getElementById('theme-toggle');
-              if (toggle) {
-                var isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.documentElement.classList.contains('dark');
+              var isCurrentlyDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.documentElement.classList.contains('dark');
+              document.querySelectorAll('.theme-toggle-input').forEach(function (toggle) {
                 toggle.checked = isCurrentlyDark;
-              }
+              });
               var activePal = localStorage.getItem('ytbm-palette') || 'pearl';
               if (document.body && activePal) {
                 document.body.setAttribute('data-palette', activePal);
@@ -98,7 +98,7 @@ const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
+    {!is404 && <link rel="canonical" href={canonicalUrl} />}
     {
       hreflangLinks.map((link) => (
         <link rel="alternate" hreflang={link.hreflang} href={link.href} />
@@ -109,7 +109,7 @@ const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content={locConfig.ogLocale} />
-    <meta property="og:url" content={canonicalUrl} />
+    {!is404 && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={SITE_NAME} />
@@ -122,7 +122,7 @@ const locConfig = LOCALE_CONFIG[locale] || LOCALE_CONFIG.en;
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonicalUrl} />
+    {!is404 && <meta name="twitter:url" content={canonicalUrl} />}
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />

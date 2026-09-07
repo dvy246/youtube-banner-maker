@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *, body:has(#theme-toggle:checked), body:has(#theme-toggle:checked) *));
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *, body:has(.theme-toggle-input:checked), body:has(.theme-toggle-input:checked) *, body:has(#theme-toggle:checked), body:has(#theme-toggle:checked) *));
 
 @theme {
   --color-ink-950: #0C0D0E;
@@ -195,6 +195,7 @@ html {
 }
 
 /* Dark Theme Mode (Base dark surfaces and ink) */
+body:has(.theme-toggle-input:checked),
 body:has(#theme-toggle:checked),
 html[data-theme="dark"],
 html[data-theme="dark"] body,
@@ -218,6 +219,7 @@ html.dark body {
 }
 
 /* Fallback default blue accent in dark mode ONLY when no custom palette is active */
+html:not([data-palette]) body:not([data-palette]):has(.theme-toggle-input:checked),
 html:not([data-palette]) body:not([data-palette]):has(#theme-toggle:checked),
 html[data-theme="dark"]:not([data-palette]) body:not([data-palette]),
 html.dark:not([data-palette]) body:not([data-palette]) {
@@ -282,10 +284,10 @@ html[data-palette="crimson"] body,
 /* Warm Pearl — Light Mode (Warm ivory paper and punch red) */
 :root:not(.dark):not([data-theme="dark"])[data-palette="pearl"],
 html:not(.dark):not([data-theme="dark"])[data-palette="pearl"],
-html:not(.dark):not([data-theme="dark"]) body[data-palette="pearl"]:not(:has(#theme-toggle:checked)),
-html:not(.dark):not([data-theme="dark"])[data-palette="pearl"] body:not(:has(#theme-toggle:checked)),
-body:not(.dark):not([data-theme="dark"])[data-palette="pearl"]:not(:has(#theme-toggle:checked)),
-[data-palette="pearl"]:not(.dark):not([data-theme="dark"]):not(:has(#theme-toggle:checked)) {
+html:not(.dark):not([data-theme="dark"]) body[data-palette="pearl"]:not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)),
+html:not(.dark):not([data-theme="dark"])[data-palette="pearl"] body:not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)),
+body:not(.dark):not([data-theme="dark"])[data-palette="pearl"]:not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)),
+[data-palette="pearl"]:not(.dark):not([data-theme="dark"]):not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)) {
   --color-surface-0: #FFFAF3 !important;
   --color-surface-50: #FFF2DB !important;
   --color-surface-100: #FFE5BF !important;
@@ -376,10 +378,10 @@ html[data-palette="obsidian"] body,
 /* Sand — Light Mode (Editorial paper and burnt orange) */
 :root:not(.dark):not([data-theme="dark"])[data-palette="sand"],
 html:not(.dark):not([data-theme="dark"])[data-palette="sand"],
-html:not(.dark):not([data-theme="dark"]) body[data-palette="sand"]:not(:has(#theme-toggle:checked)),
-html:not(.dark):not([data-theme="dark"])[data-palette="sand"] body:not(:has(#theme-toggle:checked)),
-body:not(.dark):not([data-theme="dark"])[data-palette="sand"]:not(:has(#theme-toggle:checked)),
-[data-palette="sand"]:not(.dark):not([data-theme="dark"]):not(:has(#theme-toggle:checked)) {
+html:not(.dark):not([data-theme="dark"]) body[data-palette="sand"]:not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)),
+html:not(.dark):not([data-theme="dark"])[data-palette="sand"] body:not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)),
+body:not(.dark):not([data-theme="dark"])[data-palette="sand"]:not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)),
+[data-palette="sand"]:not(.dark):not([data-theme="dark"]):not(:has(.theme-toggle-input:checked)):not(:has(#theme-toggle:checked)) {
   --color-surface-0: #FAF8F5 !important;
   --color-surface-50: #F2EFE9 !important;
   --color-line-200: #E3DED4 !important;
@@ -397,6 +399,8 @@ body:not(.dark):not([data-theme="dark"])[data-palette="sand"]:not(:has(#theme-to
 }
 
 /* Dark Mode Palette Overrides: Warm Pearl (Deep obsidian canvas with punch red accents) */
+body:has(.theme-toggle-input:checked)[data-palette="pearl"],
+body:has(.theme-toggle-input:checked) [data-palette="pearl"],
 body:has(#theme-toggle:checked)[data-palette="pearl"],
 body:has(#theme-toggle:checked) [data-palette="pearl"],
 html.dark[data-palette="pearl"],
@@ -405,6 +409,7 @@ html.dark body[data-palette="pearl"],
 html[data-theme="dark"][data-palette="pearl"],
 html[data-theme="dark"][data-palette="pearl"] body,
 html[data-theme="dark"] body[data-palette="pearl"],
+html[data-palette="pearl"] body:has(.theme-toggle-input:checked),
 html[data-palette="pearl"] body:has(#theme-toggle:checked) {
   color-scheme: dark;
   --color-surface-0: #0B0D10 !important;
@@ -424,60 +429,74 @@ html[data-palette="pearl"] body:has(#theme-toggle:checked) {
   --palette-glow-3: rgba(244, 63, 94, 0.03) !important;
 }
 
+body:has(.theme-toggle-input:checked)[data-palette="crimson"],
 body:has(#theme-toggle:checked)[data-palette="crimson"],
 html[data-theme="dark"][data-palette="crimson"],
 html.dark[data-palette="crimson"],
+html[data-palette="crimson"] body:has(.theme-toggle-input:checked),
 html[data-palette="crimson"] body:has(#theme-toggle:checked) {
   --palette-glow-1: rgba(230, 57, 70, 0.06) !important;
   --palette-glow-2: rgba(244, 211, 94, 0.04) !important;
   --palette-glow-3: rgba(225, 29, 72, 0.03) !important;
 }
 
+body:has(.theme-toggle-input:checked)[data-palette="cobalt"],
 body:has(#theme-toggle:checked)[data-palette="cobalt"],
 html[data-theme="dark"][data-palette="cobalt"],
 html.dark[data-palette="cobalt"],
+html[data-palette="cobalt"] body:has(.theme-toggle-input:checked),
 html[data-palette="cobalt"] body:has(#theme-toggle:checked) {
   --palette-glow-1: rgba(59, 130, 246, 0.08) !important;
   --palette-glow-2: rgba(99, 102, 241, 0.06) !important;
   --palette-glow-3: rgba(147, 197, 253, 0.04) !important;
 }
 
+body:has(.theme-toggle-input:checked)[data-palette="emerald"],
 body:has(#theme-toggle:checked)[data-palette="emerald"],
 html[data-theme="dark"][data-palette="emerald"],
 html.dark[data-palette="emerald"],
+html[data-palette="emerald"] body:has(.theme-toggle-input:checked),
 html[data-palette="emerald"] body:has(#theme-toggle:checked) {
   --palette-glow-1: rgba(16, 185, 129, 0.08) !important;
   --palette-glow-2: rgba(52, 211, 153, 0.05) !important;
   --palette-glow-3: rgba(5, 150, 105, 0.04) !important;
 }
 
+body:has(.theme-toggle-input:checked)[data-palette="violet"],
 body:has(#theme-toggle:checked)[data-palette="violet"],
 html[data-theme="dark"][data-palette="violet"],
 html.dark[data-palette="violet"],
+html[data-palette="violet"] body:has(.theme-toggle-input:checked),
 html[data-palette="violet"] body:has(#theme-toggle:checked) {
   --palette-glow-1: rgba(168, 85, 247, 0.08) !important;
   --palette-glow-2: rgba(192, 132, 252, 0.06) !important;
   --palette-glow-3: rgba(124, 58, 237, 0.04) !important;
 }
 
+body:has(.theme-toggle-input:checked)[data-palette="amber"],
 body:has(#theme-toggle:checked)[data-palette="amber"],
 html[data-theme="dark"][data-palette="amber"],
 html.dark[data-palette="amber"],
+html[data-palette="amber"] body:has(.theme-toggle-input:checked),
 html[data-palette="amber"] body:has(#theme-toggle:checked) {
   --palette-glow-1: rgba(245, 158, 11, 0.08) !important;
   --palette-glow-2: rgba(251, 191, 36, 0.05) !important;
   --palette-glow-3: rgba(217, 119, 6, 0.04) !important;
 }
 
+body:has(.theme-toggle-input:checked)[data-palette="cyan"],
 body:has(#theme-toggle:checked)[data-palette="cyan"],
 html[data-theme="dark"][data-palette="cyan"],
 html.dark[data-palette="cyan"],
+html[data-palette="cyan"] body:has(.theme-toggle-input:checked),
 html[data-palette="cyan"] body:has(#theme-toggle:checked) {
   --palette-glow-1: rgba(6, 182, 212, 0.08) !important;
   --palette-glow-2: rgba(56, 189, 248, 0.06) !important;
   --palette-glow-3: rgba(8, 145, 178, 0.04) !important;
 }
 
+body:has(.theme-toggle-input:checked)[data-palette="sand"],
+body:has(.theme-toggle-input:checked) [data-palette="sand"],
 body:has(#theme-toggle:checked)[data-palette="sand"],
 body:has(#theme-toggle:checked) [data-palette="sand"],
 html.dark[data-palette="sand"],
@@ -486,6 +505,7 @@ html.dark body[data-palette="sand"],
 html[data-theme="dark"][data-palette="sand"],
 html[data-theme="dark"][data-palette="sand"] body,
 html[data-theme="dark"] body[data-palette="sand"],
+html[data-palette="sand"] body:has(.theme-toggle-input:checked),
 html[data-palette="sand"] body:has(#theme-toggle:checked) {
   color-scheme: dark;
   --color-surface-0: #0E0D0B !important;
@@ -639,6 +659,7 @@ details.palette-dropdown summary::-webkit-details-marker {
    Dark Theme Light Ethereal Ambient Glow
    Light, subtle, elegant atmospheric sheen matching active palette
 ═══════════════════════════════════════════════════════════ */
+body:has(.theme-toggle-input:checked) .oklch-gradient-bg,
 body:has(#theme-toggle:checked) .oklch-gradient-bg,
 html.dark .oklch-gradient-bg,
 html[data-theme="dark"] .oklch-gradient-bg,
@@ -666,18 +687,21 @@ html[data-theme="dark"] .oklch-gradient-bg,
   animation: anim_bg 14s ease-in-out infinite alternate !important;
 }
 
+body:has(.theme-toggle-input:checked) .craft-orb-1,
 body:has(#theme-toggle:checked) .craft-orb-1,
 html.dark .craft-orb-1,
 html[data-theme="dark"] .craft-orb-1 {
   background: radial-gradient(circle, var(--palette-glow-1), transparent 70%) !important;
 }
 
+body:has(.theme-toggle-input:checked) .craft-orb-2,
 body:has(#theme-toggle:checked) .craft-orb-2,
 html.dark .craft-orb-2,
 html[data-theme="dark"] .craft-orb-2 {
   background: radial-gradient(circle, var(--palette-glow-2), transparent 70%) !important;
 }
 
+body:has(.theme-toggle-input:checked) .craft-orb-3,
 body:has(#theme-toggle:checked) .craft-orb-3,
 html.dark .craft-orb-3,
 html[data-theme="dark"] .craft-orb-3 {

@@ -1,14 +1,22 @@
 ---
+import { getTranslations, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const t = getTranslations(locale).toolUi.reposition;
 ---
 
 <section id="panel-photo" class="p-4 rounded-xl border border-line-200 bg-surface-0 space-y-4">
   <div class="flex items-center justify-between border-b border-line-100 pb-2.5">
     <div>
       <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-        Reposition & Scaling
+        {t.title}
       </h3>
       <p class="text-[11px] text-ink-500">
-        Drag directly on canvas or use controls below. Clamped to prevent transparent edges.
+        {t.desc}
       </p>
     </div>
     <button
@@ -17,7 +25,7 @@
       class="text-xs font-medium text-ink-600 hover:text-ink-950 px-3 py-2 min-h-[44px] min-w-[44px] rounded inline-flex items-center justify-center hover:bg-surface-50 transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
       title="Reset position and zoom"
     >
-      Reset
+      {t.reset}
     </button>
   </div>
 
@@ -25,13 +33,13 @@
   <div class="space-y-1.5">
     <div class="flex items-center justify-between text-xs">
       <label for="zoom-slider" class="font-medium text-ink-800 flex items-center gap-1.5">
-        <span>Zoom Level</span>
+        <span>{t.zoomLevel}</span>
         <span id="zoom-clamp-badge" class="text-[10px] font-mono text-ink-500 bg-surface-50 px-1.5 py-0.5 rounded tabular-nums">
           1.00×
         </span>
       </label>
       <span id="zoom-warning" class="text-[10px] text-warning hidden font-medium">
-        Max resolution limit reached
+        {t.maxResLimit}
       </span>
     </div>
 
@@ -70,20 +78,20 @@
       </button>
     </div>
     <p class="text-[10px] text-ink-500">
-      Upscaling beyond 1:1 original pixel density is prohibited to prevent blurry exports.
+      {t.noUpscaleNote}
     </p>
   </div>
 
   <!-- Pan Nudge Arrows (REQ-E2 Keyboard & accessibility fallback) -->
   <div class="space-y-1.5 pt-1">
-    <span class="text-xs font-medium text-ink-800 block">Fine-tune Position</span>
+    <span class="text-xs font-medium text-ink-800 block">{t.fineTune}</span>
     <div class="grid grid-cols-3 gap-1.5 max-w-[160px] mx-auto text-center">
       <div></div>
       <button
         type="button"
         id="pan-up"
         class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
-        aria-label="Pan Up"
+        aria-label={t.panUp}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
@@ -95,7 +103,7 @@
         type="button"
         id="pan-left"
         class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
-        aria-label="Pan Left"
+        aria-label={t.panLeft}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -105,7 +113,7 @@
         type="button"
         id="pan-center"
         class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-500 text-xs font-mono cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
-        aria-label="Center"
+        aria-label={t.panCenter}
         title="Center image"
       >
         <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -116,7 +124,7 @@
         type="button"
         id="pan-right"
         class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
-        aria-label="Pan Right"
+        aria-label={t.panRight}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -128,7 +136,7 @@
         type="button"
         id="pan-down"
         class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
-        aria-label="Pan Down"
+        aria-label={t.panDown}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -146,9 +154,9 @@
       class="mt-0.5 rounded border-line-200 text-accent focus:ring-accent accent-accent cursor-pointer"
     />
     <label for="extend-toggle" class="text-xs text-ink-800 cursor-pointer select-none space-y-0.5">
-      <span class="font-medium block">Edge Bleed Extension</span>
+      <span class="font-medium block">{t.edgeBleedTitle}</span>
       <span class="text-ink-500 text-[11px] block">
-        Fills outer TV margins with a soft ambient bleed if your image doesn't cover 16:9 natively. Defaults off.
+        {t.edgeBleedDesc}
       </span>
     </label>
   </div>

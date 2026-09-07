@@ -7,21 +7,25 @@
  * - Tactile, luxury hardware-switch aesthetic: inset track with Sun & Moon icons and smooth sliding thumb.
  * - Full keyboard accessibility (Space / Enter toggles checkbox, Tab navigates).
  */
+interface Props {
+  id?: string;
+}
+
+const { id = 'theme-toggle' } = Astro.props;
 ---
 
 <label
-  for="theme-toggle"
+  for={id}
   class="relative inline-flex items-center h-8 w-16 p-1 rounded-full bg-surface-100 hover:bg-line-200/80 border border-line-200 cursor-pointer select-none transition-colors duration-200 focus-within:ring-2 focus-within:ring-accent"
   title="Toggle dark and light mode"
   aria-label="Toggle dark and light mode"
 >
   <input
     type="checkbox"
-    id="theme-toggle"
-    class="sr-only cursor-pointer"
-    checked
+    id={id}
+    class="theme-toggle-input sr-only cursor-pointer"
     aria-label="Toggle dark and light mode"
-    onchange="try{var d=this.checked;document.documentElement.classList.toggle('dark',d);document.documentElement.setAttribute('data-theme',d?'dark':'light');localStorage.setItem('ytbm-theme',d?'dark':'light');window.dispatchEvent(new CustomEvent('ytbm-theme-change',{detail:{theme:d?'dark':'light'}}));}catch(e){}"
+    onchange="try{var d=this.checked;document.documentElement.classList.toggle('dark',d);document.documentElement.setAttribute('data-theme',d?'dark':'light');localStorage.setItem('ytbm-theme',d?'dark':'light');document.querySelectorAll('.theme-toggle-input').forEach(function(el){el.checked=d;});window.dispatchEvent(new CustomEvent('ytbm-theme-change',{detail:{theme:d?'dark':'light'}}));}catch(e){}"
   />
 
   <!-- Track Icons: Sun on left, Moon on right -->
@@ -54,18 +58,21 @@
 
 <style>
   /* Sliding animation when checkbox is checked or data-theme is dark */
+  :global(body):has(.theme-toggle-input:checked) .theme-toggle-thumb,
   :global(body):has(#theme-toggle:checked) .theme-toggle-thumb,
   :global(html[data-theme="dark"]) .theme-toggle-thumb,
   :global(html.dark) .theme-toggle-thumb {
     transform: translateX(2rem);
   }
 
+  :global(body):has(.theme-toggle-input:checked) .thumb-sun,
   :global(body):has(#theme-toggle:checked) .thumb-sun,
   :global(html[data-theme="dark"]) .thumb-sun,
   :global(html.dark) .thumb-sun {
     display: none;
   }
 
+  :global(body):has(.theme-toggle-input:checked) .thumb-moon,
   :global(body):has(#theme-toggle:checked) .thumb-moon,
   :global(html[data-theme="dark"]) .thumb-moon,
   :global(html.dark) .thumb-moon {

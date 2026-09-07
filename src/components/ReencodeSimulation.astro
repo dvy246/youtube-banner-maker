@@ -1,4 +1,12 @@
 ---
+import { getTranslations, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const t = getTranslations(locale).toolUi.reencodeSim;
 ---
 
 <section class="p-4 rounded-lg border border-line-200 bg-surface-0 space-y-3">
@@ -6,19 +14,19 @@
     <div class="space-y-0.5">
       <div class="flex items-center gap-2">
         <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-          YouTube Re-encode Simulation
+          {t.title}
         </h3>
         <span class="text-[10px] font-mono text-warning bg-warning/10 px-2 py-0.5 rounded-sm border border-warning/20">
-          ~134 KB Target
+          {t.targetBadge}
         </span>
       </div>
       <p class="text-xs text-ink-600 measure-prose">
-        YouTube re-compresses every upload down to an aggressive file budget on desktop. Test contrast and fine text sharpness before publishing.
+        {t.desc}
       </p>
     </div>
 
     <label class="relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] cursor-pointer shrink-0 -mr-2">
-      <input type="checkbox" id="simulate-toggle" class="sr-only peer" aria-label="Toggle YouTube re-encode simulation" />
+      <input type="checkbox" id="simulate-toggle" class="sr-only peer" aria-label={t.toggleAria} />
       <div class="w-9 h-5 bg-surface-100 border border-line-200 rounded-full peer peer-focus-visible:ring-2 peer-focus-visible:ring-accent peer-focus-visible:ring-offset-2 peer-checked:after:translate-x-full peer-checked:after:border-surface-0 after:content-[''] after:absolute after:top-[14px] after:left-[6px] after:bg-surface-0 after:border-line-200 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-ink-950"></div>
     </label>
   </div>
@@ -36,10 +44,10 @@
     <!-- Required honesty caption (§F.6 & REQ-005) -->
     <div class="flex items-center justify-between text-xs">
       <p id="simulate-meta" class="font-medium text-ink-800">
-        Approximate result of YouTube's re-encode.
+        {t.approxHonesty}
       </p>
       <span id="simulate-stats" class="font-mono text-[11px] text-ink-500">
-        Desktop w1707 crop
+        {t.desktopCrop}
       </span>
     </div>
   </div>

@@ -1,30 +1,40 @@
 ---
 import { CANVAS, DEVICES, SAFE, SAFE_PX, MAX_UPLOAD_BYTES } from '../lib/spec';
+import { getTranslations, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const dict = getTranslations(locale).toolUi;
+const t = dict.canvasStage;
+const tTabs = dict.cropTabs;
 
 const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
 const previewDevices = [
   {
     key: 'mobile',
-    label: 'Mobile Safe Area',
+    label: tTabs.mobile,
     dims: `${SAFE_PX.full.width} × ${SAFE_PX.full.height}`,
     aspect: '3.65:1',
   },
   {
     key: 'desktop',
-    label: 'Desktop Banner',
+    label: t.desktopLabel,
     dims: `${Math.round(DEVICES.desktop.w * CANVAS.width)} × ${Math.round(DEVICES.desktop.h * CANVAS.height)}`,
     aspect: '6.04:1',
   },
   {
     key: 'tablet',
-    label: 'Tablet Display',
+    label: t.tabletLabel,
     dims: `${Math.round(DEVICES.tablet.w * CANVAS.width)} × ${Math.round(DEVICES.tablet.h * CANVAS.height)}`,
     aspect: '1.29:1',
   },
   {
     key: 'tv',
-    label: 'TV Full Frame',
+    label: t.tvLabel,
     dims: `${CANVAS.width} × ${CANVAS.height}`,
     aspect: '16:9',
   },
@@ -81,7 +91,7 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
         style={`left: ${safeLeftPct}%; top: ${safeTopPct}%; width: ${safeWidthPct}%; height: ${safeHeightPct}%;`}
       >
         <span class="absolute -top-5 left-1 text-[10px] font-mono font-medium text-accent bg-surface-0/90 px-1 py-0.5 rounded shadow-2xs">
-          Mobile Safe Area ({SAFE_PX.full.width}×{SAFE_PX.full.height})
+          {tTabs.mobile} ({SAFE_PX.full.width}×{SAFE_PX.full.height})
         </span>
       </div>
 
@@ -136,10 +146,10 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
       </div>
 
       <h3 class="text-base font-semibold text-ink-950 mb-1">
-        Drop your banner image here
+        {t.dropTitle}
       </h3>
       <p class="text-xs text-ink-600 max-w-sm mb-4">
-        Supports PNG, JPEG, or WebP up to {maxUploadMb} MB. Reposition with aspect preservation, test mobile safe crops, and download a verified {CANVAS.width} × {CANVAS.height} file.
+        {t.dropDesc.replace('{maxUploadMb}', String(maxUploadMb))}
       </p>
 
       <button
@@ -150,14 +160,14 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
         </svg>
-        <span>Browse Image</span>
+        <span>{t.browseBtn}</span>
       </button>
 
       <p class="text-[11px] text-ink-500 mt-4 flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5 text-success" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
         </svg>
-        Images processed locally. Zero bytes sent to any server.
+        {t.privacyNotice}
       </p>
     </div>
 
@@ -167,7 +177,7 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
       class="absolute inset-0 z-30 pointer-events-none border-2 border-accent bg-accent/10 flex items-center justify-center opacity-0 transition-opacity"
     >
       <span class="px-4 py-2 bg-surface-0 font-medium text-xs text-accent rounded-md shadow-md border border-line-200">
-        Drop file to replace image
+        {t.dropReplace}
       </span>
     </div>
 
@@ -193,9 +203,9 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
       </svg>
       <div class="flex-1 space-y-1">
-        <p class="font-medium text-ink-950">Image re-upload needed</p>
+        <p class="font-medium text-ink-950">{t.reuploadTitle}</p>
         <p class="text-ink-600">
-          Your layout and settings were preserved from your last session. Because your source file was over 3 MB, it could not be held in temporary browser memory. Please re-select your file.
+          {t.reuploadDesc}
         </p>
       </div>
       <button
@@ -203,7 +213,7 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
         id="reupload-btn"
         class="shrink-0 px-3 py-1.5 rounded bg-surface-0 border border-line-200 text-xs font-medium text-ink-950 hover:bg-surface-50 cursor-pointer"
       >
-        Re-upload
+        {t.reuploadBtn}
       </button>
     </div>
   </div>
@@ -212,9 +222,9 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
   <div class="space-y-2 pt-2">
     <div class="flex items-center justify-between">
       <h4 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-        Simultaneous Device Cuts (Single Canvas Render)
+        {t.previewTitle}
       </h4>
-      <span class="text-[11px] text-ink-500 font-mono">Live Sub-rectangles</span>
+      <span class="text-[11px] text-ink-500 font-mono">{t.previewSubtitle}</span>
     </div>
 
     <div id="preview-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -257,13 +267,13 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
           <svg class="w-4 h-4 text-ink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18M5 6h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z" />
           </svg>
-          <span>Keyboard Shortcuts</span>
+          <span>{t.shortcutsTitle}</span>
         </h3>
         <button
           type="button"
           id="close-shortcuts-modal-btn"
           class="min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-ink-600 hover:text-ink-950 rounded-md cursor-pointer transition-colors focus-visible:outline-accent"
-          aria-label="Close shortcuts modal"
+          aria-label={t.shortcutsTitle}
         >
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -272,40 +282,40 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
       </div>
       <div class="grid grid-cols-2 gap-2 text-xs">
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Paste Image</span>
+          <span class="text-ink-600">{t.pasteImage}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">Ctrl/Cmd + V</kbd>
         </div>
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Pan Artwork</span>
+          <span class="text-ink-600">{t.panArtwork}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">Arrow Keys</kbd>
         </div>
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Fast Pan (40px)</span>
+          <span class="text-ink-600">{t.fastPan}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">Shift + Arrows</kbd>
         </div>
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Zoom In / Out</span>
+          <span class="text-ink-600">{t.zoomInOut}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">+ / -</kbd>
         </div>
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Center Artwork</span>
+          <span class="text-ink-600">{t.centerArtwork}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">0</kbd>
         </div>
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Device Crops</span>
+          <span class="text-ink-600">{t.deviceCrops}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">1 – 4</kbd>
         </div>
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Undo Action</span>
+          <span class="text-ink-600">{t.undoAction}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">Ctrl/Cmd + Z</kbd>
         </div>
         <div class="p-2.5 rounded-lg bg-surface-50 flex items-center justify-between">
-          <span class="text-ink-600">Redo Action</span>
+          <span class="text-ink-600">{t.redoAction}</span>
           <kbd class="font-mono bg-surface-0 px-1.5 py-0.5 rounded border border-line-200 text-ink-950">Ctrl/Cmd + Y</kbd>
         </div>
       </div>
       <p class="text-[11px] text-ink-500 text-center pt-2 border-t border-line-100">
-        Pro-tip: Double-click canvas to instantly center your artwork.
+        {t.proTip}
       </p>
     </div>
   </div>

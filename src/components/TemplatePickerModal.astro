@@ -1,18 +1,27 @@
 ---
 import { TEMPLATES } from '../data/templates';
+import { getTranslations, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const dict = getTranslations(locale);
+const t = dict.toolUi.templatePicker;
 
 const niches = [
-  { id: 'all', label: 'All' },
-  { id: 'gaming', label: 'Gaming' },
-  { id: 'tech', label: 'Tech' },
-  { id: 'podcast', label: 'Podcast' },
-  { id: 'vlog', label: 'Vlog' },
-  { id: 'music', label: 'Music' },
-  { id: 'fitness', label: 'Fitness' },
-  { id: 'education', label: 'Education' },
-  { id: 'lifestyle', label: 'Lifestyle' },
-  { id: 'food', label: 'Food' },
-  { id: 'business', label: 'Business' },
+  { id: 'all', label: dict.templatesHub.filterAll },
+  { id: 'gaming', label: dict.niches.gaming.name },
+  { id: 'tech', label: dict.niches.tech.name },
+  { id: 'podcast', label: dict.niches.podcast.name },
+  { id: 'vlog', label: dict.niches.vlog.name },
+  { id: 'music', label: dict.niches.music.name },
+  { id: 'fitness', label: dict.niches.fitness.name },
+  { id: 'education', label: dict.niches.education.name },
+  { id: 'lifestyle', label: dict.niches.lifestyle.name },
+  { id: 'food', label: dict.niches.food?.name || 'Food' },
+  { id: 'business', label: dict.niches.business?.name || 'Business' },
 ];
 ---
 
@@ -31,15 +40,15 @@ const niches = [
       <div>
         <div class="flex items-center gap-2">
           <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider bg-accent/10 text-accent border border-accent/20">
-            {TEMPLATES.length}+ Verified Layouts
+            {t.verifiedBadge.replace('{count}', String(TEMPLATES.length))}
           </span>
-          <span class="text-xs text-ink-500 font-medium">Safe by Construction</span>
+          <span class="text-xs text-ink-500 font-medium">{t.safeConstruction}</span>
         </div>
         <h2 id="template-picker-title" class="text-base sm:text-xl font-bold tracking-tight text-ink-950 mt-1">
-          Choose a YouTube Banner Template
+          {t.title}
         </h2>
         <p class="text-[11px] sm:text-xs text-ink-600 mt-0.5">
-          Every layout is pre-aligned to YouTube's centered mobile safe area. Select a layout or start blank.
+          {t.subtitle}
         </p>
       </div>
 
@@ -49,7 +58,7 @@ const niches = [
           id="start-blank-btn"
           class="min-h-[40px] sm:min-h-[44px] px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-900 text-xs font-semibold inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
         >
-          <span>Start Blank</span>
+          <span>{t.startBlank}</span>
           <span aria-hidden="true">□</span>
         </button>
 
@@ -57,7 +66,7 @@ const niches = [
           type="button"
           id="close-template-modal-btn"
           class="min-h-[40px] min-w-[40px] sm:min-h-[44px] sm:min-w-[44px] p-2 rounded-lg border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-600 hover:text-ink-950 flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors"
-          aria-label="Close template picker"
+          aria-label={t.closeLabel}
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -132,16 +141,16 @@ const niches = [
                 class="select-template-btn min-h-[44px] px-3 py-2 rounded-lg bg-ink-950 text-surface-0 group-hover:bg-accent text-xs font-semibold inline-flex items-center justify-center gap-1 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent transition-colors shadow-2xs"
                 data-template-id={tmpl.id}
               >
-                <span>Customize</span>
+                <span>{t.useTemplate}</span>
                 <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
               </button>
               <button
                 type="button"
                 class="download-template-btn min-h-[44px] px-3 py-2 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-900 text-xs font-semibold inline-flex items-center justify-center gap-1 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-colors"
                 data-template-id={tmpl.id}
-                title="Download free default 2560×1440 PNG"
+                title={dict.templatesHub.downloadTitle}
               >
-                <span>Free PNG ↓</span>
+                <span>{dict.templatesHub.freePng}</span>
               </button>
             </div>
           </div>

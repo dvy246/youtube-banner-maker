@@ -1,11 +1,13 @@
 ---
-import { getLocalizedUrl, type Locale } from '../i18n';
+import { getLocalizedUrl, getTranslations, type Locale } from '../i18n';
 
 interface Props {
   locale?: Locale;
 }
 
 const { locale = 'en' } = Astro.props;
+const dict = getTranslations(locale);
+const t = dict.archGallery;
 
 interface GalleryBanner {
   id: string;
@@ -125,7 +127,7 @@ const mid = Math.floor(total / 2);
               <!-- Hover action badge -->
               <div class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center p-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-0/95 text-ink-950 font-semibold text-xs shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-200">
-                  <span>Customize</span>
+                  <span>{t.customize}</span>
                   <span aria-hidden="true">&rarr;</span>
                 </span>
               </div>
@@ -137,7 +139,7 @@ const mid = Math.floor(total / 2);
                 {banner.name}
               </span>
               <span class="text-[10px] font-mono text-ink-500 uppercase shrink-0">
-                Safe-Area
+                {t.safeArea}
               </span>
             </div>
           </a>
@@ -149,7 +151,7 @@ const mid = Math.floor(total / 2);
   <!-- Interactive Hint / Caption -->
   <div class="mt-6 sm:mt-8 flex items-center justify-center gap-2 text-xs text-ink-500 font-mono">
     <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-    <span>Click any channel banner to launch instant customization</span>
+    <span>{t.hint}</span>
   </div>
 </div>
 

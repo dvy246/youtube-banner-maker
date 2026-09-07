@@ -1,20 +1,28 @@
 ---
+import { getTranslations, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const t = getTranslations(locale).toolUi.diagnostics;
 ---
 
 <section class="p-4 rounded-xl border border-line-200 bg-surface-0 space-y-3">
   <div class="flex items-center justify-between">
     <div class="flex items-center gap-2">
       <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-        Live Diagnostics
+        {t.title}
       </h3>
       <span
         id="verdict-count"
         class="text-[10px] font-mono font-medium px-1.5 py-0.5 rounded-full bg-surface-50 text-ink-600 border border-line-200"
       >
-        Awaiting image
+        {t.awaiting}
       </span>
     </div>
-    <span class="text-[11px] text-ink-500">Auto-evaluates safe area</span>
+    <span class="text-[11px] text-ink-500">{t.autoEval}</span>
   </div>
 
   <!-- Live Output Region (aria-live="polite") -->
@@ -34,10 +42,10 @@
       </svg>
       <div>
         <p class="font-medium text-ink-950">
-          Nothing is cut off on TV, desktop, tablet, or mobile.
+          {t.allClearTitle}
         </p>
         <p class="text-ink-600 text-[11px] mt-0.5">
-          All elements and subject framing reside securely within YouTube's mobile safe boundaries.
+          {t.allClearDesc}
         </p>
       </div>
     </div>
@@ -49,9 +57,9 @@
     >
       <span class="text-ink-500 font-bold">ℹ</span>
       <div>
-        <p class="font-medium text-ink-950">Awaiting banner image</p>
+        <p class="font-medium text-ink-950">{t.emptyTitle}</p>
         <p class="text-ink-600 text-[11px] mt-0.5">
-          Drop or browse an image to inspect crops and run real-time cutoff diagnostics.
+          {t.emptyDesc}
         </p>
       </div>
     </div>

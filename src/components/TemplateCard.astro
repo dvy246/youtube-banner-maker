@@ -1,6 +1,6 @@
 ---
 import type { TemplateManifest } from '../lib/template';
-import { getLocalizedUrl, type Locale } from '../i18n';
+import { getLocalizedUrl, getTranslations, type Locale } from '../i18n';
 
 interface Props {
   template: TemplateManifest;
@@ -10,13 +10,15 @@ interface Props {
 }
 
 const { template, loading = 'lazy', fetchpriority = 'auto', locale = 'en' } = Astro.props;
+const dict = getTranslations(locale);
+const t = dict.templatesHub;
 
 const formatField = (field: string) => {
-  if (field === 'title') return 'Title';
-  if (field === 'tagline') return 'Tagline';
-  if (field === 'background.photo') return 'Photo';
-  if (field === 'background.gradient') return 'Gradient';
-  if (field === 'background.solid') return 'Color';
+  if (field === 'title') return t.fieldTitle;
+  if (field === 'tagline') return t.fieldTagline;
+  if (field === 'background.photo') return t.fieldPhoto;
+  if (field === 'background.gradient') return t.fieldGradient;
+  if (field === 'background.solid') return t.fieldColor;
   if (field.startsWith('background.')) {
     const sub = field.replace('background.', '');
     return sub.charAt(0).toUpperCase() + sub.slice(1);
@@ -63,7 +65,7 @@ const formatField = (field: string) => {
       <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold tracking-wider uppercase bg-surface-50 text-ink-700 border border-line-200">
         {template.niche}
       </span>
-      <span class="text-xs font-mono text-ink-400">Safe-area verified</span>
+      <span class="text-xs font-mono text-ink-400">{t.safeAreaVerified}</span>
     </div>
 
     <div>
@@ -78,7 +80,7 @@ const formatField = (field: string) => {
     </div>
 
     <div class="flex items-center flex-wrap gap-1.5 pt-1">
-      <span class="text-xs font-mono text-ink-500">Editable:</span>
+      <span class="text-xs font-mono text-ink-500">{t.editable}</span>
       {template.editable.map((field) => (
         <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-surface-50 text-ink-600 border border-line-200">
           {formatField(field)}
@@ -91,15 +93,15 @@ const formatField = (field: string) => {
         href={`${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${template.id}`}
         class="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2.5 rounded-xl bg-ink-950 text-surface-0 hover:bg-accent text-xs font-semibold transition-colors focus-visible:outline-accent shadow-2xs"
       >
-        <span>Customize</span>
+        <span>{t.customize}</span>
         <span aria-hidden="true">&rarr;</span>
       </a>
       <a
         href={`${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${template.id}&download=1`}
         class="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 text-xs font-semibold transition-colors focus-visible:outline-accent"
-        title="Direct free download at official 2560×1440"
+        title={t.downloadTitle}
       >
-        <span>Free PNG ↓</span>
+        <span>{t.freePng}</span>
       </a>
     </div>
   </div>

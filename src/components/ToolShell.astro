@@ -8,7 +8,7 @@ import VerdictList from './VerdictList.astro';
 import ExportButton from './ExportButton.astro';
 import ReencodeSimulation from './ReencodeSimulation.astro';
 import SpecTable from './SpecTable.astro';
-import { getLocalizedUrl, type Locale } from '../i18n';
+import { getTranslations, getLocalizedUrl, type Locale } from '../i18n';
 
 interface Props {
   mode: 'make' | 'fix' | 'check';
@@ -27,18 +27,21 @@ const {
   showExport = true,
   locale = 'en',
 } = Astro.props;
+
+const dict = getTranslations(locale);
+const t = dict.toolUi;
 ---
 
 <div id="tool-root" data-mode={mode} class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
   <!-- Compact Tool Toolbar -->
   <div class="flex flex-wrap items-center gap-3 border-b border-line-200 pb-4">
     <span class="inline-flex items-center h-5 px-2 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-600 border border-line-200 flex-shrink-0">
-      Door: {mode.toUpperCase()}
+      {t.toolbar.door}: {mode.toUpperCase()}
     </span>
     <h1 class="text-base font-bold tracking-tight text-ink-950 flex-1 min-w-0 truncate">
       {title}
     </h1>
-    <span class="text-[11px] font-mono text-ink-500 flex-shrink-0 hidden sm:block">Client-side · zero uploads</span>
+    <span class="text-[11px] font-mono text-ink-500 flex-shrink-0 hidden sm:block">{t.toolbar.clientSide}</span>
   </div>
   <!-- Visually-hidden full intro for SEO / screen readers -->
   <p class="sr-only">{intro}</p>
@@ -50,24 +53,23 @@ const {
         <span class="font-bold text-warning text-sm">⚠</span>
         <div>
           <h2 class="text-sm font-semibold text-ink-950">
-            Interactive Editor Requires JavaScript
+            {t.toolbar.noscriptTitle}
           </h2>
           <p class="text-xs text-ink-600 mt-1">
-            This tool processes images entirely inside your browser using HTML5 Canvas to ensure zero image bytes ever reach a server. Because JavaScript is disabled, the interactive canvas cannot run.
+            {t.toolbar.noscriptDesc}
           </p>
         </div>
       </div>
       <div class="pt-2">
-        <h3 class="text-xs font-semibold text-ink-950 mb-2">Standard YouTube Dimensions</h3>
-        <SpecTable />
+        <h3 class="text-xs font-semibold text-ink-950 mb-2">{t.toolbar.noscriptDimensions}</h3>
+        <SpecTable locale={locale} />
       </div>
       <p class="text-xs text-ink-600">
-        Review our <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent underline font-medium">YouTube Banner Size Guide</a> or learn how to calculate safe areas in our <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent underline font-medium">Safe Area Guide</a>.
+        {t.toolbar.noscriptReview} <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent underline font-medium">{t.toolbar.sizeGuide}</a> {t.toolbar.noscriptOr} <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent underline font-medium">{t.toolbar.safeAreaGuide}</a>.
       </p>
     </div>
   </noscript>
 
-  <!-- Interactive Two-Column Editor Layout: Configurations on Left (4 cols), Banner Preview on Right (8 cols) -->
   <!-- Interactive Two-Column Editor Layout: Configurations on Left (4 cols), Banner Preview on Right (8 cols) -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
     <!-- Left Column: Control Panels & Export (4 cols on desktop) -->
@@ -79,14 +81,14 @@ const {
       {
         mode === 'check' ? (
           <>
-            <VerdictList />
+            <VerdictList locale={locale} />
             <div id="check-handoff-action" class="p-4 rounded-xl border border-line-200 bg-surface-0 space-y-3 shadow-2xs">
               <div class="space-y-1">
                 <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-                  One-Click Fix Handoff
+                  {t.handoff.title}
                 </h3>
                 <p class="text-xs text-ink-600 leading-relaxed measure-prose">
-                  Need to reposition your artwork or fix safe area cutoffs? Open your uploaded banner directly in the resizer editor with your image preserved.
+                  {t.handoff.desc}
                 </p>
               </div>
               <button
@@ -94,17 +96,17 @@ const {
                 type="button"
                 class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-surface-0 border border-line-200 text-ink-950 text-xs font-semibold hover:bg-surface-50 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer transition-colors inline-flex items-center justify-center gap-1.5 shadow-2xs"
               >
-                Fix in Resizer Editor →
+                {t.handoff.fixInEditor}
               </button>
             </div>
           </>
         ) : mode === 'make' ? (
-          <MakeControls />
+          <MakeControls locale={locale} />
         ) : (
           <>
-            {showControls && <RepositionControls />}
-            <ReencodeSimulation />
-            {showExport && <ExportButton />}
+            {showControls && <RepositionControls locale={locale} />}
+            <ReencodeSimulation locale={locale} />
+            {showExport && <ExportButton locale={locale} />}
           </>
         )
       }
@@ -113,49 +115,52 @@ const {
     <!-- Right / Primary Column: Previews & Diagnostics (8 cols on desktop) -->
     <div class="lg:col-span-8 space-y-6 order-1 lg:order-2">
       <!-- Crop Switcher Tabs -->
-      <CropTabs />
+      <CropTabs locale={locale} />
 
       <!-- Canvas Stage (Editor canvas, overlay guides, dropzone, per-device preview strip) -->
-      <CanvasStage />
+      <CanvasStage locale={locale} />
 
       <!-- Verdict Region (Rendered in right column when NOT check mode) -->
-      {mode !== 'check' && <VerdictList />}
+      {mode !== 'check' && <VerdictList locale={locale} />}
 
       <!-- Below-the-fold Static Explanatory Copy & Advisories (Server-rendered, crawlable) -->
       <div class="pt-6 border-t border-line-200 space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-2">
             <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-              YouTube CDN Cache Advisory (REQ-014)
+              {t.advisories.cdnTitle}
             </h3>
             <p class="text-xs text-ink-600 leading-relaxed measure-prose">
-              When you upload your corrected banner to YouTube Studio, changes may take up to 24 hours to appear across all edge networks, caching layers, and mobile apps. If your previous banner appears to linger, clear your browser cache or test in a private browsing window.
+              {t.advisories.cdnText}
             </p>
           </div>
 
           <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-2">
             <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
-              Understanding YouTube's Automatic Re-Encoding
+              {t.advisories.reencodeTitle}
             </h3>
             <p class="text-xs text-ink-600 leading-relaxed measure-prose">
-              YouTube automatically re-compresses every uploaded channel art image down to approximately 134 KB for desktop devices and smaller budgets for mobile screens. This re-encoding cannot be bypassed, which is why testing your banner with our simulation mode helps verify text contrast before uploading.
+              {t.advisories.reencodeText}
             </p>
           </div>
         </div>
 
         <div class="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl border border-line-100 bg-surface-0 text-xs text-ink-600">
           <span>
-            Need to verify specific dimension numbers? Check the <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent hover:underline font-medium">YouTube Banner Size Guide</a> or explore the <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent hover:underline font-medium">Safe Area Calculation Guide</a>.
+            {t.advisories.verifyDimensions} <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent hover:underline font-medium">{t.advisories.sizeGuideLink}</a> {t.advisories.orExplore} <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent hover:underline font-medium">{t.advisories.safeAreaGuideLink}</a>.
           </span>
           <a href={getLocalizedUrl('/templates', locale)} class="text-ink-950 font-medium hover:text-accent transition-colors">
-            Browse Safe Templates →
+            {t.advisories.browseTemplates}
           </a>
         </div>
       </div>
     </div>
   </div>
 
-  {mode === 'make' && <TemplatePickerModal />}
+  {mode === 'make' && <TemplatePickerModal locale={locale} />}
+
+  <!-- Embedded Client Island Translations (Zero JS bundle overhead) -->
+  <script is:inline id="tool-i18n" type="application/json" set:html={JSON.stringify(t)}></script>
 </div>
 
 <!-- Mount Client Island Script (The ONLY client JS) -->

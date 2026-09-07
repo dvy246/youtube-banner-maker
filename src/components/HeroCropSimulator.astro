@@ -17,6 +17,15 @@
  * - ZERO client JS scripts - strictly preserving the 0 KB static page budget.
  */
 import { CANVAS, DEVICES, SAFE_PX } from '../lib/spec';
+import { getLocalizedUrl, getTranslations, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props as Props;
+const dict = getTranslations(locale);
+const tSim = dict.heroSim;
 
 const desktopHeight = Math.round(DEVICES.desktop.h * CANVAS.height);
 const tabletWidth = Math.round(DEVICES.tablet.w * CANVAS.width);
@@ -146,34 +155,34 @@ const bannerStyles = [
 const tabs = [
   {
     id: 'mobile',
-    label: 'Mobile',
+    label: tSim.tabMobile,
     icon: '📱',
     dim: `${SAFE_PX.full.width} × ${SAFE_PX.full.height}`,
-    badge: 'Mobile Safe Area',
+    badge: tSim.badgeMobile,
     color: '#00E5FF',
   },
   {
     id: 'desktop',
-    label: 'Desktop',
+    label: tSim.tabDesktop,
     icon: '💻',
     dim: `${CANVAS.width} × ${desktopHeight}`,
-    badge: 'Desktop Viewport',
+    badge: tSim.badgeDesktop,
     color: '#10B981',
   },
   {
     id: 'tablet',
-    label: 'Tablet',
+    label: tSim.tabTablet,
     icon: '📟',
     dim: `${tabletWidth} × ${desktopHeight}`,
-    badge: 'Tablet Viewport',
+    badge: tSim.badgeTablet,
     color: '#F59E0B',
   },
   {
     id: 'tv',
-    label: 'TV',
+    label: tSim.tabTv,
     icon: '📺',
     dim: `${CANVAS.width} × ${CANVAS.height}`,
-    badge: 'TV Full Canvas',
+    badge: tSim.badgeTv,
     color: '#8B5CF6',
   },
 ] as const;
@@ -207,7 +216,7 @@ const tabs = [
   <div class="sim-header-bar">
     <div class="sim-header-tally">
       <span class="sim-tally-dot"></span>
-      <span class="sim-tally-label">STUDIO VIEWFINDER</span>
+      <span class="sim-tally-label">{tSim.viewfinder}</span>
       <span class="sim-tally-fps">60 FPS</span>
     </div>
 
@@ -234,7 +243,7 @@ const tabs = [
   <!-- Preview Stage (2560 × 1440 ratio / 16:9) -->
   <div class="sim-stage" id="hcs-stage">
     <a
-      href="/tools/youtube-banner-resizer"
+      href={getLocalizedUrl('/tools/youtube-banner-resizer', locale)}
       class="sim-dropzone"
       aria-label="Launch YouTube Banner Resizer with this preview"
       title="Click to test in the interactive resizer"
@@ -351,14 +360,14 @@ const tabs = [
       <!-- Active Crop Readout Pill -->
       <div class="sim-status-pill" aria-hidden="true">
         <span class="status-pulse-dot"></span>
-        <span class="status-device-text">MOBILE SAFE AREA</span>
+        <span class="status-device-text">{tSim.badgeMobile}</span>
         <span class="status-dim-text tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height}</span>
         <span class="status-aspect-tag font-mono">3.65:1</span>
       </div>
 
       <!-- Interactive Hover Tooltip Overlay -->
       <div class="sim-launch-hint">
-        <span class="font-semibold">Open in 1-Click Resizer</span>
+        <span class="font-semibold">{tSim.openResizer}</span>
         <span class="ml-1 text-accent" aria-hidden="true">&rarr;</span>
       </div>
     </a>
@@ -442,6 +451,7 @@ const tabs = [
   /* ── Dark Theme Chassis Mode ── */
   :global(.dark) .hero-sim-root,
   :global([data-theme="dark"]) .hero-sim-root,
+  :global(body:has(.theme-toggle-input:checked)) .hero-sim-root,
   :global(body:has(#theme-toggle:checked)) .hero-sim-root {
     --sim-bg: linear-gradient(180deg, #13161F 0%, #0D0F14 100%);
     --sim-border: rgba(255, 255, 255, 0.09);
@@ -1395,48 +1405,56 @@ const tabs = [
   /* Dark mode active tab borders and glow refinements */
   :global(.dark) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile {
     border-color: #00E5FF;
     box-shadow: 0 4px 16px rgba(0, 229, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   :global(.dark) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-mobile:checked) .sim-tab-mobile .sim-tab-dim {
     color: #38BDF8;
   }
 
   :global(.dark) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop {
     border-color: #10B981;
     box-shadow: 0 4px 16px rgba(16, 185, 129, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   :global(.dark) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-desktop:checked) .sim-tab-desktop .sim-tab-dim {
     color: #34D399;
   }
 
   :global(.dark) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet {
     border-color: #F59E0B;
     box-shadow: 0 4px 16px rgba(245, 158, 11, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   :global(.dark) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tablet:checked) .sim-tab-tablet .sim-tab-dim {
     color: #FBBF24;
   }
 
   :global(.dark) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv {
     border-color: #8B5CF6;
     box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   :global(.dark) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim,
   :global([data-theme="dark"]) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim,
+  :global(body:has(.theme-toggle-input:checked)) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim,
   :global(body:has(#theme-toggle:checked)) :global(#hero-sim):has(#hcs-tab-tv:checked) .sim-tab-tv .sim-tab-dim {
     color: #C084FC;
   }

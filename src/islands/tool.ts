@@ -50,6 +50,17 @@ import {
 } from '../lib/analytics';
 import { computeVariation, applyDesignSystemToScene } from '../lib/variations';
 
+// Client i18n lookup from embedded payload
+function getClientI18n(): any {
+  try {
+    const el = document.getElementById('tool-i18n');
+    return el && el.textContent ? JSON.parse(el.textContent) : {};
+  } catch {
+    return {};
+  }
+}
+const clientI18n = getClientI18n();
+
 // App state phase per §D.1
 type AppPhase = 'BOOT' | 'EMPTY' | 'NEEDS_SOURCE' | 'READY' | 'ERROR';
 
@@ -644,9 +655,9 @@ class ToolIsland {
 
     if (this.verdictCountBadge) {
       if (this.phase === 'EMPTY') {
-        this.verdictCountBadge.textContent = 'Awaiting image';
+        this.verdictCountBadge.textContent = clientI18n?.diagnostics?.awaiting || 'Awaiting image';
       } else if (this.phase === 'NEEDS_SOURCE') {
-        this.verdictCountBadge.textContent = 'Action needed';
+        this.verdictCountBadge.textContent = clientI18n?.diagnostics?.actionNeeded || 'Action needed';
       }
     }
 
@@ -3134,7 +3145,7 @@ class ToolIsland {
     if (this.exportAnywayAcknowledged) {
       this.exportAnywayAcknowledged = false;
       if (this.exportButtonText) {
-        this.exportButtonText.textContent = 'Download Banner';
+        this.exportButtonText.textContent = clientI18n?.exportBtn?.downloadBanner || 'Download Banner';
       }
     }
 
@@ -3212,12 +3223,17 @@ class ToolIsland {
     });
 
     if (this.verdictCountBadge) {
-      this.verdictCountBadge.textContent = `${verdicts.length} ${verdicts.length === 1 ? 'Notice' : 'Notices'}`;
+      const noticeWord = verdicts.length === 1
+        ? (clientI18n?.diagnostics?.noticeSingular || 'Notice')
+        : (clientI18n?.diagnostics?.noticePlural || 'Notices');
+      this.verdictCountBadge.textContent = `${verdicts.length} ${noticeWord}`;
     }
 
     if (this.handoffFixBtn) {
       const hasText = this.scene.layers.some((l) => l.type === 'text');
-      this.handoffFixBtn.textContent = hasText ? 'Edit in Banner Maker →' : 'Fix in Resizer Editor →';
+      this.handoffFixBtn.textContent = hasText
+        ? (clientI18n?.handoff?.editInMaker || 'Edit in Banner Maker →')
+        : (clientI18n?.handoff?.fixInEditor || 'Fix in Resizer Editor →');
     }
 
     if (!this.verdictsContainerEl || !this.verdictAllClearEl) return;
@@ -3256,9 +3272,55 @@ class ToolIsland {
       const titleRow = document.createElement('div');
       titleRow.className = 'flex items-center justify-between gap-2';
 
+      let vTitle = v.title;
+      let vDetail = v.detail;
+
+      if (clientI18n?.verdictMessages) {
+        const vm = clientI18n.verdictMessages;
+        if (v.id === 'cache-delay') {
+          vTitle = vm.cacheDelayTitle || vTitle;
+          vDetail = vm.cacheDelayDetail || vDetail;
+        } else if (v.id === 'filesize-over') {
+          vTitle = vm.filesizeOverTitle || vTitle;
+          vDetail = vm.filesizeOverDetail || vDetail;
+        } else if (v.id === 'low-resolution') {
+          vTitle = vm.lowResTitle || vTitle;
+          vDetail = vm.lowResDetail || vDetail;
+        } else if (v.id === 'safe-overflow') {
+          const match = v.title.match(/Your "(.*)" is cut off on mobile/);
+          const name = match ? match[1] : 'element';
+          vTitle = (vm.safeOverflowTitle || vTitle).replace('{name}', name);
+          if (v.detail.includes('right')) {
+            vDetail = vm.safeOverflowDetailRight || vDetail;
+          } else if (v.detail.includes('left')) {
+            vDetail = vm.safeOverflowDetailLeft || vDetail;
+          } else if (v.detail.includes('down')) {
+            vDetail = vm.safeOverflowDetailDown || vDetail;
+          } else if (v.detail.includes('up')) {
+            vDetail = vm.safeOverflowDetailUp || vDetail;
+          } else {
+            vDetail = vm.safeOverflowDetailGeneral || vDetail;
+          }
+        } else if (v.id === 'text-too-large') {
+          const match = v.title.match(/Your "(.*)" may be hard to read on mobile/);
+          const name = match ? match[1] : 'element';
+          vTitle = (vm.textTooLargeTitle || vTitle).replace('{name}', name);
+          vDetail = vm.textTooLargeDetail || vDetail;
+        } else if (v.id === 'subject-outside-safe') {
+          vTitle = vm.subjectOutsideTitle || vTitle;
+          vDetail = vm.subjectOutsideDetail || vDetail;
+        } else if (v.id === 'non-srgb-source') {
+          vTitle = vm.nonSrgbTitle || vTitle;
+          vDetail = vm.nonSrgbDetail || vDetail;
+        } else if (v.id === 'font-not-loaded') {
+          vTitle = vm.fontLoadingTitle || vTitle;
+          vDetail = vm.fontLoadingDetail || vDetail;
+        }
+      }
+
       const title = document.createElement('p');
       title.className = 'font-semibold text-ink-950';
-      title.textContent = v.title;
+      title.textContent = vTitle;
       titleRow.appendChild(title);
 
       if (v.device && v.device !== 'all') {
@@ -3270,7 +3332,7 @@ class ToolIsland {
 
       const detail = document.createElement('p');
       detail.className = 'text-[11px] text-ink-600 leading-relaxed';
-      detail.textContent = v.detail;
+      detail.textContent = vDetail;
 
       body.appendChild(titleRow);
       body.appendChild(detail);
@@ -3284,24 +3346,27 @@ class ToolIsland {
 
         if (this.mode === 'check') {
           const hasText = this.scene.layers.some((l) => l.type === 'text');
-          actionBtn.textContent = hasText ? 'Edit in Banner Maker →' : 'Fix this in editor →';
+          actionBtn.textContent = hasText
+            ? (clientI18n?.handoff?.editInMaker || 'Edit in Banner Maker →')
+            : (clientI18n?.handoff?.fixInEditor || 'Fix in Resizer Editor →');
           actionBtn.addEventListener('click', () => {
             this.handoffToFixEditor();
           });
         } else if (v.device && v.device !== 'all' && v.device !== this.activeDevice) {
-          actionBtn.textContent = `Inspect ${v.device.toUpperCase()} crop →`;
+          const tmpl = clientI18n?.verdictMessages?.actionInspectCrop || 'Inspect {device} crop →';
+          actionBtn.textContent = tmpl.replace('{device}', v.device.toUpperCase());
           actionBtn.addEventListener('click', () => {
             this.selectDevice(v.device as DeviceKey);
             this.canvasEl?.focus();
           });
         } else if (v.action === 'reposition') {
-          actionBtn.textContent = 'Center image';
+          actionBtn.textContent = clientI18n?.verdictMessages?.actionCenterImage || 'Center image';
           actionBtn.addEventListener('click', () => {
             this.centerPosition();
             this.canvasEl?.focus();
           });
         } else {
-          actionBtn.textContent = 'Focus canvas controls';
+          actionBtn.textContent = clientI18n?.verdictMessages?.actionFocusCanvas || 'Focus canvas controls';
           actionBtn.addEventListener('click', () => {
             this.canvasEl?.focus();
           });
@@ -3517,7 +3582,50 @@ class ToolIsland {
 
   private showToast(msg: string, durationMs = 2500): void {
     if (!this.toolToastEl || !this.toolToastTextEl) return;
-    this.toolToastTextEl.textContent = msg;
+    let displayMsg = msg;
+    if (clientI18n?.toasts) {
+      const t = clientI18n.toasts;
+      if (msg === 'Centered artwork') displayMsg = t.centeredArtwork || msg;
+      else if (msg === 'Loaded image from clipboard') displayMsg = t.loadedClipboard || msg;
+      else if (msg === 'Reset zoom & centered') displayMsg = t.resetZoom || msg;
+      else if (msg.startsWith('Applied ') && msg.endsWith(' style')) displayMsg = `${t.appliedStyle || 'Applied style'} (${msg.slice(8, -6)})`;
+      else if (msg.startsWith('Applied ') && msg.endsWith(' style variation')) displayMsg = `${t.variationApplied || 'Applied style variation'} (${msg.slice(8, -16)})`;
+      else if (msg === 'Photo removed from frame') displayMsg = t.photoRemovedFrame || msg;
+      else if (msg === 'Photo frame removed') displayMsg = t.photoFrameRemoved || msg;
+      else if (msg === 'Photo frame added to canvas') displayMsg = t.photoFrameAdded || msg;
+      else if (msg === 'Accent rule added') displayMsg = t.accentRuleAdded || msg;
+      else if (msg === 'Backplate card added') displayMsg = t.backplateAdded || msg;
+      else if (msg === 'Brand badge added') displayMsg = t.brandBadgeAdded || msg;
+      else if (msg === 'Shapes removed') displayMsg = t.shapesRemoved || msg;
+      else if (msg === 'Aligned to Left Avatar layout') displayMsg = t.alignedLeft || msg;
+      else if (msg === 'Aligned to Centered layout') displayMsg = t.alignedCenter || msg;
+      else if (msg === 'Aligned to Text + Card layout') displayMsg = t.alignedRight || msg;
+      else if (msg === 'Applied typography pairing') displayMsg = t.appliedTypography || msg;
+      else if (msg === 'Tagline updated') displayMsg = t.taglineUpdated || msg;
+      else if (msg === 'Live 60 FPS motion activated') displayMsg = t.motionActivated || msg;
+      else if (msg === 'Recording 60 FPS WebM video loop...') displayMsg = t.recordingVideo || msg;
+      else if (msg === '60 FPS animated banner exported!') displayMsg = t.motionExported || msg;
+      else if (msg.startsWith('Recording failed')) displayMsg = t.recordingFailed || msg;
+      else if (msg === 'OBS Browser Source snippet copied!') displayMsg = t.obsCopied || msg;
+      else if (msg === 'CSS animation keyframes copied!') displayMsg = t.cssCopied || msg;
+      else if (msg === 'Clipboard access unavailable') displayMsg = t.clipboardUnavailable || msg;
+      else if (msg.startsWith('Badge updated')) displayMsg = t.badgeUpdated || msg;
+      else if (msg === 'Badge removed') displayMsg = t.badgeRemoved || msg;
+      else if (msg === 'Image exceeds 6 MB maximum limit') displayMsg = t.imageExceeds6Mb || msg;
+      else if (msg === 'Please upload a valid image file') displayMsg = t.validImageFile || msg;
+      else if (msg === 'Photo placed in frame') displayMsg = t.photoPlacedFrame || msg;
+      else if (msg === 'Position centered') displayMsg = t.positionCentered || msg;
+      else if (msg === 'Position & zoom reset') displayMsg = t.positionReset || msg;
+      else if (msg === 'Undone') displayMsg = t.undone || msg;
+      else if (msg === 'Redone') displayMsg = t.redone || msg;
+      else if (msg === 'Generating clipboard image...') displayMsg = t.generatingClipboard || msg;
+      else if (msg.includes('PNG to clipboard!')) displayMsg = t.copiedClipboard || msg;
+      else if (msg === 'Failed to copy to clipboard') displayMsg = t.failedClipboard || msg;
+      else if (msg === 'Generating 1280 × 720 HD thumbnail...') displayMsg = t.generatingThumbnail || msg;
+      else if (msg === 'Downloaded 1280 × 720 YouTube Thumbnail!') displayMsg = t.downloadedThumbnail || msg;
+      else if (msg === 'Thumbnail generation failed') displayMsg = t.thumbnailFailed || msg;
+    }
+    this.toolToastTextEl.textContent = displayMsg;
     this.toolToastEl.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
     this.toolToastEl.classList.add('opacity-100', 'translate-y-0');
     if (this.toastTimer) clearTimeout(this.toastTimer);
@@ -3626,7 +3734,7 @@ class ToolIsland {
     if (hasErrors && !this.exportAnywayAcknowledged) {
       this.exportAnywayAcknowledged = true;
       if (this.exportButtonText) {
-        this.exportButtonText.textContent = 'Export anyway';
+        this.exportButtonText.textContent = clientI18n?.exportBtn?.exportAnyway || 'Export anyway';
       }
       this.verdictsRegionEl?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       this.announceMessage('Warning: Banner has elements cut off outside safe boundaries. Click Export anyway to confirm download.');
@@ -3651,7 +3759,7 @@ class ToolIsland {
       this.exportButton.disabled = true;
     }
     if (this.exportButtonText) {
-      this.exportButtonText.textContent = 'Rendering 2560 × 1440...';
+      this.exportButtonText.textContent = (clientI18n?.exportBtn?.rendering || 'Rendering {dims}...').replace('{dims}', '2560 × 1440');
     }
 
     try {
