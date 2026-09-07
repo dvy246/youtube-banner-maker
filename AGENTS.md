@@ -101,6 +101,14 @@ The project adheres to the design specifications defined in `DESIGN.md`:
 - **Console Container Queries**: Interactive preview consoles (`HeroCropSimulator`) must utilize container queries (`@container (max-width: 480px)`) to scale typography, conceal non-critical telemetry badges, and preserve $\ge 44 \times 44\text{ px}$ touch targets on all interactive selectors.
 - **Data Table Containment**: All wide data tables and coordinate grids must be housed within responsive `overflow-x: auto` wrappers with soft rounded borders.
 
+### Global Curved Button Geometry & Tactile Physics Standard
+- **Curved Border Radii**:
+  - Standalone action buttons, navigation CTAs (`#nav-cta-desktop`, `#nav-cta-mobile`), hero CTAs, template category chips, and filter buttons must strictly use pill geometry (`rounded-full`).
+  - Segmented control groups, device crop selectors, and modal action groups must use `rounded-full` or smooth outer pill housings.
+  - Form input controls, coordinate resets, zoom steps, and card-level interactive doors must use `rounded-xl` or `rounded-2xl`.
+- **Tactile Micro-Physics**:
+  - Every interactive button, pill chip, and tool trigger must incorporate the tactile physical micro-press state `active:scale-[0.98]` with standard transition timing (`transition-all duration-150 ease-out`) to provide instant, responsive mechanical feedback.
+
 ---
 
 ## 5. Performance Budgets & Architecture Boundaries
@@ -113,6 +121,14 @@ The project adheres to the design specifications defined in `DESIGN.md`:
 - **Template Payload**: Total serialized template data must remain **under 15 KB gzipped** (currently ~3.9 KB).
 - **Tool Island JS**: The interactive tool bundle must remain **under 30 KB gzipped** (currently ~20.5 KB).
 - Automated budget checks (`node scripts/check-budgets.mjs`) must pass before merging.
+
+### High-Yield Studio Configurations & Safe-Snap Architecture
+To save creators hours of repetitive adjustments and guarantee certified YouTube Studio-compliant channel assets, the interactive studio incorporates five high-yield workflow automations:
+1. **Smart Safe-Snap Engine**: Certified 1-click safe layout alignment presets (`🎯 True Center`, `👤 Split-Left`, `Split-Right 👤`, `Stacked`) mathematically constrained within the centered 1546 × 423 px safe boundary.
+2. **Contrast Guard & Studio Scrim**: Real-time non-destructive radial ambient shadow slider (0%–100%) spotlighting the mobile safe area against busy backgrounds, 1-click Frosted Glass "Aero Plate" backplate toggle, and 1-click Auto-Fit Safe Width font recalculation.
+3. **1-Click Aesthetic Theme Vibe Harmonizer**: 6 curated aesthetic palettes (`Original Preset`, `Dark Noir`, `Editorial Warm Pearl`, `Cyberpunk Neon`, `Stealth Minimalist`, `Sunset Luxe`) that cascade atomically across typography, text color, backplates, accent borders, and background gradients.
+4. **Multi-Platform Vector Social Badges**: Embedded crisp SVG brand marks for YouTube, X, Instagram, TikTok, Twitch, Discord, and Spotify selectable via 1-click chips.
+5. **1-Click Coordinated 800 × 800 Profile Avatar Export**: Automatically extracts theme palette, studio scrim, and photo/monogram into a matching 800 × 800 sRGB avatar file ready for immediate YouTube Studio upload.
 
 ---
 
@@ -131,6 +147,9 @@ YouTubeBannerMaker.com is engineered for top-tier organic discovery across tradi
    - Provide direct, concise answers in the first 60 words of each major content section.
    - Maintain `public/llms.txt` with up-to-date specification definitions, safe-area bounds, and tool descriptions.
    - Ensure `robots.txt` explicitly allows AI crawlers (`GPTBot`, `PerplexityBot`, `ClaudeBot`, `Applebot-Extended`).
+5. **Brand Asset & Open Graph Invariants**:
+   - **Multi-Device Favicon & Web Manifest Suite**: Every page layout must inject standard `<link>` elements for `favicon-96x96.png`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, and `site.webmanifest` in the document `<head>`.
+   - **Studio Red & Beige Open Graph Asset**: `public/og-image.png` must strictly maintain the studio-grade red and beige aesthetic (`#FAF7F2` linen background, `#FF0033` / `#CC002B` crimson accents, 3D double-bezel safe-area frame) at exact standard dimensions `1200 × 630 px`.
 
 ---
 
@@ -182,10 +201,20 @@ node scripts/check-budgets.mjs
 1. **Git Synchronization**:
    - Work on clean commits with descriptive semantic commit messages (e.g., `feat: ...`, `fix: ...`, `docs: ...`).
    - Push to repository `dvy246/youtube-banner-maker` on branch `main`.
-2. **Cloudflare Pages Production Deployment**:
+2. **One-Command Cloudflare Pages Production Deployment**:
    - Build output resides in `dist/`.
-   - Deploy via Wrangler:
+   - Run the unified deployment pipeline in `package.json`:
      ```bash
-     npx wrangler pages deploy dist --project-name=youtube-banner-maker --branch=main
+     npm run deploy
      ```
-   - Verify live HTTP status code 200 and security headers on `https://youtube-banner-maker.pages.dev/`.
+     *(This automatically executes `npm run build` including sitemap generation, diagnostics, asset bundling, and then deploys via `npx wrangler pages deploy dist --project-name=youtube-banner-maker --branch=main`)*.
+3. **Live Verification & Header Audits**:
+   - Verify live HTTP status code `200` on production endpoints:
+     - Primary Domain / Alias: `https://youtube-banner-maker.pages.dev/`
+     - Live Deployment Domain: `https://youtube-banner-maker-dd5.pages.dev/`
+   - Verify critical response security headers:
+     - `strict-transport-security: max-age=31536000; includeSubDomains; preload`
+     - `x-content-type-options: nosniff`
+     - `x-frame-options: DENY`
+     - `referrer-policy: strict-origin-when-cross-origin`
+     - `content-security-policy`

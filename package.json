@@ -13,7 +13,8 @@
     "verify-spec": "node scripts/verify-spec.mjs",
     "validate-templates": "node scripts/validate-templates.mjs",
     "check-copy": "node scripts/check-copy.mjs",
-    "check-budgets": "node scripts/check-budgets.mjs"
+    "check-budgets": "node scripts/check-budgets.mjs",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=youtube-banner-maker --branch=main"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
