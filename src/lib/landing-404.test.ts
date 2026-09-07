@@ -100,7 +100,7 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
     expect(html).toContain('<meta name="robots" content="noindex, follow">');
 
     // Title and description
-    expect(html).toContain('<title>Page Not Found — YouTubeBannerMaker</title>');
+    expect(html).toContain('<title>Page Not Found | Return To Tools | YouTubeBannerMaker</title>');
     expect(html).toContain(
       '<meta name="description" content="The requested page could not be found. Return to YouTube Banner Maker tools and sizing guides.">'
     );

@@ -54,7 +54,7 @@ export const fr: Translations = {
       'YouTube est une marque déposée de Google LLC. Cet outil est développé de façon indépendante.',
   },
   home: {
-    metaTitle: 'Créateur de Bannière YouTube Gratuit en Ligne',
+    metaTitle: 'Créateur Bannière | Ajustement Parfait | YouTubeBannerMaker',
     metaDesc:
       `La taille officielle de bannière YouTube est ${CANVAS.width}×${CANVAS.height} px. Redimensionnez et créez des bannières adaptées aux mobiles, PC et TV sans coupure.`,
     badgePrivacy: 'Confidentialité 100% Côté Client',
@@ -81,7 +81,7 @@ export const fr: Translations = {
     faqDesc: 'Tout ce que vous devez savoir sur les dimensions, le recadrage et l\'exportation des bannières YouTube.',
   },
   about: {
-    metaTitle: 'À Propos de YouTube Banner Maker: Confidentialité',
+    metaTitle: 'À Propos | Confidentialité Totale | YouTubeBannerMaker',
     metaDesc:
       'Découvrez YouTube Banner Maker: outil 100% navigateur, aucun téléversement vers un serveur, rendu local HTML5 Canvas et zéro inscription.',
     title: 'À Propos de YouTube Banner Maker',
@@ -100,7 +100,7 @@ export const fr: Translations = {
     val3Desc: 'Pas de compte, pas de formulaire e-mail, aucun filigrane et aucun frais. Un outil opérationnel en moins de 10 secondes.',
   },
   contact: {
-    metaTitle: 'Contact & Support: YouTube Banner Maker',
+    metaTitle: 'Support | Réponse Rapide | YouTubeBannerMaker',
     metaDesc:
       'Contactez l\'équipe de YouTube Banner Maker pour toute question technique, rapport de bug ou suggestion. Réponse rapide et directe.',
     title: 'Contact & Support',
@@ -113,7 +113,7 @@ export const fr: Translations = {
     responseTime: 'Délai de réponse habituel : entre 24 et 48 heures.',
   },
   privacy: {
-    metaTitle: 'Politique de Confidentialité: 100% Côté Client',
+    metaTitle: 'Confidentialité | 100% Client | YouTubeBannerMaker',
     metaDesc:
       'Vos créations restent sur votre appareil. Traitement 100% local via HTML5 Canvas, aucun envoi vers des serveurs et aucun cookie tiers.',
     title: 'Politique de Confidentialité',
@@ -132,7 +132,7 @@ export const fr: Translations = {
       'Nous utilisons uniquement le localStorage de votre navigateur pour mémoriser vos préférences d\'interface (mode clair/sombre et palette de couleurs). Ces données restent strictement sur votre appareil.',
   },
   terms: {
-    metaTitle: 'Conditions d\'Utilisation: Outil Bannière YouTube',
+    metaTitle: 'Conditions | Gardez vos Droits | YouTubeBannerMaker',
     metaDesc:
       'Conditions d\'utilisation de YouTube Banner Maker. Gratuit pour usage personnel et commercial. Mentions relatives aux marques de Google LLC.',
     title: 'Conditions d\'Utilisation',
@@ -148,7 +148,7 @@ export const fr: Translations = {
       'Cet outil est fourni "en l\'état". Nous nous efforçons de proposer la reproduction mathématique la plus rigoureuse des spécifications officielles de YouTube Studio.',
   },
   guideSize: {
-    metaTitle: 'Taille et Dimension Bannière YouTube: 2560x1440',
+    metaTitle: 'Taille Bannière | Évitez les Coupures | YouTubeBannerMaker',
     metaDesc:
       `Guide complet des dimensions de bannière YouTube: ${CANVAS.width}×${CANVAS.height} px, zone sécurisée mobile, limite de 6 Mo et conseils contre les coupures.`,
     title: 'Guide Taille Bannière YouTube: Dimensions & Zone Sécurisée',
@@ -162,7 +162,7 @@ export const fr: Translations = {
     aspectRatio: 'Ratio d\'Affichage',
   },
   guideSafeArea: {
-    metaTitle: 'Zone de Sécurité Bannière YouTube: Dimensions & Règles',
+    metaTitle: 'Zone Sécurisée | Ajustement Précis | YouTubeBannerMaker',
     metaDesc:
       'Comprendre la zone de sécurité YouTube. Découvrez comment centrer textes et logos pour qu\'ils restent visibles sur smartphone et ordinateur.',
     title: 'Zone de Sécurité Bannière YouTube: Calculs & Recadrage',
@@ -172,7 +172,7 @@ export const fr: Translations = {
     mobileVsDesktop: 'Zone Visible sur Mobile vs Ordinateur',
   },
   guide1024: {
-    metaTitle: 'Bannière YouTube 1024x576: Pourquoi Erreur et Solution',
+    metaTitle: "Bannière 1024x576 | Corriger l'Erreur | YouTubeBannerMaker",
     metaDesc:
       `Pourquoi YouTube refuse les bannières 1024×576 px. Explications du ratio 16:9, minimum 2048×1152 et comment convertir en ${CANVAS.width}×${CANVAS.height} gratuitement.`,
     title: 'Pourquoi YouTube Rejette les Bannières 1024×576 & Solutions',
@@ -190,7 +190,7 @@ export const fr: Translations = {
     fieldPhoto: "Photo",
     fieldGradient: "Dégradé",
     fieldColor: "Couleur",
-    metaTitle: 'Modèle Bannière YouTube: Télécharger Gratuitement',
+    metaTitle: 'Modèle Bannière | Téléchargement Libre | YouTubeBannerMaker',
     metaDesc:
       'Collection de modèles de bannière YouTube conformes à la zone sécurisée mobile. Templates pour gaming, tech, podcast, musique et vlogs.',
     title: 'Modèles de Bannières pour YouTube',
@@ -202,7 +202,7 @@ export const fr: Translations = {
   },
   tools: {
     resizer: {
-      metaTitle: 'Redimensionner Bannière YouTube: 2560x1440 Gratuit',
+      metaTitle: 'Redimensionner | Ajustement Rapide | YouTubeBannerMaker',
       metaDesc:
         `Ajustez vos images aux dimensions exactes de ${CANVAS.width}×${CANVAS.height} px pour YouTube. Outil en ligne gratuit avec aperçu de zone de sécurité pour mobile.`,
       title: 'Redimensionneur de Bannière YouTube (Ajuster)',
@@ -210,7 +210,7 @@ export const fr: Translations = {
         `Glissez n\'importe quelle image pour la recadrer et l\'exporter aux dimensions idéales de ${CANVAS.width}×${CANVAS.height} px en quelques secondes.`,
     },
     checker: {
-      metaTitle: 'Vérificateur de Bannière YouTube: Test Zone Sécurisée',
+      metaTitle: 'Vérificateur Bannière | Test Direct | YouTubeBannerMaker',
       metaDesc:
         'Testez l\'affichage de votre bannière YouTube sur mobile, tablette et TV avant de la publier. Diagnostic immédiat de la zone de sécurité.',
       title: 'Vérificateur de Zone Sécurisée de Bannière (Vérifier)',
@@ -222,7 +222,7 @@ export const fr: Translations = {
       handoffBtn: 'Corriger dans le Redimensionneur →',
     },
     maker: {
-      metaTitle: 'Créer une Bannière YouTube: Outil et Modèles',
+      metaTitle: 'Créer Bannière | Exportation Facile | YouTubeBannerMaker',
       metaDesc:
         'Créez une bannière YouTube professionnelle avec repères de zone de sécurité. Modèles gratuits, typographie moderne et sans filigrane.',
       title: 'Créateur de Bannière YouTube (Générer)',

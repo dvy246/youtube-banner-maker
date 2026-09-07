@@ -53,7 +53,7 @@ export const en = {
       'YouTube is a registered trademark of Google LLC. This tool is independently built.',
   },
   home: {
-    metaTitle: 'Free YouTube Banner Maker: Channel Art That Fits',
+    metaTitle: 'YouTube Banner Maker | Fit Every Device | YouTubeBannerMaker',
     metaDesc:
       `The official YouTube banner maker. Resize, check safe areas, and create free channel art that fits every device without cropping.`,
     badgePrivacy: '100% Client-Side Privacy',
@@ -80,7 +80,7 @@ export const en = {
     faqDesc: 'Everything you need to know about YouTube banner dimensions, cropping, and export.',
   },
   about: {
-    metaTitle: 'About YouTubeBannerMaker — Browser-First Channel Art Utility',
+    metaTitle: 'About Us | Browser-First Privacy | YouTubeBannerMaker',
     metaDesc:
       'Learn how YouTubeBannerMaker was built to solve banner crop issues and compression artifacts using 100% in-browser HTML5 Canvas execution.',
     title: 'About YouTube Banner Maker',
@@ -99,7 +99,7 @@ export const en = {
     val3Desc: 'No accounts, no email gates, no watermarks, and no paywalls. Instant creative utility in under 10 seconds.',
   },
   contact: {
-    metaTitle: 'Contact & Support — YouTubeBannerMaker',
+    metaTitle: 'Contact Support | Fast Response | YouTubeBannerMaker',
     metaDesc:
       'Get in touch with the YouTubeBannerMaker team for support, bug reports, and creator feature requests. Expected response time under 24 hours.',
     title: 'Contact & Support',
@@ -112,7 +112,7 @@ export const en = {
     responseTime: 'Typical response time: within 24 to 48 hours.',
   },
   privacy: {
-    metaTitle: 'Privacy Policy — YouTubeBannerMaker',
+    metaTitle: 'Privacy Policy | 100% Client-Side | YouTubeBannerMaker',
     metaDesc:
       'Our privacy policy: Zero image bytes are ever transmitted over the network. 100% client-side processing, sessionStorage usage, and advertising disclosures.',
     title: 'Privacy Policy',
@@ -131,7 +131,7 @@ export const en = {
       'We use standard browser localStorage solely to save your local UI preferences (such as light/dark mode and color theme selection). This data never leaves your browser.',
   },
   terms: {
-    metaTitle: 'Terms of Service — YouTubeBannerMaker',
+    metaTitle: 'Terms of Service | Keep Your Rights | YouTubeBannerMaker',
     metaDesc:
       'Terms of Service for YouTubeBannerMaker. Free for personal and commercial channel branding. Creators retain 100% ownership of their artwork.',
     title: 'Terms of Service',
@@ -147,7 +147,7 @@ export const en = {
       'This tool is provided "as is" without warranty of any kind. We strive to provide the most accurate mathematical representation of YouTube Studio banner specifications.',
   },
   guideSize: {
-    metaTitle: 'YouTube Banner Size: Dimensions, 2560×1440 & Safe Area',
+    metaTitle: 'YouTube Banner Size | Safe Crops | YouTubeBannerMaker',
     metaDesc:
       `The correct YouTube banner size is ${CANVAS.width}×${CANVAS.height} px (min 2048×1152), max 6 MB. Safe area details, device crops, and why channel art gets cut off.`,
     title: 'YouTube Banner Size Guide: Dimensions & Safe Area',
@@ -161,7 +161,7 @@ export const en = {
     aspectRatio: 'Aspect Ratio',
   },
   guideSafeArea: {
-    metaTitle: 'YouTube Banner Safe Area Dimensions & Device Crop Guide',
+    metaTitle: 'Banner Safe Area | Stop Cropping | YouTubeBannerMaker',
     metaDesc:
       'Understand the YouTube banner safe area. See the math proving that both official safe area numbers describe the exact same centered viewing area.',
     title: 'YouTube Banner Safe Area Guide: Math & Device Crops',
@@ -171,7 +171,7 @@ export const en = {
     mobileVsDesktop: 'Mobile vs. Desktop Viewing Areas',
   },
   guide1024: {
-    metaTitle: 'YouTube Banner 1024x576: Why Upload Fails & Correct Size',
+    metaTitle: 'Banner 1024x576 | Fix Upload Error | YouTubeBannerMaker',
     metaDesc:
       `Why YouTube rejects 1024×576 banners. Learn the 16:9 ratio math, minimum 2048×1152 requirements, and how to upscale safely to ${CANVAS.width}×${CANVAS.height} for free.`,
     title: 'Why YouTube Rejects 1024×576 Banners & How to Fix',
@@ -189,7 +189,7 @@ export const en = {
     fieldPhoto: "Photo",
     fieldGradient: "Gradient",
     fieldColor: "Color",
-    metaTitle: 'Free YouTube Banner Templates: Download 2560x1440',
+    metaTitle: 'YouTube Banner Templates | Download | YouTubeBannerMaker',
     metaDesc:
       'Explore free, customizable YouTube banner templates designed for mobile safe area compliance. Filter by gaming, tech, podcast, music, and more.',
     title: 'Curated YouTube Banner Templates',
@@ -201,7 +201,7 @@ export const en = {
   },
   tools: {
     resizer: {
-      metaTitle: 'YouTube Banner Resizer: Resize to 2560x1440 Free Online',
+      metaTitle: 'YouTube Banner Resizer | Auto Fit | YouTubeBannerMaker',
       metaDesc:
         `Resize and crop any image to the exact ${CANVAS.width}×${CANVAS.height} YouTube banner size. Free online tool, 100% client-side privacy, mobile safe area preview.`,
       title: 'YouTube Banner Resizer (Fix Door)',
@@ -209,7 +209,7 @@ export const en = {
         `Drop any image to resize, reposition, and export a safe ${CANVAS.width}×${CANVAS.height} px YouTube channel banner in seconds.`,
     },
     checker: {
-      metaTitle: 'YouTube Banner Checker: Safe Area Simulator & Crop Test',
+      metaTitle: 'YouTube Banner Checker | Test Crops | YouTubeBannerMaker',
       metaDesc:
         'Test your YouTube channel banner across mobile, tablet, desktop, and TV viewports before uploading. Instant safe area diagnostic tool.',
       title: 'YouTube Banner Safe Area Checker (Check Door)',
@@ -221,7 +221,7 @@ export const en = {
       handoffBtn: 'Fix in Resizer Editor →',
     },
     maker: {
-      metaTitle: 'YouTube Banner Creator and Generator: Free Safe Templates',
+      metaTitle: 'YouTube Banner Creator | Fast Export | YouTubeBannerMaker',
       metaDesc:
         'Create YouTube channel banners online with safe-area guides. Clean typography, customizable templates, 100% browser-based with no watermark.',
       title: 'YouTube Banner Maker (Create Door)',

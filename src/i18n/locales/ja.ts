@@ -54,7 +54,7 @@ export const ja: Translations = {
       'YouTubeはGoogle LLCの商標です。当ツールは独立して開発されたユーティリティです。',
   },
   home: {
-    metaTitle: 'YouTubeバナーサイズ作成ツール: 無料リサイズとテンプレート',
+    metaTitle: 'バナーサイズ | 完璧なフィット | YouTubeBannerMaker',
     metaDesc:
       `YouTubeバナーの公式サイズは${CANVAS.width}×${CANVAS.height}px。スマホやPCで文字切れしないセーフエリア対応チャンネルアートを完全無料で簡単作成・サイズ変更。`,
     badgePrivacy: '100% クライアント完結・完全プライベート',
@@ -81,7 +81,7 @@ export const ja: Translations = {
     faqDesc: 'YouTubeバナーのサイズ設定、トリミング、書き出しについての疑問にお答えします。',
   },
   about: {
-    metaTitle: '当ツールについて: YouTubeバナー作成ツールの設計思想と開発理念',
+    metaTitle: '概要 | ブラウザ完結のプライバシー | YouTubeBannerMaker',
     metaDesc:
       'YouTube Banner Makerは、画像データをサーバーに送信しない完全ブラウザ内処理のチャンネルアート作成ツールです。開発理念やプライバシー保護の仕組みをご紹介。',
     title: 'YouTube Banner Makerについて',
@@ -100,7 +100,7 @@ export const ja: Translations = {
     val3Desc: 'アカウント登録もメール入力も透かしも不要。サイトを開いて10秒以内で作業が完了します。',
   },
   contact: {
-    metaTitle: 'お問い合わせとサポート: YouTubeバナー作成ツール',
+    metaTitle: 'サポート | 迅速な対応 | YouTubeBannerMaker',
     metaDesc:
       'YouTube Banner Makerに関する技術的なご質問、不具合のご報告、新機能のご要望はこちらから。24〜48時間以内に迅速にご案内いたします。',
     title: 'お問い合わせ・サポート',
@@ -113,7 +113,7 @@ export const ja: Translations = {
     responseTime: '通常、24〜48時間以内に返信いたします。',
   },
   privacy: {
-    metaTitle: 'プライバシーポリシー: 完全端末内処理・画像アップロードなし',
+    metaTitle: 'プライバシー | 100%ローカル処理 | YouTubeBannerMaker',
     metaDesc:
       'YouTube Banner Makerのプライバシー規約。すべての画像処理はご利用のブラウザ内（HTML5 Canvas）で完結し、サーバーへのデータ送信は一切行われません。',
     title: 'プライバシーポリシー',
@@ -132,7 +132,7 @@ export const ja: Translations = {
       'ダークモード切り替えやカラーパレットの選択状態を保持するためだけに、ブラウザのlocalStorageを使用しています。このデータが外部に送信されることはありません。',
   },
   terms: {
-    metaTitle: '利用規約: 無料YouTubeチャンネルアート作成ツール',
+    metaTitle: '利用規約 | 権利はあなたのもの | YouTubeBannerMaker',
     metaDesc:
       'YouTube Banner Makerの利用規約。商用利用・個人利用ともに完全無料。制作されたバナー画像の著作権は100%作成者に帰属します。',
     title: '利用規約',
@@ -148,7 +148,7 @@ export const ja: Translations = {
       '本ツールは現状有姿（as-is）で提供されます。YouTube Studioの公式バナー仕様に最も忠実な計算ロジックを提供できるよう努めております。',
   },
   guideSize: {
-    metaTitle: 'YouTubeバナーサイズ解説: 2560x1440とセーフエリア詳細',
+    metaTitle: 'バナーサイズ | 全デバイス対応 | YouTubeBannerMaker',
     metaDesc:
       `YouTubeチャンネルアートの推奨サイズは${CANVAS.width}×${CANVAS.height}px（最小2048×1152px、最大6MB）。スマホのセーフエリアや各端末での切り抜きを徹底解説。`,
     title: 'YouTubeバナーサイズ徹底解説: 推奨寸法とセーフエリア',
@@ -162,7 +162,7 @@ export const ja: Translations = {
     aspectRatio: 'アスペクト比',
   },
   guideSafeArea: {
-    metaTitle: 'YouTubeバナーのセーフエリア徹底解説: 切り抜き寸法の見方',
+    metaTitle: 'セーフエリア | 見切れないデザイン | YouTubeBannerMaker',
     metaDesc:
       'YouTubeバナーのセーフエリア寸法と比率の計算式を解説。スマホでアイコンやチャンネル名が切れる原因と、中央エリアに文字を正しく配置する方法。',
     title: 'YouTubeバナーのセーフエリア解説: 寸法と各端末のトリミング',
@@ -172,7 +172,7 @@ export const ja: Translations = {
     mobileVsDesktop: 'スマホ表示とPC表示の比較',
   },
   guide1024: {
-    metaTitle: 'YouTubeバナー1024x576が失敗する理由と正しい推奨サイズ',
+    metaTitle: '1024x576エラー | 解決策 | YouTubeBannerMaker',
     metaDesc:
       `YouTubeで1024×576pxのバナーがエラーになる理由を解説。16:9比率の最小2048×1152px基準と、${CANVAS.width}×${CANVAS.height}pxへ綺麗に拡大・修正する手順。`,
     title: 'YouTubeバナーで1024×576pxがエラーになる原因と解決策',
@@ -190,7 +190,7 @@ export const ja: Translations = {
     fieldPhoto: "写真",
     fieldGradient: "グラデーション",
     fieldColor: "カラー",
-    metaTitle: 'YouTubeバナーテンプレート一覧: セーフエリア対応の無料デザイン',
+    metaTitle: '無料テンプレート | ダウンロード | YouTubeBannerMaker',
     metaDesc:
       'スマホセーフエリア確認済みの無料YouTubeバナーテンプレート。ゲーム、テック、音楽、Vlog、ビジネスなど全ジャンルのデザインをブラウザで今すぐ編集可能。',
     title: 'YouTubeバナーテンプレート一覧',
@@ -202,7 +202,7 @@ export const ja: Translations = {
   },
   tools: {
     resizer: {
-      metaTitle: 'YouTubeバナーリサイズ: 2560x1440サイズ変更・無料ツール',
+      metaTitle: 'バナーリサイズ | 自動トリミング | YouTubeBannerMaker',
       metaDesc:
         `画像をYouTube公式推奨サイズ${CANVAS.width}×${CANVAS.height}pxにリサイズ。スマホのセーフエリアを確認しながら文字切れなしで書き出せる無料オンラインツール。`,
       title: 'YouTubeバナーリサイズツール（調整モード）',
@@ -210,7 +210,7 @@ export const ja: Translations = {
         `お手持ちの画像をドロップするだけで、YouTube規格の${CANVAS.width}×${CANVAS.height}pxに瞬時にリサイズ・位置調整して書き出せます。`,
     },
     checker: {
-      metaTitle: 'YouTubeバナー確認ツール: セーフエリア表示・診断シミュレーター',
+      metaTitle: 'バナー確認ツール | 表示テスト | YouTubeBannerMaker',
       metaDesc:
         '作成したYouTubeバナー画像をアップロードして、スマホ・PC・テレビでのトリミングやセーフエリアを即座にシミュレーション確認できる無料診断ツール。',
       title: 'YouTubeバナーセーフエリア確認ツール（診断モード）',
@@ -222,7 +222,7 @@ export const ja: Translations = {
       handoffBtn: 'リサイズ画面で修正する →',
     },
     maker: {
-      metaTitle: 'YouTubeバナー作成ツール: 無料オンラインチャンネルアート作成',
+      metaTitle: 'バナー作成 | 即時エクスポート | YouTubeBannerMaker',
       metaDesc:
         '登録不要・透かしなしで使える無料YouTubeバナー作成ツール。セーフエリアガイド付きで、スマホでもパソコンでも美しく収まるチャンネルアートを簡単デザイン。',
       title: 'YouTubeバナー作成ツール（作成モード）',

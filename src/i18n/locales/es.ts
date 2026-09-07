@@ -54,7 +54,7 @@ export const es: Translations = {
       'YouTube es una marca registrada de Google LLC. Esta herramienta es un proyecto independiente.',
   },
   home: {
-    metaTitle: 'Tamaño de Banner YouTube: Creador y Plantillas Gratis',
+    metaTitle: 'Creador de Banner | Ajuste Perfecto | YouTubeBannerMaker',
     metaDesc:
       `El tamaño oficial de banner de YouTube es ${CANVAS.width}×${CANVAS.height} px. Redimensiona y crea arte de canal seguro para móvil, PC y TV sin cortes.`,
     badgePrivacy: 'Privacidad 100% en el Navegador',
@@ -81,7 +81,7 @@ export const es: Translations = {
     faqDesc: 'Todo lo que necesitas saber sobre medidas, recortes y exportación de banners de YouTube.',
   },
   about: {
-    metaTitle: 'Sobre YouTube Banner Maker: Privacidad y Tecnología',
+    metaTitle: 'Sobre Nosotros | Privacidad Local | YouTubeBannerMaker',
     metaDesc:
       'Descubre YouTube Banner Maker: herramienta 100% en el navegador, sin subidas al servidor, procesamiento local con Canvas y sin registro.',
     title: 'Acerca de YouTube Banner Maker',
@@ -100,7 +100,7 @@ export const es: Translations = {
     val3Desc: 'Sin cuentas, sin muros de correo, sin marcas de agua y sin pagos. Utilidad creativa en menos de 10 segundos.',
   },
   contact: {
-    metaTitle: 'Contacto y Soporte: YouTube Banner Maker',
+    metaTitle: 'Soporte | Respuesta Rápida | YouTubeBannerMaker',
     metaDesc:
       'Contacta con el equipo de YouTube Banner Maker para soporte técnico, sugerencias o avisos de errores. Respuesta directa y rápida.',
     title: 'Contacto y Soporte',
@@ -113,7 +113,7 @@ export const es: Translations = {
     responseTime: 'Tiempo de respuesta habitual: entre 24 y 48 horas.',
   },
   privacy: {
-    metaTitle: 'Política de Privacidad: 100% Local sin Subidas',
+    metaTitle: 'Privacidad | 100% Cliente | YouTubeBannerMaker',
     metaDesc:
       'Tus imágenes nunca salen de tu dispositivo. Procesamiento 100% en el navegador con Canvas, cero subidas a servidores y sin cookies de rastreo.',
     title: 'Política de Privacidad',
@@ -132,7 +132,7 @@ export const es: Translations = {
       'Usamos el almacenamiento local del navegador únicamente para recordar tus preferencias de interfaz (modo oscuro/claro y paleta de colores). Estos datos nunca salen de tu dispositivo.',
   },
   terms: {
-    metaTitle: 'Términos de Servicio: Arte de Canal de YouTube',
+    metaTitle: 'Términos | Mantén tus Derechos | YouTubeBannerMaker',
     metaDesc:
       'Términos de uso de YouTube Banner Maker. Gratuito para uso personal y comercial. Aviso legal sobre marcas de YouTube y Google LLC.',
     title: 'Términos de Servicio',
@@ -148,7 +148,7 @@ export const es: Translations = {
       'Esta herramienta se proporciona "tal cual", sin garantías de ningún tipo. Nos esforzamos por ofrecer la representación matemática más exacta de las especificaciones de YouTube Studio.',
   },
   guideSize: {
-    metaTitle: 'Tamaño de Banner de YouTube: 2560x1440 y Zona Segura',
+    metaTitle: 'Tamaño de Banner | Evita Recortes | YouTubeBannerMaker',
     metaDesc:
       `Guía completa de medidas de banner para YouTube: ${CANVAS.width}×${CANVAS.height} px, zona segura para móvil, límite de 6 MB y cómo evitar recortes.`,
     title: 'Guía de Medidas de Banner de YouTube: Dimensiones y Zona Segura',
@@ -162,7 +162,7 @@ export const es: Translations = {
     aspectRatio: 'Proporción de Imagen',
   },
   guideSafeArea: {
-    metaTitle: 'Zona Segura de Banner YouTube: Medidas y Recortes',
+    metaTitle: 'Zona Segura de Banner | Ajuste Real | YouTubeBannerMaker',
     metaDesc:
       'Conoce las medidas de la zona segura de YouTube. Aprende a centrar textos y logos para que nunca se corten en pantallas de móvil o PC.',
     title: 'Guía de Zona Segura de YouTube: Recortes y Dimensiones',
@@ -172,7 +172,7 @@ export const es: Translations = {
     mobileVsDesktop: 'Área Visible en Móvil vs. Escritorio',
   },
   guide1024: {
-    metaTitle: 'Banner YouTube 1024x576: Por Qué Falla y Solución',
+    metaTitle: 'Banner 1024x576 | Arregla el Error | YouTubeBannerMaker',
     metaDesc:
       `Por qué YouTube rechaza banners de 1024×576 px. Explicación de proporción 16:9, mínimo de 2048×1152 y cómo escalar a ${CANVAS.width}×${CANVAS.height} gratis.`,
     title: 'Por Qué YouTube Rechaza Banners 1024×576 y Cómo Corregirlos',
@@ -190,7 +190,7 @@ export const es: Translations = {
     fieldPhoto: "Foto",
     fieldGradient: "Degradado",
     fieldColor: "Color",
-    metaTitle: 'Plantillas de Banner para YouTube: Diseños Gratis',
+    metaTitle: 'Plantillas de Banner | Descarga Gratis | YouTubeBannerMaker',
     metaDesc:
       'Plantillas de banner de YouTube diseñadas para cumplir con la zona segura móvil. Modelos para gaming, tecnología, podcast, música y más.',
     title: 'Plantillas de Banners para YouTube',
@@ -202,7 +202,7 @@ export const es: Translations = {
   },
   tools: {
     resizer: {
-      metaTitle: 'Redimensionar Banner YouTube: 2560x1440 Online Gratis',
+      metaTitle: 'Redimensionar Banner | Ajuste Auto | YouTubeBannerMaker',
       metaDesc:
         `Ajusta y recorta imágenes al tamaño oficial de ${CANVAS.width}×${CANVAS.height} px de YouTube. Herramienta online gratuita con vista previa de zona segura.`,
       title: 'Redimensionador de Banner de YouTube (Ajustar)',
@@ -210,7 +210,7 @@ export const es: Translations = {
         `Arrastra cualquier imagen para redimensionar, reposicionar y exportar un banner de ${CANVAS.width}×${CANVAS.height} px adaptado a móvil en segundos.`,
     },
     checker: {
-      metaTitle: 'Verificador de Banner YouTube: Prueba de Zona Segura',
+      metaTitle: 'Verificador de Banner | Prueba Aquí | YouTubeBannerMaker',
       metaDesc:
         'Comprueba cómo se ve tu banner de YouTube en móviles, tablets y TV antes de subirlo. Herramienta gratuita de diagnóstico de zona segura.',
       title: 'Verificador de Zona Segura de YouTube (Chequear)',
@@ -222,7 +222,7 @@ export const es: Translations = {
       handoffBtn: 'Ajustar en el Redimensionador →',
     },
     maker: {
-      metaTitle: 'Creador de Banner de YouTube: Arte de Canal Gratis',
+      metaTitle: 'Creador de Banner | Exportación Fácil | YouTubeBannerMaker',
       metaDesc:
         'Diseña banners de YouTube profesionales con guías de zona segura. Tipografía moderna, plantillas personalizables y 100% en el navegador sin marcas.',
       title: 'Creador de Banner de YouTube (Crear)',

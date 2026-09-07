@@ -20,129 +20,129 @@ export interface PageSeoConfig {
 export const NICHE_TITLES: Record<string, { name: string; title: string; desc: string }> = {
   gaming: {
     name: 'Gaming',
-    title: 'Gaming YouTube Banner Templates: Free & Safe for Mobile',
+    title: 'Gaming Banner Templates | Mobile Safe | YouTubeBannerMaker',
     desc: 'Free gaming YouTube channel banner templates. Tested against real mobile safe area crops, instant browser editing, and clean 2560×1440 export.',
   },
   podcast: {
     name: 'Podcast',
-    title: 'Podcast YouTube Banner Templates: Free Safe Layouts',
+    title: 'Podcast Banner Templates | Studio Fit | YouTubeBannerMaker',
     desc: 'Professional podcast YouTube banner templates. Centered safe-area typography, high contrast studio designs, and instant free 2560×1440 download.',
   },
   tech: {
     name: 'Tech',
-    title: 'Tech YouTube Banner Templates: Minimal & Mobile-Safe',
+    title: 'Tech Banner Templates | Minimal & Safe | YouTubeBannerMaker',
     desc: 'Clean tech channel banner templates. Modern developer and hardware aesthetic, verified safe-area geometry, zero watermark or sign-up needed.',
   },
   vlog: {
     name: 'Vlog',
-    title: 'Vlog YouTube Banner Templates: Aesthetic Channel Art',
+    title: 'Vlog Banner Templates | Aesthetic Art | YouTubeBannerMaker',
     desc: 'Curated lifestyle and vlog banner templates. Cinematic typography, perfect mobile and desktop framing, and instant browser-based 2560×1440 export.',
   },
   music: {
     name: 'Music',
-    title: 'Music YouTube Banner Templates: Lo-Fi, Synth & Acoustic',
+    title: 'Music Banner Templates | Lo-Fi & Beats | YouTubeBannerMaker',
     desc: 'Custom channel banners for musicians, producers, and beats channels. Balanced compositions tested across all screen crops with zero sign-up.',
   },
   fitness: {
     name: 'Fitness',
-    title: 'Fitness YouTube Banner Templates: Bold & High-Contrast',
+    title: 'Fitness Banner Templates | High Impact | YouTubeBannerMaker',
     desc: 'High-impact fitness and coaching banner templates. Bold typography positioned inside YouTube’s safe area for flawless mobile and TV rendering.',
   },
   education: {
     name: 'Education',
-    title: 'Education YouTube Banner Templates: Academic & Modern',
+    title: 'Education Banner Templates | Academic | YouTubeBannerMaker',
     desc: 'Authoritative channel art for educators and tutorial creators. Clean layouts designed to keep all text and branding visible on any device.',
   },
   lifestyle: {
     name: 'Lifestyle',
-    title: 'Lifestyle YouTube Banner Templates: Minimalist Art',
+    title: 'Lifestyle Banner Templates | Minimal | YouTubeBannerMaker',
     desc: 'Understated, minimal lifestyle channel banners. Elegant serif and sans typography framed perfectly inside the mobile safe area.',
   },
   food: {
     name: 'Food & Culinary',
-    title: 'Food YouTube Banner Templates: Cooking & Restaurant Art',
+    title: 'Food Banner Templates | Culinary Art | YouTubeBannerMaker',
     desc: 'Curated food and cooking channel banners. Appetizing typography and culinary layout elements verified safe across mobile and desktop displays.',
   },
   business: {
     name: 'Business & Real Estate',
-    title: 'Business YouTube Banner Templates: Agency & Creator Art',
+    title: 'Business Banner Templates | Agency Art | YouTubeBannerMaker',
     desc: 'High-authority channel banners for real estate agents, agencies, and business creators. Centered safe-area layouts with zero paywalls.',
   },
   edu: {
     name: 'Education',
-    title: 'Education YouTube Banner Templates: Academic & Modern',
+    title: 'Education Banner Templates | Academic | YouTubeBannerMaker',
     desc: 'Authoritative channel art for educators and tutorial creators. Clean layouts designed to keep all text and branding visible on any device.',
   },
   life: {
     name: 'Lifestyle',
-    title: 'Lifestyle YouTube Banner Templates: Minimalist Art',
+    title: 'Lifestyle Banner Templates | Minimal | YouTubeBannerMaker',
     desc: 'Understated, minimal lifestyle channel banners. Elegant serif and sans typography framed perfectly inside the mobile safe area.',
   },
 };
 
 export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> = {
   '/': {
-    title: 'Free YouTube Banner Maker: Channel Art That Fits',
+    title: 'YouTube Banner Maker | Fit Every Device | YouTubeBannerMaker',
     desc: 'The official YouTube banner maker. Resize, check safe areas, and create free channel art that fits every device without cropping.',
   },
   '/guides/youtube-banner-size': {
-    title: 'YouTube Banner Size: Dimensions, 2560×1440 & Safe Area',
+    title: 'YouTube Banner Size | Safe Crops | YouTubeBannerMaker',
     desc: 'The correct YouTube banner size is 2560×1440 px (min 2048×1152), max 6 MB. Safe area details, device crops, and why channel art gets cut off.',
   },
   '/guides/youtube-banner-safe-area': {
-    title: 'YouTube Banner Safe Area Dimensions & Device Crop Guide',
+    title: 'Banner Safe Area | Stop Cropping | YouTubeBannerMaker',
     desc: 'Understand the YouTube banner safe area. See the math proving that both official safe area numbers describe the exact same centered viewing area.',
   },
   '/guides/youtube-banner-1024-x-576': {
-    title: 'YouTube Banner 1024x576: Why Upload Fails & Correct Size',
+    title: 'Banner 1024x576 | Fix Upload Error | YouTubeBannerMaker',
     desc: 'Why YouTube rejects 1024×576 banners. Learn the 16:9 ratio math, minimum 2048×1152 requirements, and how to upscale safely to 2560×1440 for free.',
   },
   '/guides/how-to-make-a-youtube-banner': {
-    title: 'How to Make a YouTube Banner: Step-by-Step Creator Guide',
+    title: 'Make a YouTube Banner | Quick & Free | YouTubeBannerMaker',
     desc: 'Learn how to make a YouTube banner that fits every device. Step-by-step layout rules, safe-area design, typography, and free browser tools.',
   },
   '/guides/how-to-choose-a-youtube-banner-template': {
-    title: 'How to Choose the Best YouTube Banner Template (2026 Guide)',
+    title: 'Banner Templates | Pick The Best | YouTubeBannerMaker',
     desc: 'Find the best YouTube banner template for your channel niche. Learn layout archetypes, color contrast rules, and how to customize in browser.',
   },
   '/guides/youtube-banner-background': {
-    title: 'YouTube Banner Backgrounds: Sizes, Ideas & Free Templates',
+    title: 'Banner Background | Aesthetic Art | YouTubeBannerMaker',
     desc: 'Find the perfect YouTube banner background. Learn the correct 2560x1440 dimensions, explore aesthetic ideas, and download blank templates.',
   },
   '/tools/youtube-banner-resizer': {
-    title: 'YouTube Banner Resizer: Fit Any Image to 2560×1440',
+    title: 'YouTube Banner Resizer | Auto Fit | YouTubeBannerMaker',
     desc: 'Resize and crop any image to the exact 2560×1440 YouTube banner dimensions. Cover fit, mobile safe area preview, sRGB export, no signup or watermark.',
   },
   '/tools/youtube-banner-checker': {
-    title: 'YouTube Banner Checker: Free Safe Area Crop Test',
+    title: 'YouTube Banner Checker | Test Crops | YouTubeBannerMaker',
     desc: 'Check your YouTube banner against mobile, desktop, tablet, and TV safe areas. Instant crop verdict and safe-area check with zero signup or watermarks.',
   },
   '/tools/youtube-banner-maker': {
-    title: 'YouTube Banner Creator and Generator: Free Safe Templates',
+    title: 'YouTube Banner Creator | Fast Export | YouTubeBannerMaker',
     desc: 'Design a custom YouTube banner that never cuts off on mobile or desktop. Curated templates, real device previews, instant free 2560×1440 export.',
   },
   '/templates': {
-    title: 'Free YouTube Banner Templates: Download 2560x1440',
+    title: 'YouTube Banner Templates | Download | YouTubeBannerMaker',
     desc: 'Browse verified YouTube banner templates crafted for gaming, tech, podcasting, and vlogs. Engineered to fit mobile and desktop safe areas cleanly.',
   },
   '/about': {
-    title: 'About YouTubeBannerMaker — Browser-First Channel Art Utility',
+    title: 'About Us | Browser-First Privacy | YouTubeBannerMaker',
     desc: 'Learn how YouTubeBannerMaker was built to solve banner crop issues and compression artifacts using 100% in-browser HTML5 Canvas execution.',
   },
   '/contact': {
-    title: 'Contact & Support — YouTubeBannerMaker',
+    title: 'Contact Support | Fast Response | YouTubeBannerMaker',
     desc: 'Get in touch with the YouTubeBannerMaker team for support, bug reports, and creator feature requests. Expected response time under 24 hours.',
   },
   '/privacy': {
-    title: 'Privacy Policy — YouTubeBannerMaker',
+    title: 'Privacy Policy | 100% Client-Side | YouTubeBannerMaker',
     desc: 'Our privacy policy: Zero image bytes are ever transmitted over the network. 100% client-side processing, sessionStorage usage, and advertising disclosures.',
   },
   '/terms': {
-    title: 'Terms of Service — YouTubeBannerMaker',
+    title: 'Terms of Service | Keep Your Rights | YouTubeBannerMaker',
     desc: 'Terms of Service for YouTubeBannerMaker. Free for personal and commercial channel branding. Creators retain 100% ownership of their artwork.',
   },
   '/404': {
-    title: 'Page Not Found — YouTubeBannerMaker',
+    title: 'Page Not Found | Return To Tools | YouTubeBannerMaker',
     desc: 'The requested page could not be found. Return to YouTube Banner Maker tools and sizing guides.',
   },
 };
