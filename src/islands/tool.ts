@@ -2425,9 +2425,9 @@ class ToolIsland {
           <div class="flex items-center gap-1">
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 ${
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 ${
                 layer.align === 'left' ? 'bg-ink-950 text-surface-0 active-align' : 'bg-surface-0 hover:bg-surface-100 text-ink-800'
-              } text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+              } text-xs flex items-center justify-center cursor-pointer active:scale-[0.98] transition-all focus-visible:ring-2 focus-visible:ring-accent"
               data-layer-id="${layer.id}"
               data-align="left"
               aria-label="Align left"
@@ -2436,9 +2436,9 @@ class ToolIsland {
             </button>
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 ${
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 ${
                 layer.align === 'center' ? 'bg-ink-950 text-surface-0 active-align' : 'bg-surface-0 hover:bg-surface-100 text-ink-800'
-              } text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+              } text-xs flex items-center justify-center cursor-pointer active:scale-[0.98] transition-all focus-visible:ring-2 focus-visible:ring-accent"
               data-layer-id="${layer.id}"
               data-align="center"
               aria-label="Align center"
@@ -2447,9 +2447,9 @@ class ToolIsland {
             </button>
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 ${
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 ${
                 layer.align === 'right' ? 'bg-ink-950 text-surface-0 active-align' : 'bg-surface-0 hover:bg-surface-100 text-ink-800'
-              } text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+              } text-xs flex items-center justify-center cursor-pointer active:scale-[0.98] transition-all focus-visible:ring-2 focus-visible:ring-accent"
               data-layer-id="${layer.id}"
               data-align="right"
               aria-label="Align right"
@@ -3215,7 +3215,7 @@ class ToolIsland {
         <div class="flex-1 space-y-1">
           <p class="font-semibold text-ink-950">${title}</p>
           <p class="text-[11px] text-ink-600">${detail}</p>
-          <button type="button" class="mt-1 px-2.5 py-1 text-xs font-medium rounded bg-surface-0 border border-line-200 hover:bg-surface-50 cursor-pointer">
+          <button type="button" class="mt-1 px-4 py-1.5 text-xs font-medium rounded-full bg-surface-0 border border-line-200 hover:bg-surface-50 active:scale-[0.98] transition-all cursor-pointer shadow-xs">
             Select another image
           </button>
         </div>
