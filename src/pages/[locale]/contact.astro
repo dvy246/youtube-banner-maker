@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import {
+  getBreadcrumbSchema,
+  getFAQSchema,
+  getOrganizationSchema,
+  getContactPageSchema,
+} from '../../lib/seo';
+import {
+  TARGET_LOCALES,
+  getStaticPageSeo,
+  getTranslations,
+  getLocalizedUrl,
+  type Locale,
+} from '../../i18n';
+
+export async function getStaticPaths() {
+  return TARGET_LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const path = `/${locale}/contact`;
+const seo = getStaticPageSeo('/contact', locale);
+const dict = getTranslations(locale);
+
+const faqs = [
+  {
+    question: dict.contact.emailLabel,
+    answer: `${dict.contact.emailDesc} support@youtubebannermaker.com. ${dict.contact.responseTime}`,
+  },
+  {
+    question: dict.about.val1Title,
+    answer: dict.about.val1Desc,
+  },
+  {
+    question: dict.terms.usageTitle,
+    answer: dict.terms.usageP1,
+  },
+];
+
+const jsonLd = [
+  getOrganizationSchema(),
+  getContactPageSchema(),
+  getBreadcrumbSchema([
+    { name: 'Home', url: getLocalizedUrl('/', locale) },
+    { name: dict.contact.title, url: path },
+  ]),
+  getFAQSchema(faqs),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  locale={locale}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} locale={locale} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Header -->
+      <header class="space-y-4 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">{dict.contact.title}</span>
+        </nav>
+        <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+          {dict.contact.getInTouchTitle}
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+          {dict.contact.title}
+        </h1>
+        <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+          {dict.contact.subtitle}
+        </p>
+      </header>
+
+      <!-- Contact Options -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-line-200 bg-surface-50 space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-surface-0 border border-line-200 flex items-center justify-center text-accent">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="space-y-1.5">
+            <h2 class="text-base font-bold text-ink-950">{dict.contact.emailLabel}</h2>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              {dict.contact.emailDesc}
+            </p>
+            <a href="mailto:support@youtubebannermaker.com" class="text-sm font-mono font-semibold text-accent hover:underline block pt-2">
+              support@youtubebannermaker.com
+            </a>
+          </div>
+          <div class="pt-2 text-[11px] font-mono text-ink-500">
+            {dict.contact.responseTime}
+          </div>
+        </div>
+
+        <div class="p-6 rounded-xl border border-line-200 bg-surface-50 space-y-4">
+          <div class="w-10 h-10 rounded-lg bg-surface-0 border border-line-200 flex items-center justify-center text-accent">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.339-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
+          </div>
+          <div class="space-y-1.5">
+            <h2 class="text-base font-bold text-ink-950">{dict.contact.githubLabel}</h2>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              {dict.contact.githubDesc}
+            </p>
+            <a href="https://github.com/dvy246/youtube-banner-maker/issues" target="_blank" rel="noopener noreferrer" class="text-sm font-mono font-semibold text-accent hover:underline block pt-2">
+              github.com/dvy246/youtube-banner-maker →
+            </a>
+          </div>
+          <div class="pt-2 text-[11px] font-mono text-ink-500">
+            Open Source & Community
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <h2 class="text-xl font-bold text-ink-950">
+          {dict.home.faqTitle}
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-5 rounded-lg border border-line-200 bg-surface-50 space-y-2">
+              <h3 class="text-sm font-semibold text-ink-950">{faq.question}</h3>
+              <p class="text-xs text-ink-600 leading-relaxed measure-prose">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer currentPath={path} locale={locale} />
+</BaseLayout>

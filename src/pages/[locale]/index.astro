@@ -1,0 +1,1022 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SpecTable from '../../components/SpecTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import HeroCropSimulator from '../../components/HeroCropSimulator.astro';
+import ArchGallery from '../../components/ArchGallery.astro';
+import { getWebSiteSchema, getOrganizationSchema, getSoftwareAppSchema } from '../../lib/seo';
+import { CANVAS, SAFE, SAFE_PX, DEVICES, REENCODE_BUDGET_BYTES } from '../../lib/spec';
+import {
+  TARGET_LOCALES,
+  getStaticPageSeo,
+  getTranslations,
+  getLocalizedUrl,
+  type Locale,
+} from '../../i18n';
+
+export async function getStaticPaths() {
+  return TARGET_LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const path = `/${locale}`;
+const seo = getStaticPageSeo('/', locale);
+const dict = getTranslations(locale);
+
+const jsonLd = [
+  getWebSiteSchema(),
+  getOrganizationSchema(),
+  getSoftwareAppSchema(
+    dict.home.metaTitle,
+    dict.home.metaDesc,
+    path
+  ),
+];
+
+const desktopHeight = Math.round(DEVICES.desktop.h * CANVAS.height);
+const desktopY = Math.round(DEVICES.desktop.y * CANVAS.height);
+const tabletWidth = Math.round(DEVICES.tablet.w * CANVAS.width);
+const tabletX = Math.round(DEVICES.tablet.x * CANVAS.width);
+const mobileX = Math.round(SAFE.x * CANVAS.width);
+const mobileY = Math.round(SAFE.y * CANVAS.height);
+const desktopKb = Math.round(REENCODE_BUDGET_BYTES.desktop / 1000);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  locale={locale}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} locale={locale} />
+
+  <main id="main-content" class="flex-1">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 1: Asymmetric Split Hero
+         Left: headline + CTAs + instrument readout
+         Right: live crop simulator inside double-bezel enclosure
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 lg:pt-14">
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-8 lg:gap-12 items-center">
+
+        <!-- Left rail -->
+        <div class="space-y-6 lg:pr-2">
+          <!-- Core Differentiators (Above Main Tagline & Subtitle) -->
+          <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-surface-50 border border-line-200 shadow-2xs text-xs">
+            <span class="inline-flex items-center gap-1.5 font-medium text-ink-900">
+              <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+              {dict.home.badgePrivacy}
+            </span>
+            <span class="text-ink-300 text-xs select-none" aria-hidden="true">·</span>
+            <span class="inline-flex items-center gap-1 font-medium text-ink-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              {dict.home.badgeNoAccount}
+            </span>
+            <span class="text-ink-300 text-xs select-none" aria-hidden="true">·</span>
+            <span class="inline-flex items-center gap-1 font-medium text-ink-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+              {dict.home.badgeNoWatermark}
+            </span>
+          </div>
+
+          <div class="space-y-4">
+            <h1 class="text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-[-0.035em] text-ink-950 leading-[1.04]">
+              {dict.home.heroTitlePre} <span class="relative inline-block text-accent whitespace-nowrap">
+                {dict.home.heroTitleAccent}
+                <svg class="absolute -bottom-2 sm:-bottom-2.5 left-0 w-full h-3 sm:h-3.5 overflow-visible pointer-events-none" viewBox="0 0 260 18" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                  <!-- Primary artisanal expressive brush curve -->
+                  <path
+                    d="M3 12 C 45 4, 110 2, 252 8 C 220 12, 120 16, 22 15"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="sketch-stroke-primary opacity-90"
+                  />
+                  <!-- Secondary organic echo sketch stroke for authentic hand-drafted texture -->
+                  <path
+                    d="M12 14 C 70 8, 175 6, 256 12"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    class="sketch-stroke-secondary opacity-60"
+                  />
+                  <!-- Hand-drawn drafting spark / star mark at the terminus -->
+                  <path
+                    d="M250 3 L254 9 L260 10 L255 13 L257 18 L251 14 L246 17 L248 12 L243 9 L249 8 Z"
+                    fill="currentColor"
+                    class="sketch-star opacity-90"
+                  />
+                </svg>
+              </span>
+            </h1>
+            <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-[44ch] font-normal">
+              {dict.home.heroSubtitle}
+            </p>
+          </div>
+
+          <!-- Primary CTAs with button-in-button elevation -->
+          <div class="flex flex-col sm:flex-row gap-3 pt-1">
+            <a
+              href={getLocalizedUrl('/tools/youtube-banner-resizer', locale)}
+              class="group inline-flex items-center justify-center gap-3 h-12 px-6 rounded-xl bg-accent text-surface-0 font-semibold text-sm hover:bg-accent-hover active:scale-[0.98] transition-all focus-visible:outline-accent shadow-raised min-h-[44px]"
+            >
+              <span>{dict.home.ctaFix}</span>
+              <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+            <a
+              href={getLocalizedUrl('/tools/youtube-banner-checker', locale)}
+              class="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-surface-0 text-ink-950 border border-line-200 font-semibold text-sm hover:bg-surface-50 active:scale-[0.98] transition-all focus-visible:outline-accent shadow-2xs min-h-[44px]"
+            >
+              <span>{dict.home.ctaCheck}</span>
+            </a>
+          </div>
+
+          <!-- 4-cell instrument readout strip with double-bezel hardware styling -->
+          <div class="p-1 rounded-xl bg-surface-100/80 border border-line-200 shadow-raised">
+            <dl class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-1">
+              <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Canvas</dt>
+                <dd class="text-sm font-mono font-bold text-ink-950 tabular-nums">{CANVAS.width} × {CANVAS.height}</dd>
+              </div>
+              <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Safe Area</dt>
+                <dd class="text-sm font-mono font-bold text-accent tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height}</dd>
+              </div>
+              <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">File Limit</dt>
+                <dd class="text-sm font-mono font-bold text-ink-950 tabular-nums">6 MB</dd>
+              </div>
+              <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Privacy</dt>
+                <dd class="text-sm font-mono font-bold text-success tabular-nums">Client-only</dd>
+              </div>
+            </dl>
+          </div>
+
+        </div>
+
+        <!-- Right rail: crop simulator inside studio console housing -->
+        <div class="w-full relative group">
+          <!-- Ambient backlight glow -->
+          <div class="absolute -inset-2 bg-gradient-to-r from-amber-200/25 via-accent/10 to-amber-100/20 dark:from-accent/15 dark:via-purple-500/10 dark:to-transparent rounded-3xl blur-2xl opacity-60 group-hover:opacity-85 transition-opacity pointer-events-none -z-10" aria-hidden="true"></div>
+          <HeroCropSimulator />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 2: Curated Channel Art Presets (Instant Creation)
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 mt-14">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Zero-Cutoff Presets
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+            {dict.home.showcaseTitle}
+          </h2>
+          <p class="text-base text-ink-600 leading-relaxed">
+            {dict.home.showcaseDesc}
+          </p>
+        </div>
+        <a
+          href={getLocalizedUrl('/templates', locale)}
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-0 border border-line-200 text-ink-950 font-semibold text-sm hover:bg-surface-50 transition-colors focus-visible:outline-accent shadow-2xs shrink-0 self-start sm:self-auto min-h-[44px]"
+        >
+          <span>{dict.home.ctaTemplates}</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- Arch Gallery Showcase -->
+      <ArchGallery locale={locale} />
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 2.5: Three Workflow Doors (Locked Scroll Section & Stacking Cards)
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-line-200">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+        <!-- Pinned Left Rail: Section Title & Locked Navigation Status -->
+        <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+              Three Studio Doors
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-ink-950 leading-[1.1]">
+              Choose Your Channel Art Door
+            </h2>
+            <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+              Whether you have finished artwork that needs resizing, want to check an existing banner for mobile cutoff, or need a fresh mobile-tested design.
+            </p>
+          </div>
+
+          <!-- Visual Locked Step Roadmap -->
+          <div class="hidden lg:block p-4 rounded-xl border border-line-200 bg-surface-50/70 space-y-3 shadow-2xs">
+            <p class="text-[11px] font-mono font-semibold uppercase tracking-wider text-ink-500">
+              Workflow Index
+            </p>
+            <div class="space-y-2 text-xs font-medium">
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0 border border-line-200/80 shadow-2xs text-ink-950">
+                <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">1</span>
+                <span>Door 01 · Fix &amp; Refit</span>
+              </div>
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">2</span>
+                <span>Door 02 · Diagnostic Check</span>
+              </div>
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">3</span>
+                <span>Door 03 · New Generator</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Rail: Stacking Locked Cards Deck -->
+        <div class="lg:col-span-8 space-y-6 relative">
+
+          <!-- Door 01: Fix (Sticky Locked Card 1) -->
+          <div class="group relative sticky top-20 sm:top-24 z-10 rounded-2xl border-2 border-ink-950 bg-surface-0 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-overlay transition-all duration-300 backdrop-blur-md overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/90 pointer-events-none transition-colors duration-300 group-hover:border-accent/40 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="space-y-4 relative z-10">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0">
+                  Door 01 · Fix
+                </span>
+                <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span>
+                  Most Popular
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
+                {dict.tools.resizer.title}
+              </h3>
+              <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                {dict.tools.resizer.intro}
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Reposition focal subjects safely inside the mobile safe area
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Toggle instant YouTube CDN re-encode compression preview
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Inspect mobile, desktop, tablet, and TV crops in real time
+                </li>
+              </ul>
+            </div>
+            <a
+              href={getLocalizedUrl('/tools/youtube-banner-resizer', locale)}
+              class="relative z-10 w-full sm:w-auto self-start h-12 px-6 rounded-xl bg-accent text-surface-0 font-semibold text-sm hover:bg-accent-hover active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2.5 min-h-[44px] shadow-raised"
+            >
+              <span>{dict.home.ctaFix}</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+
+          <!-- Door 02: Check (Sticky Locked Card 2) -->
+          <div class="group relative sticky top-24 sm:top-28 z-20 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-overlay transition-all duration-300 backdrop-blur-md overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/90 pointer-events-none transition-colors duration-300 group-hover:border-accent/40 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="space-y-4 relative z-10">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Door 02 · Check
+                </span>
+                <span class="text-xs font-mono text-ink-500">
+                  Instant Diagnostic
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
+                {dict.tools.checker.title}
+              </h3>
+              <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                {dict.tools.checker.intro}
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Immediate per-device verdict on text and logo positioning
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Clear warnings if graphics collide with mobile crop boundaries
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  One-click handoff into the resizer to adjust your layout
+                </li>
+              </ul>
+            </div>
+            <a
+              href={getLocalizedUrl('/tools/youtube-banner-checker', locale)}
+              class="relative z-10 w-full sm:w-auto self-start h-12 px-6 rounded-xl bg-surface-50 text-ink-950 border border-line-200 font-semibold text-sm hover:bg-surface-100 hover:border-ink-400 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2.5 min-h-[44px] shadow-2xs"
+            >
+              <span>{dict.home.ctaCheck}</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+
+          <!-- Door 03: Create (Sticky Locked Card 3) -->
+          <div class="group relative sticky top-28 sm:top-32 z-30 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-overlay transition-all duration-300 backdrop-blur-md overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/90 pointer-events-none transition-colors duration-300 group-hover:border-accent/40 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="space-y-4 relative z-10">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Door 03 · Create
+                </span>
+                <span class="text-xs font-mono text-ink-500">
+                  Generator &amp; Presets
+                </span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-950 leading-tight">
+                {dict.tools.maker.title}
+              </h3>
+              <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                {dict.tools.maker.intro}
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-ink-600 pt-1">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Category-specific layouts for gaming, tech, podcasting, and vlogs
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Typography and logos pre-aligned inside the safe center frame
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  Customizable colors, text layers, and background art
+                </li>
+              </ul>
+            </div>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 relative z-10">
+              <a
+                href={getLocalizedUrl('/tools/youtube-banner-maker', locale)}
+                class="w-full sm:w-auto h-12 px-6 rounded-xl bg-surface-50 text-ink-950 border border-line-200 font-semibold text-sm hover:bg-surface-100 hover:border-ink-400 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2.5 min-h-[44px] shadow-2xs"
+              >
+                <span>{dict.tools.maker.title}</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a
+                href={getLocalizedUrl('/templates', locale)}
+                class="text-xs font-semibold text-accent hover:underline underline-offset-4 py-2 px-1"
+              >
+                {dict.templatesHub.browseNiche} &rarr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 3: "What YouTube Actually Does to Your Banner"
+         Architectural & Technical Blueprint (Zero Text Collision)
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="what-youtube-does" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-10">
+      <div class="space-y-3 max-w-3xl">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          What YouTube Actually Does to Your Banner
+        </h2>
+        <p class="text-sm text-ink-600 leading-relaxed max-w-[60ch]">
+          YouTube does not scale your channel art down evenly. Instead, it uploads a single 16:9 canvas ({CANVAS.width} × {CANVAS.height} px) and carves out different viewports depending on the viewer's device.
+        </p>
+      </div>
+
+      <!-- Precision Blueprint SVG Diagram -->
+      <div class="space-y-6">
+        <div class="w-full overflow-hidden rounded-2xl border border-line-200 bg-surface-50 p-3 sm:p-5 shadow-raised">
+          <svg
+            viewBox={`0 0 ${CANVAS.width} ${CANVAS.height}`}
+            class="w-full h-auto rounded-xl bg-surface-0 shadow-inner"
+            role="img"
+            aria-label="Diagram showing YouTube banner crop zones across TV, desktop, tablet, and mobile safe area"
+          >
+            <!-- TV Background: Full 16:9 Canvas -->
+            <rect
+              x="0"
+              y="0"
+              width={CANVAS.width}
+              height={CANVAS.height}
+              fill="#F8FAFC"
+              stroke="#E2E8F0"
+              stroke-width="6"
+            />
+
+            <!-- 1. TV Screen Viewport Tag (Top-left corner) -->
+            <g transform="translate(60, 60)">
+              <rect width="480" height="74" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" />
+              <text x="24" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
+                1. TV SCREEN VIEWPORT
+              </text>
+              <text x="24" y="56" font-family="ui-monospace, monospace" font-size="16" font-weight="600" fill="#64748B">
+                {CANVAS.width} × {CANVAS.height} px · Full 16:9 Canvas
+              </text>
+            </g>
+
+            <!-- 2. Desktop Ribbon (Full width band) -->
+            <rect
+              x="0"
+              y={desktopY}
+              width={CANVAS.width}
+              height={desktopHeight}
+              fill="#F1F5F9"
+              stroke="#475569"
+              stroke-width="4"
+              stroke-dasharray="12 8"
+            />
+
+            <!-- Desktop Viewport Tag (Placed ABOVE the desktop ribbon on the left - zero collision) -->
+            <g transform={`translate(60, ${desktopY - 88})`}>
+              <rect width="520" height="72" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" />
+              <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
+                2. DESKTOP VIEWPORT
+              </text>
+              <text x="24" y="54" font-family="ui-monospace, monospace" font-size="16" font-weight="600" fill="#475569">
+                {CANVAS.width} × {desktopHeight} px · Top &amp; Bottom Cropped
+              </text>
+            </g>
+
+            <!-- 3. Tablet Viewport (Centered ribbon crop) -->
+            <rect
+              x={tabletX}
+              y={desktopY}
+              width={tabletWidth}
+              height={desktopHeight}
+              fill="#E2E8F0"
+              fill-opacity="0.5"
+              stroke="#64748B"
+              stroke-width="4"
+              stroke-dasharray="8 6"
+            />
+
+            <!-- Tablet Viewport Tag (Placed ABOVE the desktop ribbon on the right - zero collision) -->
+            <g transform={`translate(${CANVAS.width - 580}, ${desktopY - 88})`}>
+              <rect width="520" height="72" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" />
+              <text x="24" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">
+                3. TABLET VIEWPORT
+              </text>
+              <text x="24" y="54" font-family="ui-monospace, monospace" font-size="16" font-weight="600" fill="#475569">
+                {tabletWidth} × {desktopHeight} px · Scaled Ribbon
+              </text>
+            </g>
+
+            <!-- 4. Mobile Safe Area Box (Centered intersection) -->
+            <rect
+              x={mobileX}
+              y={mobileY}
+              width={SAFE_PX.full.width}
+              height={SAFE_PX.full.height}
+              fill="var(--color-accent)"
+              fill-opacity="0.10"
+              stroke="var(--color-accent)"
+              stroke-width="8"
+              rx="16"
+            />
+
+            <!-- Mobile Safe Area Corner Framing Ticks (Architectural precision markers) -->
+            <path
+              d={`M ${mobileX + 28} ${mobileY + 12} L ${mobileX + 12} ${mobileY + 12} L ${mobileX + 12} ${mobileY + 28}`}
+              fill="none"
+              stroke="var(--color-accent)"
+              stroke-width="5"
+            />
+            <path
+              d={`M ${mobileX + SAFE_PX.full.width - 28} ${mobileY + 12} L ${mobileX + SAFE_PX.full.width - 12} ${mobileY + 12} L ${mobileX + SAFE_PX.full.width - 12} ${mobileY + 28}`}
+              fill="none"
+              stroke="var(--color-accent)"
+              stroke-width="5"
+            />
+            <path
+              d={`M ${mobileX + 28} ${mobileY + SAFE_PX.full.height - 12} L ${mobileX + 12} ${mobileY + SAFE_PX.full.height - 12} L ${mobileX + 12} ${mobileY + SAFE_PX.full.height - 28}`}
+              fill="none"
+              stroke="var(--color-accent)"
+              stroke-width="5"
+            />
+            <path
+              d={`M ${mobileX + SAFE_PX.full.width - 28} ${mobileY + SAFE_PX.full.height - 12} L ${mobileX + SAFE_PX.full.width - 12} ${mobileY + SAFE_PX.full.height - 12} L ${mobileX + SAFE_PX.full.width - 12} ${mobileY + SAFE_PX.full.height - 28}`}
+              fill="none"
+              stroke="var(--color-accent)"
+              stroke-width="5"
+            />
+
+            <!-- Mobile Safe Area Central Core Tag (Clean centered placard inside safe area) -->
+            <g transform={`translate(${mobileX + (SAFE_PX.full.width - 480) / 2}, ${mobileY + (SAFE_PX.full.height - 84) / 2})`}>
+              <rect width="480" height="84" rx="14" fill="#FFFFFF" stroke="var(--color-accent)" stroke-width="3" />
+              <text x="240" y="36" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#0F172A">
+                4. MOBILE SAFE AREA
+              </text>
+              <text x="240" y="62" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" font-weight="700" fill="var(--color-accent)">
+                {SAFE_PX.full.width} × {SAFE_PX.full.height} px · Universal Safe Zone
+              </text>
+            </g>
+
+            <!-- Coordinate Calibration Badges on Corners (Tabular monospace indicators) -->
+            <g transform={`translate(${mobileX + 18}, ${mobileY + SAFE_PX.full.height - 36})`}>
+              <rect width="180" height="24" rx="6" fill="#0F172A" fill-opacity="0.85" />
+              <text x="90" y="16" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" font-weight="600" fill="#F8FAFC">
+                X: {mobileX}px · Y: {mobileY}px
+              </text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Compression Callout Note -->
+      <div class="p-6 rounded-2xl border border-line-200 bg-surface-50 space-y-3 shadow-2xs">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-accent/10 text-accent font-mono text-xs font-bold">i</span>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-ink-950 font-mono">
+            YouTube CDN Re-Encode Notice
+          </h3>
+        </div>
+        <p class="text-sm text-ink-800 leading-relaxed measure-prose">
+          YouTube automatically compresses every uploaded banner to approximately {desktopKb} KB on desktop viewports, and even smaller packages for mobile screens. This automatic re-compression cannot be avoided or bypassed by any export setting or file format.
+        </p>
+        <p class="text-xs text-ink-600 leading-relaxed measure-prose">
+          Because YouTube's compression pipeline optimizes for worldwide bandwidth rather than graphical fidelity, aggressive re-encoding can soften delicate gradients and fine text. Our tools provide an approximate preview of this re-encode step so you can test contrast and readability before uploading to your live channel.
+        </p>
+      </div>
+
+      <!-- Smooth Section Transition Bridge linking Blueprint to Specs -->
+      <div class="pt-8 pb-2 flex justify-center">
+        <a
+          href="#official-banner-dimensions"
+          aria-label="Scroll down to official YouTube banner dimensions and limits table"
+          class="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-0 hover:bg-surface-50 border border-line-200 text-xs font-mono font-medium text-ink-600 hover:text-ink-950 shadow-2xs hover:border-accent/40 transition-all duration-200 focus-visible:outline-accent"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-accent group-hover:animate-ping"></span>
+          <span>Official Dimensions &amp; Limits</span>
+          <svg
+            class="w-3.5 h-3.5 text-ink-400 group-hover:text-accent group-hover:translate-y-0.5 transition-transform"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 4: Key Specifications Strip
+    ═══════════════════════════════════════════════════════════ -->
+    <section id="official-banner-dimensions" class="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-6">
+      <div class="space-y-2 max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          Official Studio Parameters
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          {dict.home.specsTitle}
+        </h2>
+        <p class="text-sm text-ink-600 leading-relaxed max-w-[52ch]">
+          {dict.home.specsDesc}
+        </p>
+      </div>
+      <SpecTable />
+
+      <div class="flex items-center justify-between pt-2">
+        <a
+          href="#what-youtube-does"
+          class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-500 hover:text-accent transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+          <span>Back to Visual Crop Blueprint</span>
+        </a>
+        <a
+          href={getLocalizedUrl('/guides/youtube-banner-size', locale)}
+          class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-accent hover:underline"
+        >
+          <span>Read Comprehensive Sizing Guide</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 5: Educational Guides Section
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200 space-y-8">
+      <div class="space-y-2 max-w-2xl">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
+          Complete Channel Art Guides
+        </h2>
+        <p class="text-sm text-ink-600 leading-relaxed max-w-[52ch]">
+          Deep-dive technical guides explaining the mathematics of YouTube banner cropping and responsive safe areas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Guide 1: YouTube Banner Size -->
+        <div class="group relative p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 flex flex-col justify-between space-y-6 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none cursor-pointer">
+          <div class="space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Dimension Standards</span>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950 group-hover:text-accent transition-colors">
+              {dict.guideSize.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              Comprehensive reference covering recommended dimensions ({CANVAS.width} × {CANVAS.height} px), minimum sizes, maximum upload limits, and the exact viewport fractions served to each viewing device.
+            </p>
+          </div>
+          <div>
+            <a
+              href={getLocalizedUrl('/guides/youtube-banner-size', locale)}
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 group-hover:text-accent transition-colors min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
+            >
+              <span>{dict.guideSize.title}</span>
+              <span class="group-hover:translate-x-1.5 transition-transform" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Guide 2: Safe Area Math -->
+        <div class="group relative p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-0 flex flex-col justify-between space-y-6 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:shadow-overlay hover:border-ink-400/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transform-none cursor-pointer">
+          <div class="space-y-3">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">Safe Area Arithmetic</span>
+            <h3 class="text-xl font-bold tracking-tight text-ink-950 group-hover:text-accent transition-colors">
+              {dict.guideSafeArea.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
+              The arithmetic reconciling YouTube's two official safe-area numbers. Proves why {SAFE_PX.min.width}×{SAFE_PX.min.height} at minimum upload matches {SAFE_PX.full.width}×{SAFE_PX.full.height} at full upload as the exact same centered window.
+            </p>
+          </div>
+          <div>
+            <a
+              href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)}
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-950 group-hover:text-accent transition-colors min-h-[44px] after:absolute after:inset-0 after:rounded-2xl after:pointer-events-auto"
+            >
+              <span>{dict.guideSafeArea.title}</span>
+              <span class="group-hover:translate-x-1.5 transition-transform" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 5.5: Deep Dive: YouTube Banner Size & Channel Art Engineering
+         Comprehensive 600+ word on-page SEO guide
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-line-200">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+        <!-- Pinned Left Rail: Section Title & Chapter Navigation Roadmap -->
+        <div class="lg:col-span-4 lg:sticky lg:top-24 space-y-6">
+          <div class="space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+              Comprehensive Sizing &amp; Design Manual
+            </div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-ink-950 leading-[1.15]">
+              The Definitive Guide to YouTube Banner Size, Safe Areas &amp; Channel Art
+            </h2>
+            <p class="text-sm sm:text-base text-ink-600 leading-relaxed font-normal">
+              Everything you need to know about official dimensions, multi-device viewport cropping, aspect ratio math, and crafting high-converting channel banners that never get cut off.
+            </p>
+          </div>
+
+          <!-- Interactive Chapter Table of Contents / Index -->
+          <div class="hidden lg:block p-4 rounded-xl border border-line-200 bg-surface-50/70 space-y-3 shadow-2xs">
+            <p class="text-[11px] font-mono font-semibold uppercase tracking-wider text-ink-500">
+              Chapter Index (5 Sections)
+            </p>
+            <div class="space-y-2 text-xs font-medium">
+              <a href="#guide-chapter-1" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0 border border-line-200/80 shadow-2xs text-ink-950 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-accent text-surface-0 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">1</span>
+                <span>Ch 01 · Dimensions &amp; Upload Limits</span>
+              </a>
+              <a href="#guide-chapter-2" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">2</span>
+                <span>Ch 02 · The Mobile Safe Area</span>
+              </a>
+              <a href="#guide-chapter-3" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">3</span>
+                <span>Ch 03 · Ideas, Aesthetics &amp; Backgrounds</span>
+              </a>
+              <a href="#guide-chapter-4" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">4</span>
+                <span>Ch 04 · Zero-Upload Privacy Engine</span>
+              </a>
+              <a href="#guide-chapter-5" class="flex items-center gap-3 p-2 rounded-lg bg-surface-0/60 border border-line-200/40 text-ink-700 hover:text-accent transition-colors">
+                <span class="w-5 h-5 rounded-full bg-surface-100 text-ink-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0">5</span>
+                <span>Ch 05 · YouTube Studio Clarifications</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Rail: Stacking Locked Chapter Cards -->
+        <div class="lg:col-span-8 space-y-8 relative">
+
+          <!-- Chapter 01 (Sticky Locked Card 1) -->
+          <article id="guide-chapter-1" class="group relative sticky top-20 sm:top-24 z-10 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md transition-all duration-300 overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/80 pointer-events-none transition-colors duration-300 group-hover:border-accent/35 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="relative z-10 space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-ink-950 text-surface-0">
+                  Chapter 01 · Dimensions &amp; Specs
+                </span>
+                <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span>
+                  {CANVAS.width} × {CANVAS.height} px
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+                What Size Is a YouTube Banner? Dimensions &amp; Upload Specifications
+              </h3>
+              <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+                <p>
+                  If you are asking <strong class="text-ink-950 font-semibold">what size is a youtube banner</strong>, the official standard <strong class="text-ink-950 font-semibold">youtube banner size</strong> recommended by YouTube Studio is <span class="font-mono font-semibold text-ink-900">{CANVAS.width} × {CANVAS.height} pixels</span> with a widescreen <strong class="text-ink-950 font-semibold">16:9 aspect ratio</strong>. YouTube enforces concrete boundaries on every uploaded <strong class="text-ink-950 font-semibold">youtube banner image</strong>: your graphic file must have a minimum resolution of <span class="font-mono font-semibold text-ink-900">2048 × 1152 pixels</span> and a maximum file weight of <span class="font-mono font-semibold text-ink-900">6 MB</span> in PNG, JPEG, or non-animated GIF format.
+                </p>
+                <p>
+                  A widespread misconception involves the <strong class="text-ink-950 font-semibold">1024x576 youtube banner</strong> (or <strong class="text-ink-950 font-semibold">1024 x 576 pixels youtube banner</strong>). While 1024 × 576 shares the exact mathematical 16:9 aspect ratio, uploading this resolution triggers an immediate rejection inside YouTube Studio. YouTube requires an absolute minimum upload floor of a <strong class="text-ink-950 font-semibold">2048 x 1152 youtube banner</strong>. For the sharpest multi-device presentation, you should always design at the full {CANVAS.width} × {CANVAS.height} px specification.
+                </p>
+                <div class="p-4 rounded-xl bg-surface-50 border border-line-200 space-y-2 mt-4">
+                  <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-ink-950">
+                    YouTube Banner Size for All Devices at a Glance
+                  </h4>
+                  <ul class="text-xs text-ink-600 space-y-1.5">
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                      <span><strong class="text-ink-900">Smart TVs (16:9 Full Canvas):</strong> {CANVAS.width} × {CANVAS.height} px &mdash; 100% of the canvas is visible exclusively on television sets and console apps.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                      <span><strong class="text-ink-900">Desktop Viewport Ribbon:</strong> {CANVAS.width} × {desktopHeight} px &mdash; crops off the top and bottom ~35% margins, leaving a panoramic header band.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                      <span><strong class="text-ink-900">Tablet Viewport:</strong> {tabletWidth} × {desktopHeight} px &mdash; clips side graphics compared to desktop while preserving vertical ribbon height.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                      <span><strong class="text-ink-900">Mobile Safe Area:</strong> {SAFE_PX.full.width} × {SAFE_PX.full.height} px &mdash; the centered core visible across every smartphone, tablet, computer, and TV screen.</span>
+                    </li>
+                  </ul>
+                </div>
+                <p>
+                  Accounting for these responsive <strong class="text-ink-950 font-semibold">youtube banner dimensions</strong> is critical because YouTube never scales down your entire canvas for mobile. It carves out specific crops dynamically depending on screen size.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Chapter 02 (Sticky Locked Card 2) -->
+          <article id="guide-chapter-2" class="group relative sticky top-24 sm:top-28 z-20 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md transition-all duration-300 overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/80 pointer-events-none transition-colors duration-300 group-hover:border-accent/35 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="relative z-10 space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Chapter 02 · Safe Area
+                </span>
+                <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-accent"></span>
+                  {SAFE_PX.full.width} × {SAFE_PX.full.height} px
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+                The Mobile Safe Area: Why Your YouTube Banner Gets Cut Off
+              </h3>
+              <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+                <p>
+                  More than 70% of YouTube views originate on mobile devices and tablet apps. The centered <span class="font-mono font-semibold text-accent">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</span> bounding box represents YouTube's universal safe area. When channel artwork appears cut off, disjointed, or missing vital text on mobile phones, it is almost invariably because logos, names, social media handles, or face portraits were placed outside this safe rectangle.
+                </p>
+                <p>
+                  If you have existing artwork that suffers from mobile truncation, an interactive <strong class="text-ink-950 font-semibold">youtube banner resizer</strong> allows you to reposition your focal subject safely into the center, rescale artwork with aspect ratio constraints, and simulate the exact crop across mobile, desktop, tablet, and TV before re-uploading.
+                </p>
+                <p>
+                  When starting from scratch, working with a purpose-built <strong class="text-ink-950 font-semibold">youtube banner creator</strong> prevents positioning mistakes by visually locking all typography and crucial branding layers directly inside the safe coordinates.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Chapter 03 (Sticky Locked Card 3) -->
+          <article id="guide-chapter-3" class="group relative sticky top-28 sm:top-32 z-30 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md transition-all duration-300 overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/80 pointer-events-none transition-colors duration-300 group-hover:border-accent/35 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="relative z-10 space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Chapter 03 · Design &amp; Aesthetics
+                </span>
+                <span class="text-xs font-mono text-ink-500">
+                  Visual Hierarchy
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+                How to Make a YouTube Banner: Ideas, Aesthetics &amp; Backgrounds
+              </h3>
+              <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+                <p>
+                  Discovering <strong class="text-ink-950 font-semibold">how to make a youtube banner</strong> that converts casual viewers into lifelong subscribers hinges on clear visual hierarchy, legible typography, and niche-appropriate aesthetics. Consider these proven channel art strategies:
+                </p>
+                <ul class="text-xs text-ink-600 space-y-2.5 my-3 pl-1">
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Select an Atmospheric YouTube Banner Background:</strong> Busy, over-saturated graphics create visual noise that makes text unreadable. Choose a textured <strong class="text-ink-900">youtube banner background</strong> &mdash; such as dark brushed metal, subtle architectural gradients, or cinematic photo blurs &mdash; that establishes mood while keeping foreground titles legible.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Black YouTube Banner for Minimalist Authority:</strong> A stealth <strong class="text-ink-900">black youtube banner</strong> featuring monochrome palettes and high-contrast monospace typography has become the gold standard for developer tools, hardware reviews, cryptocurrency channels, and technical tutorials.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Aesthetic YouTube Banner for Lifestyle &amp; Vlogs:</strong> Lifestyle, wellness, and photography creators often thrive with an <strong class="text-ink-900">aesthetic youtube banner</strong> utilizing warm film grain, organic neutral palettes, and elegant serif headlines framed comfortably within the safe area.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Gather Compelling YouTube Banner Ideas:</strong> Before designing, study top creators in your niche. The most successful <strong class="text-ink-900">youtube banner ideas</strong> communicate three things within two seconds: who you are, what content you produce, and your upload frequency.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0"></span>
+                    <span><strong class="text-ink-900">Start from a Verified YouTube Banner Template:</strong> Rather than calculating pixel coordinates manually, selecting a <strong class="text-ink-900">free youtube banner</strong> layout or curated <strong class="text-ink-900">youtube banner template</strong> ensures that your visual assets remain intact regardless of which device your audience uses.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Chapter 04 (Sticky Locked Card 4) -->
+          <article id="guide-chapter-4" class="group relative sticky top-32 sm:top-36 z-40 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md transition-all duration-300 overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/80 pointer-events-none transition-colors duration-300 group-hover:border-accent/35 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="relative z-10 space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Chapter 04 · Architecture
+                </span>
+                <span class="text-xs font-mono font-semibold text-accent flex items-center gap-1.5">
+                  100% Client-Side
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+                Client-Side YouTube Banner Maker: Zero Server Uploads &amp; Complete Privacy
+              </h3>
+              <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+                <p>
+                  Unlike conventional graphic design platforms that require cloud rendering, compulsory user registrations, watermarked downloads, or recurring subscriptions, YouTubeBannerMaker.com operates as a client-side <strong class="text-ink-950 font-semibold">youtube banner maker</strong> built entirely upon modern web standards.
+                </p>
+                <p>
+                  All image decoding, canvas scaling, aspect ratio calculations, typography rendering, and raster exports execute strictly inside your local browser tab via HTML5 Canvas APIs. Zero image bytes are ever transmitted across external networks. Creators retain 100% intellectual property ownership of their artwork, with clean {CANVAS.width} × {CANVAS.height} px PNG downloads that are free of watermarks and hidden fees.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Chapter 05 (Sticky Locked Card 5) -->
+          <article id="guide-chapter-5" class="group relative sticky top-36 sm:top-40 z-50 rounded-2xl border-2 border-line-200 bg-surface-0 p-7 sm:p-9 shadow-overlay backdrop-blur-md transition-all duration-300 overflow-hidden">
+            <!-- Artisanal sketch frame inner dashed boundary -->
+            <div class="absolute inset-2 sm:inset-2.5 rounded-xl border border-dashed border-line-200/80 pointer-events-none transition-colors duration-300 group-hover:border-accent/35 z-0" aria-hidden="true"></div>
+
+            <!-- Corner drafting sketch registration ticks -->
+            <span class="absolute top-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute top-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 left-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+            <span class="absolute bottom-2.5 right-3 font-mono text-[10px] text-ink-400/80 group-hover:text-accent/80 transition-colors pointer-events-none leading-none select-none z-10" aria-hidden="true">+</span>
+
+            <div class="relative z-10 space-y-4">
+              <div class="flex items-start justify-between gap-2 border-b border-line-100 pb-3">
+                <span class="inline-flex items-center h-6 px-2.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-surface-100 text-ink-800 border border-line-200">
+                  Chapter 05 · YouTube Studio
+                </span>
+                <span class="text-xs font-mono text-ink-500">
+                  Publishing Guide
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
+                Channel Branding Clarifications &amp; Common Queries
+              </h3>
+              <div class="text-sm text-ink-600 leading-relaxed space-y-3 font-normal">
+                <p>
+                  Creators searching for <strong class="text-ink-950 font-semibold">banner youtube</strong>, <strong class="text-ink-950 font-semibold">banner youtube size</strong>, <strong class="text-ink-950 font-semibold">banner youtube maker</strong>, or a <strong class="text-ink-950 font-semibold">banner youtube template</strong> often run into confusing YouTube Studio nomenclature:
+                </p>
+                <p>
+                  <strong class="text-ink-900 font-medium">Channel Header vs. Video Watermark:</strong> A common search phrase among creators is <strong class="text-ink-950 font-semibold">&ldquo;sub for a cookie banner youtube&rdquo;</strong>. This query often conflates website cookie consent banners with YouTube Studio's branding elements. Specifically, YouTube provides two distinct branding assets under <em class="not-italic font-mono text-xs bg-surface-100 px-1.5 py-0.5 rounded text-ink-800">YouTube Studio &gt; Customization &gt; Branding</em>: the top channel banner ({CANVAS.width} × {CANVAS.height} px) and the small 150 × 150 px video watermark button in the lower-right player corner that invites viewers to subscribe. It is important to distinguish this video watermark from your primary channel banner artwork.
+                </p>
+                <p>
+                  <strong class="text-ink-900 font-medium">Publishing Your Final Banner:</strong> Once you export your 2560 × 1440 PNG file from our tool, navigate to your channel dashboard, click <strong class="text-ink-900">Customization &gt; Branding</strong>, locate the <strong class="text-ink-900">Banner image</strong> section, and click <strong class="text-ink-900">Change / Upload</strong>. YouTube Studio will display its interactive safe-area grid overlay &mdash; and because your artwork was pre-aligned with our tool, your channel art will fit without any awkward cropping.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         Block 6: FAQ
+    ═══════════════════════════════════════════════════════════ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-line-200">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.8fr] gap-8 lg:gap-16">
+        <div class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
+            {dict.home.faqTitle}
+          </h2>
+          <p class="text-base text-ink-600 leading-relaxed">
+            {dict.home.faqDesc}
+          </p>
+          <div class="pt-4">
+            <a
+              href={getLocalizedUrl('/guides/youtube-banner-size', locale)}
+              class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline"
+            >
+              <span>{dict.guideSize.title}</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <FaqAccordion />
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer currentPath={path} locale={locale} />
+</BaseLayout>

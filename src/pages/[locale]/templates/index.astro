@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import TemplateCard from '../../../components/TemplateCard.astro';
+import ArchGallery from '../../../components/ArchGallery.astro';
+import { getBreadcrumbSchema, getCollectionPageSchema } from '../../../lib/seo';
+import { listTemplates, getQualifyingNiches } from '../../../lib/template';
+import {
+  TARGET_LOCALES,
+  getStaticPageSeo,
+  getNicheSeo,
+  getTranslations,
+  getLocalizedUrl,
+  type Locale,
+} from '../../../i18n';
+
+export async function getStaticPaths() {
+  return TARGET_LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const path = `/${locale}/templates`;
+const seo = getStaticPageSeo('/templates', locale);
+const dict = getTranslations(locale);
+const templates = listTemplates();
+const qualifyingNiches = getQualifyingNiches();
+
+const breadcrumbs = getBreadcrumbSchema([
+  { name: 'Home', url: getLocalizedUrl('/', locale) },
+  { name: dict.templatesHub.title, url: path },
+]);
+
+const collectionSchema = getCollectionPageSchema({
+  name: seo.title,
+  description: seo.desc,
+  path,
+  items: templates.map((t) => ({
+    name: t.name,
+    url: `${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${t.id}`,
+    image: t.preview,
+  })),
+});
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  locale={locale}
+  jsonLd={[breadcrumbs, collectionSchema]}
+>
+  <Header currentPath={path} locale={locale} />
+
+  <main id="main-content" class="flex-1">
+    <!-- Hero Section -->
+    <section class="border-b border-line-200 bg-surface-0 py-12 sm:py-16 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-50 border border-line-200 text-xs font-medium text-ink-600 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            {dict.common.privacyBadge}
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink-950 tracking-tight leading-[1.12]">
+            {dict.templatesHub.title}
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-ink-600 measure-prose leading-relaxed">
+            {dict.templatesHub.subtitle}
+          </p>
+        </div>
+
+        <!-- Arch Gallery Showcase -->
+        <div class="mt-8 sm:mt-10">
+          <ArchGallery />
+        </div>
+      </div>
+    </section>
+
+    <!-- Niche Categories Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-xl font-bold text-ink-950 mb-6">{dict.templatesHub.browseNiche}</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        {qualifyingNiches.map(({ niche, templates: nicheTemplates }) => {
+          const nicheSeo = getNicheSeo(niche, locale);
+          return (
+            <a
+              href={getLocalizedUrl(`/templates/${niche}`, locale)}
+              class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-50 hover:border-line-300 transition-colors flex flex-col justify-between group"
+            >
+              <span class="text-sm font-semibold text-ink-950 group-hover:text-accent transition-colors">{nicheSeo.name}</span>
+              <span class="text-xs font-mono text-ink-500 mt-2">{nicheTemplates.length} templates</span>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- Template Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-line-200">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {templates.map((template) => (
+          <TemplateCard template={template} locale={locale} />
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer currentPath={path} locale={locale} />
+</BaseLayout>

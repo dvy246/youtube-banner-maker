@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getBreadcrumbSchema, getOrganizationSchema } from '../../lib/seo';
+import {
+  TARGET_LOCALES,
+  getStaticPageSeo,
+  getTranslations,
+  getLocalizedUrl,
+  type Locale,
+} from '../../i18n';
+
+export async function getStaticPaths() {
+  return TARGET_LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const path = `/${locale}/terms`;
+const seo = getStaticPageSeo('/terms', locale);
+const dict = getTranslations(locale);
+
+const jsonLd = [
+  getOrganizationSchema(),
+  getBreadcrumbSchema([
+    { name: 'Home', url: getLocalizedUrl('/', locale) },
+    { name: dict.terms.title, url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  locale={locale}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} locale={locale} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Hero / Header -->
+      <header class="space-y-4 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">{dict.terms.title}</span>
+        </nav>
+        <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+          {dict.footer.colTrust}
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+          {dict.terms.title}
+        </h1>
+        <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+          {dict.terms.subtitle}
+        </p>
+      </header>
+
+      <!-- Section 1: Usage & License -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            01 · {dict.terms.usageTitle}
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            {dict.terms.usageTitle}
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          {dict.terms.usageP1}
+        </p>
+      </section>
+
+      <!-- Section 2: Trademark Disclaimer -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            02 · {dict.terms.disclaimerTitle}
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            {dict.terms.disclaimerTitle}
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          {dict.terms.disclaimerP1}
+        </p>
+      </section>
+
+      <!-- Section 3: Limitation of Liability -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            03 · {dict.terms.liabilityTitle}
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            {dict.terms.liabilityTitle}
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          {dict.terms.liabilityP1}
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer currentPath={path} locale={locale} />
+</BaseLayout>

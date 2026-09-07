@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import DeviceCropTable from '../../../components/DeviceCropTable.astro';
+import { getBreadcrumbSchema, getTechArticleSchema } from '../../../lib/seo';
+import { CANVAS, SAFE_PX } from '../../../lib/spec';
+import {
+  TARGET_LOCALES,
+  getStaticPageSeo,
+  getTranslations,
+  getLocalizedUrl,
+  type Locale,
+} from '../../../i18n';
+
+export async function getStaticPaths() {
+  return TARGET_LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const path = `/${locale}/guides/youtube-banner-safe-area`;
+const seo = getStaticPageSeo('/guides/youtube-banner-safe-area', locale);
+const dict = getTranslations(locale);
+
+const jsonLd = [
+  getTechArticleSchema({
+    title: seo.title,
+    description: seo.desc,
+    path,
+    datePublished: '2026-01-15',
+    dateModified: '2026-03-01',
+  }),
+  getBreadcrumbSchema([
+    { name: 'Home', url: getLocalizedUrl('/', locale) },
+    { name: dict.guideSafeArea.title, url: path },
+  ]),
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  locale={locale}
+  jsonLd={jsonLd}
+>
+  <Header currentPath={path} locale={locale} />
+
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+      
+      <!-- Header -->
+      <header class="space-y-4 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">{dict.footer.guideSafeArea}</span>
+        </nav>
+        <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+          {dict.footer.colGuides}
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+          {dict.guideSafeArea.title}
+        </h1>
+        <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+          {dict.guideSafeArea.subtitle}
+        </p>
+      </header>
+
+      <!-- Geometry Section -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            {dict.guideSafeArea.mathTitle}
+          </h2>
+          <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+            {dict.about.val2Desc}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <span class="text-xs font-mono font-bold text-accent uppercase tracking-wider">
+              {dict.guideSize.safeArea}
+            </span>
+            <p class="text-2xl font-mono font-bold text-ink-950">
+              {SAFE_PX.full.width} × {SAFE_PX.full.height} px
+            </p>
+            <p class="text-xs text-ink-600">
+              {dict.footer.specSafeArea} ({CANVAS.width} × {CANVAS.height} px)
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <span class="text-xs font-mono font-bold text-ink-700 uppercase tracking-wider">
+              {dict.guideSize.minUpload}
+            </span>
+            <p class="text-2xl font-mono font-bold text-ink-950">
+              {SAFE_PX.min.width} × {SAFE_PX.min.height} px
+            </p>
+            <p class="text-xs text-ink-600">
+              2048 × 1152 px minimum
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Device Crop Table -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            {dict.guideSafeArea.mobileVsDesktop}
+          </h2>
+        </div>
+        <DeviceCropTable />
+      </section>
+
+      <!-- CTA -->
+      <section class="p-6 rounded-2xl border border-line-200 bg-surface-50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="space-y-1 text-center sm:text-left">
+          <h3 class="text-sm font-bold text-ink-950">{dict.home.ctaCheck}</h3>
+          <p class="text-xs text-ink-600">{dict.tools.checker.intro}</p>
+        </div>
+        <a
+          href={getLocalizedUrl('/tools/youtube-banner-checker', locale)}
+          class="h-10 px-5 rounded-lg bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs font-semibold inline-flex items-center gap-1.5 transition-colors shrink-0 shadow-xs"
+        >
+          <span>{dict.home.ctaCheck}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer currentPath={path} locale={locale} />
+</BaseLayout>

@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import {
+  TARGET_LOCALES,
+  getStaticPageSeo,
+  getTranslations,
+  getLocalizedUrl,
+  type Locale,
+} from '../../i18n';
+
+export async function getStaticPaths() {
+  return TARGET_LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const path = `/${locale}/404`;
+const seo = getStaticPageSeo('/404', locale);
+const dict = getTranslations(locale);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.desc}
+  path={path}
+  locale={locale}
+  robots="noindex, follow"
+>
+  <Header currentPath={path} locale={locale} />
+
+  <main id="main-content" class="flex-1 flex items-center justify-center py-16 sm:py-24">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div class="space-y-3">
+        <span class="inline-block text-xs font-mono font-semibold uppercase tracking-wider text-accent bg-surface-50 border border-line-200 px-3 py-1 rounded-full">
+          Error 404
+        </span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink-950">
+          {dict.notFound.title}
+        </h1>
+        <p class="text-base text-ink-600 max-w-md mx-auto leading-relaxed">
+          {dict.notFound.subtitle}
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-line-200 bg-surface-50 text-left space-y-4">
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-ink-950">
+          {dict.footer.colTools}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a
+            href={getLocalizedUrl('/tools/youtube-banner-resizer', locale)}
+            class="p-3.5 rounded-lg border border-line-200 bg-surface-0 hover:border-line-200/80 hover:bg-surface-50 transition-colors flex flex-col justify-center min-h-[44px]"
+          >
+            <span class="text-xs font-semibold text-ink-950">{dict.nav.fixBanner}</span>
+            <span class="text-[11px] text-ink-500 mt-0.5">{dict.tools.resizer.title}</span>
+          </a>
+          <a
+            href={getLocalizedUrl('/tools/youtube-banner-checker', locale)}
+            class="p-3.5 rounded-lg border border-line-200 bg-surface-0 hover:border-line-200/80 hover:bg-surface-50 transition-colors flex flex-col justify-center min-h-[44px]"
+          >
+            <span class="text-xs font-semibold text-ink-950">{dict.nav.checker}</span>
+            <span class="text-[11px] text-ink-500 mt-0.5">{dict.tools.checker.title}</span>
+          </a>
+          <a
+            href={getLocalizedUrl('/tools/youtube-banner-maker', locale)}
+            class="p-3.5 rounded-lg border border-line-200 bg-surface-0 hover:border-line-200/80 hover:bg-surface-50 transition-colors flex flex-col justify-center min-h-[44px]"
+          >
+            <span class="text-xs font-semibold text-ink-950">{dict.nav.maker}</span>
+            <span class="text-[11px] text-ink-500 mt-0.5">{dict.tools.maker.title}</span>
+          </a>
+          <a
+            href={getLocalizedUrl('/guides/youtube-banner-size', locale)}
+            class="p-3.5 rounded-lg border border-line-200 bg-surface-0 hover:border-line-200/80 hover:bg-surface-50 transition-colors flex flex-col justify-center min-h-[44px]"
+          >
+            <span class="text-xs font-semibold text-ink-950">{dict.nav.sizeGuide}</span>
+            <span class="text-[11px] text-ink-500 mt-0.5">{dict.guideSize.title}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <a
+          href={getLocalizedUrl('/', locale)}
+          class="h-11 px-6 rounded-lg bg-accent text-surface-0 text-sm font-semibold hover:bg-accent/90 focus-visible:outline-accent inline-flex items-center justify-center gap-2 shadow-xs transition-colors"
+        >
+          <span>{dict.notFound.homeBtn}</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer currentPath={path} locale={locale} />
+</BaseLayout>

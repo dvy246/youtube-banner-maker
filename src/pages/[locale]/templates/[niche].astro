@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import TemplateCard from '../../../components/TemplateCard.astro';
+import { getBreadcrumbSchema, getCollectionPageSchema } from '../../../lib/seo';
+import { getQualifyingNiches } from '../../../lib/template';
+import type { TemplateManifest } from '../../../lib/template';
+import { CANVAS, SAFE_PX } from '../../../lib/spec';
+import {
+  TARGET_LOCALES,
+  getNicheSeo,
+  getTranslations,
+  getLocalizedUrl,
+  type Locale,
+} from '../../../i18n';
+
+export async function getStaticPaths() {
+  const qualifying = getQualifyingNiches();
+  const paths: any[] = [];
+  for (const locale of TARGET_LOCALES) {
+    for (const { niche, templates } of qualifying) {
+      paths.push({
+        params: { locale, niche },
+        props: { niche, templates, locale },
+      });
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  niche: string;
+  templates: TemplateManifest[];
+  locale: Locale;
+}
+
+const { niche, templates, locale } = Astro.props;
+const qualifyingNiches = getQualifyingNiches();
+const path = `/${locale}/templates/${niche}`;
+
+const nicheSeo = getNicheSeo(niche, locale);
+const dict = getTranslations(locale);
+const nicheDict = (dict.niches as any)[niche];
+
+const content = {
+  heroTitle: nicheDict?.heroTitle || `${nicheSeo.name} YouTube Banner Templates`,
+  heroDesc: nicheDict?.heroDesc || nicheSeo.desc,
+  designNotes: nicheDict?.designNotes || `Curated ${nicheSeo.name} layouts engineered to keep primary channel branding within the mobile safe zone.`,
+  cropAdvice: nicheDict?.cropAdvice || `Because YouTube alters the visible area across smart TVs, desktop monitors, tablets, and phones, centering core branding in the safe area ensures consistent display.`,
+};
+
+const breadcrumbs = getBreadcrumbSchema([
+  { name: 'Home', url: getLocalizedUrl('/', locale) },
+  { name: dict.templatesHub.title, url: getLocalizedUrl('/templates', locale) },
+  { name: nicheSeo.name, url: path },
+]);
+
+const collectionSchema = getCollectionPageSchema({
+  name: nicheSeo.title,
+  description: nicheSeo.desc,
+  path,
+  items: templates.map((t) => ({
+    name: t.name,
+    url: `${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${t.id}`,
+    image: t.preview,
+  })),
+});
+
+const firstTemplateId = templates[0]?.id || 'gaming-neon';
+---
+
+<BaseLayout
+  title={nicheSeo.title}
+  description={nicheSeo.desc}
+  path={path}
+  locale={locale}
+  jsonLd={[breadcrumbs, collectionSchema]}
+>
+  <Header currentPath={path} locale={locale} />
+
+  <main id="main-content" class="flex-1">
+    <!-- Hero Section -->
+    <section class="border-b border-line-200 bg-surface-0 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-50 border border-line-200 text-xs font-medium text-ink-600 mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Category: {nicheSeo.name}
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink-950 tracking-tight leading-[1.12]">
+            {content.heroTitle}
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-ink-600 measure-prose leading-relaxed">
+            {content.heroDesc}
+          </p>
+
+          <!-- Niche Switcher Navigation Strip -->
+          <div class="mt-8 flex flex-wrap items-center gap-2" aria-label="Niche Switcher">
+            <a
+              href={getLocalizedUrl('/templates', locale)}
+              class="inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium bg-surface-50 text-ink-600 hover:text-ink-950 hover:bg-surface-100 border border-line-200 transition-colors"
+            >
+              &larr; {dict.templatesHub.filterAll}
+            </a>
+            {qualifyingNiches.map((item) => {
+              const isActive = item.niche === niche;
+              const meta = getNicheSeo(item.niche, locale);
+              return (
+                <a
+                  href={getLocalizedUrl(`/templates/${item.niche}`, locale)}
+                  class:list={[
+                    'inline-flex items-center h-8 px-3.5 rounded-full text-xs font-medium transition-colors',
+                    isActive
+                      ? 'bg-ink-950 text-surface-0'
+                      : 'bg-surface-50 text-ink-600 hover:text-ink-950 hover:bg-surface-100 border border-line-200',
+                  ]}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {meta.name}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Niche Templates Grid -->
+    <section class="py-12 sm:py-16 bg-surface-50/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              {nicheSeo.name}
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 mt-1">
+              {dict.templatesHub.subtitle}
+            </p>
+          </div>
+          <span class="text-xs font-mono text-ink-500 hidden sm:inline-block">
+            {templates.length} templates
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {templates.map((template, idx) => (
+            <TemplateCard
+              template={template}
+              locale={locale}
+              loading={idx < 3 ? 'eager' : 'lazy'}
+              fetchpriority={idx < 3 ? 'high' : 'auto'}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Niche Guidance & Technical Specs -->
+    <section class="border-t border-line-200 bg-surface-0 py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              {nicheSeo.name} — {dict.footer.colSpecs}
+            </h2>
+            <div class="space-y-3 text-sm text-ink-600 leading-relaxed measure-prose">
+              <p>
+                {content.designNotes}
+              </p>
+              <p>
+                Every design in this collection is rendered onto the master {CANVAS.width} × {CANVAS.height} px canvas. All editable typography is strictly constrained inside the mobile safe area ({SAFE_PX.full.width} × {SAFE_PX.full.height} px).
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              {dict.footer.guideSafeArea}
+            </h2>
+            <div class="space-y-3 text-sm text-ink-600 leading-relaxed measure-prose">
+              <p>
+                {content.cropAdvice}
+              </p>
+              <p>
+                Learn more about safe area mathematics in our <a href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)} class="text-accent hover:underline font-medium">{dict.footer.guideSafeArea}</a> or check exact dimensions in the <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="text-accent hover:underline font-medium">{dict.footer.guideSize}</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contextual CTAs to Maker and Resizer -->
+        <div class="mt-16 pt-12 border-t border-line-200 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-lg border border-line-200 bg-surface-50 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="text-base font-semibold text-ink-950 tracking-tight">
+                {dict.tools.maker.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-ink-600 mt-1 leading-relaxed">
+                {dict.tools.maker.intro}
+              </p>
+            </div>
+            <div>
+              <a
+                href={`${getLocalizedUrl('/tools/youtube-banner-maker', locale)}?template=${firstTemplateId}`}
+                class="inline-flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-md bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs sm:text-sm font-medium transition-colors"
+              >
+                {dict.templatesHub.customizeBtn}
+              </a>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-lg border border-line-200 bg-surface-50 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="text-base font-semibold text-ink-950 tracking-tight">
+                {dict.tools.resizer.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-ink-600 mt-1 leading-relaxed">
+                {dict.tools.resizer.intro}
+              </p>
+            </div>
+            <div>
+              <a
+                href={getLocalizedUrl('/tools/youtube-banner-resizer', locale)}
+                class="inline-flex items-center justify-center min-h-[44px] px-4 py-2.5 rounded-md bg-surface-0 text-ink-950 hover:bg-surface-100 border border-line-200 text-xs sm:text-sm font-medium transition-colors"
+              >
+                {dict.tools.resizer.title} &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer currentPath={path} locale={locale} />
+</BaseLayout>
