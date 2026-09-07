@@ -18,6 +18,7 @@ import {
   type ShapeLayer,
   type PhotoFrameLayer,
   type BadgeLayer,
+  type SocialPlatform,
   SCENE_KEY,
   defaultScene,
   serializeScene,
@@ -32,6 +33,7 @@ import {
   clampZoom,
   clampOffset,
   measureTextWidth,
+  fitTextToSafeArea,
   type ImageMap,
 } from '../lib/render';
 import { validateScene, estimateTextBounds } from '../lib/validate';
@@ -1672,82 +1674,109 @@ class ToolIsland {
       window.location.href = `${prefix}/tools/youtube-banner-checker`;
     });
 
-    // 16. Fast Customizations: Instant Safe Layout Presets
-    document.getElementById('layout-preset-left')?.addEventListener('click', () => {
-      const frame = this.getPhotoFrameLayer();
-      if (frame) {
-        frame.x = 0.26;
-        frame.y = 0.50;
-      }
-      const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
-      if (title) {
-        title.position.x = 0.36;
-        title.position.y = 0.47;
-        title.align = 'left';
-      }
-      const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
-      if (tagline) {
-        tagline.position.x = 0.36;
-        tagline.position.y = 0.56;
-        tagline.align = 'left';
-      }
-      const shapes = this.getShapeLayers();
-      if (shapes.length > 0 && shapes[0].shape === 'rect' && shapes[0].h < 0.01) {
-        shapes[0].x = 0.36;
-        shapes[0].y = 0.42;
-      }
-      this.applyChange({ layers: [...this.scene.layers] });
-      this.renderTextLayerControls();
-      this.syncPhotoFrameControls();
-      this.showToast('Aligned to Left Avatar layout');
+    // 16. Fast Customizations: Smart Safe-Snap Engine (Certified Safe Presets)
+    const snapBtns = document.querySelectorAll<HTMLButtonElement>('.snap-btn');
+    snapBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const snap = btn.getAttribute('data-snap');
+        this.applySafeSnap(snap);
+      });
     });
 
-    document.getElementById('layout-preset-center')?.addEventListener('click', () => {
+    // Contrast Guard: Auto-Fit Text to Mobile Safe Area
+    document.getElementById('btn-autofit-text')?.addEventListener('click', () => {
       const frame = this.getPhotoFrameLayer();
-      if (frame) {
-        frame.x = 0.50;
-        frame.y = 0.42;
-      }
+      const maxW = frame ? SAFE_PX.full.width * 0.58 : SAFE_PX.full.width * 0.85;
       const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
       if (title) {
-        title.position.x = 0.50;
-        title.position.y = frame ? 0.52 : 0.46;
-        title.align = 'center';
+        const newSize = fitTextToSafeArea(title.text, title.font || 'inter-900', maxW, title.size || 54);
+        title.size = newSize;
       }
       const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
       if (tagline) {
-        tagline.position.x = 0.50;
-        tagline.position.y = frame ? 0.59 : 0.55;
-        tagline.align = 'center';
+        const maxTaglineW = frame ? SAFE_PX.full.width * 0.58 : SAFE_PX.full.width * 0.85;
+        const newTaglineSize = fitTextToSafeArea(tagline.text, tagline.font || 'inter-500', maxTaglineW, Math.min(tagline.size || 22, 28));
+        tagline.size = newTaglineSize;
       }
       this.applyChange({ layers: [...this.scene.layers] });
       this.renderTextLayerControls();
-      this.syncPhotoFrameControls();
-      this.showToast('Aligned to Centered layout');
+      this.showToast('Text scaled to fit mobile safe zone');
     });
 
-    document.getElementById('layout-preset-right')?.addEventListener('click', () => {
-      const frame = this.getPhotoFrameLayer();
-      if (frame) {
-        frame.x = 0.72;
-        frame.y = 0.50;
-      }
-      const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
-      if (title) {
-        title.position.x = 0.25;
-        title.position.y = 0.47;
-        title.align = 'left';
-      }
-      const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
-      if (tagline) {
-        tagline.position.x = 0.25;
-        tagline.position.y = 0.56;
-        tagline.align = 'left';
-      }
-      this.applyChange({ layers: [...this.scene.layers] });
-      this.renderTextLayerControls();
-      this.syncPhotoFrameControls();
-      this.showToast('Aligned to Text + Card layout');
+    // Contrast Guard: Studio Scrim Slider
+    const scrimSlider = document.getElementById('scrim-slider') as HTMLInputElement | null;
+    const scrimValEl = document.getElementById('scrim-val');
+    if (scrimSlider) {
+      scrimSlider.addEventListener('input', () => {
+        const val = parseInt(scrimSlider.value, 10);
+        if (scrimValEl) scrimValEl.textContent = `${val}%`;
+        const intensity = val / 100;
+        const bg = { ...this.scene.background };
+        bg.scrim = {
+          enabled: intensity > 0,
+          intensity,
+          type: 'vignette',
+        };
+        this.applyChange({ background: bg });
+      });
+    }
+
+    // Contrast Guard: Frosted Glass Aero Plate Toggle
+    const aeroBtn = document.getElementById('toggle-aero-plate-btn') as HTMLButtonElement | null;
+    if (aeroBtn) {
+      aeroBtn.addEventListener('click', () => {
+        const isCurrentlyEnabled = aeroBtn.getAttribute('data-enabled') === 'true';
+        const nextEnabled = !isCurrentlyEnabled;
+        aeroBtn.setAttribute('data-enabled', String(nextEnabled));
+        aeroBtn.textContent = nextEnabled ? 'On' : 'Off';
+        if (nextEnabled) {
+          aeroBtn.classList.add('bg-accent', 'text-white', 'border-accent');
+          aeroBtn.classList.remove('bg-surface-50', 'text-ink-800');
+        } else {
+          aeroBtn.classList.remove('bg-accent', 'text-white', 'border-accent');
+          aeroBtn.classList.add('bg-surface-50', 'text-ink-800');
+        }
+        const layers = this.scene.layers.map((l) => {
+          if (l.type === 'text') {
+            return {
+              ...l,
+              aeroPlate: {
+                enabled: nextEnabled,
+                style: 'dark-frosted' as const,
+                padding: 14,
+              },
+            };
+          }
+          return l;
+        });
+        this.applyChange({ layers });
+        this.showToast(nextEnabled ? 'Frosted Aero Plate enabled' : 'Aero Plate disabled');
+      });
+    }
+
+    // Multi-platform social handle chips
+    const socialChips = document.querySelectorAll<HTMLButtonElement>('.social-platform-chip');
+    socialChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const platform = chip.getAttribute('data-platform') as SocialPlatform;
+        if (!platform) return;
+        const badge = this.getBadgeLayer();
+        if (badge) {
+          badge.variant = 'social-row';
+          const platforms: SocialPlatform[] = badge.platforms ? [...badge.platforms] : ['youtube', 'x', 'instagram'];
+          const idx = platforms.indexOf(platform);
+          if (idx >= 0) {
+            if (platforms.length > 1) {
+              platforms.splice(idx, 1);
+            }
+          } else {
+            platforms.push(platform);
+          }
+          badge.platforms = platforms;
+          this.syncSocialPlatformChips();
+          this.applyChange({ layers: [...this.scene.layers] });
+        }
+      });
     });
 
     // 17. Fast Customizations: Curated Font Pairings
@@ -2509,6 +2538,128 @@ class ToolIsland {
     return this.scene.layers.filter((l) => l.type === 'shape') as ShapeLayer[];
   }
 
+  private applySafeSnap(snap: string | null): void {
+    const frame = this.getPhotoFrameLayer();
+    const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+    const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+    const badge = this.getBadgeLayer();
+    const shapes = this.getShapeLayers();
+
+    if (snap === 'center') {
+      if (frame) {
+        frame.x = 0.50;
+        frame.y = 0.40;
+      }
+      if (title) {
+        title.position.x = 0.50;
+        title.position.y = frame ? 0.52 : 0.46;
+        title.align = 'center';
+      }
+      if (tagline) {
+        tagline.position.x = 0.50;
+        tagline.position.y = frame ? 0.60 : 0.54;
+        tagline.align = 'center';
+      }
+      if (badge) {
+        badge.x = 0.50;
+        badge.y = 0.62;
+      }
+      if (shapes.length > 0 && shapes[0].shape === 'rect') {
+        shapes[0].x = 0.50;
+      }
+      this.showToast('Snapped to True Center');
+    } else if (snap === 'split-left') {
+      if (frame) {
+        frame.x = 0.28;
+        frame.y = 0.50;
+      }
+      if (title) {
+        title.position.x = frame ? 0.46 : 0.35;
+        title.position.y = 0.46;
+        title.align = 'left';
+      }
+      if (tagline) {
+        tagline.position.x = frame ? 0.46 : 0.35;
+        tagline.position.y = 0.54;
+        tagline.align = 'left';
+      }
+      if (badge) {
+        badge.x = frame ? 0.46 : 0.35;
+        badge.y = 0.62;
+      }
+      if (shapes.length > 0 && shapes[0].shape === 'rect') {
+        shapes[0].x = frame ? 0.46 : 0.35;
+      }
+      this.showToast('Snapped to Split-Left');
+    } else if (snap === 'split-right') {
+      if (frame) {
+        frame.x = 0.72;
+        frame.y = 0.50;
+      }
+      if (title) {
+        title.position.x = 0.28;
+        title.position.y = 0.46;
+        title.align = 'left';
+      }
+      if (tagline) {
+        tagline.position.x = 0.28;
+        tagline.position.y = 0.54;
+        tagline.align = 'left';
+      }
+      if (badge) {
+        badge.x = 0.28;
+        badge.y = 0.62;
+      }
+      if (shapes.length > 0 && shapes[0].shape === 'rect') {
+        shapes[0].x = 0.28;
+      }
+      this.showToast('Snapped to Split-Right');
+    } else if (snap === 'stacked') {
+      if (frame) {
+        frame.x = 0.50;
+        frame.y = 0.36;
+      }
+      if (title) {
+        title.position.x = 0.50;
+        title.position.y = frame ? 0.48 : 0.46;
+        title.align = 'center';
+      }
+      if (tagline) {
+        tagline.position.x = 0.50;
+        tagline.position.y = frame ? 0.56 : 0.54;
+        tagline.align = 'center';
+      }
+      if (badge) {
+        badge.x = 0.50;
+        badge.y = 0.63;
+      }
+      if (shapes.length > 0 && shapes[0].shape === 'rect') {
+        shapes[0].x = 0.50;
+      }
+      this.showToast('Snapped to Stacked Layout');
+    }
+
+    this.applyChange({ layers: [...this.scene.layers] });
+    this.renderTextLayerControls();
+    this.syncPhotoFrameControls();
+  }
+
+  private syncSocialPlatformChips(): void {
+    const badge = this.getBadgeLayer();
+    const activePlatforms = (badge?.variant === 'social-row' && badge.platforms) || ['youtube', 'x', 'instagram'];
+    const socialChips = document.querySelectorAll<HTMLButtonElement>('.social-platform-chip');
+    socialChips.forEach((chip) => {
+      const p = chip.getAttribute('data-platform') as SocialPlatform;
+      if (activePlatforms.includes(p)) {
+        chip.classList.add('bg-accent', 'text-white', 'border-accent');
+        chip.classList.remove('bg-surface-50', 'text-ink-700');
+      } else {
+        chip.classList.remove('bg-accent', 'text-white', 'border-accent');
+        chip.classList.add('bg-surface-50', 'text-ink-700');
+      }
+    });
+  }
+
   private syncPhotoFrameControls(): void {
     if (this.mode !== 'make') return;
     const frame = this.getPhotoFrameLayer();
@@ -2617,6 +2768,14 @@ class ToolIsland {
         customTextInput.value = badge.text || '';
       }
 
+      const socialPanel = document.getElementById('social-platforms-panel');
+      if (badge.variant === 'social-row') {
+        socialPanel?.classList.remove('hidden');
+        this.syncSocialPlatformChips();
+      } else {
+        socialPanel?.classList.add('hidden');
+      }
+
       badgeBtns.forEach((b) => {
         const isMatch = b.getAttribute('data-badge-variant') === badge.variant;
         if (isMatch) {
@@ -2638,6 +2797,7 @@ class ToolIsland {
       });
     } else {
       configPanel?.classList.add('hidden');
+      document.getElementById('social-platforms-panel')?.classList.add('hidden');
       badgeBtns.forEach((b) => {
         b.classList.remove('ring-2', 'ring-accent', 'border-accent', 'bg-accent/10');
         b.classList.add('bg-surface-0');

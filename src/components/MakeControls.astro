@@ -31,20 +31,20 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         id="change-template-btn"
-        class="min-h-[32px] px-2.5 py-1 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 text-[11px] font-medium inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-colors"
+        class="min-h-[32px] px-3 py-1 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-[11px] font-medium inline-flex items-center justify-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-all"
       >
         <span>{t.browseTemplates}</span>
       </button>
     </div>
 
     <!-- 3-Panel Streamlined Navigation (Pro Craft & Zero Emojis) -->
-    <nav class="flex items-center justify-between p-1 bg-surface-100 rounded-lg border border-line-200 gap-1" role="tablist" aria-label="Editor Configuration Tabs">
+    <nav class="flex items-center justify-between p-1 bg-surface-100 rounded-full border border-line-200 gap-1" role="tablist" aria-label="Editor Configuration Tabs">
       <button
         type="button"
         role="tab"
         data-deck-tab="text"
         aria-selected="true"
-        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-md text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-all bg-surface-0 text-ink-950 shadow-xs border border-line-200 cursor-pointer"
+        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-full text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-all bg-surface-0 text-ink-950 shadow-xs border border-line-200 cursor-pointer active:scale-[0.98]"
       >
         <svg class="w-3.5 h-3.5 text-ink-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -57,7 +57,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         role="tab"
         data-deck-tab="photo"
         aria-selected="false"
-        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-md text-[11px] font-medium flex items-center justify-center gap-1.5 transition-all bg-transparent text-ink-600 hover:text-ink-950 cursor-pointer"
+        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-full text-[11px] font-medium flex items-center justify-center gap-1.5 transition-all bg-transparent text-ink-600 hover:text-ink-950 cursor-pointer active:scale-[0.98]"
       >
         <svg class="w-3.5 h-3.5 text-ink-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -71,7 +71,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         role="tab"
         data-deck-tab="export"
         aria-selected="false"
-        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-md text-[11px] font-medium flex items-center justify-center gap-1.5 transition-all bg-transparent text-ink-600 hover:text-ink-950 cursor-pointer"
+        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-full text-[11px] font-medium flex items-center justify-center gap-1.5 transition-all bg-transparent text-ink-600 hover:text-ink-950 cursor-pointer active:scale-[0.98]"
       >
         <svg class="w-3.5 h-3.5 text-ink-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -106,7 +106,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <div class="grid grid-cols-4 gap-1.5 pt-1" id="variation-strip">
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-center transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
           data-variation="original"
           title="Original template palette"
         >
@@ -115,7 +115,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-center transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
           data-variation="dark"
           title="Dark Noir inverted palette"
         >
@@ -124,7 +124,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-center transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
           data-variation="warm"
           title="Warm amber/golden shift"
         >
@@ -133,7 +133,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-center transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          class="variation-btn min-h-[38px] px-2 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
           data-variation="cool"
           title="Cool cyan/indigo shift"
         >
@@ -145,36 +145,48 @@ const t = getTranslations(locale).toolUi.makeControls;
 
     <!-- 1-Click Fast Customizations (No-Canva-Fatigue) -->
     <div class="space-y-3 pb-2 border-b border-line-100">
-      <!-- Instant Layout Presets -->
+      <!-- Smart Safe-Snap Engine (4 Certified Safe Presets) -->
       <div class="space-y-1.5">
         <div class="flex items-center justify-between text-[11px] text-ink-600">
-          <span>{t.typography.safeLayouts}</span>
-          <span class="text-[10px] text-ink-400 font-mono">{t.typography.oneClick}</span>
+          <span class="font-medium text-ink-950">{t.typography.safeLayouts}</span>
+          <span class="text-[10px] text-accent font-mono font-semibold">1-Click Safe-Snap</span>
         </div>
-        <div class="grid grid-cols-3 gap-1.5">
-          <button
-            type="button"
-            id="layout-preset-left"
-            class="min-h-[34px] px-2 py-1 rounded-md text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 flex items-center justify-center gap-1 cursor-pointer transition-colors"
-            title="Avatar Left, Text Right"
-          >
-            <span>{t.typography.layoutLeft}</span>
-          </button>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
           <button
             type="button"
             id="layout-preset-center"
-            class="min-h-[34px] px-2 py-1 rounded-md text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 flex items-center justify-center gap-1 cursor-pointer transition-colors"
-            title="Centered Avatar & Text"
+            data-snap="center"
+            class="snap-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 flex items-center justify-center gap-1 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
+            title="True Center: Mathematically centered in mobile safe zone"
           >
-            <span>{t.typography.layoutCenter}</span>
+            <span>True Center</span>
+          </button>
+          <button
+            type="button"
+            id="layout-preset-left"
+            data-snap="split-left"
+            class="snap-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 flex items-center justify-center gap-1 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
+            title="Split-Left: Avatar left, Text right"
+          >
+            <span>Split-Left</span>
           </button>
           <button
             type="button"
             id="layout-preset-right"
-            class="min-h-[34px] px-2 py-1 rounded-md text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 flex items-center justify-center gap-1 cursor-pointer transition-colors"
-            title="Text Left, Card Right"
+            data-snap="split-right"
+            class="snap-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 flex items-center justify-center gap-1 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
+            title="Split-Right: Text left, Avatar right"
           >
-            <span>{t.typography.layoutRight}</span>
+            <span>Split-Right</span>
+          </button>
+          <button
+            type="button"
+            id="layout-preset-stacked"
+            data-snap="stacked"
+            class="snap-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 flex items-center justify-center gap-1 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
+            title="Stacked: Centered avatar stacked above title"
+          >
+            <span>Stacked</span>
           </button>
         </div>
       </div>
@@ -188,7 +200,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <div class="grid grid-cols-2 gap-1.5" id="font-pairing-presets">
           <button
             type="button"
-            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-md text-left border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 transition-colors cursor-pointer group"
+            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-left border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 transition-all cursor-pointer group"
             data-font-title="sora-700"
             data-font-tagline="inter-500"
           >
@@ -197,7 +209,7 @@ const t = getTranslations(locale).toolUi.makeControls;
           </button>
           <button
             type="button"
-            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-md text-left border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 transition-colors cursor-pointer group"
+            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-left border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 transition-all cursor-pointer group"
             data-font-title="bebas-400"
             data-font-tagline="space-grotesk-700"
           >
@@ -206,7 +218,7 @@ const t = getTranslations(locale).toolUi.makeControls;
           </button>
           <button
             type="button"
-            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-md text-left border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 transition-colors cursor-pointer group"
+            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-left border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 transition-all cursor-pointer group"
             data-font-title="playfair-700"
             data-font-tagline="inter-500"
           >
@@ -215,7 +227,7 @@ const t = getTranslations(locale).toolUi.makeControls;
           </button>
           <button
             type="button"
-            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-md text-left border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 transition-colors cursor-pointer group"
+            class="font-pair-btn min-h-[36px] px-2.5 py-1.5 rounded-xl text-left border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 transition-all cursor-pointer group"
             data-font-title="jetbrains-mono-700"
             data-font-tagline="inter-500"
           >
@@ -234,31 +246,91 @@ const t = getTranslations(locale).toolUi.makeControls;
         <div class="flex flex-wrap gap-1.5" id="tagline-inspiration-chips">
           <button
             type="button"
-            class="tagline-chip text-[10px] px-2 py-1 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-700 hover:text-ink-950 cursor-pointer transition-colors"
+            class="tagline-chip text-[10px] px-2.5 py-1 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-700 hover:text-ink-950 cursor-pointer transition-all"
             data-tagline="New Videos Every Week · 6PM EST"
           >
             {t.typography.taglineWeekly}
           </button>
           <button
             type="button"
-            class="tagline-chip text-[10px] px-2 py-1 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-700 hover:text-ink-950 cursor-pointer transition-colors"
+            class="tagline-chip text-[10px] px-2.5 py-1 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-700 hover:text-ink-950 cursor-pointer transition-all"
             data-tagline="Tech Reviews · Setups · Workflow"
           >
             {t.typography.taglineTech}
           </button>
           <button
             type="button"
-            class="tagline-chip text-[10px] px-2 py-1 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-700 hover:text-ink-950 cursor-pointer transition-colors"
+            class="tagline-chip text-[10px] px-2.5 py-1 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-700 hover:text-ink-950 cursor-pointer transition-all"
             data-tagline="Slow Living · Design · Visual Essays"
           >
             {t.typography.taglineSlow}
           </button>
           <button
             type="button"
-            class="tagline-chip text-[10px] px-2 py-1 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-700 hover:text-ink-950 cursor-pointer transition-colors"
+            class="tagline-chip text-[10px] px-2.5 py-1 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-700 hover:text-ink-950 cursor-pointer transition-all"
             data-tagline="Deep Dives &amp; Unfiltered Discussions"
           >
             {t.typography.taglinePodcast}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contrast Guard & Studio Scrim (Legibility Assurance) -->
+    <div class="p-3 rounded-2xl border border-line-200 bg-surface-50 space-y-2.5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs font-bold text-ink-950">Contrast Guard</span>
+          <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded-full bg-accent/10 text-accent font-semibold">Pro Legibility</span>
+        </div>
+        <button
+          type="button"
+          id="btn-autofit-text"
+          class="min-h-[32px] px-3 py-1 rounded-full border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-[11px] font-semibold inline-flex items-center justify-center gap-1 cursor-pointer shadow-2xs transition-all focus-visible:ring-2 focus-visible:ring-accent"
+          title="Auto-calculate optimal font size to prevent mobile safe area overflow"
+        >
+          <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+          </svg>
+          <span>Auto-Fit Safe Width</span>
+        </button>
+      </div>
+      <p class="text-[11px] text-ink-600">
+        Prevent text overflow across mobile screens and elevate legibility against bright backgrounds.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+        <!-- Studio Scrim Slider -->
+        <div class="p-2.5 rounded-xl border border-line-200 bg-surface-0 space-y-1.5">
+          <div class="flex items-center justify-between text-[11px] text-ink-600">
+            <label for="scrim-slider" class="font-medium text-ink-950">Studio Scrim (Vignette)</label>
+            <span id="scrim-val" class="font-mono text-[10px] text-ink-500">0%</span>
+          </div>
+          <input
+            type="range"
+            id="scrim-slider"
+            min="0"
+            max="100"
+            step="5"
+            value="0"
+            class="w-full h-2.5 bg-surface-200 rounded-lg appearance-none cursor-pointer accent-accent"
+            aria-label="Studio Scrim Vignette Intensity"
+          />
+        </div>
+
+        <!-- Aero Plate Frosted Glass Toggle -->
+        <div class="p-2.5 rounded-xl border border-line-200 bg-surface-0 flex items-center justify-between">
+          <div>
+            <div class="text-[11px] font-semibold text-ink-950">Aero Plate Backing</div>
+            <div class="text-[9px] text-ink-500 font-mono">Frosted glass backdrop</div>
+          </div>
+          <button
+            type="button"
+            id="toggle-aero-plate-btn"
+            class="min-h-[32px] px-3 py-1 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 text-[11px] font-semibold cursor-pointer transition-all"
+            data-enabled="false"
+          >
+            <span>Off</span>
           </button>
         </div>
       </div>
@@ -324,7 +396,7 @@ const t = getTranslations(locale).toolUi.makeControls;
           <div class="flex items-center gap-1">
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-all"
               data-layer-id="title"
               data-align="left"
               aria-label="Align left"
@@ -336,7 +408,7 @@ const t = getTranslations(locale).toolUi.makeControls;
             </button>
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 bg-ink-950 text-surface-0 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent active-align"
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 bg-ink-950 text-surface-0 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent active-align active:scale-[0.98] transition-all"
               data-layer-id="title"
               data-align="center"
               aria-label="Align center"
@@ -348,7 +420,7 @@ const t = getTranslations(locale).toolUi.makeControls;
             </button>
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-all"
               data-layer-id="title"
               data-align="right"
               aria-label="Align right"
@@ -420,7 +492,7 @@ const t = getTranslations(locale).toolUi.makeControls;
           <div class="flex items-center gap-1">
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-all"
               data-layer-id="tagline"
               data-align="left"
               aria-label="Align left"
@@ -432,7 +504,7 @@ const t = getTranslations(locale).toolUi.makeControls;
             </button>
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 bg-ink-950 text-surface-0 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent active-align"
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 bg-ink-950 text-surface-0 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent active-align active:scale-[0.98] transition-all"
               data-layer-id="tagline"
               data-align="center"
               aria-label="Align center"
@@ -444,7 +516,7 @@ const t = getTranslations(locale).toolUi.makeControls;
             </button>
             <button
               type="button"
-              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+              class="layer-align-btn min-h-[44px] min-w-[44px] p-2 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-800 text-xs flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-accent transition-all"
               data-layer-id="tagline"
               data-align="right"
               aria-label="Align right"
@@ -463,7 +535,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         data-slide-nav="photo"
-        class="text-xs font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-accent/5"
+        class="text-xs font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-accent/10 active:scale-[0.98] transition-all"
       >
         <span>{t.typography.nextPhoto}</span>
       </button>
@@ -504,7 +576,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="badge-btn-subscribe"
-          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
           data-badge-variant="subscribe-pill"
         >
           <span class="text-red-600 text-xs font-bold">▶</span>
@@ -514,7 +586,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="badge-btn-cookie"
-          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
           data-badge-variant="subscribe-cookie"
           title="Viral Creator Trope: Subscribe for a cookie"
         >
@@ -525,7 +597,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="badge-btn-bell"
-          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
           data-badge-variant="bell-pill"
         >
           <span class="text-ink-600 text-xs font-bold">🔔</span>
@@ -535,7 +607,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="badge-btn-schedule"
-          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
           data-badge-variant="schedule-tag"
         >
           <span class="text-red-500 text-xs font-bold">🔴</span>
@@ -545,7 +617,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="badge-btn-social"
-          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
           data-badge-variant="social-row"
         >
           <span class="text-blue-500 text-xs font-bold">@</span>
@@ -555,7 +627,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="badge-btn-verified"
-          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-md border border-line-200 bg-surface-0 hover:bg-surface-100 text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+          class="badge-toggle-btn min-h-[38px] px-2.5 py-1.5 rounded-xl border border-line-200 bg-surface-0 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
           data-badge-variant="verified-check"
         >
           <span class="text-blue-600 text-xs font-bold">✓</span>
@@ -572,18 +644,32 @@ const t = getTranslations(locale).toolUi.makeControls;
         <input
           type="text"
           id="badge-custom-text"
-          class="w-full min-h-[36px] px-3 py-1.5 text-xs rounded-md border border-line-200 bg-surface-0 text-ink-950 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent"
+          class="w-full min-h-[36px] px-3 py-1.5 text-xs rounded-xl border border-line-200 bg-surface-0 text-ink-950 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent"
           placeholder={t.badges.placeholderCustom}
           value="SUBSCRIBE"
         />
 
+        <!-- Multi-Platform Social Selection Row -->
+        <div id="social-platforms-panel" class="space-y-1.5 pt-1">
+          <label class="block text-[11px] text-ink-600 font-medium">Platforms & Glyphs</label>
+          <div class="flex flex-wrap gap-1" id="social-platform-chips">
+            <button type="button" class="social-platform-chip px-2.5 py-1 rounded-full text-[10px] font-semibold border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer" data-platform="youtube">YouTube</button>
+            <button type="button" class="social-platform-chip px-2.5 py-1 rounded-full text-[10px] font-semibold border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer" data-platform="x">X / Twitter</button>
+            <button type="button" class="social-platform-chip px-2.5 py-1 rounded-full text-[10px] font-semibold border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer" data-platform="instagram">Instagram</button>
+            <button type="button" class="social-platform-chip px-2.5 py-1 rounded-full text-[10px] font-semibold border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer" data-platform="tiktok">TikTok</button>
+            <button type="button" class="social-platform-chip px-2.5 py-1 rounded-full text-[10px] font-semibold border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer" data-platform="twitch">Twitch</button>
+            <button type="button" class="social-platform-chip px-2.5 py-1 rounded-full text-[10px] font-semibold border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer" data-platform="discord">Discord</button>
+            <button type="button" class="social-platform-chip px-2.5 py-1 rounded-full text-[10px] font-semibold border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer" data-platform="spotify">Spotify</button>
+          </div>
+        </div>
+
         <div class="space-y-1 pt-1">
           <label class="block text-[11px] text-ink-600">{t.badges.colorScheme}</label>
           <div class="grid grid-cols-4 gap-1">
-            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded text-[10px] font-semibold border border-line-200 bg-red-600 text-white cursor-pointer" data-scheme="youtube-red">{t.badges.schemeRed}</button>
-            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded text-[10px] font-semibold border border-line-200 bg-accent text-white cursor-pointer" data-scheme="theme-accent">{t.badges.schemeAccent}</button>
-            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded text-[10px] font-semibold border border-line-200 bg-zinc-900 text-white cursor-pointer" data-scheme="mono-dark">{t.badges.schemeDark}</button>
-            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded text-[10px] font-semibold border border-line-200 bg-white text-zinc-900 cursor-pointer" data-scheme="mono-light">{t.badges.schemeWhite}</button>
+            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded-full text-[10px] font-semibold border border-line-200 bg-red-600 text-white active:scale-[0.98] transition-all cursor-pointer" data-scheme="youtube-red">{t.badges.schemeRed}</button>
+            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded-full text-[10px] font-semibold border border-line-200 bg-accent text-white active:scale-[0.98] transition-all cursor-pointer" data-scheme="theme-accent">{t.badges.schemeAccent}</button>
+            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded-full text-[10px] font-semibold border border-line-200 bg-zinc-900 text-white active:scale-[0.98] transition-all cursor-pointer" data-scheme="mono-dark">{t.badges.schemeDark}</button>
+            <button type="button" class="badge-scheme-btn py-1 px-1.5 rounded-full text-[10px] font-semibold border border-line-200 bg-white text-zinc-900 active:scale-[0.98] transition-all cursor-pointer" data-scheme="mono-light">{t.badges.schemeWhite}</button>
           </div>
         </div>
       </div>
@@ -604,7 +690,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         id="frame-photo-upload-btn"
-        class="w-full min-h-[44px] px-4 py-3 rounded-lg border-2 border-dashed border-accent/40 hover:border-accent bg-accent/5 hover:bg-accent/10 text-ink-950 text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+        class="w-full min-h-[44px] px-4 py-3 rounded-2xl border-2 border-dashed border-accent/40 hover:border-accent bg-accent/5 hover:bg-accent/10 active:scale-[0.98] text-ink-950 text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
       >
         <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -619,7 +705,7 @@ const t = getTranslations(locale).toolUi.makeControls;
           <button
             type="button"
             id="frame-shape-circle-btn"
-            class="min-h-[38px] px-3 py-1.5 rounded-md text-xs font-semibold border border-line-200 bg-ink-950 text-surface-0 flex items-center justify-center gap-2 cursor-pointer transition-colors"
+            class="min-h-[38px] px-3 py-1.5 rounded-xl text-xs font-semibold border border-line-200 bg-ink-950 text-surface-0 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] transition-all"
           >
             <span class="w-3.5 h-3.5 rounded-full border-2 border-current"></span>
             <span>{t.badges.circle}</span>
@@ -627,7 +713,7 @@ const t = getTranslations(locale).toolUi.makeControls;
           <button
             type="button"
             id="frame-shape-rect-btn"
-            class="min-h-[38px] px-3 py-1.5 rounded-md text-xs font-medium border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 flex items-center justify-center gap-2 cursor-pointer transition-colors"
+            class="min-h-[38px] px-3 py-1.5 rounded-xl text-xs font-medium border border-line-200 bg-surface-50 text-ink-700 hover:bg-surface-100 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] transition-all"
           >
             <span class="w-3.5 h-3.5 rounded-sm border-2 border-current"></span>
             <span>{t.badges.portraitCard}</span>
@@ -694,21 +780,21 @@ const t = getTranslations(locale).toolUi.makeControls;
             <button
               type="button"
               id="frame-pos-left"
-              class="min-h-[34px] px-2 py-1 rounded text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 transition-colors cursor-pointer"
+              class="min-h-[34px] px-2 py-1 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 transition-all cursor-pointer"
             >
               {t.badges.leftSlot}
             </button>
             <button
               type="button"
               id="frame-pos-center"
-              class="min-h-[34px] px-2 py-1 rounded text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 transition-colors cursor-pointer"
+              class="min-h-[34px] px-2 py-1 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 transition-all cursor-pointer"
             >
               {t.badges.centerSlot}
             </button>
             <button
               type="button"
               id="frame-pos-right"
-              class="min-h-[34px] px-2 py-1 rounded text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 transition-colors cursor-pointer"
+              class="min-h-[34px] px-2 py-1 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 transition-all cursor-pointer"
             >
               {t.badges.rightSlot}
             </button>
@@ -742,7 +828,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         id="frame-add-btn"
-        class="w-full min-h-[44px] px-4 py-2.5 rounded-md bg-surface-50 hover:bg-surface-100 border border-line-200 text-ink-950 text-xs font-semibold inline-flex items-center justify-center gap-2 cursor-pointer transition-colors"
+        class="w-full min-h-[44px] px-4 py-2.5 rounded-full bg-surface-50 hover:bg-surface-100 active:scale-[0.98] border border-line-200 text-ink-950 text-xs font-semibold inline-flex items-center justify-center gap-2 cursor-pointer transition-all"
       >
         <span>{t.badges.addFrame}</span>
       </button>
@@ -752,14 +838,14 @@ const t = getTranslations(locale).toolUi.makeControls;
     <button
       type="button"
       data-slide-nav="text"
-      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-surface-100"
+      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-surface-100 active:scale-[0.98] transition-all"
     >
       <span>{t.badges.prevTypography}</span>
     </button>
     <button
       type="button"
       data-slide-nav="shapes"
-      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-accent/5"
+      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-accent/10 active:scale-[0.98] transition-all"
     >
       <span>{t.badges.nextShapes}</span>
     </button>
@@ -790,7 +876,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="shape-add-rule-btn"
-          class="min-h-[36px] px-2 py-1.5 rounded-md text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+          class="min-h-[36px] px-2 py-1.5 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
         >
           <span class="w-3 h-0.5 bg-current rounded-full"></span>
           <span>{t.shapes.accentRule}</span>
@@ -798,7 +884,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="shape-add-card-btn"
-          class="min-h-[36px] px-2 py-1.5 rounded-md text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+          class="min-h-[36px] px-2 py-1.5 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
         >
           <span class="w-3 h-2.5 border border-current rounded-xs"></span>
           <span>{t.shapes.backplate}</span>
@@ -806,7 +892,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="shape-add-badge-btn"
-          class="min-h-[36px] px-2 py-1.5 rounded-md text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-800 flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
+          class="min-h-[36px] px-2 py-1.5 rounded-xl text-[11px] font-medium border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-800 flex items-center justify-center gap-1.5 cursor-pointer transition-all"
         >
           <span class="w-3 h-1.5 bg-current rounded-full"></span>
           <span>{t.shapes.topBadge}</span>
@@ -865,14 +951,14 @@ const t = getTranslations(locale).toolUi.makeControls;
     <button
       type="button"
       data-slide-nav="photo"
-      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-surface-100"
+      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-surface-100 active:scale-[0.98] transition-all"
     >
       <span>{t.shapes.prevPhoto}</span>
     </button>
     <button
       type="button"
       data-slide-nav="background"
-      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-accent/5"
+      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-accent/10 active:scale-[0.98] transition-all"
     >
       <span>{t.shapes.nextBg}</span>
     </button>
@@ -892,11 +978,11 @@ const t = getTranslations(locale).toolUi.makeControls;
     </div>
 
     <!-- Type Switcher -->
-    <div class="grid grid-cols-3 gap-1 p-1 bg-surface-50 rounded-lg border border-line-200">
+    <div class="grid grid-cols-3 gap-1 p-1 bg-surface-50 rounded-full border border-line-200">
       <button
         type="button"
         id="bg-type-gradient"
-        class="min-h-[44px] px-3 py-2 rounded-md text-xs font-medium cursor-pointer transition-all bg-ink-950 text-surface-0 focus-visible:ring-2 focus-visible:ring-accent"
+        class="min-h-[40px] px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-all bg-ink-950 text-surface-0 focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]"
         data-bg-type="gradient"
       >
         {t.background.typeGradient}
@@ -904,7 +990,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         id="bg-type-solid"
-        class="min-h-[44px] px-3 py-2 rounded-md text-xs font-medium cursor-pointer transition-all bg-transparent text-ink-600 hover:text-ink-950 focus-visible:ring-2 focus-visible:ring-accent"
+        class="min-h-[40px] px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-all bg-transparent text-ink-600 hover:text-ink-950 focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]"
         data-bg-type="solid"
       >
         {t.background.typeSolid}
@@ -912,7 +998,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         id="bg-type-photo"
-        class="min-h-[44px] px-3 py-2 rounded-md text-xs font-medium cursor-pointer transition-all bg-transparent text-ink-600 hover:text-ink-950 focus-visible:ring-2 focus-visible:ring-accent"
+        class="min-h-[40px] px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-all bg-transparent text-ink-600 hover:text-ink-950 focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]"
         data-bg-type="photo"
       >
         {t.background.typePhoto}
@@ -928,7 +1014,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <div class="grid grid-cols-4 gap-1.5" id="bg-preset-styles">
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="crimson"
           title="Crimson Red & Gold"
         >
@@ -937,7 +1023,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="pearl"
           title="Warm Pearl & Red"
         >
@@ -946,7 +1032,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="noir_rose"
           title="Noir Rose & Silver"
         >
@@ -955,7 +1041,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="carbon"
           title="Deep Carbon Gradient"
         >
@@ -964,7 +1050,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="noir"
           title="Studio Noir Gradient"
         >
@@ -973,7 +1059,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="indigo"
           title="Cyber Indigo Gradient"
         >
@@ -982,7 +1068,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="nordic"
           title="Nordic Slate Gradient"
         >
@@ -991,7 +1077,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="sunset"
           title="Warm Sunset Gradient"
         >
@@ -1000,7 +1086,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="emerald"
           title="Emerald Tech Gradient"
         >
@@ -1009,7 +1095,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="charcoal"
           title="Solid Pure Charcoal"
         >
@@ -1018,7 +1104,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         </button>
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-md border border-line-200 bg-surface-50 hover:bg-surface-100 flex flex-col items-center gap-1 cursor-pointer transition-colors text-center group"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="clean"
           title="Clean Minimalist Light"
         >
@@ -1104,7 +1190,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         id="bg-photo-upload"
-        class="w-full min-h-[44px] px-4 py-3 rounded-lg border-2 border-dashed border-line-200 hover:border-accent/60 bg-surface-50 hover:bg-surface-100 text-ink-950 text-xs font-medium flex items-center justify-center gap-2 cursor-pointer transition-colors focus-visible:ring-2 focus-visible:ring-accent"
+        class="w-full min-h-[44px] px-4 py-3 rounded-2xl border-2 border-dashed border-line-200 hover:border-accent/60 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-medium flex items-center justify-center gap-2 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-accent"
       >
         <svg class="w-4 h-4 text-ink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -1126,14 +1212,14 @@ const t = getTranslations(locale).toolUi.makeControls;
     <button
       type="button"
       data-slide-nav="shapes"
-      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-surface-100"
+      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-surface-100 active:scale-[0.98] transition-all"
     >
       <span>{t.background.prevShapes}</span>
     </button>
     <button
       type="button"
       data-slide-nav="motion"
-      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-accent/5"
+      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-accent/10 active:scale-[0.98] transition-all"
     >
       <span>{t.background.nextMotion}</span>
     </button>
@@ -1167,7 +1253,7 @@ const t = getTranslations(locale).toolUi.makeControls;
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="motion-presets-container">
         <button
           type="button"
-          class="motion-preset-btn p-2.5 rounded-lg border border-accent bg-accent/5 text-left transition-all cursor-pointer flex flex-col gap-1 active-motion-preset ring-1 ring-accent"
+          class="motion-preset-btn p-2.5 rounded-xl border border-accent bg-accent/5 text-left transition-all cursor-pointer flex flex-col gap-1 active-motion-preset ring-1 ring-accent active:scale-[0.98]"
           data-motion="neon-pulse"
         >
           <div class="flex items-center justify-between">
@@ -1179,7 +1265,7 @@ const t = getTranslations(locale).toolUi.makeControls;
 
         <button
           type="button"
-          class="motion-preset-btn p-2.5 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1"
+          class="motion-preset-btn p-2.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1 active:scale-[0.98]"
           data-motion="lofi-drift"
         >
           <div class="flex items-center justify-between">
@@ -1191,7 +1277,7 @@ const t = getTranslations(locale).toolUi.makeControls;
 
         <button
           type="button"
-          class="motion-preset-btn p-2.5 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1"
+          class="motion-preset-btn p-2.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1 active:scale-[0.98]"
           data-motion="audio-wave"
         >
           <div class="flex items-center justify-between">
@@ -1203,7 +1289,7 @@ const t = getTranslations(locale).toolUi.makeControls;
 
         <button
           type="button"
-          class="motion-preset-btn p-2.5 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1"
+          class="motion-preset-btn p-2.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1 active:scale-[0.98]"
           data-motion="cinema-flare"
         >
           <div class="flex items-center justify-between">
@@ -1215,7 +1301,7 @@ const t = getTranslations(locale).toolUi.makeControls;
 
         <button
           type="button"
-          class="motion-preset-btn p-2.5 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1 sm:col-span-2"
+          class="motion-preset-btn p-2.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 text-left transition-all cursor-pointer flex flex-col gap-1 sm:col-span-2 active:scale-[0.98]"
           data-motion="esports-hud"
         >
           <div class="flex items-center justify-between">
@@ -1268,7 +1354,7 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           id="motion-record-video-btn"
-          class="w-full min-h-[40px] px-3 py-2 rounded-lg bg-accent text-surface-0 hover:bg-accent/90 text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-xs"
+          class="w-full min-h-[40px] px-3 py-2 rounded-full bg-accent text-surface-0 hover:bg-accent/90 active:scale-[0.98] text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all shadow-xs"
         >
           <span>{t.motion.recordVideo}</span>
           <span class="text-[10px] opacity-80">(5 sec)</span>
@@ -1278,14 +1364,14 @@ const t = getTranslations(locale).toolUi.makeControls;
           <button
             type="button"
             id="motion-copy-obs-btn"
-            class="min-h-[36px] px-2.5 py-1.5 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 text-xs font-medium flex items-center justify-center gap-1 cursor-pointer transition-colors"
+            class="min-h-[36px] px-3 py-1.5 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-medium flex items-center justify-center gap-1 cursor-pointer transition-all"
           >
             <span>{t.motion.copyObs}</span>
           </button>
           <button
             type="button"
             id="motion-copy-css-btn"
-            class="min-h-[36px] px-2.5 py-1.5 rounded-lg border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-950 text-xs font-medium flex items-center justify-center gap-1 cursor-pointer transition-colors"
+            class="min-h-[36px] px-3 py-1.5 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] text-ink-950 text-xs font-medium flex items-center justify-center gap-1 cursor-pointer transition-all"
           >
             <span>{t.motion.copyCss}</span>
           </button>
@@ -1310,14 +1396,14 @@ const t = getTranslations(locale).toolUi.makeControls;
     <button
       type="button"
       data-slide-nav="background"
-      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-surface-100"
+      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-surface-100 active:scale-[0.98] transition-all"
     >
       <span>{t.motion.prevBg}</span>
     </button>
     <button
       type="button"
       data-slide-nav="export"
-      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-accent/5"
+      class="font-semibold text-accent hover:underline inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-accent/10 active:scale-[0.98] transition-all"
     >
       <span>{t.motion.nextExport}</span>
     </button>
@@ -1339,7 +1425,7 @@ const t = getTranslations(locale).toolUi.makeControls;
     <button
       type="button"
       id="handoff-check-btn"
-      class="w-full min-h-[44px] px-4 py-2.5 rounded-md bg-surface-50 border border-line-200 text-ink-950 text-xs font-semibold hover:bg-surface-100 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer transition-colors inline-flex items-center justify-center gap-1.5"
+      class="w-full min-h-[44px] px-4 py-2.5 rounded-full bg-surface-50 border border-line-200 text-ink-950 text-xs font-semibold hover:bg-surface-100 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent cursor-pointer transition-all inline-flex items-center justify-center gap-1.5"
     >
       <span>{t.verifySlide.verifyBtn}</span>
     </button>
@@ -1353,7 +1439,7 @@ const t = getTranslations(locale).toolUi.makeControls;
     <button
       type="button"
       data-slide-nav="motion"
-      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1 px-2 rounded hover:bg-surface-100"
+      class="text-ink-600 hover:text-ink-950 inline-flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-full hover:bg-surface-100 active:scale-[0.98] transition-all"
     >
       <span>{t.verifySlide.prevMotion}</span>
     </button>
