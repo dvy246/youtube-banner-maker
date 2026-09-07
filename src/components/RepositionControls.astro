@@ -47,7 +47,7 @@ const t = getTranslations(locale).toolUi.reposition;
       <button
         type="button"
         id="zoom-out-btn"
-        class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 font-bold text-base cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-line-200 bg-surface-50 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center text-ink-800 font-bold text-base cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         aria-label="Zoom out"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,14 +62,14 @@ const t = getTranslations(locale).toolUi.reposition;
         max="3"
         step="0.01"
         value="1"
-        class="flex-1 h-3 bg-surface-50 rounded-lg appearance-none cursor-pointer accent-ink-950"
+        class="flex-1 h-3 bg-surface-50 rounded-full appearance-none cursor-pointer accent-ink-950"
         aria-label="Zoom scale"
       />
 
       <button
         type="button"
         id="zoom-in-btn"
-        class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 font-bold text-base cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-line-200 bg-surface-50 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center text-ink-800 font-bold text-base cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         aria-label="Zoom in"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -90,7 +90,7 @@ const t = getTranslations(locale).toolUi.reposition;
       <button
         type="button"
         id="pan-up"
-        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-full border border-line-200 bg-surface-50 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         aria-label={t.panUp}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -102,7 +102,7 @@ const t = getTranslations(locale).toolUi.reposition;
       <button
         type="button"
         id="pan-left"
-        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-full border border-line-200 bg-surface-50 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         aria-label={t.panLeft}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -112,7 +112,7 @@ const t = getTranslations(locale).toolUi.reposition;
       <button
         type="button"
         id="pan-center"
-        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-500 text-xs font-mono cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-full border border-line-200 bg-surface-50 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center text-ink-500 text-xs font-mono cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         aria-label={t.panCenter}
         title="Center image"
       >
@@ -123,7 +123,7 @@ const t = getTranslations(locale).toolUi.reposition;
       <button
         type="button"
         id="pan-right"
-        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-full border border-line-200 bg-surface-50 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         aria-label={t.panRight}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -135,7 +135,7 @@ const t = getTranslations(locale).toolUi.reposition;
       <button
         type="button"
         id="pan-down"
-        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-md border border-line-200 bg-surface-50 hover:bg-surface-0 flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+        class="h-11 w-11 min-h-[44px] min-w-[44px] mx-auto rounded-full border border-line-200 bg-surface-50 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center text-ink-800 text-sm font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         aria-label={t.panDown}
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">

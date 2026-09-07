@@ -35,13 +35,13 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
       <div class="relative">
         <select
           id="export-format"
-          class="w-full h-11 min-h-[44px] px-3 pr-8 rounded-md bg-surface-0 border border-line-200 text-ink-950 text-xs font-medium appearance-none focus:outline-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
+          class="w-full h-11 min-h-[44px] px-4 pr-8 rounded-full bg-surface-0 border border-line-200 text-ink-950 text-xs font-medium appearance-none focus:outline-hidden cursor-pointer focus-visible:ring-2 focus-visible:ring-accent"
         >
           <option value="png" selected>{t.pngLabel}</option>
           <option value="jpeg">{t.jpegLabel.replace('{maxUploadMb}', String(maxUploadMb))}</option>
           <option value="webp">{t.webpLabel}</option>
         </select>
-        <div class="absolute right-3 top-3.5 pointer-events-none text-ink-500 text-xs">
+        <div class="absolute right-4 top-3.5 pointer-events-none text-ink-500 text-xs">
           ▼
         </div>
       </div>
@@ -51,7 +51,7 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
     <button
       type="button"
       id="export-button"
-      class="w-full h-11 min-h-[44px] px-5 rounded-md bg-accent text-surface-0 text-[13px] font-semibold hover:bg-accent-hover active:bg-accent transition-colors cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+      class="w-full h-11 min-h-[44px] px-6 rounded-full bg-accent text-surface-0 text-[13px] font-semibold hover:bg-accent-hover active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 shadow-xs"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -63,7 +63,7 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
     <button
       type="button"
       id="export-thumbnail-button"
-      class="w-full h-11 min-h-[44px] px-5 rounded-md bg-surface-50 border border-line-200 text-ink-950 text-[13px] font-semibold hover:bg-surface-100 active:bg-surface-200 transition-colors cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent"
+      class="w-full h-11 min-h-[44px] px-6 rounded-full bg-surface-50 border border-line-200 text-ink-950 text-[13px] font-semibold hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent"
       title={t.thumbnailTitle}
     >
       <svg class="w-4 h-4 text-ink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -76,7 +76,7 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
     <button
       type="button"
       id="copy-clipboard-button"
-      class="w-full h-11 min-h-[44px] px-5 rounded-md bg-surface-0 border border-line-200 text-ink-950 text-[13px] font-semibold hover:bg-surface-50 active:bg-surface-100 transition-colors cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent"
+      class="w-full h-11 min-h-[44px] px-6 rounded-full bg-surface-0 border border-line-200 text-ink-950 text-[13px] font-semibold hover:bg-surface-50 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent"
       title={t.copyTitle}
     >
       <svg class="w-4 h-4 text-ink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

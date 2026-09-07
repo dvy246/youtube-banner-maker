@@ -41,13 +41,13 @@ const devices: Array<{
 
 <div class="flex flex-wrap items-center gap-2 pb-2">
   <!-- Action controls: Undo, Redo, Shortcuts -->
-    <div class="inline-flex items-center p-1 bg-surface-50 border border-line-200 rounded-lg gap-0.5">
+    <div class="inline-flex items-center p-1 bg-surface-50 border border-line-200 rounded-full gap-0.5">
       <button
         type="button"
         id="btn-undo"
         title="Undo (Ctrl+Z / Cmd+Z)"
         disabled
-        class="min-h-[44px] min-w-[44px] px-3 rounded-md text-xs font-medium text-ink-600 hover:text-ink-950 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface-0 transition-all flex items-center justify-center gap-1 cursor-pointer focus-visible:outline-accent"
+        class="min-h-[44px] min-w-[44px] px-3.5 rounded-full text-xs font-medium text-ink-600 hover:text-ink-950 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer focus-visible:outline-accent"
         aria-label={t.undo}
       >
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -61,7 +61,7 @@ const devices: Array<{
         id="btn-redo"
         title="Redo (Ctrl+Y / Cmd+Shift+Z)"
         disabled
-        class="min-h-[44px] min-w-[44px] px-3 rounded-md text-xs font-medium text-ink-600 hover:text-ink-950 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface-0 transition-all flex items-center justify-center gap-1 cursor-pointer focus-visible:outline-accent"
+        class="min-h-[44px] min-w-[44px] px-3.5 rounded-full text-xs font-medium text-ink-600 hover:text-ink-950 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer focus-visible:outline-accent"
         aria-label={t.redo}
       >
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -74,7 +74,7 @@ const devices: Array<{
         type="button"
         id="btn-shortcuts"
         title="Keyboard Shortcuts (?)"
-        class="min-h-[44px] min-w-[44px] px-3 rounded-md text-xs font-medium text-ink-600 hover:text-ink-950 hover:bg-surface-0 transition-all flex items-center justify-center gap-1 cursor-pointer focus-visible:outline-accent"
+        class="min-h-[44px] min-w-[44px] px-3.5 rounded-full text-xs font-medium text-ink-600 hover:text-ink-950 hover:bg-surface-0 active:scale-[0.98] transition-all flex items-center justify-center gap-1 cursor-pointer focus-visible:outline-accent"
         aria-label={t.keys}
       >
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -89,7 +89,7 @@ const devices: Array<{
       id="device-tabs"
       role="tablist"
       aria-label={t.ariaLabel}
-      class="inline-flex p-1 bg-surface-50 border border-line-200 rounded-lg max-w-full overflow-x-auto"
+      class="inline-flex p-1 bg-surface-50 border border-line-200 rounded-full max-w-full overflow-x-auto"
     >
       {
         devices.map((d, index) => (
@@ -102,7 +102,7 @@ const devices: Array<{
             aria-controls="editor-canvas"
             tabindex={d.isDefault ? '0' : '-1'}
             class:list={[
-              'relative px-3 py-2 rounded-md text-xs font-medium transition-all inline-flex items-center gap-1.5 whitespace-nowrap min-h-[44px] cursor-pointer focus-visible:ring-2 focus-visible:ring-accent',
+              'relative px-3.5 py-2 rounded-full text-xs font-medium transition-all inline-flex items-center gap-1.5 whitespace-nowrap min-h-[44px] cursor-pointer focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]',
               d.isDefault
                 ? 'bg-surface-0 text-ink-950 shadow-xs font-semibold'
                 : 'text-ink-600 hover:text-ink-950 hover:bg-surface-0/60',
