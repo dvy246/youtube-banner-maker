@@ -150,6 +150,23 @@ const bannerStyles = [
     desktopRight: 'JOIN THE DISCORD',
     accentColor: '#EC4899',
   },
+  {
+    id: 'anime',
+    name: 'Anime',
+    label: 'Ghibli Aesthetic',
+    image: '/backgrounds/ghibli-mountain-lake-morning-mist.jpg',
+    avatar: '/avatars/avatar-anime-totoro-thumb.jpg',
+    channelName: 'SAKURA STUDIO',
+    category: 'ANIME & GHIBLI AESTHETIC',
+    kicker: 'GHIBLI WORLD',
+    metrics: '924K DREAMERS',
+    monogram: '桜',
+    tvLeft: 'ALPINE LAKE · FIRST LIGHT',
+    tvRight: 'GHIBLI ARCHIVE · VOL. 01',
+    desktopLeft: 'TRANQUIL SCENES DAILY',
+    desktopRight: 'AESTHETIC COLLECTION',
+    accentColor: '#6EE7B7',
+  },
 ] as const;
 
 const tabs = [
@@ -1043,7 +1060,8 @@ const tabs = [
   :global(#hero-sim):has(#hba-tech:checked) .art-layer-tech,
   :global(#hero-sim):has(#hba-podcast:checked) .art-layer-podcast,
   :global(#hero-sim):has(#hba-editorial:checked) .art-layer-editorial,
-  :global(#hero-sim):has(#hba-gaming:checked) .art-layer-gaming {
+  :global(#hero-sim):has(#hba-gaming:checked) .art-layer-gaming,
+  :global(#hero-sim):has(#hba-anime:checked) .art-layer-anime {
     opacity: 1;
     visibility: visible;
   }
@@ -1090,6 +1108,12 @@ const tabs = [
     color: #2A0418;
     font-weight: 800;
     box-shadow: 0 0 16px rgba(236, 72, 153, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  :global(#hero-sim):has(#hba-anime:checked) .sim-style-anime {
+    background: #6EE7B7;
+    color: #022C22;
+    font-weight: 800;
+    box-shadow: 0 0 16px rgba(110, 231, 183, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   /* ── Bespoke Niche Art Accents ── */
@@ -1206,6 +1230,22 @@ const tabs = [
   .art-layer-gaming .safe-verified-badge {
     background: #EC4899;
     color: #2A0418;
+  }
+
+  .art-layer-anime .safe-person-frame {
+    box-shadow: 0 0 0 2.5px #6EE7B7, 0 0 24px rgba(110, 231, 183, 0.7);
+  }
+  .art-layer-anime .safe-person-glow {
+    background: radial-gradient(circle, rgba(110, 231, 183, 0.6) 0%, transparent 70%);
+  }
+  .art-layer-anime .safe-pill-kicker {
+    background: rgba(110, 231, 183, 0.2);
+    border-color: rgba(110, 231, 183, 0.6);
+    color: #A7F3D0;
+  }
+  .art-layer-anime .safe-verified-badge {
+    background: #6EE7B7;
+    color: #022C22;
   }
 
   /* ═══════════════════════════════════════════════════════════
