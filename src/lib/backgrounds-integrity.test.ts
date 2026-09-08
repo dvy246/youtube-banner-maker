@@ -94,7 +94,7 @@ describe("Aesthetic Backgrounds Integrity & De-Duplication Verification", () => 
       const md5 = crypto.createHash("md5").update(buffer).digest("hex");
 
       if (hashes.has(md5)) {
-        duplicateFiles.push({ file1: hashes.get(md5), file2: bg.src, hash: md5 });
+        duplicateFiles.push({ file1: hashes.get(md5) ?? "", file2: bg.src, hash: md5 });
       } else {
         hashes.set(md5, bg.src);
       }
