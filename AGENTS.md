@@ -124,7 +124,7 @@ The project adheres to the design specifications defined in `DESIGN.md`:
 - Automated budget checks (`node scripts/check-budgets.mjs`) must pass before merging.
 
 ### Aesthetic Backgrounds Library & Safe-Area Showcase Architecture
-The `/backgrounds` MPA showcase hub and its 6 localized counterparts (`/[locale]/backgrounds`) provide creators with 129 studio-grade, mathematically centered 2560 × 1440 px aesthetic backgrounds (expanded with Studio Ghibli scenery, anime hero masterworks, cosmic ink deities, and high-fidelity landscape masters):
+The `/backgrounds` MPA showcase hub and its 6 localized counterparts (`/[locale]/backgrounds`) provide creators with 139 studio-grade, mathematically centered 2560 × 1440 px aesthetic backgrounds (expanded with Studio Ghibli scenery, anime hero masterworks, cosmic ink deities, and high-fidelity landscape masters):
 1. **Curated Aesthetic Categories**: Anime Action & Lo-Fi, Pastel Cloudscapes, Luxury Rose Gold & Marble, Bohemian Terracotta, and Minimalist Zen.
 2. **User-Inspired Template Replicas**: Standalone vector artwork for charcoal eclipse arches, esports razor chevrons, streetwear manga sticker layouts, videographer skyline silhouettes, watercolor ink washes, and urban blueprint grids.
 3. **Interactive Safe-Area Overlay**: Real-time visual toggle showing the mobile safe zone boundary over all cards simultaneously so creators can inspect framing before downloading or editing.
