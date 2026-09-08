@@ -114,17 +114,26 @@ The project adheres to the design specifications defined in `DESIGN.md`:
 ## 5. Performance Budgets & Architecture Boundaries
 
 ### Static vs. Interactive Separation
-- **Static Content Pages**: Guides, templates catalog, about, terms, privacy, and contact pages must ship **zero client-side JavaScript**. All layout, styling, and structured data must be generated purely at build time.
-- **Interactive Tool Routes**: Only designated tool routes (`/tools/youtube-banner-resizer`, `/tools/youtube-banner-checker`, `/tools/youtube-banner-maker`) may mount client islands.
+- **Static Content Pages**: Guides, about, terms, privacy, and contact pages ship **zero client-side JavaScript**. All layout, styling, and structured data are generated purely at build time.
+- **Showcase Hubs (`/templates`, `/backgrounds`)**: Use lightweight, zero-framework progressive enhancement for instant client-side category filtering, search, and safe-area overlay toggling without bundling heavy framework runtimes.
+- **Interactive Tool Routes**: Designated tool routes (`/tools/youtube-banner-resizer`, `/tools/youtube-banner-checker`, `/tools/youtube-banner-maker`) mount optimized client islands.
 
 ### Strict Bundle Size Budgets
-- **Template Payload**: Total serialized template data must remain **under 15 KB gzipped** (currently ~3.9 KB).
-- **Tool Island JS**: The interactive tool bundle must remain **under 30 KB gzipped** (currently ~20.5 KB).
+- **Template Payload**: Total serialized template data must remain **under 35 KB gzipped** (currently ~28.4 KB for 121 templates).
+- **Tool Island JS**: The interactive tool bundle must remain **under 75 KB gzipped** (currently ~63.7 KB).
 - Automated budget checks (`node scripts/check-budgets.mjs`) must pass before merging.
+
+### Aesthetic Backgrounds Library & Safe-Area Showcase Architecture
+The `/backgrounds` MPA showcase hub and its 6 localized counterparts (`/[locale]/backgrounds`) provide creators with 40 studio-grade, mathematically centered 2560 × 1440 px vector SVG backgrounds:
+1. **Curated Aesthetic Categories**: Anime Action & Lo-Fi, Pastel Cloudscapes, Luxury Rose Gold & Marble, Bohemian Terracotta, and Minimalist Zen.
+2. **User-Inspired Template Replicas**: Standalone vector artwork for charcoal eclipse arches, esports razor chevrons, streetwear manga sticker layouts, videographer skyline silhouettes, watercolor ink washes, and urban blueprint grids.
+3. **Interactive Safe-Area Overlay**: Real-time visual toggle showing the mobile safe zone boundary over all cards simultaneously so creators can inspect framing before downloading or editing.
+4. **Seamless Maker Deep-Linking**: Clicking *"Customize in Banner Maker"* transfers the background into `/tools/youtube-banner-maker?bgId=...`, auto-configuring complementary typography, text luminance, and contrast scrims.
+5. **100% Client-Side Privacy**: All backgrounds are local SVG assets with zero external HTTP requests, tracking pixels, or third-party image hosts.
 
 ### High-Yield Studio Configurations & Safe-Snap Architecture
 To save creators hours of repetitive adjustments and guarantee certified YouTube Studio-compliant channel assets, the interactive studio incorporates five high-yield workflow automations:
-1. **Smart Safe-Snap Engine**: Certified 1-click safe layout alignment presets (`🎯 True Center`, `👤 Split-Left`, `Split-Right 👤`, `Stacked`) mathematically constrained within the centered 1546 × 423 px safe boundary.
+1. **Smart Safe-Snap Engine**: Certified 1-click safe layout alignment presets (`🎯 True Center`, `👤 Split-Left`, `Split-Right 👤`, `Stacked`) mathematically constrained within the centered mobile safe boundary.
 2. **Contrast Guard & Studio Scrim**: Real-time non-destructive radial ambient shadow slider (0%–100%) spotlighting the mobile safe area against busy backgrounds, 1-click Frosted Glass "Aero Plate" backplate toggle, and 1-click Auto-Fit Safe Width font recalculation.
 3. **1-Click Aesthetic Theme Vibe Harmonizer**: 6 curated aesthetic palettes (`Original Preset`, `Dark Noir`, `Editorial Warm Pearl`, `Cyberpunk Neon`, `Stealth Minimalist`, `Sunset Luxe`) that cascade atomically across typography, text color, backplates, accent borders, and background gradients.
 4. **Multi-Platform Vector Social Badges**: Embedded crisp SVG brand marks for YouTube, X, Instagram, TikTok, Twitch, Discord, and Spotify selectable via 1-click chips.
@@ -138,9 +147,10 @@ YouTubeBannerMaker.com is engineered for top-tier organic discovery across tradi
 
 ### Meta & Structured Data Rules
 1. **Title & Description Lengths**: Meta titles must strictly stay $\le 60$ characters. Meta descriptions must stay $\le 155$ characters.
-2. **Canonical Consistency**: Every page must output a fully qualified canonical URL matching the production domain (`https://youtubebannermaker.com/...`).
+2. **Canonical & Multi-Language Consistency**: Every page must output a fully qualified canonical URL matching the production domain (`https://youtubebannermaker.com/...`). All 26 core routes map across 7 supported locales (`en`, `es`, `de`, `fr`, `pt-br`, `it`, `ja`), generating 182 localized URLs in `sitemap-index.xml` and 189 static pages during build.
 3. **Structured Data (JSON-LD)**:
    - Tool pages must supply `WebApplication` or `SoftwareApplication` schemas.
+   - Catalog & showcase hubs supply `CollectionPage` and `ImageGallery` schemas.
    - Informational guides must supply valid `FAQPage` and `HowTo` schemas.
    - Global pages must link `Organization` and `BreadcrumbList`.
 4. **Answer Engine Optimization (AEO/GEO)**:
