@@ -234,4 +234,82 @@ describe('export.ts (M-6, M-7, M-8, M-9, REQ-006, REQ-010, REQ-011, REQ-012, REQ
       globalThis.document = originalDoc;
     }
   });
+
+  it('exportBanner: supports 4K Ultra HD (3840 × 2160) export with correct dimensions and filename', async () => {
+    const scene = defaultScene();
+    const images = new Map();
+
+    const originalDoc = globalThis.document;
+    globalThis.document = {
+      createElement: (tag: string) => {
+        if (tag === 'canvas') {
+          return {
+            width: 0,
+            height: 0,
+            getContext: () => ({
+              save: () => {},
+              restore: () => {},
+              clearRect: () => {},
+              fillRect: () => {},
+              scale: () => {},
+              createLinearGradient: () => ({ addColorStop: () => {} }),
+              fillText: () => {},
+            }),
+            toBlob: (cb: (b: Blob) => void) => {
+              cb(new Blob([new Uint8Array(2048)], { type: 'image/png' }));
+            },
+          } as unknown as HTMLCanvasElement;
+        }
+        return {} as any;
+      },
+    } as any;
+
+    try {
+      const result = await exportBanner(scene, images, { width: 3840, height: 2160 });
+      expect(result.width).toBe(3840);
+      expect(result.height).toBe(2160);
+      expect(result.filename).toBe('youtube-banner-4k-3840x2160.png');
+    } finally {
+      globalThis.document = originalDoc;
+    }
+  });
+
+  it('exportBanner: supports Full HD Thumbnail (1920 × 1080) export with correct dimensions and filename', async () => {
+    const scene = defaultScene();
+    const images = new Map();
+
+    const originalDoc = globalThis.document;
+    globalThis.document = {
+      createElement: (tag: string) => {
+        if (tag === 'canvas') {
+          return {
+            width: 0,
+            height: 0,
+            getContext: () => ({
+              save: () => {},
+              restore: () => {},
+              clearRect: () => {},
+              fillRect: () => {},
+              scale: () => {},
+              createLinearGradient: () => ({ addColorStop: () => {} }),
+              fillText: () => {},
+            }),
+            toBlob: (cb: (b: Blob) => void) => {
+              cb(new Blob([new Uint8Array(1024)], { type: 'image/jpeg' }));
+            },
+          } as unknown as HTMLCanvasElement;
+        }
+        return {} as any;
+      },
+    } as any;
+
+    try {
+      const result = await exportBanner(scene, images, { width: 1920, height: 1080 });
+      expect(result.width).toBe(1920);
+      expect(result.height).toBe(1080);
+      expect(result.filename).toBe('youtube-thumbnail-1920x1080.jpg');
+    } finally {
+      globalThis.document = originalDoc;
+    }
+  });
 });

@@ -51,16 +51,25 @@ async function canvasToBlob(
   });
 }
 
+export interface ExportOptions {
+  width?: number;
+  height?: number;
+  filenamePrefix?: string;
+}
+
 export async function exportBanner(
   scene: Scene,
-  images: ImageMap
+  images: ImageMap,
+  options?: ExportOptions
 ): Promise<ExportResult> {
+  const targetWidth = options?.width ?? CANVAS.width;
+  const targetHeight = options?.height ?? CANVAS.height;
   const requestedFormat = scene.export?.format || 'png';
   const requestedType = getMimeForFormat(requestedFormat);
   let quality = scene.export?.quality ?? 0.92;
 
-  // 1. Render export at 2560x1440 sRGB
-  const canvas = renderExport(scene, images);
+  // 1. Render export at target resolution sRGB
+  const canvas = renderExport(scene, images, targetWidth, targetHeight);
 
   // 2. Initial toBlob
   let blob = await canvasToBlob(canvas, requestedType, quality);
@@ -97,20 +106,27 @@ export async function exportBanner(
       note =
         'Image exceeds 6 MB even at quality floor (0.7). Consider using PNG or simplifying the artwork.';
     }
-  } else if (blob.size > MAX_UPLOAD_BYTES && actualType === 'image/png') {
+  } else if (targetWidth === CANVAS.width && blob.size > MAX_UPLOAD_BYTES && actualType === 'image/png') {
     note =
       'PNG export exceeds 6 MB YouTube upload limit. Consider exporting as JPEG to meet the 6 MB cap.';
   }
 
   const ext = getExtensionForType(actualType);
-  const filename = `youtube-banner-2560x1440.${ext}`;
+  const prefix = options?.filenamePrefix || (
+    targetWidth === 3840 && targetHeight === 2160
+      ? 'youtube-banner-4k'
+      : targetWidth === 1920 && targetHeight === 1080
+      ? 'youtube-thumbnail'
+      : 'youtube-banner'
+  );
+  const filename = `${prefix}-${targetWidth}x${targetHeight}.${ext}`;
 
   return {
     blob,
     type: actualType,
     requestedType,
-    width: CANVAS.width,
-    height: CANVAS.height,
+    width: targetWidth,
+    height: targetHeight,
     bytes: blob.size,
     filename,
     note,

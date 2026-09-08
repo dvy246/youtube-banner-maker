@@ -558,20 +558,25 @@ export function renderDeviceCrop(
   );
 }
 
-export function renderExport(scene: Scene, images: ImageMap): HTMLCanvasElement {
+export function renderExport(
+  scene: Scene,
+  images: ImageMap,
+  targetWidth: number = CANVAS.width,
+  targetHeight: number = CANVAS.height
+): HTMLCanvasElement {
   let canvas: HTMLCanvasElement;
   if (typeof document !== 'undefined' && document.createElement) {
     canvas = document.createElement('canvas');
   } else {
     // In environments with OffscreenCanvas or custom canvas
     canvas = {
-      width: CANVAS.width,
-      height: CANVAS.height,
+      width: targetWidth,
+      height: targetHeight,
     } as unknown as HTMLCanvasElement;
   }
 
-  canvas.width = CANVAS.width;
-  canvas.height = CANVAS.height;
+  canvas.width = targetWidth;
+  canvas.height = targetHeight;
 
   // colorSpace: 'srgb' required per REQ-006, REQ-010
   const ctx =
@@ -582,7 +587,14 @@ export function renderExport(scene: Scene, images: ImageMap): HTMLCanvasElement 
       : null;
 
   if (ctx) {
-    renderScene(ctx, scene, images);
+    if (targetWidth !== CANVAS.width || targetHeight !== CANVAS.height) {
+      ctx.save();
+      ctx.scale(targetWidth / CANVAS.width, targetHeight / CANVAS.height);
+      renderScene(ctx, scene, images);
+      ctx.restore();
+    } else {
+      renderScene(ctx, scene, images);
+    }
   }
 
   return canvas;

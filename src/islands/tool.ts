@@ -45,7 +45,6 @@ import {
   templateToScene,
 } from '../lib/template';
 import { TEMPLATES } from '../data/templates';
-import { getAestheticBackground } from '../data/backgrounds';
 import {
   trackEvent,
   cleanImageFormat,
@@ -254,11 +253,14 @@ class ToolIsland {
   private simulateStats!: HTMLElement;
 
   // Export
+  private exportResolutionSelect: HTMLSelectElement | null = null;
   private exportFormatSelect!: HTMLSelectElement;
   private exportButton!: HTMLButtonElement;
   private exportButtonText!: HTMLElement;
+  private export4kBtn: HTMLButtonElement | null = null;
   private exportThumbnailBtn: HTMLButtonElement | null = null;
   private exportAvatarBtn: HTMLButtonElement | null = null;
+  private exportDimensionsReadout: HTMLElement | null = null;
   private exportMeta!: HTMLElement;
   private exportNote!: HTMLElement;
 
@@ -368,11 +370,14 @@ class ToolIsland {
     this.simulateStats = document.getElementById('simulate-stats') as HTMLElement;
 
     // Export
+    this.exportResolutionSelect = document.getElementById('export-resolution') as HTMLSelectElement | null;
     this.exportFormatSelect = document.getElementById('export-format') as HTMLSelectElement;
     this.exportButton = document.getElementById('export-button') as HTMLButtonElement;
     this.exportButtonText = document.getElementById('export-button-text') as HTMLElement;
+    this.export4kBtn = document.getElementById('export-4k-button') as HTMLButtonElement | null;
     this.exportThumbnailBtn = document.getElementById('export-thumbnail-button') as HTMLButtonElement | null;
     this.exportAvatarBtn = document.getElementById('export-avatar-button') as HTMLButtonElement | null;
+    this.exportDimensionsReadout = document.getElementById('export-dimensions-readout') as HTMLElement | null;
     this.exportMeta = document.getElementById('export-meta') as HTMLElement;
     this.exportNote = document.getElementById('export-note') as HTMLElement;
 
@@ -506,44 +511,55 @@ class ToolIsland {
       const bgParam = urlParams.get('bg');
       const bgIdParam = urlParams.get('bgId');
       if (bgParam || bgIdParam) {
-        const bgData = bgIdParam ? getAestheticBackground(bgIdParam) : undefined;
-        const bgSrc = bgData ? bgData.src : bgParam!;
-        this.loadImageFromDataUrl(bgSrc, () => {
-          this.scene.background = {
-            type: 'image',
-            src: bgSrc,
-            width: 2560,
-            height: 1440,
-            cover: true,
-            offsetX: 0,
-            offsetY: 0,
-            zoom: 1,
-            extend: false,
-          };
-          if (bgData) {
-            const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
-            if (title) {
-              title.text = bgData.defaultTitle;
-              title.color = bgData.harmony.titleColor;
+        const applyBg = (bgData?: import('../data/backgrounds').AestheticBackground) => {
+          const bgSrc = bgData ? bgData.src : bgParam!;
+          this.loadImageFromDataUrl(bgSrc, () => {
+            this.scene.background = {
+              type: 'image',
+              src: bgSrc,
+              width: 2560,
+              height: 1440,
+              cover: true,
+              offsetX: 0,
+              offsetY: 0,
+              zoom: 1,
+              extend: false,
+            };
+            if (bgData) {
+              const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+              if (title) {
+                title.text = bgData.defaultTitle;
+                title.color = bgData.harmony.titleColor;
+              }
+              const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+              if (tagline) {
+                tagline.text = bgData.defaultTagline;
+                tagline.color = bgData.harmony.taglineColor;
+              }
+              const frame = this.getPhotoFrameLayer();
+              if (frame) frame.borderColor = bgData.harmony.frameBorderColor;
             }
-            const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
-            if (tagline) {
-              tagline.text = bgData.defaultTagline;
-              tagline.color = bgData.harmony.taglineColor;
+            this.phase = 'READY';
+            this.updatePhaseUI();
+            this.syncMakeControlsFromScene();
+            this.scheduleFrame();
+            if (downloadParam) {
+              setTimeout(() => {
+                this.handleExportAction();
+              }, 300);
             }
-            const frame = this.getPhotoFrameLayer();
-            if (frame) frame.borderColor = bgData.harmony.frameBorderColor;
-          }
-          this.phase = 'READY';
-          this.updatePhaseUI();
-          this.syncMakeControlsFromScene();
-          this.scheduleFrame();
-          if (downloadParam) {
-            setTimeout(() => {
-              this.handleExportAction();
-            }, 300);
-          }
-        });
+          });
+        };
+
+        if (bgIdParam) {
+          import('../data/backgrounds').then(({ getAestheticBackground }) => {
+            applyBg(getAestheticBackground(bgIdParam));
+          }).catch(() => {
+            applyBg();
+          });
+        } else {
+          applyBg();
+        }
         return;
       }
 
@@ -703,6 +719,9 @@ class ToolIsland {
 
     if (this.exportButton) {
       this.exportButton.disabled = this.phase !== 'READY';
+    }
+    if (this.export4kBtn) {
+      this.export4kBtn.disabled = this.phase !== 'READY';
     }
     if (this.exportThumbnailBtn) {
       this.exportThumbnailBtn.disabled = this.phase !== 'READY';
@@ -1152,6 +1171,10 @@ class ToolIsland {
     }
 
     // 8. Export Format & Button (REQ-E10, E-11, §D.2)
+    if (this.exportResolutionSelect) {
+      this.exportResolutionSelect.addEventListener('change', () => this.handleResolutionChange());
+    }
+
     if (this.exportFormatSelect) {
       this.exportFormatSelect.addEventListener('change', (e) => {
         const format = (e.target as HTMLSelectElement).value as 'png' | 'jpeg' | 'webp';
@@ -1166,6 +1189,10 @@ class ToolIsland {
 
     if (this.exportButton) {
       this.exportButton.addEventListener('click', () => this.handleExportAction());
+    }
+
+    if (this.export4kBtn) {
+      this.export4kBtn.addEventListener('click', () => this.handle4KExport());
     }
 
     if (this.exportThumbnailBtn) {
@@ -4294,11 +4321,48 @@ class ToolIsland {
     await this.runExport();
   }
 
+  private getExportResolutionDimensions(): { width: number; height: number; label: string; name: string } {
+    const res = this.exportResolutionSelect?.value || 'banner';
+    if (res === '4k') {
+      return {
+        width: 3840,
+        height: 2160,
+        label: clientI18n?.exportBtn?.download4k || 'Download 4K Ultra HD (3840 × 2160)',
+        name: '4K Ultra HD',
+      };
+    }
+    if (res === 'thumbnail') {
+      return {
+        width: 1920,
+        height: 1080,
+        label: clientI18n?.exportBtn?.downloadThumbnail || 'Download Thumbnail (1920 × 1080)',
+        name: 'YouTube Thumbnail',
+      };
+    }
+    return {
+      width: CANVAS.width,
+      height: CANVAS.height,
+      label: clientI18n?.exportBtn?.downloadBanner || 'Download Banner (2560 × 1440)',
+      name: 'YouTube Banner',
+    };
+  }
+
+  private handleResolutionChange(): void {
+    const config = this.getExportResolutionDimensions();
+    if (this.exportButtonText) {
+      this.exportButtonText.textContent = config.label;
+    }
+    if (this.exportDimensionsReadout) {
+      this.exportDimensionsReadout.textContent = `${config.width} × ${config.height} px`;
+    }
+  }
+
   /**
    * Full-resolution export execution (REQ-010, REQ-011, REQ-012, REQ-026)
    */
   private async runExport(): Promise<void> {
-    this.announceMessage('Rendering 2560 × 1440 px banner at full resolution...');
+    const config = this.getExportResolutionDimensions();
+    this.announceMessage(`Rendering ${config.width} × ${config.height} px artwork at full resolution...`);
 
     const chosenFormat = cleanImageFormat(this.exportFormatSelect?.value || 'jpeg');
     trackEvent('export_start', { format: chosenFormat });
@@ -4308,12 +4372,15 @@ class ToolIsland {
       this.exportButton.disabled = true;
     }
     if (this.exportButtonText) {
-      this.exportButtonText.textContent = (clientI18n?.exportBtn?.rendering || 'Rendering {dims}...').replace('{dims}', '2560 × 1440');
+      this.exportButtonText.textContent = (clientI18n?.exportBtn?.rendering || 'Rendering {dims}...').replace('{dims}', `${config.width} × ${config.height}`);
     }
 
     try {
       // Step 2: Render full resolution banner
-      const result = await exportBanner(this.scene, this.images);
+      const result = await exportBanner(this.scene, this.images, {
+        width: config.width,
+        height: config.height,
+      });
 
       const durationMs = Math.round(performance.now() - startTime);
       const finalFormat = cleanImageFormat(result.type);
@@ -4359,7 +4426,8 @@ class ToolIsland {
       this.hasExported = true;
       this.validate();
 
-      this.announceMessage('Banner downloaded successfully. Verified 2560 × 1440 px file.');
+      this.announceMessage(`${config.name} downloaded successfully. Verified ${config.width} × ${config.height} px file.`);
+      this.showToast(`Downloaded ${config.name} (${config.width} × ${config.height})!`);
     } catch {
       this.showFileError('Export failed', 'Canvas export could not be completed. Please try choosing JPEG format.');
     } finally {
@@ -4368,59 +4436,81 @@ class ToolIsland {
         this.exportButton.disabled = false;
       }
       if (this.exportButtonText) {
-        this.exportButtonText.textContent = 'Download Banner';
+        this.exportButtonText.textContent = config.label;
       }
     }
   }
 
   /**
-   * Fast HD Thumbnail Export (1280x720 16:9, sub-2MB YouTube spec)
+   * 1-Click 4K Ultra HD Wallpaper Export (3840x2160 16:9)
+   */
+  private async handle4KExport(): Promise<void> {
+    if (this.phase !== 'READY') return;
+    this.showToast('Generating 3840 × 2160 4K Ultra HD Wallpaper & Banner...');
+
+    try {
+      if (this.export4kBtn) {
+        this.export4kBtn.disabled = true;
+      }
+
+      const result = await exportBanner(this.scene, this.images, {
+        width: 3840,
+        height: 2160,
+        filenamePrefix: 'youtube-banner-4k',
+      });
+
+      const url = URL.createObjectURL(result.blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = result.filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      if (this.export4kBtn) this.export4kBtn.disabled = false;
+      this.showToast('Downloaded 3840 × 2160 4K Ultra HD Wallpaper!');
+      trackEvent('export_success', { format: cleanImageFormat(result.type), durationMs: 0 });
+    } catch (err: any) {
+      if (this.export4kBtn) this.export4kBtn.disabled = false;
+      this.showToast(`4K export error: ${err?.message || 'Failed'}`);
+    }
+  }
+
+  /**
+   * Fast HD Thumbnail Export (1920x1080 16:9 Full HD)
    * Enables zero-friction thumbnail creation for creators without Canva knowledge.
    */
   private async handleThumbnailExport(): Promise<void> {
     if (this.phase !== 'READY') return;
-    this.showToast('Generating 1280 × 720 HD thumbnail...');
+    this.showToast('Generating 1920 × 1080 Full HD YouTube Thumbnail...');
 
     try {
       if (this.exportThumbnailBtn) {
         this.exportThumbnailBtn.disabled = true;
       }
 
-      const fullCanvas = renderExport(this.scene, this.images);
+      const result = await exportBanner(this.scene, this.images, {
+        width: 1920,
+        height: 1080,
+        filenamePrefix: 'youtube-thumbnail',
+      });
 
-      const thumbCanvas = document.createElement('canvas');
-      thumbCanvas.width = 1280;
-      thumbCanvas.height = 720;
-      const tCtx = thumbCanvas.getContext('2d', { colorSpace: 'srgb' });
-      if (!tCtx) throw new Error('Could not create thumbnail 2D canvas context');
+      const url = URL.createObjectURL(result.blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = result.filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
 
-      tCtx.imageSmoothingEnabled = true;
-      tCtx.imageSmoothingQuality = 'high';
-      tCtx.drawImage(fullCanvas, 0, 0, 1280, 720);
-
-      thumbCanvas.toBlob((blob) => {
-        if (!blob) {
-          this.showToast('Thumbnail generation failed');
-          if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
-          return;
-        }
-
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'youtube-thumbnail-1280x720.jpg';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-
-        if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
-        this.showToast('Downloaded 1280 × 720 YouTube Thumbnail!');
-        trackEvent('export_success', { format: 'jpeg', durationMs: 0 });
-      }, 'image/jpeg', 0.90);
+      if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
+      this.showToast('Downloaded 1920 × 1080 YouTube Thumbnail!');
+      trackEvent('export_success', { format: cleanImageFormat(result.type), durationMs: 0 });
     } catch (err: any) {
       if (this.exportThumbnailBtn) this.exportThumbnailBtn.disabled = false;
-      this.showToast(`Thumbnail export error: ${err.message || 'Failed'}`);
+      this.showToast(`Thumbnail export error: ${err?.message || 'Failed'}`);
     }
   }
 
