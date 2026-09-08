@@ -490,6 +490,14 @@ class ToolIsland {
   private restoreSessionOrPreset(): void {
     if (this.mode === 'make') {
       const urlParams = new URLSearchParams(window.location.search);
+      const resParam = urlParams.get('res') || urlParams.get('resolution');
+      if (this.exportResolutionSelect && resParam) {
+        const norm = resParam.toLowerCase();
+        if (norm === '4k' || norm === 'thumbnail' || norm === 'banner') {
+          this.exportResolutionSelect.value = norm;
+          this.handleResolutionChange();
+        }
+      }
       const templateParam = urlParams.get('template');
       const downloadParam = urlParams.get('download') === '1' || urlParams.get('action') === 'download';
       if (templateParam) {

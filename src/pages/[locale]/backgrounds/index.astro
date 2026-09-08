@@ -290,7 +290,7 @@ const categoryLabels: Record<string, string> = {
                       </button>
 
                       <!-- Floating Dropdown Menu -->
-                      <div class="download-dropdown-menu hidden absolute right-0 bottom-full mb-1.5 w-56 p-1.5 bg-surface-0 rounded-2xl shadow-xl border border-line-200 z-30 text-left">
+                      <div class="download-dropdown-menu hidden absolute right-0 bottom-full mb-1.5 w-64 p-1.5 bg-surface-0 rounded-2xl shadow-xl border border-line-200 z-30 text-left">
                         <div class="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink-400">Standard Sizes</div>
                         <button
                           type="button"
@@ -354,6 +354,29 @@ const categoryLabels: Record<string, string> = {
                           <span class="font-medium">Mobile Safe Zone</span>
                           <span class="text-[10px] font-mono text-ink-500">{mobileCropWidth} × {mobileCropHeight}</span>
                         </button>
+                        <div class="my-1 border-t border-line-100"></div>
+                        <div class="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink-400">Customize in Studio</div>
+                        <a
+                          href={`${getLocalizedUrl("/tools/youtube-banner-maker", locale)}?bgId=${bg.id}&res=banner`}
+                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors"
+                        >
+                          <span class="font-medium text-accent">Customize as Banner</span>
+                          <span class="text-[10px] font-mono text-ink-500">2560 × 1440</span>
+                        </a>
+                        <a
+                          href={`${getLocalizedUrl("/tools/youtube-banner-maker", locale)}?bgId=${bg.id}&res=4k`}
+                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors"
+                        >
+                          <span class="font-medium text-accent">Customize 4K Wallpaper</span>
+                          <span class="text-[10px] font-mono text-ink-500">3840 × 2160</span>
+                        </a>
+                        <a
+                          href={`${getLocalizedUrl("/tools/youtube-banner-maker", locale)}?bgId=${bg.id}&res=thumbnail`}
+                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors"
+                        >
+                          <span class="font-medium text-accent">Customize Thumbnail</span>
+                          <span class="text-[10px] font-mono text-ink-500">1920 × 1080</span>
+                        </a>
                       </div>
                     </div>
                   </div>
