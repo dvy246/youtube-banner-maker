@@ -28,43 +28,53 @@ const collectionSchema = getCollectionPageSchema({
   })),
 });
 
+const gallerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  '@id': 'https://youtubebannermaker.com/backgrounds#gallery',
+  name: 'Aesthetic YouTube Banner Backgrounds Gallery',
+  description: seo.desc,
+  url: 'https://youtubebannermaker.com/backgrounds',
+};
+
+const faqs = [
+  {
+    question: 'What is the correct YouTube banner background size?',
+    answer: `The official YouTube banner background size is 2560 × 1440 pixels with a 16:9 aspect ratio and maximum file size of 6 MB. The absolute minimum upload resolution accepted by YouTube Studio is 2048 × 1152 pixels. Keep critical artwork and titles within the centered mobile safe zone (${mobileCropWidth} × ${mobileCropHeight} px) to prevent cropping on smartphones.`,
+  },
+  {
+    question: 'Can I use a 1024 x 576 pixel background for my YouTube banner?',
+    answer: 'No. YouTube Studio automatically rejects 1024 × 576 pixel images because they fall below the required 2048 × 1152 minimum dimension. Although 1024 × 576 has the exact same 16:9 ratio, you must upscale or place your artwork onto a 2560 × 1440 canvas to upload successfully.',
+  },
+  {
+    question: 'What is the difference between 2560x1440, 2048x1152, and 1024x576 banner backgrounds?',
+    answer: '2560 × 1440 px is YouTube’s recommended resolution that spans Smart TVs and widescreen monitors. 2048 × 1152 px is the minimum allowable upload size. 1024 × 576 px is a sub-resolution 16:9 format rejected by YouTube Studio. All three share a 16:9 ratio, but only 2048 × 1152 and 2560 × 1440 can be uploaded.',
+  },
+  {
+    question: 'How do I stop my aesthetic YouTube banner background from cutting off on mobile?',
+    answer: `YouTube centers your 2560 × 1440 background and crops it dynamically. On mobile devices, only the centered ${mobileCropWidth} × ${mobileCropHeight} pixel safe zone remains visible. All backgrounds in our gallery are calibrated so main characters and focal points remain centered and visible across all screens.`,
+  },
+  {
+    question: 'Are these aesthetic YouTube banner backgrounds free to download and use commercially?',
+    answer: 'Yes! Every background in this gallery is 100% free for both personal and commercial YouTube channel art, thumbnail backgrounds, and 4K wallpapers with zero watermarks and zero attribution required.',
+  },
+  {
+    question: 'Can I add my channel name, logo, and social handles to these backgrounds?',
+    answer: 'Yes! Click "Customize" on any background to open it directly in our free in-browser YouTube Banner Maker. You can add your channel title, subtitle, social badges, and profile avatar frame with automatic safe-area alignment.',
+  },
+];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What size are these aesthetic YouTube banner backgrounds?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Every background in this catalog is engineered at 2560 × 1440 px in a 16:9 aspect ratio, fully compliant with official YouTube Studio upload requirements.',
-      },
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.answer,
     },
-    {
-      '@type': 'Question',
-      name: 'Are these backgrounds free to use commercially?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes! All backgrounds are completely free to use for personal and commercial YouTube channels with zero attribution required and zero watermarks.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can I add my channel name and logo to these backgrounds?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes! Clicking "Customize in Banner Maker" opens any background directly in our free browser editor where you can add your channel name, subtitle, and avatar frame.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Will these backgrounds get cut off on mobile phones?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'No. All artwork motifs, frames, and focal elements are positioned within the centered mobile safe zone, ensuring crisp visibility on mobile devices.',
-      },
-    },
-  ],
+  })),
 };
 
 const safeLeftPct = (SAFE.x * 100).toFixed(2);
@@ -77,7 +87,9 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
   title={seo.title}
   description={seo.desc}
   path="/backgrounds"
-  jsonLd={[breadcrumbs, collectionSchema, faqSchema]}
+  ogType="website"
+  ogImageAlt="Curated aesthetic YouTube banner backgrounds in 2560x1440 with safe area overlays"
+  jsonLd={[breadcrumbs, collectionSchema, gallerySchema, faqSchema]}
 >
   <Header currentPath="/backgrounds" />
 
@@ -88,13 +100,13 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
         <div class="max-w-3xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-50 border border-line-200 text-xs font-medium text-ink-600 mb-4">
             <span class="w-2 h-2 rounded-full bg-accent"></span>
-            60+ Curated Aesthetic Backgrounds
+            60+ Curated Aesthetic Banner Backgrounds
           </div>
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink-950 tracking-tight leading-[1.12]">
-            Free Aesthetic Backgrounds for YouTube Banners, Thumbnails & 4K Wallpapers
+            Free Aesthetic YouTube Banner Backgrounds (2560×1440)
           </h1>
           <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
-            Browse curated aesthetic backgrounds for YouTube channel banners, video thumbnails, and 4K desktop wallpapers. Featuring painterly Studio Ghibli vistas, cozy anime lo-fi, peaceful misty zen landscapes, pastel skies, and luxury marble. Download in 4K, 1080p, or safe-area crops with zero watermarks.
+            Browse curated aesthetic YouTube banner backgrounds calibrated to the official 2560×1440 canvas. Download cool anime, gaming, pink, and cute channel backgrounds fitted for the centered mobile safe area, or customize any background directly in our free browser editor with zero watermarks.
           </p>
         </div>
 
@@ -155,12 +167,17 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
     <!-- Backgrounds Gallery Grid -->
     <section class="py-12 sm:py-16 bg-surface-50 border-b border-line-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-6">
-          <p class="text-xs sm:text-sm font-medium text-ink-600" id="bg-count-label">
-            Showing all {AESTHETIC_BACKGROUNDS.length} aesthetic backgrounds
-          </p>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight">
+              Aesthetic YouTube Banner Background Library
+            </h2>
+            <p class="mt-1 text-xs sm:text-sm font-medium text-ink-600" id="bg-count-label">
+              Showing all {AESTHETIC_BACKGROUNDS.length} aesthetic banner backgrounds
+            </p>
+          </div>
           <div class="text-[11px] text-ink-400 font-mono">
-            2560 × 1440 px • SVG Vector
+            2560 × 1440 px • SVG Vector & Master Art
           </div>
         </div>
 
@@ -177,7 +194,7 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
                 <div class="relative aspect-video w-full bg-ink-950 overflow-hidden border-b border-line-100">
                   <img
                     src={bg.src}
-                    alt={bg.name}
+                    alt={`${bg.name} - Aesthetic YouTube banner background 2560x1440`}
                     class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                     loading="lazy"
                   />
@@ -211,9 +228,9 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
                 <!-- Card Body -->
                 <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <h2 class="text-base font-semibold text-ink-950 tracking-tight group-hover:text-accent transition-colors">
+                    <h3 class="text-base font-semibold text-ink-950 tracking-tight group-hover:text-accent transition-colors">
                       {bg.name}
-                    </h2>
+                    </h3>
                     <p class="mt-1 text-xs text-ink-600 line-clamp-2 leading-relaxed">
                       {bg.description}
                     </p>
@@ -396,7 +413,7 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
       <div class="flex items-center gap-4 mb-8">
         <div class="flex-1 border-t border-line-200"></div>
         <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-50 border border-line-200 shrink-0">
-          <span class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Photo Anime Backgrounds</span>
+          <h2 class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Cool Anime & Superhero YouTube Banners</h2>
         </div>
         <div class="flex-1 border-t border-line-200"></div>
       </div>
@@ -404,20 +421,20 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" id="bg-photo-grid">
         {
           [
-            { id: 'anime-samurai-crimson-dragon', src: '/backgrounds/anime-samurai-crimson-dragon.jpg', name: 'Samurai Crimson Dragon', mood: 'Anime Action' },
-            { id: 'hero-thor-god-of-thunder', src: '/backgrounds/hero-thor-god-of-thunder.jpg', name: 'Thor — God of Thunder', mood: 'Superhero' },
-            { id: 'hero-logan-wolverine-claws', src: '/backgrounds/hero-logan-wolverine-claws.jpg', name: 'Logan — Wolverine', mood: 'Superhero' },
-            { id: 'anime-zenitsu-marigold-meadow', src: '/backgrounds/anime-zenitsu-marigold-meadow.jpg', name: 'Zenitsu Marigold Meadow', mood: 'Anime Calm' },
-            { id: 'hero-spiderman-chill-headphones', src: '/backgrounds/hero-spiderman-chill-headphones.jpg', name: 'Spider-Man Chill', mood: 'Superhero Lofi' },
-            { id: 'hero-cristiano-ronaldo-cr7', src: '/backgrounds/hero-cristiano-ronaldo-cr7.jpg', name: 'CR7 — Ronaldo', mood: 'Sports Legend' },
-            { id: 'anime-tanjiro-sunlit-autumn-forest', src: '/backgrounds/anime-tanjiro-sunlit-autumn-forest.jpg', name: 'Tanjiro Autumn Forest', mood: 'Demon Slayer' },
-            { id: 'anime-tanjiro-sacred-cyan-tree', src: '/backgrounds/anime-tanjiro-sacred-cyan-tree.jpg', name: 'Tanjiro Sacred Cyan Tree', mood: 'Demon Slayer' },
+            { id: 'anime-samurai-crimson-dragon', src: '/backgrounds/anime-samurai-crimson-dragon.jpg', name: 'Samurai Crimson Dragon', mood: 'Anime Action', alt: 'Samurai Crimson Dragon - Cool gaming anime YouTube banner background' },
+            { id: 'hero-thor-god-of-thunder', src: '/backgrounds/hero-thor-god-of-thunder.jpg', name: 'Thor — God of Thunder', mood: 'Superhero', alt: 'Thor God of Thunder - Cool superhero YouTube banner background' },
+            { id: 'hero-logan-wolverine-claws', src: '/backgrounds/hero-logan-wolverine-claws.jpg', name: 'Logan — Wolverine', mood: 'Superhero', alt: 'Logan Wolverine - Cool comic YouTube banner background' },
+            { id: 'anime-zenitsu-marigold-meadow', src: '/backgrounds/anime-zenitsu-marigold-meadow.jpg', name: 'Zenitsu Marigold Meadow', mood: 'Anime Calm', alt: 'Zenitsu Marigold Meadow - Aesthetic anime YouTube banner background' },
+            { id: 'hero-spiderman-chill-headphones', src: '/backgrounds/hero-spiderman-chill-headphones.jpg', name: 'Spider-Man Chill', mood: 'Superhero Lofi', alt: 'Spider-Man Chill - Superhero lofi Spiderman YouTube banner' },
+            { id: 'hero-cristiano-ronaldo-cr7', src: '/backgrounds/hero-cristiano-ronaldo-cr7.jpg', name: 'CR7 — Ronaldo', mood: 'Sports Legend', alt: 'Cristiano Ronaldo CR7 - Cool sports YouTube banner background' },
+            { id: 'anime-tanjiro-sunlit-autumn-forest', src: '/backgrounds/anime-tanjiro-sunlit-autumn-forest.jpg', name: 'Tanjiro Autumn Forest', mood: 'Demon Slayer', alt: 'Tanjiro Autumn Forest - Demon Slayer anime banner YouTube' },
+            { id: 'anime-tanjiro-sacred-cyan-tree', src: '/backgrounds/anime-tanjiro-sacred-cyan-tree.jpg', name: 'Tanjiro Sacred Cyan Tree', mood: 'Demon Slayer', alt: 'Tanjiro Sacred Cyan Tree - Aesthetic anime YouTube banner 1024 x 576 safe' },
           ].map((bg) => (
             <article class="group rounded-xl border border-line-200 bg-surface-0 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
               <div class="relative aspect-video w-full bg-ink-950 overflow-hidden border-b border-line-100">
                 <img
                   src={bg.src}
-                  alt={bg.name}
+                  alt={bg.alt}
                   class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
                   loading="lazy"
                 />
@@ -426,7 +443,7 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
                 </div>
               </div>
               <div class="p-3 flex flex-col gap-2.5 flex-1">
-                <p class="text-xs font-semibold text-ink-950 leading-snug">{bg.name}</p>
+                <h3 class="text-xs font-semibold text-ink-950 leading-snug">{bg.name}</h3>
                 <div class="flex gap-2 mt-auto pt-1">
                   <a
                     href={`/tools/youtube-banner-maker?bgId=${bg.id}&res=banner`}
@@ -447,34 +464,130 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
     <section class="py-16 sm:py-20 bg-surface-0 border-b border-line-200">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-semibold text-ink-950 tracking-tight">
-          How to Choose and Customize Aesthetic YouTube Banner Backgrounds
+          YouTube Banner Background Sizing, Ratio & Design Guide
         </h2>
 
-        <div class="mt-8 space-y-8 text-ink-600 leading-relaxed text-base">
+        <div class="mt-8 space-y-10 text-ink-600 leading-relaxed text-base">
           <div class="space-y-3">
-            <h3 class="text-lg font-medium text-ink-900">
-              1. The Mathematics of YouTube Safe Area Centering
+            <h3 class="text-lg font-semibold text-ink-900">
+              1. YouTube Banner Background Size: 2560×1440 vs 2048×1152 vs 1024×576 Pixels
             </h3>
             <p>
-              While YouTube recommends uploading a full <strong>2560 × 1440 px</strong> image for smart TV displays, the viewing area on desktop monitors and mobile phones is constrained to a centered horizontal band. All aesthetic backgrounds in this library are mathematically calibrated so that key focal points—such as floral frames, glowing sunbursts, or anime characters—either bleed naturally into widescreen margins or sit safely within the centered mobile safe zone.
+              The official YouTube banner background size is <strong>2560 × 1440 pixels</strong> (16:9 aspect ratio) with a 6 MB maximum file size. YouTube Studio enforces an absolute minimum upload dimension of <strong>2048 × 1152 pixels</strong>. While creators frequently search for <strong>1024 × 576 pixels</strong>, YouTube automatically rejects 1024 × 576 images because they fall below the required minimum resolution, even though they share the identical 16:9 widescreen proportion.
+            </p>
+            <p>
+              If your original artwork, cool wallpaper, or anime illustration is currently 1024 × 576, you must upscale or place it onto a 2560 × 1440 canvas before uploading to YouTube Studio. For full sizing rules, consult our in-depth <a href="/guides/youtube-banner-size" class="text-accent underline font-medium hover:text-accent-600">YouTube banner size guide</a> and our step-by-step tutorial on <a href="/guides/youtube-banner-1024-x-576" class="text-accent underline font-medium hover:text-accent-600">fixing 1024×576 banner upload errors</a>.
+            </p>
+
+            <!-- Structured Spec Comparison Table -->
+            <div class="overflow-x-auto my-6 rounded-2xl border border-line-200 bg-surface-50 p-1">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="border-b border-line-200 text-ink-500 font-mono uppercase tracking-wider text-[11px]">
+                    <th class="py-3 px-4">Display / Device Crop</th>
+                    <th class="py-3 px-4">Dimensions</th>
+                    <th class="py-3 px-4">Aspect Ratio</th>
+                    <th class="py-3 px-4">YouTube Studio Status</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-line-100 font-mono text-ink-700">
+                  <tr>
+                    <td class="py-2.5 px-4 font-medium text-ink-950 font-sans">Full Canvas (Smart TV)</td>
+                    <td class="py-2.5 px-4 tabular-nums">{CANVAS.width} × {CANVAS.height} px</td>
+                    <td class="py-2.5 px-4">16:9</td>
+                    <td class="py-2.5 px-4 text-emerald-600 font-sans font-medium">Recommended Standard</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-4 font-medium text-ink-950 font-sans">Desktop Viewport Crop</td>
+                    <td class="py-2.5 px-4 tabular-nums">{CANVAS.width} × {desktopCropHeight} px</td>
+                    <td class="py-2.5 px-4">16:2.64</td>
+                    <td class="py-2.5 px-4 text-ink-600 font-sans">Desktop Horizontal Band</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-4 font-medium text-ink-950 font-sans">Mobile Safe Area</td>
+                    <td class="py-2.5 px-4 tabular-nums">{mobileCropWidth} × {mobileCropHeight} px</td>
+                    <td class="py-2.5 px-4">16:4.38</td>
+                    <td class="py-2.5 px-4 text-accent font-sans font-medium">Visible on Every Screen</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-4 font-medium text-ink-950 font-sans">Minimum Upload Dimension</td>
+                    <td class="py-2.5 px-4 tabular-nums">2048 × 1152 px</td>
+                    <td class="py-2.5 px-4">16:9</td>
+                    <td class="py-2.5 px-4 text-amber-600 font-sans">Absolute Minimum Allowed</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-4 font-medium text-ink-950 font-sans">1024 × 576 Pixels</td>
+                    <td class="py-2.5 px-4 tabular-nums">1024 × 576 px</td>
+                    <td class="py-2.5 px-4">16:9</td>
+                    <td class="py-2.5 px-4 text-red-600 font-sans">Rejected by YouTube Studio</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-4 font-medium text-ink-950 font-sans">Ultra HD 4K Wallpaper</td>
+                    <td class="py-2.5 px-4 tabular-nums">3840 × 2160 px</td>
+                    <td class="py-2.5 px-4">16:9</td>
+                    <td class="py-2.5 px-4 text-ink-600 font-sans">High-Res Desktop Download</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-ink-900">
+              2. The Centered Mobile Safe Area: Stop Channel Art Cropping
+            </h3>
+            <p>
+              YouTube displays your channel banner across diverse hardware, ranging from 75-inch smart TVs down to 6-inch mobile screens. Rather than reformatting the file, YouTube centers the 2560 × 1440 image and crops it dynamically. The critical area visible on mobile phones is constrained to a centered <strong>{mobileCropWidth} × {mobileCropHeight} px</strong> viewport.
+            </p>
+            <p>
+              All aesthetic backgrounds in our library are mathematically arranged so that main focal motifs, anime characters, and decorative borders either frame the safe area naturally or span across widescreen margins. To test custom artwork before uploading, inspect it with our interactive <a href="/tools/youtube-banner-checker" class="text-accent underline font-medium hover:text-accent-600">YouTube banner checker</a> or read the <a href="/guides/youtube-banner-safe-area" class="text-accent underline font-medium hover:text-accent-600">banner safe area guide</a>.
             </p>
           </div>
 
           <div class="space-y-3">
-            <h3 class="text-lg font-medium text-ink-900">
-              2. Color Contrast & WCAG Compliance
+            <h3 class="text-lg font-semibold text-ink-900">
+              3. Aesthetic Themes: Anime, Cool Gaming, Cute & Pink Styles
             </h3>
             <p>
-              A common mistake with aesthetic channel art is unreadable typography. Pastel skies and moody dark grunge backgrounds require distinct luminance contrast. When you click <em>Customize in Banner Maker</em> on any background, our system automatically selects pre-tested font color pairings that meet WCAG AA contrast standards (minimum 4.5:1 ratio) so your channel name remains sharp and legible on every smartphone screen.
+              Choosing the right visual tone establishes immediate channel authority and audience connection. Here is how top YouTube creators leverage different aesthetic background themes:
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-ink-600">
+              <li>
+                <strong>Aesthetic Anime & Lo-Fi Art:</strong> Painterly vistas inspired by Studio Ghibli, twilight cherry blossom trees, and calm rainy study rooms provide peaceful, nostalgic vibes ideal for lo-fi music beats, study streams, and anime recaps.
+              </li>
+              <li>
+                <strong>Cool Gaming & Esports Backplates:</strong> Dark obsidian textures, glowing purple neon moons, and razor chevrons establish an energetic, aggressive atmosphere suited for competitive FPS, Twitch highlights, and gameplay channels.
+              </li>
+              <li>
+                <strong>Pink & Cute Celestial Backgrounds:</strong> Soft pastel gradient skies, celestial nebulae, and cute mascot paws offer warm, friendly vibes for beauty tutorials, lifestyle vlogs, and community creators.
+              </li>
+              <li>
+                <strong>Spiderman & Cinematic Superhero Art:</strong> Dramatic skyscraper silhouettes, dusk horizons, and heroic lighting create high-impact channel art that captures immediate viewer interest.
+              </li>
+            </ul>
+            <p class="mt-3">
+              Want pre-designed text layouts paired with these backgrounds? Explore our full library of verified <a href="/templates" class="text-accent underline font-medium hover:text-accent-600">YouTube banner templates</a>.
             </p>
           </div>
 
           <div class="space-y-3">
-            <h3 class="text-lg font-medium text-ink-900">
-              3. Client-Side Privacy Guarantee
+            <h3 class="text-lg font-semibold text-ink-900">
+              4. Text Color Contrast & WCAG AA Legibility
             </h3>
             <p>
-              In accordance with our core ethos, zero image bytes or user artwork are ever transmitted to external servers or cloud endpoints. Whether you download a background SVG directly or customize it in our HTML5 Canvas studio, all rendering executes strictly within your web browser.
+              A frequent flaw in custom channel banners is low-contrast typography placed directly over busy wallpaper patterns. When typography blends into background gradients, channel names become difficult to read on small mobile screens.
+            </p>
+            <p>
+              Every background in this catalog features an automated <strong>Harmonized Palette</strong> indicator displaying recommended contrast colors for headings, subtitles, and border accents. Clicking <em>Customize</em> automatically transfers the background to our free <a href="/tools/youtube-banner-maker" class="text-accent underline font-medium hover:text-accent-600">YouTube Banner Maker</a>, where you can apply frosted glass backplates and contrast scrims that meet WCAG AA standards (minimum 4.5:1 luminance contrast ratio).
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="text-lg font-semibold text-ink-900">
+              5. 100% Client-Side Privacy & Free Commercial Use
+            </h3>
+            <p>
+              Every background in this showcase is free for personal and commercial YouTube channel art, video thumbnail backgrounds, and desktop wallpapers with zero attribution required. In accordance with our core privacy architecture, all image rendering, resizing, safe-area overlay calculation, and downloads execute purely within your client-side browser via HTML5 Canvas. Zero image bytes are ever transmitted to external servers.
             </p>
           </div>
         </div>
@@ -482,45 +595,22 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
         <!-- FAQ Section -->
         <div class="mt-16 pt-12 border-t border-line-200">
           <h2 class="text-xl sm:text-2xl font-semibold text-ink-950 tracking-tight mb-8">
-            Frequently Asked Questions
+            Frequently Asked Questions About YouTube Banner Backgrounds
           </h2>
 
           <div class="space-y-6">
-            <div class="border-b border-line-200 pb-5">
-              <h3 class="text-base font-medium text-ink-950">
-                What size are these aesthetic YouTube banner backgrounds?
-              </h3>
-              <p class="mt-2 text-sm text-ink-600 leading-relaxed">
-                Every background in this catalog is engineered at 2560 × 1440 px in a 16:9 aspect ratio, fully compliant with official YouTube Studio upload requirements.
-              </p>
-            </div>
-
-            <div class="border-b border-line-200 pb-5">
-              <h3 class="text-base font-medium text-ink-950">
-                Are these backgrounds free to use commercially?
-              </h3>
-              <p class="mt-2 text-sm text-ink-600 leading-relaxed">
-                Yes! All 50+ backgrounds are completely free to use for personal and commercial YouTube channels with zero attribution required and zero watermarks.
-              </p>
-            </div>
-
-            <div class="border-b border-line-200 pb-5">
-              <h3 class="text-base font-medium text-ink-950">
-                Can I add my channel name and logo to these backgrounds?
-              </h3>
-              <p class="mt-2 text-sm text-ink-600 leading-relaxed">
-                Yes! Clicking "Customize in Banner Maker" opens any background directly in our free browser editor where you can add your channel name, subtitle, and avatar frame.
-              </p>
-            </div>
-
-            <div class="border-b border-line-200 pb-5">
-              <h3 class="text-base font-medium text-ink-950">
-                Will these backgrounds get cut off on mobile phones?
-              </h3>
-              <p class="mt-2 text-sm text-ink-600 leading-relaxed">
-                No. All artwork motifs, frames, and focal elements are positioned within the centered mobile safe zone, ensuring crisp visibility on mobile devices.
-              </p>
-            </div>
+            {
+              faqs.map((faq) => (
+                <div class="border-b border-line-200 pb-5">
+                  <h3 class="text-base font-medium text-ink-950">
+                    {faq.question}
+                  </h3>
+                  <p class="mt-2 text-sm text-ink-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>

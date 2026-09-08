@@ -1014,8 +1014,8 @@ export const en = {
     }
   },
   backgroundsPage: {
-    metaTitle: "Banner, Thumbnail & 4K Wallpaper Backgrounds | Free Art",
-    metaDesc: "Download free aesthetic backgrounds for YouTube banners, video thumbnails, and 4K wallpapers. Studio Ghibli, anime, and zen art with safe-area cropping.",
+    metaTitle: "YouTube Banner Background | Aesthetic & Cool 2560x1440",
+    metaDesc: "Free aesthetic YouTube banner backgrounds in 2560x1440. Browse cool anime, gaming, pink, and cute backgrounds fitted to the centered mobile safe area.",
     badge: "60+ Curated Aesthetic Backgrounds",
     title: "Free Aesthetic Backgrounds for YouTube Banners, Thumbnails & 4K Wallpapers",
     desc: "Browse curated aesthetic backgrounds for YouTube channel banners, video thumbnails, and 4K desktop wallpapers. Featuring painterly Studio Ghibli vistas, cozy anime lo-fi, peaceful zen mist, pastel skies, and luxury marble.",

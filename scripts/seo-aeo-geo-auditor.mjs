@@ -39,6 +39,7 @@ function auditPhase0(htmlFiles) {
 
   for (const file of htmlFiles) {
     const content = fs.readFileSync(file, 'utf-8');
+    if (content.includes('http-equiv="refresh"')) continue;
     const is404 = file.includes('404');
     
     // Title
