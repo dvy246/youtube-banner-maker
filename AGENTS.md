@@ -124,12 +124,12 @@ The project adheres to the design specifications defined in `DESIGN.md`:
 - Automated budget checks (`node scripts/check-budgets.mjs`) must pass before merging.
 
 ### Aesthetic Backgrounds Library & Safe-Area Showcase Architecture
-The `/backgrounds` MPA showcase hub and its 6 localized counterparts (`/[locale]/backgrounds`) provide creators with 40 studio-grade, mathematically centered 2560 × 1440 px vector SVG backgrounds:
+The `/backgrounds` MPA showcase hub and its 6 localized counterparts (`/[locale]/backgrounds`) provide creators with 129 studio-grade, mathematically centered 2560 × 1440 px aesthetic backgrounds (expanded with Studio Ghibli scenery, anime hero masterworks, cosmic ink deities, and high-fidelity landscape masters):
 1. **Curated Aesthetic Categories**: Anime Action & Lo-Fi, Pastel Cloudscapes, Luxury Rose Gold & Marble, Bohemian Terracotta, and Minimalist Zen.
 2. **User-Inspired Template Replicas**: Standalone vector artwork for charcoal eclipse arches, esports razor chevrons, streetwear manga sticker layouts, videographer skyline silhouettes, watercolor ink washes, and urban blueprint grids.
 3. **Interactive Safe-Area Overlay**: Real-time visual toggle showing the mobile safe zone boundary over all cards simultaneously so creators can inspect framing before downloading or editing.
 4. **Seamless Maker Deep-Linking**: Clicking *"Customize in Banner Maker"* transfers the background into `/tools/youtube-banner-maker?bgId=...`, auto-configuring complementary typography, text luminance, and contrast scrims.
-5. **100% Client-Side Privacy**: All backgrounds are local SVG assets with zero external HTTP requests, tracking pixels, or third-party image hosts.
+5. **100% Client-Side Privacy**: All backgrounds are local assets (vector SVGs and progressive master JPEGs) with zero external HTTP requests, tracking pixels, or third-party image hosts.
 
 ### High-Yield Studio Configurations & Safe-Snap Architecture
 To save creators hours of repetitive adjustments and guarantee certified YouTube Studio-compliant channel assets, the interactive studio incorporates five high-yield workflow automations:
