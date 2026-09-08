@@ -34,4 +34,15 @@ describe('Global Curved Buttons Elegance Standards', () => {
 
     expect(content).toContain('rounded-full');
   });
+
+  it('verifies ThemeToggle uses non-shrinkable rounded-full pill and symmetric translation', () => {
+    const togglePath = path.resolve('src/components/ThemeToggle.astro');
+    const content = fs.readFileSync(togglePath, 'utf-8');
+
+    expect(content).toContain('rounded-full');
+    expect(content).toContain('shrink-0');
+    expect(content).toContain('w-14');
+    expect(content).toContain('transform: translateX(1.5rem);');
+    expect(content).toContain('#theme-toggle-mobile:checked');
+  });
 });

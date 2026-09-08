@@ -34,15 +34,15 @@ const mobileNavItems = [...mainNavItems, ...guideItems];
 <header class="sticky top-0 z-40 w-full bg-surface-0/95 backdrop-blur-md border-b border-line-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3 lg:gap-4">
     <!-- Brand -->
-    <a href={getLocalizedUrl('/', locale)} class="flex items-center gap-2.5 sm:gap-3 text-ink-950 hover:opacity-90 transition-opacity shrink-0">
-      <img src="/favicon-96x96.png" alt="YouTubeBannerMaker logo" width="28" height="28" class="w-7 h-7 rounded-sm object-contain" />
-      <div class="flex items-baseline">
-        <span class="text-sm font-semibold tracking-tight text-ink-950">{dict.common.brandName}</span>
+    <a href={getLocalizedUrl('/', locale)} class="flex items-center gap-2.5 sm:gap-3 text-ink-950 hover:opacity-90 transition-opacity min-w-0 shrink">
+      <img src="/favicon-96x96.png" alt="YouTubeBannerMaker logo" width="28" height="28" class="w-7 h-7 rounded-sm object-contain shrink-0" />
+      <div class="flex items-baseline min-w-0">
+        <span class="text-sm font-semibold tracking-tight text-ink-950 truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">{dict.common.brandName}</span>
       </div>
     </a>
 
     <!-- Navigation & Desktop Actions -->
-    <div class="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-4">
+    <div class="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-4 shrink-0">
       <nav class="flex items-center gap-0.5 lg:gap-1" aria-label="Main Navigation">
         {
           mainNavItems.map((item) => {
@@ -121,7 +121,7 @@ const mobileNavItems = [...mainNavItems, ...guideItems];
     </div>
 
     <!-- Mobile Navigation & Actions -->
-    <div class="flex md:hidden items-center gap-1.5">
+    <div class="flex md:hidden items-center gap-1 sm:gap-1.5 shrink-0">
       <LanguagePicker currentPath={currentPath} currentLocale={locale} />
       <ThemeToggle id="theme-toggle-mobile" />
       <PalettePicker currentPath={currentPath} />

@@ -16,7 +16,7 @@ const { id = 'theme-toggle' } = Astro.props;
 
 <label
   for={id}
-  class="relative inline-flex items-center h-8 w-16 p-1 rounded-full bg-surface-100 hover:bg-line-200/80 border border-line-200 cursor-pointer select-none transition-colors duration-200 focus-within:ring-2 focus-within:ring-accent"
+  class="theme-toggle-label relative inline-flex items-center h-8 w-14 min-w-[3.5rem] max-w-[3.5rem] p-[3px] rounded-full bg-surface-100 hover:bg-line-200/80 border border-line-200 cursor-pointer select-none transition-colors duration-200 focus-within:ring-2 focus-within:ring-accent shrink-0"
   title="Toggle dark and light mode"
   aria-label="Toggle dark and light mode"
 >
@@ -28,14 +28,14 @@ const { id = 'theme-toggle' } = Astro.props;
     onchange="try{var d=this.checked;document.documentElement.classList.toggle('dark',d);document.documentElement.setAttribute('data-theme',d?'dark':'light');localStorage.setItem('ytbm-theme',d?'dark':'light');document.querySelectorAll('.theme-toggle-input').forEach(function(el){el.checked=d;});window.dispatchEvent(new CustomEvent('ytbm-theme-change',{detail:{theme:d?'dark':'light'}}));}catch(e){}"
   />
 
-  <!-- Track Icons: Sun on left, Moon on right -->
-  <div class="absolute inset-0 flex items-center justify-between px-2 text-ink-500 pointer-events-none" aria-hidden="true">
-    <!-- Sun icon -->
+  <!-- Track Icons: Sun on left, Moon on right (concentrically aligned with thumb centers) -->
+  <div class="absolute inset-0 flex items-center justify-between px-[9px] text-ink-500 pointer-events-none" aria-hidden="true">
+    <!-- Sun icon (left) -->
     <svg class="w-3.5 h-3.5 text-amber-500 transition-opacity duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="4" />
       <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41" />
     </svg>
-    <!-- Moon icon -->
+    <!-- Moon icon (right) -->
     <svg class="w-3.5 h-3.5 text-ink-400 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
       <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
     </svg>
@@ -43,7 +43,7 @@ const { id = 'theme-toggle' } = Astro.props;
 
   <!-- Sliding thumb -->
   <span
-    class="theme-toggle-thumb relative z-10 w-6 h-6 rounded-full bg-surface-0 shadow-sm border border-line-200/60 pointer-events-none transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center text-ink-800"
+    class="theme-toggle-thumb relative z-10 w-6 h-6 rounded-full bg-surface-0 shadow-sm border border-line-200/60 pointer-events-none transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center text-ink-800 shrink-0"
     aria-hidden="true"
   >
     <!-- Mini active icon inside thumb: Sun when light, Moon when dark -->
@@ -60,13 +60,15 @@ const { id = 'theme-toggle' } = Astro.props;
   /* Sliding animation when checkbox is checked or data-theme is dark */
   :global(body):has(.theme-toggle-input:checked) .theme-toggle-thumb,
   :global(body):has(#theme-toggle:checked) .theme-toggle-thumb,
+  :global(body):has(#theme-toggle-mobile:checked) .theme-toggle-thumb,
   :global(html[data-theme="dark"]) .theme-toggle-thumb,
   :global(html.dark) .theme-toggle-thumb {
-    transform: translateX(2rem);
+    transform: translateX(1.5rem);
   }
 
   :global(body):has(.theme-toggle-input:checked) .thumb-sun,
   :global(body):has(#theme-toggle:checked) .thumb-sun,
+  :global(body):has(#theme-toggle-mobile:checked) .thumb-sun,
   :global(html[data-theme="dark"]) .thumb-sun,
   :global(html.dark) .thumb-sun {
     display: none;
@@ -74,6 +76,7 @@ const { id = 'theme-toggle' } = Astro.props;
 
   :global(body):has(.theme-toggle-input:checked) .thumb-moon,
   :global(body):has(#theme-toggle:checked) .thumb-moon,
+  :global(body):has(#theme-toggle-mobile:checked) .thumb-moon,
   :global(html[data-theme="dark"]) .thumb-moon,
   :global(html.dark) .thumb-moon {
     display: block;
