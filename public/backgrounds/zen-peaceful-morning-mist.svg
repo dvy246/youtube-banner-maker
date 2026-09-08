@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="35%" stop-color="#1E293B"/>
+      <stop offset="65%" stop-color="#334155"/>
+      <stop offset="85%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="46%" r="28%">
+      <stop offset="0%" stop-color="#FFFBEB" stop-opacity="0.85"/>
+      <stop offset="30%" stop-color="#FEF08A" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#FDE047" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mistGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#CBD5E1" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="mtnGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="mtnGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="mtnGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Atmospheric Morning Sky -->
+  <rect width="2560" height="1440" fill="url(#skyGrad)"/>
+
+  <!-- Soft Golden Rising Sun Ambient Halo -->
+  <circle cx="1280" cy="660" r="420" fill="url(#sunGlow)"/>
+  <circle cx="1280" cy="660" r="140" fill="#FFFDF0" opacity="0.6" filter="blur(8px)"/>
+
+  <!-- Distant Layered Mountains (Ethereal Mist) -->
+  <path d="M0,860 Q480,720 960,780 T1920,740 Q2240,710 2560,770 L2560,1440 L0,1440 Z" fill="url(#mtnGrad3)" opacity="0.6"/>
+  <rect x="0" y="740" width="2560" height="200" fill="url(#mistGrad)" opacity="0.5"/>
+
+  <!-- Midground Misty Ridge -->
+  <path d="M0,920 Q360,820 840,890 T1680,830 Q2120,790 2560,860 L2560,1440 L0,1440 Z" fill="url(#mtnGrad2)" opacity="0.85"/>
+  <rect x="0" y="840" width="2560" height="260" fill="url(#mistGrad)" opacity="0.4"/>
+
+  <!-- Foreground Silhouetted Mountain Crest & Peaceful Valley -->
+  <path d="M0,1020 Q420,950 920,1030 T1840,970 Q2200,940 2560,1010 L2560,1440 L0,1440 Z" fill="url(#mtnGrad1)"/>
+
+  <!-- Solitary Minimalist Pine Silhouettes -->
+  <g fill="#0A0F1D" opacity="0.9">
+    <polygon points="340,940 350,910 360,940"/>
+    <polygon points="335,970 350,935 365,970"/>
+    <polygon points="330,1000 350,965 370,1000"/>
+    <rect x="347" y="1000" width="6" height="30"/>
+
+    <polygon points="380,960 390,935 400,960"/>
+    <polygon points="375,985 390,955 405,985"/>
+    <rect x="387" y="985" width="6" height="25"/>
+
+    <polygon points="2180,950 2190,920 2200,950"/>
+    <polygon points="2175,980 2190,945 2205,980"/>
+    <polygon points="2170,1010 2190,975 2210,1010"/>
+    <rect x="2187" y="1010" width="6" height="30"/>
+  </g>
+
+  <!-- Horizontal Calming Horizon Mist Stream -->
+  <ellipse cx="1280" cy="940" rx="1100" ry="65" fill="#E2E8F0" opacity="0.12" filter="blur(20px)"/>
+  <ellipse cx="1280" cy="1060" rx="900" ry="40" fill="#94A3B8" opacity="0.08" filter="blur(15px)"/>
+</svg>

@@ -4,7 +4,7 @@ import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
 import { getBreadcrumbSchema, getCollectionPageSchema } from "../../../lib/seo";
 import { AESTHETIC_BACKGROUNDS, AESTHETIC_CATEGORIES } from "../../../data/backgrounds";
-import { SAFE } from "../../../lib/spec";
+import { CANVAS, SAFE, SAFE_PX } from "../../../lib/spec";
 import {
   TARGET_LOCALES,
   getStaticPageSeo,
@@ -12,6 +12,10 @@ import {
   getLocalizedUrl,
   type Locale,
 } from "../../../i18n";
+
+const mobileCropWidth = SAFE_PX.full.width;
+const mobileCropHeight = SAFE_PX.full.height;
+const desktopCropHeight = SAFE_PX.full.height;
 
 export async function getStaticPaths() {
   return TARGET_LOCALES.map((locale) => ({
@@ -87,6 +91,7 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
 
 const categoryLabels: Record<string, string> = {
   all: t.allCategories,
+  ghibli: 'Studio Ghibli',
   sky: t.catSky,
   floral: t.catFloral,
   boho: t.catBoho,
@@ -254,16 +259,102 @@ const categoryLabels: Record<string, string> = {
                       <span>{t.customizeBtn}</span>
                     </a>
 
-                    <a
-                      href={bg.src}
-                      download={`${bg.id}-2560x1440.svg`}
-                      class="h-9 px-3 rounded-full border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-700 hover:text-ink-950 text-xs font-medium inline-flex items-center justify-center gap-1.5 transition-all active:scale-[0.98]"
-                    >
-                      <svg class="w-3.5 h-3.5 text-ink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
-                      <span>{t.downloadBtn}</span>
-                    </a>
+                    <!-- Split Multi-Size Download Pill -->
+                    <div class="relative download-group inline-flex w-full">
+                      <button
+                        type="button"
+                        class="btn-quick-download flex-1 h-9 pl-2.5 pr-1.5 rounded-l-full border border-r-0 border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-700 hover:text-ink-950 text-xs font-medium inline-flex items-center justify-center gap-1 transition-all active:scale-[0.98] cursor-pointer"
+                        data-src={bg.src}
+                        data-id={bg.id}
+                        data-w={CANVAS.width}
+                        data-h={CANVAS.height}
+                        data-crop="false"
+                        title="Download 2560 × 1440"
+                      >
+                        <svg class="w-3.5 h-3.5 text-ink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <span>{t.downloadBtn}</span>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn-toggle-sizes h-9 px-2 rounded-r-full border border-line-200 bg-surface-50 hover:bg-surface-100 text-ink-500 hover:text-ink-950 text-xs font-medium inline-flex items-center justify-center transition-all active:scale-[0.98] cursor-pointer"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        title="Choose custom download size (4K, 1080p, Safe Area Crops)"
+                      >
+                        <svg class="w-3 h-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+
+                      <!-- Floating Dropdown Menu -->
+                      <div class="download-dropdown-menu hidden absolute right-0 bottom-full mb-1.5 w-56 p-1.5 bg-surface-0 rounded-2xl shadow-xl border border-line-200 z-30 text-left">
+                        <div class="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink-400">Standard Sizes</div>
+                        <button
+                          type="button"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          data-src={bg.src}
+                          data-id={bg.id}
+                          data-w={CANVAS.width}
+                          data-h={CANVAS.height}
+                          data-crop="false"
+                        >
+                          <span class="font-medium">YouTube Banner (2K)</span>
+                          <span class="text-[10px] font-mono text-ink-500">{CANVAS.width} × {CANVAS.height}</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          data-src={bg.src}
+                          data-id={bg.id}
+                          data-w="3840"
+                          data-h="2160"
+                          data-crop="false"
+                        >
+                          <span class="font-medium">Ultra HD 4K (Wallpaper)</span>
+                          <span class="text-[10px] font-mono text-ink-500">3840 × 2160</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          data-src={bg.src}
+                          data-id={bg.id}
+                          data-w="1920"
+                          data-h="1080"
+                          data-crop="false"
+                        >
+                          <span class="font-medium">YouTube Thumbnail (1080p)</span>
+                          <span class="text-[10px] font-mono text-ink-500">1920 × 1080</span>
+                        </button>
+                        <div class="my-1 border-t border-line-100"></div>
+                        <div class="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink-400">Safe Area Crops</div>
+                        <button
+                          type="button"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          data-src={bg.src}
+                          data-id={bg.id}
+                          data-w={CANVAS.width}
+                          data-h={desktopCropHeight}
+                          data-crop="desktop"
+                        >
+                          <span class="font-medium">Desktop Viewport</span>
+                          <span class="text-[10px] font-mono text-ink-500">{CANVAS.width} × {desktopCropHeight}</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          data-src={bg.src}
+                          data-id={bg.id}
+                          data-w={mobileCropWidth}
+                          data-h={mobileCropHeight}
+                          data-crop="mobile"
+                        >
+                          <span class="font-medium">Mobile Safe Zone</span>
+                          <span class="text-[10px] font-mono text-ink-500">{mobileCropWidth} × {mobileCropHeight}</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -381,6 +472,134 @@ const categoryLabels: Record<string, string> = {
         }
       });
     });
+
+    // Multi-Size Download Engine & Dropdown Controller
+    const downloadGroups = document.querySelectorAll<HTMLElement>('.download-group');
+
+    function closeAllDropdowns() {
+      document.querySelectorAll<HTMLElement>('.download-dropdown-menu').forEach((m) => {
+        m.classList.add('hidden');
+      });
+      document.querySelectorAll<HTMLButtonElement>('.btn-toggle-sizes').forEach((b) => {
+        b.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    downloadGroups.forEach((group) => {
+      const toggleBtn = group.querySelector<HTMLButtonElement>('.btn-toggle-sizes');
+      const menu = group.querySelector<HTMLElement>('.download-dropdown-menu');
+      const quickBtn = group.querySelector<HTMLButtonElement>('.btn-quick-download');
+      const sizeBtns = group.querySelectorAll<HTMLButtonElement>('.btn-download-size');
+
+      toggleBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = menu?.classList.contains('hidden');
+        closeAllDropdowns();
+        if (isHidden) {
+          menu?.classList.remove('hidden');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      quickBtn?.addEventListener('click', () => {
+        const src = quickBtn.getAttribute('data-src') || '';
+        const id = quickBtn.getAttribute('data-id') || 'background';
+        const w = parseInt(quickBtn.getAttribute('data-w') || '2560', 10);
+        const h = parseInt(quickBtn.getAttribute('data-h') || '1440', 10);
+        const crop = quickBtn.getAttribute('data-crop') || 'false';
+        downloadBackground(src, id, w, h, crop, quickBtn);
+      });
+
+      sizeBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeAllDropdowns();
+          const src = btn.getAttribute('data-src') || '';
+          const id = btn.getAttribute('data-id') || 'background';
+          const w = parseInt(btn.getAttribute('data-w') || '2560', 10);
+          const h = parseInt(btn.getAttribute('data-h') || '1440', 10);
+          const crop = btn.getAttribute('data-crop') || 'false';
+          downloadBackground(src, id, w, h, crop, btn);
+        });
+      });
+    });
+
+    document.addEventListener('click', () => {
+      closeAllDropdowns();
+    });
+
+    async function downloadBackground(
+      src: string,
+      filenameBase: string,
+      targetW: number,
+      targetH: number,
+      cropType: string,
+      triggerElement?: HTMLElement
+    ) {
+      if (triggerElement) {
+        triggerElement.style.opacity = '0.6';
+      }
+
+      try {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+
+        await new Promise<void>((resolve, reject) => {
+          img.onload = () => resolve();
+          img.onerror = () => reject(new Error('Image failed to load'));
+          img.src = src;
+        });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = targetW;
+        canvas.height = targetH;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('Canvas 2D unsupported');
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        const natW = img.naturalWidth || 2560;
+        const natH = img.naturalHeight || 1440;
+
+        if (cropType === 'desktop') {
+          const srcH = (targetH / 1440) * natH;
+          const srcY = (natH - srcH) / 2;
+          ctx.drawImage(img, 0, srcY, natW, srcH, 0, 0, targetW, targetH);
+        } else if (cropType === 'mobile') {
+          const srcW = (targetW / 2560) * natW;
+          const srcH = (targetH / 1440) * natH;
+          const srcX = (natW - srcW) / 2;
+          const srcY = (natH - srcH) / 2;
+          ctx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, targetW, targetH);
+        } else {
+          ctx.drawImage(img, 0, 0, natW, natH, 0, 0, targetW, targetH);
+        }
+
+        const isJpeg = src.endsWith('.jpg') || src.endsWith('.jpeg');
+        const mime = isJpeg ? 'image/jpeg' : 'image/png';
+        const ext = isJpeg ? 'jpg' : 'png';
+        const dataUrl = canvas.toDataURL(mime, 0.95);
+
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `${filenameBase}-${targetW}x${targetH}.${ext}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } catch (err) {
+        const a = document.createElement('a');
+        a.href = src;
+        a.download = `${filenameBase}.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } finally {
+        if (triggerElement) {
+          triggerElement.style.opacity = '1';
+        }
+      }
+    }
   }
 
   initBackgroundsHub();

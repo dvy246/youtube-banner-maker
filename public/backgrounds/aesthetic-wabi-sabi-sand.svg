@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="sandBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F6F0"/>
+      <stop offset="50%" stop-color="#F4EFE6"/>
+      <stop offset="100%" stop-color="#EBE3D5"/>
+    </linearGradient>
+    <radialGradient id="sunBlob" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#D4A373"/>
+      <stop offset="100%" stop-color="#BC6C25"/>
+    </radialGradient>
+    <linearGradient id="stoneGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#57534E"/>
+      <stop offset="100%" stop-color="#292524"/>
+    </linearGradient>
+    <linearGradient id="stoneGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78716C"/>
+      <stop offset="100%" stop-color="#44403C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Warm Sand Linen Canvas -->
+  <rect width="2560" height="1440" fill="url(#sandBg)"/>
+
+  <!-- Organic Terracotta Minimalist Sun -->
+  <circle cx="680" cy="540" r="280" fill="url(#sunBlob)" opacity="0.85"/>
+
+  <!-- Serene Raked Sand Curves (Zen Garden) -->
+  <g fill="none" stroke="#D6CCC2" stroke-width="3" opacity="0.6">
+    <path d="M-200,900 C400,850 1000,980 1600,920 C2100,870 2400,940 2800,900"/>
+    <path d="M-200,960 C400,910 1000,1040 1600,980 C2100,930 2400,1000 2800,960"/>
+    <path d="M-200,1020 C400,970 1000,1100 1600,1040 C2100,990 2400,1060 2800,1020"/>
+    <path d="M-200,1080 C400,1030 1000,1160 1600,1100 C2100,1050 2400,1120 2800,1080"/>
+  </g>
+
+  <!-- Large Soft Abstract Arch in Neutral Clay -->
+  <path d="M1720,1440 V720 C1720,540 1860,400 2040,400 C2220,400 2360,540 2360,720 V1440 Z" fill="#E3D5CA" opacity="0.5"/>
+
+  <!-- Balanced River Stones Stack (Right Flank Safe-Zone Companion) -->
+  <g transform="translate(1960, 940)">
+    <!-- Bottom Stone -->
+    <ellipse cx="80" cy="180" rx="140" ry="50" fill="url(#stoneGrad1)"/>
+    <!-- Middle Stone -->
+    <ellipse cx="80" cy="120" rx="100" ry="38" fill="url(#stoneGrad2)"/>
+    <!-- Top Stone -->
+    <ellipse cx="80" cy="70" rx="65" ry="26" fill="url(#stoneGrad1)"/>
+    <!-- Highlight Sheen -->
+    <ellipse cx="65" cy="65" rx="30" ry="10" fill="#A8A29E" opacity="0.4"/>
+  </g>
+
+  <!-- Single Delicate Botanical Branch (Left Flank) -->
+  <g stroke="#78716C" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.75" transform="translate(360, 520)">
+    <path d="M60,400 C100,280 140,160 200,40"/>
+    <!-- Leaves -->
+    <ellipse cx="145" cy="230" rx="26" ry="12" transform="rotate(-30 145 230)" fill="#D4A373" stroke="#78716C" opacity="0.8"/>
+    <ellipse cx="110" cy="270" rx="24" ry="11" transform="rotate(35 110 270)" fill="#D5BDAF" stroke="#78716C" opacity="0.8"/>
+    <ellipse cx="170" cy="130" rx="22" ry="10" transform="rotate(-25 170 130)" fill="#D4A373" stroke="#78716C" opacity="0.8"/>
+    <ellipse cx="140" cy="170" rx="20" ry="9" transform="rotate(30 140 170)" fill="#D5BDAF" stroke="#78716C" opacity="0.8"/>
+    <ellipse cx="195" cy="45" rx="18" ry="8" transform="rotate(-20 195 45)" fill="#CCD5AE" stroke="#78716C" opacity="0.8"/>
+  </g>
+</svg>

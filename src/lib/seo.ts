@@ -126,8 +126,8 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
     desc: 'Browse verified YouTube banner templates crafted for gaming, tech, podcasting, and vlogs. Engineered to fit mobile and desktop safe areas cleanly.',
   },
   '/backgrounds': {
-    title: 'Aesthetic YouTube Banner Backgrounds | 30 Art Plates',
-    desc: '30 free aesthetic YouTube banner backgrounds. Anime, pastel clouds, rose gold marble, and bohemian terracotta templates scaled for 2560×1440 safe areas.',
+    title: 'Banner, Thumbnail & 4K Wallpaper Backgrounds | Free Art',
+    desc: 'Free aesthetic backgrounds for YouTube banners, video thumbnails, and 4K wallpapers. Studio Ghibli, anime, and zen art with instant safe-area downloads.',
   },
   '/about': {
     title: 'About Us | Browser-First Privacy | YouTubeBannerMaker',

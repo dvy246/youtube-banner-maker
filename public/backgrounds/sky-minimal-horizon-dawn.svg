@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="dawnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B"/>
+      <stop offset="25%" stop-color="#312E81"/>
+      <stop offset="50%" stop-color="#4F46E5"/>
+      <stop offset="70%" stop-color="#818CF8"/>
+      <stop offset="82%" stop-color="#C084FC"/>
+      <stop offset="92%" stop-color="#F472B6"/>
+      <stop offset="97%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#FFFBEB"/>
+    </linearGradient>
+    <radialGradient id="horizonGlow" cx="50%" cy="92%" r="45%">
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#F472B6" stop-opacity="0.3"/>
+      <stop offset="80%" stop-color="#818CF8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Seamless Minimalist Dawn Gradient -->
+  <rect width="2560" height="1440" fill="url(#dawnGrad)"/>
+
+  <!-- Radiant Ethereal Horizon Glow -->
+  <rect x="0" y="700" width="2560" height="740" fill="url(#horizonGlow)"/>
+
+  <!-- Calm Mirror Horizon Water Surface -->
+  <rect x="0" y="1020" width="2560" height="420" fill="url(#seaGrad)"/>
+  
+  <!-- Subtle Horizon Hairline -->
+  <line x1="0" y1="1020" x2="2560" y2="1020" stroke="#FDE68A" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Soft Water Light Reflection Ribbon -->
+  <polygon points="1200,1020 1360,1020 1440,1440 1120,1440" fill="#FDE68A" opacity="0.12" filter="blur(25px)"/>
+
+  <!-- Minimalist Distant Islands Silhouettes -->
+  <path d="M180,1020 Q280,1005 380,1020 Z" fill="#1E1B4B" opacity="0.7"/>
+  <path d="M2100,1020 Q2220,1008 2360,1020 Z" fill="#1E1B4B" opacity="0.7"/>
+
+  <!-- Whisper Stardust in Upper Atmosphere -->
+  <g fill="#FFFFFF" opacity="0.5">
+    <circle cx="480" cy="180" r="1.5"/>
+    <circle cx="720" cy="240" r="1"/>
+    <circle cx="980" cy="140" r="2"/>
+    <circle cx="1400" cy="220" r="1.5"/>
+    <circle cx="1780" cy="160" r="2"/>
+    <circle cx="2120" cy="260" r="1"/>
+    <circle cx="2320" cy="190" r="1.5"/>
+  </g>
+</svg>

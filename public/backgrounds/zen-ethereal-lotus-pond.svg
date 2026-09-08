@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="pondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#041E28"/>
+      <stop offset="50%" stop-color="#092B38"/>
+      <stop offset="100%" stop-color="#02121A"/>
+    </linearGradient>
+    <radialGradient id="waterRipples" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#14B8A6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#041E28" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lotusGlow" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#F0FDFA"/>
+      <stop offset="75%" stop-color="#5EEAD4" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0F766E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Deep Midnight Teal Tranquil Water Surface -->
+  <rect width="2560" height="1440" fill="url(#pondGrad)"/>
+
+  <!-- Peaceful Circular Water Ripples (Safe Center Backdrop) -->
+  <g fill="none" stroke="#2DD4BF" opacity="0.25">
+    <circle cx="1280" cy="720" r="180" stroke-width="1.5"/>
+    <circle cx="1280" cy="720" r="320" stroke-width="1.5"/>
+    <circle cx="1280" cy="720" r="480" stroke-width="1.2" stroke-dasharray="8 6"/>
+    <circle cx="1280" cy="720" r="680" stroke-width="1"/>
+    <circle cx="1280" cy="720" r="920" stroke-width="0.8" stroke-dasharray="12 8"/>
+  </g>
+
+  <!-- Ambient Water Surface Glow -->
+  <circle cx="1280" cy="720" r="520" fill="url(#waterRipples)"/>
+
+  <!-- Floating Minimalist Lily Pads (Deep Emerald/Teal) -->
+  <g fill="#0F4C5C" opacity="0.6">
+    <circle cx="520" cy="420" r="120"/>
+    <circle cx="2040" cy="980" r="140"/>
+    <circle cx="2180" cy="380" r="90"/>
+    <circle cx="360" cy="1060" r="110"/>
+  </g>
+
+  <!-- Glowing Water Lily Bloom (Accent) -->
+  <g transform="translate(1280, 720)">
+    <circle cx="0" cy="0" r="100" fill="url(#lotusGlow)"/>
+    <!-- Lotus Petals -->
+    <path d="M0,0 C-20,-40 -15,-70 0,-90 C15,-70 20,-40 0,0 Z" fill="#F0FDFA" opacity="0.95"/>
+    <path d="M0,0 C-45,-25 -70,-20 -90,0 C-70,20 -45,25 0,0 Z" fill="#CCFBF1" opacity="0.85"/>
+    <path d="M0,0 C45,-25 70,-20 90,0 C70,20 45,25 0,0 Z" fill="#CCFBF1" opacity="0.85"/>
+    <path d="M0,0 C-35,-45 -50,-60 -45,-80 C-25,-75 -10,-55 0,0 Z" fill="#99F6E4" opacity="0.9"/>
+    <path d="M0,0 C35,-45 50,-60 45,-80 C25,-75 10,-55 0,0 Z" fill="#99F6E4" opacity="0.9"/>
+    <!-- Golden Core -->
+    <circle cx="0" cy="-10" r="14" fill="#FBBF24"/>
+  </g>
+</svg>

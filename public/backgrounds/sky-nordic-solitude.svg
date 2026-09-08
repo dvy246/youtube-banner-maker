@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="nordicGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B"/>
+      <stop offset="35%" stop-color="#1C2541"/>
+      <stop offset="65%" stop-color="#3A506B"/>
+      <stop offset="85%" stop-color="#5BC0BE"/>
+      <stop offset="95%" stop-color="#BEE3DB"/>
+      <stop offset="100%" stop-color="#F0FDFC"/>
+    </linearGradient>
+    <linearGradient id="iceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#0B132B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clear Twilight Nordic Atmosphere -->
+  <rect width="2560" height="1440" fill="url(#nordicGrad)"/>
+
+  <!-- Distant Blue Ridge Glaciers -->
+  <path d="M0,980 L320,890 L680,940 L1120,860 L1580,920 L1980,870 L2340,930 L2560,890 L2560,1440 L0,1440 Z" fill="#24334C" opacity="0.85"/>
+  <path d="M0,1040 L440,970 L960,1020 L1440,960 L1920,1000 L2420,950 L2560,980 L2560,1440 L0,1440 Z" fill="#141E33" opacity="0.95"/>
+
+  <!-- Calm Mirror Lake Horizon -->
+  <rect x="0" y="1080" width="2560" height="360" fill="url(#iceGrad)"/>
+  <line x1="0" y1="1080" x2="2560" y2="1080" stroke="#BEE3DB" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Delicate Horizon Shoreline Fog -->
+  <ellipse cx="1280" cy="1080" rx="1000" ry="25" fill="#E0F2FE" opacity="0.2" filter="blur(15px)"/>
+
+  <!-- Solitary Minimalist Loon / Silhouette -->
+  <circle cx="1680" cy="1120" r="3" fill="#0B132B"/>
+  <ellipse cx="1686" cy="1122" rx="7" ry="2.5" fill="#0B132B"/>
+</svg>
