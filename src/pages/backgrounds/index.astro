@@ -271,92 +271,114 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
                       </button>
 
                       <!-- Floating Dropdown Menu -->
-                      <div class="download-dropdown-menu hidden absolute right-0 bottom-full mb-1.5 w-64 p-1.5 bg-surface-0 rounded-2xl shadow-xl border border-line-200 z-30 text-left">
-                        <div class="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink-400">Standard Sizes</div>
+                      <div class="download-dropdown-menu hidden absolute right-0 bottom-full mb-2 w-72 sm:w-80 p-2 bg-surface-0/98 backdrop-blur-md rounded-2xl shadow-2xl border border-line-200 z-30 text-left">
+                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">Standard Sizes</div>
                         <button
                           type="button"
-                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 transition-colors cursor-pointer group"
                           data-src={bg.src}
                           data-id={bg.id}
                           data-w={CANVAS.width}
                           data-h={CANVAS.height}
                           data-crop="false"
                         >
-                          <span class="font-medium">YouTube Banner (2K)</span>
-                          <span class="text-[10px] font-mono text-ink-500">{CANVAS.width} × {CANVAS.height}</span>
+                          <span class="font-medium truncate">YouTube Banner (2K)</span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">{CANVAS.width} × {CANVAS.height}</span>
                         </button>
                         <button
                           type="button"
-                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 transition-colors cursor-pointer group"
                           data-src={bg.src}
                           data-id={bg.id}
                           data-w="3840"
                           data-h="2160"
                           data-crop="false"
                         >
-                          <span class="font-medium">Ultra HD 4K (Wallpaper)</span>
-                          <span class="text-[10px] font-mono text-ink-500">3840 × 2160</span>
+                          <span class="font-medium truncate">Ultra HD 4K (Wallpaper)</span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">3840 × 2160</span>
                         </button>
                         <button
                           type="button"
-                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 transition-colors cursor-pointer group"
                           data-src={bg.src}
                           data-id={bg.id}
                           data-w="1920"
                           data-h="1080"
                           data-crop="false"
                         >
-                          <span class="font-medium">YouTube Thumbnail (1080p)</span>
-                          <span class="text-[10px] font-mono text-ink-500">1920 × 1080</span>
+                          <span class="font-medium truncate">YouTube Thumbnail (1080p)</span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">1920 × 1080</span>
                         </button>
-                        <div class="my-1 border-t border-line-100"></div>
-                        <div class="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink-400">Safe Area Crops</div>
+
+                        <div class="my-1.5 border-t border-line-100"></div>
+
+                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">Safe Area Crops</div>
                         <button
                           type="button"
-                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 transition-colors cursor-pointer group"
                           data-src={bg.src}
                           data-id={bg.id}
                           data-w={CANVAS.width}
                           data-h={desktopCropHeight}
                           data-crop="desktop"
                         >
-                          <span class="font-medium">Desktop Viewport</span>
-                          <span class="text-[10px] font-mono text-ink-500">{CANVAS.width} × {desktopCropHeight}</span>
+                          <span class="font-medium truncate">Desktop Viewport</span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">{CANVAS.width} × {desktopCropHeight}</span>
                         </button>
                         <button
                           type="button"
-                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors cursor-pointer"
+                          class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 transition-colors cursor-pointer group"
                           data-src={bg.src}
                           data-id={bg.id}
                           data-w={mobileCropWidth}
                           data-h={mobileCropHeight}
                           data-crop="mobile"
                         >
-                          <span class="font-medium">Mobile Safe Zone</span>
-                          <span class="text-[10px] font-mono text-ink-500">{mobileCropWidth} × {mobileCropHeight}</span>
+                          <span class="font-medium truncate">Mobile Safe Zone</span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">{mobileCropWidth} × {mobileCropHeight}</span>
                         </button>
-                        <div class="my-1 border-t border-line-100"></div>
-                        <div class="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-ink-400">Customize in Studio</div>
+
+                        <div class="my-1.5 border-t border-line-100"></div>
+
+                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">Customize in Studio</div>
                         <a
                           href={`/tools/youtube-banner-maker?bgId=${bg.id}&res=banner`}
-                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors"
+                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 hover:text-accent transition-colors group"
                         >
-                          <span class="font-medium text-accent">Customize as Banner</span>
-                          <span class="text-[10px] font-mono text-ink-500">2560 × 1440</span>
+                          <span class="font-medium flex items-center gap-1.5 truncate">
+                            <svg class="w-3 h-3 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            <span>Open as Banner</span>
+                          </span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 group-hover:text-accent flex items-center gap-1 shrink-0 ml-2">
+                            <span class="bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100">2560 × 1440</span>
+                            <span aria-hidden="true">&rarr;</span>
+                          </span>
                         </a>
                         <a
                           href={`/tools/youtube-banner-maker?bgId=${bg.id}&res=4k`}
-                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors"
+                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 hover:text-accent transition-colors group"
                         >
-                          <span class="font-medium text-accent">Customize 4K Wallpaper</span>
-                          <span class="text-[10px] font-mono text-ink-500">3840 × 2160</span>
+                          <span class="font-medium flex items-center gap-1.5 truncate">
+                            <svg class="w-3 h-3 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            <span>Open as 4K Wallpaper</span>
+                          </span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 group-hover:text-accent flex items-center gap-1 shrink-0 ml-2">
+                            <span class="bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100">3840 × 2160</span>
+                            <span aria-hidden="true">&rarr;</span>
+                          </span>
                         </a>
                         <a
                           href={`/tools/youtube-banner-maker?bgId=${bg.id}&res=thumbnail`}
-                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-800 transition-colors"
+                          class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 hover:text-accent transition-colors group"
                         >
-                          <span class="font-medium text-accent">Customize Thumbnail</span>
-                          <span class="text-[10px] font-mono text-ink-500">1920 × 1080</span>
+                          <span class="font-medium flex items-center gap-1.5 truncate">
+                            <svg class="w-3 h-3 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            <span>Open as Thumbnail</span>
+                          </span>
+                          <span class="text-[10px] font-mono tabular-nums text-ink-500 group-hover:text-accent flex items-center gap-1 shrink-0 ml-2">
+                            <span class="bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100">1920 × 1080</span>
+                            <span aria-hidden="true">&rarr;</span>
+                          </span>
                         </a>
                       </div>
                     </div>
