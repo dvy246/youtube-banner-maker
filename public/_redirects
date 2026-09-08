@@ -1,0 +1,15 @@
+# Canonical redirects for background page aliases
+/background /backgrounds 301
+/background/ /backgrounds 301
+/es/background /es/backgrounds 301
+/es/background/ /es/backgrounds 301
+/de/background /de/backgrounds 301
+/de/background/ /de/backgrounds 301
+/fr/background /fr/backgrounds 301
+/fr/background/ /fr/backgrounds 301
+/it/background /it/backgrounds 301
+/it/background/ /it/backgrounds 301
+/ja/background /ja/backgrounds 301
+/ja/background/ /ja/backgrounds 301
+/pt-br/background /pt-br/backgrounds 301
+/pt-br/background/ /pt-br/backgrounds 301
