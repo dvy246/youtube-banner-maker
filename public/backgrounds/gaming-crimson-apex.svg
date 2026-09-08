@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="razor-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF1E27" />
+      <stop offset="100%" stop-color="#C41219" />
+    </linearGradient>
+    <linearGradient id="sub-red-btn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF3842" />
+      <stop offset="50%" stop-color="#E51822" />
+      <stop offset="100%" stop-color="#A50A11" />
+    </linearGradient>
+    <filter id="btn-glow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#FF1E27" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Dark Base -->
+  <rect width="2560" height="1440" fill="#1C1D20" />
+  <rect y="480" width="2560" height="480" fill="#26282C" />
+
+  <!-- Top Razor Red Chevrons -->
+  <polygon points="0,0 2560,0 2560,280 1800,480 900,120 0,380" fill="url(#razor-red)" />
+  <polygon points="0,0 600,280 200,420 0,380" fill="#FF3B43" />
+  <polygon points="1200,0 2100,220 1700,420" fill="#B30F16" opacity="0.6" />
+
+  <!-- Bottom Razor Red Chevrons -->
+  <polygon points="0,1440 2560,1440 2560,1160 1700,980 800,1320 0,1080" fill="url(#razor-red)" />
+  <polygon points="2560,1440 1900,1180 2300,1040 2560,1080" fill="#FF3B43" />
+  <polygon points="1400,1440 600,1220 900,1020" fill="#B30F16" opacity="0.6" />
+
+  <!-- Center Avatar Ring -->
+  <g transform="translate(680, 720)">
+    <circle cx="0" cy="0" r="210" fill="#26282C" stroke="#FF1E27" stroke-width="20" filter="url(#btn-glow)" />
+    <circle cx="0" cy="0" r="190" fill="#EAEBED" />
+    <text x="0" y="8" fill="#8E939D" font-family="system-ui, sans-serif" font-size="24" font-weight="500" text-anchor="middle">Your image here</text>
+  </g>
+
+  <!-- Like, Comment, Share Tri-Icons -->
+  <g transform="translate(1320, 720)">
+    <!-- Like -->
+    <g transform="translate(-100, 0)">
+      <path d="M-12 10 v-16 h6 l10 -10 a4 4 0 0 1 6 4 v6 h8 a4 4 0 0 1 4 4 l-4 12 z" fill="#FF1E27" />
+      <text x="0" y="28" fill="#9CA3AF" font-family="system-ui" font-size="11" text-anchor="middle">Like</text>
+    </g>
+    <!-- Comment -->
+    <g transform="translate(0, 0)">
+      <rect x="-12" y="-12" width="24" height="20" rx="3" fill="#FF1E27" />
+      <polygon points="-4,8 4,8 0,14" fill="#FF1E27" />
+      <text x="0" y="28" fill="#9CA3AF" font-family="system-ui" font-size="11" text-anchor="middle">Comment</text>
+    </g>
+    <!-- Share -->
+    <g transform="translate(100, 0)">
+      <path d="M-10 4 q10 -14 20 -8 l0 -8 l12 12 l-12 12 l0 -8 q-10 2 -20 12 z" fill="#FF1E27" />
+      <text x="0" y="28" fill="#9CA3AF" font-family="system-ui" font-size="11" text-anchor="middle">Share</text>
+    </g>
+  </g>
+
+  <!-- 3D Glossy Red SUBSCRIBE Button -->
+  <g transform="translate(1780, 720)">
+    <rect x="-180" y="-40" width="360" height="80" rx="40" fill="url(#sub-red-btn)" filter="url(#btn-glow)" stroke="#FFA0A4" stroke-width="2" />
+    <ellipse cx="0" cy="-20" rx="140" ry="12" fill="#FFFFFF" opacity="0.3" />
+    <text x="-25" y="10" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="28" font-weight="900" letter-spacing="3px">SUBSCRIBE</text>
+    <!-- Bell -->
+    <g transform="translate(120, 2)">
+      <path d="M-10 8 a10 10 0 0 1 20 0 v6 h-20 z" fill="#FFFFFF" />
+      <circle cx="0" cy="16" r="3" fill="#FFFFFF" />
+    </g>
+  </g>
+</svg>

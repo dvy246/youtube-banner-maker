@@ -25,6 +25,10 @@
 
 - **YouTube Banner Size Guide (`/guides/youtube-banner-size`):** Exhaustive technical reference covering 2560 × 1440 specs, minimum resolution requirements, aspect ratio math, file compression, and device crops.
 - **YouTube Banner Safe Area Guide (`/guides/youtube-banner-safe-area`):** Deep architectural breakdown of YouTube's safe area coordinates, explaining why desktop (2560×423), tablet (1855×423), and mobile (1546×423) share the identical 423 px vertical core.
+- **YouTube Banner 1024×576 Troubleshooting (`/guides/youtube-banner-1024-x-576`):** Engineering explanation of why YouTube Studio rejects 1024×576 files, 16:9 scaling math, and safe upscaling workflows.
+- **How to Make a YouTube Banner (`/guides/how-to-make-a-youtube-banner`):** Step-by-step channel branding and layout guide with typography and safe area placement rules.
+- **How to Choose a YouTube Banner Template (`/guides/how-to-choose-a-youtube-banner-template`):** Niche layout archetypes, color harmony, and selection criteria.
+- **YouTube Banner Backgrounds Guide (`/guides/youtube-banner-background`):** 2560×1440 background selection, contrast scrims, and styling rules.
 
 ## Privacy & Security Guarantees
 

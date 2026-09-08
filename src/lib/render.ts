@@ -113,6 +113,95 @@ export function renderScene(
       ctx.fillStyle = '#1F2124';
       ctx.fillRect(0, 0, cw, ch);
     }
+  } else if (bg.type === 'motion') {
+    // Render static snapshot for the final export
+    if (bg.effect === 'mesh') {
+      const grad = ctx.createRadialGradient(cw * 0.2, ch * 0.2, 0, cw * 0.5, ch * 0.5, cw * 0.8);
+      grad.addColorStop(0, bg.color1);
+      grad.addColorStop(1, bg.color2);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+    } else if (bg.effect === 'particles') {
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.fillStyle = bg.color2;
+      for(let i = 0; i < 50; i++) {
+         ctx.beginPath();
+         ctx.arc(cw * ((i * 13) % 100) / 100, ch * ((i * 7) % 100) / 100, (i % 4) + 1, 0, Math.PI * 2);
+         ctx.fill();
+      }
+    } else if (bg.effect === 'aurora') {
+      const grad = ctx.createLinearGradient(0, 0, 0, ch);
+      grad.addColorStop(0, '#020617');
+      grad.addColorStop(1, bg.color1);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+      
+      ctx.beginPath();
+      ctx.moveTo(0, ch * 0.6);
+      ctx.bezierCurveTo(cw * 0.3, ch * 0.3, cw * 0.7, ch * 0.8, cw, ch * 0.5);
+      ctx.strokeStyle = bg.color2;
+      ctx.lineWidth = 120;
+      ctx.filter = 'blur(60px)';
+      ctx.stroke();
+      ctx.filter = 'none';
+    } else if (bg.effect === 'cybergrid') {
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.strokeStyle = bg.color1;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.3;
+      for (let i = 0; i < 20; i++) {
+        ctx.beginPath();
+        ctx.moveTo(0, ch * 0.5 + Math.pow(i, 2) * 2);
+        ctx.lineTo(cw, ch * 0.5 + Math.pow(i, 2) * 2);
+        ctx.stroke();
+      }
+      for (let i = -20; i < 20; i++) {
+        ctx.beginPath();
+        ctx.moveTo(cw / 2 + i * 80, ch * 0.5);
+        ctx.lineTo(cw / 2 + i * 250, ch);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1.0;
+    } else if (bg.effect === 'sakura') {
+      // Static snapshot for sakura: soft dusk sky with falling petals
+      const grad = ctx.createLinearGradient(0, 0, 0, ch);
+      grad.addColorStop(0, '#240046');
+      grad.addColorStop(0.5, '#7B286E');
+      grad.addColorStop(1, '#FFB370');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+
+      ctx.fillStyle = '#FFD1DC';
+      ctx.globalAlpha = 0.85;
+      for (let i = 0; i < 40; i++) {
+        const px = cw * (((i * 29) % 100) / 100);
+        const py = ch * (((i * 17) % 100) / 100);
+        ctx.beginPath();
+        ctx.ellipse(px, py, 14, 8, Math.PI / 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1.0;
+    } else if (bg.effect === 'anime-sunset') {
+      // Static snapshot for anime sunset: glowing horizon sun and embers
+      const grad = ctx.createLinearGradient(0, 0, 0, ch);
+      grad.addColorStop(0, '#10002B');
+      grad.addColorStop(0.5, '#3C096C');
+      grad.addColorStop(0.8, '#9D4EDD');
+      grad.addColorStop(1, '#FF9E00');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+
+      const sunGrad = ctx.createRadialGradient(cw * 0.5, ch * 0.65, 20, cw * 0.5, ch * 0.65, 360);
+      sunGrad.addColorStop(0, '#FFF3D1');
+      sunGrad.addColorStop(0.4, '#FFB370');
+      sunGrad.addColorStop(1, 'rgba(255, 179, 112, 0)');
+      ctx.fillStyle = sunGrad;
+      ctx.beginPath();
+      ctx.arc(cw * 0.5, ch * 0.65, 360, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }
 
   // 1.5 Studio Scrim (Contrast Guard)
@@ -215,30 +304,41 @@ function renderShape(
   ctx.save();
   ctx.globalAlpha = Math.max(0, Math.min(1, layer.opacity));
   ctx.fillStyle = layer.color;
-  ctx.strokeStyle = layer.color;
 
-  const x = layer.x * cw;
-  const y = layer.y * ch;
+  const cx = layer.x * cw;
+  const cy = layer.y * ch;
   const w = layer.w * cw;
   const h = layer.h * ch;
+  const x = cx - w / 2;
+  const y = cy - h / 2;
+
+  const bWidth = layer.borderWidth ?? 0;
+  ctx.lineWidth = bWidth;
+  ctx.strokeStyle = layer.borderColor || layer.color;
 
   if (layer.shape === 'rect') {
     if (layer.borderRadius && typeof ctx.roundRect === 'function') {
       ctx.beginPath();
       ctx.roundRect(x, y, w, h, layer.borderRadius);
       ctx.fill();
+      if (bWidth > 0) ctx.stroke();
     } else {
       ctx.fillRect(x, y, w, h);
+      if (bWidth > 0) ctx.strokeRect(x, y, w, h);
     }
   } else if (layer.shape === 'circle') {
     ctx.beginPath();
-    ctx.ellipse(x + w / 2, y + h / 2, Math.abs(w / 2), Math.abs(h / 2), 0, 0, Math.PI * 2);
+    ctx.ellipse(cx, cy, Math.abs(w / 2), Math.abs(h / 2), 0, 0, Math.PI * 2);
     ctx.fill();
+    if (bWidth > 0) ctx.stroke();
   } else if (layer.shape === 'line') {
     ctx.lineWidth = Math.max(1, h);
+    ctx.strokeStyle = layer.color;
     ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + w, y + h);
+    // For line, x and y can still be treated as center point of the line,
+    // so we draw from (cx - w/2) to (cx + w/2)
+    ctx.moveTo(x, cy);
+    ctx.lineTo(cx + w / 2, cy);
     ctx.stroke();
   }
 

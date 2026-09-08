@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <rect width="2560" height="1440" fill="#FDFBF9" />
+  <!-- Double Pill Arch in Safe Center -->
+  <rect x="640" y="540" width="1280" height="360" rx="180" fill="none" stroke="#D19C97" stroke-width="3" />
+  <rect x="660" y="560" width="1240" height="320" rx="160" fill="none" stroke="#E3B7B3" stroke-width="1.5" />
+  <!-- Eucalyptus Line Sprigs -->
+  <g stroke="#4A5844" stroke-width="2" fill="none" opacity="0.7">
+    <path d="M 600 720 Q 560 620, 520 540" />
+    <circle cx="560" cy="620" r="14" fill="#C5D3C1" fill-opacity="0.5" />
+    <circle cx="530" cy="570" r="12" fill="#C5D3C1" fill-opacity="0.5" />
+    <path d="M 1960 720 Q 2000 620, 2040 540" />
+    <circle cx="2000" cy="620" r="14" fill="#C5D3C1" fill-opacity="0.5" />
+    <circle cx="2030" cy="570" r="12" fill="#C5D3C1" fill-opacity="0.5" />
+  </g>
+</svg>

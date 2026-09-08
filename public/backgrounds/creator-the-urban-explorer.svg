@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="urban-black" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F1012" />
+      <stop offset="100%" stop-color="#050607" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Obsidian Canvas -->
+  <rect width="2560" height="1440" fill="url(#urban-black)" />
+
+  <!-- Center Safe Zone Band -->
+  <rect y="508" width="2560" height="424" fill="#0D0E10" />
+
+  <!-- Horizontal Red Framing Rules across Safe Area -->
+  <g stroke="#E52E2E" stroke-width="4" opacity="0.85">
+    <line x1="560" y1="580" x2="1140" y2="580" />
+    <line x1="560" y1="840" x2="1140" y2="840" />
+    <line x1="1420" y1="580" x2="2000" y2="580" />
+    <line x1="1420" y1="840" x2="2000" y2="840" />
+  </g>
+
+  <!-- Left Side: - THE URBAN -->
+  <g transform="translate(850, 725)">
+    <!-- Red Left Arrow Indicator -->
+    <polygon points="-320,-4 -300,-10 -300,2" fill="#E52E2E" />
+    <text x="-270" y="8" fill="#FFFFFF" font-family="'Arial Black', Impact, system-ui, sans-serif" font-size="72" font-weight="900" letter-spacing="10px">THE URBAN</text>
+    
+    <!-- Social Handles Row Below -->
+    <g transform="translate(-270, 150)">
+      <!-- Instagram -->
+      <rect x="0" y="-12" width="20" height="20" rx="5" fill="#E52E2E" />
+      <text x="28" y="2" fill="#9CA3AF" font-family="system-ui" font-size="14" font-weight="600" letter-spacing="2px">@USERNAME</text>
+      <!-- Facebook -->
+      <circle cx="160" cy="-2" r="10" fill="#E52E2E" />
+      <text x="180" y="2" fill="#9CA3AF" font-family="system-ui" font-size="14" font-weight="600" letter-spacing="2px">@USERNAME</text>
+    </g>
+  </g>
+
+  <!-- Center Frame for Creator Cutout (Safe Zone Centered) -->
+  <g transform="translate(1280, 720)">
+    <!-- Soft Spotlight Glow behind Subject -->
+    <ellipse cx="0" cy="0" rx="160" ry="200" fill="#FFFFFF" opacity="0.06" />
+    <circle cx="0" cy="20" r="130" fill="#18191C" stroke="#E52E2E" stroke-width="4" />
+    <text x="0" y="26" fill="#71717A" font-family="system-ui" font-size="16" font-weight="700" text-anchor="middle" letter-spacing="2px">PORTRAIT CUTOUT</text>
+  </g>
+
+  <!-- Right Side: EXPLORER - -->
+  <g transform="translate(1440, 725)">
+    <text x="0" y="8" font-family="'Arial Black', Impact, system-ui, sans-serif" font-size="72" font-weight="900" letter-spacing="10px">
+      <tspan fill="#E52E2E">EX</tspan><tspan fill="#FFFFFF">PLORER</tspan>
+    </text>
+    <!-- Red Right Arrow Indicator -->
+    <polygon points="560,-4 540,-10 540,2" fill="#E52E2E" />
+
+    <!-- Top Right: SUBSCRIBE TODAY Ribbon -->
+    <g transform="translate(240, -180)">
+      <polygon points="0,0 260,0 240,42 -20,42" fill="#E52E2E" />
+      <text x="120" y="28" fill="#FFFFFF" font-family="'Arial Black', system-ui" font-size="18" font-weight="900" letter-spacing="3px" text-anchor="middle">SUBSCRIBE TODAY</text>
+    </g>
+
+    <!-- Bottom Right: Website URL -->
+    <g transform="translate(200, 150)">
+      <circle cx="-10" cy="-2" r="8" fill="#E52E2E" />
+      <text x="10" y="2" fill="#9CA3AF" font-family="system-ui" font-size="14" font-weight="600" letter-spacing="2px">WWW.YOURDOMAIN.COM</text>
+    </g>
+  </g>
+</svg>

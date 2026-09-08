@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <rect width="2560" height="1440" fill="#FAF5ED" />
+  <!-- Desert Dunes -->
+  <path d="M 0 920 Q 640 820, 1280 880 T 2560 840 L 2560 1440 L 0 1440 Z" fill="#E3A882" />
+  <path d="M 0 1060 Q 820 960, 1640 1020 T 2560 980 L 2560 1440 L 0 1440 Z" fill="#C87A54" />
+  <!-- Sandstone Arches Center Left -->
+  <path d="M 400 920 A 180 180 0 0 1 760 920 Z" fill="#C87A54" opacity="0.8" />
+  <circle cx="1280" cy="720" r="180" fill="#F4CB9A" opacity="0.6" />
+</svg>

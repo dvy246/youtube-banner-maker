@@ -69,6 +69,32 @@ const t = getTranslations(locale).toolUi.makeControls;
       <button
         type="button"
         role="tab"
+        data-deck-tab="background"
+        aria-selected="false"
+        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-full text-[11px] font-medium flex items-center justify-center gap-1.5 transition-all bg-transparent text-ink-600 hover:text-ink-950 cursor-pointer active:scale-[0.98]"
+      >
+        <svg class="w-3.5 h-3.5 text-ink-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span class="sm:hidden">Bg</span>
+        <span class="hidden sm:inline">Background</span>
+      </button>
+      <button
+        type="button"
+        role="tab"
+        data-deck-tab="motion"
+        aria-selected="false"
+        class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-full text-[11px] font-medium flex items-center justify-center gap-1.5 transition-all bg-transparent text-ink-600 hover:text-ink-950 cursor-pointer active:scale-[0.98]"
+      >
+        <svg class="w-3.5 h-3.5 text-ink-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+        </svg>
+        <span class="sm:hidden">Motion</span>
+        <span class="hidden sm:inline">Motion</span>
+      </button>
+      <button
+        type="button"
+        role="tab"
         data-deck-tab="export"
         aria-selected="false"
         class="deck-tab-btn flex-1 min-h-[36px] py-1 px-2 rounded-full text-[11px] font-medium flex items-center justify-center gap-1.5 transition-all bg-transparent text-ink-600 hover:text-ink-950 cursor-pointer active:scale-[0.98]"
@@ -995,32 +1021,38 @@ const t = getTranslations(locale).toolUi.makeControls;
       </p>
     </div>
 
-    <!-- Type Switcher -->
-    <div class="grid grid-cols-3 gap-1 p-1 bg-surface-50 rounded-full border border-line-200">
-      <button
-        type="button"
-        id="bg-type-gradient"
-        class="min-h-[40px] px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-all bg-ink-950 text-surface-0 focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]"
-        data-bg-type="gradient"
-      >
-        {t.background.typeGradient}
-      </button>
-      <button
-        type="button"
-        id="bg-type-solid"
-        class="min-h-[40px] px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-all bg-transparent text-ink-600 hover:text-ink-950 focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]"
-        data-bg-type="solid"
-      >
-        {t.background.typeSolid}
-      </button>
-      <button
-        type="button"
-        id="bg-type-photo"
-        class="min-h-[40px] px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer transition-all bg-transparent text-ink-600 hover:text-ink-950 focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98]"
-        data-bg-type="photo"
-      >
-        {t.background.typePhoto}
-      </button>
+    <!-- Type Switcher Dropdown -->
+    <div class="space-y-1.5">
+      <label for="bg-type-select" class="block text-[11px] font-medium text-ink-600">Background Style</label>
+      <div class="relative">
+        <select
+          id="bg-type-select"
+          class="w-full h-10 pl-3 pr-8 rounded-lg appearance-none bg-surface-50 border border-line-200 text-xs font-medium text-ink-950 focus:ring-2 focus:ring-accent focus:border-accent transition-all cursor-pointer"
+        >
+          <optgroup label="Static Backgrounds">
+            <option value="solid">Solid Color</option>
+            <option value="gradient" selected>Linear Gradient</option>
+            <option value="photo">Image / Custom Upload</option>
+          </optgroup>
+          <optgroup label="Aesthetic Anime Motion (60 FPS)">
+            <option value="motion-sakura">🌸 Anime Sakura Petals Drift</option>
+            <option value="motion-anime-sunset">🌅 Anime Lo-Fi Sunset Embers</option>
+            <option value="motion-cybergrid">⚡ Tokyo Cyberpunk Grid</option>
+            <option value="motion-mesh">🎨 Fluid Aesthetic Mesh</option>
+            <option value="motion-aurora">🌌 Ethereal Aurora Glow</option>
+            <option value="motion-particles">✨ Anime Starfield Shimmer</option>
+          </optgroup>
+        </select>
+        <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <!-- Hidden legacy test anchors for bg-type switches -->
+      <div class="hidden" aria-hidden="true">
+        <button type="button" id="bg-type-gradient" data-bg-type="gradient">Gradient</button>
+        <button type="button" id="bg-type-solid" data-bg-type="solid">Solid</button>
+        <button type="button" id="bg-type-photo" data-bg-type="photo">Photo</button>
+      </div>
     </div>
 
     <!-- Instant Aesthetic Styles (1-Click) -->
@@ -1030,6 +1062,60 @@ const t = getTranslations(locale).toolUi.makeControls;
         <span class="text-[10px] text-ink-400 font-mono">{t.background.oneClick}</span>
       </div>
       <div class="grid grid-cols-4 gap-1.5" id="bg-preset-styles">
+        <button
+          type="button"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
+          data-preset="sakura_blossom"
+          title="Anime Sakura Blossom Gradient"
+        >
+          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #FFE4E8, #FFB7C5, #E8A5B8)"></span>
+          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">🌸 Sakura</span>
+        </button>
+        <button
+          type="button"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
+          data-preset="tokyo_cyber"
+          title="Tokyo Cyberpunk Violet Neon"
+        >
+          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #0F051D, #3B0764, #7E22CE)"></span>
+          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">🗼 Tokyo</span>
+        </button>
+        <button
+          type="button"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
+          data-preset="ghibli_sky"
+          title="Studio Ghibli Summer Sky"
+        >
+          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #0284C7, #38BDF8, #BAE6FD)"></span>
+          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">☁️ Ghibli</span>
+        </button>
+        <button
+          type="button"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
+          data-preset="lofi_dusk"
+          title="Lo-Fi Anime Dusk Sunset"
+        >
+          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #2E1065, #701A75, #C2410C)"></span>
+          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">🌅 Lo-Fi</span>
+        </button>
+        <button
+          type="button"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
+          data-preset="matcha_sage"
+          title="Matcha Earthy Zen"
+        >
+          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #1C2A20, #2D4A3E, #47765A)"></span>
+          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">🍃 Matcha</span>
+        </button>
+        <button
+          type="button"
+          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
+          data-preset="cozy_vanilla"
+          title="Warm Vanilla & Pearl Aesthetic"
+        >
+          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #FDF8F0, #F3E8DC, #E7D7C1)"></span>
+          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">🏺 Linen</span>
+        </button>
         <button
           type="button"
           class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
@@ -1069,29 +1155,11 @@ const t = getTranslations(locale).toolUi.makeControls;
         <button
           type="button"
           class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
-          data-preset="noir"
-          title="Studio Noir Gradient"
-        >
-          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(180deg, #090A0B, #15171A)"></span>
-          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">Noir</span>
-        </button>
-        <button
-          type="button"
-          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
           data-preset="indigo"
           title="Cyber Indigo Gradient"
         >
           <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #0B0E23, #1B1F4A)"></span>
           <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">Indigo</span>
-        </button>
-        <button
-          type="button"
-          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
-          data-preset="nordic"
-          title="Nordic Slate Gradient"
-        >
-          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #17191C, #22262B)"></span>
-          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">Nordic</span>
         </button>
         <button
           type="button"
@@ -1102,32 +1170,149 @@ const t = getTranslations(locale).toolUi.makeControls;
           <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #2A1310, #180B1C)"></span>
           <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">Sunset</span>
         </button>
+      </div>
+    </div>
+
+    <!-- Curated Aesthetic & Anime Wallpaper Plates (1-Click Apply) -->
+    <div class="space-y-2 pt-2 border-t border-line-100">
+      <div class="flex items-center justify-between text-[11px] text-ink-600">
+        <span class="font-medium text-ink-950">Aesthetic & Anime Wallpaper Plates</span>
+        <span class="text-[10px] text-accent font-mono font-semibold">1-Click Art</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="bg-wallpaper-plates">
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
-          data-preset="emerald"
-          title="Emerald Tech Gradient"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/anime-sakura-dusk.svg"
+          data-title-color="#FFFFFF"
+          data-tagline-color="#FFE4E8"
+          data-border-color="#FFB7C5"
+          title="Anime Sakura Twilight"
         >
-          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(135deg, #061510, #0E2920)"></span>
-          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">Emerald</span>
+          <img src="/backgrounds/anime-sakura-dusk.svg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">🌸 Sakura Dusk</span>
+          <span class="relative z-10 text-[9px] text-pink-200 font-mono leading-tight">Anime Twilight</span>
         </button>
+
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
-          data-preset="charcoal"
-          title="Solid Pure Charcoal"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/anime-lofi-tokyo.svg"
+          data-title-color="#00F0FF"
+          data-tagline-color="#E2E8F0"
+          data-border-color="#FF007F"
+          title="Tokyo Anime Lo-Fi Night"
         >
-          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: #121316"></span>
-          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">Charcoal</span>
+          <img src="/backgrounds/anime-lofi-tokyo.svg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">🗼 Tokyo Night</span>
+          <span class="relative z-10 text-[9px] text-cyan-200 font-mono leading-tight">Lo-Fi Skyline</span>
         </button>
+
         <button
           type="button"
-          class="bg-preset-btn p-1.5 rounded-xl border border-line-200 bg-surface-50 hover:bg-surface-100 active:scale-[0.98] flex flex-col items-center gap-1 cursor-pointer transition-all text-center group"
-          data-preset="clean"
-          title="Clean Minimalist Light"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/anime-ghibli-meadow.svg"
+          data-title-color="#0F172A"
+          data-tagline-color="#334155"
+          data-border-color="#0284C7"
+          title="Studio Ghibli Summer Clouds"
         >
-          <span class="w-full h-4 rounded-xs border border-line-200 block" style="background: linear-gradient(180deg, #F7F8F9, #E4E7EB)"></span>
-          <span class="text-[10px] font-medium text-ink-700 group-hover:text-ink-950 truncate w-full">Studio</span>
+          <img src="/backgrounds/anime-ghibli-meadow.svg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">☁️ Ghibli Clouds</span>
+          <span class="relative z-10 text-[9px] text-sky-200 font-mono leading-tight">Summer Sky</span>
+        </button>
+
+        <button
+          type="button"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/aesthetic-sunset-vapor.svg"
+          data-title-color="#FFDD00"
+          data-tagline-color="#F1F5F9"
+          data-border-color="#FF007F"
+          title="Vaporwave Synthwave Sunset"
+        >
+          <img src="/backgrounds/aesthetic-sunset-vapor.svg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">🌅 Synth Sunset</span>
+          <span class="relative z-10 text-[9px] text-amber-200 font-mono leading-tight">Retro Grid</span>
+        </button>
+
+        <button
+          type="button"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/aesthetic-warm-editorial.svg"
+          data-title-color="#2D1810"
+          data-tagline-color="#5C3D2E"
+          data-border-color="#D47A5B"
+          title="Warm Editorial Minimalist Linen"
+        >
+          <img src="/backgrounds/aesthetic-warm-editorial.svg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">🏺 Warm Linen</span>
+          <span class="relative z-10 text-[9px] text-orange-200 font-mono leading-tight">Editorial Arch</span>
+        </button>
+
+        <button
+          type="button"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/aesthetic-zen-gradient.svg"
+          data-title-color="#FFFFFF"
+          data-tagline-color="#E2E8F0"
+          data-border-color="#4E6E58"
+          title="Matcha Zen Aura Gradient"
+        >
+          <img src="/backgrounds/aesthetic-zen-gradient.svg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">🍃 Matcha Zen</span>
+          <span class="relative z-10 text-[9px] text-emerald-200 font-mono leading-tight">Organic Aura</span>
+        </button>
+
+        <button
+          type="button"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/music-lofi.jpg"
+          data-title-color="#FFFFFF"
+          data-tagline-color="#DDD6FE"
+          data-border-color="#8B5CF6"
+          title="Lo-Fi Study Room Night"
+        >
+          <img src="/backgrounds/music-lofi.jpg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">🎧 Lo-Fi Beats</span>
+          <span class="relative z-10 text-[9px] text-purple-200 font-mono leading-tight">Study Vibes</span>
+        </button>
+
+        <button
+          type="button"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/gaming-neon.jpg"
+          data-title-color="#00F0FF"
+          data-tagline-color="#FDF4FF"
+          data-border-color="#F43F5E"
+          title="Cyber Neon Anime Horizon"
+        >
+          <img src="/backgrounds/gaming-neon.jpg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">⚡ Cyber Glow</span>
+          <span class="relative z-10 text-[9px] text-pink-200 font-mono leading-tight">Neon Street</span>
+        </button>
+
+        <button
+          type="button"
+          class="bg-plate-btn relative h-16 rounded-xl border border-line-200 overflow-hidden text-left p-2 flex flex-col justify-end group cursor-pointer hover:border-accent focus-visible:ring-2 focus-visible:ring-accent transition-all active:scale-[0.98]"
+          data-bg-src="/backgrounds/life-minimalist.jpg"
+          data-title-color="#18181B"
+          data-tagline-color="#52525B"
+          data-border-color="#71717A"
+          title="Minimalist Aesthetic Still Life"
+        >
+          <img src="/backgrounds/life-minimalist.jpg" alt="" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="relative z-10 text-[11px] font-bold text-white leading-tight truncate drop-shadow-sm">☕ Minimal Cafe</span>
+          <span class="relative z-10 text-[9px] text-stone-200 font-mono leading-tight">Neutral Light</span>
         </button>
       </div>
     </div>

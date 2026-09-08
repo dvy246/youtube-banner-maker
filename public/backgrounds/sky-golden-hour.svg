@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="goldenSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D173E" />
+      <stop offset="35%" stop-color="#6B2956" />
+      <stop offset="65%" stop-color="#B84A53" />
+      <stop offset="85%" stop-color="#F28E4B" />
+      <stop offset="100%" stop-color="#FED064" />
+    </linearGradient>
+    <radialGradient id="goldenSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="30%" stop-color="#FFF3B0" stop-opacity="0.8" />
+      <stop offset="70%" stop-color="#F28E4B" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#B84A53" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#goldenSky)" />
+  <circle cx="1280" cy="820" r="420" fill="url(#goldenSun)" />
+  <!-- Dramatic Golden Cloud Pillars -->
+  <g fill="#42183D" opacity="0.65">
+    <ellipse cx="400" cy="980" rx="520" ry="220" />
+    <ellipse cx="2160" cy="980" rx="520" ry="220" />
+    <ellipse cx="1280" cy="1160" rx="800" ry="240" />
+  </g>
+</svg>

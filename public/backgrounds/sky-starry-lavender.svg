@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="lavenderSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0E091E" />
+      <stop offset="45%" stop-color="#21153B" />
+      <stop offset="75%" stop-color="#3D2963" />
+      <stop offset="100%" stop-color="#5E428C" />
+    </linearGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#lavenderSky)" />
+  <!-- Crescent Moon in Center Safe Zone -->
+  <g transform="translate(1280, 560)">
+    <circle cx="0" cy="0" r="60" fill="#FFFBE6" />
+    <circle cx="22" cy="-10" r="55" fill="#21153B" />
+  </g>
+  <!-- Constellation sparkle points -->
+  <g fill="#EAD9FF">
+    <circle cx="820" cy="540" r="3" />
+    <circle cx="940" cy="620" r="2" />
+    <circle cx="1060" cy="560" r="3.5" />
+    <circle cx="1500" cy="560" r="3.5" />
+    <circle cx="1620" cy="620" r="2" />
+    <circle cx="1740" cy="540" r="3" />
+    <circle cx="480" cy="420" r="2" />
+    <circle cx="2080" cy="420" r="2" />
+  </g>
+</svg>

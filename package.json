@@ -14,6 +14,8 @@
     "validate-templates": "node scripts/validate-templates.mjs",
     "check-copy": "node scripts/check-copy.mjs",
     "check-budgets": "node scripts/check-budgets.mjs",
+    "audit:seo": "node scripts/seo-aeo-geo-auditor.mjs",
+    "submit-indexnow": "node scripts/submit-indexnow.mjs",
     "deploy": "npm run build && npx wrangler pages deploy dist --project-name=youtube-banner-maker --branch=main"
   },
   "dependencies": {

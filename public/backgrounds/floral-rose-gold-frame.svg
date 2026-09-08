@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="silkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCECEF" />
+      <stop offset="50%" stop-color="#F7D3DA" />
+      <stop offset="100%" stop-color="#EDB8C3" />
+    </linearGradient>
+    <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8B4B8" />
+      <stop offset="50%" stop-color="#B76E79" />
+      <stop offset="100%" stop-color="#8E4A55" />
+    </linearGradient>
+    <radialGradient id="marbleTexture" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="70%" stop-color="#F9F5F6" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#F0E4E7" stop-opacity="0.95" />
+    </radialGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#silkBg)" />
+  <!-- Center Safe-Area Frame (1546 x 423 px proportioned) -->
+  <g transform="translate(1280, 720)">
+    <!-- Outer Marble Backplate -->
+    <rect x="-773" y="-211.5" width="1546" height="423" rx="16" fill="url(#marbleTexture)" stroke="url(#roseGold)" stroke-width="4" />
+    <!-- Inner Accent Frame -->
+    <rect x="-750" y="-190" width="1500" height="380" rx="8" fill="none" stroke="url(#roseGold)" stroke-width="2" stroke-dasharray="8 6" />
+    <!-- Inner Focus Frame for Channel Name -->
+    <rect x="-420" y="-110" width="840" height="220" rx="10" fill="#FFFFFF" fill-opacity="0.75" stroke="#1A0A10" stroke-width="3" />
+  </g>
+  <!-- Botanical Roses on Left & Right Corners of the Inner Box -->
+  <g fill="#1A0A10" opacity="0.9">
+    <!-- Left Rose Blossom -->
+    <path d="M 800 660 C 820 630, 860 640, 870 670 C 880 700, 850 730, 810 720 C 780 710, 780 680, 800 660 Z" />
+    <path d="M 780 730 Q 820 780, 850 820 Q 860 770, 840 730 Z" />
+    <circle cx="835" cy="675" r="12" fill="#FFFFFF" />
+    <!-- Right Rose Blossom -->
+    <path d="M 1760 660 C 1740 630, 1700 640, 1690 670 C 1680 700, 1710 730, 1750 720 C 1780 710, 1780 680, 1760 660 Z" />
+    <path d="M 1780 730 Q 1740 780, 1710 820 Q 1700 770, 1720 730 Z" />
+    <circle cx="1725" cy="675" r="12" fill="#FFFFFF" />
+  </g>
+  <!-- Rose Gold Shimmer Polka Dots on Marble Band -->
+  <g fill="url(#roseGold)" opacity="0.6">
+    <circle cx="620" cy="640" r="14" />
+    <circle cx="680" cy="700" r="10" />
+    <circle cx="730" cy="650" r="12" />
+    <circle cx="660" cy="780" r="16" />
+    <circle cx="1880" cy="640" r="14" />
+    <circle cx="1940" cy="700" r="10" />
+    <circle cx="1830" cy="760" r="12" />
+    <circle cx="1900" cy="800" r="16" />
+  </g>
+</svg>

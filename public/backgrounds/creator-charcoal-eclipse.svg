@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="charcoal-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F2124" />
+      <stop offset="100%" stop-color="#282A2E" />
+    </linearGradient>
+    <linearGradient id="red-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5252F" />
+      <stop offset="100%" stop-color="#B8141C" />
+    </linearGradient>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="2560" height="1440" fill="url(#charcoal-bg)" />
+
+  <!-- Mobile Safe Area Band (Subtle Tone) -->
+  <rect y="508" width="2560" height="424" fill="#24262A" opacity="0.95" />
+
+  <!-- Left Semicircular Arch & Fins -->
+  <g transform="translate(420, 720)">
+    <circle cx="-160" cy="80" r="320" fill="url(#red-grad)" />
+    <!-- 3 Fins protruding upward -->
+    <rect x="-80" y="-300" width="36" height="240" rx="18" fill="url(#red-grad)" transform="rotate(-15 -80 -300)" />
+    <rect x="0" y="-320" width="36" height="260" rx="18" fill="url(#red-grad)" />
+    <rect x="80" y="-300" width="36" height="240" rx="18" fill="url(#red-grad)" transform="rotate(15 80 -300)" />
+    
+    <!-- Concentric Circular Avatar Rings -->
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.8" />
+    <circle cx="0" cy="0" r="176" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.5" />
+    <circle cx="0" cy="0" r="146" fill="#C8232B" opacity="0.3" />
+  </g>
+
+  <!-- Center Minimal SUBSCRIBE Pill -->
+  <g transform="translate(1280, 700)">
+    <rect x="-140" y="-24" width="280" height="48" rx="8" fill="#FFFFFF" />
+    <text x="-40" y="7" fill="#18181B" font-family="system-ui, sans-serif" font-size="18" font-weight="900" letter-spacing="3px">SUBSCRIBE</text>
+    <!-- Thumbs up & Bell icons -->
+    <path d="M-100 4 v-12 h8 l8 12 z" fill="#18181B" />
+    <path d="M80 6 a8 8 0 0 1 16 0 v4 h-16 z" fill="#18181B" />
+
+    <!-- Social Row Below -->
+    <g transform="translate(0, 52)">
+      <!-- Instagram icon -->
+      <rect x="-42" y="-10" width="20" height="20" rx="5" fill="none" stroke="#FFFFFF" stroke-width="2" />
+      <circle cx="-32" cy="0" r="5" fill="none" stroke="#FFFFFF" stroke-width="2" />
+      <!-- Facebook icon -->
+      <circle cx="0" cy="0" r="10" fill="#FFFFFF" />
+      <text x="-4" y="4" fill="#24262A" font-family="system-ui" font-size="12" font-weight="bold">f</text>
+      <!-- Twitter icon -->
+      <path d="M26 -5 q6 4 14 0 q-4 8 -12 10 z" fill="#FFFFFF" />
+    </g>
+  </g>
+
+  <!-- Right Curved Red Swooshes -->
+  <g fill="none" stroke="url(#red-grad)" stroke-width="28" stroke-linecap="round">
+    <path d="M 1850 510 Q 1920 620 1860 740 T 1840 930" />
+    <path d="M 1970 510 Q 2040 620 1980 740 T 1960 930" />
+    <path d="M 2090 510 Q 2160 620 2100 740 T 2080 930" />
+  </g>
+</svg>

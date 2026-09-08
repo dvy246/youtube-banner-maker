@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="vaporSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B001A" />
+      <stop offset="40%" stop-color="#240046" />
+      <stop offset="70%" stop-color="#5A189A" />
+      <stop offset="100%" stop-color="#9D4EDD" />
+    </linearGradient>
+    <linearGradient id="sunRetro" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFDD00" />
+      <stop offset="50%" stop-color="#FF007F" />
+      <stop offset="100%" stop-color="#7928CA" />
+    </linearGradient>
+    <linearGradient id="gridGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FF007F" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="mountVapor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3C096C" />
+      <stop offset="100%" stop-color="#10002B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Base -->
+  <rect width="2560" height="1440" fill="url(#vaporSky)" />
+
+  <!-- Segmented Retro Sun on Horizon -->
+  <g>
+    <!-- Sun Top Half -->
+    <path d="M 980 720 A 300 300 0 0 1 1580 720 Z" fill="url(#sunRetro)" />
+    <!-- Segmented horizontal lines cutting through bottom half -->
+    <rect x="984" y="730" width="592" height="14" fill="url(#sunRetro)" />
+    <rect x="1000" y="754" width="560" height="18" fill="url(#sunRetro)" />
+    <rect x="1030" y="782" width="500" height="22" fill="url(#sunRetro)" />
+    <rect x="1075" y="814" width="410" height="26" fill="url(#sunRetro)" />
+    <rect x="1140" y="850" width="280" height="30" fill="url(#sunRetro)" />
+  </g>
+
+  <!-- Low-Poly Neon Mountain Silhouettes -->
+  <polygon points="0,920 320,740 680,880 1020,700 1340,900 1780,720 2160,860 2560,760 2560,940 0,940" fill="url(#mountVapor)" />
+  <polyline points="0,920 320,740 680,880 1020,700 1340,900 1780,720 2160,860 2560,760" stroke="#FF007F" stroke-width="3" fill="none" opacity="0.7" />
+
+  <!-- Ground Plane -->
+  <rect y="920" width="2560" height="520" fill="#0D001A" />
+
+  <!-- Laser Perspective Grid Lines (Receding to Horizon Center) -->
+  <g stroke="url(#gridGrad)" stroke-width="2">
+    <!-- Horizontal lines with exponential spacing -->
+    <line x1="0" y1="925" x2="2560" y2="925" opacity="0.3" />
+    <line x1="0" y1="935" x2="2560" y2="935" opacity="0.4" />
+    <line x1="0" y1="950" x2="2560" y2="950" opacity="0.5" />
+    <line x1="0" y1="975" x2="2560" y2="975" opacity="0.6" />
+    <line x1="0" y1="1015" x2="2560" y2="1015" opacity="0.7" />
+    <line x1="0" y1="1075" x2="2560" y2="1075" opacity="0.8" />
+    <line x1="0" y1="1160" x2="2560" y2="1160" opacity="0.9" />
+    <line x1="0" y1="1275" x2="2560" y2="1275" opacity="1.0" />
+    <line x1="0" y1="1420" x2="2560" y2="1420" opacity="1.0" stroke-width="3" />
+
+    <!-- Perspective Verticals Converging to (1280, 920) -->
+    <line x1="1280" y1="920" x2="1280" y2="1440" />
+    <line x1="1280" y1="920" x2="1080" y2="1440" />
+    <line x1="1280" y1="920" x2="1480" y2="1440" />
+    <line x1="1280" y1="920" x2="860" y2="1440" />
+    <line x1="1280" y1="920" x2="1700" y2="1440" />
+    <line x1="1280" y1="920" x2="620" y2="1440" />
+    <line x1="1280" y1="920" x2="1940" y2="1440" />
+    <line x1="1280" y1="920" x2="340" y2="1440" />
+    <line x1="1280" y1="920" x2="2220" y2="1440" />
+    <line x1="1280" y1="920" x2="40" y2="1440" />
+    <line x1="1280" y1="920" x2="2520" y2="1440" />
+    <line x1="1280" y1="920" x2="-300" y2="1440" />
+    <line x1="1280" y1="920" x2="2860" y2="1440" />
+  </g>
+</svg>

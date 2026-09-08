@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="prismGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4E9FD" />
+      <stop offset="35%" stop-color="#E1ECFD" />
+      <stop offset="70%" stop-color="#DDF8F5" />
+      <stop offset="100%" stop-color="#FAF1E6" />
+    </linearGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#prismGrad)" />
+  <!-- Frosted Glass Plate -->
+  <rect x="507" y="508.5" width="1546" height="423" rx="24" fill="#FFFFFF" fill-opacity="0.65" stroke="#FFFFFF" stroke-width="3" />
+</svg>

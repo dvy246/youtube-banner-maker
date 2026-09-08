@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="bohoPaper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FBF7EE" />
+      <stop offset="100%" stop-color="#F5ECE1" />
+    </linearGradient>
+    <linearGradient id="clay" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97A53" />
+      <stop offset="100%" stop-color="#B85532" />
+    </linearGradient>
+    <linearGradient id="warmOchre" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5AF77" />
+      <stop offset="100%" stop-color="#CB8D4D" />
+    </linearGradient>
+    <linearGradient id="dustyPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E9B9A6" />
+      <stop offset="100%" stop-color="#D69984" />
+    </linearGradient>
+  </defs>
+  <!-- Linen Paper Canvas -->
+  <rect width="2560" height="1440" fill="url(#bohoPaper)" />
+  <!-- Outer Frame Color (Reference background) -->
+  <rect x="0" y="0" width="2560" height="260" fill="#CB7C66" />
+  <rect x="0" y="1180" width="2560" height="260" fill="#CB7C66" />
+  <!-- Organic Blob Shapes in Safe Zone -->
+  <path d="M 260 520 C 440 480, 560 620, 620 780 C 680 940, 420 1060, 260 1020 Z" fill="url(#dustyPink)" opacity="0.85" />
+  <path d="M 1800 380 C 1980 340, 2220 420, 2260 560 C 2300 700, 2120 780, 1940 760 Z" fill="url(#dustyPink)" opacity="0.85" />
+  <!-- Terracotta Rainbow Arch (Bottom Right) -->
+  <g transform="translate(1820, 1180)">
+    <path d="M -240 0 A 240 240 0 0 1 240 0" fill="none" stroke="#9E5948" stroke-width="45" />
+    <path d="M -170 0 A 170 170 0 0 1 170 0" fill="none" stroke="#D97A53" stroke-width="35" />
+    <path d="M -110 0 A 110 110 0 0 1 110 0" fill="none" stroke="#E5AF77" stroke-width="30" />
+  </g>
+  <!-- Minimalist Sunburst with Radiating Rays -->
+  <g transform="translate(1780, 680)">
+    <circle cx="0" cy="0" r="50" fill="url(#clay)" />
+    <g stroke="#3A2823" stroke-width="2.5" opacity="0.75">
+      <line x1="0" y1="-80" x2="0" y2="-120" />
+      <line x1="56" y1="-56" x2="85" y2="-85" />
+      <line x1="80" y1="0" x2="120" y2="0" />
+      <line x1="56" y1="56" x2="85" y2="85" />
+      <line x1="0" y1="80" x2="0" y2="120" />
+      <line x1="-56" y1="56" x2="-85" y2="85" />
+      <line x1="-80" y1="0" x2="-120" y2="0" />
+      <line x1="-56" y1="-56" x2="-85" y2="-85" />
+    </g>
+  </g>
+  <!-- Botanical Leaf Branch (Left) -->
+  <g fill="#4A342E" stroke="#4A342E" stroke-width="3">
+    <path d="M 280 940 Q 420 800, 360 620" fill="none" />
+    <ellipse cx="330" cy="850" rx="26" ry="14" transform="rotate(-35 330 850)" />
+    <ellipse cx="385" cy="790" rx="26" ry="14" transform="rotate(35 385 790)" />
+    <ellipse cx="360" cy="710" rx="26" ry="14" transform="rotate(-30 360 710)" />
+    <ellipse cx="400" cy="650" rx="26" ry="14" transform="rotate(30 400 650)" />
+    <ellipse cx="365" cy="590" rx="26" ry="14" transform="rotate(-20 365 590)" />
+  </g>
+  <!-- Terrazzo Pebble Cluster -->
+  <g fill="#8E4638">
+    <ellipse cx="880" cy="880" rx="14" ry="10" transform="rotate(15 880 880)" />
+    <ellipse cx="920" cy="860" rx="12" ry="8" transform="rotate(-25 920 860)" />
+    <ellipse cx="900" cy="910" rx="16" ry="11" transform="rotate(45 900 910)" />
+    <ellipse cx="940" cy="900" rx="10" ry="7" transform="rotate(10 940 900)" />
+    <ellipse cx="970" cy="875" rx="14" ry="9" transform="rotate(-15 970 875)" />
+    <ellipse cx="950" cy="935" rx="12" ry="8" transform="rotate(30 950 935)" />
+  </g>
+</svg>

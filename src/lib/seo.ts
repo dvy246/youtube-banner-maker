@@ -125,6 +125,10 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
     title: 'YouTube Banner Templates | Download | YouTubeBannerMaker',
     desc: 'Browse verified YouTube banner templates crafted for gaming, tech, podcasting, and vlogs. Engineered to fit mobile and desktop safe areas cleanly.',
   },
+  '/backgrounds': {
+    title: 'Aesthetic YouTube Banner Backgrounds | 30 Art Plates',
+    desc: '30 free aesthetic YouTube banner backgrounds. Anime, pastel clouds, rose gold marble, and bohemian terracotta templates scaled for 2560×1440 safe areas.',
+  },
   '/about': {
     title: 'About Us | Browser-First Privacy | YouTubeBannerMaker',
     desc: 'Learn how YouTubeBannerMaker was built to solve banner crop issues and compression artifacts using 100% in-browser HTML5 Canvas execution.',
@@ -242,14 +246,9 @@ export function getTechArticleSchema(options: {
     datePublished: published,
     dateModified: modified,
     author: {
-      '@type': 'Person',
-      name: options.authorName || 'Divy Yadav',
-      jobTitle: 'Video Operations & Channel Branding Specialist',
-      worksFor: {
-        '@type': 'Organization',
-        name: SITE_NAME,
-        url: `${SITE_URL}/`,
-      },
+      '@type': 'Organization',
+      name: options.authorName || 'YouTubeBannerMaker Editorial Team',
+      url: `${SITE_URL}/about`,
     },
     publisher: {
       '@type': 'Organization',

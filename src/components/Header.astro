@@ -18,6 +18,7 @@ const mainNavItems = [
   { label: dict.nav.checker, href: getLocalizedUrl('/tools/youtube-banner-checker', locale) },
   { label: dict.nav.maker, href: getLocalizedUrl('/tools/youtube-banner-maker', locale) },
   { label: dict.nav.templates, href: getLocalizedUrl('/templates', locale) },
+  { label: dict.nav.backgrounds, href: getLocalizedUrl('/backgrounds', locale) },
 ];
 
 const guideItems = [
@@ -34,9 +35,7 @@ const mobileNavItems = [...mainNavItems, ...guideItems];
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3 lg:gap-4">
     <!-- Brand -->
     <a href={getLocalizedUrl('/', locale)} class="flex items-center gap-2.5 sm:gap-3 text-ink-950 hover:opacity-90 transition-opacity shrink-0">
-      <div class="w-7 h-7 rounded-sm bg-ink-950 text-surface-0 flex items-center justify-center font-bold text-xs font-mono tracking-tight shadow-xs">
-        YT
-      </div>
+      <img src="/favicon-96x96.png" alt="YouTubeBannerMaker logo" width="28" height="28" class="w-7 h-7 rounded-sm object-contain" />
       <div class="flex items-baseline">
         <span class="text-sm font-semibold tracking-tight text-ink-950">{dict.common.brandName}</span>
       </div>

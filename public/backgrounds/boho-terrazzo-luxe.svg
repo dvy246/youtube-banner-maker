@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <rect width="2560" height="1440" fill="#F8F4EE" />
+  <!-- Clean Safe Area Plate -->
+  <rect x="507" y="508.5" width="1546" height="423" rx="16" fill="#FFFFFF" fill-opacity="0.95" stroke="#E3D7C5" stroke-width="2" />
+  <!-- Terrazzo Stones Scattered Outside Safe Center -->
+  <g opacity="0.7">
+    <ellipse cx="280" cy="380" rx="30" ry="18" fill="#C87A54" transform="rotate(25 280 380)" />
+    <ellipse cx="380" cy="460" rx="22" ry="14" fill="#6B8168" transform="rotate(-35 380 460)" />
+    <ellipse cx="2280" cy="380" rx="30" ry="18" fill="#C87A54" transform="rotate(-25 2280 380)" />
+    <ellipse cx="2180" cy="460" rx="22" ry="14" fill="#6B8168" transform="rotate(35 2180 460)" />
+    <ellipse cx="320" cy="1080" rx="35" ry="20" fill="#E2A66C" transform="rotate(15 320 1080)" />
+    <ellipse cx="2240" cy="1080" rx="35" ry="20" fill="#E2A66C" transform="rotate(-15 2240 1080)" />
+  </g>
+</svg>

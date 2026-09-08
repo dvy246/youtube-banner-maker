@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="paper-base" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EFEFEF" />
+      <stop offset="100%" stop-color="#E5E5E5" />
+    </linearGradient>
+    <radialGradient id="ink-wash-1" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#808285" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#A5A7AA" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="ink-wash-2" cx="80%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#58595B" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#808285" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Canvas Paper -->
+  <rect width="2560" height="1440" fill="url(#paper-base)" />
+
+  <!-- Center Safe Zone Band -->
+  <rect y="508" width="2560" height="424" fill="#F8F8F9" />
+
+  <!-- Abstract Watercolor Alcohol Ink Wash Blobs -->
+  <circle cx="700" cy="680" r="420" fill="url(#ink-wash-1)" />
+  <circle cx="2100" cy="740" r="500" fill="url(#ink-wash-2)" />
+  <path d="M 400 508 Q 600 620 900 560 T 1400 600 L 1400 508 Z" fill="#D1D5DB" opacity="0.3" />
+  <path d="M 1800 932 Q 2000 800 2300 850 L 2560 932 Z" fill="#9CA3AF" opacity="0.3" />
+
+  <!-- Left Calligraphy Header -->
+  <g transform="translate(680, 710)">
+    <text x="0" y="0" fill="#18181B" font-family="'Brush Script MT', 'Dancing Script', 'Caveat', cursive" font-size="110" font-weight="bold">Your name</text>
+    <text x="20" y="44" fill="#3F3F46" font-family="system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="8px">TRAVEL • VLOG • BLOG</text>
+  </g>
+
+  <!-- Center-Right Circular Avatar Frame (Safe Zone Centered) -->
+  <g transform="translate(1420, 720)">
+    <circle cx="0" cy="0" r="130" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="10" />
+    <circle cx="0" cy="0" r="116" fill="#D4D4D8" />
+    <!-- Botanical garland accent -->
+    <path d="M-80 -80 Q -110 0 -80 80" fill="none" stroke="#71717A" stroke-width="4" stroke-linecap="round" />
+    <path d="M80 -80 Q 110 0 80 80" fill="none" stroke="#71717A" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Right Social Handle Badges -->
+  <g transform="translate(1780, 720)">
+    <!-- YouTube -->
+    <g transform="translate(0, -22)">
+      <rect x="-16" y="-12" width="26" height="18" rx="5" fill="#18181B" />
+      <polygon points="-6,-6 2,-3 -6,0" fill="#FFFFFF" />
+      <text x="24" y="4" fill="#27272A" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Your.name</text>
+    </g>
+    <!-- Instagram -->
+    <g transform="translate(0, 22)">
+      <rect x="-16" y="-12" width="24" height="24" rx="6" fill="none" stroke="#18181B" stroke-width="2.5" />
+      <circle cx="-4" cy="0" r="5" fill="none" stroke="#18181B" stroke-width="2.5" />
+      <circle cx="2" cy="-6" r="1.5" fill="#18181B" />
+      <text x="24" y="6" fill="#27272A" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Your.name</text>
+    </g>
+  </g>
+</svg>

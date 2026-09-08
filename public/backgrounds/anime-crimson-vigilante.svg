@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="crimsonSmoke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914" />
+      <stop offset="40%" stop-color="#B8000A" />
+      <stop offset="80%" stop-color="#540005" />
+      <stop offset="100%" stop-color="#140002" />
+    </linearGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#crimsonSmoke)" />
+  <!-- Large Grungy Weathered Background Text Behind Hero -->
+  <text x="1280" y="820" font-family="'Impact', 'Arial Black', sans-serif" font-size="340" font-weight="900" fill="#000000" fill-opacity="0.3" text-anchor="middle" letter-spacing="40">VIGILANTE</text>
+  <!-- Dark Knight Cowl / Hero Silhouette Center -->
+  <g transform="translate(1080, 680)" fill="#0D0B0E">
+    <!-- Cape Flowing Left & Right -->
+    <path d="M -300 420 Q -100 120, -50 40 Q 150 40, 350 420 Z" />
+    <!-- Armored Chest Plate with Bat Symbol -->
+    <polygon points="-80,120 0,60 80,120 60,240 -60,240" fill="#17141A" />
+    <polygon points="0,90 -40,70 -10,130 0,110 10,130 40,70" fill="#000000" />
+    <!-- Cowl / Head with Ears Profile -->
+    <path d="M -50 20 L -60 -120 L -30 -40 L 0 -120 L 20 20 Z" />
+    <!-- Jawline Highlight in Crimson Glow -->
+    <path d="M -30 20 Q 0 50, 20 20" stroke="#E50914" stroke-width="3" fill="none" opacity="0.6" />
+  </g>
+</svg>

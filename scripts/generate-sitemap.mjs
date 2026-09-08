@@ -15,7 +15,9 @@ const CORE_ROUTES = [
   { path: '/guides/youtube-banner-1024-x-576', changefreq: 'weekly', priority: '0.8' },
   { path: '/guides/how-to-make-a-youtube-banner', changefreq: 'weekly', priority: '0.8' },
   { path: '/guides/how-to-choose-a-youtube-banner-template', changefreq: 'weekly', priority: '0.8' },
+  { path: '/guides/youtube-banner-background', changefreq: 'weekly', priority: '0.8' },
   { path: '/templates', changefreq: 'weekly', priority: '0.8' },
+  { path: '/backgrounds', changefreq: 'weekly', priority: '0.8' },
   { path: '/about', changefreq: 'monthly', priority: '0.5' },
   { path: '/contact', changefreq: 'monthly', priority: '0.5' },
   { path: '/privacy', changefreq: 'monthly', priority: '0.3' },
@@ -80,8 +82,8 @@ const allRoutes = [...CORE_ROUTES, ...nicheRoutes];
 // Hard rule: /404 is strictly excluded from sitemap.xml
 const filteredRoutes = allRoutes.filter((r) => r.path !== '/404' && !r.path.includes('404'));
 
-if (filteredRoutes.length !== 24) {
-  console.warn(`WARNING: Expected 24 routes in sitemap, found ${filteredRoutes.length}`);
+if (filteredRoutes.length !== 26) {
+  console.warn(`WARNING: Expected 26 routes in sitemap, found ${filteredRoutes.length}`);
 }
 
 const LOCALES = [

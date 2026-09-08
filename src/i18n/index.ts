@@ -278,8 +278,12 @@ export function getStaticPageSeo(
       return STATIC_PAGES_SEO['/guides/how-to-make-a-youtube-banner'];
     case '/guides/how-to-choose-a-youtube-banner-template':
       return STATIC_PAGES_SEO['/guides/how-to-choose-a-youtube-banner-template'];
+    case '/guides/youtube-banner-background':
+      return STATIC_PAGES_SEO['/guides/youtube-banner-background'];
     case '/templates':
       return { title: dict.templatesHub.metaTitle, desc: dict.templatesHub.metaDesc };
+    case '/backgrounds':
+      return { title: dict.backgroundsPage.metaTitle, desc: dict.backgroundsPage.metaDesc };
     case '/tools/youtube-banner-resizer':
       return { title: dict.tools.resizer.metaTitle, desc: dict.tools.resizer.metaDesc };
     case '/tools/youtube-banner-checker':

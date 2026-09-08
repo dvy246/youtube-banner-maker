@@ -89,6 +89,9 @@ export function templateToScene(m: TemplateManifest): Scene {
         h: l.h ?? 0.05,
         color: l.color || '#FFFFFF',
         opacity: l.opacity ?? 1,
+        borderRadius: l.borderRadius,
+        borderColor: l.borderColor,
+        borderWidth: l.borderWidth,
       };
       convertedLayers.push(shapeLayer);
     } else if (l.type === 'badge' || l.role === 'badge') {

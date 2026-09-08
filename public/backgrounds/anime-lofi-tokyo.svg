@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="tokyoNight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#080314" />
+      <stop offset="45%" stop-color="#190A33" />
+      <stop offset="75%" stop-color="#341259" />
+      <stop offset="100%" stop-color="#6B1D66" />
+    </linearGradient>
+    <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="100%" stop-color="#FF007F" />
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE0B2" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#FF9E80" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Night Sky Base -->
+  <rect width="2560" height="1440" fill="url(#tokyoNight)" />
+
+  <!-- Crescent Moon & Aura -->
+  <circle cx="2100" cy="380" r="180" fill="url(#moonGlow)" />
+  <circle cx="2100" cy="380" r="70" fill="#FFF8E7" />
+  <circle cx="2135" cy="360" r="65" fill="#190A33" />
+
+  <!-- Tokyo Tower Distant Silhouette in Coral Neon -->
+  <g opacity="0.85">
+    <polygon points="1920,950 1950,560 1960,560 1990,950" fill="#FF3366" opacity="0.4" />
+    <line x1="1955" y1="560" x2="1955" y2="460" stroke="#FF3366" stroke-width="4" opacity="0.8" />
+    <line x1="1935" y1="720" x2="1975" y2="720" stroke="#FF5588" stroke-width="6" />
+    <line x1="1925" y1="830" x2="1985" y2="830" stroke="#FF5588" stroke-width="8" />
+  </g>
+
+  <!-- Distant Skyscrapers & Window Grids (Background Layer) -->
+  <g fill="#100624">
+    <rect x="180" y="720" width="160" height="720" />
+    <rect x="360" y="660" width="220" height="780" />
+    <rect x="620" y="760" width="180" height="680" />
+    <rect x="840" y="690" width="240" height="750" />
+    <rect x="1560" y="710" width="200" height="730" />
+    <rect x="1800" y="780" width="180" height="660" />
+    <rect x="2240" y="680" width="260" height="760" />
+  </g>
+
+  <!-- Midground Anime Buildings with Illuminated Cyan & Amber Windows -->
+  <g fill="#170A33">
+    <rect x="60" y="800" width="240" height="640" />
+    <rect x="340" y="760" width="260" height="680" />
+    <rect x="640" y="840" width="220" height="600" />
+    <rect x="900" y="790" width="300" height="650" />
+    <rect x="1380" y="810" width="240" height="630" />
+    <rect x="1660" y="770" width="280" height="670" />
+    <rect x="1980" y="830" width="240" height="610" />
+  </g>
+
+  <!-- Geometric Rooftop Antennas, Water Tanks, and Billboards -->
+  <g stroke="#00F0FF" stroke-width="3" opacity="0.6">
+    <line x1="420" y1="760" x2="420" y2="690" />
+    <line x1="400" y1="710" x2="440" y2="710" />
+    <line x1="1740" y1="770" x2="1740" y2="680" />
+    <line x1="1720" y1="710" x2="1760" y2="710" />
+  </g>
+
+  <!-- Foreground Dark Silhouettes & Power Lines (Classic Anime Aesthetic) -->
+  <g stroke="#080210" stroke-width="2" opacity="0.8">
+    <path d="M0 480 Q 640 560, 1280 500 T 2560 490" fill="none" />
+    <path d="M0 520 Q 700 600, 1400 540 T 2560 530" fill="none" />
+    <path d="M0 570 Q 800 660, 1600 590 T 2560 570" fill="none" />
+  </g>
+
+  <!-- Aesthetic Kanji / Neon Signs Framing Edges -->
+  <g opacity="0.75">
+    <rect x="120" y="850" width="36" height="140" rx="4" fill="#FF007F" fill-opacity="0.2" stroke="#FF007F" stroke-width="2" />
+    <text x="138" y="890" font-family="sans-serif" font-size="24" font-weight="bold" fill="#FF007F" text-anchor="middle">東</text>
+    <text x="138" y="930" font-family="sans-serif" font-size="24" font-weight="bold" fill="#FF007F" text-anchor="middle">京</text>
+    <text x="138" y="970" font-family="sans-serif" font-size="24" font-weight="bold" fill="#FF007F" text-anchor="middle">夜</text>
+
+    <rect x="2380" y="840" width="36" height="140" rx="4" fill="#00F0FF" fill-opacity="0.2" stroke="#00F0FF" stroke-width="2" />
+    <text x="2398" y="880" font-family="sans-serif" font-size="24" font-weight="bold" fill="#00F0FF" text-anchor="middle">音</text>
+    <text x="2398" y="920" font-family="sans-serif" font-size="24" font-weight="bold" fill="#00F0FF" text-anchor="middle">楽</text>
+    <text x="2398" y="960" font-family="sans-serif" font-size="24" font-weight="bold" fill="#00F0FF" text-anchor="middle">波</text>
+  </g>
+
+  <!-- Tiny Starlight Dots -->
+  <g fill="#FFFFFF" opacity="0.7">
+    <circle cx="340" cy="240" r="2" />
+    <circle cx="560" cy="180" r="1.5" />
+    <circle cx="820" cy="290" r="2" />
+    <circle cx="1120" cy="210" r="1.5" />
+    <circle cx="1450" cy="260" r="2.5" />
+    <circle cx="1680" cy="190" r="1.5" />
+    <circle cx="1880" cy="270" r="2" />
+  </g>
+</svg>

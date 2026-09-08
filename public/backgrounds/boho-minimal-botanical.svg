@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <rect width="2560" height="1440" fill="#F7F3EC" />
+  <!-- Terracotta Sun Accent -->
+  <circle cx="1280" cy="720" r="160" fill="#E89B7D" opacity="0.65" />
+  <!-- Single-line Palm Leaf Left & Right -->
+  <g stroke="#3D2E2B" stroke-width="3" fill="none" opacity="0.75">
+    <path d="M 400 900 Q 560 760, 520 540" />
+    <path d="M 520 540 Q 640 560, 680 620" />
+    <path d="M 480 640 Q 620 680, 650 740" />
+    <path d="M 2160 900 Q 2000 760, 2040 540" />
+    <path d="M 2040 540 Q 1920 560, 1880 620" />
+    <path d="M 2080 640 Q 1940 680, 1910 740" />
+  </g>
+</svg>

@@ -19,9 +19,7 @@ const dict = getTranslations(locale);
       <!-- Brand & Trust -->
       <div class="sm:col-span-2 lg:col-span-1 space-y-3">
         <a href={getLocalizedUrl('/', locale)} class="flex items-center gap-2 text-ink-950 font-semibold tracking-tight hover:opacity-90 transition-opacity">
-          <div class="w-6 h-6 rounded bg-ink-950 text-surface-0 flex items-center justify-center font-bold text-xs">
-            YT
-          </div>
+          <img src="/favicon-96x96.png" alt="YouTubeBannerMaker logo" width="24" height="24" class="w-6 h-6 rounded object-contain" />
           <span class="text-sm font-semibold">{dict.common.brandName}</span>
         </a>
         <p class="text-xs text-ink-600 leading-relaxed measure-prose">
@@ -57,6 +55,11 @@ const dict = getTranslations(locale);
           <li>
             <a href={getLocalizedUrl('/templates', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
               {dict.footer.templateGallery}
+            </a>
+          </li>
+          <li>
+            <a href={getLocalizedUrl('/backgrounds', locale)} class="inline-flex items-center min-h-[44px] sm:min-h-0 py-1 text-ink-600 hover:text-ink-950 transition-colors">
+              {dict.footer.backgroundsGallery}
             </a>
           </li>
         </ul>

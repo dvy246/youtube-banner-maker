@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="goldVein" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5BA73" />
+      <stop offset="50%" stop-color="#C59B4B" />
+      <stop offset="100%" stop-color="#8C6826" />
+    </linearGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="#F8F9FA" />
+  <!-- Organic Gold Marble Veins framing corners -->
+  <path d="M 0 120 Q 400 240, 700 180 T 1200 140" fill="none" stroke="url(#goldVein)" stroke-width="4" opacity="0.7" />
+  <path d="M 120 0 Q 240 400, 180 700 T 140 1200" fill="none" stroke="url(#goldVein)" stroke-width="3" opacity="0.6" />
+  <path d="M 2560 1320 Q 2160 1200, 1860 1260 T 1360 1300" fill="none" stroke="url(#goldVein)" stroke-width="4" opacity="0.7" />
+  <!-- Center Safe Card -->
+  <rect x="507" y="508.5" width="1546" height="423" rx="16" fill="#FFFFFF" stroke="url(#goldVein)" stroke-width="3" fill-opacity="0.9" />
+</svg>

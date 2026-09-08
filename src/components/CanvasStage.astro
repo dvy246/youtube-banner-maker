@@ -69,6 +69,15 @@ const tabletWidthPct = (DEVICES.tablet.w * 100).toFixed(2);
       class="w-full h-full object-contain cursor-grab active:cursor-grabbing focus:outline-hidden"
     ></canvas>
 
+    <!-- Inline Text Editor -->
+    <input
+      type="text"
+      id="inline-text-editor"
+      class="absolute hidden bg-transparent outline-hidden m-0 p-0 pointer-events-auto border-none focus:ring-0 z-50 text-ink-950 font-bold"
+      spellcheck="false"
+      autocomplete="off"
+    />
+
     <!-- Motion FX Canvas Overlay for 60 FPS animations -->
     <canvas
       id="motion-canvas"

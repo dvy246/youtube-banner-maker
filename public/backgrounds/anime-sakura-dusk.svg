@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#180B2B" />
+      <stop offset="35%" stop-color="#3C1658" />
+      <stop offset="65%" stop-color="#7B286E" />
+      <stop offset="85%" stop-color="#D95C68" />
+      <stop offset="100%" stop-color="#FFB370" />
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF3D1" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#FFB370" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#FFB370" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="mountGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D124D" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#120524" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="nearMount" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A072B" />
+      <stop offset="100%" stop-color="#0B0214" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Base -->
+  <rect width="2560" height="1440" fill="url(#skyGrad)" />
+
+  <!-- Dusk Moon / Sun Halo -->
+  <circle cx="1280" cy="740" r="280" fill="url(#sunGlow)" />
+  <circle cx="1280" cy="740" r="160" fill="#FFF6E5" fill-opacity="0.85" />
+
+  <!-- Distant Mountain (Fuji silhouette) -->
+  <polygon points="1060,980 1280,680 1500,980" fill="url(#mountGrad)" />
+  <!-- Snowcap highlight -->
+  <polygon points="1225,755 1280,680 1335,755 1315,765 1280,745 1245,765" fill="#FFEBF2" fill-opacity="0.6" />
+
+  <!-- Midground Rolling Ridges -->
+  <path d="M0 980 Q 400 880, 850 940 T 1700 920 T 2560 960 L 2560 1440 L 0 1440 Z" fill="url(#mountGrad)" opacity="0.85" />
+  <path d="M0 1060 Q 600 960, 1280 1020 T 2560 990 L 2560 1440 L 0 1440 Z" fill="url(#nearMount)" />
+
+  <!-- Pine Silhouettes Left & Right -->
+  <g fill="#08010F" opacity="0.95">
+    <path d="M-40 200 Q 180 260, 380 220 Q 260 280, -40 320 Z" />
+    <path d="M-20 280 Q 240 360, 480 340 Q 300 410, -20 440 Z" />
+    <path d="M-60 420 Q 200 480, 420 520 Q 180 570, -60 590 Z" />
+    <path d="M2600 240 Q 2350 310, 2180 290 Q 2320 370, 2600 380 Z" />
+    <path d="M2620 390 Q 2400 440, 2260 480 Q 2430 520, 2620 540 Z" />
+  </g>
+
+  <!-- Delicate Floating Sakura Petals -->
+  <g fill="#FFB7C5" opacity="0.85">
+    <path d="M320 340 C 335 325, 360 335, 355 355 C 345 370, 320 365, 320 340 Z" transform="rotate(25 337 347)" />
+    <path d="M460 280 C 472 268, 492 276, 488 292 C 480 304, 460 300, 460 280 Z" transform="rotate(-15 474 286)" />
+    <path d="M620 420 C 632 408, 652 416, 648 432 C 640 444, 620 440, 620 420 Z" transform="rotate(45 634 426)" />
+    <path d="M780 320 C 795 305, 820 315, 815 335 C 805 350, 780 345, 780 320 Z" transform="rotate(10 797 327)" />
+    <path d="M940 480 C 952 468, 972 476, 968 492 C 960 504, 940 500, 940 480 Z" transform="rotate(-30 954 486)" />
+    <path d="M1680 360 C 1695 345, 1720 355, 1715 375 C 1705 390, 1680 385, 1680 360 Z" transform="rotate(35 1697 367)" />
+    <path d="M1840 460 C 1852 448, 1872 456, 1868 472 C 1860 484, 1840 480, 1840 460 Z" transform="rotate(-10 1854 466)" />
+    <path d="M2020 320 C 2035 305, 2060 315, 2055 335 C 2045 350, 2020 345, 2020 320 Z" transform="rotate(15 2037 327)" />
+    <path d="M2180 430 C 2192 418, 2212 426, 2208 442 C 2200 454, 2180 450, 2180 430 Z" transform="rotate(50 2194 436)" />
+    <path d="M2340 370 C 2355 355, 2380 365, 2375 385 C 2365 400, 2340 395, 2340 370 Z" transform="rotate(-25 2357 377)" />
+  </g>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D5584" />
+      <stop offset="40%" stop-color="#4B77A8" />
+      <stop offset="70%" stop-color="#7B9DC2" />
+      <stop offset="100%" stop-color="#AEC4DB" />
+    </linearGradient>
+    <linearGradient id="cloudPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="60%" stop-color="#F5D0E3" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#E2B4D3" stop-opacity="0.6" />
+    </linearGradient>
+    <linearGradient id="rainbow1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF9AA2" />
+      <stop offset="20%" stop-color="#FFB7B2" />
+      <stop offset="40%" stop-color="#FFDAC1" />
+      <stop offset="60%" stop-color="#E2F0CB" />
+      <stop offset="80%" stop-color="#B5EAD7" />
+      <stop offset="100%" stop-color="#C7CEEA" />
+    </linearGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#skyGrad)" />
+  <!-- Dreamy Soft Cloud Masses -->
+  <g fill="url(#cloudPink)">
+    <ellipse cx="480" cy="520" rx="420" ry="240" />
+    <ellipse cx="260" cy="620" rx="340" ry="200" />
+    <ellipse cx="640" cy="440" rx="360" ry="220" />
+    <ellipse cx="2080" cy="500" rx="440" ry="260" />
+    <ellipse cx="2320" cy="620" rx="360" ry="220" />
+    <ellipse cx="1900" cy="420" rx="380" ry="220" />
+    <ellipse cx="1280" cy="1100" rx="900" ry="320" />
+    <ellipse cx="600" cy="1180" rx="600" ry="280" />
+    <ellipse cx="1960" cy="1180" rx="600" ry="280" />
+  </g>
+  <!-- Minimalist Pastel Rainbow (Mobile Safe Area Center) -->
+  <g transform="translate(1280, 680)">
+    <path d="M -70 0 A 70 70 0 0 1 70 0" fill="none" stroke="#FF9AA2" stroke-width="6" stroke-linecap="round" />
+    <path d="M -58 0 A 58 58 0 0 1 58 0" fill="none" stroke="#FFB7B2" stroke-width="6" stroke-linecap="round" />
+    <path d="M -46 0 A 46 46 0 0 1 46 0" fill="none" stroke="#FFDAC1" stroke-width="6" stroke-linecap="round" />
+    <path d="M -34 0 A 34 34 0 0 1 34 0" fill="none" stroke="#E2F0CB" stroke-width="6" stroke-linecap="round" />
+    <path d="M -22 0 A 22 22 0 0 1 22 0" fill="none" stroke="#B5EAD7" stroke-width="6" stroke-linecap="round" />
+    <path d="M -10 0 A 10 10 0 0 1 10 0" fill="none" stroke="#C7CEEA" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <!-- Twinkle Stars -->
+  <g fill="#FFFFFF" opacity="0.9">
+    <path d="M 1060 760 Q 1065 765, 1070 765 Q 1065 765, 1065 770 Q 1065 765, 1060 765 Q 1065 765, 1065 760 Z" transform="scale(3) translate(-700,-500)" />
+    <path d="M 1500 730 Q 1505 735, 1510 735 Q 1505 735, 1505 740 Q 1505 735, 1500 735 Q 1505 735, 1505 730 Z" transform="scale(3) translate(-990,-480)" />
+    <circle cx="820" cy="420" r="3" />
+    <circle cx="1740" cy="460" r="3.5" />
+    <circle cx="1620" cy="840" r="2.5" />
+    <circle cx="940" cy="820" r="2.5" />
+  </g>
+</svg>

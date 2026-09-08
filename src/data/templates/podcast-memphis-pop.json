@@ -6,15 +6,13 @@
   "preview": "/previews/podcast-memphis-pop.svg",
   "scene": {
     "background": {
-      "type": "gradient",
-      "angle": 135,
-      "stops": [
-        "#FF85A2",
-        "#FFB3C6",
-        "#FFA6C1"
-      ],
-      "from": "#FF85A2",
-      "to": "#FFA6C1"
+      "type": "image",
+      "src": "/backgrounds/memphis-bg.svg",
+      "color": "#FF85A2",
+      "zoom": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "extend": true
     },
     "layers": [
       {
@@ -27,7 +25,8 @@
         "x": 0.625,
         "y": 0.505,
         "w": 0.32,
-        "h": 0.18
+        "h": 0.18,
+        "borderRadius": 4
       },
       {
         "id": "banner-box",
@@ -39,7 +38,10 @@
         "x": 0.62,
         "y": 0.5,
         "w": 0.32,
-        "h": 0.18
+        "h": 0.18,
+        "borderRadius": 4,
+        "borderColor": "#000000",
+        "borderWidth": 10
       },
       {
         "id": "avatar",
@@ -51,8 +53,8 @@
         "w": 0.11,
         "h": 0.195,
         "src": "/avatars/memphis-sam.jpg",
-        "borderColor": "#00B4D8",
-        "borderWidth": 5,
+        "borderColor": "#000000",
+        "borderWidth": 12,
         "safeAreaConstrained": true
       },
       {

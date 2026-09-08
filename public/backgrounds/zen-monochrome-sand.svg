@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <rect width="2560" height="1440" fill="#F4F1EA" />
+  <!-- Concentric Zen Sand Ripples around Stone Left -->
+  <g fill="none" stroke="#D3CCC0" stroke-width="3">
+    <circle cx="380" cy="720" r="80" />
+    <circle cx="380" cy="720" r="140" />
+    <circle cx="380" cy="720" r="200" />
+    <circle cx="2180" cy="720" r="80" />
+    <circle cx="2180" cy="720" r="140" />
+    <circle cx="2180" cy="720" r="200" />
+  </g>
+  <ellipse cx="380" cy="720" rx="45" ry="35" fill="#423E37" />
+  <ellipse cx="2180" cy="720" rx="45" ry="35" fill="#423E37" />
+</svg>

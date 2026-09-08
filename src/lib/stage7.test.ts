@@ -51,14 +51,14 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).toContain('User-agent: *');
       expect(content).toContain('Allow: /');
       expect(content).not.toContain('Disallow: /tools');
-      expect(content).toContain('Sitemap: https://youtubebannermaker.com/sitemap.xml');
+      expect(content).toContain('Sitemap: https://youtubebannermaker.com/sitemap-index.xml');
     });
   });
 
   describe('3. XML Sitemap Completeness & Gating (public/sitemap.xml)', () => {
     const sitemapPath = path.resolve('public/sitemap.xml');
 
-    it('verifies sitemap contains exactly the 19 valid, indexable routes and excludes 404', () => {
+    it('verifies sitemap contains exactly the valid, indexable routes and excludes 404', () => {
       expect(fs.existsSync(sitemapPath)).toBe(true);
       const content = fs.readFileSync(sitemapPath, 'utf-8');
 
@@ -75,6 +75,7 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-1024-x-576</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/how-to-make-a-youtube-banner</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/guides/how-to-choose-a-youtube-banner-template</loc>');
+      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-background</loc>');
       expect(content).toContain('<loc>https://youtubebannermaker.com/templates</loc>');
 
       // AdSense Trust suite
@@ -89,9 +90,11 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
         expect(content).toContain(`<loc>https://youtubebannermaker.com/templates/${n}</loc>`);
       }
 
+      expect(content).toContain('<loc>https://youtubebannermaker.com/backgrounds</loc>');
+
       // Count total URLs in sitemap
       const urlCount = (content.match(/<loc>/g) || []).length;
-      expect(urlCount).toBe(24);
+      expect(urlCount).toBe(26);
     });
   });
 

@@ -20,6 +20,13 @@ export type Background =
       zoom: number;
       extend: boolean;
       scrim?: BackgroundScrim;
+    }
+  | {
+      type: 'motion';
+      effect: 'particles' | 'mesh' | 'aurora' | 'cybergrid' | 'sakura' | 'anime-sunset';
+      color1: string;
+      color2: string;
+      scrim?: BackgroundScrim;
     };
 
 export interface AeroPlate {
@@ -52,6 +59,8 @@ export interface ShapeLayer {
   color: string;
   opacity: number;
   borderRadius?: number;
+  borderWidth?: number;
+  borderColor?: string;
 }
 
 export interface PhotoFrameLayer {

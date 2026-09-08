@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="sandBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF7F2" />
+      <stop offset="50%" stop-color="#F4ECE1" />
+      <stop offset="100%" stop-color="#EFE3D3" />
+    </linearGradient>
+    <linearGradient id="terracotta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D47A5B" />
+      <stop offset="100%" stop-color="#B85636" />
+    </linearGradient>
+    <linearGradient id="warmOchre" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2B178" />
+      <stop offset="100%" stop-color="#C68F52" />
+    </linearGradient>
+    <linearGradient id="sageSoft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B4BFB2" />
+      <stop offset="100%" stop-color="#8C9C8A" />
+    </linearGradient>
+  </defs>
+
+  <!-- Linen Canvas Base -->
+  <rect width="2560" height="1440" fill="url(#sandBase)" />
+
+  <!-- Fluid Organic Abstract Shapes Framing Edges (Keeping Center Safe Area Clean) -->
+  <!-- Top Left Organic Wave -->
+  <path d="M-100 -50 C 350 -80, 520 220, 420 460 C 320 680, 80 580, -80 620 Z" fill="url(#terracotta)" opacity="0.85" />
+  <!-- Accent Inner Curve -->
+  <path d="M-50 -20 C 220 -30, 340 180, 260 360 C 180 520, -20 440, -50 480 Z" fill="url(#warmOchre)" opacity="0.75" />
+
+  <!-- Bottom Right Organic Arch and Wave -->
+  <path d="M2660 780 C 2380 740, 2180 940, 2220 1180 C 2260 1420, 2480 1460, 2680 1500 Z" fill="url(#sageSoft)" opacity="0.85" />
+  <circle cx="2180" cy="520" r="180" fill="url(#terracotta)" opacity="0.6" />
+
+  <!-- Architectural Minimalist Line Art -->
+  <g stroke="#3A2E2B" stroke-width="2.5" fill="none" opacity="0.35">
+    <!-- Minimalist Sun & Rays on Right -->
+    <circle cx="2180" cy="520" r="180" />
+    <circle cx="2180" cy="520" r="240" stroke-dasharray="4 8" />
+    <!-- Botanical Single Line Leaf on Left -->
+    <path d="M 120 720 Q 320 840, 280 1140 Q 240 1320, 180 1440" />
+    <path d="M 220 880 Q 340 860, 380 910 Q 300 940, 245 925" />
+    <path d="M 265 960 Q 390 940, 420 990 Q 340 1020, 275 1010" />
+    <path d="M 260 1060 Q 380 1040, 410 1090 Q 320 1120, 250 1110" />
+  </g>
+
+  <!-- Fine Subtle Speckle/Pebble Details -->
+  <g fill="#3A2E2B" opacity="0.2">
+    <circle cx="840" cy="320" r="4" />
+    <circle cx="860" cy="310" r="3" />
+    <circle cx="850" cy="340" r="2.5" />
+    <circle cx="1720" cy="1120" r="4" />
+    <circle cx="1740" cy="1140" r="3" />
+    <circle cx="1710" cy="1150" r="2" />
+  </g>
+</svg>

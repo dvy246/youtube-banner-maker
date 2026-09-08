@@ -45,6 +45,7 @@ import {
   templateToScene,
 } from '../lib/template';
 import { TEMPLATES } from '../data/templates';
+import { getAestheticBackground } from '../data/backgrounds';
 import {
   trackEvent,
   cleanImageFormat,
@@ -101,9 +102,7 @@ class ToolIsland {
   private currentTemplateNicheEl: HTMLElement | null = null;
 
   // Background Swap DOM hooks
-  private bgTypeGradientBtn: HTMLButtonElement | null = null;
-  private bgTypeSolidBtn: HTMLButtonElement | null = null;
-  private bgTypePhotoBtn: HTMLButtonElement | null = null;
+  private bgTypeSelectEl: HTMLSelectElement | null = null;
   private bgGradientControlsEl: HTMLElement | null = null;
   private bgSolidControlsEl: HTMLElement | null = null;
   private bgPhotoControlsEl: HTMLElement | null = null;
@@ -182,6 +181,12 @@ class ToolIsland {
 
   // Background Style Presets
   private readonly BG_STYLE_PRESETS: Record<string, Background> = {
+    sakura_blossom: { type: 'gradient', from: '#FFE4E8', to: '#E8A5B8', stops: ['#FFE4E8', '#FFB7C5', '#E8A5B8'], angle: 135 },
+    tokyo_cyber: { type: 'gradient', from: '#0F051D', to: '#7E22CE', stops: ['#0F051D', '#3B0764', '#7E22CE'], angle: 135 },
+    ghibli_sky: { type: 'gradient', from: '#0284C7', to: '#BAE6FD', stops: ['#0284C7', '#38BDF8', '#BAE6FD'], angle: 135 },
+    lofi_dusk: { type: 'gradient', from: '#2E1065', to: '#C2410C', stops: ['#2E1065', '#701A75', '#C2410C'], angle: 135 },
+    matcha_sage: { type: 'gradient', from: '#1C2A20', to: '#47765A', stops: ['#1C2A20', '#2D4A3E', '#47765A'], angle: 135 },
+    cozy_vanilla: { type: 'gradient', from: '#FDF8F0', to: '#E7D7C1', stops: ['#FDF8F0', '#F3E8DC', '#E7D7C1'], angle: 135 },
     crimson: { type: 'gradient', from: '#8B1E2D', to: '#E63946', stops: ['#8B1E2D', '#B3261E', '#E63946'], angle: 135 },
     pearl: { type: 'gradient', from: '#FFFAF3', to: '#FFF2DB', stops: ['#FFFAF3', '#FFF2DB', '#FFE5BF'], angle: 135 },
     noir_rose: { type: 'gradient', from: '#000000', to: '#1A080E', stops: ['#000000', '#1A080E', '#26161F'], angle: 135 },
@@ -218,6 +223,9 @@ class ToolIsland {
   private toolToastEl: HTMLElement | null = null;
   private toolToastTextEl: HTMLElement | null = null;
   private toastTimer: number | null = null;
+  private renderRafId: number | null = null;
+  private inlineEditingLayerId: string | null = null;
+  private inlineEditorEl: HTMLInputElement | null = null;
   private copyClipboardBtn: HTMLButtonElement | null = null;
 
   // Tabs & Previews
@@ -270,7 +278,7 @@ class ToolIsland {
   private tvGuideBox!: HTMLElement;
 
   // Funnel & scheduling per D-8
-  private frameScheduled = false;
+
   private persistTimer: number | null = null;
   private isPointerDown = false;
   private pointerStartX = 0;
@@ -394,9 +402,7 @@ class ToolIsland {
     this.currentTemplateNameEl = document.getElementById('current-template-name');
     this.currentTemplateNicheEl = document.getElementById('current-template-niche');
 
-    this.bgTypeGradientBtn = document.getElementById('bg-type-gradient') as HTMLButtonElement | null;
-    this.bgTypeSolidBtn = document.getElementById('bg-type-solid') as HTMLButtonElement | null;
-    this.bgTypePhotoBtn = document.getElementById('bg-type-photo') as HTMLButtonElement | null;
+    this.bgTypeSelectEl = document.getElementById('bg-type-select') as HTMLSelectElement | null;
     this.bgGradientControlsEl = document.getElementById('bg-gradient-controls');
     this.bgSolidControlsEl = document.getElementById('bg-solid-controls');
     this.bgPhotoControlsEl = document.getElementById('bg-photo-controls');
@@ -458,6 +464,7 @@ class ToolIsland {
     this.copyClipboardBtn = document.getElementById('copy-clipboard-button') as HTMLButtonElement | null;
 
     // Motion Studio hooks
+    this.inlineEditorEl = document.getElementById('inline-text-editor') as HTMLInputElement | null;
     this.motionCanvasEl = document.getElementById('motion-canvas') as HTMLCanvasElement | null;
     if (this.motionCanvasEl) {
       this.motionCtx = this.motionCanvasEl.getContext('2d');
@@ -494,6 +501,50 @@ class ToolIsland {
           }
           return;
         }
+      }
+
+      const bgParam = urlParams.get('bg');
+      const bgIdParam = urlParams.get('bgId');
+      if (bgParam || bgIdParam) {
+        const bgData = bgIdParam ? getAestheticBackground(bgIdParam) : undefined;
+        const bgSrc = bgData ? bgData.src : bgParam!;
+        this.loadImageFromDataUrl(bgSrc, () => {
+          this.scene.background = {
+            type: 'image',
+            src: bgSrc,
+            width: 2560,
+            height: 1440,
+            cover: true,
+            offsetX: 0,
+            offsetY: 0,
+            zoom: 1,
+            extend: false,
+          };
+          if (bgData) {
+            const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+            if (title) {
+              title.text = bgData.defaultTitle;
+              title.color = bgData.harmony.titleColor;
+            }
+            const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+            if (tagline) {
+              tagline.text = bgData.defaultTagline;
+              tagline.color = bgData.harmony.taglineColor;
+            }
+            const frame = this.getPhotoFrameLayer();
+            if (frame) frame.borderColor = bgData.harmony.frameBorderColor;
+          }
+          this.phase = 'READY';
+          this.updatePhaseUI();
+          this.syncMakeControlsFromScene();
+          this.scheduleFrame();
+          if (downloadParam) {
+            setTimeout(() => {
+              this.handleExportAction();
+            }, 300);
+          }
+        });
+        return;
       }
 
       try {
@@ -1140,10 +1191,115 @@ class ToolIsland {
       this.copyClipboardBtn.addEventListener('click', () => this.copyToClipboard());
     }
 
-    // 11. Canvas Double-click to center & reset zoom
+    if (this.inlineEditorEl) {
+      const commitInlineEdit = () => {
+        if (!this.inlineEditingLayerId) return;
+        this.inlineEditorEl!.classList.add('hidden');
+        const layer = this.scene.layers.find((l) => l.id === this.inlineEditingLayerId) as TextLayer;
+        if (layer && layer.type === 'text') {
+          if (layer.text !== this.inlineEditorEl!.value) {
+            this.pushUndo(this.scene);
+            layer.text = this.inlineEditorEl!.value;
+            this.syncMakeControlsFromScene();
+            this.applyChange({ layers: [...this.scene.layers] });
+            this.showToast('Text updated');
+          }
+        }
+        this.inlineEditingLayerId = null;
+        this.scheduleFrame();
+      };
+
+      this.inlineEditorEl.addEventListener('blur', commitInlineEdit);
+      this.inlineEditorEl.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.inlineEditorEl!.blur();
+        }
+        if (e.key === 'Escape') {
+          this.inlineEditingLayerId = null;
+          this.inlineEditorEl!.classList.add('hidden');
+          this.scheduleFrame();
+        }
+      });
+      // Adjust width dynamically as user types
+      this.inlineEditorEl.addEventListener('input', () => {
+        this.scheduleFrame();
+      });
+    }
+
+    // 11. Canvas Double-click to focus text input or center & reset zoom
     if (this.canvasEl) {
-      this.canvasEl.addEventListener('dblclick', () => {
-        if (this.phase !== 'READY' || this.scene.background.type !== 'image' || this.mode === 'check') return;
+      this.canvasEl.addEventListener('dblclick', (e) => {
+        if (this.phase !== 'READY' || this.mode === 'check') return;
+
+        // In make mode, check if clicked inside any editable text layer
+        if (this.mode === 'make') {
+          const rect = this.canvasEl.getBoundingClientRect();
+          const clickFracX = (e.clientX - rect.left) / rect.width;
+          const clickFracY = (e.clientY - rect.top) / rect.height;
+
+          let hitLayer: TextLayer | null = null;
+          for (let i = this.scene.layers.length - 1; i >= 0; i--) {
+            const layer = this.scene.layers[i];
+            if (layer.type === 'text') {
+              if (
+                this.currentTemplateManifest &&
+                this.currentTemplateManifest.protected.includes(layer.id)
+              ) {
+                continue; // Protected elements cannot be selected or moved
+              }
+              const bounds = estimateTextBounds(layer);
+              const padX = 0.04;
+              const padY = 0.04;
+              if (
+                clickFracX >= bounds.minX - padX &&
+                clickFracX <= bounds.maxX + padX &&
+                clickFracY >= bounds.minY - padY &&
+                clickFracY <= bounds.maxY + padY
+              ) {
+                hitLayer = layer;
+                break;
+              }
+            }
+          }
+
+          if (hitLayer) {
+            this.switchDeckTab('text');
+            if (this.inlineEditorEl) {
+              this.inlineEditingLayerId = hitLayer.id;
+              this.inlineEditorEl.value = hitLayer.text;
+              
+              const canvasRect = this.canvasEl.getBoundingClientRect();
+              const scale = canvasRect.width / 2560; // CANVAS.width
+              
+              const inputWidth = canvasRect.width * 0.8;
+              if (hitLayer.align === 'center') {
+                this.inlineEditorEl.style.left = `${hitLayer.position.x * canvasRect.width - inputWidth / 2}px`;
+              } else if (hitLayer.align === 'left') {
+                this.inlineEditorEl.style.left = `${hitLayer.position.x * canvasRect.width}px`;
+              } else {
+                this.inlineEditorEl.style.left = `${hitLayer.position.x * canvasRect.width - inputWidth}px`;
+              }
+              this.inlineEditorEl.style.width = `${inputWidth}px`;
+
+              this.inlineEditorEl.style.top = `${hitLayer.position.y * canvasRect.height - (hitLayer.size * scale) / 2}px`;
+              this.inlineEditorEl.style.height = `${hitLayer.size * scale * 1.2}px`;
+              
+              this.inlineEditorEl.style.fontSize = `${hitLayer.size * scale}px`;
+              this.inlineEditorEl.style.fontFamily = hitLayer.font.split('-')[0]; // simple fallback mapping
+              this.inlineEditorEl.style.textAlign = hitLayer.align;
+              this.inlineEditorEl.style.color = hitLayer.color;
+              
+              this.inlineEditorEl.classList.remove('hidden');
+              this.inlineEditorEl.focus();
+              this.inlineEditorEl.select();
+              this.scheduleFrame();
+            }
+            return;
+          }
+        }
+
+        if (this.scene.background.type !== 'image') return;
         this.pushUndo(this.scene);
         this.applyChange({
           background: {
@@ -1363,26 +1519,33 @@ class ToolIsland {
     });
 
     // 8. Background Type Switcher
-    this.bgTypeGradientBtn?.addEventListener('click', () => {
-      this.activateBgType('gradient');
-      this.makePhotoRepositionWrap?.classList.add('hidden');
-      const from = this.bgGradientFromInput?.value || '#1a0033';
-      const to = this.bgGradientToInput?.value || '#330066';
-      const angle = parseInt(this.bgGradientAngleInput?.value || '135', 10);
-      this.applyChange({ background: { type: 'gradient', from, to, angle } });
-    });
-
-    this.bgTypeSolidBtn?.addEventListener('click', () => {
-      this.activateBgType('solid');
-      this.makePhotoRepositionWrap?.classList.add('hidden');
-      const color = this.bgSolidColorInput?.value || '#111215';
-      this.applyChange({ background: { type: 'solid', color } });
-    });
-
-    this.bgTypePhotoBtn?.addEventListener('click', () => {
-      this.activateBgType('photo');
-      if (this.scene.background.type === 'image') {
-        this.makePhotoRepositionWrap?.classList.remove('hidden');
+    this.bgTypeSelectEl?.addEventListener('change', () => {
+      const type = this.bgTypeSelectEl?.value;
+      this.activateBgType(type || 'gradient');
+      if (type === 'gradient') {
+        this.makePhotoRepositionWrap?.classList.add('hidden');
+        const from = this.bgGradientFromInput?.value || '#1a0033';
+        const to = this.bgGradientToInput?.value || '#330066';
+        const angle = parseInt(this.bgGradientAngleInput?.value || '135', 10);
+        this.applyChange({ background: { type: 'gradient', from, to, angle } });
+      } else if (type === 'solid') {
+        this.makePhotoRepositionWrap?.classList.add('hidden');
+        const color = this.bgSolidColorInput?.value || '#111215';
+        this.applyChange({ background: { type: 'solid', color } });
+      } else if (type === 'photo') {
+        if (this.scene.background.type === 'image') {
+          this.makePhotoRepositionWrap?.classList.remove('hidden');
+        } else {
+          // Keep existing bg state until user picks a photo, or set an empty photo?
+          // The photo input will trigger a change.
+          this.makePhotoRepositionWrap?.classList.remove('hidden');
+        }
+      } else if (type?.startsWith('motion-')) {
+        this.makePhotoRepositionWrap?.classList.add('hidden');
+        const effect = type.replace('motion-', '') as 'particles' | 'mesh' | 'aurora' | 'cybergrid';
+        this.applyChange({
+          background: { type: 'motion', effect, color1: '#FF85A2', color2: '#00B4D8' }
+        });
       }
     });
 
@@ -1420,6 +1583,12 @@ class ToolIsland {
 
     // 12. Instant Curated Background Styles & Palette Harmonizer (1-Click)
     const BG_COLOR_HARMONIES: Record<string, { titleColor: string; taglineColor: string; frameBorderColor: string }> = {
+      sakura_blossom: { titleColor: '#3B122D', taglineColor: '#832857', frameBorderColor: '#FF70A6' },
+      tokyo_cyber: { titleColor: '#00F0FF', taglineColor: '#E2E8F0', frameBorderColor: '#FF007F' },
+      ghibli_sky: { titleColor: '#0F172A', taglineColor: '#334155', frameBorderColor: '#0284C7' },
+      lofi_dusk: { titleColor: '#FFF7ED', taglineColor: '#FED7AA', frameBorderColor: '#FF7A00' },
+      matcha_sage: { titleColor: '#FEFAE0', taglineColor: '#E9EDC9', frameBorderColor: '#CCD5AE' },
+      cozy_vanilla: { titleColor: '#2D1810', taglineColor: '#5C3D2E', frameBorderColor: '#D47A5B' },
       crimson: { titleColor: '#FFFFFF', taglineColor: '#F4D35E', frameBorderColor: '#E63946' },
       pearl: { titleColor: '#F62440', taglineColor: '#4A4E54', frameBorderColor: '#F62440' },
       noir_rose: { titleColor: '#EEEEEE', taglineColor: '#CB2957', frameBorderColor: '#CB2957' },
@@ -1458,6 +1627,53 @@ class ToolIsland {
           this.syncPhotoFrameControls();
           this.showToast(`Applied ${presetKey} style`);
         }
+      });
+    });
+
+    // 12.5 Curated Aesthetic & Anime Wallpaper Plates
+    const plateBtns = document.querySelectorAll<HTMLButtonElement>('.bg-plate-btn');
+    plateBtns.forEach((plateBtn) => {
+      plateBtn.addEventListener('click', () => {
+        const bgSrc = plateBtn.getAttribute('data-bg-src');
+        if (!bgSrc) return;
+
+        const titleColor = plateBtn.getAttribute('data-title-color');
+        const taglineColor = plateBtn.getAttribute('data-tagline-color');
+        const borderColor = plateBtn.getAttribute('data-border-color');
+
+        this.loadImageFromDataUrl(bgSrc, () => {
+          if (titleColor) {
+            const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+            if (title) title.color = titleColor;
+          }
+          if (taglineColor) {
+            const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
+            if (tagline) tagline.color = taglineColor;
+          }
+          if (borderColor) {
+            const frame = this.getPhotoFrameLayer();
+            if (frame) frame.borderColor = borderColor;
+          }
+
+          this.applyChange({
+            background: {
+              type: 'image',
+              src: bgSrc,
+              width: 2560,
+              height: 1440,
+              cover: true,
+              offsetX: 0,
+              offsetY: 0,
+              zoom: 1,
+              extend: false,
+            },
+            layers: [...this.scene.layers],
+          });
+          this.syncBackgroundControls();
+          this.renderTextLayerControls();
+          this.syncPhotoFrameControls();
+          this.showToast('Applied aesthetic wallpaper');
+        });
       });
     });
 
@@ -2526,6 +2742,9 @@ class ToolIsland {
     } else if (bg.type === 'image') {
       this.activateBgType('photo');
       this.makePhotoRepositionWrap?.classList.remove('hidden');
+    } else if (bg.type === 'motion') {
+      this.activateBgType(`motion-${bg.effect}`);
+      this.makePhotoRepositionWrap?.classList.add('hidden');
     }
   }
 
@@ -2995,22 +3214,26 @@ class ToolIsland {
     reader.readAsDataURL(file);
   }
 
-  private activateBgType(type: 'gradient' | 'solid' | 'photo'): void {
-    const btns = [
-      { type: 'gradient', btn: this.bgTypeGradientBtn, panel: this.bgGradientControlsEl },
-      { type: 'solid', btn: this.bgTypeSolidBtn, panel: this.bgSolidControlsEl },
-      { type: 'photo', btn: this.bgTypePhotoBtn, panel: this.bgPhotoControlsEl },
+  private activateBgType(type: string): void {
+    if (this.bgTypeSelectEl) {
+      this.bgTypeSelectEl.value = type;
+    }
+
+    const panels = [
+      { type: 'gradient', panel: this.bgGradientControlsEl },
+      { type: 'solid', panel: this.bgSolidControlsEl },
+      { type: 'photo', panel: this.bgPhotoControlsEl },
     ];
 
-    btns.forEach((b) => {
-      if (b.type === type) {
-        b.btn?.classList.add('bg-ink-950', 'text-surface-0');
-        b.btn?.classList.remove('bg-transparent', 'text-ink-700');
-        b.panel?.classList.remove('hidden');
+    panels.forEach((p) => {
+      if (type.startsWith('motion-')) {
+        p.panel?.classList.add('hidden'); // Motion has no extra UI controls for now, could add later
       } else {
-        b.btn?.classList.remove('bg-ink-950', 'text-surface-0');
-        b.btn?.classList.add('bg-transparent', 'text-ink-700');
-        b.panel?.classList.add('hidden');
+        if (p.type === type) {
+          p.panel?.classList.remove('hidden');
+        } else {
+          p.panel?.classList.add('hidden');
+        }
       }
     });
   }
@@ -3320,22 +3543,180 @@ class ToolIsland {
     this.scheduleFrame();
     this.schedulePersist();
   }
-
   /**
    * Schedule rAF-coalesced render and validation
    */
   private scheduleFrame(): void {
-    if (this.frameScheduled) return;
-    this.frameScheduled = true;
-
-    requestAnimationFrame(() => {
-      this.frameScheduled = false;
+    if (this.renderRafId) return;
+    this.renderRafId = requestAnimationFrame(() => {
+      this.renderRafId = null;
       this.render();
       this.validate();
       if (this.simulateToggle && this.simulateToggle.checked) {
         this.runSimulation();
       }
+
+      if (this.scene.background.type === 'motion' && this.motionCanvasEl && this.motionCtx) {
+        this.renderBgMotionFrame();
+        // Keep looping if motion is active
+        this.scheduleFrame();
+      } else if (this.motionCanvasEl && !this.isMotionRunning) { // Keep motion visible if top-layer motion is running
+        this.motionCanvasEl.style.opacity = '0';
+      }
     });
+  }
+
+  private renderBgMotionFrame(): void {
+    const bg = this.scene.background;
+    if (bg.type !== 'motion' || !this.motionCtx || !this.motionCanvasEl) return;
+    
+    this.motionCanvasEl.style.opacity = '1';
+    const ctx = this.motionCtx;
+    const cw = 2560;
+    const ch = 1440;
+    const time = performance.now() / 1000;
+
+    if (bg.effect === 'mesh') {
+      const grad = ctx.createRadialGradient(
+        cw * 0.2 + Math.sin(time) * 200, ch * 0.2 + Math.cos(time) * 100, 0,
+        cw * 0.5, ch * 0.5, cw * 0.8 + Math.sin(time * 0.5) * 100
+      );
+      grad.addColorStop(0, bg.color1);
+      grad.addColorStop(1, bg.color2);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+    } else if (bg.effect === 'particles') {
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.fillStyle = bg.color2;
+      for(let i = 0; i < 50; i++) {
+         const x = cw * ((i * 13 + time * 10) % 100) / 100;
+         const y = ch * ((i * 7 + time * 5) % 100) / 100;
+         ctx.beginPath();
+         ctx.arc(x, y, (i % 4) + 1 + Math.sin(time * 2 + i) * 1, 0, Math.PI * 2);
+         ctx.fill();
+      }
+    } else if (bg.effect === 'aurora') {
+      const grad = ctx.createLinearGradient(0, 0, 0, ch);
+      grad.addColorStop(0, '#020617');
+      grad.addColorStop(1, bg.color1);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+      
+      ctx.beginPath();
+      ctx.moveTo(0, ch * 0.6);
+      ctx.bezierCurveTo(
+        cw * 0.3, ch * 0.3 + Math.sin(time) * 200,
+        cw * 0.7, ch * 0.8 + Math.cos(time * 0.8) * 200,
+        cw, ch * 0.5
+      );
+      ctx.strokeStyle = bg.color2;
+      ctx.lineWidth = 120 + Math.sin(time * 1.5) * 20;
+      ctx.filter = 'blur(60px)';
+      ctx.stroke();
+      ctx.filter = 'none';
+    } else if (bg.effect === 'cybergrid') {
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.strokeStyle = bg.color1;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.3;
+      
+      const offset = (time * 100) % 200;
+      for (let i = 0; i < 30; i++) {
+        const y = ch * 0.5 + Math.pow(i, 2) * 2 + offset;
+        if (y < ch) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(cw, y);
+          ctx.stroke();
+        }
+      }
+      for (let i = -20; i < 20; i++) {
+        ctx.beginPath();
+        ctx.moveTo(cw / 2 + i * 80, ch * 0.5);
+        ctx.lineTo(cw / 2 + i * 250 + Math.sin(time) * 100, ch);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1.0;
+    } else if (bg.effect === 'sakura') {
+      // Soft dusk anime sky background
+      const grad = ctx.createLinearGradient(0, 0, 0, ch);
+      grad.addColorStop(0, '#180B2B');
+      grad.addColorStop(0.4, '#3C1658');
+      grad.addColorStop(0.7, '#7B286E');
+      grad.addColorStop(1, '#FFB370');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+
+      // Distant mountain silhouette
+      ctx.fillStyle = '#120524';
+      ctx.beginPath();
+      ctx.moveTo(0, ch * 0.72);
+      ctx.lineTo(cw * 0.35, ch * 0.62);
+      ctx.lineTo(cw * 0.5, ch * 0.48);
+      ctx.lineTo(cw * 0.65, ch * 0.64);
+      ctx.lineTo(cw, ch * 0.7);
+      ctx.lineTo(cw, ch);
+      ctx.lineTo(0, ch);
+      ctx.closePath();
+      ctx.fill();
+
+      // Falling cherry blossom petals
+      ctx.fillStyle = '#FFB7C5';
+      for (let i = 0; i < 45; i++) {
+        const speed = 40 + (i % 5) * 15;
+        const drift = Math.sin(time * 1.5 + i) * 60;
+        const px = (cw * ((i * 37) % 100) / 100 + time * 35 + drift) % (cw + 100) - 50;
+        const py = (ch * ((i * 23) % 100) / 100 + time * speed) % (ch + 100) - 50;
+        const rot = time * 2 + i;
+
+        ctx.save();
+        ctx.translate(px, py);
+        ctx.rotate(rot);
+        ctx.globalAlpha = 0.75 + Math.sin(time + i) * 0.2;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 16, 9, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1.0;
+    } else if (bg.effect === 'anime-sunset') {
+      // Warm anime lo-fi golden dusk
+      const grad = ctx.createLinearGradient(0, 0, 0, ch);
+      grad.addColorStop(0, '#0F031E');
+      grad.addColorStop(0.35, '#290B4A');
+      grad.addColorStop(0.7, '#6E1B5A');
+      grad.addColorStop(1, '#FF9E00');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+
+      // Glowing pulsing sun on horizon
+      const pulse = Math.sin(time * 2) * 15;
+      const sunRad = 280 + pulse;
+      const sunGrad = ctx.createRadialGradient(cw * 0.5, ch * 0.68, 20, cw * 0.5, ch * 0.68, sunRad);
+      sunGrad.addColorStop(0, '#FFF6E0');
+      sunGrad.addColorStop(0.3, '#FFB370');
+      sunGrad.addColorStop(1, 'rgba(255, 179, 112, 0)');
+      ctx.fillStyle = sunGrad;
+      ctx.beginPath();
+      ctx.arc(cw * 0.5, ch * 0.68, sunRad, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Floating warm glowing dusk embers
+      for (let i = 0; i < 50; i++) {
+        const speed = 30 + (i % 6) * 12;
+        const wave = Math.sin(time * 2 + i * 2) * 40;
+        const ex = (cw * ((i * 19) % 100) / 100 + wave);
+        const ey = (ch * 0.95 - (time * speed + i * 40) % (ch * 0.8));
+        const alpha = Math.sin((ey / ch) * Math.PI) * 0.85;
+
+        ctx.fillStyle = i % 2 === 0 ? `rgba(255, 235, 150, ${alpha})` : `rgba(255, 120, 80, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(ex, ey, (i % 3) + 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
   }
 
   /**

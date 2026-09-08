@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="silkFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF0F2" />
+      <stop offset="35%" stop-color="#F5DCE2" />
+      <stop offset="70%" stop-color="#EBBBC6" />
+      <stop offset="100%" stop-color="#DF9DAE" />
+    </linearGradient>
+  </defs>
+  <rect width="2560" height="1440" fill="url(#silkFlow)" />
+  <!-- Wave Folds -->
+  <path d="M 0 340 C 600 480, 900 220, 1600 380 C 2100 480, 2300 320, 2560 400 L 2560 1440 L 0 1440 Z" fill="#EBBBC6" opacity="0.35" />
+  <path d="M 0 680 C 800 820, 1200 580, 1800 740 C 2200 840, 2400 700, 2560 760 L 2560 1440 L 0 1440 Z" fill="#DF9DAE" opacity="0.3" />
+  <!-- Sparkles -->
+  <g fill="#FFFFFF" opacity="0.8">
+    <circle cx="820" cy="680" r="3" />
+    <circle cx="1280" cy="620" r="4" />
+    <circle cx="1740" cy="680" r="3" />
+  </g>
+</svg>
