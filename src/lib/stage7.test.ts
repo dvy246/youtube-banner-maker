@@ -25,7 +25,7 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
 
       // CSP directive check (§F.4)
       expect(content).toContain("Content-Security-Policy: default-src 'self';");
-      expect(content).toContain("img-src 'self' blob: data:;");
+      expect(content).toContain("img-src 'self' blob: data:");
       expect(content).toContain("frame-ancestors 'none';");
       expect(content).toContain("base-uri 'self';");
       expect(content).toContain("form-action 'self' mailto:");
