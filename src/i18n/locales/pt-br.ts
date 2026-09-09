@@ -15,6 +15,10 @@ export const ptBr: Translations = {
     languages: 'Idiomas',
     allRightsReserved: 'Todos os direitos reservados.',
     buyMeACoffee: 'Pague-me um café',
+    buyMeACoffeeDesc: 'Apoie ferramentas gratuitas e privadas',
+    suggestATool: 'Sugerir uma ferramenta',
+    suggestAToolDesc: 'Peça um recurso ou nova ferramenta',
+    moreActions: 'Ações rápidas e suporte',
   },
   nav: {
     fixBanner: 'Redimensionar Banner',

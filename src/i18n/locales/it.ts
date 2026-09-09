@@ -15,6 +15,10 @@ export const it: Translations = {
     languages: 'Lingue',
     allRightsReserved: 'Tutti i diritti riservati.',
     buyMeACoffee: 'Offrimi un caffè',
+    buyMeACoffeeDesc: 'Supporta strumenti gratuiti e privati',
+    suggestATool: 'Suggerisci uno strumento',
+    suggestAToolDesc: 'Richiedi una funzione o nuovo strumento',
+    moreActions: 'Azioni rapide e supporto',
   },
   nav: {
     fixBanner: 'Ridimensiona Banner',

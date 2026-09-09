@@ -15,6 +15,10 @@ export const ja: Translations = {
     languages: '対応言語',
     allRightsReserved: 'All rights reserved.',
     buyMeACoffee: 'コーヒーをおごる',
+    buyMeACoffeeDesc: '無料ツールの継続開発を支援',
+    suggestATool: 'ツールの提案',
+    suggestAToolDesc: '新機能やツールのリクエスト',
+    moreActions: 'クイックアクションとサポート',
   },
   nav: {
     fixBanner: 'バナーリサイズ',

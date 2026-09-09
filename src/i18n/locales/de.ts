@@ -15,6 +15,10 @@ export const de: Translations = {
     languages: 'Sprachen',
     allRightsReserved: 'Alle Rechte vorbehalten.',
     buyMeACoffee: 'Kauf mir einen Kaffee',
+    buyMeACoffeeDesc: 'Unterstütze kostenlose Tools',
+    suggestATool: 'Tool vorschlagen',
+    suggestAToolDesc: 'Funktion oder neues Tool anfragen',
+    moreActions: 'Schnellaktionen & Support',
   },
   nav: {
     fixBanner: 'Banner Resizer',

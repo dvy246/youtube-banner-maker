@@ -14,6 +14,10 @@ export const en = {
     languages: 'Languages',
     allRightsReserved: 'All rights reserved.',
     buyMeACoffee: 'Buy Me a Coffee',
+    buyMeACoffeeDesc: 'Support free, privacy-first tools',
+    suggestATool: 'Suggest a Tool',
+    suggestAToolDesc: 'Request a feature or new tool',
+    moreActions: 'Quick actions & support',
   },
   nav: {
     fixBanner: 'Banner Resizer',
