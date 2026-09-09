@@ -14,11 +14,12 @@ export const it: Translations = {
     selectLanguage: 'Seleziona lingua',
     languages: 'Lingue',
     allRightsReserved: 'Tutti i diritti riservati.',
+    buyMeACoffee: 'Offrimi un caffè',
   },
   nav: {
-    fixBanner: 'Adatta Banner',
-    checker: 'Verifica',
-    maker: 'Crea',
+    fixBanner: 'Ridimensiona Banner',
+    checker: 'Verifica Banner',
+    maker: 'Crea Banner',
     templates: 'Modelli',
     backgrounds: 'Sfondi',
     howToMake: 'Come Creare',
@@ -180,6 +181,104 @@ export const it: Translations = {
     title: 'Perché YouTube Rifiuta Banner 1024×576 e Come Risolvere',
     subtitle:
       `Comprendi il requisito minimo di 2048×1152 px di YouTube e impara ad adattare la tua immagine 16:9 a ${CANVAS.width}×${CANVAS.height} px in modo nitido.`,
+  },
+  guideHowToMake: {
+    metaTitle: 'Come Fare un Banner per YouTube | Guida Passo Passo',
+    metaDesc:
+      'Impara a creare un banner per YouTube perfetto per ogni schermo. Dimensioni ufficiali, area di sicurezza e strumenti gratuiti online.',
+    title: 'Come Creare un Banner per YouTube: Guida Passo Passo',
+    subtitle:
+      'Un framework metodico per progettare, comporre ed esportare grafiche per il canale nitide su TV 4K, monitor e smartphone senza tagli indesiderati.',
+    kicker: 'MASTERCLASS CREATOR · EDIZIONE 2026',
+    directAnswerLabel: 'Riepilogo Rapido: Come Fare un Banner per YouTube',
+    directAnswerText:
+      `Per creare un banner efficace per YouTube, imposta la tua tela su ${CANVAS.width} × ${CANVAS.height} pixel (rapporto 16:9) e concentra il nome del tuo canale, la proposta di valore e i ritratti principali nell'area di sicurezza mobile centrale di ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel. Esporta in formato PNG sRGB o JPEG inferiore a 6 MB e caricalo in Personalizzazione di YouTube Studio.`,
+    faq1Q: 'Come posso creare un banner per YouTube gratis senza programmi da installare?',
+    faq1A:
+      `Puoi creare un banner YouTube gratuito direttamente nel browser con il nostro editor locale in HTML5. Seleziona un layout, personalizza testi e slogan all'interno dell'area sicura di ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px e scarica un file PNG da ${CANVAS.width} × ${CANVAS.height} px senza filigrane né registrazione.`,
+    faq2Q: 'Qual è la regola grafica più importante per un banner di YouTube?',
+    faq2A:
+      `La regola fondamentale è posizionare testi, loghi e volti all'interno dell'area di sicurezza mobile di ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel. Poiché oltre il 75% delle visite avviene da smartphone, gli elementi situati fuori da questo rettangolo centrale vengono ritagliati sugli schermi piccoli.`,
+    faq3Q: 'Dovrei creare il banner a 1920x1080 o a 2560x1440?',
+    faq3A:
+      `Crea sempre la grafica a ${CANVAS.width} × ${CANVAS.height} pixel (16:9). Con 1920×1080, YouTube Studio rifiuterà il caricamento poiché la larghezza minima richiesta è di 2048 pixel. Lavorare a ${CANVAS.width} × ${CANVAS.height} garantisce massima nitidezza sui televisori 4K e display retina.`,
+    faq4Q: 'Come rendere il testo leggibile sopra sfondi fotografici complessi?',
+    faq4A:
+      'Attiva la vignettatura di protezione Contrast Guard o la piastra in vetro satinato Aero Plate. Questi strumenti aggiungono un velo discreto dietro ai testi per conservare elevato contrasto e leggibilità anche con sfondi vivaci.',
+    faq5Q: 'Come carico il banner completato su YouTube Studio?',
+    faq5A:
+      'Accedi a YouTube Studio dal computer, fai clic su "Personalizzazione" nel menu a sinistra, apri la scheda "Branding" e seleziona "Carica" o "Cambia" sotto Immagine del banner. Verifica l\'inquadratura e clicca su "Pubblica".',
+  },
+  guideChooseTemplate: {
+    metaTitle: 'Scegliere Modello Banner YouTube | Guida 2026',
+    metaDesc:
+      'Scopri come scegliere il miglior modello di banner per YouTube in base alla tua nicchia. Regole di contrasto e adattamento per smartphone.',
+    title: 'Come Scegliere il Miglior Modello di Banner per YouTube',
+    subtitle:
+      'Una guida tecnica per valutare, personalizzare e implementare modelli grafici professionali che valorizzano il canale su qualsiasi schermo.',
+    kicker: 'GUIDA TECNICA ALLA SCELTA · 2026',
+    directAnswerLabel: 'Definizione Chiave: Cosa Rende Eccellente un Modello?',
+    directAnswerText:
+      `Il miglior modello di banner per YouTube racchiude tutti i testi e gli elementi determinanti all'interno dell'area di sicurezza di ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel su una tela complessiva di ${CANVAS.width} × ${CANVAS.height} pixel. Offre una tipografia a contrasto elevato e si coordina con l'icona del tuo profilo.`,
+    faq1Q: 'Come faccio a sapere se un modello funzionerà bene da mobile?',
+    faq1A:
+      `Verifica che le scritte e i loghi principali si trovino dentro l'area di sicurezza di ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel. Se il design colloca elementi verso i bordi esterni, verranno tagliati sugli smartphone. Tutti i modelli della nostra raccolta sono verificati con accuratezza su queste coordinate.`,
+    faq2Q: 'Quale stile di modello è più indicato per un canale business?',
+    faq2A:
+      'Per canali di consulenza, finanza e aziende, la struttura Split-Left (divisa a sinistra) o impilata con tonalità scure o madreperla è l\'ideale: colloca la foto professionale a sinistra e la proposta di valore leggibile a destra.',
+    faq3Q: 'Posso modificare un modello senza software di grafica?',
+    faq3A:
+      `Certamente. Puoi personalizzare qualsiasi layout direttamente nel tuo browser con il nostro Banner Maker gratuito. Cambia i titoli, prova diverse combinazioni cromatiche con un clic e scarica il file PNG da ${CANVAS.width} × ${CANVAS.height} pixel pronto all'uso.`,
+    faq4Q: 'Come evitare che il testo si confonda con l\'immagine sottostante?',
+    faq4A:
+      'Prediligi modelli forniti di protezioni di contrasto, come vignettature sfumate o supporti semitrasparenti Aero Plate, che mantengono un\'ottima leggibilità sia in modalità chiara che scura.',
+    faq5Q: 'Perché molti modelli di Canva o Photoshop vengono tagliati su YouTube?',
+    faq5A:
+      `Molti modelli di terze parti sono impostati a 1920×1080 o trascurano l'area di sicurezza di ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel sul formato ${CANVAS.width} × ${CANVAS.height} px. Durante il caricamento su YouTube Studio, i margini esterni vengono troncati.`,
+  },
+  guideBgPage: {
+    metaTitle: 'Sfondi per Banner YouTube | Idee 2560x1440 & Modelli',
+    metaDesc:
+      'Trova lo sfondo ideale per il tuo banner YouTube a 2560x1440. Scopri idee estetiche e scarica modelli vuoti gratuitamente.',
+    title: 'Sfondi per Banner YouTube: Misure, Idee e Modelli Vuoti',
+    subtitle:
+      'Scopri come scegliere uno sfondo estetico per il tuo canale, quali sono le dimensioni necessarie e come sfruttare i modelli pronti.',
+    badge: 'Guida Grafica',
+    section1Title: 'La Dimensione Corretta per lo Sfondo del Banner YouTube',
+    section1P1:
+      `Quando cerchi un'immagine di sfondo, le proporzioni sono fondamentali. Lo sfondo del banner deve riempire l'intero formato di ${CANVAS.width} × ${CANVAS.height} pixel per le smart TV in modo da evitare sgradevoli bande nere o allungamenti.`,
+    section1P2:
+      `Anche quando un utente naviga da cellulare, YouTube carica l'immagine completa a ${CANVAS.width}×${CANVAS.height} px e la ritaglia automaticamente. Assicurati quindi che il file di partenza rispetti il rapporto 16:9 prima di posizionarvi i testi.`,
+    section2Title: 'Idee Estetiche per Sfondi Banner',
+    section2P1:
+      'Lo sfondo definisce l\'identità del tuo canale. I migliori sfondi sono visivamente accattivanti ma non contrastano con il testo. Ecco tre soluzioni consigliate:',
+    idea1Title: 'Il Banner Nero Minimalista',
+    idea1Text:
+      'Uno sfondo nero compatto o antracite comunica subito un tono professionale e pulito, offrendo il massimo contrasto per scritte bianche o colorate.',
+    idea2Title: 'Sfumature Astratte',
+    idea2Text:
+      'I gradienti morbidi creano profondità visiva senza affollare la composizione di dettagli dispersivi.',
+    idea3Title: 'Fotografia a Basso Contrasto',
+    idea3Text:
+      'Se utilizzi una foto di una postazione o di un paesaggio, riduci il contrasto e applica un velo scuro per far risaltare nitidamente il nome del canale.',
+    ctaTitle: 'Trasforma il Tuo Sfondo in un Banner Completo',
+    ctaDesc:
+      `Hai trovato l'immagine giusta? Trascinala nel nostro Creatore gratuito, inserisci i testi nell'area sicura e scarica il file a ${CANVAS.width}×${CANVAS.height} pixel pronto per YouTube.`,
+    ctaButton: 'Apri il Banner Maker di YouTube →',
+    faqTitle: 'Domande Frequenti su Sfondi e Modelli Vuoti',
+    faqDesc: 'Tutte le risposte sulla scelta e la formattazione degli sfondi per canali YouTube.',
+    faq1Q: 'Che dimensioni deve avere lo sfondo di un banner YouTube?',
+    faq1A:
+      `La tua immagine di sfondo deve misurare esattamente ${CANVAS.width} × ${CANVAS.height} pixel. È la risoluzione complessiva utilizzata da YouTube sugli schermi televisivi di grandi dimensioni.`,
+    faq2Q: 'Posso utilizzare un banner YouTube completamente nero?',
+    faq2A:
+      `Certamente, i banner neri essenziali sono assai diffusi nei canali tech e gaming. Puoi utilizzare uno sfondo scuro e centrare il tuo logo nell'area sicura (${SAFE_PX.full.width} × ${SAFE_PX.full.height} px).`,
+    faq3Q: 'Dove posso trovare sfondi estetici per banner YouTube?',
+    faq3A:
+      'Puoi ricorrere a banche immagini di qualità per reperire panorami o sfondi astratti. Caricali poi nel nostro Banner Maker per ritagliarli con precisione sull\'area di sicurezza.',
+    faq4Q: 'Come si inserisce il testo su un modello di banner vuoto?',
+    faq4A:
+      'Usa il nostro Banner Maker gratuito. Seleziona lo sfondo e digita il nome del canale: lo strumento mantiene il testo confinato nell\'area sicura per una visualizzazione ottimale su tutti i display.',
   },
   templatesHub: {
     safeAreaVerified: "Area di sicurezza verificata",

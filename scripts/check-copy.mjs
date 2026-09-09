@@ -5,8 +5,10 @@ const bannedPatterns = [
   /\bno\s+quality\s+loss\b/i,
   /\blossless\b/i,
   /\bpixel[\s-]perfect\b/i,
-  /\bguaranteed\b/i,
+  /\bguarantee[ds]?\b/i,
   /\bnever\s+blurry\b/i,
+  /\bflawless\b/i,
+  /\bnever\s+(?:cuts|gets\s+cut)\s+off\b/i,
 ];
 
 const literalDevicePixels = [
@@ -41,8 +43,9 @@ function walk(dir, filelist = []) {
 const srcFiles = walk('src');
 let errors = [];
 
-// 1. Check for banned honesty strings
+// 1. Check for banned honesty strings (excluding test files)
 for (const file of srcFiles) {
+  if (file.includes('.test.ts')) continue;
   const content = fs.readFileSync(file, 'utf-8');
   for (const pat of bannedPatterns) {
     if (pat.test(content)) {

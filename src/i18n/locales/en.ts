@@ -13,11 +13,12 @@ export const en = {
     selectLanguage: 'Select language',
     languages: 'Languages',
     allRightsReserved: 'All rights reserved.',
+    buyMeACoffee: 'Buy Me a Coffee',
   },
   nav: {
-    fixBanner: 'Fix Banner',
-    checker: 'Checker',
-    maker: 'Maker',
+    fixBanner: 'Banner Resizer',
+    checker: 'Banner Checker',
+    maker: 'Banner Maker',
     templates: 'Templates',
     backgrounds: 'Backgrounds',
     howToMake: 'How to Make',
@@ -118,8 +119,8 @@ export const en = {
     metaDesc:
       'Our privacy policy: Zero image bytes are ever transmitted over the network. 100% client-side processing, sessionStorage usage, and advertising disclosures.',
     title: 'Privacy Policy',
-    subtitle: 'Your artwork never leaves your device. Here is our mathematical guarantee.',
-    zeroUploadTitle: 'Zero Server Upload Guarantee',
+    subtitle: 'Your artwork never leaves your device. Here is how we keep your artwork local.',
+    zeroUploadTitle: 'Zero Server Upload Commitment',
     zeroUploadP1:
       'YouTubeBannerMaker.com is architected from the ground up as a purely client-side web application. When you drop an image into the resizer, checker, or maker tools, that file is decoded and processed strictly in your local device memory.',
     zeroUploadP2:
@@ -179,6 +180,104 @@ export const en = {
     title: 'Why YouTube Rejects 1024×576 Banners & How to Fix',
     subtitle:
       `Understand YouTube's minimum 2048×1152 px requirement and how to upscale your 16:9 artwork to ${CANVAS.width}×${CANVAS.height} px.`,
+  },
+  guideHowToMake: {
+    metaTitle: 'Make a YouTube Banner | Quick & Free | YouTubeBannerMaker',
+    metaDesc:
+      'Learn how to make a YouTube banner that fits every device. Step-by-step layout rules, safe-area design, typography, and free browser tools.',
+    title: 'How to Make a YouTube Banner: Step-by-Step Creator Guide',
+    subtitle:
+      'A comprehensive, battle-tested design framework to build, compose, and export channel art that looks sharp on 4K TVs, desktop monitors, and mobile smartphones without getting cropped.',
+    kicker: 'CREATOR MASTERCLASS · 2026 EDITION',
+    directAnswerLabel: 'Direct Summary: How to Make a YouTube Banner',
+    directAnswerText:
+      `To make an effective YouTube banner, set your canvas to ${CANVAS.width} × ${CANVAS.height} pixels (16:9 ratio) and concentrate your channel name, value proposition, and key portraits inside the central ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe area. Export an sRGB PNG or JPEG under 6 MB and upload through YouTube Studio Branding.`,
+    faq1Q: 'How do I make a YouTube banner for free without software?',
+    faq1A:
+      `You can create a free YouTube banner directly in your browser using our local HTML5 YouTube Banner Maker. Select a layout preset, customize your channel title and tagline within the centered ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px mobile safe area, and download a ready-to-upload ${CANVAS.width} × ${CANVAS.height} px PNG file with zero watermarks or registration.`,
+    faq2Q: 'What is the most critical design rule for a YouTube banner?',
+    faq2A:
+      `The single most critical rule is anchoring all text, logos, faces, and taglines inside the centered ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe zone. Because over 75% of YouTube channel visits occur on mobile smartphones, any graphics placed outside this central rectangle get cropped away on smaller screens.`,
+    faq3Q: 'Should I design my YouTube banner in 1920x1080 or 2560x1440?',
+    faq3A:
+      `Always build your canvas at ${CANVAS.width} × ${CANVAS.height} pixels (16:9 ratio). Designing at 1920×1080 will trigger an upload rejection in YouTube Studio because the absolute minimum supported width is 2048 pixels. Starting at ${CANVAS.width} × ${CANVAS.height} preserves clarity across 4K smart TVs and high-density retina laptops.`,
+    faq4Q: 'How do I keep my banner text readable against busy photo backgrounds?',
+    faq4A:
+      'Use our built-in Contrast Guard ambient scrim or the 1-click Aero Plate frosted glass backplate. These techniques place a subtle semi-transparent vignette or frosted surface behind your typography, ensuring sharp contrast and instant readability regardless of how vibrant or detailed your background image is.',
+    faq5Q: 'How do I upload my completed banner to YouTube Studio?',
+    faq5A:
+      'Open YouTube Studio on a computer browser, click "Customization" in the left sidebar, navigate to the "Branding" tab, and select "Change" or "Upload" under Banner Image. Review the crop preview window—which should align with your safe-area layout—and click "Publish" in the top-right corner.',
+  },
+  guideChooseTemplate: {
+    metaTitle: 'Banner Templates | Pick The Best | YouTubeBannerMaker',
+    metaDesc:
+      'Find the best YouTube banner template for your channel niche. Learn layout archetypes, color contrast rules, and how to customize in browser.',
+    title: 'How to Choose the Best YouTube Banner Template',
+    subtitle:
+      'A practical evaluation framework to select, customize, and implement channel art templates that communicate authority and fit every screen size.',
+    kicker: 'ARCHITECTURAL SELECTION GUIDE · 2026',
+    directAnswerLabel: 'Core Definition: What Makes a Great Banner Template?',
+    directAnswerText:
+      `The best YouTube banner template is one where all vital text, portraits, and branding fit strictly within the central ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe area on a full ${CANVAS.width} × ${CANVAS.height} pixel canvas. It uses high-contrast typography, pairs with your channel icon, and adapts cleanly between light and dark themes.`,
+    faq1Q: 'How do I know if a YouTube banner template will work on mobile?',
+    faq1A:
+      `Check whether all text, logos, and focal subjects are contained within the centered ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe zone. If a template spreads headings across the outer corners or places taglines along the bottom edge, it will be cropped on smartphones. Every layout in our curated catalog is pre-tested against official mobile boundaries.`,
+    faq2Q: 'What is the best YouTube banner template style for a business channel?',
+    faq2A:
+      'For business, consulting, and finance channels, the Split-Left or Stacked layout with a dark navy or warm pearl palette performs best. It places your professional portrait or authority monogram on the left, paired with a high-contrast headline, one-line value proposition, and crisp upload schedule.',
+    faq3Q: 'Can I customize a YouTube banner template without graphic design software?',
+    faq3A:
+      `Yes. You can customize any layout directly in your browser using our free YouTube Banner Maker. Select a niche template, adjust the headline and subtitle, change color themes with the 1-click aesthetic harmonizer, and download a ready-to-upload ${CANVAS.width} × ${CANVAS.height} pixel PNG file.`,
+    faq4Q: 'How do I prevent my template text from blending into the background?',
+    faq4A:
+      'Look for templates featuring contrast defense mechanisms: either a subtle studio scrim (radial ambient vignette) or an Aero Plate frosted glass backplate. These elements ensure high contrast between your typography and background photography, maintaining readability across both light and dark display modes.',
+    faq5Q: 'Why do many Canva or Photoshop banner templates get cropped on YouTube?',
+    faq5A:
+      `Many third-party templates are designed for standard 1920×1080 screens rather than YouTube's ${CANVAS.width} × ${CANVAS.height} canvas, or they ignore the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel safe zone. When uploaded to YouTube Studio, the outer margins are truncated on mobile and desktop viewports.`,
+  },
+  guideBgPage: {
+    metaTitle: 'Banner Background | Aesthetic Art | YouTubeBannerMaker',
+    metaDesc:
+      'Find the perfect YouTube banner background. Learn the correct 2560x1440 dimensions, explore aesthetic ideas, and download blank templates.',
+    title: 'YouTube Banner Backgrounds: Sizes, Ideas & Templates',
+    subtitle:
+      'Discover how to choose an aesthetic YouTube banner background, the exact dimensions you need, and how to use blank templates to design your channel art.',
+    badge: 'Design Guide',
+    section1Title: 'The Right Size for a YouTube Banner Background',
+    section1P1:
+      `When sourcing an image for your channel's background, the dimensions matter. A YouTube banner background must cover the entire ${CANVAS.width} × ${CANVAS.height} pixels TV display area to avoid ugly letterboxing or stretching.`,
+    section1P2:
+      `Even if a viewer is on a smartphone, YouTube loads the full ${CANVAS.width}×${CANVAS.height} image and crops it dynamically. If you start with a blank YouTube banner template or a high-resolution photograph, ensure it meets this 16:9 ratio before you add any text.`,
+    section2Title: 'Aesthetic YouTube Banner Ideas',
+    section2P1:
+      'A background sets the vibe of your channel. The best backgrounds are visually interesting but don\'t compete with your text. Consider these approaches:',
+    idea1Title: 'The Black YouTube Banner',
+    idea1Text:
+      'A solid black or dark charcoal background instantly conveys a premium, tech, or minimalist aesthetic. It provides massive contrast for white or neon text.',
+    idea2Title: 'Abstract Gradients',
+    idea2Text:
+      'Smooth, blurred color transitions (like our Cyberpunk or Sunset Luxe presets) add depth without adding distracting details.',
+    idea3Title: 'Desaturated Photography',
+    idea3Text:
+      'Using a workspace, gaming setup, or landscape photo? Lower the contrast and add a slight dark overlay so your channel name pops.',
+    ctaTitle: 'Turn Your Background into a Full Banner',
+    ctaDesc:
+      `Have a great background image? Drop it into our free Maker, add your text in the safe area, and download a YouTube-ready ${CANVAS.width}×${CANVAS.height} image.`,
+    ctaButton: 'Open YouTube Banner Maker →',
+    faqTitle: 'Backgrounds & Blank Templates FAQs',
+    faqDesc: 'Common questions about finding and formatting your channel art background.',
+    faq1Q: 'What size should a YouTube banner background be?',
+    faq1A:
+      `Your YouTube banner background image should be exactly ${CANVAS.width} × ${CANVAS.height} pixels. This is the maximum canvas size that YouTube uses to display your banner on large smart TVs.`,
+    faq2Q: 'Can I use a plain black YouTube banner?',
+    faq2A:
+      `Yes, a minimal black YouTube banner is highly popular in tech, gaming, and minimalist niches. You can easily create a solid black or dark gray background and place a crisp white logo in the dead center (${SAFE_PX.full.width} × ${SAFE_PX.full.height} px safe area).`,
+    faq3Q: 'Where can I find an aesthetic YouTube banner background?',
+    faq3A:
+      'You can use high-quality stock photography sites (like Unsplash or Pexels) to find aesthetic landscapes, abstract gradients, or textures. Once you have an image, drop it into our free YouTube Banner Maker to perfectly crop and center it.',
+    faq4Q: 'How do I add text to a blank YouTube banner template?',
+    faq4A:
+      'Use our free YouTube Banner Maker. Select a blank or gradient background, then use the typography tools to type your channel name. The tool will automatically restrict your text to the mobile safe area, ensuring safe positioning across screens.',
   },
   templatesHub: {
     safeAreaVerified: "Safe-area verified",
@@ -301,7 +400,7 @@ export const en = {
     fitness: {
       name: 'Fitness',
       title: 'Fitness YouTube Banner Templates: Bold & High-Contrast',
-      desc: 'High-impact fitness and coaching banner templates. Bold typography positioned inside YouTube’s safe area for flawless mobile and TV rendering.',
+      desc: 'High-impact fitness and coaching banner templates. Bold typography positioned inside YouTube’s safe area for verified mobile and TV rendering.',
       heroTitle: 'Fitness & Training YouTube Banner Templates',
       heroDesc:
         'Built for personal trainers, bodybuilding coaches, and workout creators. High-energy typography and dynamic framing motivate subscribers while ensuring your training schedule stays fully visible on smartphones.',

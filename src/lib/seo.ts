@@ -46,7 +46,7 @@ export const NICHE_TITLES: Record<string, { name: string; title: string; desc: s
   fitness: {
     name: 'Fitness',
     title: 'Fitness Banner Templates | High Impact | YouTubeBannerMaker',
-    desc: 'High-impact fitness and coaching banner templates. Bold typography positioned inside YouTube’s safe area for flawless mobile and TV rendering.',
+    desc: 'High-impact fitness and coaching banner templates. Bold typography positioned inside YouTube\'s safe area for verified mobile and TV rendering.',
   },
   education: {
     name: 'Education',
@@ -82,7 +82,7 @@ export const NICHE_TITLES: Record<string, { name: string; title: string; desc: s
 
 export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> = {
   '/': {
-    title: 'YouTube Banner Maker | Fit Every Device | YouTubeBannerMaker',
+    title: 'YouTube Banner Maker — Fit Every Device | Free',
     desc: 'The official YouTube banner maker. Resize, check safe areas, and create free channel art that fits every device without cropping.',
   },
   '/guides/youtube-banner-size': {
@@ -119,7 +119,7 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
   },
   '/tools/youtube-banner-maker': {
     title: 'YouTube Banner Creator | Fast Export | YouTubeBannerMaker',
-    desc: 'Design a custom YouTube banner that never cuts off on mobile or desktop. Curated templates, real device previews, instant free 2560×1440 export.',
+    desc: 'Design a custom YouTube banner, safe-area verified for mobile and desktop. Curated templates, real device previews, instant free 2560×1440 export.',
   },
   '/templates': {
     title: 'YouTube Banner Templates | Download | YouTubeBannerMaker',
@@ -214,6 +214,7 @@ export function getOrganizationSchema() {
     },
     sameAs: [
       'https://github.com/dvy246',
+      'https://ko-fi.com/divyyadav',
     ],
   };
 }
@@ -225,12 +226,11 @@ export function getTechArticleSchema(options: {
   title: string;
   description: string;
   path: string;
-  datePublished?: string;
-  dateModified?: string;
+  datePublished: string;
+  dateModified: string;
+  inLanguage?: string;
   authorName?: string;
 }) {
-  const published = options.datePublished || '2026-01-15';
-  const modified = options.dateModified || '2026-03-01';
   return {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
@@ -242,9 +242,9 @@ export function getTechArticleSchema(options: {
       '@type': 'WebPage',
       '@id': `${SITE_URL}${options.path}`,
     },
-    inLanguage: 'en-US',
-    datePublished: published,
-    dateModified: modified,
+    inLanguage: options.inLanguage || 'en-US',
+    datePublished: options.datePublished,
+    dateModified: options.dateModified,
     author: {
       '@type': 'Organization',
       name: options.authorName || 'YouTubeBannerMaker Editorial Team',

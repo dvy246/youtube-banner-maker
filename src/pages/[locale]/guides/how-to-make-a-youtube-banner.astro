@@ -7,6 +7,7 @@ import { getBreadcrumbSchema, getFAQSchema, getTechArticleSchema, getHowToSchema
 import { CANVAS, SAFE_PX, MAX_UPLOAD_BYTES } from '../../../lib/spec';
 import {
   TARGET_LOCALES,
+  LOCALE_CONFIG,
   getStaticPageSeo,
   getTranslations,
   getLocalizedUrl,
@@ -27,24 +28,24 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
 const faqs = [
   {
-    question: 'How do I make a YouTube banner for free without software?',
-    answer: `You can create a free YouTube banner directly in your browser using our local HTML5 YouTube Banner Maker. Select a layout preset, customize your channel title and tagline within the centered ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px mobile safe area, and download a ready-to-upload ${CANVAS.width} × ${CANVAS.height} px PNG file with zero watermarks or registration.`,
+    question: dict.guideHowToMake.faq1Q,
+    answer: dict.guideHowToMake.faq1A,
   },
   {
-    question: 'What is the most critical design rule for a YouTube banner?',
-    answer: `The single most critical rule is anchoring all text, logos, faces, and taglines inside the centered ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe zone. Because over 75% of YouTube channel visits occur on mobile smartphones, any graphics placed outside this central rectangle get cropped away on smaller screens.`,
+    question: dict.guideHowToMake.faq2Q,
+    answer: dict.guideHowToMake.faq2A,
   },
   {
-    question: 'Should I design my YouTube banner in 1920x1080 or 2560x1440?',
-    answer: `Always build your canvas at ${CANVAS.width} × ${CANVAS.height} pixels (16:9 ratio). Designing at 1920×1080 will trigger an upload rejection in YouTube Studio because the absolute minimum supported width is 2048 pixels. Starting at ${CANVAS.width} × ${CANVAS.height} preserves clarity across 4K smart TVs and high-density retina laptops.`,
+    question: dict.guideHowToMake.faq3Q,
+    answer: dict.guideHowToMake.faq3A,
   },
   {
-    question: 'How do I keep my banner text readable against busy photo backgrounds?',
-    answer: `Use our built-in Contrast Guard ambient scrim or the 1-click Aero Plate frosted glass backplate. These techniques place a subtle semi-transparent vignette or frosted surface behind your typography, ensuring sharp contrast and instant readability regardless of how vibrant or detailed your background image is.`,
+    question: dict.guideHowToMake.faq4Q,
+    answer: dict.guideHowToMake.faq4A,
   },
   {
-    question: 'How do I upload my completed banner to YouTube Studio?',
-    answer: `Open YouTube Studio on a computer browser, click "Customization" in the left sidebar, navigate to the "Branding" tab, and select "Change" or "Upload" under Banner Image. Review the crop preview window—which should align with your safe-area layout—and click "Publish" in the top-right corner.`,
+    question: dict.guideHowToMake.faq5Q,
+    answer: dict.guideHowToMake.faq5A,
   },
 ];
 
@@ -89,9 +90,10 @@ const jsonLd = [
     path,
     datePublished: '2026-03-01T00:00:00Z',
     dateModified: '2026-09-07T00:00:00Z',
+    inLanguage: LOCALE_CONFIG[locale]?.htmlLang || 'en-US',
   }),
   getHowToSchema({
-    name: 'How to Make a YouTube Banner',
+    name: dict.guideHowToMake.title,
     description: seo.desc,
     path,
     steps: howToSteps,
@@ -124,13 +126,13 @@ const jsonLd = [
 
         <div class="space-y-3">
           <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
-            CREATOR MASTERCLASS · 2026 EDITION
+            {dict.guideHowToMake.kicker}
           </span>
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
-            How to Make a YouTube Banner: Step-by-Step Creator Guide
+            {dict.guideHowToMake.title}
           </h1>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
-            A comprehensive, battle-tested design framework to build, compose, and export channel art that looks sharp on 4K TVs, desktop monitors, and mobile smartphones without getting cropped.
+            {dict.guideHowToMake.subtitle}
           </p>
         </div>
 
@@ -149,10 +151,10 @@ const jsonLd = [
         <div class="p-6 rounded-2xl border border-accent/20 bg-surface-50 space-y-4">
           <div class="space-y-2">
             <span class="text-xs font-mono uppercase tracking-wider font-bold text-accent">
-              Direct Summary: How to Make a YouTube Banner
+              {dict.guideHowToMake.directAnswerLabel}
             </span>
             <p class="text-base sm:text-lg text-ink-950 font-medium leading-snug">
-              To make an effective YouTube banner, set your canvas to <strong>{CANVAS.width} × {CANVAS.height} pixels</strong> (16:9 ratio) and concentrate your channel name, value proposition, and key portraits inside the central <strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} pixel</strong> mobile safe area. Export an sRGB PNG or JPEG under {maxUploadMb} MB and upload through YouTube Studio Branding.
+              {dict.guideHowToMake.directAnswerText}
             </p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs border-t border-line-200">

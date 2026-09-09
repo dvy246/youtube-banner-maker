@@ -7,7 +7,7 @@
 - **Recommended Canvas Resolution:** 2560 × 1440 pixels (16:9 aspect ratio).
 - **Minimum Upload Dimensions:** 2048 × 1152 pixels (16:9 aspect ratio).
 - **Mobile Safe Area:** 1546 × 423 pixels (centered horizontally and vertically on the 2560 × 1440 canvas).
-  - All critical branding, channel titles, logos, social handles, and faces must stay strictly inside this zone to guarantee visibility across 100% of devices.
+  - All critical branding, channel titles, logos, social handles, and faces must stay strictly inside this zone to help ensure visibility across devices.
 - **Desktop Crop:** 2560 × 423 pixels (centered vertically; displays extra width on the sides compared to mobile).
 - **Tablet Crop:** 1855 × 423 pixels (centered horizontally and vertically; a horizontal ribbon crop wider than mobile but narrower than desktop).
 - **TV Display:** Full 2560 × 1440 pixels (unaltered full-bleed background).
@@ -30,7 +30,7 @@
 - **How to Choose a YouTube Banner Template (`/guides/how-to-choose-a-youtube-banner-template`):** Niche layout archetypes, color harmony, and selection criteria.
 - **YouTube Banner Backgrounds Guide (`/guides/youtube-banner-background`):** 2560×1440 background selection, contrast scrims, and styling rules.
 
-## Privacy & Security Guarantees
+## Privacy & Security Commitments
 
 - **Zero Server Uploads:** All image decoding, resampling, scaling, and canvas rendering execute entirely in the user's browser using HTML5 Canvas and Web APIs.
 - **No Watermarks:** Exported banners are 100% clean and unencumbered.

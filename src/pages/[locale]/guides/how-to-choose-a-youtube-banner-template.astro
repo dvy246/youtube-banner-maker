@@ -7,6 +7,7 @@ import { getBreadcrumbSchema, getFAQSchema, getTechArticleSchema } from '../../.
 import { CANVAS, SAFE_PX, MAX_UPLOAD_BYTES } from '../../../lib/spec';
 import {
   TARGET_LOCALES,
+  LOCALE_CONFIG,
   getStaticPageSeo,
   getTranslations,
   getLocalizedUrl,
@@ -27,31 +28,31 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
 const faqs = [
   {
-    question: 'How do I know if a YouTube banner template will work on mobile?',
-    answer: `Check whether all text, logos, and focal subjects are contained within the centered ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe zone. If a template spreads headings across the outer corners or places taglines along the bottom edge, it will be cropped on smartphones. Every layout in our curated catalog is pre-tested against official mobile boundaries.`,
+    question: dict.guideChooseTemplate.faq1Q,
+    answer: dict.guideChooseTemplate.faq1A,
   },
   {
-    question: 'What is the best YouTube banner template style for a business channel?',
-    answer: `For business, consulting, and finance channels, the Split-Left or Stacked layout with a dark navy or warm pearl palette performs best. It places your professional portrait or authority monogram on the left, paired with a high-contrast headline, one-line value proposition, and crisp upload schedule.`,
+    question: dict.guideChooseTemplate.faq2Q,
+    answer: dict.guideChooseTemplate.faq2A,
   },
   {
-    question: 'Can I customize a YouTube banner template without graphic design software?',
-    answer: `Yes. You can customize any layout directly in your browser using our free YouTube Banner Maker. Select a niche template, adjust the headline and subtitle, change color themes with the 1-click aesthetic harmonizer, and download a ready-to-upload ${CANVAS.width} × ${CANVAS.height} pixel PNG file.`,
+    question: dict.guideChooseTemplate.faq3Q,
+    answer: dict.guideChooseTemplate.faq3A,
   },
   {
-    question: 'How do I prevent my template text from blending into the background?',
-    answer: `Look for templates featuring contrast defense mechanisms: either a subtle studio scrim (radial ambient vignette) or an Aero Plate frosted glass backplate. These elements ensure high contrast between your typography and background photography, maintaining readability across both light and dark display modes.`,
+    question: dict.guideChooseTemplate.faq4Q,
+    answer: dict.guideChooseTemplate.faq4A,
   },
   {
-    question: 'Why do many Canva or Photoshop banner templates get cropped on YouTube?',
-    answer: `Many third-party templates are designed for standard 1920×1080 screens rather than YouTube's ${CANVAS.width} × ${CANVAS.height} canvas, or they ignore the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel safe zone. When uploaded to YouTube Studio, the outer margins are truncated on mobile and desktop viewports.`,
+    question: dict.guideChooseTemplate.faq5Q,
+    answer: dict.guideChooseTemplate.faq5A,
   },
 ];
 
 const breadcrumbs = [
   { name: 'Home', url: getLocalizedUrl('/', locale) },
   { name: 'Templates', url: getLocalizedUrl('/templates', locale) },
-  { name: 'How to Choose the Best Template', url: path },
+  { name: dict.footer.guideBestTemplates, url: path },
 ];
 
 const jsonLd = [
@@ -62,6 +63,7 @@ const jsonLd = [
     path,
     datePublished: '2026-03-01T00:00:00Z',
     dateModified: '2026-09-07T00:00:00Z',
+    inLanguage: LOCALE_CONFIG[locale]?.htmlLang || 'en-US',
   }),
   getFAQSchema(faqs),
 ];
@@ -91,13 +93,13 @@ const jsonLd = [
 
         <div class="space-y-3">
           <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
-            ARCHITECTURAL SELECTION GUIDE · 2026
+            {dict.guideChooseTemplate.kicker}
           </span>
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
-            How to Choose the Best YouTube Banner Template
+            {dict.guideChooseTemplate.title}
           </h1>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
-            A practical evaluation framework to select, customize, and implement channel art templates that communicate authority and fit every screen size.
+            {dict.guideChooseTemplate.subtitle}
           </p>
         </div>
 
@@ -116,10 +118,10 @@ const jsonLd = [
         <div class="p-6 rounded-2xl border border-accent/20 bg-surface-50 space-y-4">
           <div class="space-y-2">
             <span class="text-xs font-mono uppercase tracking-wider font-bold text-accent">
-              Core Definition: What Makes a Great Banner Template?
+              {dict.guideChooseTemplate.directAnswerLabel}
             </span>
             <p class="text-base sm:text-lg text-ink-950 font-medium leading-snug">
-              The best YouTube banner template is one where all vital text, portraits, and branding fit strictly within the central <strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} pixel</strong> mobile safe area on a full <strong>{CANVAS.width} × {CANVAS.height} pixel</strong> canvas. It uses high-contrast typography, pairs with your channel icon, and adapts cleanly between light and dark themes.
+              {dict.guideChooseTemplate.directAnswerText}
             </p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs border-t border-line-200">

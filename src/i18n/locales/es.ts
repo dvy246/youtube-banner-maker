@@ -14,11 +14,12 @@ export const es: Translations = {
     selectLanguage: 'Seleccionar idioma',
     languages: 'Idiomas',
     allRightsReserved: 'Todos los derechos reservados.',
+    buyMeACoffee: 'Cómprame un café',
   },
   nav: {
-    fixBanner: 'Ajustar Banner',
-    checker: 'Verificador',
-    maker: 'Creador',
+    fixBanner: 'Redimensionar Banner',
+    checker: 'Verificar Banner',
+    maker: 'Crear Banner',
     templates: 'Plantillas',
     backgrounds: 'Fondos',
     howToMake: 'Cómo Crear',
@@ -180,6 +181,104 @@ export const es: Translations = {
     title: 'Por Qué YouTube Rechaza Banners 1024×576 y Cómo Corregirlos',
     subtitle:
       `Comprende el requisito mínimo de 2048×1152 px de YouTube y aprende a escalar tu diseño 16:9 a ${CANVAS.width}×${CANVAS.height} px sin deformaciones.`,
+  },
+  guideHowToMake: {
+    metaTitle: 'Cómo Hacer un Banner de YouTube | Guía Paso a Paso',
+    metaDesc:
+      'Aprende a crear un banner de YouTube que se ajuste a móviles y pantallas. Medidas oficiales, diseño de zona segura y herramientas gratis.',
+    title: 'Cómo Hacer un Banner de YouTube: Guía Paso a Paso para Creadores',
+    subtitle:
+      'Un marco de diseño completo y probado para crear, componer y exportar arte de canal nítido en televisores 4K, monitores y móviles sin recortes indeseados.',
+    kicker: 'CLASE MAESTRA PARA CREADORES · EDICIÓN 2026',
+    directAnswerLabel: 'Resumen Rápido: Cómo Hacer un Banner de YouTube',
+    directAnswerText:
+      `Para crear un banner de YouTube efectivo, define tu lienzo en ${CANVAS.width} × ${CANVAS.height} píxeles (proporción 16:9) y ubica el nombre de tu canal, propuesta de valor e imágenes clave dentro de la zona segura móvil central de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} píxeles. Exporta en PNG sRGB o JPEG de menos de 6 MB y súbelo en Personalización de YouTube Studio.`,
+    faq1Q: '¿Cómo hago un banner de YouTube gratis sin programas instalados?',
+    faq1A:
+      `Puedes crear un banner de YouTube gratis directamente en tu navegador con nuestro Creador HTML5 local. Selecciona un diseño base, personaliza tu título y lema dentro de la zona segura de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px y descarga un PNG listo de ${CANVAS.width} × ${CANVAS.height} px sin marcas de agua ni registro.`,
+    faq2Q: '¿Cuál es la regla de diseño más importante para un banner de YouTube?',
+    faq2A:
+      `La regla fundamental es concentrar todos los textos, logotipos y fotos dentro del área segura móvil central de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} píxeles. Como más del 75% de las visitas a canales ocurren en smartphones, cualquier gráfico fuera de este rectángulo central se recorta en pantallas pequeñas.`,
+    faq3Q: '¿Debo diseñar mi banner en 1920x1080 o en 2560x1440?',
+    faq3A:
+      `Diseña siempre en ${CANVAS.width} × ${CANVAS.height} píxeles (16:9). Si utilizas 1920×1080, YouTube Studio rechazará la subida porque el ancho mínimo exigido es de 2048 píxeles. Trabajar en ${CANVAS.width} × ${CANVAS.height} conserva máxima nitidez en televisores inteligentes y pantallas retina.`,
+    faq4Q: '¿Cómo mantengo el texto legible sobre fondos complejos o con fotos?',
+    faq4A:
+      'Utiliza nuestro control de viñeta protectora Contrast Guard o la placa de vidrio esmerilado Aero Plate. Estas funciones añaden una capa sutil detrás del texto para conservar alto contraste y legibilidad frente a texturas llamativas.',
+    faq5Q: '¿Cómo subo mi banner terminado a YouTube Studio?',
+    faq5A:
+      'Abre YouTube Studio en el navegador de tu ordenador, haz clic en "Personalización" en el menú izquierdo, entra en la pestaña "Desarrollo de la marca" y selecciona "Subir" o "Cambiar" en Imagen del banner. Revisa el encuadre y haz clic en "Publicar".',
+  },
+  guideChooseTemplate: {
+    metaTitle: 'Elegir Plantilla de Banner de YouTube | Guía 2026',
+    metaDesc:
+      'Descubre cómo elegir la mejor plantilla de banner para YouTube según tu temática. Reglas de contraste, encuadre móvil y edición online.',
+    title: 'Cómo Elegir la Mejor Plantilla de Banner de YouTube',
+    subtitle:
+      'Una guía técnica para evaluar, personalizar e implementar plantillas de arte de canal con autoridad y ajuste en todas las pantallas.',
+    kicker: 'GUÍA DE SELECCIÓN TÉCNICA · 2026',
+    directAnswerLabel: 'Definición Clave: ¿Qué Hace Excelente a una Plantilla?',
+    directAnswerText:
+      `La mejor plantilla para banner de YouTube es aquella en la que todo el texto y elementos esenciales caben dentro de la zona segura central de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} píxeles sobre un lienzo total de ${CANVAS.width} × ${CANVAS.height} píxeles. Ofrece tipografía de alto contraste y se complementa con tu foto de perfil.`,
+    faq1Q: '¿Cómo sé si una plantilla de YouTube funcionará bien en móviles?',
+    faq1A:
+      `Comprueba que los textos principales y logotipos estén dentro de la zona segura móvil de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} píxeles. Si el diseño coloca letras en los bordes extremos, se recortarán en smartphones. Todos los diseños de nuestro catálogo están verificados contra estas medidas.`,
+    faq2Q: '¿Cuál es el mejor estilo de plantilla para un canal de negocios?',
+    faq2A:
+      'Para canales de consultoría, finanzas y empresas, el diseño Split-Left (dividido a la izquierda) o apilado con tonos oscuros o perla funciona mejor: sitúa el retrato profesional a un lado y la propuesta de valor con texto nítido al otro.',
+    faq3Q: '¿Puedo personalizar una plantilla de banner sin programas de diseño?',
+    faq3A:
+      `Sí. Puedes personalizar cualquier plantilla directamente en tu navegador con nuestro Creador de Banners. Cambia títulos, prueba paletas de colores en un clic y descarga tu archivo PNG de ${CANVAS.width} × ${CANVAS.height} píxeles listo para subir.`,
+    faq4Q: '¿Cómo evito que el texto se mezcle con la imagen de fondo?',
+    faq4A:
+      'Elige plantillas con elementos de protección de contraste, como viñetas degradadas suaves o placas traslúcidas Aero Plate, que aseguran legibilidad tanto en temas claros como oscuros.',
+    faq5Q: '¿Por qué muchas plantillas de Canva o Photoshop se recortan en YouTube?',
+    faq5A:
+      `Muchas plantillas de terceros se diseñan a 1920×1080 o ignoran la zona segura de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} píxeles en el lienzo de ${CANVAS.width} × ${CANVAS.height} px. Al subirlas a YouTube Studio, los laterales y bordes verticales quedan cortados.`,
+  },
+  guideBgPage: {
+    metaTitle: 'Fondos de Banner de YouTube | Medidas e Ideas 2560x1440',
+    metaDesc:
+      'Encuentra el fondo perfecto para tu banner de YouTube. Conoce las medidas 2560x1440, ideas estéticas y descarga plantillas vacías gratis.',
+    title: 'Fondos para Banners de YouTube: Medidas, Ideas y Plantillas',
+    subtitle:
+      'Descubre cómo elegir un fondo estético para tu canal de YouTube, las dimensiones exactas necesarias y cómo usar plantillas base.',
+    badge: 'Guía de Diseño',
+    section1Title: 'El Tamaño Correcto para un Fondo de Banner de YouTube',
+    section1P1:
+      `Al buscar una imagen de fondo para tu canal, las dimensiones son decisivas. Un fondo de banner de YouTube debe cubrir todo el lienzo de ${CANVAS.width} × ${CANVAS.height} píxeles para pantallas de televisión y evitar bandas negras o estiramientos.`,
+    section1P2:
+      `Incluso cuando un espectador navega desde un móvil, YouTube carga la imagen completa de ${CANVAS.width}×${CANVAS.height} px y la recorta de forma dinámica. Si comienzas con una plantilla en blanco o una fotografía, asegúrate de mantener esta proporción 16:9.`,
+    section2Title: 'Ideas Estéticas para Fondos de Banner',
+    section2P1:
+      'El fondo define la atmósfera de tu canal. Los fondos más eficaces son atractivos pero no compiten con el texto. Considera estos enfoques:',
+    idea1Title: 'El Banner Negro para YouTube',
+    idea1Text:
+      'Un fondo negro sólido o carbón oscuro transmite de inmediato una estética minimalista y prémium, proporcionando alto contraste para textos blancos o neón.',
+    idea2Title: 'Degradados Abstractos',
+    idea2Text:
+      'Las transiciones de color suaves y difuminadas aportan profundidad visual sin saturar la composición con detalles innecesarios.',
+    idea3Title: 'Fotografía Desaturada',
+    idea3Text:
+      'Si usas una foto de espacio de trabajo o paisaje, reduce el contraste y añade una ligera superposición oscura para que tu nombre resalte con claridad.',
+    ctaTitle: 'Convierte tu Fondo en un Banner Completo',
+    ctaDesc:
+      `¿Tienes una imagen de fondo excelente? Súbela a nuestro Creador gratuito, añade tu texto en la zona segura y descarga tu banner de ${CANVAS.width}×${CANVAS.height} píxeles listo para YouTube.`,
+    ctaButton: 'Abrir Creador de Banners de YouTube →',
+    faqTitle: 'Preguntas Frecuentes sobre Fondos y Plantillas',
+    faqDesc: 'Respuestas a dudas habituales sobre búsqueda y formato de fondos para canales.',
+    faq1Q: '¿Qué tamaño debe tener el fondo de un banner de YouTube?',
+    faq1A:
+      `La imagen de fondo de tu banner de YouTube debe medir exactamente ${CANVAS.width} × ${CANVAS.height} píxeles. Es el tamaño total que YouTube emplea para mostrar tu canal en televisores inteligentes.`,
+    faq2Q: '¿Puedo usar un banner de YouTube completamente negro?',
+    faq2A:
+      `Sí, los fondos negros minimalistas son muy populares en tecnología y gaming. Puedes usar un fondo oscuro y colocar tu logotipo en el centro (${SAFE_PX.full.width} × ${SAFE_PX.full.height} px de área segura).`,
+    faq3Q: '¿Dónde puedo encontrar fondos estéticos para banners de YouTube?',
+    faq3A:
+      'Puedes usar bancos de imágenes de calidad para encontrar paisajes o texturas. Luego, cárgalos en nuestro Creador de Banners para recortar y centrar la imagen en la zona segura.',
+    faq4Q: '¿Cómo agrego texto a una plantilla vacía de YouTube?',
+    faq4A:
+      'Usa nuestro Creador de Banners gratuito. Selecciona un fondo liso o degradado y escribe el nombre de tu canal. La herramienta restringe el texto a la zona segura para evitar recortes en pantallas móviles.',
   },
   templatesHub: {
     safeAreaVerified: "Área segura verificada",

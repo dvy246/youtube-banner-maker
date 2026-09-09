@@ -13,6 +13,7 @@
     "verify-spec": "node scripts/verify-spec.mjs",
     "validate-templates": "node scripts/validate-templates.mjs",
     "check-copy": "node scripts/check-copy.mjs",
+    "check-meta": "node scripts/check-seo-metadata.mjs",
     "check-budgets": "node scripts/check-budgets.mjs",
     "audit:seo": "node scripts/seo-aeo-geo-auditor.mjs",
     "submit-indexnow": "node scripts/submit-indexnow.mjs",

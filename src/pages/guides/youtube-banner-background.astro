@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: 'How do I add text to a blank YouTube banner template?',
-    answer: `Use our free YouTube Banner Maker. Select a blank or gradient background, then use the typography tools to type your channel name. The tool will automatically restrict your text to the mobile safe area, ensuring it never gets cut off.`,
+    answer: `Use our free YouTube Banner Maker. Select a blank or gradient background, then use the typography tools to type your channel name. The tool will automatically restrict your text to the mobile safe area, ensuring safe-area compliance across all viewports.`,
   },
 ];
 
@@ -41,6 +41,8 @@ const jsonLd = [
     title: seo.title,
     description: seo.desc,
     path,
+    datePublished: '2026-03-01T00:00:00Z',
+    dateModified: '2026-09-07T00:00:00Z',
   }),
   getFAQSchema(faqs),
 ];
@@ -86,7 +88,7 @@ const jsonLd = [
               When sourcing an image for your channel's background, the dimensions matter. A YouTube banner background must cover the entire <strong>{CANVAS.width} × {CANVAS.height} pixels</strong> TV display area to avoid ugly letterboxing or stretching.
             </p>
             <p class="text-ink-600 leading-relaxed mt-4">
-              Even if a viewer is on a smartphone, YouTube loads the full 2560×1440 image and crops it dynamically. If you start with a <em>blank YouTube banner template</em> or a high-resolution photograph, ensure it meets this 16:9 ratio before you add any text.
+              Even if a viewer is on a smartphone, YouTube loads the full {CANVAS.width}×{CANVAS.height} image and crops it dynamically. If you start with a <em>blank YouTube banner template</em> or a high-resolution photograph, ensure it meets this 16:9 ratio before you add any text.
             </p>
           </div>
         </section>

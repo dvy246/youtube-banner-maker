@@ -25,11 +25,22 @@ const dict = getTranslations(locale);
         <p class="text-xs text-ink-600 leading-relaxed measure-prose">
           {dict.footer.brandDesc}
         </p>
-        <div class="pt-2">
+        <div class="pt-2 flex flex-col items-start gap-2.5">
           <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-success bg-surface-0 border border-line-200 px-2.5 py-1 rounded-full">
             <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
             {dict.common.privacyBadge}
           </span>
+          <a
+            href="https://ko-fi.com/divyyadav"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-xs font-medium text-white bg-[#FF5E5B] hover:bg-[#ff4642] px-3.5 py-1.5 rounded-full shadow-xs transition-all duration-150 active:scale-[0.98]"
+          >
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.022 5.86c-2.028 1.942-5.405.86-5.405.86s-.781-3.619 1.139-5.467c1.789-1.724 4.372-.638 4.372-.638s1.084 3.447-.106 5.245zm6.84-2.584c-.456 2.378-2.586 2.378-2.586 2.378V7.808s2.13 0 2.586 2.378z"/>
+            </svg>
+            <span>{dict.common.buyMeACoffee}</span>
+          </a>
         </div>
       </div>
 

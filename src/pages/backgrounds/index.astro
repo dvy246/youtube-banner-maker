@@ -183,7 +183,7 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="bg-grid">
           {
-            AESTHETIC_BACKGROUNDS.map((bg) => (
+            AESTHETIC_BACKGROUNDS.map((bg, index) => (
               <article
                 class="bg-card group rounded-2xl border border-line-200 bg-surface-0 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col"
                 data-category={bg.category}
@@ -195,8 +195,12 @@ const safeHeightPct = (SAFE.h * 100).toFixed(2);
                   <img
                     src={bg.src}
                     alt={`${bg.name} - Aesthetic YouTube banner background 2560x1440`}
+                    width="640"
+                    height="360"
+                    decoding="async"
+                    loading={index < 6 ? 'eager' : 'lazy'}
+                    fetchpriority={index < 3 ? 'high' : undefined}
                     class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                    loading="lazy"
                   />
 
                   <!-- Safe Area Overlay (Toggled via JS) -->

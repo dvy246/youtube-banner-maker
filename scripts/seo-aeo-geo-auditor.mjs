@@ -29,7 +29,9 @@ function addResult(phase, item, evidence, status, fix = '') {
 // ----------------------------------------------------------------------
 function auditPhase0(htmlFiles) {
   let titleErrors = 0;
+  let titleLengthErrors = 0;
   let descErrors = 0;
+  let descLengthErrors = 0;
   let viewportErrors = 0;
   let robotsErrors = 0;
   let ogUrlErrors = 0;
@@ -46,13 +48,30 @@ function auditPhase0(htmlFiles) {
     const titleMatch = content.match(/<title>([^<]*)<\/title>/i);
     if (!titleMatch || !titleMatch[1].trim()) titleErrors++;
     else {
-      const t = titleMatch[1].trim();
+      const t = titleMatch[1].trim()
+        .replace(/&amp;/g, '&')
+        .replace(/&#39;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(dec));
       if (t.includes('localhost') || t.includes('example.com')) placeholderDomainErrors++;
+      if (t.length > 60) titleLengthErrors++;
     }
 
     // Description
     const descMatch = content.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i);
     if (!descMatch && !is404) descErrors++;
+    else if (descMatch) {
+      const d = descMatch[1].trim()
+        .replace(/&amp;/g, '&')
+        .replace(/&#39;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(dec));
+      if (d.length > 155) descLengthErrors++;
+    }
 
     // Viewport
     if (!content.match(/<meta\s+name=["']viewport["']\s+content=["'][^"']*width=device-width[^"']*["']/i)) {
@@ -83,7 +102,9 @@ function auditPhase0(htmlFiles) {
   }
 
   addResult(0, 'Title tag presence & placeholder-free', `Audited ${htmlFiles.length} pages. Failures: ${titleErrors}, Placeholders: ${placeholderDomainErrors}`, titleErrors === 0 && placeholderDomainErrors === 0 ? 'PASS' : 'FAIL');
+  addResult(0, 'Title length (<= 60 chars)', `Audited ${htmlFiles.length} pages. Violations (>60 chars): ${titleLengthErrors}`, titleLengthErrors === 0 ? 'PASS' : 'FAIL');
   addResult(0, 'Meta description presence', `Audited ${htmlFiles.length} pages. Failures: ${descErrors}`, descErrors === 0 ? 'PASS' : 'FAIL');
+  addResult(0, 'Meta description length (<= 155 chars)', `Audited ${htmlFiles.length} pages. Violations (>155 chars): ${descLengthErrors}`, descLengthErrors === 0 ? 'PASS' : 'FAIL');
   addResult(0, 'Robots meta tag configuration', `Audited ${htmlFiles.length} pages. Failures: ${robotsErrors}`, robotsErrors === 0 ? 'PASS' : 'FAIL');
   addResult(0, 'Viewport meta tag (device-width)', `Audited ${htmlFiles.length} pages. Failures: ${viewportErrors}`, viewportErrors === 0 ? 'PASS' : 'FAIL');
   addResult(0, 'Open Graph URL & Image tags', `Audited ${htmlFiles.length} pages. Failures: og:url ${ogUrlErrors}, og:image ${ogImageErrors}`, ogUrlErrors === 0 && ogImageErrors === 0 ? 'PASS' : 'FAIL');

@@ -14,11 +14,12 @@ export const fr: Translations = {
     selectLanguage: 'Choisir la langue',
     languages: 'Langues',
     allRightsReserved: 'Tous droits réservés.',
+    buyMeACoffee: 'Offrez-moi un café',
   },
   nav: {
-    fixBanner: 'Ajuster Bannière',
-    checker: 'Vérificateur',
-    maker: 'Créateur',
+    fixBanner: 'Redimensionner Bannière',
+    checker: 'Vérifier Bannière',
+    maker: 'Créer Bannière',
     templates: 'Modèles',
     backgrounds: 'Arrière-plans',
     howToMake: 'Comment Créer',
@@ -180,6 +181,104 @@ export const fr: Translations = {
     title: 'Pourquoi YouTube Rejette les Bannières 1024×576 & Solutions',
     subtitle:
       `Comprendre la contrainte minimale de 2048×1152 px et comment redimensionner votre image 16:9 vers ${CANVAS.width}×${CANVAS.height} px proprement.`,
+  },
+  guideHowToMake: {
+    metaTitle: 'Créer une Bannière YouTube | Guide Étape par Étape',
+    metaDesc:
+      'Apprenez à créer une bannière YouTube adaptée à tous les écrans. Dimensions officielles, zone de sécurité et outils gratuits en ligne.',
+    title: 'Comment Créer une Bannière YouTube : Guide Étape par Étape',
+    subtitle:
+      'Un cadre de conception complet pour composer et exporter une bannière de chaîne nette sur téléviseurs 4K, ordinateurs et smartphones sans coupures involontaires.',
+    kicker: 'MASTERCLASS CRÉATEURS · ÉDITION 2026',
+    directAnswerLabel: 'Résumé Rapide : Comment Créer une Bannière YouTube',
+    directAnswerText:
+      `Pour concevoir une bannière YouTube efficace, réglez votre zone de travail à ${CANVAS.width} × ${CANVAS.height} pixels (format 16:9) et concentrez le nom de votre chaîne, votre proposition de valeur et vos portraits dans la zone de sécurité mobile centrale de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixels. Exportez en PNG sRGB ou JPEG de moins de 6 Mo et mettez-la en ligne via YouTube Studio.`,
+    faq1Q: 'Comment créer une bannière YouTube gratuitement sans logiciel ?',
+    faq1A:
+      `Vous pouvez créer une bannière YouTube gratuite directement dans votre navigateur grâce à notre outil HTML5 local. Choisissez un modèle, ajustez votre texte dans la zone de sécurité de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px et téléchargez un PNG de ${CANVAS.width} × ${CANVAS.height} px sans filigrane ni inscription.`,
+    faq2Q: 'Quelle est la règle de conception la plus importante pour une bannière YouTube ?',
+    faq2A:
+      `La règle essentielle est d'ancrer tous les textes, logos et visages dans la zone de sécurité mobile de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixels. Plus de 75 % des visites s'effectuant sur smartphone, tout élément hors de cette zone centrale est rogné sur petit écran.`,
+    faq3Q: 'Dois-je concevoir ma bannière en 1920x1080 ou en 2560x1440 ?',
+    faq3A:
+      `Concevez toujours votre image en ${CANVAS.width} × ${CANVAS.height} pixels (16:9). Si vous utilisez 1920×1080, YouTube Studio rejettera le fichier car la largeur minimale requise est de 2048 pixels. Le format ${CANVAS.width} × ${CANVAS.height} préserve une netteté maximale sur TV 4K et écrans rétina.`,
+    faq4Q: 'Comment garder un texte lisible sur un fond photo chargé ?',
+    faq4A:
+      'Activez notre dégradé de contraste Contrast Guard ou la plaque de verre dépoli Aero Plate. Ces options ajoutent un voile protecteur derrière vos textes pour assurer une parfaite lisibilité face aux textures vives.',
+    faq5Q: 'Comment téléverser ma bannière terminée dans YouTube Studio ?',
+    faq5A:
+      'Ouvrez YouTube Studio sur votre ordinateur, cliquez sur "Personnalisation" dans le menu gauche, ouvrez l\'onglet "Branding" et cliquez sur "Importer" ou "Modifier" sous Image de la bannière. Vérifiez le cadrage et publiez.',
+  },
+  guideChooseTemplate: {
+    metaTitle: 'Choisir un Modèle de Bannière YouTube | Guide 2026',
+    metaDesc:
+      'Trouvez le meilleur modèle de bannière YouTube selon votre thématique. Règles de contraste, cadrage mobile et personnalisation rapide.',
+    title: 'Comment Choisir le Meilleur Modèle de Bannière YouTube',
+    subtitle:
+      'Un guide méthodique pour évaluer, adapter et déployer des modèles d\'illustration de chaîne professionnels adaptés à toutes les résolutions.',
+    kicker: 'GUIDE DE SÉLECTION TECHNIQUE · 2026',
+    directAnswerLabel: 'Définition Clé : Qu\'est-ce qu\'un Bon Modèle ?',
+    directAnswerText:
+      `Le meilleur modèle de bannière YouTube rassemble tous les textes et éléments vitaux au cœur de la zone de sécurité mobile de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixels sur un canevas global de ${CANVAS.width} × ${CANVAS.height} pixels. Il garantit une typographie contrastée et s'harmonise avec votre photo de profil.`,
+    faq1Q: 'Comment savoir si un modèle s\'affichera bien sur smartphone ?',
+    faq1A:
+      `Vérifiez que les textes majeurs et visuels sont compris dans la zone de sécurité de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixels. Tout élément placé près des bords extérieurs sera coupé sur mobile. Tous les modèles de notre bibliothèque respectent scrupuleusement ces repères.`,
+    faq2Q: 'Quel style de modèle privilégier pour une chaîne professionnelle ?',
+    faq2A:
+      'Pour les chaînes d\'entreprise, de conseil ou de finance, la disposition Split-Left (portrait à gauche, proposition de valeur lisible à droite) dans des tons sobres offre le meilleur rendu d\'autorité.',
+    faq3Q: 'Puis-je personnaliser un modèle sans compétence graphique ?',
+    faq3A:
+      `Oui. Vous pouvez modifier chaque mise en page directement dans votre navigateur via notre outil gratuit. Modifiez vos titres, changez de palette de couleurs en un clic et téléchargez votre fichier PNG de ${CANVAS.width} × ${CANVAS.height} pixels.`,
+    faq4Q: 'Comment éviter que le texte ne se confonde avec l\'arrière-plan ?',
+    faq4A:
+      'Optez pour des modèles intégrant des sécurités de contraste (vignettages doux ou plaques translucides Aero Plate), garantissant un rendu impeccable en mode sombre comme en mode clair.',
+    faq5Q: 'Pourquoi de nombreux modèles Canva ou Photoshop sont-ils rognés sur YouTube ?',
+    faq5A:
+      `Beaucoup de modèles tiers sont créés en 1920×1080 ou ignorent la zone de sécurité de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixels sur le format ${CANVAS.width} × ${CANVAS.height} px. Lors du téléversement, les bordures latérales et verticales sont tronquées.`,
+  },
+  guideBgPage: {
+    metaTitle: 'Fonds de Bannière YouTube | Idées 2560x1440 & Modèles',
+    metaDesc:
+      'Trouvez l\'arrière-plan idéal pour votre bannière YouTube en 2560x1440. Explorez des idées esthétiques et téléchargez des modèles vierges.',
+    title: 'Arrière-Plans de Bannière YouTube : Formats, Idées & Modèles',
+    subtitle:
+      'Découvrez comment sélectionner un fond esthétique pour votre chaîne, les dimensions précises requises et comment utiliser nos modèles vierges.',
+    badge: 'Guide Graphique',
+    section1Title: 'La Bonne Taille pour un Fond de Bannière YouTube',
+    section1P1:
+      `Pour choisir une image de fond, les dimensions sont primordiales. Un arrière-plan de bannière YouTube doit couvrir la totalité des ${CANVAS.width} × ${CANVAS.height} pixels pour les téléviseurs connectés afin d'éviter bandes noires ou étirements.`,
+    section1P2:
+      `Même sur smartphone, YouTube charge l'image complète de ${CANVAS.width}×${CANVAS.height} px avant de la recadrer automatiquement. Veillez donc à respecter ce ratio 16:9 avant d'y intégrer vos textes.`,
+    section2Title: 'Idées Esthétiques pour Fonds de Bannière',
+    section2P1:
+      'L\'arrière-plan pose l\'ambiance de votre chaîne. Les meilleurs fonds sont travaillés sans surcharger la lisibilité. Voici trois pistes recommandées :',
+    idea1Title: 'La Bannière Noire Minimaliste',
+    idea1Text:
+      'Un fond noir profond ou anthracite installe immédiatement une atmosphère haut de gamme et épurée, assurant un contraste maximal avec des typographies claires.',
+    idea2Title: 'Les Dégradés Abstraits',
+    idea2Text:
+      'Des transitions douces et floues apportent de la texture sans saturer la composition de détails perturbateurs.',
+    idea3Title: 'La Photographie Désaturée',
+    idea3Text:
+      'Si vous utilisez une photo de bureau ou de paysage, baissez légèrement le contraste et appliquez un voile sombre pour faire ressortir votre nom de chaîne.',
+    ctaTitle: 'Transformez Votre Fond en Bannière Complète',
+    ctaDesc:
+      `Vous avez déniché l'image parfaite ? Glissez-la dans notre Créateur gratuit, disposez vos textes dans la zone de sécurité et téléchargez votre fichier de ${CANVAS.width}×${CANVAS.height} pixels prêt à l'emploi.`,
+    ctaButton: 'Ouvrir le Créateur de Bannière YouTube →',
+    faqTitle: 'Foire Aux Questions : Fonds & Modèles Vierges',
+    faqDesc: 'Toutes les réponses pour trouver et mettre en forme l\'arrière-plan de votre chaîne.',
+    faq1Q: 'Quelle taille doit faire l\'image de fond d\'une bannière YouTube ?',
+    faq1A:
+      `L'image doit mesurer exactement ${CANVAS.width} × ${CANVAS.height} pixels. C'est la résolution intégrale utilisée par YouTube sur les grands écrans de télévision.`,
+    faq2Q: 'Puis-je employer un fond de bannière entièrement noir ?',
+    faq2A:
+      `Tout à fait, les bannières noires épurées sont très appréciées dans l'univers tech et gaming. Il vous suffit de centrer votre logo dans la zone sûre de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px.`,
+    faq3Q: 'Où trouver des arrière-plans esthétiques pour ma chaîne ?',
+    faq3A:
+      'Explorez des banques d\'images de qualité pour repérer des paysages ou des textures. Importez-les ensuite dans notre outil pour un recadrage précis sur la zone de sécurité.',
+    faq4Q: 'Comment ajouter du texte sur un modèle de bannière vierge ?',
+    faq4A:
+      'Utilisez notre Créateur en ligne gratuit. Sélectionnez votre fond et tapez le nom de votre chaîne : l\'outil encadre automatiquement le texte dans la zone de sécurité mobile.',
   },
   templatesHub: {
     safeAreaVerified: "Zone de sécurité vérifiée",
