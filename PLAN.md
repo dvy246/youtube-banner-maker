@@ -1,5 +1,5 @@
 # Build Plan
-## YouTubeBannerMaker.com
+## YTBannerStudio.com
 
 **Version 1.0 · Companion to PRD.md and ARCHITECTURE.md · Date: 2026-09-05**
 
@@ -39,7 +39,7 @@ Everything here is scoped to a small team (1–2 engineers plus a designer for t
 | 0.2 | Confirm the served width ladder | Record which `w####` variants appear across those channels |
 | 0.3 | Re-measure the JPEG re-encode budget | Request several channels' `w1707` desktop slices with `Accept: image/webp`; record `content-type` and `content-length` |
 | 0.4 | Confirm the 6 MB upload cap and safe-area figures are still current | Re-fetch `support.google.com/youtube/answer/10456525` |
-| 0.5 | Verify `youtubebannermaker.com` registrability | DNS + registrar check; register if available |
+| 0.5 | Verify `ytbannerstudio.com` registrability | DNS + registrar check; register if available |
 | 0.6 | Re-attempt Canva verification | If reachable, record actual capabilities; if still 403, keep the UNVERIFIED marker in PRD |
 
 ### Gate 0 — pass criteria

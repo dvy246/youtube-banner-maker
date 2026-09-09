@@ -72,11 +72,20 @@ const t = dict.toolUi;
 
   <!-- Interactive Two-Column Editor Layout: Configurations on Left (4 cols), Banner Preview on Right (8 cols) -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-    <!-- Left Column: Control Panels & Export (4 cols on desktop) -->
+    <!-- Top Stage: Canvas Preview & Crop Tabs (Order 1 on mobile, Col 5-12 Row 1 on desktop) -->
+    <div class="lg:col-span-8 lg:col-start-5 lg:row-start-1 space-y-6 order-1">
+      <!-- Crop Switcher Tabs -->
+      <CropTabs locale={locale} />
+
+      <!-- Canvas Stage (Editor canvas, overlay guides, dropzone, per-device preview strip) -->
+      <CanvasStage locale={locale} />
+    </div>
+
+    <!-- Tool Controls & Configuration Deck (Order 2 on mobile directly below canvas, Col 1-4 Row 1-2 sticky on desktop) -->
     <aside
       id="tool-sidebar"
       aria-label="Configuration Deck"
-      class="lg:col-span-4 space-y-4 lg:sticky lg:top-[4.75rem] self-start order-2 lg:order-1 lg:max-h-[calc(100vh-5.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1.5 transition-all duration-200 [scrollbar-width:thin] [scrollbar-color:var(--color-line-200)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-line-200 hover:[&::-webkit-scrollbar-thumb]:bg-ink-300 dark:[&::-webkit-scrollbar-thumb]:bg-ink-700"
+      class="lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:row-span-2 space-y-4 lg:sticky lg:top-[4.75rem] self-start order-2 lg:max-h-[calc(100vh-5.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1.5 transition-all duration-200 [scrollbar-width:thin] [scrollbar-color:var(--color-line-200)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-line-200 hover:[&::-webkit-scrollbar-thumb]:bg-ink-300 dark:[&::-webkit-scrollbar-thumb]:bg-ink-700"
     >
       {
         mode === 'check' ? (
@@ -112,14 +121,8 @@ const t = dict.toolUi;
       }
     </aside>
 
-    <!-- Right / Primary Column: Previews & Diagnostics (8 cols on desktop) -->
-    <div class="lg:col-span-8 space-y-6 order-1 lg:order-2">
-      <!-- Crop Switcher Tabs -->
-      <CropTabs locale={locale} />
-
-      <!-- Canvas Stage (Editor canvas, overlay guides, dropzone, per-device preview strip) -->
-      <CanvasStage locale={locale} />
-
+    <!-- Diagnostics & Explanatory Advisories (Order 3 on mobile beneath controls, Col 5-12 Row 2 on desktop) -->
+    <div class="lg:col-span-8 lg:col-start-5 lg:row-start-2 space-y-6 order-3">
       <!-- Verdict Region (Rendered in right column when NOT check mode) -->
       {mode !== 'check' && <VerdictList locale={locale} />}
 

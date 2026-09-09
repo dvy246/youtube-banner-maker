@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://youtubebannermaker.com',
+  site: 'https://ytbannerstudio.com',
   output: 'static',
   trailingSlash: 'never',
   redirects: {

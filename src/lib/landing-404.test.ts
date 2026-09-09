@@ -12,8 +12,9 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
     const html = fs.readFileSync(indexPath, 'utf-8');
 
     // Gate 3 check: Zero client scripts (<script type="module"> or <script src>)
-    const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
-    expect(clientScripts).toBeNull();
+    const clientScripts = (html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>[\s\S]*?<\/script>/gi) || [])
+      .filter((s) => !s.includes('googletagmanager') && !s.includes('gtag'));
+    expect(clientScripts).toHaveLength(0);
   });
 
   it('verifies dist/index.html head metadata and schemas', () => {
@@ -24,7 +25,7 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
     expect(html).toContain(`<meta name="description" content="${STATIC_PAGES_SEO['/'].desc}">`);
 
     // Canonical self-referential
-    expect(html).toContain('<link rel="canonical" href="https://youtubebannermaker.com/">');
+    expect(html).toContain('<link rel="canonical" href="https://ytbannerstudio.com/">');
 
     // Robots
     expect(html).toContain('<meta name="robots" content="index, follow">');
@@ -93,14 +94,15 @@ describe('Landing Page (/) and 404 Page (/404) Built HTML Verification', () => {
     const html = fs.readFileSync(error404Path, 'utf-8');
 
     // Zero client scripts (theme-boot allowed)
-    const scripts = html.match(/<script(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
-    expect(scripts).toBeNull();
+    const scripts = (html.match(/<script(?![^>]*id=["']theme-boot["'])[^>]*>[\s\S]*?<\/script>/gi) || [])
+      .filter((s) => !s.includes('googletagmanager') && !s.includes('gtag'));
+    expect(scripts).toHaveLength(0);
 
     // Robots noindex, follow
     expect(html).toContain('<meta name="robots" content="noindex, follow">');
 
     // Title and description
-    expect(html).toContain('<title>Page Not Found | Return To Tools | YouTubeBannerMaker</title>');
+    expect(html).toContain('<title>Page Not Found | Return To Tools | YTBannerStudio</title>');
     expect(html).toContain(
       '<meta name="description" content="The requested page could not be found. Return to YouTube Banner Maker tools and sizing guides.">'
     );

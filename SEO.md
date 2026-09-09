@@ -1,6 +1,6 @@
 # SEO.md — Search Strategy & Operating Standard
 
-**Project:** YouTubeBannerMaker.com
+**Project:** YTBannerStudio.com
 **Status at time of writing:** Pre-launch. No live URL exists, so nothing in this document has been verified against a live crawl.
 **Governing methodology:** `.agents/skills/seo-grandmaster` (five levers, evidence tiers, ICE, Recommendation Cards)
 **Operating tooling:** `.agents/plugins/claude-seo` (`/seo …` commands)

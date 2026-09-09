@@ -1,5 +1,5 @@
 # Technical Architecture
-## YouTubeBannerMaker.com
+## YTBannerStudio.com
 
 **Version 1.0 · Companion to PRD.md · Date: 2026-09-05**
 

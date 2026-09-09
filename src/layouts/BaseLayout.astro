@@ -24,7 +24,7 @@ const {
   robots = 'index, follow',
   ogType = 'website',
   ogImage = DEFAULT_OG_IMAGE,
-  ogImageAlt = title || 'YouTube Banner Maker — Correct on Every Device',
+  ogImageAlt = title || 'YT Banner Studio — Correct on Every Device',
 } = Astro.props;
 
 const canonicalUrl = getCanonicalUrl(path);
@@ -36,6 +36,15 @@ const is404 = path === '/404' || path.endsWith('/404');
 <!doctype html>
 <html lang={locConfig.htmlLang} data-theme="light" data-palette="pearl">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Z0VZ0J5XT" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-4Z0VZ0J5XT');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script id="theme-boot" is:inline>

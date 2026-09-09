@@ -1,5 +1,5 @@
 /**
- * YouTubeBannerMaker.com — Client Island
+ * YTBannerStudio.com — Client Island
  * Architecture Layer L3: The ONLY client-side JavaScript module.
  * Strictly adheres to §C.4 DOM contract, §C.5 responsibilities, §D state machine, and §E interactions.
  */

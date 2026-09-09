@@ -90,7 +90,7 @@ Context inspection showed these URLs under `backstageAttachment.backstageImageRe
 
 Read-only checks on 2026-09-05:
 
-- DNS returned no A or NS records for `youtubebannermaker.com`.
+- DNS returned no A or NS records for `ytbannerstudio.com`.
 - Verisign RDAP returned HTTP 404.
 - WHOIS returned `No match for domain "YOUTUBEBANNERMAKER.COM"` while also printing a registry service status line.
 

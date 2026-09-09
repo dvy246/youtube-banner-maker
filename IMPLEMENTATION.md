@@ -1,5 +1,5 @@
 # Implementation Specification
-## YouTubeBannerMaker.com
+## YTBannerStudio.com
 
 **Version 1.0 · Date: 2026-09-05 · Status: build-ready**
 
@@ -883,7 +883,7 @@ Stage boundaries and gates come from `PLAN.md` (Decision D-6). `ARCHITECTURE.md 
 | 0.2 | Record which `w####` served-width variants appear |
 | 0.3 | Re-measure the JPEG re-encode budget: request several `w1707` desktop slices with `Accept: image/webp`; record `content-type` and `content-length` |
 | 0.4 | Re-fetch `support.google.com/youtube/answer/10456525` to confirm the 6 MB cap and safe-area figures are current |
-| 0.5 | Verify `youtubebannermaker.com` registrability; register if available |
+| 0.5 | Verify `ytbannerstudio.com` registrability; register if available |
 | 0.6 | Re-attempt Canva verification; if still blocked, keep the UNVERIFIED marker in `PRD.md` |
 
 **Artifact:** `docs/verification/fcrop-survey.md` — channel → decoded rects → match/mismatch. This file is the evidence behind the product's central claim and must exist before Stage 1.

@@ -1,6 +1,6 @@
 # AGENTS.md — Agent Operating System & Behavioral Contract
 
-> **Scope**: This document establishes the non-negotiable operational principles, behavioral guardrails, quality standards, and verification protocols for any AI agent contributing to the **YouTubeBannerMaker.com** project.
+> **Scope**: This document establishes the non-negotiable operational principles, behavioral guardrails, quality standards, and verification protocols for any AI agent contributing to the **YTBannerStudio.com** project.
 >
 > **Notice**: This document governs **HOW** work must be performed, verified, and audited. It deliberately excludes internal codebase file hierarchies and folder structures. Agents must discover relevant modules dynamically through search tools and follow the contracts detailed below.
 
@@ -8,7 +8,7 @@
 
 ## 1. Project Ethos & Prime Directive
 
-YouTubeBannerMaker.com is a free, privacy-first, professional-grade micro-SaaS utility engineered for YouTube channel art. Its purpose is to deliver an experience so smooth, instant, honest, and high-craft that creators feel it is *"too good / illegal to be free."*
+YTBannerStudio.com is a free, privacy-first, professional-grade micro-SaaS utility engineered for YouTube channel art. Its purpose is to deliver an experience so smooth, instant, honest, and high-craft that creators feel it is *"too good / illegal to be free."*
 
 ### Non-Negotiable Core Tenets
 
@@ -143,11 +143,11 @@ To save creators hours of repetitive adjustments and guarantee certified YouTube
 
 ## 6. SEO, AEO & GEO Mastery
 
-YouTubeBannerMaker.com is engineered for top-tier organic discovery across traditional search engines (Google, Bing) and AI answer engines (Perplexity, ChatGPT Search, Gemini, Claude).
+YTBannerStudio.com is engineered for top-tier organic discovery across traditional search engines (Google, Bing) and AI answer engines (Perplexity, ChatGPT Search, Gemini, Claude).
 
 ### Meta & Structured Data Rules
 1. **Title & Description Lengths**: Meta titles must strictly stay $\le 60$ characters. Meta descriptions must stay $\le 155$ characters.
-2. **Canonical & Multi-Language Consistency**: Every page must output a fully qualified canonical URL matching the production domain (`https://youtubebannermaker.com/...`). All 26 core routes map across 7 supported locales (`en`, `es`, `de`, `fr`, `pt-br`, `it`, `ja`), generating 182 localized URLs in `sitemap-index.xml` and 189 static pages during build.
+2. **Canonical & Multi-Language Consistency**: Every page must output a fully qualified canonical URL matching the production domain (`https://ytbannerstudio.com/...`). All 26 core routes map across 7 supported locales (`en`, `es`, `de`, `fr`, `pt-br`, `it`, `ja`), generating 182 localized URLs in `sitemap-index.xml` and 189 static pages during build.
 3. **Structured Data (JSON-LD)**:
    - Tool pages must supply `WebApplication` or `SoftwareApplication` schemas.
    - Catalog & showcase hubs supply `CollectionPage` and `ImageGallery` schemas.

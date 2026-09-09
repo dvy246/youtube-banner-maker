@@ -1,5 +1,5 @@
 # Product Requirements Document
-## YouTubeBannerMaker.com
+## YTBannerStudio.com
 A free, browser-first YouTube banner utility that tells the truth about what YouTube will do to your image.
 
 **Version 1.0 · Status: Draft for build approval · Date: 2026-09-05**
@@ -8,7 +8,7 @@ A free, browser-first YouTube banner utility that tells the truth about what You
 
 ## 1. Executive Summary
 
-YouTubeBannerMaker.com is a free, no-account, browser-first utility for creating, fixing, and verifying YouTube channel banners. It does one job: get a correct, professional-looking banner onto a channel without the pain that the entire category currently inflicts.
+YTBannerStudio.com is a free, no-account, browser-first utility for creating, fixing, and verifying YouTube channel banners. It does one job: get a correct, professional-looking banner onto a channel without the pain that the entire category currently inflicts.
 
 The market splits into two camps, and both fail the user:
 
@@ -168,7 +168,7 @@ PARENT TOPIC: YouTube channel banner
 | United Kingdom | `youtube banner size` | >10,000 | large — mirrors US |
 | France | `bannière youtube` | >1,000 | medium — `créer bannière youtube` family present but top term is ~1/10 of US head |
 
-**FACT (this session).** `youtubebannermaker.com` returned no A and no NS records — the EMD appears unregistered and is available.
+**FACT (this session).** `ytbannerstudio.com` returned no A and no NS records — the EMD appears unregistered and is available.
 
 **INFERENCE.** US is the clear first market: the winnable head term is an order of magnitude larger than the entire French cluster, and the French evidence rests on a single supplied table with no SERP verification (see §4.8 Evidence Gaps). Population is not the criterion — **winnable tool-intent volume** is, and the US wins on both.
 
@@ -566,7 +566,7 @@ Not a Canva clone. Not a multi-platform banner suite. Not a design platform. Not
 
 ### 9.1 Primary Positioning Statement
 
-> For new and small YouTube channel owners who need a professional banner but are not designers, **YouTubeBannerMaker** is a free, no-account banner utility that makes sure the banner fits on every device — TV, desktop, tablet, mobile — before you upload. Unlike Canva, which hands you a canvas without the constraint, and unlike no-account mini-tools that make you a gradient with two lines of text, it enforces the safe area, simulates exactly how YouTube will crop and re-compress your image, and shows you the result before you commit.
+> For new and small YouTube channel owners who need a professional banner but are not designers, **YTBannerStudio** is a free, no-account banner utility that makes sure the banner fits on every device — TV, desktop, tablet, mobile — before you upload. Unlike Canva, which hands you a canvas without the constraint, and unlike no-account mini-tools that make you a gradient with two lines of text, it enforces the safe area, simulates exactly how YouTube will crop and re-compress your image, and shows you the result before you commit.
 
 ### 9.2 Positioning by Competitor
 
@@ -1655,7 +1655,7 @@ None. No list pages that paginate in MVP. All template categories are small.
 
 - **When:** after US validation (see §38) and a French-SERP check (banner.yt/CollabPals/Adobe Express localisation) — do not assume the French SERP is empty of competitors.
 - **Content:** `/fr/` subdirectory, hreflang `fr-FR` / `fr` → `/fr/...`; `en` → `/...`.
-- **English EMD appropriateness:** `YouTubeBannerMaker.com` is an English-language EMD. For a French-facing product, surface `/fr/news/` content in French but keep the domain. An EMD is **not** a ranking mechanism; the domain matters mainly for brand and CTR. On French SERPs, a translated French page on an English domain can still rank; the EMD is not a blocker and not a guarantee. **Do NOT register a separate French domain.** (Single-domain, subdirectory, hreflang is the SEO-correct approach.)
+- **English EMD appropriateness:** `YTBannerStudio.com` is an English-language EMD. For a French-facing product, surface `/fr/news/` content in French but keep the domain. An EMD is **not** a ranking mechanism; the domain matters mainly for brand and CTR. On French SERPs, a translated French page on an English domain can still rank; the EMD is not a blocker and not a guarantee. **Do NOT register a separate French domain.** (Single-domain, subdirectory, hreflang is the SEO-correct approach.)
 - **Localization priorities:** all tool copy + guides; keep the URL slug translated (`/fr/outil/banniere-youtube`), not `créer-bannière` pseudo-translations.
 - **Keyword mapping (French):** `bannière youtube` (>1k), `dimension bannière youtube` (>1k), `créer bannière youtube gratuit` (>100). Note the supplied list shows `créer` queries clearly tool-intent.
 
@@ -1820,7 +1820,7 @@ Platforms won't add YouTube-specific enforcement to a generic editor (incentive 
 - Confirm the `fcrop64` fractions generalize across several non-\@veritasium channels (not just one).
 - Re-verify the w1707-byte budget on more channels (the observed 134 KB is one sample; the desktop full-width was 263 KB; the product should expose a typical band, not one number).
 - Verify French SERP state (if France is pursued) — do not assume empty.
-- Confirm the EMD registration (`youtubebannermaker.com`) is actually available and acquire it.
+- Confirm the EMD registration (`ytbannerstudio.com`) is actually available and acquire it.
 
 ### 37.2 MVP Build Sequence
 

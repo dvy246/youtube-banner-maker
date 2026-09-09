@@ -230,7 +230,7 @@ describe('Stage 6: Create Door Engine & Gate 6 Verification (/tools/youtube-bann
       expect(html).toContain(`<title>${expectedSeo.title}</title>`);
       expect(html).toContain(`<meta name="description" content="${expectedSeo.desc}">`);
       expect(html).toContain(
-        '<link rel="canonical" href="https://youtubebannermaker.com/tools/youtube-banner-maker">'
+        '<link rel="canonical" href="https://ytbannerstudio.com/tools/youtube-banner-maker">'
       );
 
       // 3. JSON-LD Schemas

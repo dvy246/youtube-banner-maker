@@ -1,5 +1,5 @@
 /**
- * YouTubeBannerMaker.com — First-Party Cookieless Analytics
+ * YTBannerStudio.com — First-Party Cookieless Analytics
  * Layer L2: Pure, DOM-free event tracking and payload validation engine.
  * Conforms to IMPLEMENTATION.md §F.5, PLAN.md §9 (Tasks 7.1, 7.2)
  *

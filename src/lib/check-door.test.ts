@@ -345,12 +345,12 @@ describe('Stage 4: Check Door Engine & Gate 4 Verification (/tools/youtube-banne
       expect(html).not.toContain('id="export-button"');
 
       // 5. Metadata and SEO contracts
-      expect(html).toContain('<title>YouTube Banner Checker | Test Crops | YouTubeBannerMaker</title>');
+      expect(html).toContain('<title>YouTube Banner Checker | Test Crops | YTBannerStudio</title>');
       expect(html).toContain(
         '<meta name="description" content="Check your YouTube banner against mobile, desktop, tablet, and TV safe areas. Instant crop verdict and safe-area check with zero signup or watermarks.">'
       );
       expect(html).toContain(
-        '<link rel="canonical" href="https://youtubebannermaker.com/tools/youtube-banner-checker">'
+        '<link rel="canonical" href="https://ytbannerstudio.com/tools/youtube-banner-checker">'
       );
 
       // 6. Schemas

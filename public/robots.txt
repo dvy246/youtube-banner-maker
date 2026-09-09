@@ -1,4 +1,4 @@
-# robots.txt for YouTubeBannerMaker.com
+# robots.txt for YTBannerStudio.com
 User-agent: *
 Allow: /
 
@@ -37,6 +37,6 @@ User-agent: CCBot
 Allow: /
 
 # Sitemap Directives
-Sitemap: https://youtubebannermaker.com/sitemap-index.xml
-Sitemap: https://youtubebannermaker.com/sitemap.xml
+Sitemap: https://ytbannerstudio.com/sitemap-index.xml
+Sitemap: https://ytbannerstudio.com/sitemap.xml
 

@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST_DIR = path.resolve('dist');
-const BASE_URL = 'https://youtubebannermaker.com';
-const PROD_DOMAIN = 'youtubebannermaker.com';
+const BASE_URL = 'https://ytbannerstudio.com';
+const PROD_DOMAIN = 'ytbannerstudio.com';
 
 const report = {
   phases: {},
@@ -140,7 +140,7 @@ function auditPhase1(htmlFiles) {
         canonicalMismatchErrors++;
       } else {
         const canonical = canonicalMatch[1];
-        if (!canonical.startsWith('https://youtubebannermaker.com')) {
+        if (!canonical.startsWith('https://ytbannerstudio.com')) {
           canonicalMismatchErrors++;
         }
       }
@@ -170,11 +170,11 @@ function auditPhase3() {
   const robotsTxt = fs.readFileSync(path.resolve('public/robots.txt'), 'utf-8');
   const headers = fs.readFileSync(path.resolve('public/_headers'), 'utf-8');
 
-  const hasSitemap = robotsTxt.includes('Sitemap: https://youtubebannermaker.com/sitemap-index.xml');
+  const hasSitemap = robotsTxt.includes('Sitemap: https://ytbannerstudio.com/sitemap-index.xml');
   const hasWildcardAllow = robotsTxt.includes('User-agent: *\nAllow: /');
 
   // Verify X-Robots-Tag does not block custom domain
-  const prodNoindex = headers.match(/https:\/\/youtubebannermaker\.com\/\*[\s\S]*?X-Robots-Tag:\s*noindex/i);
+  const prodNoindex = headers.match(/https:\/\/ytbannerstudio\.com\/\*[\s\S]*?X-Robots-Tag:\s*noindex/i);
   const stagingNoindex = headers.includes('X-Robots-Tag: noindex, nofollow');
 
   addResult(3, 'robots.txt structure & sitemap directive', `robots.txt has wildcard Allow: ${hasWildcardAllow}, has Sitemap index: ${hasSitemap}`, hasWildcardAllow && hasSitemap ? 'PASS' : 'FAIL');
@@ -213,7 +213,7 @@ function auditPhase4(htmlFiles) {
 // ----------------------------------------------------------------------
 function auditPhase5() {
   const seoTs = fs.readFileSync(path.resolve('src/lib/seo.ts'), 'utf-8');
-  const hasAuthor = seoTs.includes('YouTubeBannerMaker Editorial Team');
+  const hasAuthor = seoTs.includes('YTBannerStudio Editorial Team');
   const aboutHtml = fs.readFileSync(path.resolve('dist/about/index.html'), 'utf-8');
   const hasPrivacyExplanation = aboutHtml.includes('HTML5 Canvas') || aboutHtml.includes('100%');
 

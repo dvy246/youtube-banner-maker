@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Transform all interactive buttons across YouTubeBannerMaker.com into beautifully curved, tactile, high-craft elements, and equip the Banner Maker editor with 5 high-yield creator power configurations (Safe-Snap Engine, Contrast Guard & Scrim, 1-Click Vibe Harmonizer, Multi-Platform Social Bar, and Coordinated 800×800 Avatar Export) that cut banner creation time from hours to minutes.
+**Goal:** Transform all interactive buttons across YTBannerStudio.com into beautifully curved, tactile, high-craft elements, and equip the Banner Maker editor with 5 high-yield creator power configurations (Safe-Snap Engine, Contrast Guard & Scrim, 1-Click Vibe Harmonizer, Multi-Platform Social Bar, and Coordinated 800×800 Avatar Export) that cut banner creation time from hours to minutes.
 
 **Architecture:** A dual-track enhancement: (1) Global design token and component refactor converting hard boxy buttons into pill-curved (`rounded-full`) and sculptured (`rounded-xl`/`rounded-2xl`) high-craft controls with micro-tactile feedback (`active:scale-[0.98]`); (2) Lean, client-side Canvas and Scene state extensions in `scene.ts`, `render.ts`, `badges.ts`, and `export.ts`, surfaced through intuitive 1-click controls in `MakeControls.astro` and `tool.ts`, while maintaining 0 KB JS on static routes and staying well under the 65 KB gzip island budget.
 

@@ -169,8 +169,9 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
 
     it('M-15: verifies dist/templates/index.html has zero client JS scripts', () => {
       const html = fs.readFileSync(indexHtmlPath, 'utf-8');
-      const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
-      expect(clientScripts).toBeNull();
+      const clientScripts = (html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>[\s\S]*?<\/script>/gi) || [])
+        .filter((s) => !s.includes('googletagmanager') && !s.includes('gtag'));
+      expect(clientScripts).toHaveLength(0);
     });
 
     it('verifies /templates index metadata, canonical, breadcrumbs, and card count', () => {
@@ -179,7 +180,7 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
 
       expect(html).toContain(`<title>${expectedSeo.title}</title>`);
       expect(html).toContain(`<meta name="description" content="${expectedSeo.desc}">`);
-      expect(html).toContain('<link rel="canonical" href="https://youtubebannermaker.com/templates">');
+      expect(html).toContain('<link rel="canonical" href="https://ytbannerstudio.com/templates">');
       expect(html).toContain('"@type":"BreadcrumbList"');
 
       // Hero heading and prose
@@ -208,15 +209,16 @@ describe('Stage 5: Template System & Gallery Hub Verification', () => {
         const html = fs.readFileSync(nichePagePath, 'utf-8');
 
         // M-15: Zero client scripts (theme-boot allowed)
-        const clientScripts = html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>/gi);
-        expect(clientScripts).toBeNull();
+        const clientScripts = (html.match(/<script(?![^>]*type=["']application\/ld\+json["'])(?![^>]*id=["']theme-boot["'])[^>]*>[\s\S]*?<\/script>/gi) || [])
+          .filter((s) => !s.includes('googletagmanager') && !s.includes('gtag'));
+        expect(clientScripts).toHaveLength(0);
 
         // SEO metadata
         const meta = NICHE_TITLES[niche];
         const expectedTitle = meta.title.replace(/&/g, '&amp;');
         expect(html).toContain(`<title>${expectedTitle}</title>`);
         expect(html).toContain(`<meta name="description" content="${meta.desc}">`);
-        expect(html).toContain(`<link rel="canonical" href="https://youtubebannermaker.com/templates/${niche}">`);
+        expect(html).toContain(`<link rel="canonical" href="https://ytbannerstudio.com/templates/${niche}">`);
 
         // JSON-LD Breadcrumbs: Home -> Templates -> Niche
         expect(html).toContain('"@type":"BreadcrumbList"');

@@ -3,7 +3,7 @@ import type { Translations } from './en';
 
 export const ja: Translations = {
   common: {
-    brandName: 'YouTube Banner Maker',
+    brandName: 'YT Banner Studio',
     tagline: '完全ブラウザ処理 · 画像送信なし',
     skipToContent: 'メインコンテンツへスキップ',
     privacyBadge: '100% クライアント完結・完全プライベート',
@@ -61,7 +61,7 @@ export const ja: Translations = {
       'YouTubeはGoogle LLCの商標です。当ツールは独立して開発されたユーティリティです。',
   },
   home: {
-    metaTitle: 'バナーサイズ | 完璧なフィット | YouTubeBannerMaker',
+    metaTitle: 'バナーサイズ | 完璧なフィット | YTBannerStudio',
     metaDesc:
       `YouTubeバナーの公式サイズは${CANVAS.width}×${CANVAS.height}px。スマホやPCで文字切れしないセーフエリア対応チャンネルアートを完全無料で簡単作成・サイズ変更。`,
     badgePrivacy: '100% クライアント完結・完全プライベート',
@@ -73,7 +73,7 @@ export const ja: Translations = {
       'スマホ、タブレット、PC、TVそれぞれの表示枠に合わせて画像を自動補正。サーバーへの画像アップロードなしで、ブラウザ内で即座にリサイズ＆セーフエリア確認が可能です。',
     ctaFix: 'リサイズツールを開く',
     ctaTemplates: '無料テンプレートを見る',
-    ctaCheck: 'セーフエリアを診断する',
+    ctaCheck: 'エステティック背景を見る',
     telemetrySafe: 'セーフエリア自動最適化',
     telemetryUniversal: '全デバイス表示検証済み',
     telemetryExport: `高精細 ${CANVAS.width}×${CANVAS.height} 出力`,
@@ -88,10 +88,10 @@ export const ja: Translations = {
     faqDesc: 'YouTubeバナーのサイズ設定、トリミング、書き出しについての疑問にお答えします。',
   },
   about: {
-    metaTitle: '概要 | ブラウザ完結のプライバシー | YouTubeBannerMaker',
+    metaTitle: '概要 | ブラウザ完結のプライバシー | YTBannerStudio',
     metaDesc:
-      'YouTube Banner Makerは、画像データをサーバーに送信しない完全ブラウザ内処理のチャンネルアート作成ツールです。開発理念やプライバシー保護の仕組みをご紹介。',
-    title: 'YouTube Banner Makerについて',
+      'YT Banner Studioは、画像データをサーバーに送信しない完全ブラウザ内処理のチャンネルアート作成ツールです。開発理念やプライバシー保護の仕組みをご紹介。',
+    title: 'YT Banner Studioについて',
     subtitle: 'クリエイターのプライバシーを最優先に考えた、YouTube専用の高品質バナー作成・調整ツール。',
     missionTitle: '私たちの理念と開発動機',
     missionP1:
@@ -107,9 +107,9 @@ export const ja: Translations = {
     val3Desc: 'アカウント登録もメール入力も透かしも不要。サイトを開いて10秒以内で作業が完了します。',
   },
   contact: {
-    metaTitle: 'サポート | 迅速な対応 | YouTubeBannerMaker',
+    metaTitle: 'サポート | 迅速な対応 | YTBannerStudio',
     metaDesc:
-      'YouTube Banner Makerに関する技術的なご質問、不具合のご報告、新機能のご要望はこちらから。24〜48時間以内に迅速にご案内いたします。',
+      'YT Banner Studioに関する技術的なご質問、不具合のご報告、新機能のご要望はこちらから。24〜48時間以内に迅速にご案内いたします。',
     title: 'お問い合わせ・サポート',
     subtitle: 'ご質問、不具合の報告、テンプレート追加のリクエストなど、お気軽にご連絡ください。',
     getInTouchTitle: 'ご連絡先',
@@ -120,14 +120,14 @@ export const ja: Translations = {
     responseTime: '通常、24〜48時間以内に返信いたします。',
   },
   privacy: {
-    metaTitle: 'プライバシー | 100%ローカル処理 | YouTubeBannerMaker',
+    metaTitle: 'プライバシー | 100%ローカル処理 | YTBannerStudio',
     metaDesc:
-      'YouTube Banner Makerのプライバシー規約。すべての画像処理はご利用のブラウザ内（HTML5 Canvas）で完結し、サーバーへのデータ送信は一切行われません。',
+      'YT Banner Studioのプライバシー規約。すべての画像処理はご利用のブラウザ内（HTML5 Canvas）で完結し、サーバーへのデータ送信は一切行われません。',
     title: 'プライバシーポリシー',
     subtitle: 'あなたの画像データはお使いの端末から出ません。当ツールのプライバシー保証。',
     zeroUploadTitle: 'サーバー送信ゼロの保証',
     zeroUploadP1:
-      'YouTubeBannerMaker.comは、設計段階から完全なクライアントサイド（ブラウザ完結型）Webアプリケーションとして構築されています。バナー画像を編集エリアにドロップしても、画像はお使いの端末のメモリ内でのみ処理されます。',
+      'YTBannerStudio.comは、設計段階から完全なクライアントサイド（ブラウザ完結型）Webアプリケーションとして構築されています。バナー画像を編集エリアにドロップしても、画像はお使いの端末のメモリ内でのみ処理されます。',
     zeroUploadP2:
       '当サイトのサーバーが、お客様の画像、テキスト、ロゴ、デザイン素材を受信、保存、監視、記録することは技術的に不可能です。',
     dataCollectionTitle: '収集しない情報',
@@ -139,23 +139,23 @@ export const ja: Translations = {
       'ダークモード切り替えやカラーパレットの選択状態を保持するためだけに、ブラウザのlocalStorageを使用しています。このデータが外部に送信されることはありません。',
   },
   terms: {
-    metaTitle: '利用規約 | 権利はあなたのもの | YouTubeBannerMaker',
+    metaTitle: '利用規約 | 権利はあなたのもの | YTBannerStudio',
     metaDesc:
-      'YouTube Banner Makerの利用規約。商用利用・個人利用ともに完全無料。制作されたバナー画像の著作権は100%作成者に帰属します。',
+      'YT Banner Studioの利用規約。商用利用・個人利用ともに完全無料。制作されたバナー画像の著作権は100%作成者に帰属します。',
     title: '利用規約',
     subtitle: '完全無料・プライバシー重視のクリエイティブツールの利用規約です。',
     usageTitle: '利用許諾と著作権',
     usageP1:
-      'YouTube Banner Makerは、個人利用・商用利用を問わず完全無料でご利用いただけます。当ツールを使用して作成・出力したバナーやグラフィックの権利は100%制作者に帰属します。',
+      'YT Banner Studioは、個人利用・商用利用を問わず完全無料でご利用いただけます。当ツールを使用して作成・出力したバナーやグラフィックの権利は100%制作者に帰属します。',
     disclaimerTitle: '商標に関する表示',
     disclaimerP1:
-      'YouTubeはGoogle LLCの登録商標です。YouTube Banner Makerは独立して開発・運営されているユーティリティであり、YouTubeまたはGoogle LLCとの提携、承認、支援関係はありません。',
+      'YouTubeはGoogle LLCの登録商標です。YT Banner Studioは独立して開発・運営されているユーティリティであり、YouTubeまたはGoogle LLCとの提携、承認、支援関係はありません。',
     liabilityTitle: '免責事項',
     liabilityP1:
       '本ツールは現状有姿（as-is）で提供されます。YouTube Studioの公式バナー仕様に最も忠実な計算ロジックを提供できるよう努めております。',
   },
   guideSize: {
-    metaTitle: 'バナーサイズ | 全デバイス対応 | YouTubeBannerMaker',
+    metaTitle: 'バナーサイズ | 全デバイス対応 | YTBannerStudio',
     metaDesc:
       `YouTubeチャンネルアートの推奨サイズは${CANVAS.width}×${CANVAS.height}px（最小2048×1152px、最大6MB）。スマホのセーフエリアや各端末での切り抜きを徹底解説。`,
     title: 'YouTubeバナーサイズ徹底解説: 推奨寸法とセーフエリア',
@@ -169,7 +169,7 @@ export const ja: Translations = {
     aspectRatio: 'アスペクト比',
   },
   guideSafeArea: {
-    metaTitle: 'セーフエリア | 見切れないデザイン | YouTubeBannerMaker',
+    metaTitle: 'セーフエリア | 見切れないデザイン | YTBannerStudio',
     metaDesc:
       'YouTubeバナーのセーフエリア寸法と比率の計算式を解説。スマホでアイコンやチャンネル名が切れる原因と、中央エリアに文字を正しく配置する方法。',
     title: 'YouTubeバナーのセーフエリア解説: 寸法と各端末のトリミング',
@@ -179,7 +179,7 @@ export const ja: Translations = {
     mobileVsDesktop: 'スマホ表示とPC表示の比較',
   },
   guide1024: {
-    metaTitle: '1024x576エラー | 解決策 | YouTubeBannerMaker',
+    metaTitle: '1024x576エラー | 解決策 | YTBannerStudio',
     metaDesc:
       `YouTubeで1024×576pxのバナーがエラーになる理由を解説。16:9比率の最小2048×1152px基準と、${CANVAS.width}×${CANVAS.height}pxへ綺麗に拡大・修正する手順。`,
     title: 'YouTubeバナーで1024×576pxがエラーになる原因と解決策',
@@ -187,7 +187,7 @@ export const ja: Translations = {
       `YouTubeの最小アップロード基準（2048×1152px）と、16:9比率の画像を${CANVAS.width}×${CANVAS.height}pxへ正しくリサイズ・拡大する方法。`,
   },
   guideHowToMake: {
-    metaTitle: 'YouTubeバナーの作り方 | 初心者向けガイド | 2026',
+    metaTitle: 'YouTubeバナーの作り方 | 初心者向け解説 | YTBannerStudio',
     metaDesc:
       'スマホでも文字が切れないYouTubeバナーの作り方を徹底解説。公式推奨サイズ、セーフエリア設計、無料デザインツールを活用した手順。',
     title: 'YouTubeバナーの作り方：スマホで切れない実践的ガイド',
@@ -199,7 +199,7 @@ export const ja: Translations = {
       `効果的なYouTubeバナーを作るには、カンバスを${CANVAS.width} × ${CANVAS.height}ピクセル（16:9比率）に設定し、チャンネル名やキャッチコピー、顔写真を中央の${SAFE_PX.full.width} × ${SAFE_PX.full.height}ピクセルのモバイルセーフエリア内に配置します。6MB以下のsRGB PNG形式で書き出し、YouTube Studioのカスタマイズから設定します。`,
     faq1Q: 'デザインソフトなしで無料のYouTubeバナーを作成できますか？',
     faq1A:
-      `ブラウザ上で動作する当ツールのYouTube Banner Makerを使えば、ソフトのインストールなしで無料作成が可能です。レイアウトを選び、${SAFE_PX.full.width} × ${SAFE_PX.full.height}pxのセーフゾーン内に文字を配置して、透かしなしの${CANVAS.width} × ${CANVAS.height}px PNGをダウンロードできます。`,
+      `ブラウザ上で動作する当ツールのYT Banner Studioを使えば、ソフトのインストールなしで無料作成が可能です。レイアウトを選び、${SAFE_PX.full.width} × ${SAFE_PX.full.height}pxのセーフゾーン内に文字を配置して、透かしなしの${CANVAS.width} × ${CANVAS.height}px PNGをダウンロードできます。`,
     faq2Q: 'YouTubeバナーデザインで最も重要なルールは何ですか？',
     faq2A:
       `最重要ルールは、チャンネル名やロゴを中央の${SAFE_PX.full.width} × ${SAFE_PX.full.height}ピクセルのセーフエリア内に収めることです。アクセスの75%以上がスマホからのため、この中央枠の外側に配置された文字はスマホ画面で切り取られてしまいます。`,
@@ -214,7 +214,7 @@ export const ja: Translations = {
       'パソコンのブラウザでYouTube Studioを開き、左メニューの「カスタマイズ」から「ブランディング」タブを選択します。「バナー画像」の「アップロード」をクリックし、表示範囲を確認して「公開」を押せば完了です。',
   },
   guideChooseTemplate: {
-    metaTitle: 'YouTubeバナーテンプレートの選び方 | 完全ガイド',
+    metaTitle: 'バナーテンプレートの選び方 | 完全ガイド | YTBannerStudio',
     metaDesc:
       'ジャンル別YouTubeバナーテンプレートの選び方。スマホ表示での文字切れを防ぐセーフエリア設計と高コントラスト配色の重要性。',
     title: '最適なYouTubeバナーテンプレートの選び方',
@@ -232,7 +232,7 @@ export const ja: Translations = {
       'コンサルティングやビジネス系には、左側に顔写真やモノグラムを配置し、右側に明快なキャッチコピーと配信予定を並べる「スプリット」または「スタック」配置が最も信頼感を与えます。',
     faq3Q: 'デザインの専門知識がなくてもテンプレートを編集できますか？',
     faq3A:
-      `はい。無料のYouTube Banner Makerを使ってブラウザ内で手軽に編集できます。テキストを入力し、1クリックでカラーパレットを切り替えて、${CANVAS.width} × ${CANVAS.height}ピクセルの高画質PNGをダウンロード可能です。`,
+      `はい。無料のYT Banner Studioを使ってブラウザ内で手軽に編集できます。テキストを入力し、1クリックでカラーパレットを切り替えて、${CANVAS.width} × ${CANVAS.height}ピクセルの高画質PNGをダウンロード可能です。`,
     faq4Q: '文字と背景が同化して見づらくなるのを防ぐには？',
     faq4A:
       '文字の後ろに敷く薄いすりガラス風プレートや、中央部に適度な陰影をつけるコントラスト保護機能を備えたテンプレートを選ぶことで、ライトモード・ダークモード問わず快適に読めるようになります。',
@@ -241,7 +241,7 @@ export const ja: Translations = {
       `外部テンプレートの多くは一般的な1920×1080サイズで作られていたり、${CANVAS.width} × ${CANVAS.height}pxカンバスにおける${SAFE_PX.full.width} × ${SAFE_PX.full.height}pxのセーフエリア基準を考慮していません。そのためYouTubeへ登録した際に周囲がカットされてしまいます。`,
   },
   guideBgPage: {
-    metaTitle: 'YouTubeバナー背景画像素材 | 2560x1440サイズ',
+    metaTitle: 'バナー背景画像素材 | 2560x1440 | YTBannerStudio',
     metaDesc:
       'YouTubeバナーに最適な2560x1440の背景画像素材とアイデア。おしゃれなグラデーションや黒背景テンプレートを無料でダウンロード。',
     title: 'YouTubeバナー用背景素材：サイズ・アイデア・無料テンプレート',
@@ -268,7 +268,7 @@ export const ja: Translations = {
     ctaTitle: '背景画像を使って本格的なバナーを作ろう',
     ctaDesc:
       `お気に入りの背景が見つかりましたか？無料のエディターに画像を読み込み、セーフエリア内に文字を乗せるだけで、${CANVAS.width}×${CANVAS.height}pxの公式規格バナーが完成します。`,
-    ctaButton: 'YouTube Banner Makerを開く →',
+    ctaButton: 'YT Banner Studioを開く →',
     faqTitle: '背景画像・テンプレートに関するよくある質問',
     faqDesc: 'バナー背景の探し方や設定方法についての疑問にお答えします。',
     faq1Q: 'YouTubeバナーの背景サイズは何ピクセルですか？',
@@ -282,7 +282,7 @@ export const ja: Translations = {
       '高品質なストックフォトサイトで風景やテクスチャ画像を探せます。ダウンロードした画像を当ツールのMakerに読み込めば、セーフエリアに合わせて簡単に中央配置できます。',
     faq4Q: '無地のバナーテンプレートに文字を入れるには？',
     faq4A:
-      '無料のYouTube Banner Makerをご利用ください。背景を選んでチャンネル名を入力するだけで、スマホで文字が切れないよう安全領域内に自動調整されます。',
+      '無料のYT Banner Studioをご利用ください。背景を選んでチャンネル名を入力するだけで、スマホで文字が切れないよう安全領域内に自動調整されます。',
   },
   templatesHub: {
     safeAreaVerified: "セーフエリア検証済み",
@@ -295,7 +295,7 @@ export const ja: Translations = {
     fieldPhoto: "写真",
     fieldGradient: "グラデーション",
     fieldColor: "カラー",
-    metaTitle: '無料テンプレート | ダウンロード | YouTubeBannerMaker',
+    metaTitle: '無料テンプレート | ダウンロード | YTBannerStudio',
     metaDesc:
       'スマホセーフエリア確認済みの無料YouTubeバナーテンプレート。ゲーム、テック、音楽、Vlog、ビジネスなど全ジャンルのデザインをブラウザで今すぐ編集可能。',
     title: 'YouTubeバナーテンプレート一覧',
@@ -307,7 +307,7 @@ export const ja: Translations = {
   },
   tools: {
     resizer: {
-      metaTitle: 'バナーリサイズ | 自動トリミング | YouTubeBannerMaker',
+      metaTitle: 'バナーリサイズ | 自動トリミング | YTBannerStudio',
       metaDesc:
         `画像をYouTube公式推奨サイズ${CANVAS.width}×${CANVAS.height}pxにリサイズ。スマホのセーフエリアを確認しながら文字切れなしで書き出せる無料オンラインツール。`,
       title: 'YouTubeバナーリサイズツール（調整モード）',
@@ -315,7 +315,7 @@ export const ja: Translations = {
         `お手持ちの画像をドロップするだけで、YouTube規格の${CANVAS.width}×${CANVAS.height}pxに瞬時にリサイズ・位置調整して書き出せます。`,
     },
     checker: {
-      metaTitle: 'バナー確認ツール | 表示テスト | YouTubeBannerMaker',
+      metaTitle: 'バナー確認ツール | 表示テスト | YTBannerStudio',
       metaDesc:
         '作成したYouTubeバナー画像をアップロードして、スマホ・PC・テレビでのトリミングやセーフエリアを即座にシミュレーション確認できる無料診断ツール。',
       title: 'YouTubeバナーセーフエリア確認ツール（診断モード）',
@@ -327,7 +327,7 @@ export const ja: Translations = {
       handoffBtn: 'リサイズ画面で修正する →',
     },
     maker: {
-      metaTitle: 'バナー作成 | 即時エクスポート | YouTubeBannerMaker',
+      metaTitle: 'バナー作成 | 即時エクスポート | YTBannerStudio',
       metaDesc:
         '登録不要・透かしなしで使える無料YouTubeバナー作成ツール。セーフエリアガイド付きで、スマホでもパソコンでも美しく収まるチャンネルアートを簡単デザイン。',
       title: 'YouTubeバナー作成ツール（作成モード）',
@@ -466,7 +466,7 @@ export const ja: Translations = {
   notFound: {
     title: '404: ページが見つかりません',
     subtitle: 'お探しのページは移動したか、削除された可能性があります。',
-    homeBtn: 'YouTube Banner Maker トップページに戻る →',
+    homeBtn: 'YT Banner Studio トップページに戻る →',
   },
   specTable: {
     caption: "公式YouTubeチャンネルバナー推奨規格・寸法",
@@ -1118,7 +1118,7 @@ export const ja: Translations = {
     }
   },
   backgroundsPage: {
-    metaTitle: "YouTubeバナーおしゃれな背景素材 | 無料ダウンロード",
+    metaTitle: "バナーおしゃれな背景素材 | 無料DL | YTBannerStudio",
     metaDesc: "YouTubeバナー用のおしゃれな背景素材30選：パステル雲、アニメ風、ローズゴールド大理石、テラコッタ。2560x1440無料ダウンロード＆エディタ編集可能。",
     badge: "厳選おしゃれ背景素材30選",
     title: "全デバイス対応 YouTubeバナー向けおしゃれな無料背景",

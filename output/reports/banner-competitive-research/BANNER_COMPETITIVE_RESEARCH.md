@@ -1,7 +1,7 @@
 # Banner competitive research and product decision
 
 **Project:** `/Users/divyyadav/developer/Banner`  
-**Product:** YouTubeBannerMaker.com / “Banner”  
+**Product:** YTBannerStudio.com / “Banner”  
 **Research snapshot:** September 8, 2026  
 **Decision:** Continue, but change the primary position from “another free banner maker” to “the YouTube banner compatibility and fix studio.”
 

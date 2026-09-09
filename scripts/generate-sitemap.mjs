@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const SITE_URL = 'https://youtubebannermaker.com';
+const SITE_URL = 'https://ytbannerstudio.com';
 const TODAY = new Date().toISOString().split('T')[0];
 
 // Core non-niche indexable routes

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const KEY = '4c2b9a781f3d4e658a2d3b5e9f1a7c8e';
-const HOST = 'youtubebannermaker.com';
+const HOST = 'ytbannerstudio.com';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const SITEMAP_PATH = path.resolve('public/sitemap.xml');
 

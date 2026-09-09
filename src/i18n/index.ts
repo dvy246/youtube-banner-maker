@@ -1,5 +1,5 @@
 /**
- * YouTubeBannerMaker.com — i18n & International SEO Engine
+ * YTBannerStudio.com — i18n & International SEO Engine
  * Handles locale routing, hreflang generation, and localized copy lookup.
  */
 import { SITE_URL } from '../lib/seo';

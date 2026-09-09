@@ -1,6 +1,6 @@
-# YouTubeBannerMaker.com
+# YTBannerStudio.com
 
-> YouTubeBannerMaker is a free, privacy-first, 100% client-side micro-SaaS utility engineered for YouTube channel art. It provides instant banner resizing, automated safe-area crop verification, and mobile-safe template generation with zero server uploads, zero watermarks, and no user registration required.
+> YTBannerStudio is a free, privacy-first, 100% client-side micro-SaaS utility engineered for YouTube channel art. It provides instant banner resizing, automated safe-area crop verification, and mobile-safe template generation with zero server uploads, zero watermarks, and no user registration required.
 
 ## Core YouTube Channel Art Specifications
 

@@ -3,7 +3,7 @@ import type { Translations } from './en';
 
 export const fr: Translations = {
   common: {
-    brandName: 'YouTube Banner Maker',
+    brandName: 'YT Banner Studio',
     tagline: 'Dans le navigateur · zéro envoi',
     skipToContent: 'Aller au contenu principal',
     privacyBadge: 'Confidentialité 100% Côté Client',
@@ -61,7 +61,7 @@ export const fr: Translations = {
       'YouTube est une marque déposée de Google LLC. Cet outil est développé de façon indépendante.',
   },
   home: {
-    metaTitle: 'Créateur Bannière | Ajustement Parfait | YouTubeBannerMaker',
+    metaTitle: 'Créateur Bannière | Ajustement Parfait | YTBannerStudio',
     metaDesc:
       `La taille officielle de bannière YouTube est ${CANVAS.width}×${CANVAS.height} px. Redimensionnez et créez des bannières adaptées aux mobiles, PC et TV sans coupure.`,
     badgePrivacy: 'Confidentialité 100% Côté Client',
@@ -73,7 +73,7 @@ export const fr: Translations = {
       'Redimensionnez, recadrez et vérifiez vos bannières pour mobiles, tablettes, ordinateurs et TV. Rendu local 100% privé dans votre navigateur avec HTML5 Canvas sans délai de téléversement.',
     ctaFix: 'Lancer le Redimensionneur',
     ctaTemplates: 'Voir les Modèles Gratuits',
-    ctaCheck: 'Vérifier la Zone Sécurisée',
+    ctaCheck: 'Explorer Arrière-plans Esthétiques',
     telemetrySafe: 'Rognage Sécurisé Automatique',
     telemetryUniversal: 'Optimisé pour TV et Mobile',
     telemetryExport: `Export Haute Définition en ${CANVAS.width}×${CANVAS.height}`,
@@ -88,14 +88,14 @@ export const fr: Translations = {
     faqDesc: 'Tout ce que vous devez savoir sur les dimensions, le recadrage et l\'exportation des bannières YouTube.',
   },
   about: {
-    metaTitle: 'À Propos | Confidentialité Totale | YouTubeBannerMaker',
+    metaTitle: 'À Propos | Confidentialité Totale | YTBannerStudio',
     metaDesc:
-      'Découvrez YouTube Banner Maker: outil 100% navigateur, aucun téléversement vers un serveur, rendu local HTML5 Canvas et zéro inscription.',
-    title: 'À Propos de YouTube Banner Maker',
+      'Découvrez YT Banner Studio: outil 100% navigateur, aucun téléversement vers un serveur, rendu local HTML5 Canvas et zéro inscription.',
+    title: 'À Propos de YT Banner Studio',
     subtitle: 'Un outil de niveau professionnel respectueux de votre vie privée, pensé pour les créateurs YouTube.',
     missionTitle: 'Notre Mission & Notre Éthique',
     missionP1:
-      'La plupart des outils en ligne imposent une inscription, diffusent des publicités agressives ou envoient vos fichiers personnels sur des serveurs distants. Nous avons développé YouTube Banner Maker pour prouver qu\'un outil créatif professionnel peut être instantané, gratuit, transparent et totalement confidentiel.',
+      'La plupart des outils en ligne imposent une inscription, diffusent des publicités agressives ou envoient vos fichiers personnels sur des serveurs distants. Nous avons développé YT Banner Studio pour prouver qu\'un outil créatif professionnel peut être instantané, gratuit, transparent et totalement confidentiel.',
     missionP2:
       'Chaque opération — décodage, redimensionnement, rendu Canvas, application du masque de zone sécurisée et export PNG/JPEG — se déroule localement sur votre machine. Aucun octet d\'image ne transite sur Internet.',
     valuesTitle: 'Nos Principes Techniques',
@@ -107,7 +107,7 @@ export const fr: Translations = {
     val3Desc: 'Pas de compte, pas de formulaire e-mail, aucun filigrane et aucun frais. Un outil opérationnel en moins de 10 secondes.',
   },
   contact: {
-    metaTitle: 'Support | Réponse Rapide | YouTubeBannerMaker',
+    metaTitle: 'Support | Réponse Rapide | YTBannerStudio',
     metaDesc:
       'Contactez l\'équipe de YouTube Banner Maker pour toute question technique, rapport de bug ou suggestion. Réponse rapide et directe.',
     title: 'Contact & Support',
@@ -120,14 +120,14 @@ export const fr: Translations = {
     responseTime: 'Délai de réponse habituel : entre 24 et 48 heures.',
   },
   privacy: {
-    metaTitle: 'Confidentialité | 100% Client | YouTubeBannerMaker',
+    metaTitle: 'Confidentialité | 100% Client | YTBannerStudio',
     metaDesc:
       'Vos créations restent sur votre appareil. Traitement 100% local via HTML5 Canvas, aucun envoi vers des serveurs et aucun cookie tiers.',
     title: 'Politique de Confidentialité',
     subtitle: 'Vos images ne quittent jamais votre appareil. C\'est notre engagement technique.',
     zeroUploadTitle: 'Garantie de Zéro Envoi vers un Serveur',
     zeroUploadP1:
-      'YouTubeBannerMaker.com est conçu dès sa genèse comme une application web exécutée exclusivement dans votre navigateur. Lorsque vous glissez une image dans nos outils, celle-ci est traitée uniquement dans la mémoire vive de votre appareil.',
+      'YTBannerStudio.com est conçu dès sa genèse comme une application web exécutée exclusivement dans votre navigateur. Lorsque vous glissez une image dans nos outils, celle-ci est traitée uniquement dans la mémoire vive de votre appareil.',
     zeroUploadP2:
       'Nos serveurs d\'hébergement ne reçoivent, ne stockent, n\'inspectent et ne tracent aucune image, aucun texte, aucun logo ni aucun fichier que vous utilisez.',
     dataCollectionTitle: 'Ce Que Nous Ne Collectons Pas',
@@ -139,23 +139,23 @@ export const fr: Translations = {
       'Nous utilisons uniquement le localStorage de votre navigateur pour mémoriser vos préférences d\'interface (mode clair/sombre et palette de couleurs). Ces données restent strictement sur votre appareil.',
   },
   terms: {
-    metaTitle: 'Conditions | Gardez vos Droits | YouTubeBannerMaker',
+    metaTitle: 'Conditions | Gardez vos Droits | YTBannerStudio',
     metaDesc:
       'Conditions d\'utilisation de YouTube Banner Maker. Gratuit pour usage personnel et commercial. Mentions relatives aux marques de Google LLC.',
     title: 'Conditions d\'Utilisation',
     subtitle: 'Des règles claires pour un utilitaire de création gratuit et respectueux de la vie privée.',
     usageTitle: 'Usage Autorisé & Droits',
     usageP1:
-      'YouTube Banner Maker est mis à disposition gratuitement pour la création d\'illustrations de chaîne, tant pour un usage privé que commercial. Vous demeurez le propriétaire exclusif de toutes les bannières créées et exportées avec cet outil.',
+      'YT Banner Studio est mis à disposition gratuitement pour la création d\'illustrations de chaîne, tant pour un usage privé que commercial. Vous demeurez le propriétaire exclusif de toutes les bannières créées et exportées avec cet outil.',
     disclaimerTitle: 'Avis Relatif aux Marques Déposées',
     disclaimerP1:
-      'YouTube est une marque déposée de Google LLC. YouTube Banner Maker est un outil indépendant qui n\'est ni affilié, ni approuvé, ni sponsorisé par YouTube ou Google LLC.',
+      'YouTube est une marque déposée de Google LLC. YT Banner Studio est un outil indépendant qui n\'est ni affilié, ni approuvé, ni sponsorisé par YouTube ou Google LLC.',
     liabilityTitle: 'Limitation de Responsabilité',
     liabilityP1:
       'Cet outil est fourni "en l\'état". Nous nous efforçons de proposer la reproduction mathématique la plus rigoureuse des spécifications officielles de YouTube Studio.',
   },
   guideSize: {
-    metaTitle: 'Taille Bannière | Évitez les Coupures | YouTubeBannerMaker',
+    metaTitle: 'Taille Bannière | Évitez les Coupures | YTBannerStudio',
     metaDesc:
       `Guide complet des dimensions de bannière YouTube: ${CANVAS.width}×${CANVAS.height} px, zone sécurisée mobile, limite de 6 Mo et conseils contre les coupures.`,
     title: 'Guide Taille Bannière YouTube: Dimensions & Zone Sécurisée',
@@ -169,7 +169,7 @@ export const fr: Translations = {
     aspectRatio: 'Ratio d\'Affichage',
   },
   guideSafeArea: {
-    metaTitle: 'Zone Sécurisée | Ajustement Précis | YouTubeBannerMaker',
+    metaTitle: 'Zone Sécurisée | Ajustement Précis | YTBannerStudio',
     metaDesc:
       'Comprendre la zone de sécurité YouTube. Découvrez comment centrer textes et logos pour qu\'ils restent visibles sur smartphone et ordinateur.',
     title: 'Zone de Sécurité Bannière YouTube: Calculs & Recadrage',
@@ -179,7 +179,7 @@ export const fr: Translations = {
     mobileVsDesktop: 'Zone Visible sur Mobile vs Ordinateur',
   },
   guide1024: {
-    metaTitle: "Bannière 1024x576 | Corriger l'Erreur | YouTubeBannerMaker",
+    metaTitle: "Bannière 1024x576 | Corriger l'Erreur | YTBannerStudio",
     metaDesc:
       `Pourquoi YouTube refuse les bannières 1024×576 px. Explications du ratio 16:9, minimum 2048×1152 et comment convertir en ${CANVAS.width}×${CANVAS.height} gratuitement.`,
     title: 'Pourquoi YouTube Rejette les Bannières 1024×576 & Solutions',
@@ -187,7 +187,7 @@ export const fr: Translations = {
       `Comprendre la contrainte minimale de 2048×1152 px et comment redimensionner votre image 16:9 vers ${CANVAS.width}×${CANVAS.height} px proprement.`,
   },
   guideHowToMake: {
-    metaTitle: 'Créer une Bannière YouTube | Guide Étape par Étape',
+    metaTitle: 'Créer une Bannière | Guide Pas à Pas | YTBannerStudio',
     metaDesc:
       'Apprenez à créer une bannière YouTube adaptée à tous les écrans. Dimensions officielles, zone de sécurité et outils gratuits en ligne.',
     title: 'Comment Créer une Bannière YouTube : Guide Étape par Étape',
@@ -214,7 +214,7 @@ export const fr: Translations = {
       'Ouvrez YouTube Studio sur votre ordinateur, cliquez sur "Personnalisation" dans le menu gauche, ouvrez l\'onglet "Branding" et cliquez sur "Importer" ou "Modifier" sous Image de la bannière. Vérifiez le cadrage et publiez.',
   },
   guideChooseTemplate: {
-    metaTitle: 'Choisir un Modèle de Bannière YouTube | Guide 2026',
+    metaTitle: 'Modèles de Bannière | Choisir le Meilleur | YTBannerStudio',
     metaDesc:
       'Trouvez le meilleur modèle de bannière YouTube selon votre thématique. Règles de contraste, cadrage mobile et personnalisation rapide.',
     title: 'Comment Choisir le Meilleur Modèle de Bannière YouTube',
@@ -241,7 +241,7 @@ export const fr: Translations = {
       `Beaucoup de modèles tiers sont créés en 1920×1080 ou ignorent la zone de sécurité de ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixels sur le format ${CANVAS.width} × ${CANVAS.height} px. Lors du téléversement, les bordures latérales et verticales sont tronquées.`,
   },
   guideBgPage: {
-    metaTitle: 'Fonds de Bannière YouTube | Idées 2560x1440 & Modèles',
+    metaTitle: 'Fonds de Bannière | Idées 2560x1440 | YTBannerStudio',
     metaDesc:
       'Trouvez l\'arrière-plan idéal pour votre bannière YouTube en 2560x1440. Explorez des idées esthétiques et téléchargez des modèles vierges.',
     title: 'Arrière-Plans de Bannière YouTube : Formats, Idées & Modèles',
@@ -295,7 +295,7 @@ export const fr: Translations = {
     fieldPhoto: "Photo",
     fieldGradient: "Dégradé",
     fieldColor: "Couleur",
-    metaTitle: 'Modèle Bannière | Téléchargement Libre | YouTubeBannerMaker',
+    metaTitle: 'Modèle Bannière | Téléchargement Libre | YTBannerStudio',
     metaDesc:
       'Collection de modèles de bannière YouTube conformes à la zone sécurisée mobile. Templates pour gaming, tech, podcast, musique et vlogs.',
     title: 'Modèles de Bannières pour YouTube',
@@ -307,7 +307,7 @@ export const fr: Translations = {
   },
   tools: {
     resizer: {
-      metaTitle: 'Redimensionner | Ajustement Rapide | YouTubeBannerMaker',
+      metaTitle: 'Redimensionner | Ajustement Rapide | YTBannerStudio',
       metaDesc:
         `Ajustez vos images aux dimensions exactes de ${CANVAS.width}×${CANVAS.height} px pour YouTube. Outil en ligne gratuit avec aperçu de zone de sécurité pour mobile.`,
       title: 'Redimensionneur de Bannière YouTube (Ajuster)',
@@ -315,7 +315,7 @@ export const fr: Translations = {
         `Glissez n\'importe quelle image pour la recadrer et l\'exporter aux dimensions idéales de ${CANVAS.width}×${CANVAS.height} px en quelques secondes.`,
     },
     checker: {
-      metaTitle: 'Vérificateur Bannière | Test Direct | YouTubeBannerMaker',
+      metaTitle: 'Vérificateur Bannière | Test Direct | YTBannerStudio',
       metaDesc:
         'Testez l\'affichage de votre bannière YouTube sur mobile, tablette et TV avant de la publier. Diagnostic immédiat de la zone de sécurité.',
       title: 'Vérificateur de Zone Sécurisée de Bannière (Vérifier)',
@@ -327,7 +327,7 @@ export const fr: Translations = {
       handoffBtn: 'Corriger dans le Redimensionneur →',
     },
     maker: {
-      metaTitle: 'Créer Bannière | Exportation Facile | YouTubeBannerMaker',
+      metaTitle: 'Créer Bannière | Exportation Facile | YTBannerStudio',
       metaDesc:
         'Créez une bannière YouTube professionnelle avec repères de zone de sécurité. Modèles gratuits, typographie moderne et sans filigrane.',
       title: 'Créateur de Bannière YouTube (Générer)',
@@ -610,7 +610,7 @@ export const fr: Translations = {
     ch4Tag: "Chapitre 04 · Architecture",
     ch4Sub: "100% Côté Client",
     ch4Title: "Créateur de Bannière sur Navigateur : Zéro Envoi Serveur, Confidentialité Totale",
-    ch4P1: "À la différence des plateformes cloud exigeant des comptes ou des abonnements payants, YouTubeBannerMaker.com tourne entièrement dans votre onglet via HTML5 Canvas.",
+    ch4P1: "À la différence des plateformes cloud exigeant des comptes ou des abonnements payants, YTBannerStudio.com tourne entièrement dans votre onglet via HTML5 Canvas.",
     ch4P2: "Tout le rendu et l'export se font sur votre machine. Aucun octet d'image n'est transmis sur Internet et vous téléchargez des fichiers PNG propres en 2560 × 1440 px.",
     ch5Tag: "Chapitre 05 · YouTube Studio",
     ch5Sub: "Guide de Mise en Ligne",
@@ -1118,7 +1118,7 @@ export const fr: Translations = {
     }
   },
   backgroundsPage: {
-    metaTitle: "Arrière-plans Bannière YouTube Esthétiques | Gratuit",
+    metaTitle: "Fonds de Bannière | Esthétique & Safe | YTBannerStudio",
     metaDesc: "Explorez 30 arrière-plans esthétiques pour bannières YouTube : nuages pastel, anime, marbre or rose et boho. Téléchargement 2560x1440 gratuit ou studio.",
     badge: "30 Arrière-plans Esthétiques Sélectionnés",
     title: "Arrière-plans Esthétiques Gratuits pour Bannières YouTube",

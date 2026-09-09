@@ -3,8 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DIST_DIR = path.resolve('dist');
-const SITE_URL = 'https://youtubebannermaker.com';
-const PROD_DOMAIN = 'youtubebannermaker.com';
+const SITE_URL = 'https://ytbannerstudio.com';
+const PROD_DOMAIN = 'ytbannerstudio.com';
 
 function getHtmlFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
@@ -254,7 +254,7 @@ describe('Technical SEO, Indexability & Crawlability Verification Gate', () => {
 
   it('verifies indexation headers and robots.txt configuration', () => {
     const robotsTxt = fs.readFileSync(path.resolve('public/robots.txt'), 'utf-8');
-    expect(robotsTxt).toContain('Sitemap: https://youtubebannermaker.com/sitemap-index.xml');
+    expect(robotsTxt).toContain('Sitemap: https://ytbannerstudio.com/sitemap-index.xml');
     expect(robotsTxt).toContain('User-agent: *\nAllow: /');
 
     const headers = fs.readFileSync(path.resolve('public/_headers'), 'utf-8');
@@ -264,7 +264,7 @@ describe('Technical SEO, Indexability & Crawlability Verification Gate', () => {
     expect(headers).toContain('/404.html');
 
     // Ensure production domain is NOT blocked
-    const prodNoindex = headers.match(/https:\/\/youtubebannermaker\.com\/\*[\s\S]*?X-Robots-Tag:\s*noindex/i);
+    const prodNoindex = headers.match(/https:\/\/ytbannerstudio\.com\/\*[\s\S]*?X-Robots-Tag:\s*noindex/i);
     expect(prodNoindex).toBeNull();
   });
 });

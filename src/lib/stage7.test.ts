@@ -51,7 +51,7 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).toContain('User-agent: *');
       expect(content).toContain('Allow: /');
       expect(content).not.toContain('Disallow: /tools');
-      expect(content).toContain('Sitemap: https://youtubebannermaker.com/sitemap-index.xml');
+      expect(content).toContain('Sitemap: https://ytbannerstudio.com/sitemap-index.xml');
     });
   });
 
@@ -66,31 +66,31 @@ describe('Stage 7: Technical SEO, Scripts, Security Headers & Analytics Audit', 
       expect(content).not.toContain('404');
 
       // Core routes
-      expect(content).toContain('<loc>https://youtubebannermaker.com/</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/tools/youtube-banner-resizer</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/tools/youtube-banner-checker</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/tools/youtube-banner-maker</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-size</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-safe-area</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-1024-x-576</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/how-to-make-a-youtube-banner</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/how-to-choose-a-youtube-banner-template</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/guides/youtube-banner-background</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/templates</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/tools/youtube-banner-resizer</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/tools/youtube-banner-checker</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/tools/youtube-banner-maker</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/guides/youtube-banner-size</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/guides/youtube-banner-safe-area</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/guides/youtube-banner-1024-x-576</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/guides/how-to-make-a-youtube-banner</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/guides/how-to-choose-a-youtube-banner-template</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/guides/youtube-banner-background</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/templates</loc>');
 
       // AdSense Trust suite
-      expect(content).toContain('<loc>https://youtubebannermaker.com/about</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/contact</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/privacy</loc>');
-      expect(content).toContain('<loc>https://youtubebannermaker.com/terms</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/about</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/contact</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/privacy</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/terms</loc>');
 
       // All qualifying niche pages (≥3 templates each)
       const niches = ['business', 'education', 'fitness', 'food', 'gaming', 'lifestyle', 'music', 'podcast', 'tech', 'vlog'];
       for (const n of niches) {
-        expect(content).toContain(`<loc>https://youtubebannermaker.com/templates/${n}</loc>`);
+        expect(content).toContain(`<loc>https://ytbannerstudio.com/templates/${n}</loc>`);
       }
 
-      expect(content).toContain('<loc>https://youtubebannermaker.com/backgrounds</loc>');
+      expect(content).toContain('<loc>https://ytbannerstudio.com/backgrounds</loc>');
 
       // Count total URLs in sitemap
       const urlCount = (content.match(/<loc>/g) || []).length;
