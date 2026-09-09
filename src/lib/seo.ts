@@ -20,62 +20,62 @@ export interface PageSeoConfig {
 export const NICHE_TITLES: Record<string, { name: string; title: string; desc: string }> = {
   gaming: {
     name: 'Gaming',
-    title: 'Gaming Banner Templates | Mobile Safe | YTBannerStudio',
+    title: 'Gaming Banner Templates | Fit Every Screen | YTBannerStudio',
     desc: 'Free gaming YouTube channel banner templates. Tested against real mobile safe area crops, instant browser editing, and clean 2560×1440 export.',
   },
   podcast: {
     name: 'Podcast',
-    title: 'Podcast Banner Templates | Studio Fit | YTBannerStudio',
+    title: 'Podcast Banner Templates | Studio Quality | YTBannerStudio',
     desc: 'Professional podcast YouTube banner templates. Centered safe-area typography, high contrast studio designs, and instant free 2560×1440 download.',
   },
   tech: {
     name: 'Tech',
-    title: 'Tech Banner Templates | Minimal & Safe | YTBannerStudio',
+    title: 'Tech Banner Templates | Clean Device Safe | YTBannerStudio',
     desc: 'Clean tech channel banner templates. Modern developer and hardware aesthetic, verified safe-area geometry, zero watermark or sign-up needed.',
   },
   vlog: {
     name: 'Vlog',
-    title: 'Vlog Banner Templates | Aesthetic Art | YTBannerStudio',
+    title: 'Vlog Banner Templates | Aesthetic & Safe | YTBannerStudio',
     desc: 'Curated lifestyle and vlog banner templates. Cinematic typography, perfect mobile and desktop framing, and instant browser-based 2560×1440 export.',
   },
   music: {
     name: 'Music',
-    title: 'Music Banner Templates | Lo-Fi & Beats | YTBannerStudio',
+    title: 'Music Banner Templates | Fit All Screens | YTBannerStudio',
     desc: 'Custom channel banners for musicians, producers, and beats channels. Balanced compositions tested across all screen crops with zero sign-up.',
   },
   fitness: {
     name: 'Fitness',
-    title: 'Fitness Banner Templates | High Impact | YTBannerStudio',
+    title: 'Fitness Banner Templates | Bold & TV Ready | YTBannerStudio',
     desc: 'High-impact fitness and coaching banner templates. Bold typography positioned inside YouTube\'s safe area for verified mobile and TV rendering.',
   },
   education: {
     name: 'Education',
-    title: 'Education Banner Templates | Academic | YTBannerStudio',
+    title: 'Education Banner Templates | Text Legible | YTBannerStudio',
     desc: 'Authoritative channel art for educators and tutorial creators. Clean layouts designed to keep all text and branding visible on any device.',
   },
   lifestyle: {
     name: 'Lifestyle',
-    title: 'Lifestyle Banner Templates | Minimal | YTBannerStudio',
+    title: 'Lifestyle Banner Templates | Clean & Safe | YTBannerStudio',
     desc: 'Understated, minimal lifestyle channel banners. Elegant serif and sans typography framed perfectly inside the mobile safe area.',
   },
   food: {
     name: 'Food & Culinary',
-    title: 'Food Banner Templates | Culinary Art | YTBannerStudio',
+    title: 'Food Banner Templates | Perfect Framing | YTBannerStudio',
     desc: 'Curated food and cooking channel banners. Appetizing typography and culinary layout elements verified safe across mobile and desktop displays.',
   },
   business: {
     name: 'Business & Real Estate',
-    title: 'Business Banner Templates | Agency Art | YTBannerStudio',
+    title: 'Business Banner Templates | Look Pro Fast | YTBannerStudio',
     desc: 'High-authority channel banners for real estate agents, agencies, and business creators. Centered safe-area layouts with zero paywalls.',
   },
   edu: {
     name: 'Education',
-    title: 'Education Banner Templates | Academic | YTBannerStudio',
+    title: 'Education Banner Templates | Text Legible | YTBannerStudio',
     desc: 'Authoritative channel art for educators and tutorial creators. Clean layouts designed to keep all text and branding visible on any device.',
   },
   life: {
     name: 'Lifestyle',
-    title: 'Lifestyle Banner Templates | Minimal | YTBannerStudio',
+    title: 'Lifestyle Banner Templates | Clean & Safe | YTBannerStudio',
     desc: 'Understated, minimal lifestyle channel banners. Elegant serif and sans typography framed perfectly inside the mobile safe area.',
   },
 };
@@ -110,15 +110,15 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
     desc: 'Find the perfect YouTube banner background. Learn the correct 2560x1440 dimensions, explore aesthetic ideas, and download blank templates.',
   },
   '/tools/youtube-banner-resizer': {
-    title: 'YouTube Banner Resizer | Auto Fit Safe Area | YTBannerStudio',
+    title: 'YouTube Banner Resizer | Fit Safe Area | YTBannerStudio',
     desc: 'Resize and crop any image to the exact 2560×1440 YouTube banner dimensions. Cover fit, mobile safe area preview, sRGB export, no signup or watermark.',
   },
   '/tools/youtube-banner-checker': {
-    title: 'YouTube Banner Checker | Test Crops | YTBannerStudio',
+    title: 'YouTube Banner Checker | Test Safe Areas | YTBannerStudio',
     desc: 'Check your YouTube banner against mobile, desktop, tablet, and TV safe areas. Instant crop verdict and safe-area check with zero signup or watermarks.',
   },
   '/tools/youtube-banner-maker': {
-    title: 'YouTube Banner Maker | Fast Free Export | YTBannerStudio',
+    title: 'YouTube Banner Maker | Zero Crop Export | YTBannerStudio',
     desc: 'Design a custom YouTube banner, safe-area verified for mobile and desktop. Curated templates, real device previews, instant free 2560×1440 export.',
   },
   '/templates': {
@@ -126,7 +126,7 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
     desc: 'Browse verified YouTube banner templates crafted for gaming, tech, podcasting, and vlogs. Engineered to fit mobile and desktop safe areas cleanly.',
   },
   '/backgrounds': {
-    title: 'Banner Backgrounds | Aesthetic 2560x1440 | YTBannerStudio',
+    title: 'Banner Backgrounds | Free Aesthetic Art | YTBannerStudio',
     desc: 'Free aesthetic YouTube banner backgrounds in 2560x1440. Browse cool anime, gaming, pink, and cute backgrounds fitted to the centered mobile safe area.',
   },
   '/about': {
