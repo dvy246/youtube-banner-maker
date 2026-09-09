@@ -38,5 +38,3 @@ Allow: /
 
 # Sitemap Directives
 Sitemap: https://ytbannerstudio.com/sitemap-index.xml
-Sitemap: https://ytbannerstudio.com/sitemap.xml
-

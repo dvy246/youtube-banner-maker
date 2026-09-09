@@ -153,7 +153,6 @@ ${LOCALES.filter((l) => l.code !== 'en')
 
 const publicPath = path.resolve('public/sitemap.xml');
 fs.writeFileSync(publicPath, sitemapXml, 'utf-8');
-fs.writeFileSync(path.resolve('public/sitemap-0.xml'), sitemapXml, 'utf-8');
 fs.writeFileSync(path.resolve('public/sitemap-index.xml'), sitemapIndexXml, 'utf-8');
 
 // Write per-locale sitemaps
@@ -168,7 +167,6 @@ console.log(`Generated public/sitemap.xml (${filteredRoutes.length} routes with 
 const distDir = path.resolve('dist');
 if (fs.existsSync(distDir)) {
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf-8');
-  fs.writeFileSync(path.join(distDir, 'sitemap-0.xml'), sitemapXml, 'utf-8');
   fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), sitemapIndexXml, 'utf-8');
   for (const loc of LOCALES.filter((l) => l.code !== 'en')) {
     const locXml = generateSitemapXmlForLocale(loc.code);
