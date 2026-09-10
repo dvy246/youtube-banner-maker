@@ -68,16 +68,7 @@ export const NICHE_TITLES: Record<string, { name: string; title: string; desc: s
     title: 'Business Banner Templates | Look Pro Fast | YTBannerStudio',
     desc: 'High-authority channel banners for real estate agents, agencies, and business creators. Centered safe-area layouts with zero paywalls.',
   },
-  edu: {
-    name: 'Education',
-    title: 'Education Banner Templates | Text Legible | YTBannerStudio',
-    desc: 'Authoritative channel art for educators and tutorial creators. Clean layouts designed to keep all text and branding visible on any device.',
-  },
-  life: {
-    name: 'Lifestyle',
-    title: 'Lifestyle Banner Templates | Clean & Safe | YTBannerStudio',
-    desc: 'Understated, minimal lifestyle channel banners. Elegant serif and sans typography framed perfectly inside the mobile safe area.',
-  },
+
 };
 
 export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> = {
@@ -107,7 +98,7 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
   },
   '/guides/youtube-banner-background': {
     title: 'Banner Background | Aesthetic 2560x1440 | YTBannerStudio',
-    desc: 'Find the perfect YouTube banner background. Learn the correct 2560x1440 dimensions, explore aesthetic ideas, and download blank templates.',
+    desc: 'Find the perfect YouTube banner background. Exact 2560x1440 sizing, contrast scrim rules, and 158 aesthetic backgrounds fitted to the mobile safe zone.',
   },
   '/tools/youtube-banner-resizer': {
     title: 'YouTube Banner Resizer | Fit Safe Area | YTBannerStudio',
@@ -118,8 +109,8 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
     desc: 'Check your YouTube banner against mobile, desktop, tablet, and TV safe areas. Instant crop verdict and safe-area check with zero signup or watermarks.',
   },
   '/tools/youtube-banner-maker': {
-    title: 'YouTube Banner Maker | Zero Crop Export | YTBannerStudio',
-    desc: 'Design a custom YouTube banner, safe-area verified for mobile and desktop. Curated templates, real device previews, instant free 2560×1440 export.',
+    title: 'YouTube Banner Creator | Design Channel Art | YTBannerStudio',
+    desc: 'Design a custom YouTube banner verified for mobile and desktop. Curated templates, live device previews, and instant 2560×1440 export with zero sign-up.',
   },
   '/templates': {
     title: 'Banner Templates | Free Safe Downloads | YTBannerStudio',

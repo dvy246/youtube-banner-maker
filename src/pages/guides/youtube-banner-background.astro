@@ -5,34 +5,43 @@ import Footer from '../../components/Footer.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { STATIC_PAGES_SEO, getBreadcrumbSchema, getFAQSchema, getTechArticleSchema } from '../../lib/seo';
-import { CANVAS, SAFE_PX } from '../../lib/spec';
+import { CANVAS, SAFE_PX, MAX_UPLOAD_BYTES } from '../../lib/spec';
 
 const path = '/guides/youtube-banner-background';
 const seo = STATIC_PAGES_SEO[path];
+const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
 const faqs = [
   {
     question: 'What size should a YouTube banner background be?',
-    answer: `Your YouTube banner background image should be exactly ${CANVAS.width} × ${CANVAS.height} pixels. This is the maximum canvas size that YouTube uses to display your banner on large smart TVs.`,
+    answer: `A YouTube banner background must measure exactly ${CANVAS.width} × ${CANVAS.height} pixels (16:9 aspect ratio). YouTube Studio uses this full canvas to render your channel header on 4K televisions and widescreen monitors, while cropping the central ${SAFE_PX.full.width} × ${SAFE_PX.full.height} px area for mobile smartphones.`,
   },
   {
-    question: 'Can I use a plain black YouTube banner?',
-    answer: `Yes, a minimal black YouTube banner is highly popular in tech, gaming, and minimalist niches. You can easily create a solid black or dark gray background and place a crisp white logo in the dead center (${SAFE_PX.full.width} × ${SAFE_PX.full.height} px safe area).`,
+    question: 'Can I upload a 1024x576 or 1920x1080 background to YouTube?',
+    answer: `No. YouTube Studio enforces a strict upload dimension floor of 2048 × 1152 pixels. While 1024 × 576 and 1920 × 1080 share the identical 16:9 ratio, YouTube Studio will block uploads below 2048 × 1152 with an "Image is too small" error. Place your artwork onto a 2560 × 1440 canvas before uploading.`,
   },
   {
-    question: 'Where can I find an aesthetic YouTube banner background?',
-    answer: `You can use high-quality stock photography sites (like Unsplash or Pexels) to find aesthetic landscapes, abstract gradients, or textures. Once you have an image, drop it into our free YouTube Banner Maker to perfectly crop and center it.`,
+    question: 'How do I keep channel text readable over a busy background photo?',
+    answer: 'Apply a calibrated contrast scrim. Add a 30% to 50% opacity radial vignette behind your safe zone, or place a semi-transparent frosted glass backplate behind your typography. This helps ensure your text meets the WCAG 4.5:1 contrast threshold without muting peripheral photography on TV screens.',
   },
   {
-    question: 'How do I add text to a blank YouTube banner template?',
-    answer: `Use our free YouTube Banner Maker. Select a blank or gradient background, then use the typography tools to type your channel name. The tool will automatically restrict your text to the mobile safe area, ensuring safe-area compliance across all viewports.`,
+    question: 'Why do background colors look desaturated after uploading to YouTube?',
+    answer: `YouTube's media delivery pipeline standardizes all images in the sRGB color space. If you export a background from Photoshop or Procreate using Display P3 or Adobe RGB profiles, YouTube strips color tags on upload, causing muted tones and hue shifts. Always export using an explicit sRGB color profile.`,
+  },
+  {
+    question: 'Can I use a solid black background for a YouTube banner?',
+    answer: `Yes. A solid black or dark charcoal background (#0B0D10) is a proven choice for tech, coding, gaming, and minimalist channels. Dark backgrounds provide instant 15:1+ contrast ratios for white typography and colored brand marks, while eliminating mobile safe-area cropping surprises completely.`,
+  },
+  {
+    question: 'Where can I find free aesthetic YouTube banner backgrounds without watermarks?',
+    answer: `You can browse our curated library of 158 studio-grade aesthetic backgrounds at /backgrounds. Every background is calibrated to 2560 × 1440 px with centered focal geometry for mobile screens, free for commercial use with zero sign-ups or watermarks.`,
   },
 ];
 
 const breadcrumbs = [
-  { name: 'Home', url: 'https://ytbannerstudio.com' },
-  { name: 'Guides', url: 'https://ytbannerstudio.com/guides' },
-  { name: 'YouTube Banner Backgrounds', url: `https://ytbannerstudio.com${path}` },
+  { name: 'Home', url: '/' },
+  { name: 'Guides', url: '/guides/youtube-banner-size' },
+  { name: 'Banner Backgrounds', url: path },
 ];
 
 const jsonLd = [
@@ -42,7 +51,7 @@ const jsonLd = [
     description: seo.desc,
     path,
     datePublished: '2026-03-01T00:00:00Z',
-    dateModified: '2026-09-07T00:00:00Z',
+    dateModified: '2026-09-09T00:00:00Z',
   }),
   getFAQSchema(faqs),
 ];
@@ -50,99 +59,322 @@ const jsonLd = [
 
 <BaseLayout 
   title={seo.title} 
-  description={seo.desc}
-  path={path}
+  description={seo.desc} 
+  path={path} 
   jsonLd={jsonLd}
 >
-  <Header />
+  <Header currentPath={path} />
   
-  <main class="w-full flex flex-col min-h-screen bg-surface-0 pb-20">
-    <article class="max-w-4xl mx-auto px-4 sm:px-6 w-full pt-16 sm:pt-24 flex flex-col gap-12 sm:gap-16">
+  <main id="main-content" class="flex-1">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
       
-      <!-- Hero Header -->
-      <header class="flex flex-col items-start gap-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
-          <span class="w-2 h-2 rounded-full bg-accent"></span>
-          <span class="text-xs font-bold text-accent tracking-wide uppercase">Design Guide</span>
+      <!-- Hero / Header -->
+      <header class="space-y-6 border-b border-line-200 pb-10">
+        <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
+          <a href="/" class="hover:text-ink-950 transition-colors">Home</a>
+          <span class="text-line-200">/</span>
+          <a href="/guides/youtube-banner-size" class="hover:text-ink-950 transition-colors">Guides</a>
+          <span class="text-line-200">/</span>
+          <span class="text-ink-800 font-medium">Banner Backgrounds</span>
+        </nav>
+
+        <div class="space-y-3">
+          <span class="inline-block text-xs font-mono uppercase tracking-wider font-semibold text-accent">
+            VISUAL ARCHITECTURE & SPECIFICATION GUIDE · 2026
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-950">
+            YouTube Banner Backgrounds: Dimensions, Ideas & Scrim Design
+          </h1>
+          <p class="text-base sm:text-lg text-ink-600 leading-relaxed measure-prose">
+            How to select, compose, and contrast-balance 2560 × 1440 channel art backgrounds so typography stays legible across mobile, desktop, and smart TV screens.
+          </p>
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink-950 leading-[1.1]">
-          YouTube Banner Backgrounds: Sizes, Ideas & Templates
-        </h1>
-        <p class="text-lg sm:text-xl text-ink-600 max-w-2xl leading-relaxed mt-2">
-          Discover how to choose an aesthetic YouTube banner background, the exact dimensions you need, and how to use blank templates to design your channel art.
-        </p>
+
+        <!-- E-E-A-T Author & Citation Byline -->
+        <div class="flex flex-wrap items-center gap-3 text-xs text-ink-600 border-t border-line-200 pt-4">
+          <span>By <strong>YTBannerStudio Editorial & Operations Team</strong></span>
+          <span>·</span>
+          <span>Verified against <a href="https://support.google.com/youtube/answer/2657964" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent font-medium">Official YouTube Studio Specifications</a></span>
+          <span>·</span>
+          <span>Updated September 2026</span>
+          <span>·</span>
+          <span>100% Client-Side Privacy</span>
+        </div>
+
+        <!-- Direct Answer Card (Snippet Target & AI Overviews Ready) -->
+        <div class="p-6 rounded-2xl border border-accent/20 bg-surface-50 space-y-4">
+          <div class="space-y-2">
+            <span class="text-xs font-mono uppercase tracking-wider font-bold text-accent">
+              Direct Answer: Background Dimensions & Safe Area
+            </span>
+            <p class="text-base sm:text-lg text-ink-950 font-medium leading-snug">
+              A YouTube banner background must be created at <strong>{CANVAS.width} × {CANVAS.height} pixels</strong> (16:9 aspect ratio) with a minimum upload dimension of <strong>2048 × 1152 pixels</strong> and a maximum file size of <strong>{maxUploadMb} MB</strong>.
+            </p>
+          </div>
+          <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+            Because mobile devices crop away the outer margins, your background graphic can extend across the full canvas, but primary focal points, channel branding, and text must remain strictly within the centered <strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} pixel safe area</strong>.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs border-t border-line-200">
+            <div>
+              <span class="text-ink-500 block">TV Full Frame</span>
+              <strong class="font-mono text-ink-950 tabular-nums">{CANVAS.width} × {CANVAS.height} px</strong>
+            </div>
+            <div>
+              <span class="text-ink-500 block">Mobile Safe Zone</span>
+              <strong class="font-mono text-ink-950 tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</strong>
+            </div>
+            <div>
+              <span class="text-ink-500 block">Contrast Threshold</span>
+              <strong class="font-mono text-ink-950">&ge; 4.5:1 WCAG AA</strong>
+            </div>
+            <div>
+              <span class="text-ink-500 block">Maximum Weight</span>
+              <strong class="font-mono text-ink-950 tabular-nums">&le; {maxUploadMb} MB (sRGB)</strong>
+            </div>
+          </div>
+        </div>
       </header>
 
       <AdSlot slotId="guide-top" class="my-2" />
 
-      <!-- Content -->
-      <div class="flex flex-col gap-10">
+      <!-- Section 1: The Dual-Viewport Problem -->
+      <section class="space-y-6">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            01 · Geometry & Composition
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            The Dual-Viewport Problem: TV Full-Bleed vs. Mobile Ribbon
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          When sourcing or designing a background image for YouTube, most creators think in standard widescreen monitor proportions (1920×1080). On YouTube, however, a single background asset is served across four radically different viewing viewports:
+        </p>
         
-        <!-- Section 1 -->
-        <section class="flex flex-col gap-4">
-          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            The Right Size for a YouTube Banner Background
-          </h2>
-          <div class="prose prose-ink max-w-none">
-            <p class="text-ink-600 leading-relaxed">
-              When sourcing an image for your channel's background, the dimensions matter. A YouTube banner background must cover the entire <strong>{CANVAS.width} × {CANVAS.height} pixels</strong> TV display area to avoid ugly letterboxing or stretching.
-            </p>
-            <p class="text-ink-600 leading-relaxed mt-4">
-              Even if a viewer is on a smartphone, YouTube loads the full {CANVAS.width}×{CANVAS.height} image and crops it dynamically. If you start with a <em>blank YouTube banner template</em> or a high-resolution photograph, ensure it meets this 16:9 ratio before you add any text.
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Smart TV (16:9)</span>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Displays the full <strong>{CANVAS.width} × {CANVAS.height} px</strong> image from edge to edge. Any visual details in the top or bottom margins are visible only here.
             </p>
           </div>
-        </section>
-
-        <!-- Section 2 -->
-        <section class="flex flex-col gap-4">
-          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            Aesthetic YouTube Banner Ideas
-          </h2>
-          <div class="prose prose-ink max-w-none">
-            <p class="text-ink-600 leading-relaxed">
-              A background sets the vibe of your channel. The best backgrounds are visually interesting but don't compete with your text. Consider these approaches:
-            </p>
-            <ul class="list-disc pl-5 mt-4 space-y-2 text-ink-600">
-              <li><strong>The Black YouTube Banner:</strong> A solid black or dark charcoal background instantly conveys a premium, tech, or minimalist aesthetic. It provides massive contrast for white or neon text.</li>
-              <li><strong>Abstract Gradients:</strong> Smooth, blurred color transitions (like our Cyberpunk or Sunset Luxe presets) add depth without adding distracting details.</li>
-              <li><strong>Desaturated Photography:</strong> Using a workspace, gaming setup, or landscape photo? Lower the contrast and add a slight dark overlay so your channel name pops.</li>
-            </ul>
-            <p class="text-ink-600 leading-relaxed mt-4">
-              Browse our curated library of 60+ <a href="/backgrounds" class="text-accent underline font-medium hover:text-accent-600">aesthetic YouTube banner backgrounds</a> for ready-to-use anime, lo-fi, gaming, and minimalist channel art calibrated to the official 2560×1440 canvas.
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Desktop (Ribbon)</span>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Crops away the top 35.3% and bottom 35.3% of the image, showing a narrow <strong>{CANVAS.width} × {SAFE_PX.full.height} px</strong> ribbon across the top of the channel page.
             </p>
           </div>
-        </section>
+          <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-2">
+            <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Mobile (Safe Box)</span>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Crops both vertical margins and outer horizontal sides, displaying only the central <strong>{SAFE_PX.full.width} × {SAFE_PX.full.height} px</strong> box.
+            </p>
+          </div>
+        </div>
 
-        <!-- CTA -->
-        <section class="bg-surface-50 border border-line-200 rounded-2xl p-6 sm:p-8 flex flex-col gap-5 text-center items-center mt-4 shadow-sm relative overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-br from-surface-0/50 to-surface-50/50 pointer-events-none"></div>
-          <h3 class="text-xl font-bold text-ink-950 relative z-10">Turn Your Background into a Full Banner</h3>
-          <p class="text-ink-600 max-w-lg relative z-10">
-            Have a great background image? Drop it into our free Maker, add your text in the safe area, and download a YouTube-ready 2560×1440 image.
-          </p>
-          <a href="/tools/youtube-banner-maker" class="relative z-10 h-12 px-8 rounded-full bg-accent text-white font-semibold flex items-center justify-center hover:bg-accent-600 active:scale-[0.98] transition-all shadow-md mt-2">
-            Open YouTube Banner Maker &rarr;
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose pt-2">
+          This creates the <strong>dual-viewport composition trap</strong>: if you place your background's primary visual interest (a character, landscape focal point, or car) in the outer margins, mobile and desktop visitors will never see it. Conversely, if you place complex detail directly in the center, it collides with your channel title and tagline.
+        </p>
+      </section>
+
+      <!-- Section 2: 4 Battle-Tested Background Archetypes -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            02 · Visual Styles
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            4 Battle-Tested Background Archetypes for YouTube Channels
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          To maintain visual appeal on smart TVs without sacrificing readability on mobile screens, successful channels rely on four specific background archetypes:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <!-- Archetype 1 -->
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink-950">1. Deep Charcoal & Minimalist Dark</h3>
+              <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-surface-100 text-ink-600 border border-line-200">Tech & Code</span>
+            </div>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              A solid dark charcoal (<code class="text-[11px] font-mono text-ink-800">#0B0D10</code>) or subtle matte grid. Provides instant 15:1+ contrast ratios for white sans-serif text, neon accent badges, and code snippets with zero scrim overhead.
+            </p>
+          </div>
+
+          <!-- Archetype 2 -->
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink-950">2. Atmospheric Anime & Vector Vistas</h3>
+              <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-surface-100 text-ink-600 border border-line-200">Lo-Fi & Gaming</span>
+            </div>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Illustrated landscapes (Studio Ghibli style meadows, twilight sakura skylines, lo-fi study scenes). Visual elements bleed outward into the TV canvas, while central hues remain low-contrast to protect typography.
+            </p>
+          </div>
+
+          <!-- Archetype 3 -->
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink-950">3. Radial Scrimmed Photography</h3>
+              <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-surface-100 text-ink-600 border border-line-200">Vlogs & Studio</span>
+            </div>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Real-world photography (camera gear, workspace desks, architectural travel photos) treated with a 30% to 50% radial luminance drop behind the safe area. The background stays recognizable without interfering with text.
+            </p>
+          </div>
+
+          <!-- Archetype 4 -->
+          <div class="p-5 rounded-xl border border-line-200 bg-surface-0 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-ink-950">4. Subtle Directional Gradients</h3>
+              <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-surface-100 text-ink-600 border border-line-200">Podcasts & Brands</span>
+            </div>
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Smooth duotone or multi-stop gradients (e.g. Sunset Luxe or Cyberpunk Neon). Adds depth and color harmony across the banner without introducing high-frequency visual noise.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Contrast Scrim Mathematics -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            03 · Contrast Defense
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            Contrast Scrim Mathematics: Keeping Typography Legible
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          The single most frequent cause of amateur-looking channel art is <strong>insufficient contrast</strong>. Placing pure white text (<code class="text-[11px] font-mono text-ink-800">#FFFFFF</code>) directly over bright photography or un-scrimmed game scenes drops contrast below the WCAG 4.5:1 minimum standard.
+        </p>
+
+        <div class="p-6 rounded-2xl border border-line-200 bg-surface-50 space-y-4">
+          <h3 class="text-base font-bold text-ink-950">
+            Two Non-Destructive Solutions Built Into Our Free Studio:
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <span class="text-xs font-mono font-bold text-accent uppercase">Solution A: Studio Scrim Slider</span>
+              <p class="text-xs text-ink-600 leading-relaxed">
+                Applies an elliptical radial gradient centered at (50%, 50%) that darkens the center while keeping outer artwork saturated. A 30%–40% setting restores full legibility without turning the image pitch black.
+              </p>
+            </div>
+            <div class="space-y-1.5">
+              <span class="text-xs font-mono font-bold text-accent uppercase">Solution B: Aero Glass Backplate</span>
+              <p class="text-xs text-ink-600 leading-relaxed">
+                Renders a frosted semi-transparent pill (<code class="text-[11px] font-mono text-ink-800">rgba(11, 15, 25, 0.65)</code>) with a subtle hairline border directly behind your channel name. The background image remains completely visible through the blur while text contrast reaches 12:1+.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Technical Specs & File Formats -->
+      <section class="space-y-6 border-t border-line-200 pt-12">
+        <div class="space-y-2">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
+            04 · File Engineering
+          </span>
+          <h2 class="text-2xl font-bold tracking-tight text-ink-950">
+            File Formats, Color Space & Compression Ceilings
+          </h2>
+        </div>
+        <p class="text-sm text-ink-600 leading-relaxed measure-prose">
+          Choosing the wrong file format or color space will cause YouTube Studio to reject your file or wash out your background colors:
+        </p>
+
+        <div class="overflow-x-auto rounded-xl border border-line-200 bg-surface-0 shadow-2xs">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-line-200 bg-surface-50">
+                <th class="py-3 px-4 font-semibold text-ink-950">Format</th>
+                <th class="py-3 px-4 font-semibold text-ink-950">Best Used For</th>
+                <th class="py-3 px-4 font-semibold text-ink-950">Size / Quality Tradeoff</th>
+                <th class="py-3 px-4 font-semibold text-ink-950">YouTube Verdict</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line-100 text-ink-600">
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-ink-950">PNG</td>
+                <td class="py-3 px-4">Vector art, text layers, crisp logos, solid color backplates</td>
+                <td class="py-3 px-4">Larger files (2–5 MB), zero compression artifacts</td>
+                <td class="py-3 px-4 text-emerald-700 font-medium">Recommended for graphics</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-ink-950">JPEG (sRGB)</td>
+                <td class="py-3 px-4">Complex photographic scenes, 3D renders, landscapes</td>
+                <td class="py-3 px-4">Compact (600 KB–1.8 MB), slight discrete cosine artifacting</td>
+                <td class="py-3 px-4 text-emerald-700 font-medium">Recommended for photos</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-ink-950">WebP</td>
+                <td class="py-3 px-4">Modern photographic compression</td>
+                <td class="py-3 px-4">30% smaller than JPEG at equal visual fidelity</td>
+                <td class="py-3 px-4 text-emerald-700 font-medium">Accepted by YouTube Studio</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-ink-950">Display P3 / CMYK</td>
+                <td class="py-3 px-4">Print layouts, Apple wide-gamut captures</td>
+                <td class="py-3 px-4">Incompatible color gamut without ICC profile management</td>
+                <td class="py-3 px-4 text-red-700 font-medium">Fails / Causes color shifts</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-xs text-ink-500 leading-relaxed">
+          <strong>Color Space Notice:</strong> YouTube Studio does not preserve embedded ICC color management profiles. Exporting images using Display P3 or Adobe RGB will result in muted or shifted colors. Always verify your graphics software exports in <strong>standard sRGB</strong>.
+        </p>
+      </section>
+
+      <!-- Section 5: Hub Gateway CTA -->
+      <section class="bg-surface-50 border border-line-200 rounded-2xl p-6 sm:p-8 flex flex-col gap-5 text-center items-center mt-4 shadow-sm relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-surface-0/50 to-surface-50/50 pointer-events-none"></div>
+        <span class="inline-block text-xs font-mono font-bold uppercase tracking-wider text-accent relative z-10">
+          Curated Free Library
+        </span>
+        <h3 class="text-2xl font-bold text-ink-950 relative z-10">
+          Browse 158 Curated YouTube Banner Backgrounds
+        </h3>
+        <p class="text-ink-600 max-w-xl text-sm relative z-10 leading-relaxed">
+          Need an aesthetic background immediately? Explore our curated catalog of 158 studio-grade 2560 × 1440 backgrounds covering anime, cool gaming, pastel clouds, luxury marble, and minimalist zen. Every image includes an interactive safe-area overlay and 1-click customization in our Banner Maker.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 relative z-10 pt-2">
+          <a 
+            href="/backgrounds" 
+            class="h-11 px-7 rounded-full bg-accent text-white font-semibold text-sm flex items-center justify-center hover:bg-accent-600 active:scale-[0.98] transition-all shadow-raised"
+          >
+            Explore 158 Backgrounds &rarr;
           </a>
-        </section>
-        
-        <AdSlot slotId="guide-mid" class="my-4" />
+          <a 
+            href="/tools/youtube-banner-maker" 
+            class="h-11 px-7 rounded-full border border-line-200 bg-surface-0 text-ink-950 font-semibold text-sm flex items-center justify-center hover:bg-surface-100 active:scale-[0.98] transition-all"
+          >
+            Open in Banner Maker
+          </a>
+        </div>
+      </section>
 
-      </div>
+      <AdSlot slotId="guide-mid" class="my-4" />
 
       <!-- FAQ Section -->
       <section class="flex flex-col gap-6 pt-4 border-t border-line-200">
         <div class="flex flex-col gap-2">
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            Backgrounds & Blank Templates FAQs
+            Frequently Asked Questions: Banner Backgrounds
           </h2>
-          <p class="text-ink-600">
-            Common questions about finding and formatting your channel art background.
+          <p class="text-sm text-ink-600">
+            Answers to common questions regarding background dimensions, crop behavior, and contrast management.
           </p>
         </div>
         <FaqAccordion faqs={faqs} />
       </section>
 
-    </article>
+    </div>
   </main>
   
   <Footer />
