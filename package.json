@@ -17,7 +17,7 @@
     "check-budgets": "node scripts/check-budgets.mjs",
     "audit:seo": "node scripts/seo-aeo-geo-auditor.mjs",
     "submit-indexnow": "node scripts/submit-indexnow.mjs",
-    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=youtube-banner-maker --branch=main"
+    "deploy": "npm run build && CLOUDFLARE_ACCOUNT_ID=0ea57f08eee37bcb330e1e08f4622c6d npx wrangler pages deploy dist --project-name=youtube-banner-maker --branch=main"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
