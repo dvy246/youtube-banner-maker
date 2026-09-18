@@ -32,7 +32,7 @@ const jsonLd = [
     dateModified: '2026-09-09T00:00:00Z',
   }),
   getBreadcrumbSchema([
-    { name: 'Home', url: getLocalizedUrl('/', locale) },
+    { name: dict.common.home, url: getLocalizedUrl('/', locale) },
     { name: dict.guide1024.title, url: path },
   ]),
 ];
@@ -53,7 +53,7 @@ const jsonLd = [
       <!-- Header -->
       <header class="space-y-4 border-b border-line-200 pb-10">
         <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
-          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">Home</a>
+          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">{dict.common.home}</a>
           <span class="text-line-200">/</span>
           <span class="text-ink-800 font-medium">1024×576</span>
         </nav>

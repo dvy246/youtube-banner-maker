@@ -51,34 +51,38 @@ const faqs = [
 
 const howToSteps = [
   {
-    name: 'Establish Your Channel Positioning & 3-Second Value Proposition',
-    text: 'Formulate a concise tagline combining your target audience, content focus, and upload cadence (under 8 words) to communicate channel value instantly to mobile visitors.',
+    name: dict.guideHowToMake.step1Name,
+    text: dict.guideHowToMake.step1P1,
   },
   {
-    name: `Set Up the ${CANVAS.width} × ${CANVAS.height} Canvas & Mobile Safe Zone`,
-    text: `Construct a 16:9 canvas at ${CANVAS.width} × ${CANVAS.height} pixels. Center all critical branding elements inside the ${SAFE_PX.full.width} × ${SAFE_PX.full.height} pixel mobile safe rectangle.`,
+    name: dict.guideHowToMake.step2Name.replace('{width}', String(CANVAS.width)).replace('{height}', String(CANVAS.height)),
+    text: dict.guideHowToMake.step2P1
+      .replace('{width}', String(CANVAS.width))
+      .replace('{height}', String(CANVAS.height))
+      .replace('{safeWidth}', String(SAFE_PX.full.width))
+      .replace('{safeHeight}', String(SAFE_PX.full.height)),
   },
   {
-    name: 'Select a Certified Safe-Snap Layout Archetype',
-    text: 'Choose an established compositional structure such as True Center for symmetry, Split-Left or Split-Right for creator portrait pairings, or Stacked for multi-line typography.',
+    name: dict.guideHowToMake.step3Name,
+    text: dict.guideHowToMake.step3P1,
   },
   {
-    name: 'Apply Typography Hierarchy & Contrast Defense',
-    text: 'Use heavy geometric or display sans-serif typography. Activate the Contrast Guard radial scrim slider or the Aero Plate frosted glass backplate to preserve legibility against background textures.',
+    name: dict.guideHowToMake.step4Name,
+    text: dict.guideHowToMake.step4P1,
   },
   {
-    name: 'Embed Vector Social Badges & Generate Matching Avatar',
-    text: 'Position official vector brand badges within the safe area and export a coordinated 800×800 pixel channel profile avatar matching the banner color palette.',
+    name: dict.guideHowToMake.step5Name,
+    text: dict.guideHowToMake.step5P1,
   },
   {
-    name: 'Test Cross-Device Viewports & Publish via YouTube Studio',
-    text: `Inspect the artwork in the YouTube Banner Checker across mobile, tablet, desktop, and TV viewports, then upload the sRGB PNG file directly into YouTube Studio Customization.`,
+    name: dict.guideHowToMake.step6Name,
+    text: dict.guideHowToMake.step6P1,
   },
 ];
 
 const breadcrumbs = [
-  { name: 'Home', url: getLocalizedUrl('/', locale) },
-  { name: 'Guides', url: getLocalizedUrl('/guides/youtube-banner-size', locale) },
+  { name: dict.common.home, url: getLocalizedUrl('/', locale) },
+  { name: dict.footer.colGuides, url: getLocalizedUrl('/guides/youtube-banner-size', locale) },
   { name: dict.nav.howToMake, url: path },
 ];
 
@@ -117,9 +121,9 @@ const jsonLd = [
       <!-- Hero / Header -->
       <header class="space-y-6 border-b border-line-200 pb-10">
         <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
-          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">Home</a>
+          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">{dict.common.home}</a>
           <span class="text-line-200">/</span>
-          <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="hover:text-ink-950 transition-colors">Guides</a>
+          <a href={getLocalizedUrl('/guides/youtube-banner-size', locale)} class="hover:text-ink-950 transition-colors">{dict.footer.colGuides}</a>
           <span class="text-line-200">/</span>
           <span class="text-ink-800 font-medium">{dict.nav.howToMake}</span>
         </nav>
@@ -138,13 +142,13 @@ const jsonLd = [
 
         <!-- E-E-A-T Author & Citation Byline -->
         <div class="flex flex-wrap items-center gap-3 text-xs text-ink-600 border-t border-line-200 pt-4">
-          <span>By <strong>YTBannerStudio Editorial & Operations Team</strong></span>
+          <span>{dict.guideHowToMake.byAuthor}</span>
           <span>·</span>
-          <span>Verified against <a href="https://support.google.com/youtube/answer/2657964" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent font-medium">Official YouTube Studio Specifications</a></span>
+          <span>{dict.guideHowToMake.verifiedAgainst} <a href="https://support.google.com/youtube/answer/2657964" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent font-medium">{dict.guideHowToMake.officialSpecs}</a></span>
           <span>·</span>
-          <span>Updated September 2026</span>
+          <span>{dict.guideHowToMake.updatedDate}</span>
           <span>·</span>
-          <span>100% Client-Side Privacy</span>
+          <span>{dict.common.privacyBadge}</span>
         </div>
 
         <!-- Direct Answer Card -->
@@ -159,19 +163,19 @@ const jsonLd = [
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs border-t border-line-200">
             <div>
-              <span class="text-ink-500 block">Full Canvas</span>
+              <span class="text-ink-500 block">{dict.guideHowToMake.metricCanvas}</span>
               <strong class="font-mono text-ink-950 tabular-nums">{CANVAS.width} × {CANVAS.height} px</strong>
             </div>
             <div>
-              <span class="text-ink-500 block">Mobile Safe Zone</span>
+              <span class="text-ink-500 block">{dict.guideHowToMake.metricSafe}</span>
               <strong class="font-mono text-ink-950 tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</strong>
             </div>
             <div>
-              <span class="text-ink-500 block">Aspect Ratio</span>
-              <strong class="font-mono text-ink-950">16:9 Landscape</strong>
+              <span class="text-ink-500 block">{dict.guideHowToMake.metricAspect}</span>
+              <strong class="font-mono text-ink-950">{dict.guideHowToMake.metricAspectVal}</strong>
             </div>
             <div>
-              <span class="text-ink-500 block">Max File Size</span>
+              <span class="text-ink-500 block">{dict.guideHowToMake.metricSize}</span>
               <strong class="font-mono text-ink-950 tabular-nums">&le; {maxUploadMb} MB sRGB</strong>
             </div>
           </div>
@@ -181,7 +185,7 @@ const jsonLd = [
       <!-- Quick Action Jumpbox -->
       <section class="space-y-4">
         <h2 class="text-sm font-mono uppercase tracking-wider text-ink-500 font-semibold">
-          Select Your Creation Path
+          {dict.guideHowToMake.jumpboxHeading}
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <a
@@ -189,14 +193,14 @@ const jsonLd = [
             class="p-5 rounded-2xl border border-line-200 bg-surface-0 hover:border-accent hover:shadow-overlay transition-all duration-150 active:scale-[0.98] group flex flex-col justify-between space-y-3"
           >
             <div class="space-y-1.5">
-              <span class="text-[11px] font-mono text-accent font-semibold uppercase">01 · Build From Scratch</span>
-              <h3 class="text-base font-bold text-ink-950 group-hover:text-accent transition-colors">YouTube Banner Maker &rarr;</h3>
+              <span class="text-[11px] font-mono text-accent font-semibold uppercase">{dict.guideHowToMake.jumpboxPath1Tag}</span>
+              <h3 class="text-base font-bold text-ink-950 group-hover:text-accent transition-colors">{dict.guideHowToMake.jumpboxPath1Title}</h3>
               <p class="text-xs text-ink-600 leading-relaxed">
-                Use our free browser generator with Safe-Snap layout presets, theme harmonizers, and vector badges.
+                {dict.guideHowToMake.jumpboxPath1Desc}
               </p>
             </div>
             <span class="text-xs font-semibold text-accent inline-flex items-center gap-1">
-              Launch Studio Free &rarr;
+              {dict.guideHowToMake.jumpboxPath1Cta}
             </span>
           </a>
 
@@ -205,14 +209,14 @@ const jsonLd = [
             class="p-5 rounded-2xl border border-line-200 bg-surface-0 hover:border-accent hover:shadow-overlay transition-all duration-150 active:scale-[0.98] group flex flex-col justify-between space-y-3"
           >
             <div class="space-y-1.5">
-              <span class="text-[11px] font-mono text-accent font-semibold uppercase">02 · Fit Existing Photo</span>
-              <h3 class="text-base font-bold text-ink-950 group-hover:text-accent transition-colors">Banner Resizer &rarr;</h3>
+              <span class="text-[11px] font-mono text-accent font-semibold uppercase">{dict.guideHowToMake.jumpboxPath2Tag}</span>
+              <h3 class="text-base font-bold text-ink-950 group-hover:text-accent transition-colors">{dict.guideHowToMake.jumpboxPath2Title}</h3>
               <p class="text-xs text-ink-600 leading-relaxed">
-                Upscale and reposition your existing photography or artwork to the official {CANVAS.width}&times;{CANVAS.height} canvas.
+                {dict.guideHowToMake.jumpboxPath2Desc.replace('{width}', String(CANVAS.width)).replace('{height}', String(CANVAS.height))}
               </p>
             </div>
             <span class="text-xs font-semibold text-accent inline-flex items-center gap-1">
-              Resize Image Free &rarr;
+              {dict.guideHowToMake.jumpboxPath2Cta}
             </span>
           </a>
 
@@ -221,14 +225,14 @@ const jsonLd = [
             class="p-5 rounded-2xl border border-line-200 bg-surface-0 hover:border-accent hover:shadow-overlay transition-all duration-150 active:scale-[0.98] group flex flex-col justify-between space-y-3"
           >
             <div class="space-y-1.5">
-              <span class="text-[11px] font-mono text-accent font-semibold uppercase">03 · Pre-Flight Audit</span>
-              <h3 class="text-base font-bold text-ink-950 group-hover:text-accent transition-colors">Safe Area Checker &rarr;</h3>
+              <span class="text-[11px] font-mono text-accent font-semibold uppercase">{dict.guideHowToMake.jumpboxPath3Tag}</span>
+              <h3 class="text-base font-bold text-ink-950 group-hover:text-accent transition-colors">{dict.guideHowToMake.jumpboxPath3Title}</h3>
               <p class="text-xs text-ink-600 leading-relaxed">
-                Upload your graphic to test real-time overlays across TV, desktop, tablet, and mobile displays.
+                {dict.guideHowToMake.jumpboxPath3Desc}
               </p>
             </div>
             <span class="text-xs font-semibold text-accent inline-flex items-center gap-1">
-              Test Existing Art &rarr;
+              {dict.guideHowToMake.jumpboxPath3Cta}
             </span>
           </a>
         </div>
@@ -238,58 +242,58 @@ const jsonLd = [
       <section class="space-y-6">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            01 · The Creator Reality Check
+            {dict.guideHowToMake.s1Kicker}
           </span>
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            Why 80% of Channel Banners Fail on Mobile Devices
+            {dict.guideHowToMake.s1Title}
           </h2>
         </div>
         <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-          Most creators design channel art on a wide desktop screen. They position logos in the top corner, spread social handles across the edges, and add taglines along the bottom.
+          {dict.guideHowToMake.s1P1}
         </p>
         <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-          When a mobile viewer visits the channel, YouTube's layout engine slices away the top, bottom, and side margins. The result: half of the channel name is cut off, social handles disappear completely, and the banner looks broken. Over 75% of YouTube traffic occurs on mobile devices, making mobile framing the primary design constraint.
+          {dict.guideHowToMake.s1P2}
         </p>
 
         <!-- Comparison Table -->
         <div class="border border-line-200 rounded-2xl overflow-hidden bg-surface-0">
           <div class="px-6 py-4 bg-surface-50 border-b border-line-200">
-            <h3 class="text-sm font-semibold text-ink-950">Amateur vs. Production-Grade Channel Art</h3>
+            <h3 class="text-sm font-semibold text-ink-950">{dict.guideHowToMake.tableHeading}</h3>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-xs text-left">
               <thead class="border-b border-line-200 bg-surface-50/50 text-ink-600 font-mono uppercase tracking-wider">
                 <tr>
-                  <th class="p-3.5 sm:p-4">Design Dimension</th>
-                  <th class="p-3.5 sm:p-4 text-danger">Amateur Pattern</th>
-                  <th class="p-3.5 sm:p-4 text-success">High-Performing Pro Banner</th>
+                  <th class="p-3.5 sm:p-4">{dict.guideHowToMake.colDimension}</th>
+                  <th class="p-3.5 sm:p-4 text-danger">{dict.guideHowToMake.colAmateur}</th>
+                  <th class="p-3.5 sm:p-4 text-success">{dict.guideHowToMake.colPro}</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-line-100 text-ink-800">
                 <tr>
-                  <td class="p-3.5 sm:p-4 font-medium">Text Placement</td>
-                  <td class="p-3.5 sm:p-4 text-ink-600">Scattered to outer edges and corners</td>
-                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">Strictly centered in the {SAFE_PX.full.width} &times; {SAFE_PX.full.height} px safe area</td>
+                  <td class="p-3.5 sm:p-4 font-medium">{dict.guideHowToMake.row1Dimension}</td>
+                  <td class="p-3.5 sm:p-4 text-ink-600">{dict.guideHowToMake.row1Amateur}</td>
+                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">{dict.guideHowToMake.row1Pro.replace('{safeWidth}', String(SAFE_PX.full.width)).replace('{safeHeight}', String(SAFE_PX.full.height))}</td>
                 </tr>
                 <tr>
-                  <td class="p-3.5 sm:p-4 font-medium">Value Proposition</td>
-                  <td class="p-3.5 sm:p-4 text-ink-600">Vague slogans ("Welcome to my life!")</td>
-                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">Concrete promise + upload schedule (&lt;8 words)</td>
+                  <td class="p-3.5 sm:p-4 font-medium">{dict.guideHowToMake.row2Dimension}</td>
+                  <td class="p-3.5 sm:p-4 text-ink-600">{dict.guideHowToMake.row2Amateur}</td>
+                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">{dict.guideHowToMake.row2Pro}</td>
                 </tr>
                 <tr>
-                  <td class="p-3.5 sm:p-4 font-medium">Background Contrast</td>
-                  <td class="p-3.5 sm:p-4 text-ink-600">Thin white text over busy photo clutter</td>
-                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">Protected with Contrast Guard scrim or Aero Plate frosted glass</td>
+                  <td class="p-3.5 sm:p-4 font-medium">{dict.guideHowToMake.row3Dimension}</td>
+                  <td class="p-3.5 sm:p-4 text-ink-600">{dict.guideHowToMake.row3Amateur}</td>
+                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">{dict.guideHowToMake.row3Pro}</td>
                 </tr>
                 <tr>
-                  <td class="p-3.5 sm:p-4 font-medium">Profile Icon Synergy</td>
-                  <td class="p-3.5 sm:p-4 text-ink-600">Uncoordinated colors, avatar clashes with banner</td>
-                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">Coordinated 800&times;800 avatar matching the banner palette</td>
+                  <td class="p-3.5 sm:p-4 font-medium">{dict.guideHowToMake.row4Dimension}</td>
+                  <td class="p-3.5 sm:p-4 text-ink-600">{dict.guideHowToMake.row4Amateur}</td>
+                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">{dict.guideHowToMake.row4Pro}</td>
                 </tr>
                 <tr>
-                  <td class="p-3.5 sm:p-4 font-medium">Export Gamut</td>
-                  <td class="p-3.5 sm:p-4 text-ink-600">Display P3 or CMYK (causes muted color shifts)</td>
-                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">Standard sRGB PNG export (&le; {maxUploadMb} MB)</td>
+                  <td class="p-3.5 sm:p-4 font-medium">{dict.guideHowToMake.row5Dimension}</td>
+                  <td class="p-3.5 sm:p-4 text-ink-600">{dict.guideHowToMake.row5Amateur}</td>
+                  <td class="p-3.5 sm:p-4 font-semibold text-ink-950">{dict.guideHowToMake.row5Pro.replace('{maxUploadMb}', String(maxUploadMb))}</td>
                 </tr>
               </tbody>
             </table>
@@ -301,13 +305,13 @@ const jsonLd = [
       <section class="space-y-10 border-t border-line-200 pt-12">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            02 · Step-by-Step Playbook
+            {dict.guideHowToMake.s2Kicker}
           </span>
           <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
-            The 6-Step Masterclass to Make a YouTube Banner
+            {dict.guideHowToMake.s2Title}
           </h2>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Follow this sequential workflow to design channel art that communicates value instantly and renders across every viewing device.
+            {dict.guideHowToMake.s2Desc}
           </p>
         </div>
 
@@ -318,23 +322,23 @@ const jsonLd = [
               01
             </span>
             <h3 class="text-lg font-bold text-ink-950">
-              Define Your Channel Hook & 3-Second Value Proposition
+              {dict.guideHowToMake.step1Title}
             </h3>
           </div>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            When a viewer lands on your channel page, you have roughly three seconds before they navigate away. Your banner must answer two fundamental questions: <em>Who is this channel for?</em> and <em>What will I gain by subscribing?</em>
+            {dict.guideHowToMake.step1Desc}
           </p>
           <div class="p-4 rounded-xl bg-surface-50 border border-line-200 space-y-2">
-            <span class="text-xs font-mono font-semibold text-accent uppercase">The High-Converting Formula</span>
+            <span class="text-xs font-mono font-semibold text-accent uppercase">{dict.guideHowToMake.step1FormulaTitle}</span>
             <p class="text-sm font-mono text-ink-950">
-              [Who You Help] + [Specific Result or Topic] &bull; [Upload Cadence]
+              {dict.guideHowToMake.step1Formula}
             </p>
             <p class="text-xs text-ink-600">
-              Example: <em>"Actionable Frontend Architecture for Full-Stack Devs &bull; New Videos Every Tuesday"</em>
+              {dict.guideHowToMake.step1FormulaExample}
             </p>
           </div>
           <p class="text-xs text-ink-500 measure-prose">
-            Keep your total tagline under eight words. Wordy paragraphs cannot be parsed on a 375-pixel smartphone screen.
+            {dict.guideHowToMake.step1Hint}
           </p>
         </div>
 
@@ -345,21 +349,21 @@ const jsonLd = [
               02
             </span>
             <h3 class="text-lg font-bold text-ink-950">
-              Establish the {CANVAS.width} &times; {CANVAS.height} Canvas & Mobile Safe Zone
+              {dict.guideHowToMake.step2Title.replace('{width}', String(CANVAS.width)).replace('{height}', String(CANVAS.height))}
             </h3>
           </div>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Never create a YouTube banner at 1920&times;1080 or 1024&times;576. YouTube Studio requires an absolute minimum width of 2048 pixels and recommends exactly <strong>{CANVAS.width} &times; {CANVAS.height} pixels</strong> with a 16:9 ratio.
+            {dict.guideHowToMake.step2Desc1.replace('{width}', String(CANVAS.width)).replace('{height}', String(CANVAS.height))}
           </p>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Within this full canvas, construct a centered bounding box measuring <strong>{SAFE_PX.full.width} &times; {SAFE_PX.full.height} pixels</strong>. This safe area is mathematically centered: 507 pixels from the left and right margins, and 508.5 pixels from the top and bottom margins. All essential branding must stay within this box.
+            {dict.guideHowToMake.step2Desc2.replace('{safeWidth}', String(SAFE_PX.full.width)).replace('{safeHeight}', String(SAFE_PX.full.height))}
           </p>
           <div class="pt-2">
             <a
               href={getLocalizedUrl('/guides/youtube-banner-safe-area', locale)}
               class="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:underline"
             >
-              <span>Explore the complete safe area mathematical breakdown &rarr;</span>
+              <span>{dict.guideHowToMake.step2SafeBreakdownLink}</span>
             </a>
           </div>
         </div>
@@ -371,35 +375,35 @@ const jsonLd = [
               03
             </span>
             <h3 class="text-lg font-bold text-ink-950">
-              Select a Certified Safe-Snap Layout Archetype
+              {dict.guideHowToMake.step3Title}
             </h3>
           </div>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Instead of manually guessing where elements should sit, use one of the four verified layout archetypes built into our <a href={getLocalizedUrl('/tools/youtube-banner-maker', locale)} class="underline text-accent font-medium">YouTube Banner Maker</a>. Each archetype is mathematically constrained within the safe boundary:
+            {dict.guideHowToMake.step3Desc}
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">&bull; True Center</span>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideHowToMake.archetypeCenterTitle}</span>
               <p class="text-xs text-ink-600 leading-relaxed">
-                Symmetrical alignment with the channel title anchored at absolute dead center, tagline beneath, and badges centered below. Ideal for tech, minimalist, and educational channels.
+                {dict.guideHowToMake.archetypeCenterDesc}
               </p>
             </div>
             <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">&bull; Split-Left</span>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideHowToMake.archetypeLeftTitle}</span>
               <p class="text-xs text-ink-600 leading-relaxed">
-                Creator portrait or channel monogram anchored on the left safe boundary, with high-contrast text and social handles stacked on the right.
+                {dict.guideHowToMake.archetypeLeftDesc}
               </p>
             </div>
             <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">&bull; Split-Right</span>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideHowToMake.archetypeRightTitle}</span>
               <p class="text-xs text-ink-600 leading-relaxed">
-                Title and upload schedule aligned to the left, with the primary mascot, logo, or cutout positioned on the right safe perimeter. Popular for gaming and lifestyle vloggers.
+                {dict.guideHowToMake.archetypeRightDesc}
               </p>
             </div>
             <div class="p-4 rounded-xl border border-line-200 bg-surface-50 space-y-1.5">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">&bull; Stacked</span>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideHowToMake.archetypeStackedTitle}</span>
               <p class="text-xs text-ink-600 leading-relaxed">
-                Clean vertical hierarchy featuring an overarching category kicker, bold channel name, explanatory sub-headline, and horizontal badge strip.
+                {dict.guideHowToMake.archetypeStackedDesc}
               </p>
             </div>
           </div>
@@ -412,22 +416,18 @@ const jsonLd = [
               04
             </span>
             <h3 class="text-lg font-bold text-ink-950">
-              Apply Typography Hierarchy & Contrast Defense
+              {dict.guideHowToMake.step4Title}
             </h3>
           </div>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            The most common design failure on YouTube is low contrast: placing white sans-serif text directly over a busy photo, gaming screenshot, or gradient background.
+            {dict.guideHowToMake.step4Desc1}
           </p>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            To solve this, our studio incorporates two non-destructive contrast safeguards:
+            {dict.guideHowToMake.step4Desc2}
           </p>
           <ul class="space-y-2 text-xs sm:text-sm text-ink-800 list-disc pl-5 measure-prose">
-            <li>
-              <strong>Studio Scrim Slider:</strong> Adds a calibrated radial vignette centered behind the safe zone, darkening peripheral noise while keeping background photography visible.
-            </li>
-            <li>
-              <strong>Aero Plate Frosted Glass:</strong> Renders a subtle backdrop plate behind your typography with a soft border, ensuring high contrast regardless of how bright the underlying imagery is.
-            </li>
+            <li>{dict.guideHowToMake.safeguard1}</li>
+            <li>{dict.guideHowToMake.safeguard2}</li>
           </ul>
         </div>
 
@@ -438,14 +438,14 @@ const jsonLd = [
               05
             </span>
             <h3 class="text-lg font-bold text-ink-950">
-              Embed Vector Social Badges & Export Matching 800&times;800 Avatar
+              {dict.guideHowToMake.step5Title}
             </h3>
           </div>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Avoid typing messy URLs like <code>instagram.com/mychannel</code>. Viewers cannot click links on a YouTube banner image. Instead, embed clean vector brand icons (YouTube, X, Instagram, TikTok, Discord, Twitch, or Spotify) with your clean handle.
+            {dict.guideHowToMake.step5Desc1}
           </p>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Additionally, your banner and channel avatar must share a visual language. In our <a href={getLocalizedUrl('/tools/youtube-banner-maker', locale)} class="underline text-accent font-medium">YouTube Banner Maker</a>, clicking <strong>"Download 800&times;800 Avatar"</strong> extracts your active color palette, typography styling, and portrait into a matching profile image ready for immediate YouTube Studio upload.
+            {dict.guideHowToMake.step5Desc2}
           </p>
         </div>
 
@@ -456,21 +456,21 @@ const jsonLd = [
               06
             </span>
             <h3 class="text-lg font-bold text-ink-950">
-              Pre-Flight Crop Audit & YouTube Studio Publishing
+              {dict.guideHowToMake.step6Title}
             </h3>
           </div>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Before uploading to YouTube, run your file through our free <a href={getLocalizedUrl('/tools/youtube-banner-checker', locale)} class="underline text-accent font-medium">YouTube Banner Checker</a>. The tool overlays certified device cutouts across TV, Desktop, Tablet, and Mobile to verify that zero typography touches the danger boundaries.
+            {dict.guideHowToMake.step6Desc}
           </p>
           <div class="p-4 rounded-xl bg-surface-50 border border-line-200 space-y-2">
-            <span class="text-xs font-mono font-semibold text-ink-950">Publishing Steps in YouTube Studio:</span>
+            <span class="text-xs font-mono font-semibold text-ink-950">{dict.guideHowToMake.publishHeading}</span>
             <ol class="list-decimal pl-5 text-xs text-ink-700 space-y-1">
-              <li>Log in to <a href="https://studio.youtube.com" target="_blank" rel="noopener noreferrer" class="underline text-accent">studio.youtube.com</a>.</li>
-              <li>Click <strong>Customization</strong> in the left navigation sidebar.</li>
-              <li>Click the <strong>Branding</strong> tab.</li>
-              <li>Under <strong>Banner image</strong>, click <strong>Upload</strong> (or <strong>Change</strong>).</li>
-              <li>Confirm the interactive boundary aligns with your safe-area content.</li>
-              <li>Click <strong>Publish</strong> in the top-right corner.</li>
+              <li>{dict.guideHowToMake.publishStep1}</li>
+              <li>{dict.guideHowToMake.publishStep2}</li>
+              <li>{dict.guideHowToMake.publishStep3}</li>
+              <li>{dict.guideHowToMake.publishStep4}</li>
+              <li>{dict.guideHowToMake.publishStep5}</li>
+              <li>{dict.guideHowToMake.publishStep6}</li>
             </ol>
           </div>
         </div>
@@ -480,13 +480,13 @@ const jsonLd = [
       <section class="space-y-6 border-t border-line-200 pt-12">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            03 · Built-In Studio Engine
+            {dict.guideHowToMake.s3Kicker}
           </span>
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            Why Creators Build With YTBannerStudio.com
+            {dict.guideHowToMake.s3Title}
           </h2>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Our suite was engineered specifically to solve YouTube channel art cropping issues without requiring account creation, subscriptions, or watermarks.
+            {dict.guideHowToMake.s3Desc}
           </p>
         </div>
 
@@ -495,9 +495,9 @@ const jsonLd = [
             <div class="w-8 h-8 rounded-lg bg-surface-100 flex items-center justify-center text-accent font-bold font-mono text-sm">
               01
             </div>
-            <h3 class="text-base font-bold text-ink-950">100% Client-Side Privacy</h3>
+            <h3 class="text-base font-bold text-ink-950">{dict.guideHowToMake.pillar1Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              All rendering, resizing, and font generation executes entirely in your browser using HTML5 Canvas. Zero image bytes are ever transmitted across the network.
+              {dict.guideHowToMake.pillar1Desc}
             </p>
           </div>
 
@@ -505,9 +505,9 @@ const jsonLd = [
             <div class="w-8 h-8 rounded-lg bg-surface-100 flex items-center justify-center text-accent font-bold font-mono text-sm">
               02
             </div>
-            <h3 class="text-base font-bold text-ink-950">Aesthetic Vibe Harmonizer</h3>
+            <h3 class="text-base font-bold text-ink-950">{dict.guideHowToMake.pillar2Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Switch between curated aesthetic palettes (Dark Noir, Editorial Warm Pearl, Cyberpunk Neon, Stealth Minimalist, Sunset Luxe) with 1 click across all layers.
+              {dict.guideHowToMake.pillar2Desc}
             </p>
           </div>
 
@@ -515,9 +515,9 @@ const jsonLd = [
             <div class="w-8 h-8 rounded-lg bg-surface-100 flex items-center justify-center text-accent font-bold font-mono text-sm">
               03
             </div>
-            <h3 class="text-base font-bold text-ink-950">Zero Watermark & Zero Signup</h3>
+            <h3 class="text-base font-bold text-ink-950">{dict.guideHowToMake.pillar3Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Every exported PNG is clean, full-resolution, and unencumbered by forced watermarks, account requirements, or artificial download hurdles.
+              {dict.guideHowToMake.pillar3Desc}
             </p>
           </div>
         </div>
@@ -526,17 +526,17 @@ const jsonLd = [
       <!-- Section 4: Companion Guide Cross-Link -->
       <section class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div class="space-y-2">
-          <span class="text-xs font-mono uppercase tracking-wider font-semibold text-accent">Companion Creator Guide</span>
-          <h2 class="text-xl font-bold text-ink-950">How to Choose the Best YouTube Banner Template</h2>
+          <span class="text-xs font-mono uppercase tracking-wider font-semibold text-accent">{dict.guideHowToMake.companionKicker}</span>
+          <h2 class="text-xl font-bold text-ink-950">{dict.guideHowToMake.companionTitle}</h2>
           <p class="text-xs sm:text-sm text-ink-600 measure-prose">
-            Looking for pre-engineered layouts tailored to your niche? Read our architectural guide to selecting and customizing templates for gaming, tech, podcasts, and business.
+            {dict.guideHowToMake.companionDesc}
           </p>
         </div>
         <a
           href={getLocalizedUrl('/guides/how-to-choose-a-youtube-banner-template', locale)}
           class="h-10 px-5 rounded-full bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs font-medium inline-flex items-center gap-1.5 transition-all shadow-xs active:scale-[0.98] shrink-0"
         >
-          <span>Read Template Guide</span>
+          <span>{dict.guideHowToMake.companionButton}</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </section>
@@ -545,10 +545,10 @@ const jsonLd = [
       <section class="space-y-6 border-t border-line-200 pt-12">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            04 · Frequently Asked Questions
+            {dict.guideHowToMake.faqKicker}
           </span>
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            Frequently Asked Questions About Making a YouTube Banner
+            {dict.guideHowToMake.faqHeading}
           </h2>
         </div>
         <FaqAccordion faqs={faqs} />
@@ -556,35 +556,35 @@ const jsonLd = [
 
       <!-- Section 6: Next Steps / Internal Links Grid -->
       <section class="border-t border-line-200 pt-12 space-y-6">
-        <h2 class="text-base font-bold text-ink-950">Next Steps & Related Channel Art Resources</h2>
+        <h2 class="text-base font-bold text-ink-950">{dict.guideHowToMake.resourcesHeading}</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <a
             href={getLocalizedUrl('/tools/youtube-banner-maker', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Banner Generator &rarr;</span>
-            <span class="text-xs text-ink-600 block">Design safe channel art in your browser.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideHowToMake.cardMakerTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideHowToMake.cardMakerDesc}</span>
           </a>
           <a
             href={getLocalizedUrl('/tools/youtube-banner-checker', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Safe Area Checker &rarr;</span>
-            <span class="text-xs text-ink-600 block">Test multi-device crop boundaries live.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideHowToMake.cardCheckerTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideHowToMake.cardCheckerDesc}</span>
           </a>
           <a
             href={getLocalizedUrl('/guides/youtube-banner-size', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Banner Size Guide &rarr;</span>
-            <span class="text-xs text-ink-600 block">Detailed dimension & file size limits.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideHowToMake.cardSizeTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideHowToMake.cardSizeDesc}</span>
           </a>
           <a
             href={getLocalizedUrl('/templates', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Template Catalog &rarr;</span>
-            <span class="text-xs text-ink-600 block">Browse verified niche layouts.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideHowToMake.cardTemplatesTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideHowToMake.cardTemplatesDesc}</span>
           </a>
         </div>
       </section>

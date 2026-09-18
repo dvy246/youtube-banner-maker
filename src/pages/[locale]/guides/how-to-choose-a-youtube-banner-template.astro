@@ -50,8 +50,8 @@ const faqs = [
 ];
 
 const breadcrumbs = [
-  { name: 'Home', url: getLocalizedUrl('/', locale) },
-  { name: 'Templates', url: getLocalizedUrl('/templates', locale) },
+  { name: dict.common.home, url: getLocalizedUrl('/', locale) },
+  { name: dict.nav.templates, url: getLocalizedUrl('/templates', locale) },
   { name: dict.footer.guideBestTemplates, url: path },
 ];
 
@@ -84,7 +84,7 @@ const jsonLd = [
       <!-- Hero / Header -->
       <header class="space-y-6 border-b border-line-200 pb-10">
         <nav aria-label="Breadcrumb" class="text-xs font-mono text-ink-500 flex items-center gap-2">
-          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">Home</a>
+          <a href={getLocalizedUrl('/', locale)} class="hover:text-ink-950 transition-colors">{dict.common.home}</a>
           <span class="text-line-200">/</span>
           <a href={getLocalizedUrl('/templates', locale)} class="hover:text-ink-950 transition-colors">{dict.nav.templates}</a>
           <span class="text-line-200">/</span>
@@ -105,13 +105,13 @@ const jsonLd = [
 
         <!-- E-E-A-T Author & Citation Byline -->
         <div class="flex flex-wrap items-center gap-3 text-xs text-ink-600 border-t border-line-200 pt-4">
-          <span>By <strong>YTBannerStudio Editorial & Operations Team</strong></span>
+          <span>{dict.guideChooseTemplate.byAuthor}</span>
           <span>·</span>
-          <span>Verified against <a href="https://support.google.com/youtube/answer/2657964" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent font-medium">Official YouTube Studio Specifications</a></span>
+          <span>{dict.guideChooseTemplate.verifiedAgainst} <a href="https://support.google.com/youtube/answer/2657964" target="_blank" rel="noopener noreferrer" class="underline hover:text-accent font-medium">{dict.guideChooseTemplate.officialSpecs}</a></span>
           <span>·</span>
-          <span>Updated September 2026</span>
+          <span>{dict.guideChooseTemplate.updatedDate}</span>
           <span>·</span>
-          <span>100% Client-Side Privacy</span>
+          <span>{dict.common.privacyBadge}</span>
         </div>
 
         <!-- Direct Answer Card -->
@@ -126,19 +126,19 @@ const jsonLd = [
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs border-t border-line-200">
             <div>
-              <span class="text-ink-500 block">Mobile Safe Zone</span>
+              <span class="text-ink-500 block">{dict.guideChooseTemplate.metricSafe}</span>
               <strong class="font-mono text-ink-950 tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height} px</strong>
             </div>
             <div>
-              <span class="text-ink-500 block">Contrast Threshold</span>
+              <span class="text-ink-500 block">{dict.guideChooseTemplate.metricContrast}</span>
               <strong class="font-mono text-ink-950">&ge; 4.5:1 WCAG AA</strong>
             </div>
             <div>
-              <span class="text-ink-500 block">Avatar Synergy</span>
-              <strong class="font-mono text-ink-950">Left-Side Balanced</strong>
+              <span class="text-ink-500 block">{dict.guideChooseTemplate.metricAvatar}</span>
+              <strong class="font-mono text-ink-950">{dict.guideChooseTemplate.metricAvatarVal}</strong>
             </div>
             <div>
-              <span class="text-ink-500 block">Export Standard</span>
+              <span class="text-ink-500 block">{dict.guideChooseTemplate.metricExport}</span>
               <strong class="font-mono text-ink-950 tabular-nums">&le; {maxUploadMb} MB sRGB</strong>
             </div>
           </div>
@@ -149,13 +149,13 @@ const jsonLd = [
       <section class="space-y-6">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            01 · Quality Audit Checklist
+            {dict.guideChooseTemplate.s1Kicker}
           </span>
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            The 5-Point Quality Checklist Before Choosing Any Template
+            {dict.guideChooseTemplate.s1Title}
           </h2>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Before committing to a template design, evaluate it against these five technical criteria to ensure it does not break when uploaded to YouTube Studio.
+            {dict.guideChooseTemplate.s1Desc}
           </p>
         </div>
 
@@ -163,50 +163,50 @@ const jsonLd = [
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
             <div class="flex items-center gap-2.5">
               <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">1</span>
-              <h3 class="text-base font-bold text-ink-950">Centered Safe-Area Geometry</h3>
+              <h3 class="text-base font-bold text-ink-950">{dict.guideChooseTemplate.item1Title}</h3>
             </div>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
-              Examine where the channel title and tagline reside. If any lettering sits in the top 35% or bottom 35% of the 16:9 canvas, that text will be cropped on desktop viewports. If it extends beyond the central {SAFE_PX.full.width} pixels horizontally, mobile users will see sliced words.
+              {dict.guideChooseTemplate.item1Desc.replace('{safeWidth}', String(SAFE_PX.full.width))}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
             <div class="flex items-center gap-2.5">
               <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">2</span>
-              <h3 class="text-base font-bold text-ink-950">Contrast Resilience Across Themes</h3>
+              <h3 class="text-base font-bold text-ink-950">{dict.guideChooseTemplate.item2Title}</h3>
             </div>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
-              YouTube viewers use both light mode and dark mode interfaces. A template must feature sufficient background separation—via radial scrims, frosted glass backplates, or dark underlays—so that text never washes out against bright imagery.
+              {dict.guideChooseTemplate.item2Desc}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
             <div class="flex items-center gap-2.5">
               <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">3</span>
-              <h3 class="text-base font-bold text-ink-950">Typographic Hierarchy & Glanceability</h3>
+              <h3 class="text-base font-bold text-ink-950">{dict.guideChooseTemplate.item3Title}</h3>
             </div>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
-              A high-performing banner establishes three clear typographic tiers: a primary channel title (display font, 52–72 pt equivalent), a focused value proposition (bold sans-serif, 20–28 pt equivalent), and secondary badges or schedules (monospace or small sans, 14–18 pt).
+              {dict.guideChooseTemplate.item3Desc}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
             <div class="flex items-center gap-2.5">
               <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">4</span>
-              <h3 class="text-base font-bold text-ink-950">Channel Profile Icon Clearance</h3>
+              <h3 class="text-base font-bold text-ink-950">{dict.guideChooseTemplate.item4Title}</h3>
             </div>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
-              On desktop browsers, your circular YouTube channel icon sits beneath the banner. On mobile, however, the profile avatar partially overlaps the bottom-left area of the header. Ensure your template leaves adequate negative breathing room on the bottom-left edge.
+              {dict.guideChooseTemplate.item4Desc}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
             <div class="flex items-center gap-2.5">
               <span class="w-6 h-6 rounded-full bg-accent/10 text-accent font-mono font-bold text-xs flex items-center justify-center">5</span>
-              <h3 class="text-base font-bold text-ink-950">TV Aspect Ratio Bleed Quality</h3>
+              <h3 class="text-base font-bold text-ink-950">{dict.guideChooseTemplate.item5Title}</h3>
             </div>
             <p class="text-xs sm:text-sm text-ink-600 leading-relaxed measure-prose">
-              While mobile is the primary view, television apps display the entire {CANVAS.width} &times; {CANVAS.height} canvas. The outer margins must not look unfinished or empty; they should feature tasteful ambient textures, gradients, or background photography that extends seamlessly to all edges.
+              {dict.guideChooseTemplate.item5Desc.replace('{width}', String(CANVAS.width)).replace('{height}', String(CANVAS.height))}
             </p>
           </div>
         </div>
@@ -216,13 +216,13 @@ const jsonLd = [
       <section class="space-y-6 border-t border-line-200 pt-12">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            02 · Category Breakdown
+            {dict.guideChooseTemplate.s2Kicker}
           </span>
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            Matching Templates to Your Channel Niche
+            {dict.guideChooseTemplate.s2Title}
           </h2>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Different YouTube niches require distinct compositional structures. Explore how our curated templates serve specific content creator needs:
+            {dict.guideChooseTemplate.s2Desc}
           </p>
         </div>
 
@@ -230,48 +230,48 @@ const jsonLd = [
           <!-- Gaming -->
           <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Gaming & Esports</span>
-              <a href={getLocalizedUrl('/templates/gaming', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Gaming &rarr;</a>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideChooseTemplate.nicheGamingCategory}</span>
+              <a href={getLocalizedUrl('/templates/gaming', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">{dict.guideChooseTemplate.nicheGamingBrowse}</a>
             </div>
-            <h3 class="text-lg font-bold text-ink-950">High-Energy Cyber & Neo-Noir</h3>
+            <h3 class="text-lg font-bold text-ink-950">{dict.guideChooseTemplate.nicheGamingTitle}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Features dark carbon backdrops, vibrant neon accents (magenta, cyan, electric lime), and Split-Right mascot positioning. Built to withstand high-saturation gameplay screenshots without losing font legibility.
+              {dict.guideChooseTemplate.nicheGamingDesc}
             </p>
           </div>
 
           <!-- Tech -->
           <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Tech & Coding</span>
-              <a href={getLocalizedUrl('/templates/tech', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Tech &rarr;</a>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideChooseTemplate.nicheTechCategory}</span>
+              <a href={getLocalizedUrl('/templates/tech', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">{dict.guideChooseTemplate.nicheTechBrowse}</a>
             </div>
-            <h3 class="text-lg font-bold text-ink-950">Monochrome Developer Minimalist</h3>
+            <h3 class="text-lg font-bold text-ink-950">{dict.guideChooseTemplate.nicheTechTitle}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Utilitarian layouts featuring monospace accents (JetBrains Mono), subtle gridlines, and True Center or Stacked geometry. Emphasizes technical authority, GitHub handles, and clean release schedules.
+              {dict.guideChooseTemplate.nicheTechDesc}
             </p>
           </div>
 
           <!-- Podcast -->
           <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Podcasts & Talk Shows</span>
-              <a href={getLocalizedUrl('/templates/podcast', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Podcast &rarr;</a>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideChooseTemplate.nichePodcastCategory}</span>
+              <a href={getLocalizedUrl('/templates/podcast', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">{dict.guideChooseTemplate.nichePodcastBrowse}</a>
             </div>
-            <h3 class="text-lg font-bold text-ink-950">Editorial Studio & Audio Wave</h3>
+            <h3 class="text-lg font-bold text-ink-950">{dict.guideChooseTemplate.nichePodcastTitle}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Bold serif titles paired with platform badges (Spotify, Apple Podcasts, YouTube). Designed to establish instant journalistic trust and promote weekly episode release days.
+              {dict.guideChooseTemplate.nichePodcastDesc}
             </p>
           </div>
 
           <!-- Business -->
           <div class="p-6 rounded-2xl border border-line-200 bg-surface-0 space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">Business & Agency</span>
-              <a href={getLocalizedUrl('/templates/business', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">Browse Business &rarr;</a>
+              <span class="text-xs font-mono font-semibold text-accent uppercase tracking-wider">{dict.guideChooseTemplate.nicheBusinessCategory}</span>
+              <a href={getLocalizedUrl('/templates/business', locale)} class="text-xs font-semibold text-ink-950 hover:text-accent">{dict.guideChooseTemplate.nicheBusinessBrowse}</a>
             </div>
-            <h3 class="text-lg font-bold text-ink-950">Executive Split & Warm Pearl</h3>
+            <h3 class="text-lg font-bold text-ink-950">{dict.guideChooseTemplate.nicheBusinessTitle}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Professional creator layouts featuring portrait cutouts on the left, clear revenue/coaching positioning on the right, and subtle gold or navy ambient accents.
+              {dict.guideChooseTemplate.nicheBusinessDesc}
             </p>
           </div>
         </div>
@@ -281,49 +281,49 @@ const jsonLd = [
       <section class="space-y-6 border-t border-line-200 pt-12">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            03 · In-Browser Customization
+            {dict.guideChooseTemplate.s3Kicker}
           </span>
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            How to Customize a Template in the YouTube Banner Maker
+            {dict.guideChooseTemplate.s3Title}
           </h2>
           <p class="text-sm text-ink-600 leading-relaxed measure-prose">
-            Once you have selected a starting template from our <a href={getLocalizedUrl('/templates', locale)} class="underline text-accent font-medium">template catalog</a>, customize it using our browser-native editor:
+            {dict.guideChooseTemplate.s3Desc}
           </p>
         </div>
 
         <div class="space-y-4">
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
-            <h3 class="text-sm font-bold text-ink-950">Step 1: Open Template in Generator</h3>
+            <h3 class="text-sm font-bold text-ink-950">{dict.guideChooseTemplate.step1Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Click "Customize in Maker" on any template card. The design loads instantly into the local HTML5 canvas with all layers mapped to your selected palette.
+              {dict.guideChooseTemplate.step1Desc}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
-            <h3 class="text-sm font-bold text-ink-950">Step 2: Edit Title, Tagline & Schedule</h3>
+            <h3 class="text-sm font-bold text-ink-950">{dict.guideChooseTemplate.step2Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Type your channel name and core value proposition. The editor automatically adjusts font size and line breaks to prevent text from overflowing the safe zone.
+              {dict.guideChooseTemplate.step2Desc}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
-            <h3 class="text-sm font-bold text-ink-950">Step 3: Switch Aesthetic Vibe Harmonizer</h3>
+            <h3 class="text-sm font-bold text-ink-950">{dict.guideChooseTemplate.step3Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Test different visual tones with 1-click aesthetic presets (Dark Noir, Warm Pearl, Cyberpunk Neon, Stealth Minimalist, Sunset Luxe). All text colors, borders, and gradient stops update atomically.
+              {dict.guideChooseTemplate.step3Desc}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
-            <h3 class="text-sm font-bold text-ink-950">Step 4: Toggle Aero Plate or Studio Scrim</h3>
+            <h3 class="text-sm font-bold text-ink-950">{dict.guideChooseTemplate.step4Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              If your background contains detailed photography or high-contrast textures, activate the Aero Plate toggle or adjust the Contrast Guard slider to isolate text cleanly.
+              {dict.guideChooseTemplate.step4Desc}
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-line-200 bg-surface-0 space-y-2">
-            <h3 class="text-sm font-bold text-ink-950">Step 5: Export Banner & Coordinated Avatar</h3>
+            <h3 class="text-sm font-bold text-ink-950">{dict.guideChooseTemplate.step5Title}</h3>
             <p class="text-xs text-ink-600 leading-relaxed">
-              Download your full {CANVAS.width} &times; {CANVAS.height} pixel banner PNG, then click "Download 800&times;800 Avatar" to export a matching profile picture with identical colors and branding.
+              {dict.guideChooseTemplate.step5Desc.replace('{width}', String(CANVAS.width)).replace('{height}', String(CANVAS.height))}
             </p>
           </div>
         </div>
@@ -332,17 +332,17 @@ const jsonLd = [
       <!-- Section 4: Companion Guide Cross-Link -->
       <section class="p-6 sm:p-8 rounded-2xl border border-line-200 bg-surface-50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div class="space-y-2">
-          <span class="text-xs font-mono uppercase tracking-wider font-semibold text-accent">Companion Creator Masterclass</span>
-          <h2 class="text-xl font-bold text-ink-950">How to Make a YouTube Banner (Step-by-Step)</h2>
+          <span class="text-xs font-mono uppercase tracking-wider font-semibold text-accent">{dict.guideChooseTemplate.companionKicker}</span>
+          <h2 class="text-xl font-bold text-ink-950">{dict.guideChooseTemplate.companionTitle}</h2>
           <p class="text-xs sm:text-sm text-ink-600 measure-prose">
-            Prefer designing from scratch with custom photography and custom layout rules? Read our foundational creation masterclass.
+            {dict.guideChooseTemplate.companionDesc}
           </p>
         </div>
         <a
           href={getLocalizedUrl('/guides/how-to-make-a-youtube-banner', locale)}
           class="h-10 px-5 rounded-full bg-ink-950 text-surface-0 hover:bg-ink-800 text-xs font-medium inline-flex items-center gap-1.5 transition-all shadow-xs active:scale-[0.98] shrink-0"
         >
-          <span>Read Masterclass</span>
+          <span>{dict.guideChooseTemplate.companionButton}</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </section>
@@ -351,10 +351,10 @@ const jsonLd = [
       <section class="space-y-6 border-t border-line-200 pt-12">
         <div class="space-y-2">
           <span class="text-xs font-mono font-semibold uppercase tracking-wider text-accent">
-            04 · Frequently Asked Questions
+            {dict.guideChooseTemplate.faqKicker}
           </span>
           <h2 class="text-2xl font-bold tracking-tight text-ink-950">
-            Frequently Asked Questions About Choosing Banner Templates
+            {dict.guideChooseTemplate.faqHeading}
           </h2>
         </div>
         <FaqAccordion faqs={faqs} />
@@ -362,35 +362,35 @@ const jsonLd = [
 
       <!-- Section 6: Next Steps / Internal Links Grid -->
       <section class="border-t border-line-200 pt-12 space-y-6">
-        <h2 class="text-base font-bold text-ink-950">Explore Curated Templates & Tools</h2>
+        <h2 class="text-base font-bold text-ink-950">{dict.guideChooseTemplate.resourcesHeading}</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <a
             href={getLocalizedUrl('/templates', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Template Catalog &rarr;</span>
-            <span class="text-xs text-ink-600 block">Browse all verified layouts.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideChooseTemplate.cardTemplatesTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideChooseTemplate.cardTemplatesDesc}</span>
           </a>
           <a
             href={getLocalizedUrl('/tools/youtube-banner-maker', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Banner Generator &rarr;</span>
-            <span class="text-xs text-ink-600 block">Customize templates live in browser.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideChooseTemplate.cardMakerTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideChooseTemplate.cardMakerDesc}</span>
           </a>
           <a
             href={getLocalizedUrl('/tools/youtube-banner-checker', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Safe Area Checker &rarr;</span>
-            <span class="text-xs text-ink-600 block">Test cross-device viewport crops.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideChooseTemplate.cardCheckerTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideChooseTemplate.cardCheckerDesc}</span>
           </a>
           <a
             href={getLocalizedUrl('/guides/youtube-banner-size', locale)}
             class="p-4 rounded-xl border border-line-200 bg-surface-0 hover:border-ink-400 hover:shadow-raised transition-all active:scale-[0.98] space-y-1 block"
           >
-            <span class="text-xs font-bold text-ink-950 block">Banner Size Guide &rarr;</span>
-            <span class="text-xs text-ink-600 block">Official YouTube dimensions.</span>
+            <span class="text-xs font-bold text-ink-950 block">{dict.guideChooseTemplate.cardSizeTitle}</span>
+            <span class="text-xs text-ink-600 block">{dict.guideChooseTemplate.cardSizeDesc}</span>
           </a>
         </div>
       </section>
