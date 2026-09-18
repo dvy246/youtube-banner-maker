@@ -1675,11 +1675,16 @@ class ToolIsland {
         const titleColor = plateBtn.getAttribute('data-title-color');
         const taglineColor = plateBtn.getAttribute('data-tagline-color');
         const borderColor = plateBtn.getAttribute('data-border-color');
+        const fontTitle = plateBtn.getAttribute('data-font-title');
 
         this.loadImageFromDataUrl(bgSrc, () => {
           if (titleColor) {
             const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
             if (title) title.color = titleColor;
+          }
+          if (fontTitle) {
+            const title = this.scene.layers.find((l) => l.type === 'text' && l.id === 'title') as TextLayer | undefined;
+            if (title) title.font = fontTitle;
           }
           if (taglineColor) {
             const tagline = this.scene.layers.find((l) => l.type === 'text' && l.id === 'tagline') as TextLayer | undefined;
@@ -1709,6 +1714,52 @@ class ToolIsland {
           this.syncPhotoFrameControls();
           this.showToast('Applied aesthetic wallpaper');
         });
+      });
+    });
+
+    // 12.6 Pastoral Meadow Character Switcher (Girl / Guy sitting beside vintage Macintosh CRT)
+    const pastoralGirlBtn = document.getElementById('pastoral-char-girl-btn');
+    const pastoralGuyBtn = document.getElementById('pastoral-char-guy-btn');
+
+    pastoralGirlBtn?.addEventListener('click', () => {
+      const girlSrc = '/backgrounds/retro-lofi-pastoral-hillside-girl.jpg';
+      this.loadImageFromDataUrl(girlSrc, () => {
+        this.scene.background = {
+          type: 'image',
+          src: girlSrc,
+          width: 2560,
+          height: 1440,
+          cover: true,
+          offsetX: 0,
+          offsetY: 0,
+          zoom: 1,
+          extend: false,
+        };
+        this.syncPastoralControls();
+        this.syncBackgroundControls();
+        this.scheduleFrame();
+        this.showToast('Switched to Girl sitting in meadow');
+      });
+    });
+
+    pastoralGuyBtn?.addEventListener('click', () => {
+      const guySrc = '/backgrounds/retro-lofi-pastoral-hillside-guy.jpg';
+      this.loadImageFromDataUrl(guySrc, () => {
+        this.scene.background = {
+          type: 'image',
+          src: guySrc,
+          width: 2560,
+          height: 1440,
+          cover: true,
+          offsetX: 0,
+          offsetY: 0,
+          zoom: 1,
+          extend: false,
+        };
+        this.syncPastoralControls();
+        this.syncBackgroundControls();
+        this.scheduleFrame();
+        this.showToast('Switched to Guy sitting in meadow');
       });
     });
 
@@ -1986,8 +2037,9 @@ class ToolIsland {
       aeroBtn.addEventListener('click', () => {
         const isCurrentlyEnabled = aeroBtn.getAttribute('data-enabled') === 'true';
         const nextEnabled = !isCurrentlyEnabled;
-        aeroBtn.setAttribute('data-enabled', String(nextEnabled));
-        aeroBtn.textContent = nextEnabled ? 'On' : 'Off';
+        const onLabel = clientI18n?.makeControls?.contrastGuard?.stateOn || 'On';
+        const offLabel = clientI18n?.makeControls?.contrastGuard?.stateOff || 'Off';
+        aeroBtn.textContent = nextEnabled ? onLabel : offLabel;
         if (nextEnabled) {
           aeroBtn.classList.add('bg-accent', 'text-white', 'border-accent');
           aeroBtn.classList.remove('bg-surface-50', 'text-ink-800');
@@ -2780,6 +2832,43 @@ class ToolIsland {
     } else if (bg.type === 'motion') {
       this.activateBgType(`motion-${bg.effect}`);
       this.makePhotoRepositionWrap?.classList.add('hidden');
+    }
+    this.syncPastoralControls();
+  }
+
+  private syncPastoralControls(): void {
+    const pastoralControl = document.getElementById('pastoral-character-control');
+    if (!pastoralControl) return;
+
+    const bgSrc = this.scene.background.type === 'image' ? this.scene.background.src || '' : '';
+    const isPastoral =
+      this.currentTemplateId === 'vlog-pastoral-retro' ||
+      bgSrc.includes('retro-lofi-pastoral-hillside');
+
+    if (!isPastoral) {
+      pastoralControl.classList.add('hidden');
+      return;
+    }
+
+    pastoralControl.classList.remove('hidden');
+
+    const girlBtn = document.getElementById('pastoral-char-girl-btn');
+    const guyBtn = document.getElementById('pastoral-char-guy-btn');
+
+    const isGuy = bgSrc.includes('retro-lofi-pastoral-hillside-guy');
+
+    if (girlBtn && guyBtn) {
+      if (isGuy) {
+        guyBtn.className =
+          'pastoral-char-btn min-h-[40px] px-3 py-1.5 rounded-full border border-amber-600 bg-amber-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs transition-all duration-150 ease-out active:scale-[0.98]';
+        girlBtn.className =
+          'pastoral-char-btn min-h-[40px] px-3 py-1.5 rounded-full border border-line-200 bg-surface-50 text-ink-700 hover:text-ink-950 hover:bg-surface-100 font-medium text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all duration-150 ease-out active:scale-[0.98]';
+      } else {
+        girlBtn.className =
+          'pastoral-char-btn min-h-[40px] px-3 py-1.5 rounded-full border border-amber-600 bg-amber-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer shadow-xs transition-all duration-150 ease-out active:scale-[0.98]';
+        guyBtn.className =
+          'pastoral-char-btn min-h-[40px] px-3 py-1.5 rounded-full border border-line-200 bg-surface-50 text-ink-700 hover:text-ink-950 hover:bg-surface-100 font-medium text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all duration-150 ease-out active:scale-[0.98]';
+      }
     }
   }
 
@@ -4208,6 +4297,18 @@ class ToolIsland {
       else if (msg === 'Generating 1280 × 720 HD thumbnail...') displayMsg = t.generatingThumbnail || msg;
       else if (msg === 'Downloaded 1280 × 720 YouTube Thumbnail!') displayMsg = t.downloadedThumbnail || msg;
       else if (msg === 'Thumbnail generation failed') displayMsg = t.thumbnailFailed || msg;
+      else if (msg === 'Snapped to True Center') displayMsg = t.snappedCenter || msg;
+      else if (msg === 'Snapped to Split-Left') displayMsg = t.snappedSplitLeft || msg;
+      else if (msg === 'Snapped to Split-Right') displayMsg = t.snappedSplitRight || msg;
+      else if (msg === 'Snapped to Stacked Layout') displayMsg = t.snappedStacked || msg;
+      else if (msg === 'Text scaled to fit mobile safe zone') displayMsg = t.textScaledSafe || msg;
+      else if (msg === 'Frosted Aero Plate enabled') displayMsg = t.aeroPlateEnabled || msg;
+      else if (msg === 'Aero Plate disabled') displayMsg = t.aeroPlateDisabled || msg;
+      else if (msg === 'Applied aesthetic wallpaper') displayMsg = t.appliedWallpaper || msg;
+      else if (msg === 'Switched to Girl sitting in meadow') displayMsg = t.switchedGirl || msg;
+      else if (msg === 'Switched to Guy sitting in meadow') displayMsg = t.switchedGuy || msg;
+      else if (msg.includes('profile avatar!')) displayMsg = t.downloadedAvatar || msg;
+      else if (msg.includes('4K Ultra HD Wallpaper!')) displayMsg = t.downloaded4k || msg;
     }
     this.toolToastTextEl.textContent = displayMsg;
     this.toolToastEl.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
