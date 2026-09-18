@@ -81,8 +81,8 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
 
     <!-- Quick 1-Click Exports Divider & Header -->
     <div class="pt-2 border-t border-line-100 flex items-center justify-between text-[11px] font-medium text-ink-500">
-      <span>1-Click Exports</span>
-      <span class="text-[10px] text-ink-400 font-mono">4K · 1080p · Profile</span>
+      <span>{t.oneClickExports}</span>
+      <span class="text-[10px] text-ink-400 font-mono">{t.oneClickSub}</span>
     </div>
 
     <!-- Export 4K Ultra HD Wallpaper Button (3840x2160) -->
@@ -90,7 +90,7 @@ const maxUploadMb = Math.round(MAX_UPLOAD_BYTES / (1024 * 1024));
       type="button"
       id="export-4k-button"
       class="w-full h-11 min-h-[44px] px-6 rounded-full bg-surface-50 border border-line-200 text-ink-950 text-[13px] font-semibold hover:bg-surface-100 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-accent"
-      title="Export 3840×2160 Ultra HD 4K Wallpaper & TV Art"
+      title={t.wallpaper4kTitle}
     >
       <svg class="w-4 h-4 text-ink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

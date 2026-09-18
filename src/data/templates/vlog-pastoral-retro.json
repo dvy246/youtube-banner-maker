@@ -1,0 +1,53 @@
+{
+  "id": "vlog-pastoral-retro",
+  "niche": "vlog",
+  "name": "Pastoral Meadow",
+  "description": "Golden hour hillside with vintage Macintosh CRT computer, monarch butterflies, and authentic cross-stitch needlepoint typography.",
+  "preview": "/previews/vlog-pastoral-retro.svg",
+  "designSystem": {
+    "palette": {
+      "primary": "#FFFFFF",
+      "secondary": "#FEF3C7",
+      "surface": "#1E293B",
+      "accent": "#F59E0B"
+    },
+    "typography": {
+      "titleFont": "cross-stitch-400",
+      "taglineFont": "inter-500"
+    }
+  },
+  "scene": {
+    "background": {
+      "type": "image",
+      "src": "/backgrounds/retro-lofi-pastoral-hillside-girl.jpg",
+      "width": 2560,
+      "height": 1440,
+      "cover": true,
+      "offsetX": 0,
+      "offsetY": 0,
+      "zoom": 1,
+      "extend": false
+    },
+    "layers": [
+      {
+        "id": "title",
+        "role": "title",
+        "type": "text",
+        "text": "ashanviii",
+        "font": "cross-stitch-400",
+        "size": 52,
+        "color": "#FFFFFF",
+        "align": "center",
+        "x": 0.5,
+        "y": 0.44,
+        "safeAreaConstrained": true
+      }
+    ]
+  },
+  "editable": [
+    "title",
+    "background.photo"
+  ],
+  "protected": [],
+  "safeAreaValidated": true
+}

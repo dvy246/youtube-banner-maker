@@ -86,6 +86,13 @@ export const en = {
     specsDesc: 'Reference specifications verified against YouTube Studio documentation.',
     faqTitle: 'Frequently Asked Questions',
     faqDesc: 'Everything you need to know about YouTube banner dimensions, cropping, and export.',
+    metricCanvas: 'Canvas',
+    metricSafe: 'Safe Area',
+    metricFileLimit: 'File Limit',
+    metricPrivacy: 'Privacy',
+    metricClientOnly: 'Client-only',
+    showcaseBadge: 'Zero-Cutoff Presets',
+    specsBadge: 'Official Studio Parameters',
   },
   about: {
     metaTitle: 'About Us | Browser-First Privacy | YTBannerStudio',
@@ -105,6 +112,10 @@ export const en = {
     val2Desc: 'No hype or false promises. We explain real rasterization constraints and exact YouTube cropping mathematics.',
     val3Title: 'Zero Friction',
     val3Desc: 'No accounts, no email gates, no watermarks, and no paywalls. Instant creative utility in under 10 seconds.',
+    leadershipTag: '03 · Leadership',
+    teamTitle: 'YTBannerStudio Editorial & Engineering Team',
+    teamRole: 'Video Operations & Creator Tooling Collective',
+    teamDesc: 'A collective of video operations specialists, channel designers, and open-web developers dedicated to client-side graphic algorithms, YouTube safe-area research, and privacy-first creator tooling.',
   },
   contact: {
     metaTitle: 'Contact Support | Fast Response | YTBannerStudio',
@@ -829,6 +840,12 @@ export const en = {
       nextStepBadge: "Next Diagnostic Step",
       nextStepTitle: "Want to test an existing banner before modifying it?",
       nextStepDesc: "Use our Safe Area Checker to run automated diagnostic tests across mobile, desktop, and tablet crops without entering the editor.",
+      multiScreenBadge: "Multi-Screen Specs",
+      multiScreenDesc: "YouTube does not scale down your banner uniformly on smaller screens. Instead, it extracts distinct rectangular cuts from your single uploaded 2560 × 1440 px image.",
+      techStandardBadge: "Technical Standard",
+      techStandardDesc: "Adhering strictly to Google's published channel art guidelines prevents upload rejection and unexpected post-upload cropping.",
+      knowledgeBaseBadge: "Knowledge Base",
+      faqDesc: "Everything you need to know about YouTube channel banner sizing, safe areas, and image compression.",
     },
     checker: {
       diagBadge: "Automated Diagnostics",
@@ -860,6 +877,12 @@ export const en = {
       pitfall3Desc: "Smart TVs display the complete 2560 × 1440 px artwork. Uploading graphics under 2048 × 1152 px forces YouTube to upscale your image, causing visible artifacting.",
       pitfall3Footer: "Full 16:9 canvas required",
       immediateFixBadge: "Immediate Fix Action",
+      multiScreenBadge: "Multi-Screen Specs",
+      multiScreenDesc: "YouTube extracts different viewports from a single 2560 × 1440 px upload. Use this reference to understand what viewers see on each screen.",
+      techStandardBadge: "Technical Standard",
+      techStandardDesc: "Standard Google guidelines for channel banner dimensions, file weights, and supported formats.",
+      knowledgeBaseBadge: "Knowledge Base",
+      faqDesc: "Common questions regarding safe area testing, device cutoffs, and YouTube banner diagnostics.",
     },
     maker: {
       philBadge: "Design Philosophy",
@@ -889,6 +912,12 @@ export const en = {
       presetsBadge: "Curated Presets",
       verifiedDesigns: "Verified Designs",
       inspectBadge: "Safe Area Inspection",
+      multiScreenBadge: "Multi-Screen Specs",
+      multiScreenDesc: "YouTube extracts different viewports from a single 2560 × 1440 px upload. Use this reference to verify what viewers see across hardware platforms.",
+      techStandardBadge: "Technical Standard",
+      techStandardDesc: "Official Google standards for YouTube banner dimensions, minimum resolution, file size limits, and supported raster formats.",
+      knowledgeBaseBadge: "Knowledge Base",
+      faqDesc: "Answers to frequent questions about designing channel art, safe areas, template customization, and YouTube Studio uploads.",
     },
   },
   templatesExtended: {
@@ -1063,7 +1092,10 @@ export const en = {
       "outputSize": "Output Size:",
       "pending": "Pending generation",
       "rendering": "Rendering...",
-      "exportAnyway": "Export anyway"
+      "exportAnyway": "Export anyway",
+      "oneClickExports": "1-Click Exports",
+      "oneClickSub": "4K · 1080p · Profile",
+      "wallpaper4kTitle": "Export 3840×2160 Ultra HD 4K Wallpaper & TV Art"
     },
     "templatePicker": {
       "verifiedBadge": "{count}+ Verified Layouts",
@@ -1344,6 +1376,7 @@ export const en = {
       "actionFocusCanvas": "Focus canvas controls"
     },
     "toasts": {
+      "textUpdated": "Text updated",
       "centeredArtwork": "Centered artwork",
       "snappedCenter": "Snapped to True Center",
       "snappedSplitLeft": "Snapped to Split-Left",
@@ -1424,7 +1457,19 @@ export const en = {
     faq3Q: "Can I add my channel name and logo to these backgrounds?",
     faq3A: "Yes! Clicking \"Customize in Maker\" opens any background directly in our free browser editor where you can add your channel name, subtitle, and avatar frame.",
     faq4Q: "Will these backgrounds get cut off on mobile phones?",
-    faq4A: "No. All artwork motifs, frames, and focal elements are positioned within the centered mobile safe zone, ensuring crisp visibility on mobile devices."
+    faq4A: "No. All artwork motifs, frames, and focal elements are positioned within the centered mobile safe zone, ensuring crisp visibility on mobile devices.",
+    standardSizes: "Standard Sizes",
+    resBanner2k: "YouTube Banner (2K)",
+    resWallpaper4k: "Ultra HD 4K (Wallpaper)",
+    resThumbnail1080p: "YouTube Thumbnail (1080p)",
+    safeAreaCrops: "Safe Area Crops",
+    desktopViewport: "Desktop Viewport",
+    mobileSafeZone: "Mobile Safe Zone",
+    customizeInStudio: "Customize in Studio",
+    openAsBanner: "Open as Banner",
+    openAs4k: "Open as 4K Wallpaper",
+    openAsThumbnail: "Open as Thumbnail",
+    itemsCount: "{count} items",
   },
 };
 

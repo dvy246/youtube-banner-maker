@@ -145,20 +145,20 @@ const mobileY = Math.round(SAFE.y * CANVAS.height);
           <div class="p-1 rounded-xl bg-surface-100/80 border border-line-200 shadow-raised">
             <dl class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-1">
               <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
-                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Canvas</dt>
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">{dict.home.metricCanvas}</dt>
                 <dd class="text-sm font-mono font-bold text-ink-950 tabular-nums">{CANVAS.width} × {CANVAS.height}</dd>
               </div>
               <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
-                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Safe Area</dt>
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">{dict.home.metricSafe}</dt>
                 <dd class="text-sm font-mono font-bold text-accent tabular-nums">{SAFE_PX.full.width} × {SAFE_PX.full.height}</dd>
               </div>
               <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
-                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">File Limit</dt>
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">{dict.home.metricFileLimit}</dt>
                 <dd class="text-sm font-mono font-bold text-ink-950 tabular-nums">6 MB</dd>
               </div>
               <div class="bg-surface-0 rounded-lg px-3.5 py-2.5 space-y-0.5">
-                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">Privacy</dt>
-                <dd class="text-sm font-mono font-bold text-success tabular-nums">Client-only</dd>
+                <dt class="text-[10px] font-mono font-semibold uppercase tracking-wider text-ink-500">{dict.home.metricPrivacy}</dt>
+                <dd class="text-sm font-mono font-bold text-success tabular-nums">{dict.home.metricClientOnly}</dd>
               </div>
             </dl>
           </div>
@@ -183,7 +183,7 @@ const mobileY = Math.round(SAFE.y * CANVAS.height);
         <div class="space-y-2 max-w-2xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            Zero-Cutoff Presets
+            {dict.home.showcaseBadge}
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             {dict.home.showcaseTitle}
@@ -613,7 +613,7 @@ const mobileY = Math.round(SAFE.y * CANVAS.height);
       <div class="space-y-2 max-w-2xl">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/10 border border-accent/20">
           <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-          Official Studio Parameters
+          {dict.home.specsBadge}
         </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-950">
           {dict.home.specsTitle}

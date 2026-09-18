@@ -50,7 +50,7 @@ const content = {
 };
 
 const breadcrumbs = getBreadcrumbSchema([
-  { name: 'Home', url: getLocalizedUrl('/', locale) },
+  { name: dict.common.home, url: getLocalizedUrl('/', locale) },
   { name: dict.templatesHub.title, url: getLocalizedUrl('/templates', locale) },
   { name: nicheSeo.name, url: path },
 ]);
@@ -138,7 +138,7 @@ const firstTemplateId = templates[0]?.id || 'gaming-neon';
             </p>
           </div>
           <span class="text-xs font-mono text-ink-500 hidden sm:inline-block">
-            {templates.length} templates
+            {dict.templatesExtended.templatesCount.replace('{count}', String(templates.length))}
           </span>
         </div>
 

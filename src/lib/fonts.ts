@@ -42,6 +42,12 @@ export const FONTS: Record<string, FontDef> = {
     weight: 700,
     url: 'https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvXDXbtM.woff2',
   },
+  'cross-stitch-400': {
+    key: 'cross-stitch-400',
+    family: 'Cross Stitch',
+    weight: 400,
+    url: '',
+  },
 };
 
 const loadedFonts = new Set<string>();
@@ -53,6 +59,11 @@ export async function ensureFontLoaded(key: string): Promise<void> {
 
   const def = FONTS[key];
   if (!def) {
+    return;
+  }
+
+  if (!def.url) {
+    loadedFonts.add(key);
     return;
   }
 

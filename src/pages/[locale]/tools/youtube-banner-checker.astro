@@ -10,7 +10,7 @@ import {
   getSoftwareAppSchema,
   getBreadcrumbSchema,
 } from '../../../lib/seo';
-import { CANVAS, SAFE_PX } from '../../../lib/spec';
+import { SAFE_PX } from '../../../lib/spec';
 import {
   TARGET_LOCALES,
   getStaticPageSeo,
@@ -244,13 +244,13 @@ const jsonLd = [
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            <span>Multi-Screen Specs</span>
+            <span>{dict.toolsExtended.checker.multiScreenBadge}</span>
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             {dict.footer.guideSafeArea}
           </h2>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
-            YouTube extracts different viewports from a single {CANVAS.width} × {CANVAS.height} px upload. Use this reference to understand what viewers see on each screen.
+            {dict.toolsExtended.checker.multiScreenDesc}
           </p>
         </div>
         <DeviceCropTable locale={locale} />
@@ -261,13 +261,13 @@ const jsonLd = [
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            <span>Technical Standard</span>
+            <span>{dict.toolsExtended.checker.techStandardBadge}</span>
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             {dict.footer.colSpecs}
           </h2>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
-            Standard Google guidelines for channel banner dimensions, file weights, and supported formats.
+            {dict.toolsExtended.checker.techStandardDesc}
           </p>
         </div>
         <SpecTable locale={locale} />
@@ -278,13 +278,13 @@ const jsonLd = [
         <div class="space-y-3">
           <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium text-accent bg-accent/8 border border-accent/20">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            <span>Knowledge Base</span>
+            <span>{dict.toolsExtended.checker.knowledgeBaseBadge}</span>
           </div>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-ink-950">
             {dict.home.faqTitle}
           </h2>
           <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-3xl">
-            Common questions regarding safe area testing, device cutoffs, and YouTube banner diagnostics.
+            {dict.toolsExtended.checker.faqDesc}
           </p>
         </div>
         <FaqAccordion locale={locale} />
@@ -295,7 +295,7 @@ const jsonLd = [
         <div class="p-8 sm:p-10 rounded-2xl bg-surface-50 border border-line-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 shadow-2xs">
           <div class="space-y-2 max-w-2xl">
             <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-xs font-mono font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/20">
-              Immediate Fix Action
+              {dict.toolsExtended.checker.immediateFixBadge}
             </div>
             <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink-950">
               {dict.tools.checker.handoffTitle}

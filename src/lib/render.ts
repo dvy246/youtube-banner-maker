@@ -2,6 +2,7 @@ import { CANVAS, DEVICES, type DeviceKey } from './spec';
 import type { Background, Scene, TextLayer, ShapeLayer, PhotoFrameLayer } from './scene';
 import { FONTS } from './fonts';
 import { renderBadge } from './badges';
+import { drawCrossStitchText, measureCrossStitchWidth } from './cross-stitch';
 
 export type ImageMap = Map<string, HTMLImageElement | CanvasImageSource>;
 
@@ -253,6 +254,11 @@ export function measureTextWidth(
   fontId: string,
   fontSize: number
 ): number {
+  if (fontId === 'cross-stitch-400' || fontId === 'cross-stitch') {
+    const stitchSize = Math.max(3, Math.round(fontSize / 6.5));
+    return measureCrossStitchWidth(text, stitchSize);
+  }
+
   const fontDef = FONTS[fontId];
   const family = fontDef?.family || 'Inter, sans-serif';
   const weight = fontDef?.weight || 700;
@@ -352,6 +358,54 @@ function renderText(
   ch: number
 ): void {
   ctx.save();
+
+  const x = layer.position.x * cw;
+  const y = layer.position.y * ch;
+
+  // Authentic Cross-Stitch Embroidery Renderer
+  if (layer.font === 'cross-stitch-400' || layer.font === 'cross-stitch') {
+    const stitchSize = Math.max(3, Math.round(layer.size / 6.5));
+    if (layer.aeroPlate && layer.aeroPlate.enabled) {
+      ctx.save();
+      const textWidth = measureCrossStitchWidth(layer.text, stitchSize);
+      const padX = layer.aeroPlate.padding ?? 24;
+      const padY = Math.round(padX * 0.45);
+      const plateW = textWidth + padX * 2;
+      const plateH = layer.size + padY * 2;
+
+      let plateX = x - padX;
+      if (layer.align === 'center') {
+        plateX = x - plateW / 2;
+      } else if (layer.align === 'right') {
+        plateX = x - textWidth - padX;
+      }
+      const plateY = y - plateH / 2;
+      const radius = Math.min(16, plateH / 2);
+
+      ctx.beginPath();
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(plateX, plateY, plateW, plateH, radius);
+      } else {
+        ctx.rect(plateX, plateY, plateW, plateH);
+      }
+      if (layer.aeroPlate.style === 'light-frosted') {
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+      } else {
+        ctx.fillStyle = 'rgba(12, 13, 16, 0.65)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+      }
+      ctx.fill();
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    drawCrossStitchText(ctx, layer.text, x, y, stitchSize, layer.color, layer.align);
+    ctx.restore();
+    return;
+  }
+
   const fontDef = FONTS[layer.font];
   const family = fontDef ? fontDef.family : 'sans-serif';
   const weight = fontDef ? fontDef.weight : 600;
@@ -359,9 +413,6 @@ function renderText(
   ctx.font = `${weight} ${layer.size}px ${family}, sans-serif`;
   ctx.textAlign = layer.align;
   ctx.textBaseline = 'middle';
-
-  const x = layer.position.x * cw;
-  const y = layer.position.y * ch;
 
   // Render Aero Plate frosted glass plate if enabled
   if (layer.aeroPlate && layer.aeroPlate.enabled) {

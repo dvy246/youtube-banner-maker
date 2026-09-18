@@ -87,6 +87,13 @@ export const de: Translations = {
     specsDesc: 'Referenzmaße verifiziert anhand der Dokumentation von YouTube Studio.',
     faqTitle: 'Häufig Gestellte Fragen (FAQ)',
     faqDesc: 'Alles Wissenswerte über YouTube Banner Abmessungen, Zuschnitte und Bildexporte.',
+    metricCanvas: 'Leinwand',
+    metricSafe: 'Safe Area',
+    metricFileLimit: 'Dateilimit',
+    metricPrivacy: 'Datenschutz',
+    metricClientOnly: 'Rein lokal',
+    showcaseBadge: 'Zuschnittsichere Vorlagen',
+    specsBadge: 'Offizielle Studio-Parameter',
   },
   about: {
     metaTitle: 'Über Uns | Browser-Privatsphäre | YTBannerStudio',
@@ -106,6 +113,10 @@ export const de: Translations = {
     val2Desc: 'Keine leeren Versprechen. Wir erklären die echten Grenzen der Rasterung und die exakte Zuschnittmathematik von YouTube.',
     val3Title: 'Reibungsloser Ablauf',
     val3Desc: 'Keine Accounts, keine E-Mail-Schranken, keine Wasserzeichen und keine Kosten. Kreative Werkzeuge in unter 10 Sekunden.',
+    leadershipTag: '03 · Teamleitung',
+    teamTitle: 'YTBannerStudio Redaktions- & Ingenieursteam',
+    teamRole: 'Kollektiv für Video-Operations & Creator-Werkzeuge',
+    teamDesc: 'Ein Kollektiv aus Video-Operations-Spezialisten, Kanaldesignern und Webentwicklern, das sich auf clientseitige Grafikalgorithmen, YouTube-Safe-Area-Forschung und datenschutzorientierte Creator-Werkzeuge spezialisiert hat.',
   },
   contact: {
     metaTitle: 'Support | Schnelle Antwort | YTBannerStudio',
@@ -830,6 +841,12 @@ export const de: Translations = {
       nextStepBadge: "Nächster Prüfschritt",
       nextStepTitle: "Möchten Sie Ihr Banner vor dem Bearbeiten testen?",
       nextStepDesc: "Nutzen Sie unseren Sicherheitsbereich-Checker für automatisierte Diagnosen auf allen Geräten, ohne den Editor öffnen zu müssen.",
+      multiScreenBadge: "Multi-Screen-Spezifikationen",
+      multiScreenDesc: "YouTube skaliert Ihren Banner auf kleineren Bildschirmen nicht gleichmäßig herunter. Stattdessen werden unterschiedliche rechteckige Ausschnitte aus Ihrem einzelnen hochgeladenen 2560 × 1440 px Bild ausgeschnitten.",
+      techStandardBadge: "Technischer Standard",
+      techStandardDesc: "Die genaue Einhaltung der offiziellen Google-Richtlinien für Kanalbilder verhindert Upload-Ablehnungen und unerwartetes Beschneiden nach dem Upload.",
+      knowledgeBaseBadge: "Wissensdatenbank",
+      faqDesc: "Alles, was Sie über Abmessungen von YouTube-Bannern, Safe Areas und Bildkomprimierung wissen müssen.",
     },
     checker: {
       diagBadge: "Automatische Diagnose",
@@ -861,6 +878,12 @@ export const de: Translations = {
       pitfall3Desc: "Fernseher zeigen das komplette 2560 × 1440 px Bild. Bei weniger als 2048 × 1152 px muss YouTube hochskalieren, was zu Artefakten führt.",
       pitfall3Footer: "Vollständiger 16:9 Canvas nötig",
       immediateFixBadge: "Sofortige Korrektur",
+      multiScreenBadge: "Multi-Screen-Spezifikationen",
+      multiScreenDesc: "YouTube extrahiert verschiedene Ansichtsfenster aus einem einzigen 2560 × 1440 px Upload. Nutzen Sie diese Referenz, um zu sehen, was Zuschauer auf jedem Gerät sehen.",
+      techStandardBadge: "Technischer Standard",
+      techStandardDesc: "Offizielle Google-Richtlinien für Kanalbanner-Dimensionen, Dateigrößen und unterstützte Formate.",
+      knowledgeBaseBadge: "Wissensdatenbank",
+      faqDesc: "Häufige Fragen zur Safe-Area-Prüfung, zu gerätespezifischen Zuschnitten und zu YouTube-Banner-Diagnosen.",
     },
     maker: {
       philBadge: "Designphilosophie",
@@ -890,6 +913,12 @@ export const de: Translations = {
       presetsBadge: "Kategorisierte Vorlagen",
       verifiedDesigns: "Geprüfte Designs",
       inspectBadge: "Sicherheitsbereich-Inspektion",
+      multiScreenBadge: "Multi-Screen-Spezifikationen",
+      multiScreenDesc: "YouTube extrahiert verschiedene Ansichtsfenster aus einem einzigen 2560 × 1440 px Upload. Nutzen Sie diese Referenz, um zu überprüfen, was Zuschauer auf verschiedenen Plattformen sehen.",
+      techStandardBadge: "Technischer Standard",
+      techStandardDesc: "Offizielle Google-Standards für YouTube-Banner-Abmessungen, Mindestauflösung, Dateigrößenbeschränkungen und unterstützte Rasterformate.",
+      knowledgeBaseBadge: "Wissensdatenbank",
+      faqDesc: "Antworten auf häufige Fragen zur Erstellung von Kanalbildern, Safe Areas, Vorlagenanpassung und Uploads in YouTube Studio.",
     },
   },
   templatesExtended: {
@@ -1064,7 +1093,10 @@ export const de: Translations = {
       "outputSize": "Dateigröße:",
       "pending": "Warte auf Generierung",
       "rendering": "Rendere...",
-      "exportAnyway": "Trotzdem exportieren"
+      "exportAnyway": "Trotzdem exportieren",
+      "oneClickExports": "1-Klick-Exporte",
+      "oneClickSub": "4K · 1080p · Profil",
+      "wallpaper4kTitle": "3840×2160 Ultra HD 4K Hintergrundbild & TV-Grafik exportieren"
     },
     "templatePicker": {
       "verifiedBadge": "{count}+ Geprüfte Vorlagen",
@@ -1345,6 +1377,7 @@ export const de: Translations = {
       "actionFocusCanvas": "Steuerung auf Arbeitsfläche fokussieren"
     },
     "toasts": {
+      "textUpdated": "Text aktualisiert",
       "centeredArtwork": "Motiv zentriert",
       "snappedCenter": "Auf exakte Mitte ausgerichtet",
       "snappedSplitLeft": "Auf geteilt links ausgerichtet",
@@ -1425,6 +1458,18 @@ export const de: Translations = {
     faq3Q: "Kann ich meinen Kanalnamen und mein Logo hinzufügen?",
     faq3A: "Ja! Ein Klick auf \"Im Maker anpassen\" öffnet den Hintergrund direkt im Browser-Editor, wo Sie Kanalnamen, Untertitel und Avatare platzieren können.",
     faq4Q: "Werden diese Hintergründe auf Smartphones abgeschnitten?",
-    faq4A: "Nein. Alle gestalterischen Hauptmotive befinden sich innerhalb der zentrierten Sicherheitszone für Mobilgeräte."
+    faq4A: "Nein. Alle gestalterischen Hauptmotive befinden sich innerhalb der zentrierten Sicherheitszone für Mobilgeräte.",
+    standardSizes: "Standardgrößen",
+    resBanner2k: "YouTube-Banner (2K)",
+    resWallpaper4k: "Ultra HD 4K (Hintergrundbild)",
+    resThumbnail1080p: "YouTube-Thumbnail (1080p)",
+    safeAreaCrops: "Safe-Area-Zuschnitte",
+    desktopViewport: "Desktop-Ansicht",
+    mobileSafeZone: "Mobile Safe Zone",
+    customizeInStudio: "Im Studio anpassen",
+    openAsBanner: "Als Banner öffnen",
+    openAs4k: "Als 4K-Hintergrund öffnen",
+    openAsThumbnail: "Als Thumbnail öffnen",
+    itemsCount: "{count} Elemente",
   },
 };

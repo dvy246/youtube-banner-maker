@@ -4258,7 +4258,8 @@ class ToolIsland {
     let displayMsg = msg;
     if (clientI18n?.toasts) {
       const t = clientI18n.toasts;
-      if (msg === 'Centered artwork') displayMsg = t.centeredArtwork || msg;
+      if (msg === 'Text updated') displayMsg = t.textUpdated || msg;
+      else if (msg === 'Centered artwork') displayMsg = t.centeredArtwork || msg;
       else if (msg === 'Loaded image from clipboard') displayMsg = t.loadedClipboard || msg;
       else if (msg === 'Reset zoom & centered') displayMsg = t.resetZoom || msg;
       else if (msg.startsWith('Applied ') && msg.endsWith(' style')) displayMsg = `${t.appliedStyle || 'Applied style'} (${msg.slice(8, -6)})`;

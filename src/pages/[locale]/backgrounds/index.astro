@@ -30,7 +30,7 @@ const dict = getTranslations(locale);
 const t = dict.backgroundsPage;
 
 const breadcrumbs = getBreadcrumbSchema([
-  { name: "Home", url: getLocalizedUrl("/", locale) },
+  { name: dict.common.home, url: getLocalizedUrl("/", locale) },
   { name: dict.nav.backgrounds, url: path },
 ]);
 
@@ -185,7 +185,7 @@ const categoryLabels: Record<string, string> = {
     <section class="py-12 sm:py-16 bg-surface-50 border-b border-line-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-6">
-          <p class="text-xs sm:text-sm font-medium text-ink-600" id="bg-count-label">
+          <p class="text-xs sm:text-sm font-medium text-ink-600" id="bg-count-label" data-template={t.itemsCount}>
             {AESTHETIC_BACKGROUNDS.length} {t.allCategories}
           </p>
           <div class="text-[11px] text-ink-400 font-mono">
@@ -225,7 +225,7 @@ const categoryLabels: Record<string, string> = {
                       style={`left: ${safeLeftPct}%; top: ${safeTopPct}%; width: ${safeWidthPct}%; height: ${safeHeightPct}%;`}
                     >
                       <span class="text-[9px] font-mono bg-accent text-white px-1.5 py-0.5 rounded-xs font-semibold">
-                        Safe Area
+                        {dict.home.metricSafe}
                       </span>
                     </div>
                   </div>
@@ -295,7 +295,7 @@ const categoryLabels: Record<string, string> = {
 
                       <!-- Floating Dropdown Menu -->
                       <div class="download-dropdown-menu hidden absolute right-0 bottom-full mb-2 w-72 sm:w-80 p-2 bg-surface-0/98 backdrop-blur-md rounded-2xl shadow-2xl border border-line-200 z-30 text-left">
-                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">Standard Sizes</div>
+                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">{t.standardSizes}</div>
                         <button
                           type="button"
                           class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 transition-colors cursor-pointer group"
@@ -305,7 +305,7 @@ const categoryLabels: Record<string, string> = {
                           data-h={CANVAS.height}
                           data-crop="false"
                         >
-                          <span class="font-medium truncate">YouTube Banner (2K)</span>
+                          <span class="font-medium truncate">{t.resBanner2k}</span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">{CANVAS.width} × {CANVAS.height}</span>
                         </button>
                         <button
@@ -317,7 +317,7 @@ const categoryLabels: Record<string, string> = {
                           data-h="2160"
                           data-crop="false"
                         >
-                          <span class="font-medium truncate">Ultra HD 4K (Wallpaper)</span>
+                          <span class="font-medium truncate">{t.resWallpaper4k}</span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">3840 × 2160</span>
                         </button>
                         <button
@@ -329,13 +329,13 @@ const categoryLabels: Record<string, string> = {
                           data-h="1080"
                           data-crop="false"
                         >
-                          <span class="font-medium truncate">YouTube Thumbnail (1080p)</span>
+                          <span class="font-medium truncate">{t.resThumbnail1080p}</span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">1920 × 1080</span>
                         </button>
 
                         <div class="my-1.5 border-t border-line-100"></div>
 
-                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">Safe Area Crops</div>
+                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">{t.safeAreaCrops}</div>
                         <button
                           type="button"
                           class="btn-download-size w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 transition-colors cursor-pointer group"
@@ -345,7 +345,7 @@ const categoryLabels: Record<string, string> = {
                           data-h={desktopCropHeight}
                           data-crop="desktop"
                         >
-                          <span class="font-medium truncate">Desktop Viewport</span>
+                          <span class="font-medium truncate">{t.desktopViewport}</span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">{CANVAS.width} × {desktopCropHeight}</span>
                         </button>
                         <button
@@ -357,20 +357,20 @@ const categoryLabels: Record<string, string> = {
                           data-h={mobileCropHeight}
                           data-crop="mobile"
                         >
-                          <span class="font-medium truncate">Mobile Safe Zone</span>
+                          <span class="font-medium truncate">{t.mobileSafeZone}</span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100 shrink-0 ml-2">{mobileCropWidth} × {mobileCropHeight}</span>
                         </button>
 
                         <div class="my-1.5 border-t border-line-100"></div>
 
-                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">Customize in Studio</div>
+                        <div class="px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 select-none">{t.customizeInStudio}</div>
                         <a
                           href={`${getLocalizedUrl("/tools/youtube-banner-maker", locale)}?bgId=${bg.id}&res=banner`}
                           class="w-full px-2.5 py-1.5 rounded-xl hover:bg-surface-100 flex items-center justify-between text-xs text-ink-900 hover:text-accent transition-colors group"
                         >
                           <span class="font-medium flex items-center gap-1.5 truncate">
                             <svg class="w-3 h-3 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                            <span>Open as Banner</span>
+                            <span>{t.openAsBanner}</span>
                           </span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 group-hover:text-accent flex items-center gap-1 shrink-0 ml-2">
                             <span class="bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100">2560 × 1440</span>
@@ -383,7 +383,7 @@ const categoryLabels: Record<string, string> = {
                         >
                           <span class="font-medium flex items-center gap-1.5 truncate">
                             <svg class="w-3 h-3 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                            <span>Open as 4K Wallpaper</span>
+                            <span>{t.openAs4k}</span>
                           </span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 group-hover:text-accent flex items-center gap-1 shrink-0 ml-2">
                             <span class="bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100">3840 × 2160</span>
@@ -396,7 +396,7 @@ const categoryLabels: Record<string, string> = {
                         >
                           <span class="font-medium flex items-center gap-1.5 truncate">
                             <svg class="w-3 h-3 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                            <span>Open as Thumbnail</span>
+                            <span>{t.openAsThumbnail}</span>
                           </span>
                           <span class="text-[10px] font-mono tabular-nums text-ink-500 group-hover:text-accent flex items-center gap-1 shrink-0 ml-2">
                             <span class="bg-surface-100/80 px-1.5 py-0.5 rounded border border-line-100">1920 × 1080</span>
@@ -478,7 +478,8 @@ const categoryLabels: Record<string, string> = {
       });
 
       if (countLabel) {
-        countLabel.textContent = `${visibleCount} items`;
+        const tmpl = countLabel.getAttribute("data-template") || "{count} items";
+        countLabel.textContent = tmpl.replace("{count}", String(visibleCount));
       }
     }
 

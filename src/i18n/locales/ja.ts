@@ -87,6 +87,13 @@ export const ja: Translations = {
     specsDesc: 'YouTube Studio公式ドキュメントに準拠した最新のサイズ仕様です。',
     faqTitle: 'よくあるご質問（FAQ）',
     faqDesc: 'YouTubeバナーのサイズ設定、トリミング、書き出しについての疑問にお答えします。',
+    metricCanvas: 'キャンバス',
+    metricSafe: 'セーフエリア',
+    metricFileLimit: '容量上限',
+    metricPrivacy: 'プライバシー',
+    metricClientOnly: '完全ローカル',
+    showcaseBadge: '切り抜きゼロのプリセット',
+    specsBadge: '公式Studio仕様パラメータ',
   },
   about: {
     metaTitle: '概要 | ブラウザ完結のプライバシー | YTBannerStudio',
@@ -106,6 +113,10 @@ export const ja: Translations = {
     val2Desc: '誇大広告は排除し、画素補間の仕組みやYouTubeのトリミング計算式を正確にお伝えします。',
     val3Title: 'ストレスゼロの即時性',
     val3Desc: 'アカウント登録もメール入力も透かしも不要。サイトを開いて10秒以内で作業が完了します。',
+    leadershipTag: '03 · 開発・運営チーム',
+    teamTitle: 'YTBannerStudio 編集・エンジニアリングチーム',
+    teamRole: '動画オペレーション＆クリエイターツール開発コレクティブ',
+    teamDesc: 'クライアントサイドのグラフィックアルゴリズム、YouTubeセーフエリアの研究、プライバシー重視のクリエイター向けツール開発に専念する動画オペレーション専門家、チャンネルデザイナー、ウェブ開発者のコレクティブです。',
   },
   contact: {
     metaTitle: 'サポート | 迅速な対応 | YTBannerStudio',
@@ -830,6 +841,12 @@ export const ja: Translations = {
       nextStepBadge: "次の診断ステップ",
       nextStepTitle: "編集前に既存のバナーをテストしますか？",
       nextStepDesc: "セーフエリア確認ツールを使えば、画像を編集することなくスマホ、PC、タブレットでの表示トリミングを即座に診断できます。",
+      multiScreenBadge: "マルチ画面仕様",
+      multiScreenDesc: "YouTubeは小さい画面でバナーを均一に縮小しません。単一のアップロードされた2560 × 1440 px画像から、個別の長方形エリアを動的に切り抜きます。",
+      techStandardBadge: "技術標準",
+      techStandardDesc: "Googleが公開しているチャンネルアートのガイドラインに厳密に準拠することで、アップロードの拒否や公開後の予期せぬ切り抜きを防ぎます。",
+      knowledgeBaseBadge: "ナレッジベース",
+      faqDesc: "YouTubeチャンネルバナーのサイズ、セーフエリア、画像圧縮について知っておくべきすべての情報。",
     },
     checker: {
       diagBadge: "自動診断機能",
@@ -861,6 +878,12 @@ export const ja: Translations = {
       pitfall3Desc: "テレビでは2560 × 1440 pxの全体が表示されます。2048 × 1152 px未満の画像を無理に拡大すると、大画面でドットの粗さが目立ちます。",
       pitfall3Footer: "フル16:9キャンバス推奨",
       immediateFixBadge: "即時修正アクション",
+      multiScreenBadge: "マルチ画面仕様",
+      multiScreenDesc: "YouTubeは1つの2560 × 1440 pxアップロードから異なる表示領域を切り取ります。このリファレンスを使用して各画面で視聴者に何が見えるかをご確認ください。",
+      techStandardBadge: "技術標準",
+      techStandardDesc: "チャンネルバナーの寸法、ファイルサイズの上限、サポートされている形式に関する公式Google標準。",
+      knowledgeBaseBadge: "ナレッジベース",
+      faqDesc: "セーフエリアのテスト、デバイス別の切り抜き、YouTubeバナー診断に関するよくある質問。",
     },
     maker: {
       philBadge: "設計思想",
@@ -890,6 +913,12 @@ export const ja: Translations = {
       presetsBadge: "ジャンル別プリセット",
       verifiedDesigns: "適合検証済みデザイン",
       inspectBadge: "セーフエリア診断",
+      multiScreenBadge: "マルチ画面仕様",
+      multiScreenDesc: "YouTubeは単一の2560 × 1440 pxアップロードから異なる表示領域を抽出します。視聴者が各プラットフォームで何を見るかをこのリファレンスで確認してください。",
+      techStandardBadge: "技術標準",
+      techStandardDesc: "YouTubeバナーの寸法、最小解像度、ファイルサイズ制限、およびサポートされるラスター形式に関する公式Google規格。",
+      knowledgeBaseBadge: "ナレッジベース",
+      faqDesc: "チャンネルアートのデザイン、セーフエリア、テンプレートのカスタマイズ、YouTube Studioへのアップロードに関するよくある質問への回答。",
     },
   },
   templatesExtended: {
@@ -1064,7 +1093,10 @@ export const ja: Translations = {
       "outputSize": "ファイル容量:",
       "pending": "生成待機中",
       "rendering": "レンダリング中...",
-      "exportAnyway": "このまま書き出す"
+      "exportAnyway": "このまま書き出す",
+      "oneClickExports": "1クリック書き出し",
+      "oneClickSub": "4K · 1080p · アイコン",
+      "wallpaper4kTitle": "3840×2160 Ultra HD 4K 壁紙＆TV用アートを書き出す"
     },
     "templatePicker": {
       "verifiedBadge": "{count}種類以上の検証済みレイアウト",
@@ -1345,6 +1377,7 @@ export const ja: Translations = {
       "actionFocusCanvas": "キャンバス操作にフォーカス"
     },
     "toasts": {
+      "textUpdated": "テキストを更新しました",
       "centeredArtwork": "画像を中央に配置しました",
       "snappedCenter": "完全中央に整列しました",
       "snappedSplitLeft": "左分割レイアウトに整列しました",
@@ -1425,6 +1458,18 @@ export const ja: Translations = {
     faq3Q: "背景にチャンネル名やアイコンを追加できますか？",
     faq3A: "はい。「メーカーで編集する」をクリックするとブラウザ内エディタが開き、チャンネル名やサブタイトル、アイコン枠を自由に追加できます。",
     faq4Q: "スマートフォン画面で文字やイラストが切れませんか？",
-    faq4A: "安心してください。主要なアート要素やフレームは中央のセーフエリア内に配置されており、スマホでも綺麗に表示されます。"
+    faq4A: "安心してください。主要なアート要素やフレームは中央のセーフエリア内に配置されており、スマホでも綺麗に表示されます。",
+    standardSizes: "標準サイズ",
+    resBanner2k: "YouTubeバナー (2K)",
+    resWallpaper4k: "Ultra HD 4K (壁紙)",
+    resThumbnail1080p: "YouTubeサムネイル (1080p)",
+    safeAreaCrops: "セーフエリアの切り抜き",
+    desktopViewport: "デスクトップ表示領域",
+    mobileSafeZone: "モバイルセーフゾーン",
+    customizeInStudio: "Studioでカスタマイズ",
+    openAsBanner: "バナーとして開く",
+    openAs4k: "4K壁紙として開く",
+    openAsThumbnail: "サムネイルとして開く",
+    itemsCount: "{count} 件",
   },
 };

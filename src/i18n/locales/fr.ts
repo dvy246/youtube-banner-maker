@@ -87,6 +87,13 @@ export const fr: Translations = {
     specsDesc: 'Spécifications techniques vérifiées d\'après la documentation de YouTube Studio.',
     faqTitle: 'Foire Aux Questions (FAQ)',
     faqDesc: 'Tout ce que vous devez savoir sur les dimensions, le recadrage et l\'exportation des bannières YouTube.',
+    metricCanvas: 'Canevas',
+    metricSafe: 'Zone sûre',
+    metricFileLimit: 'Limite fichier',
+    metricPrivacy: 'Confidentialité',
+    metricClientOnly: '100% local',
+    showcaseBadge: 'Préréglages sans recadrage',
+    specsBadge: 'Paramètres officiels Studio',
   },
   about: {
     metaTitle: 'À Propos | Confidentialité Totale | YTBannerStudio',
@@ -106,6 +113,10 @@ export const fr: Translations = {
     val2Desc: 'Aucune fausse promesse. Nous expliquons les contraintes réelles de pixellisation et les règles mathématiques exactes de YouTube.',
     val3Title: 'Zéro Contrainte',
     val3Desc: 'Pas de compte, pas de formulaire e-mail, aucun filigrane et aucun frais. Un outil opérationnel en moins de 10 secondes.',
+    leadershipTag: '03 · Direction',
+    teamTitle: 'Équipe éditoriale et d\'ingénierie de YTBannerStudio',
+    teamRole: 'Collectif des opérations vidéo et outils pour créateurs',
+    teamDesc: 'Un collectif de spécialistes des opérations vidéo, de concepteurs de chaînes et de développeurs web dédié aux algorithmes graphiques côté client, à la recherche sur les zones de sécurité YouTube et aux outils créateurs respectueux de la confidentialité.',
   },
   contact: {
     metaTitle: 'Support | Réponse Rapide | YTBannerStudio',
@@ -830,6 +841,12 @@ export const fr: Translations = {
       nextStepBadge: "Étape Suivante",
       nextStepTitle: "Souhaitez-vous tester une bannière avant retouche ?",
       nextStepDesc: "Utilisez notre Vérificateur de Zone Sécurisée pour exécuter des diagnostics automatisés sur mobile, ordinateur et tablette sans ouvrir l'éditeur.",
+      multiScreenBadge: "Spécifications multi-écrans",
+      multiScreenDesc: "YouTube ne réduit pas votre bannière de manière uniforme sur les petits écrans. Au lieu de cela, il extrait des coupes rectangulaires distinctes à partir de votre image unique téléversée de 2560 × 1440 px.",
+      techStandardBadge: "Norme technique",
+      techStandardDesc: "Le strict respect des directives officielles de Google pour les bannières de chaîne évite le rejet du téléversement et les recadrages inattendus.",
+      knowledgeBaseBadge: "Base de connaissances",
+      faqDesc: "Tout ce que vous devez savoir sur les dimensions des bannières YouTube, les zones de sécurité et la compression d'image.",
     },
     checker: {
       diagBadge: "Diagnostics Automatiques",
@@ -861,6 +878,12 @@ export const fr: Translations = {
       pitfall3Desc: "Les téléviseurs affichent la totalité de l'image en 2560 × 1440 px. Importer une image sous 2048 × 1152 px cause une pixellisation visible.",
       pitfall3Footer: "Canvas 16:9 complet requis",
       immediateFixBadge: "Correction Immédiate",
+      multiScreenBadge: "Spécifications multi-écrans",
+      multiScreenDesc: "YouTube extrait différentes fenêtres d'affichage à partir d'un seul téléversement de 2560 × 1440 px. Utilisez cette référence pour comprendre ce que les spectateurs voient sur chaque écran.",
+      techStandardBadge: "Norme technique",
+      techStandardDesc: "Directives standard de Google pour les dimensions des bannières de chaîne, le poids des fichiers et les formats pris en charge.",
+      knowledgeBaseBadge: "Base de connaissances",
+      faqDesc: "Questions fréquentes concernant la vérification de la zone de sécurité, les recadrages selon l'appareil et le diagnostic des bannières YouTube.",
     },
     maker: {
       philBadge: "Philosophie de Design",
@@ -890,6 +913,12 @@ export const fr: Translations = {
       presetsBadge: "Modèles Thématiques",
       verifiedDesigns: "Designs Validés",
       inspectBadge: "Contrôle de Zone Sécurisée",
+      multiScreenBadge: "Spécifications multi-écrans",
+      multiScreenDesc: "YouTube extrait différentes fenêtres d'affichage d'un téléversement unique de 2560 × 1440 px. Utilisez cette référence pour vérifier ce que les spectateurs voient sur chaque appareil.",
+      techStandardBadge: "Norme technique",
+      techStandardDesc: "Normes officielles de Google pour les dimensions des bannières YouTube, la résolution minimale, les limites de taille de fichier et les formats matriciels pris en charge.",
+      knowledgeBaseBadge: "Base de connaissances",
+      faqDesc: "Réponses aux questions courantes sur la création de bannières de chaîne, les zones de sécurité, la personnalisation des modèles et les téléversements YouTube Studio.",
     },
   },
   templatesExtended: {
@@ -1064,7 +1093,10 @@ export const fr: Translations = {
       "outputSize": "Taille du Fichier :",
       "pending": "En attente de génération",
       "rendering": "Rendu en cours...",
-      "exportAnyway": "Exporter quand même"
+      "exportAnyway": "Exporter quand même",
+      "oneClickExports": "Exports en 1 clic",
+      "oneClickSub": "4K · 1080p · Profil",
+      "wallpaper4kTitle": "Exporter le fond d'écran Ultra HD 4K 3840×2160 et l'art TV"
     },
     "templatePicker": {
       "verifiedBadge": "{count}+ Modèles Vérifiés",
@@ -1345,6 +1377,7 @@ export const fr: Translations = {
       "actionFocusCanvas": "Activer les commandes du canvas"
     },
     "toasts": {
+      "textUpdated": "Texte mis à jour",
       "centeredArtwork": "Composition centrée",
       "snappedCenter": "Aligné au centre parfait",
       "snappedSplitLeft": "Aligné à gauche séparée",
@@ -1425,6 +1458,18 @@ export const fr: Translations = {
     faq3Q: "Puis-je ajouter le nom de ma chaîne et mon logo sur ces visuels ?",
     faq3A: "Oui ! Cliquez sur \"Personnaliser dans l'Éditeur\" pour ouvrir le visuel directement dans notre outil en ligne et y intégrer votre titre et votre avatar.",
     faq4Q: "Ces arrière-plans risquent-ils d'être coupés sur smartphone ?",
-    faq4A: "Non. Tous les éléments visuels clés sont centrés dans le cadre sécurisé pour préserver un affichage optimal sur mobile."
+    faq4A: "Non. Tous les éléments visuels clés sont centrés dans le cadre sécurisé pour préserver un affichage optimal sur mobile.",
+    standardSizes: "Tailles standard",
+    resBanner2k: "Bannière YouTube (2K)",
+    resWallpaper4k: "Ultra HD 4K (Fond d'écran)",
+    resThumbnail1080p: "Miniature YouTube (1080p)",
+    safeAreaCrops: "Recadrages de zone sûre",
+    desktopViewport: "Fenêtre bureau",
+    mobileSafeZone: "Zone sûre mobile",
+    customizeInStudio: "Personnaliser dans Studio",
+    openAsBanner: "Ouvrir comme bannière",
+    openAs4k: "Ouvrir comme fond d'écran 4K",
+    openAsThumbnail: "Ouvrir comme miniature",
+    itemsCount: "{count} éléments",
   },
 };

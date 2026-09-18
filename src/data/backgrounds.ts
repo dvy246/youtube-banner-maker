@@ -1967,6 +1967,30 @@ export const AESTHETIC_BACKGROUNDS: AestheticBackground[] = [
     harmony: { titleColor: "#FFFFFF", taglineColor: "#E9D5FF", frameBorderColor: "#A855F7" },
     tags: ["lavender", "provence", "france", "floral", "purple", "sunset", "botanical", "peaceful", "nature", "summer"],
   },
+  {
+    id: "retro-lofi-pastoral-hillside-girl",
+    name: "Pastoral Meadow Nostalgia Girl",
+    category: "anime",
+    categoryLabel: "Anime & Illustration",
+    description: "Peaceful 90s cottagecore meadow with a girl sitting in the grass gazing out at a winding lake and mountains, accompanied by a retro Macintosh with a smiley face and butterflies.",
+    src: "/backgrounds/retro-lofi-pastoral-hillside-girl.jpg",
+    defaultTitle: "ashanviii",
+    defaultTagline: "COZY MEADOWS • RETRO NOSTALGIA • VINTAGE VIBES",
+    harmony: { titleColor: "#FFFFFF", taglineColor: "#FEF08A", frameBorderColor: "#F59E0B" },
+    tags: ["cottagecore", "pastoral", "retro", "macintosh", "girl", "meadow", "nostalgia", "lofi", "aesthetic", "nature", "summer"],
+  },
+  {
+    id: "retro-lofi-pastoral-hillside-guy",
+    name: "Pastoral Meadow Nostalgia Guy",
+    category: "anime",
+    categoryLabel: "Anime & Illustration",
+    description: "Peaceful 90s cottagecore meadow with a guy sitting in the grass gazing out at a winding lake and mountains, accompanied by a retro Macintosh with a smiley face and butterflies.",
+    src: "/backgrounds/retro-lofi-pastoral-hillside-guy.jpg",
+    defaultTitle: "ashanviii",
+    defaultTagline: "COZY MEADOWS • RETRO NOSTALGIA • VINTAGE VIBES",
+    harmony: { titleColor: "#FFFFFF", taglineColor: "#FEF08A", frameBorderColor: "#F59E0B" },
+    tags: ["cottagecore", "pastoral", "retro", "macintosh", "guy", "meadow", "nostalgia", "lofi", "aesthetic", "nature", "summer"],
+  },
 ];
 
 export function listAestheticBackgrounds(category?: string): AestheticBackground[] {

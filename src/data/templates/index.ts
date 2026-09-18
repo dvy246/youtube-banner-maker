@@ -120,6 +120,7 @@ import podcast_mindful_path from "./podcast-mindful-path.json";
 import food_desi_kitchen from "./food-desi-kitchen.json";
 import vlog_daily_diaries from "./vlog-daily-diaries.json";
 import podcast_memphis_pop from "./podcast-memphis-pop.json";
+import vlog_pastoral_retro from "./vlog-pastoral-retro.json";
 import type { TemplateManifest } from "../../lib/template";
 
 export const TEMPLATES: TemplateManifest[] = [
@@ -244,4 +245,5 @@ export const TEMPLATES: TemplateManifest[] = [
   food_desi_kitchen,
   vlog_daily_diaries,
   podcast_memphis_pop,
+  vlog_pastoral_retro,
 ] as unknown as TemplateManifest[];

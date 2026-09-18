@@ -98,7 +98,7 @@ export const STATIC_PAGES_SEO: Record<string, { title: string; desc: string }> =
   },
   '/guides/youtube-banner-background': {
     title: 'Banner Background | Aesthetic 2560x1440 | YTBannerStudio',
-    desc: 'Find the perfect YouTube banner background. Exact 2560x1440 sizing, contrast scrim rules, and 158 aesthetic backgrounds fitted to the mobile safe zone.',
+    desc: 'Find the perfect YouTube banner background. Exact 2560x1440 sizing, contrast scrim rules, and 160 aesthetic backgrounds fitted to the mobile safe zone.',
   },
   '/tools/youtube-banner-resizer': {
     title: 'YouTube Banner Resizer | Fit Safe Area | YTBannerStudio',
