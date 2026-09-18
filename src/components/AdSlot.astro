@@ -1,14 +1,18 @@
 ---
+import type { Locale } from '../i18n';
+
 interface Props {
   slotId?: string;
   format?: 'horizontal' | 'rectangle' | 'leaderboard';
   class?: string;
+  locale?: Locale;
 }
 
 const {
   slotId = 'default',
   format = 'horizontal',
   class: className = '',
+  locale = 'en',
 } = Astro.props;
 
 const formatStyles = {
@@ -16,6 +20,18 @@ const formatStyles = {
   rectangle: 'min-h-[250px] max-w-sm mx-auto',
   leaderboard: 'min-h-[90px] max-w-5xl mx-auto',
 };
+
+const adLabels: Record<Locale, { label: string; reserved: string }> = {
+  en: { label: 'Advertisement', reserved: 'Reserved Ad Container · Zero CLS Budget Maintained' },
+  es: { label: 'Publicidad', reserved: 'Contenedor de Anuncios Reservado · Presupuesto Zero CLS' },
+  de: { label: 'Anzeige', reserved: 'Reservierter Anzeigenbereich · Zero-CLS-Budget' },
+  fr: { label: 'Publicité', reserved: 'Emplacement Publicitaire Réservé · Budget Zéro CLS' },
+  'pt-br': { label: 'Publicidade', reserved: 'Contêiner de Anúncios Reservado · Orçamento Zero CLS' },
+  it: { label: 'Pubblicità', reserved: 'Spazio Pubblicitario Riservato · Budget Zero CLS' },
+  ja: { label: '広告', reserved: '広告予約領域 · Zero CLS予算を維持' },
+};
+
+const currentAd = adLabels[locale] || adLabels.en;
 ---
 
 <aside
@@ -24,15 +40,15 @@ const formatStyles = {
     formatStyles[format],
     className,
   ]}
-  aria-label="Advertisement"
+  aria-label={currentAd.label}
   data-ad-slot={slotId}
 >
   <span class="text-[10px] font-mono uppercase tracking-widest text-ink-500 mb-2">
-    Advertisement
+    {currentAd.label}
   </span>
   <div class="w-full flex-1 flex items-center justify-center border border-dashed border-line-200 rounded-lg bg-surface-0/60 p-4">
     <p class="text-xs text-ink-500 font-mono">
-      Reserved Ad Container · Zero CLS Budget Maintained
+      {currentAd.reserved}
     </p>
   </div>
 </aside>

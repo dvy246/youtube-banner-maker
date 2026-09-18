@@ -411,7 +411,7 @@ export const de: Translations = {
     nichePodcastDesc: 'Ausdrucksstarke Serifen-Schriften kombiniert mit Plattform-Badges (Spotify, Apple Podcasts, YouTube). Vermittelt journalistische Verlässlichkeit und Veröffentlichungstage.',
     nicheBusinessCategory: 'Business & Agentur',
     nicheBusinessBrowse: 'Business Vorlagen ansehen →',
-    nicheBusinessTitle: 'Executive Split & Warm Pearl',
+    nicheBusinessTitle: 'Executive-Split & Warme Perle',
     nicheBusinessDesc: 'Professionelle Layouts mit Porträt links, unternehmerischem Nutzen rechts und edlen Akzenten in Gold oder Dunkelblau.',
     s3Kicker: '03 · Anpassung im Browser',
     s3Title: 'So Passt du Vorlagen im YouTube Banner Maker An',
@@ -523,7 +523,7 @@ export const de: Translations = {
       title: 'YouTube Sicherheitsbereich-Prüfer (Checken)',
       intro:
         'Lade dein bestehendes Banner hoch, um zu überprüfen, ob Kanalname, Links und Hauptgrafiken auf Mobilgeräten vollständig sichtbar bleiben.',
-      handoffTitle: 'Mit Einem Klick Anpassen',
+      handoffTitle: 'Probleme bei Ihrer Safe-Area-Prüfung festgestellt?',
       handoffDesc:
         'Möchtest du Bildausschnitte korrigieren oder Texte verschieben? Öffne dein Banner direkt im Resizer-Editor unter Beibehaltung deines Bildes.',
       handoffBtn: 'Im Resizer Korrigieren →',

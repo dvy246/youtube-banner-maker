@@ -523,7 +523,7 @@ export const es: Translations = {
       title: 'Verificador de Zona Segura de YouTube (Chequear)',
       intro:
         'Sube tu banner actual para comprobar que el nombre de tu canal, redes sociales y gráficos principales permanezcan visibles en móviles.',
-      handoffTitle: 'Ajuste en Un Clic',
+      handoffTitle: '¿Problemas en tu prueba de área segura?',
       handoffDesc:
         '¿Necesitas recolocar elementos o arreglar recortes en la zona segura? Abre tu imagen directamente en el editor del redimensionador sin perderla.',
       handoffBtn: 'Ajustar en el Redimensionador →',

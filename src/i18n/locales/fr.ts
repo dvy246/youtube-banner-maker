@@ -523,7 +523,7 @@ export const fr: Translations = {
       title: 'Vérificateur de Zone Sécurisée de Bannière (Vérifier)',
       intro:
         'Chargez votre bannière actuelle pour vérifier que le nom de votre chaîne et vos icônes sociales s\'affichent sans coupure sur smartphone.',
-      handoffTitle: 'Ajustement en Un Clic',
+      handoffTitle: 'Des problèmes détectés lors de votre test de zone sûre ?',
       handoffDesc:
         'Besoin de repositionner des éléments ou de corriger un texte hors zone ? Ouvrez votre bannière directement dans le redimensionneur.',
       handoffBtn: 'Corriger dans le Redimensionneur →',

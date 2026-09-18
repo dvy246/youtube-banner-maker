@@ -523,7 +523,7 @@ export const it: Translations = {
       title: 'Controllo Area di Sicurezza Banner YouTube (Verifica)',
       intro:
         'Carica la tua copertina attuale per accertarti che il nome del tuo canale e i link social rimangano visibili sui telefoni senza venire tagliati.',
-      handoffTitle: 'Modifica con Un Clic',
+      handoffTitle: 'Hai riscontrato problemi nel test della safe area?',
       handoffDesc:
         'Hai bisogno di spostare grafiche o correggere testi tagliati? Apri il tuo banner direttamente nell\'editor del ridimensionatore.',
       handoffBtn: 'Modifica nel Ridimensionatore →',

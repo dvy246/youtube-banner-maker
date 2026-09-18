@@ -523,7 +523,7 @@ export const ptBr: Translations = {
       title: 'Verificador de Área Segura de Banner (Checar)',
       intro:
         'Envie seu banner atual para confirmar se o nome do canal, ícones sociais e elementos principais ficam visíveis na tela do celular.',
-      handoffTitle: 'Ajuste em Um Clique',
+      handoffTitle: 'Problemas detectados no teste de área segura?',
       handoffDesc:
         'Precisa reposicionar elementos ou corrigir cortes da área segura? Abra seu banner diretamente no editor do redimensionador mantendo a imagem.',
       handoffBtn: 'Ajustar no Redimensionador →',

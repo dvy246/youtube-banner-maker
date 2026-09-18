@@ -522,7 +522,7 @@ export const en = {
       title: 'YouTube Banner Safe Area Checker (Check Door)',
       intro:
         'Upload your existing banner to verify that your channel name, social icons, and artwork stay safely inside the mobile view zone.',
-      handoffTitle: 'One-Click Fix Handoff',
+      handoffTitle: 'Found issues in your safe area test?',
       handoffDesc:
         'Need to reposition your artwork or fix safe area cutoffs? Open your uploaded banner directly in the resizer editor with your image preserved.',
       handoffBtn: 'Fix in Resizer Editor →',
